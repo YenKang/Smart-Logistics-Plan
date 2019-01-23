@@ -14,12 +14,6 @@
         android:layout_height="wrap_content"
         android:paddingVertical="0dp"
         android:text="" />
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingVertical="20dp"
-        android:text="您好" />
 
     <TextView
         android:id="@+id/tVGender"
@@ -32,17 +26,17 @@
         android:id="@+id/tVPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingVertical="20dp"
+        android:paddingVertical="10dp"
         android:text="" />
     <TextView
         android:id="@+id/tVRegisterTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingVertical="20dp"
+        android:paddingVertical="10dp"
         android:text="" />
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_logout"
         android:layout_width="150dp"
         android:layout_height="45dp"
         android:paddingVertical="10dp"

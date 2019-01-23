@@ -1,5 +1,6 @@
 package com.example.bjt.av_delivery_v10;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Date;
 
 public class Login extends AppCompatActivity {
 
@@ -26,14 +29,22 @@ public class Login extends AppCompatActivity {
         etUserpass = findViewById(R.id.user_pass);
         btnLogin = findViewById(R.id.btn_login);
 
-        tVPhone = findViewById(R.id.tVPhone);
-        tVGender = findViewById(R.id.tVGender);
+        Date a =new Date();
+        System.out.println(a);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("login_info",0);
-        Bundle bundle = new Bundle();
-        String test = bundle.getString("qqq","0");
-        Toast.makeText(this,test,Toast.LENGTH_LONG).show();
-
+        SharedPreferences sharedPreferences = getSharedPreferences("user_info",0);
+        /*SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("qqq","FUCKING GO");
+        editor.commit();*/
+        int login = sharedPreferences.getInt("user_id",-1);
+        // Toast.makeText(this, Integer.toString(login), Toast.LENGTH_LONG).show();
+        // 若已登入過，則直接進入會員頁面
+        if (login != -1){
+            Intent it = new Intent();
+            it.setClass(this, AccountActivity.class);
+            this.startActivity(it);
+            finish();
+        }
         processControllers();
     }
 
@@ -47,6 +58,10 @@ public class Login extends AppCompatActivity {
                 username = etUsername.getText().toString();
                 userpass = etUserpass.getText().toString();
                 String method = "login";
+                SharedPreferences sharedPreferences = getSharedPreferences("login_info",0);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.commit();
 
                 if(username.equals("")){
                     Toast.makeText(Login.this, "請輸入帳號", Toast.LENGTH_LONG).show();
@@ -57,6 +72,7 @@ public class Login extends AppCompatActivity {
                 else {
                     BackGroundTask backgroundTask = new BackGroundTask(Login.this);
                     backgroundTask.execute(method, username, userpass);
+                    finish();
                 }
             }
         };

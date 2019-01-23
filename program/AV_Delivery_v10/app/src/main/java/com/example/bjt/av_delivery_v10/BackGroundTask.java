@@ -153,31 +153,33 @@ public class BackGroundTask extends AsyncTask<String, Void, String> {
 
         if (result.equals("No_match")) {
             Toast.makeText(ctx, "帳號密碼錯誤，請重新輸入。", Toast.LENGTH_LONG).show();
+            Intent it = new Intent();
+            it.setClass(ctx, Login.class);
+            ctx.startActivity(it);
         }
         else {
             //Toast.makeText(ctx, "登入成功！", Toast.LENGTH_LONG).show();
             try {
                 JSONObject jsonObject = new JSONObject(result);
-                String username = jsonObject.getString("username");
-                String phone_number = jsonObject.getString("phone_number");
                 int user_id = jsonObject.getInt("user_id");
+                String username = jsonObject.getString("username");
                 String password = jsonObject.getString("password");
+                String phone_number = jsonObject.getString("phone_number");
                 String gender = jsonObject.getString("gender");
                 String register_time = jsonObject.getString("register_time");
 
                 Intent it = new Intent();
                 it.setClass(ctx, AccountActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("username",username);
-                bundle.putString("phone_number",phone_number);
                 bundle.putInt("user_id",user_id);
+                bundle.putString("username",username);
                 bundle.putString("password",password);
+                bundle.putString("phone_number",phone_number);
                 bundle.putString("gender",gender);
                 bundle.putString("register_time",register_time);
                 it.putExtras(bundle);
                 ctx.startActivity(it);
-                String a = Integer.toString(user_id);
-                Toast.makeText(ctx, a, Toast.LENGTH_LONG).show();
+                Toast.makeText(ctx, "您好，"+username, Toast.LENGTH_LONG).show();
                 //int user_id = Integer.parseInt(testS);
             } catch (JSONException e) {
                 e.printStackTrace();
