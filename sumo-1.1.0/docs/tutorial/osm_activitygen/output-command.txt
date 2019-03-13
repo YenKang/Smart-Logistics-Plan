@@ -1,0 +1,15 @@
+sumo -c map.sumo.cfg --fcd-output sumoTrace.xml
+
+sumo -c map.sumo.cfg --fcd-output sumoTraceGeo.xml --fcd-output.geo true
+
+sumo -c map.sumo.cfg --netstate-dump my_dump_file.xml
+
+sumo -c map.sumo.cfg --emission-output my_emission_file.xml
+
+sumo -c map.sumo.cfg --full-output my_full_output.xml
+
+sumo -c map.sumo.cfg --lanechange-output my_lane_change_file.xml
+
+sumo -c map.sumo.cfg --vtk-output my_vkt_file.xml
+
+netconvert --sumo-net-file map.net.xml --plain-output-prefix plain --proj.plain-geo

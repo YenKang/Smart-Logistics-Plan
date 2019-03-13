@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generated on 2019-03-06 23:05:59.093879 by $Id$
+  options: -n net.net.xml -e 10
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <trip id="0" depart="0.00" from="-gneE8" to="gneE2"/>
+    <trip id="1" depart="1.00" from="-gneE9" to="-gneE4"/>
+    <trip id="2" depart="2.00" from="gneE6" to="gneE4"/>
+    <trip id="3" depart="3.00" from="-gneE3" to="gneE7"/>
+    <trip id="4" depart="4.00" from="-gneE0" to="gneE7"/>
+    <trip id="5" depart="5.00" from="gneE2" to="-gneE7"/>
+    <trip id="6" depart="6.00" from="gneE0" to="gneE5"/>
+    <trip id="7" depart="7.00" from="-gneE2" to="-gneE3"/>
+    <trip id="8" depart="8.00" from="-gneE7" to="gneE2"/>
+    <trip id="9" depart="9.00" from="gneE4" to="-gneE3"/>
+</routes>
