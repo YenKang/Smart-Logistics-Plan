@@ -13,3 +13,7 @@ sumo -c map.sumo.cfg --lanechange-output my_lane_change_file.xml
 sumo -c map.sumo.cfg --vtk-output my_vkt_file.xml
 
 netconvert --sumo-net-file map.net.xml --plain-output-prefix plain --proj.plain-geo
+
+***********************************************************************************
+
+sumo -c map.sumo.cfg --fcd-output sumoTraceGeo.xml --fcd-output.geo true
