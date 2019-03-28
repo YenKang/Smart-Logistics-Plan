@@ -45,7 +45,7 @@ public class WebService
 			logger = conf.logger;
 			logger.write(conf.name + " is going to start", 1);			
 		    		
-			Service server = new ServiceImpl(conf);
+			Service server = (Service) new ServiceImpl(conf);
 			logger.write("The webservice (Version "+server.version()+") is available under " + conf.get_url(),1);
 		        	
 			//start webservice
