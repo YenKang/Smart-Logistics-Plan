@@ -25,7 +25,7 @@ import de.tudresden.ws.container.SumoVehicleData;
 public class Main {
 
 	static String sumo_bin = "sumo-gui";
-	static String config_file = "simulation/config.sumo.cfg";
+	static String config_file = "simulation/map_from_flow.sumo.cfg";
 	static double step_length = 0.01;		
 
 	public static void main(String[] args) {
@@ -40,9 +40,11 @@ public class Main {
 			//start Traci Server
 			conn.runServer();
 			
-			for(int i=0; i<3600; i++){
+			for(int i=0; i<100000000; i++){
 			
 				conn.do_timestep();
+				
+				/*
 				conn.do_job_set(Vehicle.add("v"+i, "car", "r1", 0, 0, 13.8, (byte) 1));
                 double timeSeconds = (int)conn.do_job_get(Simulation.getCurrentTime()) / 1000.0;
                 System.out.println(String.format("Step %s", timeSeconds));
@@ -51,6 +53,7 @@ public class Main {
                 for (SumoVehicleData.VehicleData d : vehData.ll) {
                     System.out.println(String.format("  veh=%s len=%s entry=%s leave=%s type=%s", d.vehID, d.length, d.entry_time, d.leave_time, d.typeID));
                 }
+                */
 			}
 			
 			conn.close();
