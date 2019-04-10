@@ -43,7 +43,7 @@ public class Main {
 			for(int i=0; i<100000000; i++){
 			
 				conn.do_timestep();
-				
+				System.out.println(i+"test");
 				/*
 				conn.do_job_set(Vehicle.add("v"+i, "car", "r1", 0, 0, 13.8, (byte) 1));
                 double timeSeconds = (int)conn.do_job_get(Simulation.getCurrentTime()) / 1000.0;
