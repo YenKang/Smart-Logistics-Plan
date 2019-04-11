@@ -16,6 +16,8 @@
 ///
 //
 /****************************************************************************/
+import java.util.List;
+
 import de.tudresden.ws.ServiceImpl;
 // import de.tudresden.ws.SumoWebservice;
 import de.tudresden.ws.TraasWS;
@@ -51,12 +53,24 @@ public class Main {
 				System.out.println(ws.vehicleGetLanePosition("v0"));
 				double v0_X=ws.vehicleGetPosition("v0").getX();
 				double v0_Y=ws.vehicleGetPosition("v0").getY();
-				System.out.println("v0 position:"+ "(X:"+v0_X+ ", Y"+ v0_Y+")");
+				
+				System.out.println("v0 position:"+ "(X:"+v0_X+ ", Y:"+ v0_Y+")");
 				double v0_travalDistance = ws.vehicleGetDistance("v0"); // unit is m
 				System.out.println("Traveling Distance of v0:"+ v0_travalDistance);
-
+				
+				String v0_roadID = ws.vehicleGetRoadID("v0");
+				System.out.println("road id of v0:"+ v0_roadID);
+				
+				String v0_routeID = ws.vehicleGetRouteID("v0");
+				System.out.println("route id of v0:"+ v0_routeID);
 
 				//System.out.println(a);
+				//stringList v0_edges = ws.vehicleGetRoute("v0");
+				List<String> v0_edges = ws.vehicleGetRoute("v0");
+				System.out.println("edges of v0:"+ v0_edges);
+				System.out.println("-------------------------");
+
+
 			}
 
 	
