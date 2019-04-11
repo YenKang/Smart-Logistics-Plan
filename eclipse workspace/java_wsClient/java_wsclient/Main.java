@@ -52,6 +52,8 @@ public class Main {
 				double v0_X=ws.vehicleGetPosition("v0").getX();
 				double v0_Y=ws.vehicleGetPosition("v0").getY();
 				System.out.println("v0 position:"+ "(X:"+v0_X+ ", Y"+ v0_Y+")");
+				double v0_travalDistance = ws.vehicleGetDistance("v0"); // unit is m
+				System.out.println("Traveling Distance of v0:"+ v0_travalDistance);
 
 
 				//System.out.println(a);
