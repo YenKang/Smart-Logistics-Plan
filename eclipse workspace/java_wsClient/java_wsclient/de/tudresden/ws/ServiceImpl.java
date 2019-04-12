@@ -3339,7 +3339,7 @@ public interface ServiceImpl {
         @WebParam(name = "pos", targetNamespace = "")
         double pos,
         @WebParam(name = "laneIndex", targetNamespace = "")
-        int i,
+        byte i,
         @WebParam(name = "toGeo", targetNamespace = "")
         String toGeo);
 

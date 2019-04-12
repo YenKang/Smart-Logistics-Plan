@@ -39,7 +39,7 @@ public class SimulationConvert2D {
 
     protected String edgeID;
     protected double pos;
-    protected byte laneIndex;
+    protected byte laneIndex; // btye to int
     protected String toGeo;
 
     /**
