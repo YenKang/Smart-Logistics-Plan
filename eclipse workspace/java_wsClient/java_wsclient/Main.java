@@ -17,6 +17,7 @@
 //
 /****************************************************************************/
 import java.util.List;
+import java.lang.*;
 
 import de.tudresden.ws.ServiceImpl;
 // import de.tudresden.ws.SumoWebservice;
@@ -27,7 +28,12 @@ public class Main {
 	static String sumo_bin = "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\sumo-gui.exe";
 	//static String config_file = "simulation\\config.sumo.cfg";
 	static String config_file = "C:\\Users\\yen\\Desktop\\src\\de\\tudresden\\ws\\simulation\\config.sumo.cfg";
-	static double step_length = 0.01;		
+	static double step_length = 0.01;
+	
+	public static byte intToByte(int x) {
+		return (byte) x;
+	}
+
 
 	public static void main(String[] args) {
 		//Start your webservice with the bash or the cmd!
@@ -45,15 +51,32 @@ public class Main {
 		for(int i=0; i<360000; i++){
 				
 			ws.doTimestep();
-			//System.out.println("test");
+			
 			if (i%1000==0) {
 				ws.vehicleAdd("v"+i, "car", "r1", i, 0, 0.1, (byte) 1); //0.01 m/s
 			
 				//System.out.println("the person Number of v0"+ws.vehicleGetPersonNumber("v1000"));
-				System.out.println(ws.vehicleGetLanePosition("v0"));
+				int simTime = ws.simulationGetCurrentTime(); // [in ms]
+				System.out.println("simulation time:"+ simTime/1000 + "s");
+				
+				int stopStartCarNum = ws.simulationGetStopStartingVehiclesNumber();
+				int stopEndCarNum =  ws.simulationGetStopEndingVehiclesNumber();
+				System.out.println("the number of halted cars on the stop:"+ stopStartCarNum);
+				System.out.println("the number of leaved cars on the stop:"+ stopEndCarNum);
+				
+				int a= ws.vehicleGetLaneIndex("v0");
+				System.out.println("LaneIndex(int):"+a);
+				
+				byte byte0 = intToByte(a);
+				System.out.println("byte0=" + byte0);
+	
+				//List<String> test = ws.simulationConvert2D("gneE0", 300, byte0, "true");
+				//System.out.println("simulationConvert2D:"+test);
+				
+				
+				System.out.println("LANE POSITION:"+ ws.vehicleGetLanePosition("v0"));
 				double v0_X=ws.vehicleGetPosition("v0").getX();
 				double v0_Y=ws.vehicleGetPosition("v0").getY();
-				
 				System.out.println("v0 position:"+ "(X:"+v0_X+ ", Y:"+ v0_Y+")");
 				double v0_travalDistance = ws.vehicleGetDistance("v0"); // unit is m
 				System.out.println("Traveling Distance of v0:"+ v0_travalDistance);
@@ -68,7 +91,12 @@ public class Main {
 				//stringList v0_edges = ws.vehicleGetRoute("v0");
 				List<String> v0_edges = ws.vehicleGetRoute("v0");
 				System.out.println("edges of v0:"+ v0_edges);
-				System.out.println("-------------------------");
+				
+				double offset_X=ws.guiGetOffset("View #0").getX();
+				double offset_Y=ws.guiGetOffset("View #0").getY();
+				System.out.println("offset_x:"+ offset_X);
+				System.out.println("offset_y:"+ offset_Y);
+				System.out.println("-----------------------------------------------");
 
 
 			}

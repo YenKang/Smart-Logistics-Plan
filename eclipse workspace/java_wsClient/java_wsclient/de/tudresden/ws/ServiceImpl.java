@@ -3324,7 +3324,7 @@ public interface ServiceImpl {
      * @param toGeo
      * @param edgeID
      * @param pos
-     * @param laneIndex
+     * @param i
      * @return
      *     returns java.util.List<java.lang.String>
      */
@@ -3339,7 +3339,7 @@ public interface ServiceImpl {
         @WebParam(name = "pos", targetNamespace = "")
         double pos,
         @WebParam(name = "laneIndex", targetNamespace = "")
-        byte laneIndex,
+        int i,
         @WebParam(name = "toGeo", targetNamespace = "")
         String toGeo);
 

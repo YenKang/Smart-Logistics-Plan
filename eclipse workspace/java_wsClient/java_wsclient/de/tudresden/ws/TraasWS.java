@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "TraasWS", targetNamespace = "http://ws.tudresden.de/", wsdlLocation = "http://127.0.0.1:37875/TRAAS_WS?wsdl")
+@WebServiceClient(name = "TraasWS", targetNamespace = "http://ws.tudresden.de/", wsdlLocation = "http://127.0.0.1:37876/TRAAS_WS?wsdl")
 public class TraasWS
     extends Service
 {
@@ -30,7 +30,7 @@ public class TraasWS
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://127.0.0.1:37875/TRAAS_WS?wsdl");
+            url = new URL("http://127.0.0.1:37876/TRAAS_WS?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
