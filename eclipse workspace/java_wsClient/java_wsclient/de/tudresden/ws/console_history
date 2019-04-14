@@ -1,0 +1,52 @@
+
+simulation time:0s
+the number of halted cars on the stop:0
+the number of leaved cars on the stop:0
+LaneIndex(int):-1073741824
+byte0=0
+LANE POSITION:-1.073741824E9
+v0 position:(X:-1.073741824E9, Y:-1.073741824E9)
+v0 position:de.tudresden.ws.SumoPosition2D@27305e6
+Traveling Distance of v0:-1.073741824E9 m
+road id of v0:
+route id of v0:r1
+edges of v0:[gneE0]
+
+simulation time:10s
+the number of halted cars on the stop:0
+the number of leaved cars on the stop:0
+LaneIndex(int):0
+byte0=0
+LANE POSITION:40.95900000000003
+v0 position:(X:40.95900000000003, Y:-4.95)
+v0 position:de.tudresden.ws.SumoPosition2D@7adbd080
+Traveling Distance of v0:40.95900000000003 m
+road id of v0:gneE0
+route id of v0:r1
+edges of v0:[gneE0]
+
+simulation time:20s
+the number of halted cars on the stop:0
+the number of leaved cars on the stop:0
+LaneIndex(int):0
+byte0=0
+LANE POSITION:161.7010814512282
+v0 position:(X:161.7010814512282, Y:-4.95)
+v0 position:de.tudresden.ws.SumoPosition2D@127d7908
+Traveling Distance of v0:161.7010814512282 m
+road id of v0:gneE0
+route id of v0:r1
+edges of v0:[gneE0]
+
+simulation time:30s
+the number of halted cars on the stop:0
+the number of leaved cars on the stop:0
+LaneIndex(int):0
+byte0=0
+LANE POSITION:316.7562361976065
+v0 position:(X:316.7562361976065, Y:-4.95)
+v0 position:de.tudresden.ws.SumoPosition2D@70242f38
+Traveling Distance of v0:316.7562361976065 m
+road id of v0:gneE0
+route id of v0:r1
+edges of v0:[gneE0]

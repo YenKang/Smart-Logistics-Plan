@@ -52,8 +52,9 @@ public class WebService
 			while( shutdownHook.isshutdown() != true )
 			{
 				for(int i=0; i<36000000; i++) {
-				System.out.println("listening"+i+"...");
+				//System.out.println("listening "+i+"...");
 				}
+				
 				
 				try{Thread.sleep(1000);} 
 				catch (Exception e){logger.write(e.getStackTrace());}	

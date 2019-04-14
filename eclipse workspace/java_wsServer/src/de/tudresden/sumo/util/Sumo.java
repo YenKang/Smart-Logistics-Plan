@@ -127,11 +127,10 @@ public class Sumo {
 
 			//Add Options
 			this.add_options();
-			System.out.println("after add_option");
+			
 			 try{
 				 System.out.println("before coneection");
 				 conn.runServer();
-				 System.out.println("line132 after runServer in Sumo.java");
 				 this.running=true;
 			 }catch(Exception ex){
 				System.out.println("6");

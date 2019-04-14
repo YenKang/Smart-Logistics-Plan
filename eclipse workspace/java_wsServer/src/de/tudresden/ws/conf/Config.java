@@ -46,7 +46,7 @@ public class Config {
     
     public SimpleDateFormat df = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" );
 	public static String host = "127.0.0.1";
-	public static String port = "37875";//
+	public static String port = "37876";//
 	//public static String url = "SUMO";
 	public static String url = "TRAAS_WS?wsdl";
 	public String name = "Sumo Webservice";

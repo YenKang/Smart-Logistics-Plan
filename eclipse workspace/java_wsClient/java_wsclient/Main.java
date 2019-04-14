@@ -22,6 +22,8 @@ import java.lang.*;
 import de.tudresden.ws.ServiceImpl;
 // import de.tudresden.ws.SumoWebservice;
 import de.tudresden.ws.TraasWS;
+import de.tudresden.ws.VehicleSetStop;
+import de.tudresden.ws.SumoStopFlags;
 
 public class Main {
 
@@ -34,7 +36,6 @@ public class Main {
 		return (byte) x;
 	}
 
-
 	public static void main(String[] args) {
 		//Start your webservice with the bash or the cmd!
 		ServiceImpl ws = new TraasWS().getServiceImplPort();
@@ -42,14 +43,12 @@ public class Main {
 		
 		ws.setSumoBinary(sumo_bin);
 		ws.setConfig(config_file);
-		
-			
 		ws.addOption("start", "");
 		ws.addOption("step-length", step_length+"");
 		ws.start("user");
 			
 		for(int i=0; i<360000; i++){
-				
+	
 			ws.doTimestep();
 			
 			if (i%1000==0) {
@@ -61,14 +60,14 @@ public class Main {
 				
 				int stopStartCarNum = ws.simulationGetStopStartingVehiclesNumber();
 				int stopEndCarNum =  ws.simulationGetStopEndingVehiclesNumber();
-				System.out.println("the number of halted cars on the stop:"+ stopStartCarNum);
-				System.out.println("the number of leaved cars on the stop:"+ stopEndCarNum);
+				//System.out.println("the number of halted cars on the stop:"+ stopStartCarNum);
+				//System.out.println("the number of leaved cars on the stop:"+ stopEndCarNum);
 				
 				int a= ws.vehicleGetLaneIndex("v0");
 				System.out.println("LaneIndex(int):"+a);
 				
-				byte byte0 = intToByte(a);
-				System.out.println("byte0=" + byte0);
+				byte v0_byte0 = intToByte(a);
+				System.out.println("byte0=" + v0_byte0);
 	
 				//List<String> test = ws.simulationConvert2D("gneE0", 10, byte0, "false");
 				
@@ -76,15 +75,21 @@ public class Main {
 				//System.out.println("vehicleGetPosition:"+pos_X);
 				
 				System.out.println("LANE POSITION:"+ ws.vehicleGetLanePosition("v0"));
+				SumoStopFlags v0_stopFlag = new VehicleSetStop().getStopType();
+				System.out.println("LANE v0_stopFlag:"+ v0_stopFlag);
+				
+		
+				
+				if(i==3000) {
+					//ws.vehicleSetStop("v0", "gneE0", 350, v0_byte0, 10, v0_stopFlag);
+				}
 				
 				double v0_X=ws.vehicleGetPosition("v0").getX();
 				double v0_Y=ws.vehicleGetPosition("v0").getY();
 				System.out.println("v0 position:"+ "(X:"+v0_X+ ", Y:"+ v0_Y+")");
-				System.out.println("v0 position:"+ ws.vehicleGetPosition("v0"));
-				
-				
-				double con_X= ws.simulationConvertRoad(v0_X, v0_Y, "false").getX();
-				System.out.print("convertRoad:"+con_X);
+								
+				//double con_X= ws.simulationConvertRoad(v0_X, v0_Y, "false").getX();
+				//System.out.print("convertRoad:"+con_X);
 				
 				double v0_travalDistance = ws.vehicleGetDistance("v0"); // unit is m
 				System.out.println("Traveling Distance of v0:"+ v0_travalDistance+" m");
@@ -94,7 +99,10 @@ public class Main {
 				
 				String v0_routeID = ws.vehicleGetRouteID("v0");
 				System.out.println("route id of v0:"+ v0_routeID);
-
+				
+				double v0_lane_position = ws.vehicleGetLanePosition("v0");
+				System.out.println("v0_lane_position:"+ v0_lane_position);
+				
 				//System.out.println(a);
 				//stringList v0_edges = ws.vehicleGetRoute("v0");
 				List<String> v0_edges = ws.vehicleGetRoute("v0");
