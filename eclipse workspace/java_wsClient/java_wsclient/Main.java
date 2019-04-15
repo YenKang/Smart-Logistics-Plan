@@ -64,25 +64,23 @@ public class Main {
 				//System.out.println("the number of leaved cars on the stop:"+ stopEndCarNum);
 				
 				int a= ws.vehicleGetLaneIndex("v0");
-				System.out.println("LaneIndex(int):"+a);
+				System.out.println("v0 LaneIndex(int):"+a);
 				
 				byte v0_byte0 = intToByte(a);
-				System.out.println("byte0=" + v0_byte0);
-	
-				//List<String> test = ws.simulationConvert2D("gneE0", 10, byte0, "false");
+				System.out.println("v0 byte0=" + v0_byte0);
 				
 				//double pos_X = ws.vehicleGetPosition("v0");
 				//System.out.println("vehicleGetPosition:"+pos_X);
 				
 				System.out.println("LANE POSITION:"+ ws.vehicleGetLanePosition("v0"));
 				SumoStopFlags v0_stopFlag = new VehicleSetStop().getStopType();
+
 				System.out.println("LANE v0_stopFlag:"+ v0_stopFlag);
 				
-		
-				
-				if(i==3000) {
-					//ws.vehicleSetStop("v0", "gneE0", 350, v0_byte0, 10, v0_stopFlag);
+				if(simTime>30000) {
+					ws.vehicleSetStop("v0", "gneE0", 316.7562361976065, v0_byte0, 10, v0_stopFlag);
 				}
+				
 				
 				double v0_X=ws.vehicleGetPosition("v0").getX();
 				double v0_Y=ws.vehicleGetPosition("v0").getY();
@@ -92,7 +90,7 @@ public class Main {
 				//System.out.print("convertRoad:"+con_X);
 				
 				double v0_travalDistance = ws.vehicleGetDistance("v0"); // unit is m
-				System.out.println("Traveling Distance of v0:"+ v0_travalDistance+" m");
+				System.out.println("Traveling Distance of v0:"+ v0_travalDistance+"[m]");
 				
 				String v0_roadID = ws.vehicleGetRoadID("v0");
 				System.out.println("road id of v0:"+ v0_roadID);
