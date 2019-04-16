@@ -43,7 +43,10 @@ public class Simulation {
 	 */
 	public static SumoCommand convert2D(String edgeID, double pos, byte laneIndex, String toGeo){
 		Object[] array = new Object[]{pos, laneIndex, toGeo};
-		return new SumoCommand(Constants.CMD_GET_SIM_VARIABLE, Constants.POSITION_CONVERSION, edgeID, array, Constants.RESPONSE_GET_SIM_VARIABLE, Constants.TYPE_STRINGLIST);
+		return new SumoCommand(Constants.CMD_GET_SIM_VARIABLE, 
+				Constants.POSITION_CONVERSION, edgeID, array, 
+				Constants.RESPONSE_GET_SIM_VARIABLE, 
+				Constants.TYPE_STRINGLIST);
 	}
 
 	/**
@@ -56,7 +59,10 @@ public class Simulation {
 	 */
 	public static SumoCommand convert3D(String edgeID, double pos, byte laneIndex, String toGeo){
 		Object[] array = new Object[]{pos, laneIndex, toGeo};
-		return new SumoCommand(Constants.CMD_GET_SIM_VARIABLE, Constants.POSITION_CONVERSION, edgeID, array, Constants.RESPONSE_GET_SIM_VARIABLE, Constants.TYPE_STRINGLIST);
+		return new SumoCommand(Constants.CMD_GET_SIM_VARIABLE, 
+				Constants.POSITION_CONVERSION, edgeID, array, 
+				Constants.RESPONSE_GET_SIM_VARIABLE,
+				Constants.TYPE_STRINGLIST);
 	}
 	
 	
@@ -78,7 +84,11 @@ public class Simulation {
 		 }
 		 
 		Object[] array = new Object[]{fromType, x, y, toType};
-		return new SumoCommand(Constants.CMD_GET_SIM_VARIABLE, Constants.POSITION_CONVERSION, "", array, Constants.RESPONSE_GET_SIM_VARIABLE, fromGeo ? Constants.POSITION_2D : Constants.POSITION_LON_LAT);
+		System.out.println("******");
+		return new SumoCommand(Constants.CMD_GET_SIM_VARIABLE, 
+				Constants.POSITION_CONVERSION, "", array, 
+				Constants.RESPONSE_GET_SIM_VARIABLE, 
+				fromGeo ? Constants.POSITION_2D : Constants.POSITION_LON_LAT);
 	}
 
 	/**
@@ -89,6 +99,7 @@ public class Simulation {
 	 * @param isGeo geo
 	 */
 	public static SumoCommand convertRoad(double x, double y, String isGeo){
+		
 		Object[] array = new Object[]{y, isGeo};
 		return new SumoCommand(Constants.CMD_GET_SIM_VARIABLE,
 				Constants.POSITION_CONVERSION, x, array,

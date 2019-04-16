@@ -50,7 +50,7 @@ public class Config {
 	public static String url = "SUMO";
 	public String name = "Sumo Webservice";
 	public static String sumo_bin = "f:/Programme/sumo-svn/bin/sumo-gui64.exe";
-	public static String config_file = "simulation/lsa/config.sumo.cfg";
+	public static String config_file = "simulation/config.sumo.cfg";
 		
 	public HashMap<String, String> sumo_output = new HashMap<String, String>();
 	public Date lastactiontime;
