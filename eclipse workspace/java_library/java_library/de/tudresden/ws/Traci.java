@@ -933,8 +933,16 @@ public class Traci{
 		this.sumo.set_cmd(Simulation.clearPending(routeID));
 	}
 	
+	/* original
 	@WebMethod(action="Simulation: convert2D")
 	public SumoStringList Simulation_convert2D(@WebParam(name = "edgeID") String edgeID, @WebParam(name = "pos") double pos, @WebParam(name = "laneIndex") byte laneIndex, @WebParam(name = "toGeo") String toGeo){
+		return this.helper.getStringList(this.sumo.get_cmd(Simulation.convert2D(edgeID, pos, laneIndex, toGeo)));
+	} */
+	
+	// version2
+	@WebMethod(action="Simulation: convert2D")
+	public SumoStringList Simulation_convert2D(@WebParam(name = "edgeID") String edgeID, @WebParam(name = "pos") double pos, 
+			@WebParam(name = "laneIndex") byte laneIndex, @WebParam(name = "toGeo") boolean toGeo){
 		return this.helper.getStringList(this.sumo.get_cmd(Simulation.convert2D(edgeID, pos, laneIndex, toGeo)));
 	}
 
@@ -948,9 +956,19 @@ public class Traci{
 		return this.helper.getStringList(this.sumo.get_cmd(Simulation.convertGeo(x, y, fromGeo)));
 	}
 
+	/* original version
 	@WebMethod(action="Simulation: convertRoad")
 	public SumoPosition2D Simulation_convertRoad(@WebParam(name = "x") double x, @WebParam(name = "y") double y, @WebParam(name = "isGeo") String isGeo){
 		return this.helper.getPosition2D(this.sumo.get_cmd(Simulation.convertRoad(x, y, isGeo)));
+	}
+	
+	*/
+	
+	// version2
+	@WebMethod(action="Simulation: convertRoad")
+	public SumoPosition2D Simulation_convertRoad(@WebParam(name = "x") double x, @WebParam(name = "y") double y, 
+			@WebParam(name = "isGeo") boolean isGeo, @WebParam(name = "vClass") String vClass ){
+		return this.helper.getPosition2D(this.sumo.get_cmd(Simulation.convertRoad(x, y, isGeo, vClass)));
 	}
 
 	@WebMethod(action="Simulation: getArrivedIDList")

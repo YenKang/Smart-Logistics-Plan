@@ -41,6 +41,8 @@ public class Simulation {
 	 * @param toGeo geo
 	 * @return SumoCommand
 	 */
+	
+	/**
 	public static SumoCommand convert2D(String edgeID, double pos, byte laneIndex, String toGeo){
 		Object[] array = new Object[]{pos, laneIndex, toGeo};
 	
@@ -51,6 +53,29 @@ public class Simulation {
 				array, 
 				Constants.RESPONSE_GET_SIM_VARIABLE, 
 				Constants.POSITION_2D);
+	}**/
+	
+	public static SumoCommand convert2D(String edgeID, double pos, byte laneIndex, boolean toGeo)
+	{	
+		byte fromType = Constants.POSITION_ROADMAP;
+		byte posType = Constants.POSITION_2D;
+
+		if(toGeo){
+			posType = Constants.POSITION_LON_LAT;
+		}
+		else{
+			posType = Constants.POSITION_2D;
+		}
+
+		Object[] array = new Object[]{edgeID, fromType, pos, laneIndex, posType};
+
+		return new SumoCommand(
+				Constants.CMD_GET_SIM_VARIABLE, 
+				Constants.POSITION_CONVERSION, 
+				"", 
+				array, 
+				Constants.RESPONSE_GET_SIM_VARIABLE, 
+				posType);
 	}
 
 	/**
@@ -61,7 +86,7 @@ public class Simulation {
 	 * @param laneIndex index
 	 * @param toGeo geo
 	 */
-	public static SumoCommand convert3D(String edgeID, double pos, byte laneIndex, String toGeo){
+	public static SumoCommand convert3D(String edgeID, double pos, byte laneIndex, String toGeo){ 
 		Object[] array = new Object[]{pos, laneIndex, toGeo};
 		return new SumoCommand(
 				Constants.CMD_GET_SIM_VARIABLE, 
@@ -108,6 +133,8 @@ public class Simulation {
 	 * @param y y
 	 * @param isGeo geo
 	 */
+	
+	/*
 	public static SumoCommand convertRoad(double x, double y, String isGeo){
 		
 		Object[] array = new Object[]{y, isGeo};
@@ -115,6 +142,28 @@ public class Simulation {
 				Constants.CMD_GET_SIM_VARIABLE,
 				Constants.POSITION_CONVERSION, 
 				x, 
+				array,
+				Constants.RESPONSE_GET_SIM_VARIABLE, 
+				Constants.POSITION_ROADMAP);
+	}*/
+	
+	public static SumoCommand convertRoad(double x, double y, boolean isGeo, String vClass){ 
+		Byte posType = Constants.POSITION_2D;
+		
+		if(isGeo){
+			 posType = Constants.POSITION_LON_LAT;
+		}
+		else{
+			posType = Constants.POSITION_2D;
+		}
+
+		Byte toType =  Constants.POSITION_ROADMAP;
+
+		Object[] array = new Object[]{posType, x, y, toType, vClass};
+		return new SumoCommand(
+				Constants.CMD_GET_SIM_VARIABLE,
+				Constants.POSITION_CONVERSION, 
+				"", 
 				array,
 				Constants.RESPONSE_GET_SIM_VARIABLE, 
 				Constants.POSITION_ROADMAP);

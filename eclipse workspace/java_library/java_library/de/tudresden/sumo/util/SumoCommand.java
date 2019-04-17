@@ -99,45 +99,47 @@ public class SumoCommand {
 	
 
 	public SumoCommand(Object input1, Object input2, Object input3, Object[] array, Object response, Object output_type){
-		
-		this.cmd = new Command((Integer) input1);
-		cmd.content().writeUnsignedByte((Integer) input2);
-		cmd.content().writeStringASCII(String.valueOf(input3));
-		
-		if(array.length == 1){
-				add_type(array[0]);
-				add_variable(array[0]);
-			}
-		
-		else{
+			
+			this.cmd = new Command((Integer) input1);
+			cmd.content().writeUnsignedByte((Integer) input2);
+			cmd.content().writeStringASCII(String.valueOf(input3));
+			
+			if(array.length == 1)
+				{
+					add_type(array[0]);
+					add_variable(array[0]);
+				}
+			else
+			{
 				
 				cmd.content().writeUnsignedByte(Constants.TYPE_COMPOUND);
 				if((Integer) input1 == Constants.CMD_GET_VEHICLE_VARIABLE && (Integer) input2 == Constants.DISTANCE_REQUEST)
-				{					
+				{
+					
 					cmd.content().writeInt(2);	
-					if(array.length == 3){
+					
+					if(array.length == 3)
+					{
 						cmd.content().writeUnsignedByte(Constants.POSITION_ROADMAP);
 						cmd.content().writeStringASCII((String) array[0]);
 						cmd.content().writeDouble((double) array[1]); 
 						cmd.content().writeUnsignedByte((byte) array[2]);
-					}else if(array.length == 2) {
+					}
+					else if(array.length == 2) 
+					{
 						cmd.content().writeUnsignedByte(Constants.POSITION_2D);
 						cmd.content().writeDouble((double) array[0]); 
 						cmd.content().writeDouble((double) array[1]); 
 					}
-
+	
 					cmd.content().writeUnsignedByte(Constants.REQUEST_DRIVINGDIST);
 					
 				}
-				
+	
 				else if((Integer) input1 == Constants.CMD_GET_SIM_VARIABLE && (Integer) input2 == Constants.POSITION_CONVERSION)
 				{
-					System.out.println("ok");
-
-					cmd.content().writeInt(2);	
-					if(array.length == 4) // convertGeo
-					{	
-						System.out.println("array.length =4");
+					cmd.content().writeInt(2);	// Int(3) in convertRoad, Int(2) in convert2D
+					if(array.length == 4){
 						cmd.content().writeUnsignedByte((byte) array[0]);
 						cmd.content().writeDouble((double) array[1]); 
 						cmd.content().writeDouble((double) array[2]); 
@@ -145,11 +147,31 @@ public class SumoCommand {
 						cmd.content().writeUnsignedByte((byte) array[3]);
 					}
 					
+					/*
+					if(array.length == 5){ // convertRoad
+						cmd.content().writeUnsignedByte((byte) array[0]);
+						cmd.content().writeDouble((double) array[1]); 
+						cmd.content().writeDouble((double) array[2]); 
+						cmd.content().writeUnsignedByte(Constants.TYPE_UBYTE);
+						cmd.content().writeUnsignedByte((byte) array[3]);
+						cmd.content().writeStringASCII((String) array[4]);
+					}
+					
+					*/
+	
+					else if (array.length == 5) { // convert2D
+						
+						cmd.content().writeStringASCII((String) array[0]);
+						cmd.content().writeUnsignedByte((byte) array[1]);
+						cmd.content().writeDouble((double) array[2]);
+						cmd.content().writeUnsignedByte((byte) array[3]);
+						cmd.content().writeUnsignedByte((byte) array[4]);		
+					}
+					
 				}
-				
+	
 				else
-				{
-					System.out.println("array.length !=4");
+				{	
 					cmd.content().writeInt(array.length);	
 					
 					for(int i=0; i<array.length; i++){
@@ -157,26 +179,24 @@ public class SumoCommand {
 						add_variable(array[i]);
 					}
 				}
-				
-				System.out.println("after array.length judgement");
 			}
-		
-		this.input1=(Integer) input1;
-		this.input2=(Integer) input2;
-		this.input3=String.valueOf(input3);
-		
-		this.response = (Integer) response;
-		this.output_type = (Integer) output_type;
-		
-		this.raw = new LinkedList<Object>();
-		this.raw.add(input1);
-		this.raw.add(input2);
-		this.raw.add(input3);
-		this.raw.add(response);
-		this.raw.add(output_type);
-		
+			
+			this.input1=(Integer) input1;
+			this.input2=(Integer) input2;
+			this.input3=String.valueOf(input3);
+			
+			this.response = (Integer) response;
+			this.output_type = (Integer) output_type;
+			
+			this.raw = new LinkedList<Object>();
+			this.raw.add(input1);
+			this.raw.add(input2);
+			this.raw.add(input3);
+			this.raw.add(response);
+			this.raw.add(output_type);
+			
 	}
-	
+		
 	public SumoCommand(Object input1, Object input3){
 		
 		this.input1=(Integer) input1;
