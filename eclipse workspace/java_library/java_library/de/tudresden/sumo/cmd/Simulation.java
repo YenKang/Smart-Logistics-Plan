@@ -63,11 +63,9 @@ public class Simulation {
 		if(toGeo){
 			posType = Constants.POSITION_LON_LAT;
 		}
-		else{
-			posType = Constants.POSITION_2D;
-		}
-
-		Object[] array = new Object[]{edgeID, fromType, pos, laneIndex, posType};
+	
+		Object[] array = new Object[]{fromType, edgeID, pos, laneIndex, 
+				posType}; // edited fromType, posType
 
 		return new SumoCommand(
 				Constants.CMD_GET_SIM_VARIABLE, 
@@ -75,7 +73,7 @@ public class Simulation {
 				"", 
 				array, 
 				Constants.RESPONSE_GET_SIM_VARIABLE, 
-				posType);
+				Constants.POSITION_2D); // output_type should be posType instead of Constants.POSITION_2D 
 	}
 
 	/**

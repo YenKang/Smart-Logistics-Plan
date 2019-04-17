@@ -61,7 +61,7 @@ public class Main {
 					System.out.println(conn.do_job_get(Simulation.convertGeo(120.216228, 22.987473, true )));
 					System.out.println("----------*******-------------");
 					
-					System.out.println(conn.do_job_get(Simulation.convert2D("307244665#2", 10.0, (byte)0, false)));
+					System.out.println(conn.do_job_get(Simulation.convert2D("303466841", 0.0, (byte)0, false)));
 					//System.out.println(conn.do_job_get(Simulation.convertRoad(3414.680, 5591.166, false, "ignoring")));
 				
 
