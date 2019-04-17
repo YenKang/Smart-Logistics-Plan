@@ -43,10 +43,14 @@ public class Simulation {
 	 */
 	public static SumoCommand convert2D(String edgeID, double pos, byte laneIndex, String toGeo){
 		Object[] array = new Object[]{pos, laneIndex, toGeo};
-		return new SumoCommand(Constants.CMD_GET_SIM_VARIABLE, 
-				Constants.POSITION_CONVERSION, edgeID, array, 
+	
+		return new SumoCommand(
+				Constants.CMD_GET_SIM_VARIABLE, 
+				Constants.POSITION_CONVERSION, 
+				edgeID, 
+				array, 
 				Constants.RESPONSE_GET_SIM_VARIABLE, 
-				Constants.TYPE_STRINGLIST);
+				Constants.POSITION_2D);
 	}
 
 	/**
@@ -59,8 +63,11 @@ public class Simulation {
 	 */
 	public static SumoCommand convert3D(String edgeID, double pos, byte laneIndex, String toGeo){
 		Object[] array = new Object[]{pos, laneIndex, toGeo};
-		return new SumoCommand(Constants.CMD_GET_SIM_VARIABLE, 
-				Constants.POSITION_CONVERSION, edgeID, array, 
+		return new SumoCommand(
+				Constants.CMD_GET_SIM_VARIABLE, 
+				Constants.POSITION_CONVERSION, 
+				edgeID, 
+				array, 
 				Constants.RESPONSE_GET_SIM_VARIABLE,
 				Constants.TYPE_STRINGLIST);
 	}
@@ -85,8 +92,11 @@ public class Simulation {
 		 
 		Object[] array = new Object[]{fromType, x, y, toType};
 		System.out.println("******");
-		return new SumoCommand(Constants.CMD_GET_SIM_VARIABLE, 
-				Constants.POSITION_CONVERSION, "", array, 
+		return new SumoCommand(
+				Constants.CMD_GET_SIM_VARIABLE, 
+				Constants.POSITION_CONVERSION, 
+				"", 
+				array, 
 				Constants.RESPONSE_GET_SIM_VARIABLE, 
 				fromGeo ? Constants.POSITION_2D : Constants.POSITION_LON_LAT);
 	}
@@ -101,8 +111,11 @@ public class Simulation {
 	public static SumoCommand convertRoad(double x, double y, String isGeo){
 		
 		Object[] array = new Object[]{y, isGeo};
-		return new SumoCommand(Constants.CMD_GET_SIM_VARIABLE,
-				Constants.POSITION_CONVERSION, x, array,
+		return new SumoCommand(
+				Constants.CMD_GET_SIM_VARIABLE,
+				Constants.POSITION_CONVERSION, 
+				x, 
+				array,
 				Constants.RESPONSE_GET_SIM_VARIABLE, 
 				Constants.POSITION_ROADMAP);
 	}

@@ -107,13 +107,14 @@ public class SumoCommand {
 		if(array.length == 1){
 				add_type(array[0]);
 				add_variable(array[0]);
-			}else{
+			}
+		
+		else{
 				
 				cmd.content().writeUnsignedByte(Constants.TYPE_COMPOUND);
-				if((Integer) input1 == Constants.CMD_GET_VEHICLE_VARIABLE && (Integer) input2 == Constants.DISTANCE_REQUEST){
-					
+				if((Integer) input1 == Constants.CMD_GET_VEHICLE_VARIABLE && (Integer) input2 == Constants.DISTANCE_REQUEST)
+				{					
 					cmd.content().writeInt(2);	
-					
 					if(array.length == 3){
 						cmd.content().writeUnsignedByte(Constants.POSITION_ROADMAP);
 						cmd.content().writeStringASCII((String) array[0]);
@@ -127,11 +128,16 @@ public class SumoCommand {
 
 					cmd.content().writeUnsignedByte(Constants.REQUEST_DRIVINGDIST);
 					
-				}else if((Integer) input1 == Constants.CMD_GET_SIM_VARIABLE && (Integer) input2 == Constants.POSITION_CONVERSION){
+				}
 				
-					
+				else if((Integer) input1 == Constants.CMD_GET_SIM_VARIABLE && (Integer) input2 == Constants.POSITION_CONVERSION)
+				{
+					System.out.println("ok");
+
 					cmd.content().writeInt(2);	
-					if(array.length == 4){
+					if(array.length == 4) // convertGeo
+					{	
+						System.out.println("array.length =4");
 						cmd.content().writeUnsignedByte((byte) array[0]);
 						cmd.content().writeDouble((double) array[1]); 
 						cmd.content().writeDouble((double) array[2]); 
@@ -139,8 +145,11 @@ public class SumoCommand {
 						cmd.content().writeUnsignedByte((byte) array[3]);
 					}
 					
-				}else{
-					
+				}
+				
+				else
+				{
+					System.out.println("array.length !=4");
 					cmd.content().writeInt(array.length);	
 					
 					for(int i=0; i<array.length; i++){
@@ -148,6 +157,8 @@ public class SumoCommand {
 						add_variable(array[i]);
 					}
 				}
+				
+				System.out.println("after array.length judgement");
 			}
 		
 		this.input1=(Integer) input1;
