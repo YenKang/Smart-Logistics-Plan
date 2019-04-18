@@ -64,7 +64,8 @@ public class Simulation {
 			posType = Constants.POSITION_LON_LAT;
 		}
 	
-		Object[] array = new Object[]{fromType, edgeID, pos, laneIndex, 
+		Object[] array = new Object[]{fromType, 
+				edgeID, pos, laneIndex, 
 				posType}; // edited fromType, posType
 
 		return new SumoCommand(

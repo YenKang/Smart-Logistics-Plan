@@ -164,18 +164,17 @@ public class SumoCommand {
 					*/
 				
 					
-					
 					else if (array.length == 5) { // convert2D
 						
 						cmd.content().writeUnsignedByte((byte) array[0]); // byte fromType	
 						cmd.content().writeStringASCII((String) array[1]); // String edgeID
 						cmd.content().writeDouble((double) array[2]);      // double pos 
-						cmd.content().writeUnsignedByte((byte) array[3]); // byte landeIndex			
+						cmd.content().writeUnsignedByte((byte) array[3]); // byte landeIndex	
+						cmd.content().writeUnsignedByte(Constants.TYPE_UBYTE); 
 						cmd.content().writeUnsignedByte((byte) array[4]);	// 	byte posType
 		
 					}
-					
-					
+						
 				}
 	
 				else
@@ -194,15 +193,15 @@ public class SumoCommand {
 			this.input3=String.valueOf(input3);
 			
 			this.response = (Integer) response;
-			System.out.println("before output_type ");
+			
 			this.output_type = (Integer) output_type;
-			System.out.println("after output_type ");
+		
 			this.raw = new LinkedList<Object>();
 			this.raw.add(input1);
 			this.raw.add(input2);
 			this.raw.add(input3);
 			this.raw.add(response);
-			System.out.println("line 205");
+			
 			this.raw.add(output_type);
 			
 	}

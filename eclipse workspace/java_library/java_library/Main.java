@@ -56,15 +56,22 @@ public class Main {
 				
 				System.out.println("timeSeconds:"+ timeSeconds);
 				if(timeSeconds%1==0) {
-					System.out.println("-----------------------------");
-					System.out.println(conn.do_job_get(Simulation.convertGeo(3414.680, 5591.166, false )));
-					System.out.println(conn.do_job_get(Simulation.convertGeo(120.216228, 22.987473, true )));
+					System.out.println("------------convertGeo part-------------");
+					System.out.println(conn.do_job_get(Simulation.convertGeo(3414.680, 5591.166, false )));// (x,y)=(3414.680, 5591.166)
+					System.out.println(conn.do_job_get(Simulation.convertGeo(2466.06, 7243.26, false ))); // (x,y)=(2466.06, 7243.26)
+					System.out.println(conn.do_job_get(Simulation.convertGeo(120.216228, 22.987473, true ))); //(lon, lat)=(120.216228, 22.987473)
 					System.out.println("----------*******-------------");
 					
+					System.out.println("------------convert2D part-------------");
+					System.out.println("convert2D('303466841', 0.0, (byte)0, false)");
 					System.out.println(conn.do_job_get(Simulation.convert2D("303466841", 0.0, (byte)0, false)));
+					
+					System.out.println("convert2D('303466841', 0.0, (byte)0, true)");
+					System.out.println(conn.do_job_get(Simulation.convert2D("303466841", 0.0, (byte)0, true)));
+					
 					//System.out.println(conn.do_job_get(Simulation.convertRoad(3414.680, 5591.166, false, "ignoring")));
 				
-
+					System.out.println("-----------------------------");
 				
 				}
 				
