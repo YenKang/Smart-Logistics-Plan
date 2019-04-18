@@ -72,8 +72,9 @@ public class Simulation {
 				Constants.POSITION_CONVERSION, 
 				"", 
 				array, 
-				Constants.RESPONSE_GET_SIM_VARIABLE, 
-				Constants.POSITION_2D); // output_type should be posType instead of Constants.POSITION_2D 
+				Constants.RESPONSE_GET_SIM_VARIABLE,
+				toGeo ? Constants.POSITION_LON_LAT : Constants.POSITION_2D
+				); // output_type should be posType instead of Constants.POSITION_2D 
 	}
 
 	/**
@@ -114,7 +115,7 @@ public class Simulation {
 		 }
 		 
 		Object[] array = new Object[]{fromType, x, y, toType};
-		System.out.println("******");
+		
 		return new SumoCommand(
 				Constants.CMD_GET_SIM_VARIABLE, 
 				Constants.POSITION_CONVERSION, 
@@ -151,10 +152,7 @@ public class Simulation {
 		if(isGeo){
 			 posType = Constants.POSITION_LON_LAT;
 		}
-		else{
-			posType = Constants.POSITION_2D;
-		}
-
+		
 		Byte toType =  Constants.POSITION_ROADMAP;
 
 		Object[] array = new Object[]{posType, x, y, toType, vClass};

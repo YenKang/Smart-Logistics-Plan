@@ -113,6 +113,7 @@ public class SumoCommand {
 			{
 				
 				cmd.content().writeUnsignedByte(Constants.TYPE_COMPOUND);
+				
 				if((Integer) input1 == Constants.CMD_GET_VEHICLE_VARIABLE && (Integer) input2 == Constants.DISTANCE_REQUEST)
 				{
 					
@@ -138,8 +139,9 @@ public class SumoCommand {
 	
 				else if((Integer) input1 == Constants.CMD_GET_SIM_VARIABLE && (Integer) input2 == Constants.POSITION_CONVERSION)
 				{
-					cmd.content().writeInt(2);	// Int(3) in convertRoad, Int(2) in convert2D
-					
+					   cmd.content().writeInt(2);	// Int(3) in convertRoad, Int(2) in convert2D
+					// cmd.content().writeInt(3);
+					 
 					if(array.length == 4){
 					
 						cmd.content().writeUnsignedByte((byte) array[0]);
@@ -159,23 +161,20 @@ public class SumoCommand {
 						cmd.content().writeUnsignedByte((byte) array[3]);
 						cmd.content().writeStringASCII((String) array[4]);
 					}
-					
 					*/
-	
+				
+					
+					
 					else if (array.length == 5) { // convert2D
 						
-						System.out.println(array);
-						System.out.println("before");
-						
-						cmd.content().writeUnsignedByte((byte) array[0]); // byte fromType
-						
+						cmd.content().writeUnsignedByte((byte) array[0]); // byte fromType	
 						cmd.content().writeStringASCII((String) array[1]); // String edgeID
 						cmd.content().writeDouble((double) array[2]);      // double pos 
-						cmd.content().writeUnsignedByte((byte) array[3]); // byte landeIndex
-						
+						cmd.content().writeUnsignedByte((byte) array[3]); // byte landeIndex			
 						cmd.content().writeUnsignedByte((byte) array[4]);	// 	byte posType
-						System.out.println("after");
+		
 					}
+					
 					
 				}
 	
