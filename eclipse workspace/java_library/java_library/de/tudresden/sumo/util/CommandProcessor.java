@@ -83,19 +83,40 @@ public class CommandProcessor extends Query{
 		
 		SumoObject output = null;
 		
-		if(type == Constants.TYPE_INTEGER){output = new SumoPrimitive(s.readInt());
-		}else if(type == Constants.TYPE_DOUBLE){output = new SumoPrimitive(s.readDouble());
-		}else if(type == Constants.TYPE_STRING){output = new SumoPrimitive(s.readStringUTF8());
-		}else if(type == Constants.POSITION_2D){
+		if(type == Constants.TYPE_INTEGER){
+			output = new SumoPrimitive(s.readInt());
+		}
+		
+		else if(type == Constants.TYPE_DOUBLE){
+			output = new SumoPrimitive(s.readDouble());
+		}
+		
+		else if(type == Constants.TYPE_STRING){
+			output = new SumoPrimitive(s.readStringUTF8());
+		}
+		
+		else if(type == Constants.POSITION_2D){
+			double lon = s.readDouble();
+			double lat = s.readDouble();
+			output = new SumoPosition2D(lon, lat);
+		}
+		
+		else if(type == Constants.POSITION_LON_LAT) {
 			double x = s.readDouble();
 			double y = s.readDouble();
 			output = new SumoPosition2D(x,y);
-		}else if(type == Constants.POSITION_3D){
+		}
+		
+		
+		
+		else if(type == Constants.POSITION_3D){
 			double x = s.readDouble();
 			double y = s.readDouble();
 			double z = s.readDouble();
 			output = new SumoPosition3D(x,y,z);
-		}else if(type == Constants.TYPE_STRINGLIST){
+		}
+		
+		else if(type == Constants.TYPE_STRINGLIST){
 			
 			SumoStringList ssl = new SumoStringList();
 			int laenge = s.readInt();
@@ -104,7 +125,9 @@ public class CommandProcessor extends Query{
 			}
 			output = ssl;
 		
-		}else if(type == Constants.VAR_STOPSTATE){
+		}
+		
+		else if(type == Constants.VAR_STOPSTATE){
 			
 			short s0 = s.readByte();
 			SumoStopFlags sf = new SumoStopFlags((byte) s0);
@@ -114,10 +137,10 @@ public class CommandProcessor extends Query{
 			//if(sc.info.equals("isStoppedTriggered")){output = sf.triggered;}
 			//if(sc.info.equals("isAtContainerStop")){output = sf.isContainerStop;}
 			//if(sc.info.equals("isStoppedParking")){output = sf.getID() == 12;}
-			//if(sc.info.equals("isAtBusStop")){output = sf.isBusStop;}
-			
-			
-		}else if(type == Constants.TL_CONTROLLED_LINKS){
+			//if(sc.info.equals("isAtBusStop")){output = sf.isBusStop;}	
+		}
+		
+		else if(type == Constants.TL_CONTROLLED_LINKS){
 				
 				SumoLinkList sll = new SumoLinkList();
 				
@@ -147,7 +170,9 @@ public class CommandProcessor extends Query{
 				
 				output = sll;
 			
-			}else if(type == Constants.TL_COMPLETE_DEFINITION_RYG){
+			}
+		
+		else if(type == Constants.TL_COMPLETE_DEFINITION_RYG){
 				
 				s.readUnsignedByte();
 				s.readInt();
@@ -210,7 +235,9 @@ public class CommandProcessor extends Query{
 				
 				output = sp;
 				
-			}else if(type == Constants.LANE_LINKS){
+			}
+		
+		 else if(type == Constants.LANE_LINKS){
 			
 				s.readUnsignedByte();
 				s.readInt();
@@ -246,11 +273,13 @@ public class CommandProcessor extends Query{
 					double laneLength = s.readDouble();
 					
 					
-					links.add(new SumoLink(notInternalLane,internalLane,hasPriority,isOpened,hasFoes,laneLength, state, direction));
+					links.add(new SumoLink(notInternalLane,internalLane,hasPriority,
+							isOpened,hasFoes,laneLength, state, direction));
 				}
 				output = links;
 				
-			}else if(type == Constants.VAR_NEXT_TLS){
+			}
+		 else if(type == Constants.VAR_NEXT_TLS){
 			
 				s.readUnsignedByte();
 				s.readInt();
@@ -279,7 +308,8 @@ public class CommandProcessor extends Query{
 				
 				output = sn;
 				
-			}else if(type == Constants.VAR_LEADER){
+			}
+		 else if(type == Constants.VAR_LEADER){
 				
 				s.readUnsignedByte();
 				s.readInt();
@@ -289,7 +319,8 @@ public class CommandProcessor extends Query{
 				double dist = s.readDouble();
 				output = new SumoLeader(vehID, dist);
 			
-			}else if(type == Constants.VAR_BEST_LANES){
+			}
+		 else if(type == Constants.VAR_BEST_LANES){
 				
 				s.readUnsignedByte();
 				s.readInt();
@@ -328,7 +359,8 @@ public class CommandProcessor extends Query{
 			
 				output = sl;
 				
-			}else if(type == Constants.TYPE_POLYGON){
+			}
+		 else if(type == Constants.TYPE_POLYGON){
 			
 			int laenge = s.readUnsignedByte();
 			
@@ -341,7 +373,8 @@ public class CommandProcessor extends Query{
 			
 			output = sg;
 		
-		} else if(type == Constants.TYPE_COLOR){
+		 	} 
+		 else if(type == Constants.TYPE_COLOR){
 			
 			int r = s.readUnsignedByte();
 			int g = s.readUnsignedByte();
@@ -349,36 +382,71 @@ public class CommandProcessor extends Query{
 			int a = s.readUnsignedByte();
 			
 			output = new SumoColor(r, g, b, a);
-
-		}else if(type == Constants.TYPE_UBYTE){
+		 	}
+		 
+		 else if(type == Constants.TYPE_UBYTE){
 			output = new SumoPrimitive(s.readUnsignedByte());
+		  }
+		
+		else if(type == Constants.POSITION_ROADMAP){
+			System.out.println("type == Constants.POSITION_ROADMAP in line383 at SumoCommand.java");
 		}
+		
+		System.out.println("before output");
 		
 		return output;
 	}
 	
 	public synchronized Object do_job_get(SumoCommand sc) throws IOException{
 		
+		
 		Object output = null;
+		
 		ResponseContainer rc = queryAndVerifySingle(sc.cmd);
+		
 		Command resp = rc.getResponse();
-	
+		
 		verifyGetVarResponse(resp, sc.response, sc.input2, sc.input3);
+	
+
 		verify("", sc.output_type, (int)resp.content().readUnsignedByte());
 		
-		if(sc.output_type == Constants.TYPE_INTEGER){output = resp.content().readInt();
-		}else if(sc.output_type == Constants.TYPE_DOUBLE){output = resp.content().readDouble();
-		}else if(sc.output_type == Constants.TYPE_STRING){output = resp.content().readStringUTF8();
-		}else if(sc.output_type == Constants.POSITION_2D || sc.output_type == Constants.POSITION_LON_LAT){
+		// System.out.println("after verify in line407 at CommandProcessor.java");
+
+		
+		if(sc.output_type == Constants.TYPE_INTEGER){
+			output = resp.content().readInt();
+		}
+		
+		//
+		else if(sc.output_type == Constants.POSITION_ROADMAP) {
+			System.out.println("I'm in sc.output_type=POSITION_ROADMAP in line401");
+		}
+		
+		else if(sc.output_type == Constants.TYPE_DOUBLE){
+			output = resp.content().readDouble();
+			System.out.println("hi");
+
+		}
+		
+		else if(sc.output_type == Constants.TYPE_STRING){
+			output = resp.content().readStringUTF8();
+		}
+		
+		else if(sc.output_type == Constants.POSITION_2D || sc.output_type == Constants.POSITION_LON_LAT){
 			double x = resp.content().readDouble();
 			double y = resp.content().readDouble();
 			output = new SumoPosition2D(x,y);
-		}else if(sc.output_type == Constants.POSITION_3D){
+		}
+		
+		else if(sc.output_type == Constants.POSITION_3D){
 			double x = resp.content().readDouble();
 			double y = resp.content().readDouble();
 			double z = resp.content().readDouble();
 			output = new SumoPosition3D(x,y,z);
-		}else if(sc.output_type == Constants.TYPE_STRINGLIST){
+		}
+		
+		else if(sc.output_type == Constants.TYPE_STRINGLIST){
 			
 			SumoStringList ssl = new SumoStringList();
 			int laenge = resp.content().readInt();
@@ -387,7 +455,9 @@ public class CommandProcessor extends Query{
 			}
 			output = ssl;
 		
-		}else if(sc.input2 == Constants.VAR_STOPSTATE){
+		}
+		
+		else if(sc.input2 == Constants.VAR_STOPSTATE){
 			short s = resp.content().readByte();
 			SumoStopFlags sf = new SumoStopFlags((byte) s);
 			output = sf;
@@ -399,7 +469,10 @@ public class CommandProcessor extends Query{
 			if(sc.info.equals("isAtBusStop")){output = sf.isBusStop;}
 			
 			
-		}else if(sc.output_type == Constants.TYPE_COMPOUND){
+		}
+		
+		else if(sc.output_type == Constants.TYPE_COMPOUND)
+		{
 			
 			Object[] obj = null;
 			
@@ -436,7 +509,9 @@ public class CommandProcessor extends Query{
 				
 				output = sll;
 			
-			}else if(sc.input2 == Constants.TL_COMPLETE_DEFINITION_RYG){
+			}
+			
+			else if(sc.input2 == Constants.TL_COMPLETE_DEFINITION_RYG){
 				
                 //System.out.println("read TL_COMPLETE_DEFINITION_RYG");
                 //System.out.println(resp.content().debug());
@@ -524,7 +599,9 @@ public class CommandProcessor extends Query{
 				
 				output = sp;
 				
-			}else if(sc.input2 == Constants.LANE_LINKS){
+			}
+			
+			else if(sc.input2 == Constants.LANE_LINKS){
 			
 				resp.content().readUnsignedByte();
 				resp.content().readInt();
@@ -563,7 +640,9 @@ public class CommandProcessor extends Query{
 					links.add(new SumoLink(notInternalLane,internalLane,hasPriority,isOpened,hasFoes,laneLength, state, direction));
 				}
 				output = links;
-			}else if(sc.input2 == Constants.VAR_NEXT_TLS){
+			}
+			
+			else if(sc.input2 == Constants.VAR_NEXT_TLS){
 			
 				resp.content().readUnsignedByte();
 				resp.content().readInt();
@@ -592,7 +671,9 @@ public class CommandProcessor extends Query{
 				
 				output = sn;
 				
-			}else if(sc.input2 == Constants.VAR_LEADER){
+			}
+			
+			else if(sc.input2 == Constants.VAR_LEADER){
 				
 				resp.content().readUnsignedByte();
 				resp.content().readInt();
@@ -602,7 +683,9 @@ public class CommandProcessor extends Query{
 				double dist = resp.content().readDouble();
 				output = new SumoLeader(vehID, dist);
 			
-			}else if(sc.input2 == Constants.VAR_BEST_LANES){
+			}
+			
+			else if(sc.input2 == Constants.VAR_BEST_LANES){
 				
 				resp.content().readUnsignedByte();
 				resp.content().readInt();
@@ -641,7 +724,9 @@ public class CommandProcessor extends Query{
 			
 				output = sl;
 
-            }else if(sc.input2 == Constants.LAST_STEP_VEHICLE_DATA){
+            }
+			
+			else if(sc.input2 == Constants.LAST_STEP_VEHICLE_DATA){
 
                 resp.content().readUnsignedByte();
                 resp.content().readInt();
@@ -670,11 +755,15 @@ public class CommandProcessor extends Query{
                 }
                 output = vehData;
 				
-			}else if(sc.input2 == Constants.FIND_ROUTE){
+			}
+			
+			else if(sc.input2 == Constants.FIND_ROUTE){
 				
 				output = readStage(resp.content());
 				
-			}else if(sc.input2 == Constants.FIND_INTERMODAL_ROUTE){
+			}
+			
+			else if(sc.input2 == Constants.FIND_INTERMODAL_ROUTE){
 				
 				LinkedList<SumoStage> ll = new LinkedList<SumoStage>();
 				int l = resp.content().readInt();
@@ -684,7 +773,9 @@ public class CommandProcessor extends Query{
 				}
 				output = ll;
 					
-			}else{
+			}
+			
+			else{
 				
 				int size = resp.content().readInt();
 				obj = new Object[size];
@@ -700,7 +791,8 @@ public class CommandProcessor extends Query{
 			}
 			
 			
-		}
+		} // line441 sc.output_type == Constants.TYPE_COMPOUND
+		
 		else if(sc.output_type == Constants.TYPE_POLYGON){
 			
 			int laenge = resp.content().readUnsignedByte();
@@ -731,8 +823,12 @@ public class CommandProcessor extends Query{
 		}
 		
 		
-			
+		System.out.println("before return output in line816 at CommandProcessor.java");
+	
 		return output;
+		
+	
+
 	}
 
 	protected static String verifyGetVarResponse(Command resp, int commandID, int variable, String objectID) throws UnexpectedData {

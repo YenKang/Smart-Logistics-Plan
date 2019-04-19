@@ -163,7 +163,7 @@ public class Simulation {
 				"", 
 				array,
 				Constants.RESPONSE_GET_SIM_VARIABLE, 
-				Constants.POSITION_ROADMAP);
+				Constants.POSITION_ROADMAP );
 	}
 
 	/**
@@ -368,9 +368,20 @@ public class Simulation {
 	 * @param isDriving is driving
 	 * @return distance
 	 */
-	public static SumoCommand getDistance2D(double x1, double y1, double x2, double y2, boolean isGeo, boolean isDriving){
-		Object[] array = new Object[]{new SumoPosition2D(x1, y1), new SumoPosition2D(x2, y2), isGeo, isDriving};
-		return new SumoCommand(Constants.CMD_GET_SIM_VARIABLE, Constants.DISTANCE_REQUEST, array, Constants.RESPONSE_GET_SIM_VARIABLE, Constants.TYPE_DOUBLE);
+	public static SumoCommand getDistance2D(double x1, double y1, double x2, double y2, 
+			boolean isGeo, boolean isDriving){
+		
+		Object[] array = new Object[]{
+				new SumoPosition2D(x1, y1), 
+				new SumoPosition2D(x2, y2), 
+				isGeo, 
+				isDriving};
+		return new SumoCommand(
+				Constants.CMD_GET_SIM_VARIABLE, 
+				Constants.DISTANCE_REQUEST, 
+				array, 
+				Constants.RESPONSE_GET_SIM_VARIABLE, 
+				Constants.TYPE_DOUBLE);
 	}
 
 	/**
@@ -385,9 +396,18 @@ public class Simulation {
 	 * @param isDriving is drinving
 	 * @return the distance in [m]
 	 */
-	public static SumoCommand getDistanceRoad(String edgeID1, double pos1, String edgeID2, double pos2, boolean isDriving){
-		Object[] array = new Object[]{edgeID1, pos1, edgeID2, pos2, isDriving};
-		return new SumoCommand(Constants.CMD_GET_SIM_VARIABLE, Constants.DISTANCE_REQUEST, array, Constants.RESPONSE_GET_SIM_VARIABLE, Constants.TYPE_DOUBLE);
+	public static SumoCommand getDistanceRoad(String edgeID1, double pos1, 
+			String edgeID2, double pos2, boolean isDriving){
+		Object[] array = new Object[]{
+				edgeID1, pos1, 
+				edgeID2, pos2, isDriving};
+		
+		return new SumoCommand(
+				Constants.CMD_GET_SIM_VARIABLE, 
+				Constants.DISTANCE_REQUEST, 
+				array, 
+				Constants.RESPONSE_GET_SIM_VARIABLE, 
+				Constants.TYPE_DOUBLE);
 	}
 
 	/**

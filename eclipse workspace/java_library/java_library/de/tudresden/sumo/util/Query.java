@@ -214,7 +214,11 @@ public abstract class Query extends Observable {
 		
 		RequestMessage msg = new RequestMessage();
 		msg.append(request);
+		//System.out.println("throws throw IOException in line217 at Query.java");
+
 		ResponseMessage resp = queryAndVerify(msg);
+		//System.out.println("throws throw IOException in line220 at Query.java");
+
 		return resp.responses().iterator().next();
 	
 	}

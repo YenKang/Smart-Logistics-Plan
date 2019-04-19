@@ -98,7 +98,8 @@ public class SumoCommand {
 		}
 	
 
-	public SumoCommand(Object input1, Object input2, Object input3, Object[] array, Object response, Object output_type){
+	public SumoCommand(Object input1, Object input2, Object input3, 
+			Object[] array, Object response, Object output_type){
 			
 			this.cmd = new Command((Integer) input1);
 			cmd.content().writeUnsignedByte((Integer) input2);
@@ -114,7 +115,8 @@ public class SumoCommand {
 				
 				cmd.content().writeUnsignedByte(Constants.TYPE_COMPOUND);
 				
-				if((Integer) input1 == Constants.CMD_GET_VEHICLE_VARIABLE && (Integer) input2 == Constants.DISTANCE_REQUEST)
+				if((Integer) input1 == Constants.CMD_GET_VEHICLE_VARIABLE 
+						&& (Integer) input2 == Constants.DISTANCE_REQUEST)
 				{
 					
 					cmd.content().writeInt(2);	
@@ -137,12 +139,13 @@ public class SumoCommand {
 					
 				}
 	
-				else if((Integer) input1 == Constants.CMD_GET_SIM_VARIABLE && (Integer) input2 == Constants.POSITION_CONVERSION)
-				{
-					   cmd.content().writeInt(2);	// Int(3) in convertRoad, Int(2) in convert2D
-					// cmd.content().writeInt(3);
+				else if((Integer) input1 == Constants.CMD_GET_SIM_VARIABLE 
+						&& (Integer) input2 == Constants.POSITION_CONVERSION)
+				{		
+					    cmd.content().writeInt(2);	// Int(2) in convert2D and convertGeo
+					//	cmd.content().writeInt(3); // Int(3) in convertRoad
 					 
-					if(array.length == 4){
+					if(array.length == 4){ //convertGeo
 					
 						cmd.content().writeUnsignedByte((byte) array[0]);
 						cmd.content().writeDouble((double) array[1]); 
@@ -150,20 +153,21 @@ public class SumoCommand {
 						cmd.content().writeUnsignedByte(Constants.TYPE_UBYTE);
 						cmd.content().writeUnsignedByte((byte) array[3]);
 					
+					}
+					
+			
+					if(array.length == 5){ // convertRoad array{posType, x, y, toType, vClass}
+				
+						cmd.content().writeUnsignedByte((byte) array[0]); //posType
+						cmd.content().writeDouble((double) array[1]); // double x
+						cmd.content().writeDouble((double) array[2]);  //  double u
+						cmd.content().writeUnsignedByte(Constants.TYPE_UBYTE); // 
+						cmd.content().writeUnsignedByte((byte) array[3]); // toType= Constants.POSITION_ROADMAP
+						cmd.content().writeStringASCII((String) array[4]); // String vClass
+			
 					}
 					
 					/*
-					if(array.length == 5){ // convertRoad
-						cmd.content().writeUnsignedByte((byte) array[0]);
-						cmd.content().writeDouble((double) array[1]); 
-						cmd.content().writeDouble((double) array[2]); 
-						cmd.content().writeUnsignedByte(Constants.TYPE_UBYTE);
-						cmd.content().writeUnsignedByte((byte) array[3]);
-						cmd.content().writeStringASCII((String) array[4]);
-					}
-					*/
-				
-					
 					else if (array.length == 5) { // convert2D
 						
 						cmd.content().writeUnsignedByte((byte) array[0]); // byte fromType	
@@ -172,8 +176,8 @@ public class SumoCommand {
 						cmd.content().writeUnsignedByte((byte) array[3]); // byte landeIndex	
 						cmd.content().writeUnsignedByte(Constants.TYPE_UBYTE); 
 						cmd.content().writeUnsignedByte((byte) array[4]);	// 	byte posType
-		
 					}
+					*/
 						
 				}
 	
@@ -190,19 +194,17 @@ public class SumoCommand {
 			
 			this.input1=(Integer) input1;
 			this.input2=(Integer) input2;
-			this.input3=String.valueOf(input3);
-			
+			this.input3=String.valueOf(input3);	
 			this.response = (Integer) response;
-			
 			this.output_type = (Integer) output_type;
-		
+	
 			this.raw = new LinkedList<Object>();
 			this.raw.add(input1);
 			this.raw.add(input2);
 			this.raw.add(input3);
 			this.raw.add(response);
-			
 			this.raw.add(output_type);
+	
 			
 	}
 		
@@ -229,34 +231,44 @@ public class SumoCommand {
 		cmd.content().writeUnsignedByte((Integer) input2);
 		cmd.content().writeStringASCII(String.valueOf(input3));
 		
-		if((Integer) input2 == Constants.VAR_COLOR){
+		if((Integer) input2 == Constants.VAR_COLOR)
+		{
 			cmd.content().writeUnsignedByte(Constants.TYPE_COLOR);
 			for(int i=0; i<array.length; i++){
 				add_variable(array[i]);
 			}
 		}
 		
-		else if((Integer) input2 == Constants.VAR_ROUTE){
+		else if((Integer) input2 == Constants.VAR_ROUTE)
+		{
 			
 			cmd.content().writeUnsignedByte(Constants.TYPE_STRINGLIST);
 			SumoStringList sl = (SumoStringList) array[0];
+
 			cmd.content().writeInt(sl.size());
 			for(String s : sl) {
 				cmd.content().writeStringASCII(s);
 			}
 			
 		}
-		else if((Integer) input2 == Constants.CMD_REROUTE_EFFORT || (Integer) input2 == Constants.CMD_REROUTE_TRAVELTIME || (Integer) input2 == Constants.CMD_RESUME){
+
+		else if((Integer) input2 == Constants.CMD_REROUTE_EFFORT || (Integer) input2 == Constants.CMD_REROUTE_TRAVELTIME 
+				|| (Integer) input2 == Constants.CMD_RESUME)
+		{
 				cmd.content().writeUnsignedByte(Constants.TYPE_COMPOUND);
 				cmd.content().writeInt(0);
-		}else if((Integer) input2 == Constants.VAR_VIEW_OFFSET){
+		}
+		else if((Integer) input2 == Constants.VAR_VIEW_OFFSET)
+		{
 		
 			cmd.content().writeUnsignedByte(Constants.POSITION_2D);
 			for(int i=0; i<array.length; i++){
 				add_variable(array[i]);
 			}	
 			
-		}else if((Integer) input1 == Constants.CMD_SET_POLYGON_VARIABLE && (Integer) input2 == Constants.ADD){
+		}
+		else if((Integer) input1 == Constants.CMD_SET_POLYGON_VARIABLE && (Integer) input2 == Constants.ADD)
+		{
 			
 			
 			cmd.content().writeUnsignedByte(Constants.TYPE_COMPOUND);
@@ -282,14 +294,16 @@ public class SumoCommand {
 			add_variable(array[0]);
 			
 		}
-		else if((Integer) input1 == Constants.CMD_SET_POI_VARIABLE && (Integer) input2 == Constants.VAR_POSITION){
+		else if((Integer) input1 == Constants.CMD_SET_POI_VARIABLE && (Integer) input2 == Constants.VAR_POSITION)
+		{
 		
 			cmd.content().writeUnsignedByte(Constants.POSITION_2D);
 			add_variable(array[0]);
 			add_variable(array[1]);
 			
 		}
-		else if((Integer) input1 == Constants.CMD_SET_POI_VARIABLE && (Integer) input2 == Constants.ADD){
+		else if((Integer) input1 == Constants.CMD_SET_POI_VARIABLE && (Integer) input2 == Constants.ADD)
+		{
 			
 			cmd.content().writeUnsignedByte(Constants.TYPE_COMPOUND);
 			cmd.content().writeInt(4);	
@@ -310,10 +324,10 @@ public class SumoCommand {
 			cmd.content().writeUnsignedByte(Constants.POSITION_2D);
 			add_variable(array[0]);
 			add_variable(array[1]);
-			
-			
+				
 		}
-		else{
+		else
+		{
 			cmd.content().writeUnsignedByte(Constants.TYPE_COMPOUND);
 			cmd.content().writeInt(array.length);	
 			for(int i=0; i<array.length; i++){
@@ -321,8 +335,6 @@ public class SumoCommand {
 				add_variable(array[i]);
 			}
 		}
-		
-		
 		
 		this.raw = new LinkedList<Object>();
 		this.raw.add(input1);
@@ -333,7 +345,8 @@ public class SumoCommand {
 		
 	}
 
-	public SumoCommand(Object input1, Object input2, Object input3, Object input){
+	public SumoCommand(Object input1, Object input2, Object input3, Object input)
+	{
 		
 		this.cmd = new Command((Integer) input1);
 		this.input1=(Integer) input1;
@@ -351,16 +364,20 @@ public class SumoCommand {
 				cmd.content().writeStringASCII(s);
 			}
 			
-		}else if(input.getClass().equals(SumoStringList.class)){
+		}
+		else if(input.getClass().equals(SumoStringList.class))
+		{
 				
-				SumoStringList sl = (SumoStringList) input;
-				cmd.content().writeUnsignedByte(Constants.TYPE_STRINGLIST);
-				cmd.content().writeInt(sl.size());
-				for(String s : sl){
-					cmd.content().writeStringASCII(s);
-				}
+			SumoStringList sl = (SumoStringList) input;
+			cmd.content().writeUnsignedByte(Constants.TYPE_STRINGLIST);
+			cmd.content().writeInt(sl.size());
+			for(String s : sl){
+				cmd.content().writeStringASCII(s);
+			}
 	
-		}else if(input.getClass().equals(SumoTLSProgram.class)){
+		}
+		else if(input.getClass().equals(SumoTLSProgram.class))
+		{
 		
 			SumoTLSProgram stl = (SumoTLSProgram) input;
 			cmd.content().writeUnsignedByte(Constants.TYPE_COMPOUND);
@@ -391,9 +408,11 @@ public class SumoCommand {
                 cmd.content().writeUnsignedByte(Constants.TYPE_STRINGLIST);
                 add_variable(keyValue);
             }
-			
-		
-		}else{
+	
+		}
+
+		else
+		{
 			add_type(input);
 			add_variable(input);
 		}
@@ -406,7 +425,8 @@ public class SumoCommand {
 		
 	}
 	
-	public SumoCommand(Object input1, Object input2, Object[] array, Object response, Object output_type){
+	public SumoCommand(Object input1, Object input2, Object[] array, 
+			Object response, Object output_type){
 	
 		this.cmd = new Command((Integer) input1);
 		this.input1=(Integer) input1;
@@ -415,7 +435,10 @@ public class SumoCommand {
 		cmd.content().writeUnsignedByte((Integer) input2);
 		cmd.content().writeStringASCII("");
 		
-		if((Integer) input1 == Constants.CMD_GET_SIM_VARIABLE && (Integer) input2 == Constants.DISTANCE_REQUEST && array.length == 4){
+		if((Integer) input1 == Constants.CMD_GET_SIM_VARIABLE 
+			&& (Integer) input2 == Constants.DISTANCE_REQUEST 
+			&& array.length == 4)
+		{
 			
 			cmd.content().writeUnsignedByte(Constants.TYPE_COMPOUND);
 			cmd.content().writeInt(3);	
@@ -436,7 +459,11 @@ public class SumoCommand {
 			if(isDriving){this.cmd.content().writeUnsignedByte(Constants.REQUEST_DRIVINGDIST);}
 			else{this.cmd.content().writeUnsignedByte(Constants.REQUEST_AIRDIST);}
 			
-		}else if ((Integer) input1 == Constants.CMD_GET_SIM_VARIABLE && (Integer) input2 == Constants.DISTANCE_REQUEST && array.length == 5){
+		}
+		else if ((Integer) input1 == Constants.CMD_GET_SIM_VARIABLE 
+				&& (Integer) input2 == Constants.DISTANCE_REQUEST 
+				&& array.length == 5)
+		{
 			
 			cmd.content().writeUnsignedByte(Constants.TYPE_COMPOUND);
 			cmd.content().writeInt(3);	
@@ -444,9 +471,10 @@ public class SumoCommand {
 			String edge1 = (String) array[0];
 			
 			cmd.content().writeUnsignedByte(Constants.POSITION_ROADMAP);
+
 			add_variable(edge1);
 			add_variable(array[1]);
-			cmd.content().writeUnsignedByte(0);
+			cmd.content().writeUnsignedByte(0); // byte laneIndex =0
 			
 			String edge2 = (String) array[2];
 			cmd.content().writeUnsignedByte(Constants.POSITION_ROADMAP);
@@ -456,8 +484,12 @@ public class SumoCommand {
 
 			boolean isDriving = (boolean) array[4];
 			
-			if(isDriving){this.cmd.content().writeUnsignedByte(Constants.REQUEST_DRIVINGDIST);}
-			else{this.cmd.content().writeUnsignedByte(Constants.REQUEST_AIRDIST);}
+			if(isDriving){
+				this.cmd.content().writeUnsignedByte(Constants.REQUEST_DRIVINGDIST);
+				}
+			else{
+				this.cmd.content().writeUnsignedByte(Constants.REQUEST_AIRDIST);
+			}
 			
 		}
 		
@@ -469,7 +501,7 @@ public class SumoCommand {
 		this.raw.add(input2);
 		this.raw.add(input3);
 		this.raw.add(array);
-		
+
 	}
 
 	public Object[] get_raw(){
@@ -483,8 +515,8 @@ public class SumoCommand {
 	}
 	
 	
-	private void add_type(Object input){
-		
+	
+	private void add_type(Object input){	
 		if(input.getClass().equals(Integer.class)){
 			this.cmd.content().writeUnsignedByte(Constants.TYPE_INTEGER);
 		}else if(input.getClass().equals(String.class)){
@@ -515,13 +547,17 @@ public class SumoCommand {
 		
 		if(input.getClass().equals(Integer.class)){
 			this.cmd.content().writeInt((Integer) input);
-		}else if(input.getClass().equals(String.class)){
+		}
+		else if(input.getClass().equals(String.class)){
 			this.cmd.content().writeStringASCII((String) input);
-		}else if(input.getClass().equals(Double.class)){
+		}
+		else if(input.getClass().equals(Double.class)){
 			this.cmd.content().writeDouble((Double) input);
-		}else if(input.getClass().equals(Byte.class)){
+		}
+		else if(input.getClass().equals(Byte.class)){
 			this.cmd.content().writeByte((Byte) input);
-		}else if(input.getClass().equals(Boolean.class)){
+		}
+		else if(input.getClass().equals(Boolean.class)){
 			boolean b = (Boolean) input;
 			cmd.content().writeUnsignedByte(b ? 1 : 0);
 		}
@@ -533,7 +569,9 @@ public class SumoCommand {
 			this.cmd.content().writeByte(sc.b);
 			this.cmd.content().writeByte(sc.a);
 			
-		}else if(input.getClass().equals(SumoGeometry.class)){
+		}
+		else if(input.getClass().equals(SumoGeometry.class))
+		{
 			
 			SumoGeometry sg = (SumoGeometry) input;
 			cmd.content().writeUnsignedByte(sg.coords.size());
@@ -542,13 +580,16 @@ public class SumoCommand {
 				cmd.content().writeDouble(pos.x);
 				cmd.content().writeDouble(pos.y);
 			}
-		}else if(input.getClass().equals(SumoPosition2D.class)){
+		}
+		else if(input.getClass().equals(SumoPosition2D.class)){
 			
 			SumoPosition2D pos = (SumoPosition2D) input;
 			cmd.content().writeDouble(pos.x);
 			cmd.content().writeDouble(pos.y);
 			
-		}else if(input.getClass().equals(SumoTLSPhase.class)){
+		}
+		else if(input.getClass().equals(SumoTLSPhase.class))
+		{
 			
 			SumoTLSPhase stp = (SumoTLSPhase) input;
 			this.cmd.content().writeUnsignedByte(Constants.TYPE_COMPOUND);
@@ -570,7 +611,8 @@ public class SumoCommand {
 			this.cmd.content().writeUnsignedByte(Constants.TYPE_STRING);
 			cmd.content().writeStringASCII(stp.name);
 			
-		}else if(input.getClass().equals(SumoStringList.class)){
+		}
+		else if(input.getClass().equals(SumoStringList.class)){
 			
 			SumoStringList sl = (SumoStringList) input;
 			cmd.content().writeInt(sl.size());
@@ -578,7 +620,9 @@ public class SumoCommand {
 				cmd.content().writeStringASCII(s);
 			}
 		
-		}else if(input.getClass().equals(SumoStopFlags.class)){
+		}
+		
+		else if(input.getClass().equals(SumoStopFlags.class)){
 			SumoStopFlags sf = (SumoStopFlags) input;
 			this.cmd.content().writeByte(sf.getID());
 		}

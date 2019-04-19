@@ -44,4 +44,12 @@ public class SumoPosition2D implements SumoObject {
 		return this.x + "," + this.y;
 	}
 	
+	public double getX() {
+		return this.x;
+	}
+	
+	public double getY() {
+		return this.y;
+	}
+	
 }
