@@ -139,37 +139,36 @@ public class SumoCommand {
 					
 				}
 	
-				else if((Integer) input1 == Constants.CMD_GET_SIM_VARIABLE 
-						&& (Integer) input2 == Constants.POSITION_CONVERSION)
+				else if((Integer) input1 == Constants.CMD_GET_SIM_VARIABLE && (Integer) input2 == Constants.POSITION_CONVERSION)
 				{		
-					    cmd.content().writeInt(2);	// Int(2) in convert2D and convertGeo
-					//	cmd.content().writeInt(3); // Int(3) in convertRoad
-					 
-					if(array.length == 4){ //convertGeo
+					  
+	
+					// convertRoad array{posType, x, y, toType, vClass
+					if( (Integer)output_type == Constants.POSITION_ROADMAP) {
+						cmd.content().writeInt(3);
+						cmd.content().writeUnsignedByte((byte) array[0]); //posType
+						cmd.content().writeDouble((double) array[1]); // double x
+						cmd.content().writeDouble((double) array[2]);  //  double u
+						
+						cmd.content().writeUnsignedByte(Constants.TYPE_UBYTE); // 
+						cmd.content().writeUnsignedByte((byte) array[3]); // toType= Constants.POSITION_ROADMAP
+						cmd.content().writeUnsignedByte(Constants.TYPE_STRING); // add_type String
+						cmd.content().writeStringASCII((String) array[4]); // String vClass
+					}
 					
+			
+					if(array.length == 4 && (Integer)output_type != Constants.POSITION_ROADMAP ){ //convertGeo
+						cmd.content().writeInt(2);
 						cmd.content().writeUnsignedByte((byte) array[0]);
 						cmd.content().writeDouble((double) array[1]); 
 						cmd.content().writeDouble((double) array[2]); 
 						cmd.content().writeUnsignedByte(Constants.TYPE_UBYTE);
 						cmd.content().writeUnsignedByte((byte) array[3]);
-					
+
 					}
-					
-			
-					if(array.length == 5){ // convertRoad array{posType, x, y, toType, vClass}
-				
-						cmd.content().writeUnsignedByte((byte) array[0]); //posType
-						cmd.content().writeDouble((double) array[1]); // double x
-						cmd.content().writeDouble((double) array[2]);  //  double u
-						cmd.content().writeUnsignedByte(Constants.TYPE_UBYTE); // 
-						cmd.content().writeUnsignedByte((byte) array[3]); // toType= Constants.POSITION_ROADMAP
-						cmd.content().writeStringASCII((String) array[4]); // String vClass
-			
-					}
-					
-					/*
-					else if (array.length == 5) { // convert2D
-						
+									
+					else if (array.length == 5  && (Integer)output_type != Constants.POSITION_ROADMAP) { // convert2D
+						cmd.content().writeInt(2);
 						cmd.content().writeUnsignedByte((byte) array[0]); // byte fromType	
 						cmd.content().writeStringASCII((String) array[1]); // String edgeID
 						cmd.content().writeDouble((double) array[2]);      // double pos 
@@ -177,7 +176,7 @@ public class SumoCommand {
 						cmd.content().writeUnsignedByte(Constants.TYPE_UBYTE); 
 						cmd.content().writeUnsignedByte((byte) array[4]);	// 	byte posType
 					}
-					*/
+					
 						
 				}
 	

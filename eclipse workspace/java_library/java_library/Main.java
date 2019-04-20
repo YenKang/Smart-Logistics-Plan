@@ -76,14 +76,16 @@ public class Main {
 					*/
 					
 					
-					/*
+					
 					System.out.println("------------convertRoad part-------------");
 					System.out.println("convertRoad(2466.06, 7243.26, false, 'ignoring'))");
-					//System.out.println(conn.do_job_get(Simulation.convertRoad(2466.06, 7243.26, false, "ignoring")));
+					System.out.println(conn.do_job_get(Simulation.convertRoad(2466.06, 7243.26, false, "ignoring")));
 					System.out.println("-----------------------------");
 					
-					*/
+				
 					
+					
+					/* getDistance2D & getDistanceRoad
 					System.out.println("-------getDistance2D--------");
 					// System.out.println(conn.do_job_get(Simulation.getDistance2D(3414.680, 5591.166, 2466.06, 2466.06, false, false)));
 					// System.out.println(conn.do_job_get(Simulation.getDistance2D(3414.680, 5591.166, 2466.06, 2466.06, false, true)));
@@ -119,7 +121,7 @@ public class Main {
 					
 					System.out.println("-------The [air] Distance of [startEdge to endEdge] --------");
 					System.out.println(conn.do_job_get(Simulation.getDistanceRoad(startEdgeId, pos1, endEdgeId, pos2, true)));
-					
+					*/
 				}
 				
 				if(timeSeconds==60) {
