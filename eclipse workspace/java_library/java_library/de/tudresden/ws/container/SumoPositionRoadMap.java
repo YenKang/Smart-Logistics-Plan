@@ -2,7 +2,7 @@ package de.tudresden.ws.container;
 
 public class SumoPositionRoadMap implements SumoObject {
 	public String edgeID;
-	public Byte  laneIndex;
+	public int  laneIndex;
 	public double pos;
 	
 	public SumoPositionRoadMap(){
@@ -11,7 +11,7 @@ public class SumoPositionRoadMap implements SumoObject {
 		this.pos = 0.0;
 	}
 	
-	public SumoPositionRoadMap(String edgeID, byte laneIndex, double pos) {
+	public SumoPositionRoadMap(String edgeID, double pos, int laneIndex) {
 		this.edgeID = edgeID;
 		this.laneIndex = laneIndex;
 		this.pos = pos;
@@ -19,6 +19,6 @@ public class SumoPositionRoadMap implements SumoObject {
 	
 	public String toString() {
 		// return this.edgeID+ "_"+ this.laneIndex+ ","+ this.pos;
-		return this.edgeID+","+ this.pos+ ","+(this.laneIndex);
+		return this.edgeID+", "+ this.pos+ ", "+(this.laneIndex);
 	}
 }

@@ -79,7 +79,15 @@ public class Main {
 					System.out.println("------------convertRoad part-------------");
 					System.out.println("convertRoad(2466.06, 7243.26, false, 'ignoring'))");
 					System.out.println(conn.do_job_get(Simulation.convertRoad(2466.06, 7243.26, false, "ignoring")));
+					Object j = conn.do_job_get(Simulation.convertRoad(2466.06, 7243.26, false, "ignoring"));
+					System.out.println(j);
+					
+					System.out.println("convertRoad(4061.28, 5207.22, false, 'ignoring'))");
+					System.out.println(conn.do_job_get(Simulation.convertRoad(4061.28, 5207.22, false, "ignoring")));
 					System.out.println("-----------------------------");
+					
+					System.out.println("convertRoad(120.227524, 22.982570, true, 'ignoring'))");
+					System.out.println(conn.do_job_get(Simulation.convertRoad(120.227524, 22.982570, true, "ignoring")));
 					
 				
 					

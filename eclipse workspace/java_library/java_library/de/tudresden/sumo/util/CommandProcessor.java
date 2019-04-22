@@ -98,7 +98,7 @@ public class CommandProcessor extends Query{
 		}
 		
 		
-		// my version of POSITION_ROADMAP
+		/* my version of POSITION_ROADMAP
 		else if (type == Constants.POSITION_ROADMAP) {
 			System.out.println("line103 in CoommandProcessor.java");
 			String edgeID = s.readStringASCII();
@@ -108,7 +108,7 @@ public class CommandProcessor extends Query{
 			output = new SumoPositionRoadMap(edgeID, laneIndex, pos);
 		}
 		
-		//
+		*/
 		
 		else if(type == Constants.POSITION_2D){
 			double lon = s.readDouble();
@@ -451,9 +451,11 @@ public class CommandProcessor extends Query{
 			System.out.println("I'm in sc.output_type=POSITION_ROADMAP in 450");
 			
 			String edgeID = resp.content().readStringASCII();
-			Byte laneIndex = (byte)resp.content().readUnsignedByte();
 			double pos = resp.content().readDouble();
-			output = new SumoPositionRoadMap(edgeID, laneIndex, pos);
+			int laneIndex = resp.content().readUnsignedByte();
+		
+			output = new SumoPositionRoadMap(edgeID, pos, laneIndex);
+					
 		}
 		
 		//
