@@ -158,8 +158,7 @@ public class Simulation {
 
 		Object[] array = new Object[]{posType, x, y, toType, vClass};
 		
-		System.out.println("line160 in Simulation.java");
-		
+	
 		return new SumoCommand(
 				Constants.CMD_GET_SIM_VARIABLE,
 				Constants.POSITION_CONVERSION, 

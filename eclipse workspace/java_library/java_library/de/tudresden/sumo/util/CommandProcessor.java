@@ -446,9 +446,8 @@ public class CommandProcessor extends Query{
 			output = new SumoPosition2D(x,y);
 		}
 		
-		//
+		// add sc.output_type == Constants.POSITION_ROADMAP
 		else if(sc.output_type == Constants.POSITION_ROADMAP) {
-			System.out.println("I'm in sc.output_type=POSITION_ROADMAP in 450");
 			
 			String edgeID = resp.content().readStringASCII();
 			double pos = resp.content().readDouble();
@@ -845,7 +844,7 @@ public class CommandProcessor extends Query{
 		}
 		
 		
-		System.out.println("before return output in line816 at CommandProcessor.java");
+
 	
 		return output;
 		

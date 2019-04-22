@@ -50,30 +50,34 @@ public class Main {
 				
 				if(i%1000==0) {
 					//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
+					System.out.println("position of car flow0.0");
+					System.out.println(conn.do_job_get(Vehicle.getPosition("flow0.0")));
 				}
 				
 				double timeSeconds = (double)conn.do_job_get(Simulation.getTime());
 				
 				System.out.println("timeSeconds:"+ timeSeconds);
 				if(timeSeconds%1==0) {
+					System.out.println("position of car flow0.0");
+					System.out.println(conn.do_job_get(Vehicle.getPosition("flow0.0")));
 					
-					/*
+					
 					System.out.println("------------convertGeo part-------------");
 					System.out.println(conn.do_job_get(Simulation.convertGeo(3414.680, 5591.166, false )));// (x,y)=(3414.680, 5591.166)
 					System.out.println(conn.do_job_get(Simulation.convertGeo(2466.06, 7243.26, false ))); // (x,y)=(2466.06, 2466.06)
-					System.out.println(conn.do_job_get(Simulation.convertGeo(120.216228, 22.987473, true ))); //(lon, lat)=(120.216228, 22.987473)
+					System.out.println(conn.do_job_get(Simulation.convertGeo(120.21160060972538, 23.000667974700477, true ))); //
 					
 					System.out.println("----------*******-------------");
-					*/
 					
 					
-					/*
+					
+					
 					System.out.println("------------convert2D part-------------");
-					System.out.println("convert2D('303466841', 0.0, (byte)0, false)");
-					System.out.println(conn.do_job_get(Simulation.convert2D("303466841", 0.0, (byte)0, false)));
+					System.out.println("convert2D('307244665#2', 3.6605540809902037, (byte)0, false)");
+					System.out.println(conn.do_job_get(Simulation.convert2D("307244665#2",  3.6605540809902037, (byte)0, false)));
 					System.out.println("convert2D('303466841', 0.0, (byte)0, true)");
-					System.out.println(conn.do_job_get(Simulation.convert2D("303466841", 0.0, (byte)0, true)));
-					*/
+					System.out.println(conn.do_job_get(Simulation.convert2D("307244665#2",  3.6605540809902037, (byte)0, true)));
+					
 			
 					
 					System.out.println("------------convertRoad part-------------");

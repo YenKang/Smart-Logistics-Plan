@@ -147,8 +147,7 @@ public class SumoCommand {
 	
 					// convertRoad array{posType, x, y, toType, vClass}
 					if( (Integer)output_type == Constants.POSITION_ROADMAP) {
-						System.out.println("line150 in SumoCommand.java");
-
+						
 						cmd.content().writeInt(2);
 						cmd.content().writeUnsignedByte((byte) array[0]); //posType
 						cmd.content().writeDouble((double) array[1]); // double x
