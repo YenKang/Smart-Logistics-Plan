@@ -110,6 +110,7 @@ public class SumoCommand {
 					add_type(array[0]);
 					add_variable(array[0]);
 				}
+			
 			else
 			{
 				
@@ -170,9 +171,11 @@ public class SumoCommand {
 					else if (array.length == 5  && (Integer)output_type != Constants.POSITION_ROADMAP) { // convert2D
 						cmd.content().writeInt(2);
 						cmd.content().writeUnsignedByte((byte) array[0]); // byte fromType	
+						
 						cmd.content().writeStringASCII((String) array[1]); // String edgeID
 						cmd.content().writeDouble((double) array[2]);      // double pos 
-						cmd.content().writeUnsignedByte((byte) array[3]); // byte landeIndex	
+						cmd.content().writeUnsignedByte((byte) array[3]); // byte landeIndex
+						
 						cmd.content().writeUnsignedByte(Constants.TYPE_UBYTE); 
 						cmd.content().writeUnsignedByte((byte) array[4]);	// 	byte posType
 					}

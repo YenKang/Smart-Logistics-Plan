@@ -514,7 +514,13 @@ public class Simulation {
 	 */
 	public static SumoCommand findRoute(String fromEdge, String toEdge, String vType, double depart, int routingMode){
 		Object[] array = new Object[]{fromEdge, toEdge, vType, depart, routingMode};
-		return new SumoCommand(Constants.CMD_GET_SIM_VARIABLE, Constants.FIND_ROUTE, "", array, Constants.RESPONSE_GET_SIM_VARIABLE, Constants.TYPE_COMPOUND);
+		return new SumoCommand(
+				Constants.CMD_GET_SIM_VARIABLE, 
+				Constants.FIND_ROUTE, 
+				"", 
+				array, 
+				Constants.RESPONSE_GET_SIM_VARIABLE, 
+				Constants.TYPE_COMPOUND);
 	}
 	
 	/**

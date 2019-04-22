@@ -421,6 +421,7 @@ public class CommandProcessor extends Query{
 		//
 		else if(sc.output_type == Constants.POSITION_ROADMAP) {
 			System.out.println("I'm in sc.output_type=POSITION_ROADMAP in line401");
+			
 		}
 		
 		else if(sc.output_type == Constants.TYPE_DOUBLE){
