@@ -67,20 +67,20 @@ public class Main {
 					*/
 					
 					
-					
+					/*
 					System.out.println("------------convert2D part-------------");
 					System.out.println("convert2D('303466841', 0.0, (byte)0, false)");
 					System.out.println(conn.do_job_get(Simulation.convert2D("303466841", 0.0, (byte)0, false)));
 					System.out.println("convert2D('303466841', 0.0, (byte)0, true)");
 					System.out.println(conn.do_job_get(Simulation.convert2D("303466841", 0.0, (byte)0, true)));
-					
+					*/
 			
-					/*
+					
 					System.out.println("------------convertRoad part-------------");
 					System.out.println("convertRoad(2466.06, 7243.26, false, 'ignoring'))");
 					System.out.println(conn.do_job_get(Simulation.convertRoad(2466.06, 7243.26, false, "ignoring")));
 					System.out.println("-----------------------------");
-					*/
+					
 				
 					
 					/*

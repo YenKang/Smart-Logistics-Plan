@@ -49,6 +49,7 @@ import de.uniluebeck.itm.tcpip.Storage;
 import de.tudresden.ws.container.SumoTLSPhase;
 import de.tudresden.ws.container.SumoTLSController;
 import de.tudresden.ws.container.SumoStage;
+import de.tudresden.ws.container.SumoPositionRoadMap;
 
 /**
  * 
@@ -80,6 +81,7 @@ public class CommandProcessor extends Query{
 	}
 	
 	public static SumoObject read(int type, Storage s){
+		// System.out.println("line84 in CoommandProcessor.java");
 		
 		SumoObject output = null;
 		
@@ -94,6 +96,19 @@ public class CommandProcessor extends Query{
 		else if(type == Constants.TYPE_STRING){
 			output = new SumoPrimitive(s.readStringUTF8());
 		}
+		
+		
+		// my version of POSITION_ROADMAP
+		else if (type == Constants.POSITION_ROADMAP) {
+			System.out.println("line103 in CoommandProcessor.java");
+			String edgeID = s.readStringASCII();
+			
+			Byte laneIndex = (byte) s.readUnsignedByte();
+			double pos = s.readDouble();
+			output = new SumoPositionRoadMap(edgeID, laneIndex, pos);
+		}
+		
+		//
 		
 		else if(type == Constants.POSITION_2D){
 			double lon = s.readDouble();
@@ -388,18 +403,15 @@ public class CommandProcessor extends Query{
 			output = new SumoPrimitive(s.readUnsignedByte());
 		  }
 		
-		else if(type == Constants.POSITION_ROADMAP){
-			System.out.println("type == Constants.POSITION_ROADMAP in line383 at SumoCommand.java");
-		}
-		
-		System.out.println("before output");
+	
+
 		
 		return output;
 	}
 	
 	public synchronized Object do_job_get(SumoCommand sc) throws IOException{
 		
-		
+		// System.out.println("after verify in line413 at CommandProcessor.java");
 		Object output = null;
 		
 		ResponseContainer rc = queryAndVerifySingle(sc.cmd);
@@ -411,23 +423,17 @@ public class CommandProcessor extends Query{
 
 		verify("", sc.output_type, (int)resp.content().readUnsignedByte());
 		
-		// System.out.println("after verify in line407 at CommandProcessor.java");
+		// System.out.println("after verify in line425 at CommandProcessor.java");
 
 		
 		if(sc.output_type == Constants.TYPE_INTEGER){
 			output = resp.content().readInt();
 		}
-		
-		//
-		else if(sc.output_type == Constants.POSITION_ROADMAP) {
-			System.out.println("I'm in sc.output_type=POSITION_ROADMAP in line401");
-			
-		}
-		
+	
+	
 		else if(sc.output_type == Constants.TYPE_DOUBLE){
 			output = resp.content().readDouble();
 			System.out.println("hi");
-
 		}
 		
 		else if(sc.output_type == Constants.TYPE_STRING){
@@ -439,6 +445,19 @@ public class CommandProcessor extends Query{
 			double y = resp.content().readDouble();
 			output = new SumoPosition2D(x,y);
 		}
+		
+		//
+		else if(sc.output_type == Constants.POSITION_ROADMAP) {
+			System.out.println("I'm in sc.output_type=POSITION_ROADMAP in 450");
+			
+			String edgeID = resp.content().readStringASCII();
+			Byte laneIndex = (byte)resp.content().readUnsignedByte();
+			double pos = resp.content().readDouble();
+			output = new SumoPositionRoadMap(edgeID, laneIndex, pos);
+		}
+		
+		//
+		
 		
 		else if(sc.output_type == Constants.POSITION_3D){
 			double x = resp.content().readDouble();
