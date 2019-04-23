@@ -49,6 +49,10 @@ public class Main {
 				
 				
 				if(i%1000==0) {
+					
+					
+					
+					
 					//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
 					System.out.println("position of car flow0.0");
 					System.out.println(conn.do_job_get(Vehicle.getPosition("flow0.0")));
@@ -61,6 +65,7 @@ public class Main {
 					
 					System.out.println("position of car flow0.0");
 					System.out.println(conn.do_job_get(Vehicle.getPosition("flow0.0")));
+	
 					
 					
 					/*
@@ -98,7 +103,7 @@ public class Main {
 					*/
 				
 					
-					
+					/*
 					// getDistance2D & getDistanceRoad
 					System.out.println("-------getDistance2D--------");
 					// System.out.println(conn.do_job_get(Simulation.getDistance2D(3414.680, 5591.166, 2466.06, 2466.06, false, false)));
@@ -109,7 +114,6 @@ public class Main {
 					double startPosY = 5207.22;
 					double endPosX = 2052.75;
 					double endPosY = 6295.79;
-					
 					double startLon = 120.227524;
 					double startLat = 22.982570;
 					double endLon = 120.207748;
@@ -117,20 +121,17 @@ public class Main {
 					
 					// System.out.println(conn.do_job_get(Simulation.getDistance2D(3414.680, 5591.166, 2466.06, 2466.06, false, false)));
 					
-					
 					System.out.println("-------The Distance of non-geo in isdriving condition--------");
 					System.out.println(conn.do_job_get(Simulation.getDistance2D(startPosX, startPosY, endPosX, endPosY, false, true)));
 					System.out.println("-------The Distance of non-geo in non-isdriving condition--------");
 					System.out.println(conn.do_job_get(Simulation.getDistance2D(startPosX, startPosY, endPosX, endPosY, false, false)));
-					
 					System.out.println("-------The Distance of [geo] in isdriving condition--------");
+					*/
 					
-					
-
+					/*
 					//System.out.println(conn.do_job_get(Simulation.getDistance2D(startLon, startLat, endLon, endLat, true, false)));
 
 					System.out.println("------------------getDistanceRoad-----------------------");
-					
 					String startEdgeId = "307244665#2";
 					String endEdgeId = "496332196#1";
 					double pos1 = 0.0;
@@ -139,9 +140,9 @@ public class Main {
 					System.out.println(conn.do_job_get(Simulation.getDistanceRoad(startEdgeId, pos1, endEdgeId, pos2, false)));
 					System.out.println("-------The [air] Distance of [startEdge to endEdge] --------");
 					System.out.println(conn.do_job_get(Simulation.getDistanceRoad(startEdgeId, pos1, endEdgeId, pos2, true)));
+					*/
 					
-					
-					/*  findRoute 
+					// findRoute 
 					System.out.println("---------------findRoute-----------------");
 					String fromEdge = "307244665#2";
 				    String toEdge = "496332196#1";
@@ -149,7 +150,7 @@ public class Main {
 				    double depart = 40;
 				    int routingMode = 0;
 					System.out.println(conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart, routingMode)));
-					*/
+					
 				}
 				
 				if(timeSeconds==60) {
