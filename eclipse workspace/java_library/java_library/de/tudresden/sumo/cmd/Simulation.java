@@ -379,6 +379,7 @@ public class Simulation {
 				new SumoPosition2D(x2, y2), 
 				isGeo, 
 				isDriving};
+		
 		return new SumoCommand(
 				Constants.CMD_GET_SIM_VARIABLE, 
 				Constants.DISTANCE_REQUEST, 

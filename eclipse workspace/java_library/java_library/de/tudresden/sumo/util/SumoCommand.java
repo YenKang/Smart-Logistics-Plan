@@ -443,8 +443,7 @@ public class SumoCommand {
 		cmd.content().writeStringASCII("");
 		
 		if((Integer) input1 == Constants.CMD_GET_SIM_VARIABLE 
-			&& (Integer) input2 == Constants.DISTANCE_REQUEST 
-			&& array.length == 4)
+			&& (Integer) input2 == Constants.DISTANCE_REQUEST && array.length == 4)
 		{
 			
 			cmd.content().writeUnsignedByte(Constants.TYPE_COMPOUND);
@@ -453,20 +452,41 @@ public class SumoCommand {
 			boolean isGeo = (boolean) array[2];
 			boolean isDriving = (boolean) array[3];
 			
-			if(!isGeo){this.cmd.content().writeUnsignedByte(Constants.POSITION_2D);}
-			else{this.cmd.content().writeUnsignedByte(Constants.POSITION_LON_LAT);}
+			if(!isGeo){
+				System.out.println("Constants.POSITION_2D");		
+				this.cmd.content().writeUnsignedByte(Constants.POSITION_2D);
+			}
+			
+			else{
+				System.out.println("Constants.POSITION_LON_LAT");				
+				this.cmd.content().writeUnsignedByte(Constants.POSITION_LON_LAT);
+			}
+			
+			System.out.println("array[0]:"+ array[0]);
 
 			add_variable(array[0]);
 
-			if(!isGeo){this.cmd.content().writeUnsignedByte(Constants.POSITION_2D);}
-			else{this.cmd.content().writeUnsignedByte(Constants.POSITION_LON_LAT);}
+			if(!isGeo){
+				this.cmd.content().writeUnsignedByte(Constants.POSITION_2D);
+			}
 			
+			else{
+				System.out.println("Constants.POSITION_LON_LAT");	
+				this.cmd.content().writeUnsignedByte(Constants.POSITION_LON_LAT);
+			}
+			System.out.println("array[1]"+ array[1]);
 			add_variable(array[1]);
 
-			if(isDriving){this.cmd.content().writeUnsignedByte(Constants.REQUEST_DRIVINGDIST);}
-			else{this.cmd.content().writeUnsignedByte(Constants.REQUEST_AIRDIST);}
+			if(isDriving){
+				this.cmd.content().writeUnsignedByte(Constants.REQUEST_DRIVINGDIST);
+			}
+			else{
+				 this.cmd.content().writeUnsignedByte(Constants.REQUEST_AIRDIST);
+				//this.cmd.content().writeUnsignedByte(Constants.DISTANCE_REQUEST);
+			}
 			
 		}
+		
 		else if ((Integer) input1 == Constants.CMD_GET_SIM_VARIABLE 
 				&& (Integer) input2 == Constants.DISTANCE_REQUEST 
 				&& array.length == 5)
@@ -493,7 +513,7 @@ public class SumoCommand {
 			
 			if(isDriving){
 				this.cmd.content().writeUnsignedByte(Constants.REQUEST_DRIVINGDIST);
-				}
+			}
 			else{
 				this.cmd.content().writeUnsignedByte(Constants.REQUEST_AIRDIST);
 			}

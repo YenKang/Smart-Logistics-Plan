@@ -58,44 +58,47 @@ public class Main {
 				
 				System.out.println("timeSeconds:"+ timeSeconds);
 				if(timeSeconds%1==0) {
+					
 					System.out.println("position of car flow0.0");
 					System.out.println(conn.do_job_get(Vehicle.getPosition("flow0.0")));
 					
 					
+					/*
 					System.out.println("------------convertGeo part-------------");
 					System.out.println(conn.do_job_get(Simulation.convertGeo(3414.680, 5591.166, false )));// (x,y)=(3414.680, 5591.166)
 					System.out.println(conn.do_job_get(Simulation.convertGeo(2466.06, 7243.26, false ))); // (x,y)=(2466.06, 2466.06)
 					System.out.println(conn.do_job_get(Simulation.convertGeo(120.21160060972538, 23.000667974700477, true ))); //
-					
 					System.out.println("----------*******-------------");
+					*/
 					
 					
-					
-					
+					/*
 					System.out.println("------------convert2D part-------------");
 					System.out.println("convert2D('307244665#2', 3.6605540809902037, (byte)0, false)");
 					System.out.println(conn.do_job_get(Simulation.convert2D("307244665#2",  3.6605540809902037, (byte)0, false)));
 					System.out.println("convert2D('303466841', 0.0, (byte)0, true)");
 					System.out.println(conn.do_job_get(Simulation.convert2D("307244665#2",  3.6605540809902037, (byte)0, true)));
-					
+					*/
 			
-					
+					/*
 					System.out.println("------------convertRoad part-------------");
 					System.out.println("convertRoad(2466.06, 7243.26, false, 'ignoring'))");
 					System.out.println(conn.do_job_get(Simulation.convertRoad(2466.06, 7243.26, false, "ignoring")));
 					Object j = conn.do_job_get(Simulation.convertRoad(2466.06, 7243.26, false, "ignoring"));
 					System.out.println(j);
+					*/
 					
+					/*
 					System.out.println("convertRoad(4061.28, 5207.22, false, 'ignoring'))");
 					System.out.println(conn.do_job_get(Simulation.convertRoad(4061.28, 5207.22, false, "ignoring")));
 					System.out.println("-----------------------------");
 					
 					System.out.println("convertRoad(120.227524, 22.982570, true, 'ignoring'))");
 					System.out.println(conn.do_job_get(Simulation.convertRoad(120.227524, 22.982570, true, "ignoring")));
-					
+					*/
 				
 					
-					/*
+					
 					// getDistance2D & getDistanceRoad
 					System.out.println("-------getDistance2D--------");
 					// System.out.println(conn.do_job_get(Simulation.getDistance2D(3414.680, 5591.166, 2466.06, 2466.06, false, false)));
@@ -111,24 +114,22 @@ public class Main {
 					double startLat = 22.982570;
 					double endLon = 120.207748;
 					double endLat = 22.992048;
-					*/
-					
-					
 					
 					// System.out.println(conn.do_job_get(Simulation.getDistance2D(3414.680, 5591.166, 2466.06, 2466.06, false, false)));
 					
-					/*
+					
 					System.out.println("-------The Distance of non-geo in isdriving condition--------");
 					System.out.println(conn.do_job_get(Simulation.getDistance2D(startPosX, startPosY, endPosX, endPosY, false, true)));
 					System.out.println("-------The Distance of non-geo in non-isdriving condition--------");
 					System.out.println(conn.do_job_get(Simulation.getDistance2D(startPosX, startPosY, endPosX, endPosY, false, false)));
-					*/
 					
-					/*
 					System.out.println("-------The Distance of [geo] in isdriving condition--------");
-					System.out.println(conn.do_job_get(Simulation.getDistance2D(startLon, startLat, endLon, endLat, true, false)));
+					
+					
 
-					System.out.println("-----------------------------------------------------");
+					//System.out.println(conn.do_job_get(Simulation.getDistance2D(startLon, startLat, endLon, endLat, true, false)));
+
+					System.out.println("------------------getDistanceRoad-----------------------");
 					
 					String startEdgeId = "307244665#2";
 					String endEdgeId = "496332196#1";
@@ -138,7 +139,7 @@ public class Main {
 					System.out.println(conn.do_job_get(Simulation.getDistanceRoad(startEdgeId, pos1, endEdgeId, pos2, false)));
 					System.out.println("-------The [air] Distance of [startEdge to endEdge] --------");
 					System.out.println(conn.do_job_get(Simulation.getDistanceRoad(startEdgeId, pos1, endEdgeId, pos2, true)));
-					*/
+					
 					
 					/*  findRoute 
 					System.out.println("---------------findRoute-----------------");

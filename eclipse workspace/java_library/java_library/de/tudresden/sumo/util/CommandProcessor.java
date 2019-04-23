@@ -433,7 +433,6 @@ public class CommandProcessor extends Query{
 	
 		else if(sc.output_type == Constants.TYPE_DOUBLE){
 			output = resp.content().readDouble();
-			System.out.println("hi");
 		}
 		
 		else if(sc.output_type == Constants.TYPE_STRING){
