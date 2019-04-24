@@ -518,7 +518,7 @@ public class Simulation {
 	 */
 	public static SumoCommand findRoute(String fromEdge, String toEdge, String vType, 
 			double depart, int routingMode){
-		System.out.println("line520 in Simulation");
+	
 		Object[] array = new Object[]{fromEdge, toEdge, vType, depart, routingMode};
 		return new SumoCommand(
 				Constants.CMD_GET_SIM_VARIABLE, 

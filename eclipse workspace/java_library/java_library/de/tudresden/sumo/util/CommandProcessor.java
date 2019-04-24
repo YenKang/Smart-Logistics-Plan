@@ -410,10 +410,10 @@ public class CommandProcessor extends Query{
 	}
 	
 	public synchronized Object do_job_get(SumoCommand sc) throws IOException{
-		System.out.println("line413 at CommandProcessor.java");
+		
 		Object output = null;
 		
-		System.out.println("line416 at CommandProcessor.java");
+		
 		ResponseContainer rc = queryAndVerifySingle(sc.cmd);
 		System.out.println("line417 at CommandProcessor.java");
 		
@@ -425,8 +425,7 @@ public class CommandProcessor extends Query{
 
 		verify("", sc.output_type, (int)resp.content().readUnsignedByte());
 		
-		System.out.println("after verify in line427 at CommandProcessor.java");
-
+		
 		
 		if(sc.output_type == Constants.TYPE_INTEGER){
 			output = resp.content().readInt();
@@ -502,38 +501,30 @@ public class CommandProcessor extends Query{
 			
 			
 			//decision making
-			if(sc.input2 == Constants.TL_CONTROLLED_LINKS){
+			if(sc.input2 == Constants.TL_CONTROLLED_LINKS)
+			{
 				
 				SumoLinkList sll = new SumoLinkList();
-				
 				//read length
 				resp.content().readUnsignedByte();
 				resp.content().readInt();
-				
 				int laenge = resp.content().readInt();
 				obj = new StringList[laenge];
 				
 				for(int i=0; i<laenge; i++){
-				
 					resp.content().readUnsignedByte();
 					int anzahl = resp.content().readInt();
-					
-					for(int i1=0; i1<anzahl; i1++){
-						
+					for(int i1=0; i1<anzahl; i1++)
+					{
 						resp.content().readUnsignedByte();
 						resp.content().readInt(); //length
-						
 						String from = resp.content().readStringASCII();
 						String to = resp.content().readStringASCII();
 						String over = resp.content().readStringASCII();
 						sll.add(new SumoLink(from, to, over));
-						
 					}
-					
 				}
-				
 				output = sll;
-			
 			}
 			
 			else if(sc.input2 == Constants.TL_COMPLETE_DEFINITION_RYG){
@@ -783,7 +774,7 @@ public class CommandProcessor extends Query{
 			}
 			
 			else if(sc.input2 == Constants.FIND_ROUTE){
-				System.out.println("line 783 in CommandProcessor.java");
+				System.out.println("line 777 in CommandProcessor.java");
 				output = readStage(resp.content());
 				
 			}

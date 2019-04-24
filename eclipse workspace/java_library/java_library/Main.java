@@ -65,17 +65,20 @@ public class Main {
 					
 					System.out.println("position of car flow0.0");
 					System.out.println(conn.do_job_get(Vehicle.getPosition("flow0.0")));
-	
 					
-					
-					/*
 					System.out.println("------------convertGeo part-------------");
 					System.out.println(conn.do_job_get(Simulation.convertGeo(3414.680, 5591.166, false )));// (x,y)=(3414.680, 5591.166)
 					System.out.println(conn.do_job_get(Simulation.convertGeo(2466.06, 7243.26, false ))); // (x,y)=(2466.06, 2466.06)
 					System.out.println(conn.do_job_get(Simulation.convertGeo(120.21160060972538, 23.000667974700477, true ))); //
-					System.out.println("----------*******-------------");
-					*/
+					System.out.println("----------*******-----------------------");
 					
+					System.out.println("---------------findRoute-----------------");
+					String fromEdge = "307244665#2";
+				    String toEdge = "496332196#1";
+				    String vType = "routeByDistance";
+				    double depart = 40.0;
+				    int routingMode = 0;
+					System.out.println(conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart, routingMode)));
 					
 					/*
 					System.out.println("------------convert2D part-------------");
@@ -142,6 +145,7 @@ public class Main {
 					System.out.println(conn.do_job_get(Simulation.getDistanceRoad(startEdgeId, pos1, endEdgeId, pos2, true)));
 					*/
 					
+					/*
 					// findRoute 
 					System.out.println("---------------findRoute-----------------");
 					String fromEdge = "307244665#2";
@@ -150,7 +154,7 @@ public class Main {
 				    double depart = 40;
 				    int routingMode = 0;
 					System.out.println(conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart, routingMode)));
-					
+					*/
 				}
 				
 				if(timeSeconds==60) {

@@ -115,26 +115,9 @@ public class SumoCommand {
 				
 				cmd.content().writeUnsignedByte(Constants.TYPE_COMPOUND);
 				
-				if((Integer) input1 == Constants.CMD_GET_SIM_VARIABLE && (Integer) input2 == Constants.FIND_ROUTE) {
-					cmd.content().writeInt(5);	
-					cmd.content().writeUnsignedByte(Constants.TYPE_STRING);
-					cmd.content().writeStringASCII((String) array[0]);
-					cmd.content().writeUnsignedByte(Constants.TYPE_STRING);
-					cmd.content().writeStringASCII((String) array[1]);
-					cmd.content().writeUnsignedByte(Constants.TYPE_STRING);
-					cmd.content().writeStringASCII((String) array[2]);
-					
-					cmd.content().writeUnsignedByte(Constants.TYPE_DOUBLE);
-					cmd.content().writeDouble((double) array[3]);
-					cmd.content().writeUnsignedByte(Constants.TYPE_INTEGER);
-					cmd.content().writeInt((Integer) array[4]);	
-					
-					System.out.println("line131 in SumoCommand.java");
-					
-				}
 				
-				if((Integer) input1 == Constants.CMD_GET_VEHICLE_VARIABLE 
-						&& (Integer) input2 == Constants.DISTANCE_REQUEST)
+				
+				if((Integer) input1 == Constants.CMD_GET_VEHICLE_VARIABLE && (Integer) input2 == Constants.DISTANCE_REQUEST)
 				{
 					
 					cmd.content().writeInt(2);	
@@ -157,29 +140,20 @@ public class SumoCommand {
 					
 				}
 	
-				else if((Integer) input1 == Constants.CMD_GET_SIM_VARIABLE && 
-						(Integer) input2 == Constants.POSITION_CONVERSION)
+				else if((Integer) input1 == Constants.CMD_GET_SIM_VARIABLE && (Integer) input2 == Constants.POSITION_CONVERSION)
 				{		
-					  
-	
 					// convertRoad array{posType, x, y, toType, vClass}
 					if( (Integer)output_type == Constants.POSITION_ROADMAP) {
-						
 						cmd.content().writeInt(2);
 						cmd.content().writeUnsignedByte((byte) array[0]); //posType
 						cmd.content().writeDouble((double) array[1]); // double x
 						cmd.content().writeDouble((double) array[2]);  //  double u
-						
 						cmd.content().writeUnsignedByte(Constants.TYPE_UBYTE); // 
 						cmd.content().writeUnsignedByte((byte) array[3]); // toType= Constants.POSITION_ROADMAP
-						
 						// cmd.content().writeUnsignedByte(Constants.TYPE_STRING); // add_type String
 						// cmd.content().writeStringASCII((String) array[4]); // String vClass
-						// System.out.println("line161 in SumoCommand.java");
-
 					}
 					
-			
 					if(array.length == 4 && (Integer)output_type != Constants.POSITION_ROADMAP ){ //convertGeo
 						cmd.content().writeInt(2);
 						cmd.content().writeUnsignedByte((byte) array[0]);
@@ -187,31 +161,44 @@ public class SumoCommand {
 						cmd.content().writeDouble((double) array[2]); 
 						cmd.content().writeUnsignedByte(Constants.TYPE_UBYTE);
 						cmd.content().writeUnsignedByte((byte) array[3]);
-
 					}
 									
 					else if (array.length == 5  && (Integer)output_type != Constants.POSITION_ROADMAP) { // convert2D
 						cmd.content().writeInt(2);
 						cmd.content().writeUnsignedByte((byte) array[0]); // byte fromType	
-						
 						cmd.content().writeStringASCII((String) array[1]); // String edgeID
 						cmd.content().writeDouble((double) array[2]);      // double pos 
 						cmd.content().writeUnsignedByte((byte) array[3]); // byte landeIndex
-						
 						cmd.content().writeUnsignedByte(Constants.TYPE_UBYTE); 
 						cmd.content().writeUnsignedByte((byte) array[4]);	// 	byte posType
 					}
-					
-						
 				}
+				
+				// Constants.FIND_ROUTE
+				else if((Integer) input1 == Constants.CMD_GET_SIM_VARIABLE && (Integer) input2 == Constants.FIND_ROUTE) {
+						cmd.content().writeInt(5);	
+						cmd.content().writeUnsignedByte(Constants.TYPE_STRING);
+						cmd.content().writeStringASCII((String) array[0]);
+						cmd.content().writeUnsignedByte(Constants.TYPE_STRING);
+						cmd.content().writeStringASCII((String) array[1]);
+						cmd.content().writeUnsignedByte(Constants.TYPE_STRING);
+						cmd.content().writeStringASCII((String) array[2]);
+						cmd.content().writeUnsignedByte(Constants.TYPE_DOUBLE);
+						cmd.content().writeDouble((double) array[3]);
+						cmd.content().writeUnsignedByte(Constants.TYPE_INTEGER);
+						cmd.content().writeInt((Integer) array[4]);	
+						
+						System.out.println("line131 in SumoCommand.java");
+					}
 	
 				else
 				{	
 					cmd.content().writeInt(array.length);	
-					
+					System.out.println("line201 in SumoCommand.java");
 					for(int i=0; i<array.length; i++){
 						add_type(array[i]);
 						add_variable(array[i]);
+						
 					}
 				}
 			}
@@ -229,7 +216,6 @@ public class SumoCommand {
 			this.raw.add(response);
 			this.raw.add(output_type);
 			System.out.println("line231 in SumoCommand.java");
-			
 	}
 		
 	public SumoCommand(Object input1, Object input3){
