@@ -516,7 +516,9 @@ public class Simulation {
 	 * @param routingMode routing mode
 	 * @return the route
 	 */
-	public static SumoCommand findRoute(String fromEdge, String toEdge, String vType, double depart, int routingMode){
+	public static SumoCommand findRoute(String fromEdge, String toEdge, String vType, 
+			double depart, int routingMode){
+		System.out.println("line520 in Simulation");
 		Object[] array = new Object[]{fromEdge, toEdge, vType, depart, routingMode};
 		return new SumoCommand(
 				Constants.CMD_GET_SIM_VARIABLE, 
@@ -547,7 +549,10 @@ public class Simulation {
 	public static SumoCommand findIntermodalRoute(String fromEdge, String toEdge, String modes, double depart, int routingMode, 
 												double speed, double walkingFactor, double departPos, double arrivalPos, double departPosLat, String pType, String vType, String destStop){
 		Object[] array = new Object[]{fromEdge, toEdge, modes, depart, routingMode, speed, walkingFactor, departPos, arrivalPos, departPosLat, pType, vType, destStop};
-		return new SumoCommand(Constants.CMD_GET_SIM_VARIABLE, Constants.FIND_INTERMODAL_ROUTE, "", array, Constants.RESPONSE_GET_SIM_VARIABLE, Constants.TYPE_COMPOUND);
+		return new SumoCommand(Constants.CMD_GET_SIM_VARIABLE, 
+				Constants.FIND_INTERMODAL_ROUTE, 
+				"", array, 
+				Constants.RESPONSE_GET_SIM_VARIABLE, Constants.TYPE_COMPOUND);
 	}
 	
 }

@@ -98,8 +98,7 @@ public class SumoCommand {
 		}
 	
 
-	public SumoCommand(Object input1, Object input2, Object input3, 
-			Object[] array, Object response, Object output_type){
+	public SumoCommand(Object input1, Object input2, Object input3, Object[] array, Object response, Object output_type){
 			
 			this.cmd = new Command((Integer) input1);
 			cmd.content().writeUnsignedByte((Integer) input2);
@@ -115,6 +114,24 @@ public class SumoCommand {
 			{
 				
 				cmd.content().writeUnsignedByte(Constants.TYPE_COMPOUND);
+				
+				if((Integer) input1 == Constants.CMD_GET_SIM_VARIABLE && (Integer) input2 == Constants.FIND_ROUTE) {
+					cmd.content().writeInt(5);	
+					cmd.content().writeUnsignedByte(Constants.TYPE_STRING);
+					cmd.content().writeStringASCII((String) array[0]);
+					cmd.content().writeUnsignedByte(Constants.TYPE_STRING);
+					cmd.content().writeStringASCII((String) array[1]);
+					cmd.content().writeUnsignedByte(Constants.TYPE_STRING);
+					cmd.content().writeStringASCII((String) array[2]);
+					
+					cmd.content().writeUnsignedByte(Constants.TYPE_DOUBLE);
+					cmd.content().writeDouble((double) array[3]);
+					cmd.content().writeUnsignedByte(Constants.TYPE_INTEGER);
+					cmd.content().writeInt((Integer) array[4]);	
+					
+					System.out.println("line131 in SumoCommand.java");
+					
+				}
 				
 				if((Integer) input1 == Constants.CMD_GET_VEHICLE_VARIABLE 
 						&& (Integer) input2 == Constants.DISTANCE_REQUEST)
@@ -211,7 +228,7 @@ public class SumoCommand {
 			this.raw.add(input3);
 			this.raw.add(response);
 			this.raw.add(output_type);
-	
+			System.out.println("line231 in SumoCommand.java");
 			
 	}
 		
@@ -432,8 +449,7 @@ public class SumoCommand {
 		
 	}
 	
-	public SumoCommand(Object input1, Object input2, Object[] array, 
-			Object response, Object output_type){
+	public SumoCommand(Object input1, Object input2, Object[] array, Object response, Object output_type){
 	
 		this.cmd = new Command((Integer) input1);
 		this.input1=(Integer) input1;

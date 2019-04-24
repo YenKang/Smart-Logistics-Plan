@@ -410,20 +410,22 @@ public class CommandProcessor extends Query{
 	}
 	
 	public synchronized Object do_job_get(SumoCommand sc) throws IOException{
-		
-		// System.out.println("after verify in line413 at CommandProcessor.java");
+		System.out.println("line413 at CommandProcessor.java");
 		Object output = null;
 		
+		System.out.println("line416 at CommandProcessor.java");
 		ResponseContainer rc = queryAndVerifySingle(sc.cmd);
+		System.out.println("line417 at CommandProcessor.java");
 		
 		Command resp = rc.getResponse();
+		System.out.println("line420 at CommandProcessor.java");
 		
 		verifyGetVarResponse(resp, sc.response, sc.input2, sc.input3);
-	
+		System.out.println("line423 at CommandProcessor.java");
 
 		verify("", sc.output_type, (int)resp.content().readUnsignedByte());
 		
-		// System.out.println("after verify in line425 at CommandProcessor.java");
+		System.out.println("after verify in line427 at CommandProcessor.java");
 
 		
 		if(sc.output_type == Constants.TYPE_INTEGER){
@@ -494,7 +496,10 @@ public class CommandProcessor extends Query{
 		else if(sc.output_type == Constants.TYPE_COMPOUND)
 		{
 			
+			System.out.println("sc.output_type == Constants.TYPE_COMPOUND in line of 497");
+			
 			Object[] obj = null;
+			
 			
 			//decision making
 			if(sc.input2 == Constants.TL_CONTROLLED_LINKS){
@@ -778,7 +783,7 @@ public class CommandProcessor extends Query{
 			}
 			
 			else if(sc.input2 == Constants.FIND_ROUTE){
-				
+				System.out.println("line 783 in CommandProcessor.java");
 				output = readStage(resp.content());
 				
 			}
