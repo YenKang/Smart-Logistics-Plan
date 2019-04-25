@@ -577,7 +577,12 @@ public class Vehicle {
 	 */
 
 	public static SumoCommand getRoadID(String vehID){
-		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, Constants.VAR_ROAD_ID, vehID, Constants.RESPONSE_GET_VEHICLE_VARIABLE, Constants.TYPE_STRING);
+		return new SumoCommand(
+				Constants.CMD_GET_VEHICLE_VARIABLE, 
+				Constants.VAR_ROAD_ID, 
+				vehID, 
+				Constants.RESPONSE_GET_VEHICLE_VARIABLE, 
+				Constants.TYPE_STRING);
 	}
 
 	/**
@@ -587,7 +592,13 @@ public class Vehicle {
 	 */
 
 	public static SumoCommand getRoute(String vehID){
-		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, Constants.VAR_EDGES, vehID, Constants.RESPONSE_GET_VEHICLE_VARIABLE, Constants.TYPE_STRINGLIST);
+		System.out.println("line590 in Vehicle.java");
+		return new SumoCommand(
+				Constants.CMD_GET_VEHICLE_VARIABLE, 
+				Constants.VAR_EDGES, 
+				vehID, 
+				Constants.RESPONSE_GET_VEHICLE_VARIABLE, 
+				Constants.TYPE_STRINGLIST);
 	}
 
 	/**
@@ -660,7 +671,12 @@ public class Vehicle {
 	 */
 
 	public static SumoCommand getSpeed(String vehID){
-		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, Constants.VAR_SPEED, vehID, Constants.RESPONSE_GET_VEHICLE_VARIABLE, Constants.TYPE_DOUBLE);
+		return new SumoCommand(
+				Constants.CMD_GET_VEHICLE_VARIABLE, 
+				Constants.VAR_SPEED, 
+				vehID, 
+				Constants.RESPONSE_GET_VEHICLE_VARIABLE, 
+				Constants.TYPE_DOUBLE);
 	}
 
 	/**

@@ -415,14 +415,13 @@ public class CommandProcessor extends Query{
 		
 		
 		ResponseContainer rc = queryAndVerifySingle(sc.cmd);
-		System.out.println("line417 at CommandProcessor.java");
+		
 		
 		Command resp = rc.getResponse();
-		System.out.println("line420 at CommandProcessor.java");
+		
 		
 		verifyGetVarResponse(resp, sc.response, sc.input2, sc.input3);
-		System.out.println("line423 at CommandProcessor.java");
-
+		
 		verify("", sc.output_type, (int)resp.content().readUnsignedByte());
 		
 		
@@ -440,7 +439,8 @@ public class CommandProcessor extends Query{
 			output = resp.content().readStringUTF8();
 		}
 		
-		else if(sc.output_type == Constants.POSITION_2D || sc.output_type == Constants.POSITION_LON_LAT){
+		else if(sc.output_type == Constants.POSITION_2D || 
+				sc.output_type == Constants.POSITION_LON_LAT){
 			double x = resp.content().readDouble();
 			double y = resp.content().readDouble();
 			output = new SumoPosition2D(x,y);
@@ -452,6 +452,7 @@ public class CommandProcessor extends Query{
 			String edgeID = resp.content().readStringASCII();
 			double pos = resp.content().readDouble();
 			int laneIndex = resp.content().readUnsignedByte();
+			
 		
 			output = new SumoPositionRoadMap(edgeID, pos, laneIndex);
 					
@@ -468,12 +469,14 @@ public class CommandProcessor extends Query{
 		}
 		
 		else if(sc.output_type == Constants.TYPE_STRINGLIST){
+			System.out.println("line472 in CommandProcessor.java");
 			
 			SumoStringList ssl = new SumoStringList();
 			int laenge = resp.content().readInt();
 			for(int i=0; i<laenge; i++){
 				ssl.add(resp.content().readStringASCII());
 			}
+			
 			output = ssl;
 		
 		}
@@ -511,7 +514,8 @@ public class CommandProcessor extends Query{
 				int laenge = resp.content().readInt();
 				obj = new StringList[laenge];
 				
-				for(int i=0; i<laenge; i++){
+				for(int i=0; i<laenge; i++)
+				{
 					resp.content().readUnsignedByte();
 					int anzahl = resp.content().readInt();
 					for(int i1=0; i1<anzahl; i1++)
@@ -775,14 +779,15 @@ public class CommandProcessor extends Query{
 			
 			else if(sc.input2 == Constants.FIND_ROUTE){
 				System.out.println("line 777 in CommandProcessor.java");
-				output = readStage(resp.content());
 				
+				output = readStage(resp.content());
 			}
 			
 			else if(sc.input2 == Constants.FIND_INTERMODAL_ROUTE){
 				
 				LinkedList<SumoStage> ll = new LinkedList<SumoStage>();
 				int l = resp.content().readInt();
+				
 				for(int i1=0; i1<l; i1++) {
                     resp.content().readUnsignedByte(); // type compound
                     ll.add(readStage(resp.content()));
@@ -838,13 +843,8 @@ public class CommandProcessor extends Query{
 			
 		}
 		
-		
-
-	
 		return output;
 		
-	
-
 	}
 
 	protected static String verifyGetVarResponse(Command resp, int commandID, int variable, String objectID) throws UnexpectedData {
@@ -858,13 +858,17 @@ public class CommandProcessor extends Query{
 	}
 
     public static SumoStage readStage(Storage content){
-        SumoStage result = new SumoStage();
+    	System.out.println("line861 in CommandProcessor.java");
+    	
+    	SumoStage result = new SumoStage();
         content.readInt(); // Component (13)
+        
         content.readUnsignedByte();
         result.type = content.readInt();
 
-        int b2 = content.readUnsignedByte();
+        content.readUnsignedByte();
         result.vType = content.readStringASCII();
+        
         content.readUnsignedByte();
         result.line = content.readStringASCII();
         content.readUnsignedByte();
@@ -872,6 +876,7 @@ public class CommandProcessor extends Query{
         content.readUnsignedByte();
 
         int size = content.readInt(); // number of edges
+        
         for(int i=0; i<size; i++){
             result.edges.add(content.readStringASCII());
         }
@@ -892,7 +897,8 @@ public class CommandProcessor extends Query{
         result.arrivalPos = content.readDouble();
         content.readUnsignedByte();
         result.description = content.readStringASCII();
-        return result;
+        
+        return result; 
     }
 	
 }

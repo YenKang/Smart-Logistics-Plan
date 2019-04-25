@@ -19,9 +19,11 @@
 import it.polito.appeal.traci.SumoTraciConnection;
 import de.tudresden.sumo.cmd.Simulation;
 import de.tudresden.sumo.cmd.Vehicle;
+
+import java.util.LinkedList;
+
 import de.tudresden.sumo.cmd.Inductionloop;
 import de.tudresden.sumo.cmd.Trafficlight;
-import de.tudresden.ws.container.SumoVehicleData;
 import de.tudresden.ws.container.*;
 
 public class Main {
@@ -64,13 +66,21 @@ public class Main {
 				if(timeSeconds%1==0) {
 					
 					System.out.println("position of car flow0.0");
-					System.out.println(conn.do_job_get(Vehicle.getPosition("flow0.0")));
+					//System.out.println(conn.do_job_get(Vehicle.getPosition("flow0.0")));
+					//System.out.println(conn.do_job_get(Vehicle.getSpeed("flow0.0")));
 					
+					System.out.println("getRoute('flow0.0')");
+					SumoStringList K= (SumoStringList) conn.do_job_get(Vehicle.getRoute("flow0.0"));
+					//String asd[] = K
+					System.out.println(K.get(2));
+					
+					/*
 					System.out.println("------------convertGeo part-------------");
 					System.out.println(conn.do_job_get(Simulation.convertGeo(3414.680, 5591.166, false )));// (x,y)=(3414.680, 5591.166)
 					System.out.println(conn.do_job_get(Simulation.convertGeo(2466.06, 7243.26, false ))); // (x,y)=(2466.06, 2466.06)
 					System.out.println(conn.do_job_get(Simulation.convertGeo(120.21160060972538, 23.000667974700477, true ))); //
 					System.out.println("----------*******-----------------------");
+					*/
 					
 					System.out.println("---------------findRoute-----------------");
 					String fromEdge = "307244665#2";
@@ -78,7 +88,14 @@ public class Main {
 				    String vType = "routeByDistance";
 				    double depart = 40.0;
 				    int routingMode = 0;
-					System.out.println(conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart, routingMode)));
+					//System.out.println(conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart, routingMode)));
+				    SumoStage KKK = (SumoStage) conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart, routingMode));
+				    System.out.println(KKK.edges);
+				    
+				    
+				    // SumoStringList KKKK = KKK.edges;
+				    // System.out.println(KKKK.get(0));
+				    //conn.do_job_get(Simulation.findIntermodalRoute(fromEdge, toEdge, modes, depart, routingMode, speed, walkingFactor, departPos, arrivalPos, departPosLat, pType, vType, destStop));
 					
 					/*
 					System.out.println("------------convert2D part-------------");

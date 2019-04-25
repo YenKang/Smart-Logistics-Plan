@@ -39,7 +39,9 @@ public class Vehicletype {
 	 * @return acceleration
 	 */
 	public static SumoCommand getAccel(String typeID){
-		return new SumoCommand(Constants.CMD_GET_VEHICLETYPE_VARIABLE, Constants.VAR_ACCEL, typeID, Constants.RESPONSE_GET_VEHICLETYPE_VARIABLE, Constants.TYPE_DOUBLE);
+		return new SumoCommand(Constants.CMD_GET_VEHICLETYPE_VARIABLE, 
+			Constants.VAR_ACCEL, 
+			typeID, Constants.RESPONSE_GET_VEHICLETYPE_VARIABLE, Constants.TYPE_DOUBLE);
 	}
 
 	/**
