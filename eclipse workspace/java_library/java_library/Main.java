@@ -58,7 +58,11 @@ public class Main {
 			    int routingMode = 0;
 				//System.out.println(conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart, routingMode)));
 			    SumoStage stage = (SumoStage) conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart, routingMode));
-			    System.out.println(stage.edges);
+			    System.out.println("findRoute result stage:");
+	            for (String s : stage.edges) {
+	                System.out.println("  " + s);
+	            }
+				
 				
 		
 				
@@ -75,8 +79,8 @@ public class Main {
 				if(timeSeconds%1==0) {
 					
 					System.out.println("position of car flow0.0");
-					//System.out.println(conn.do_job_get(Vehicle.getPosition("flow0.0")));
-					//System.out.println(conn.do_job_get(Vehicle.getSpeed("flow0.0")));
+					System.out.println(conn.do_job_get(Vehicle.getPosition("flow0.0")));
+					System.out.println(conn.do_job_get(Vehicle.getSpeed("flow0.0")));
 					
 					/*
 					System.out.println("getRoute('flow0.0')");
@@ -117,13 +121,13 @@ public class Main {
 					System.out.println(conn.do_job_get(Simulation.convert2D("307244665#2",  3.6605540809902037, (byte)0, true)));
 					*/
 			
-					/*
+					
 					System.out.println("------------convertRoad part-------------");
 					System.out.println("convertRoad(2466.06, 7243.26, false, 'ignoring'))");
 					System.out.println(conn.do_job_get(Simulation.convertRoad(2466.06, 7243.26, false, "ignoring")));
 					Object j = conn.do_job_get(Simulation.convertRoad(2466.06, 7243.26, false, "ignoring"));
 					System.out.println(j);
-					*/
+					
 					
 					/*
 					System.out.println("convertRoad(4061.28, 5207.22, false, 'ignoring'))");

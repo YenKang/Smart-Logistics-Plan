@@ -55,15 +55,15 @@ public class APITest {
 			conn.runServer();
             conn.setOrder(1);
             
-            /*
+            
             SumoStage stage = (SumoStage)conn.do_job_get(Simulation.findRoute("gneE0", "gneE2", "car", 0, 0));
             System.out.println("findRoute result stage:");
             for (String s : stage.edges) {
                 System.out.println("  " + s);
             }
-            */
             
             
+            /*
             LinkedList<SumoStage> stages = (LinkedList<SumoStage>)conn.do_job_get(Simulation.findIntermodalRoute(
             		"gneE0", "gneE2", "", 0, 0,
                         1.5, 1, 50, 50, 0, "", "", ""));
@@ -75,6 +75,7 @@ public class APITest {
                 }
 			
             }
+            */
             
             /*
             
