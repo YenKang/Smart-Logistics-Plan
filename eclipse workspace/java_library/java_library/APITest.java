@@ -38,7 +38,7 @@ import de.tudresden.ws.container.SumoTLSProgram;
 
 public class APITest {
 
-	static String sumo_bin = "sumo";
+	static String sumo_bin = "sumo-gui";
 	static String config_file = "simulation/config.sumo.cfg";
 	static double step_length = 1.0;		
 
@@ -54,14 +54,20 @@ public class APITest {
 			//start Traci Server
 			conn.runServer();
             conn.setOrder(1);
-
+            
+            /*
             SumoStage stage = (SumoStage)conn.do_job_get(Simulation.findRoute("gneE0", "gneE2", "car", 0, 0));
             System.out.println("findRoute result stage:");
             for (String s : stage.edges) {
                 System.out.println("  " + s);
             }
-            LinkedList<SumoStage> stages = (LinkedList<SumoStage>)conn.do_job_get(Simulation.findIntermodalRoute("gneE0", "gneE2", "", 0, 0,
+            */
+            
+            
+            LinkedList<SumoStage> stages = (LinkedList<SumoStage>)conn.do_job_get(Simulation.findIntermodalRoute(
+            		"gneE0", "gneE2", "", 0, 0,
                         1.5, 1, 50, 50, 0, "", "", ""));
+            
             System.out.println("findIntermodalRoute result stages:");
             for (SumoStage s2 : stages) {
                 for (String s : s2.edges) {
@@ -69,6 +75,9 @@ public class APITest {
                 }
 			
             }
+            
+            /*
+            
 			for(int i=0; i<36; i++){
 			
 				conn.do_timestep();
@@ -128,7 +137,8 @@ public class APITest {
 
             System.out.println("Trafficlight.getPhaseDuration: " + (double)conn.do_job_get(Trafficlight.getPhaseDuration("gneJ1")));
             System.out.println("Trafficlight.getNextSwitch: " + (double)conn.do_job_get(Trafficlight.getNextSwitch("gneJ1")));
-
+			*/
+	
 			conn.close();
 			
 		}catch(Exception ex){ex.printStackTrace();}

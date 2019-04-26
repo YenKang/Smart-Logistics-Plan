@@ -81,7 +81,7 @@ public class CommandProcessor extends Query{
 	}
 	
 	public static SumoObject read(int type, Storage s){
-		// System.out.println("line84 in CoommandProcessor.java");
+		System.out.println("line84 in CoommandProcessor.java");
 		
 		SumoObject output = null;
 		
@@ -111,6 +111,8 @@ public class CommandProcessor extends Query{
 		*/
 		
 		else if(type == Constants.POSITION_2D){
+			System.out.println("type == Constants.POSITION_2D");
+			System.out.println("line115");
 			double lon = s.readDouble();
 			double lat = s.readDouble();
 			output = new SumoPosition2D(lon, lat);
@@ -453,7 +455,6 @@ public class CommandProcessor extends Query{
 			double pos = resp.content().readDouble();
 			int laneIndex = resp.content().readUnsignedByte();
 			
-		
 			output = new SumoPositionRoadMap(edgeID, pos, laneIndex);
 					
 		}
@@ -469,7 +470,7 @@ public class CommandProcessor extends Query{
 		}
 		
 		else if(sc.output_type == Constants.TYPE_STRINGLIST){
-			System.out.println("line472 in CommandProcessor.java");
+			
 			
 			SumoStringList ssl = new SumoStringList();
 			int laenge = resp.content().readInt();
@@ -778,7 +779,7 @@ public class CommandProcessor extends Query{
 			}
 			
 			else if(sc.input2 == Constants.FIND_ROUTE){
-				System.out.println("line 777 in CommandProcessor.java");
+				System.out.println("line781 in CommandProcessor.java");
 				
 				output = readStage(resp.content());
 			}
@@ -865,8 +866,8 @@ public class CommandProcessor extends Query{
         
         content.readUnsignedByte();
         result.type = content.readInt();
-
-        content.readUnsignedByte();
+        
+        int b2 = content.readUnsignedByte();
         result.vType = content.readStringASCII();
         
         content.readUnsignedByte();
@@ -874,15 +875,15 @@ public class CommandProcessor extends Query{
         content.readUnsignedByte();
         result.destStop = content.readStringASCII();
         content.readUnsignedByte();
-
+       
         int size = content.readInt(); // number of edges
-        
         for(int i=0; i<size; i++){
             result.edges.add(content.readStringASCII());
         }
-
+        
         content.readUnsignedByte();
         result.travelTime = content.readDouble();
+        
         content.readUnsignedByte();
         result.cost = content.readDouble();
         content.readUnsignedByte();

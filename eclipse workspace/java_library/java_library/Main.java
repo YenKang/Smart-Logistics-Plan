@@ -30,7 +30,7 @@ public class Main {
 
 	static String sumo_bin = "sumo-gui";
 	// static String config_file = "simulation/map.sumo.cfg";
-	static String config_file = "simulation_Tainan/map_from_flow.sumo.cfg";
+	   static String config_file = "simulation_Tainan/map_from_flow.sumo.cfg";
 	// static double step_length = 0.01; // version1
 	static double step_length = 0.01;		
 
@@ -50,10 +50,19 @@ public class Main {
 				conn.do_timestep();
 				
 				
+				
+				String fromEdge = "307244665#4";
+			    String toEdge = "31794904#2";
+			    String vType = "routeByDistance";
+			    double depart = 60.0;
+			    int routingMode = 0;
+				//System.out.println(conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart, routingMode)));
+			    SumoStage stage = (SumoStage) conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart, routingMode));
+			    System.out.println(stage.edges);
+				
+		
+				
 				if(i%1000==0) {
-					
-					
-					
 					
 					//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
 					System.out.println("position of car flow0.0");
@@ -69,10 +78,12 @@ public class Main {
 					//System.out.println(conn.do_job_get(Vehicle.getPosition("flow0.0")));
 					//System.out.println(conn.do_job_get(Vehicle.getSpeed("flow0.0")));
 					
+					/*
 					System.out.println("getRoute('flow0.0')");
 					SumoStringList K= (SumoStringList) conn.do_job_get(Vehicle.getRoute("flow0.0"));
 					//String asd[] = K
 					System.out.println(K.get(2));
+					*/
 					
 					/*
 					System.out.println("------------convertGeo part-------------");
@@ -82,16 +93,17 @@ public class Main {
 					System.out.println("----------*******-----------------------");
 					*/
 					
+					/*
 					System.out.println("---------------findRoute-----------------");
-					String fromEdge = "307244665#2";
-				    String toEdge = "496332196#1";
+					String fromEdge = "307244665#4";
+				    String toEdge = "-298597679#1";
 				    String vType = "routeByDistance";
-				    double depart = 40.0;
+				    double depart = 60.0;
 				    int routingMode = 0;
 					//System.out.println(conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart, routingMode)));
-				    SumoStage KKK = (SumoStage) conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart, routingMode));
-				    System.out.println(KKK.edges);
-				    
+				    SumoStage stage = (SumoStage) conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart, routingMode));
+				    System.out.println(stage.edges);
+				    */
 				    
 				    // SumoStringList KKKK = KKK.edges;
 				    // System.out.println(KKKK.get(0));

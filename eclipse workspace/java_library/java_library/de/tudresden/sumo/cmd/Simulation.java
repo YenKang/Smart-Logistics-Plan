@@ -529,6 +529,8 @@ public class Simulation {
 				Constants.TYPE_COMPOUND);
 	}
 	
+
+	
 	/**
 	 * findIntermodalRoute
 	 * @param fromEdge first edge

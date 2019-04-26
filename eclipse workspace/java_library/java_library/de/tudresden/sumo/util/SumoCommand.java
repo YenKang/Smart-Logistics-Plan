@@ -99,8 +99,7 @@ public class SumoCommand {
 
 	}
 
-	public SumoCommand(Object input1, Object input2, Object input3, Object[] array, Object response,
-			Object output_type) {
+	public SumoCommand(Object input1, Object input2, Object input3, Object[] array, Object response, Object output_type) {
 
 		this.cmd = new Command((Integer) input1);
 		cmd.content().writeUnsignedByte((Integer) input2);
@@ -169,6 +168,8 @@ public class SumoCommand {
 					cmd.content().writeUnsignedByte((byte) array[4]); // byte posType
 				}
 			}
+			
+			
 
 			// Constants.FIND_ROUTE
 			else if ((Integer) input1 == Constants.CMD_GET_SIM_VARIABLE && (Integer) input2 == Constants.FIND_ROUTE) {
@@ -183,9 +184,10 @@ public class SumoCommand {
 				cmd.content().writeDouble((double) array[3]);
 				cmd.content().writeUnsignedByte(Constants.TYPE_INTEGER);
 				cmd.content().writeInt((Integer) array[4]);
-
 				System.out.println("line131 in SumoCommand.java");
 			}
+			
+			
 
 			else {
 				cmd.content().writeInt(array.length);
@@ -210,7 +212,7 @@ public class SumoCommand {
 		this.raw.add(input3);
 		this.raw.add(response);
 		this.raw.add(output_type);
-		System.out.println("line231 in SumoCommand.java");
+		
 	}
 
 	public SumoCommand(Object input1, Object input3) {

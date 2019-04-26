@@ -27,7 +27,6 @@ import de.tudresden.ws.container.SumoStringList;
 
 public class SumoStage implements SumoObject {
 	
-	
 	public double type;
 	public String vType;
 	public String line;
@@ -45,6 +44,4 @@ public class SumoStage implements SumoObject {
 	public SumoStage(){ 
         edges = new SumoStringList();
     }
-	
-	
 }
