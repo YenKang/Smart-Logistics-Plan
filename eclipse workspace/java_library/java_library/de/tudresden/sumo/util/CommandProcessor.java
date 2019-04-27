@@ -499,10 +499,7 @@ public class CommandProcessor extends Query{
 		else if(sc.output_type == Constants.TYPE_COMPOUND)
 		{
 			
-			System.out.println("sc.output_type == Constants.TYPE_COMPOUND in line of 497");
-			
 			Object[] obj = null;
-			
 			
 			//decision making
 			if(sc.input2 == Constants.TL_CONTROLLED_LINKS)
@@ -778,13 +775,14 @@ public class CommandProcessor extends Query{
 				
 			}
 			
-			else if(sc.input2 == Constants.FIND_ROUTE){
-				System.out.println("line781 in CommandProcessor.java");
+			else if(sc.input2 == Constants.FIND_ROUTE)
+			{
 				
 				output = readStage(resp.content());
 			}
 			
-			else if(sc.input2 == Constants.FIND_INTERMODAL_ROUTE){
+			else if(sc.input2 == Constants.FIND_INTERMODAL_ROUTE)
+			{
 				
 				LinkedList<SumoStage> ll = new LinkedList<SumoStage>();
 				int l = resp.content().readInt();
@@ -859,7 +857,7 @@ public class CommandProcessor extends Query{
 	}
 
     public static SumoStage readStage(Storage content){
-    	System.out.println("line861 in CommandProcessor.java");
+   
     	
     	SumoStage result = new SumoStage();
         content.readInt(); // Component (13)

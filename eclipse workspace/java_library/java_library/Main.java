@@ -50,7 +50,6 @@ public class Main {
 				conn.do_timestep();
 				
 				
-				
 				String fromEdge = "307244665#4";
 			    String toEdge = "31794904#2";
 			    String vType = "routeByDistance";
@@ -58,19 +57,37 @@ public class Main {
 			    int routingMode = 0;
 				//System.out.println(conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart, routingMode)));
 			    SumoStage stage = (SumoStage) conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart, routingMode));
+			    
+			    /*
 			    System.out.println("findRoute result stage:");
 	            for (String s : stage.edges) {
 	                System.out.println("  " + s);
+	            }*/
+			    // SumoStringList list = (SumoStringList)stage.edges;
+			    
+			    System.out.println("stage:"+  stage);
+	            System.out.println("stage.edges:"+  stage.edges);
+	           
+	            System.out.println("stage.edges.get(0):"+  stage.edges.get(0));
+	            LinkedList<String> newRoute = new LinkedList<String>();
+	            
+	            for (String eadge : stage.edges) {
+	            	newRoute.add(eadge);
 	            }
-				
-				
+	            System.out.println("newRoute:"+ newRoute);
+	          
+	            
+	            //conn.do_job_srt(Vehicle.add(vehID, typeID, routeID, depart, pos, speed, lane));
+	            
+	        	conn.do_job_set(Vehicle.changeTarget("flow0.0", "160253722#1"));
 		
-				
-				if(i%1000==0) {
+
+				if(i%1==0) {
 					
 					//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
-					System.out.println("position of car flow0.0");
-					System.out.println(conn.do_job_get(Vehicle.getPosition("flow0.0")));
+					System.out.println("setRoute");
+					System.out.println(conn.do_job_get(Vehicle.getRoadID("flow0.0")));
+					// conn.do_job_set(Vehicle.setRoute("flow0.0", stage.edges));
 				}
 				
 				double timeSeconds = (double)conn.do_job_get(Simulation.getTime());
@@ -81,6 +98,7 @@ public class Main {
 					System.out.println("position of car flow0.0");
 					System.out.println(conn.do_job_get(Vehicle.getPosition("flow0.0")));
 					System.out.println(conn.do_job_get(Vehicle.getSpeed("flow0.0")));
+					
 					
 					/*
 					System.out.println("getRoute('flow0.0')");
@@ -121,13 +139,13 @@ public class Main {
 					System.out.println(conn.do_job_get(Simulation.convert2D("307244665#2",  3.6605540809902037, (byte)0, true)));
 					*/
 			
-					
+					/*
 					System.out.println("------------convertRoad part-------------");
 					System.out.println("convertRoad(2466.06, 7243.26, false, 'ignoring'))");
 					System.out.println(conn.do_job_get(Simulation.convertRoad(2466.06, 7243.26, false, "ignoring")));
 					Object j = conn.do_job_get(Simulation.convertRoad(2466.06, 7243.26, false, "ignoring"));
 					System.out.println(j);
-					
+					*/
 					
 					/*
 					System.out.println("convertRoad(4061.28, 5207.22, false, 'ignoring'))");

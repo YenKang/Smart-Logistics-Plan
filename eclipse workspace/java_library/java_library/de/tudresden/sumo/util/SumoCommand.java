@@ -53,7 +53,7 @@ public class SumoCommand {
 	// Get Statements
 	public SumoCommand(Object input1, Object input2, Object input3, Object response, Object output_type) {
 		
-		System.out.println("line56 at SumoCommand.java");
+	
 		this.cmd = new Command((Integer) input1);
 		cmd.content().writeUnsignedByte((Integer) input2);
 		cmd.content().writeStringASCII(String.valueOf(input3));
@@ -184,7 +184,7 @@ public class SumoCommand {
 				cmd.content().writeDouble((double) array[3]);
 				cmd.content().writeUnsignedByte(Constants.TYPE_INTEGER);
 				cmd.content().writeInt((Integer) array[4]);
-				System.out.println("line131 in SumoCommand.java");
+				
 			}
 			
 			
@@ -411,8 +411,6 @@ public class SumoCommand {
 	}
 
 	public SumoCommand(Object input1, Object input2, Object[] array, Object response, Object output_type) {
-		
-		System.out.println("line410 at SumoCommand.java");
 		
 		this.cmd = new Command((Integer) input1);
 		this.input1 = (Integer) input1;

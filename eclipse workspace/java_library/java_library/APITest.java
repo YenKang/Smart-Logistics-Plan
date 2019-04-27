@@ -55,13 +55,30 @@ public class APITest {
 			conn.runServer();
             conn.setOrder(1);
             
+            //conn.do_job_srt(Vehicle.add(vehID, typeID, routeID, depart, pos, speed, lane));
             
             SumoStage stage = (SumoStage)conn.do_job_get(Simulation.findRoute("gneE0", "gneE2", "car", 0, 0));
             System.out.println("findRoute result stage:");
-            for (String s : stage.edges) {
-                System.out.println("  " + s);
-            }
+            LinkedList<String> newRoute = new LinkedList<String>();
             
+            for (String eadge : stage.edges) {
+            	newRoute.add(eadge);
+            }
+            System.out.println("newRoute:"+ newRoute);
+            
+            //conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
+            String vehID="v1";
+            String typeID = "car";
+            String routeID = "r1";
+            int depart = 10;
+            double pos=0.0;
+            double speed = 30;
+            byte lane =0;
+            
+    
+            //conn.do_job_set(Vehicle.add(vehID, typeID, routeID, depart, pos, speed, lane));
+           
+            // conn.do_job_set(Vehicle.setRoute(vehID, stage);
             
             /*
             LinkedList<SumoStage> stages = (LinkedList<SumoStage>)conn.do_job_get(Simulation.findIntermodalRoute(
