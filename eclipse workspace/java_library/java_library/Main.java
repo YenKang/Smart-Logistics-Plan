@@ -49,7 +49,7 @@ public class Main {
 				
 				conn.do_timestep();
 				
-				
+				/* findRoute
 				String fromEdge = "307244665#4";
 			    String toEdge = "31794904#2";
 			    String vType = "routeByDistance";
@@ -57,7 +57,8 @@ public class Main {
 			    int routingMode = 0;
 				//System.out.println(conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart, routingMode)));
 			    SumoStage stage = (SumoStage) conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart, routingMode));
-			    
+			    */
+				
 			    /*
 			    System.out.println("findRoute result stage:");
 	            for (String s : stage.edges) {
@@ -65,9 +66,9 @@ public class Main {
 	            }*/
 			    // SumoStringList list = (SumoStringList)stage.edges;
 			    
+				/*
 			    System.out.println("stage:"+  stage);
 	            System.out.println("stage.edges:"+  stage.edges);
-	           
 	            System.out.println("stage.edges.get(0):"+  stage.edges.get(0));
 	            LinkedList<String> newRoute = new LinkedList<String>();
 	            
@@ -75,30 +76,54 @@ public class Main {
 	            	newRoute.add(eadge);
 	            }
 	            System.out.println("newRoute:"+ newRoute);
-	          
+	          	*/
 	            
 	            //conn.do_job_srt(Vehicle.add(vehID, typeID, routeID, depart, pos, speed, lane));
 	            
-	        	conn.do_job_set(Vehicle.changeTarget("flow0.0", "160253722#1"));
+	            
+	          
 		
-
+	        	double timeSeconds = (double)conn.do_job_get(Simulation.getTime());
+	        	
+	        
+	        	
+	        	if(timeSeconds==90.0) {
+	        		String senderEdgeID ="160253722#1";
+	        		System.out.println("The roadID of flow0.0 at 90s is:");
+	        		
+	        		// System.out.println(conn.do_job_get(Vehicle.getRoadID("flow0.0")));
+	        		conn.do_job_set(Vehicle.changeTarget("flow0.0", senderEdgeID));
+	        		
+	        		System.out.println("after Vehicle.changeTarget");
+	        		
+					SumoStopFlags sf_send = new SumoStopFlags(false, false, false, false, false);
+				
+					double duration = 20.0;
+					conn.do_job_set(Vehicle.setStop("flow0.0", senderEdgeID, 1.0, (byte)1,  duration, sf_send));
+	        	}
+	        	
+	        	if(timeSeconds==214.0) {
+	        		String receiverEdgeID = "-279032146#1";
+	        		conn.do_job_set(Vehicle.changeTarget("flow0.0", receiverEdgeID));
+	        		
+	        		SumoStopFlags sf_rec = new SumoStopFlags(false, false, false, false, false);
+	      
+					double duration = 20.0;
+					conn.do_job_set(Vehicle.setStop("flow0.0", receiverEdgeID, 1.0, (byte)0,  duration, sf_rec));
+	        	}
+	        	
 				if(i%1==0) {
 					
 					//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
-					System.out.println("setRoute");
-					System.out.println(conn.do_job_get(Vehicle.getRoadID("flow0.0")));
+
 					// conn.do_job_set(Vehicle.setRoute("flow0.0", stage.edges));
 				}
 				
-				double timeSeconds = (double)conn.do_job_get(Simulation.getTime());
-				
+			
 				System.out.println("timeSeconds:"+ timeSeconds);
 				if(timeSeconds%1==0) {
-					
-					System.out.println("position of car flow0.0");
-					System.out.println(conn.do_job_get(Vehicle.getPosition("flow0.0")));
-					System.out.println(conn.do_job_get(Vehicle.getSpeed("flow0.0")));
-					
+					System.out.println("The roadID of flow0.0 now is:");
+					System.out.println(conn.do_job_get(Vehicle.getRoadID("flow0.0")));
 					
 					/*
 					System.out.println("getRoute('flow0.0')");
@@ -129,7 +154,6 @@ public class Main {
 				    
 				    // SumoStringList KKKK = KKK.edges;
 				    // System.out.println(KKKK.get(0));
-				    //conn.do_job_get(Simulation.findIntermodalRoute(fromEdge, toEdge, modes, depart, routingMode, speed, walkingFactor, departPos, arrivalPos, departPosLat, pType, vType, destStop));
 					
 					/*
 					System.out.println("------------convert2D part-------------");
@@ -139,7 +163,7 @@ public class Main {
 					System.out.println(conn.do_job_get(Simulation.convert2D("307244665#2",  3.6605540809902037, (byte)0, true)));
 					*/
 			
-					/*
+					/*  
 					System.out.println("------------convertRoad part-------------");
 					System.out.println("convertRoad(2466.06, 7243.26, false, 'ignoring'))");
 					System.out.println(conn.do_job_get(Simulation.convertRoad(2466.06, 7243.26, false, "ignoring")));
@@ -208,9 +232,7 @@ public class Main {
 					*/
 				}
 				
-				if(timeSeconds==60) {
-					//System.out.println("LaneIndex:"+ conn.do_job_get(Vehicle.getLaneIndex("v4000")));
-				}
+			
 				
 				
 				//System.out.println("LaneIndex:"+ conn.do_job_get(Vehicle.getLaneIndex("v4000")));
@@ -225,8 +247,8 @@ public class Main {
 					System.out.println("-------------------------------------------------------");
 					//System.out.println(conn.do_job_get(Vehicle.getPosition("v4000")));
 					//conn.do_job_get(Simulation.convertRoad(x, y, isGeo));
-					//conn.do_job_set(Vehicle.setStop("v4000", "gneE0", pos, landIndex, 10.0, sf));
-					System.out.println("vehicle setStop");
+					//conn.do_job_set(Vehicle.setStop("v4000", "gneE0", pos,   10.0, sf));
+					
 					
 					double input_x = 240.52040797546346;
 					double input_y = -4.8;
@@ -236,11 +258,7 @@ public class Main {
 					// System.out.println(conn.do_job_get(Simulation.convertRoad(240.5204, -4.8, "False")));
 					// System.out.println("*Simulation.convert2D(\"gneE0\", 400.0, (byte) 0 , \"false\")*");
 					
-					// System.out.println(conn.do_job_get(Simulation.convert2D("gneE0", 400.0, (byte) 0 , "POSITION_2D")));
 					
-					System.out.println("**********************");
-					// System.out.println(conn.do_job_get(Simulation.getArrivedNumber()));
-					//System.out.println("SumoStopFlags sf:"+ sf);
 				}
 				
 		
