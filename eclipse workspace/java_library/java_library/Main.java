@@ -30,7 +30,8 @@ public class Main {
 
 	static String sumo_bin = "sumo-gui";
 	// static String config_file = "simulation/map.sumo.cfg";
-	   static String config_file = "simulation_Tainan/map_from_flow.sumo.cfg";
+	// static String config_file = "simulation_Tainan/map_from_flow.sumo.cfg";
+	   static String config_file = "simulation3/map_edited.sumo.cfg";
 	// static double step_length = 0.01; // version1
 	static double step_length = 0.01;		
 
@@ -122,8 +123,8 @@ public class Main {
 			
 				System.out.println("timeSeconds:"+ timeSeconds);
 				if(timeSeconds%1==0) {
-					System.out.println("The roadID of flow0.0 now is:");
-					System.out.println(conn.do_job_get(Vehicle.getRoadID("flow0.0")));
+					//System.out.println("The roadID of flow0.0 now is:");
+					//System.out.println(conn.do_job_get(Vehicle.getRoadID("flow0.0")));
 					
 					/*
 					System.out.println("getRoute('flow0.0')");
