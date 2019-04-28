@@ -431,3 +431,27 @@ org.eclipse.swt.SWTException: Device is disposed
 	at org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdater.updatesAvailable(AutomaticUpdater.java:91)
 	at org.eclipse.equinox.internal.p2.ui.sdk.scheduler.AutomaticUpdateScheduler$1.updatesAvailable(AutomaticUpdateScheduler.java:151)
 	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:83)
+
+!ENTRY org.eclipse.equinox.preferences 4 4 2019-04-23 04:37:34.056
+!MESSAGE Exception saving preferences to: C:/Users/yen/eclipse/java-2019-03/eclipse/configuration/.settings/com.genuitec.eclipse.webclipse.evergreen.prefs.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\yen\eclipse\java-2019-03\eclipse\configuration\.settings\com.genuitec.eclipse.webclipse.evergreen.prefs.bak (程序無法存取檔案，因為檔案正由另一個程序使用。)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.preferences.SafeFileOutputStream.<init>(SafeFileOutputStream.java:57)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.write(EclipsePreferences.java:279)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.save(EclipsePreferences.java:1072)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.save(EclipsePreferences.java:1048)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.internalFlush(EclipsePreferences.java:431)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.flush(EclipsePreferences.java:389)
+	at com.genuitec.eclipse.webclipse.evergreen.internal.EvergreenManifestManager$ManifestUpdateJob.run(EvergreenManifestManager.java:133)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.jobs 4 2 2019-04-23 04:37:34.166
+!MESSAGE An internal error occurred during: "Checking for DevStyle Manifest updates...".
+!STACK 0
+java.lang.NullPointerException
+	at com.genuitec.eclipse.webclipse.evergreen.internal.EvergreenManifestManager$ManifestUpdateJob.run(EvergreenManifestManager.java:135)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)

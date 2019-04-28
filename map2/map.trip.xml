@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generated on 2019-04-28 14:36:59.872049 by $Id$
+  options: <doubleminus>net-file map_edited.net.xml <doubleminus>end 10 -l <doubleminus>output map.trip.xml
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <trip id="0" depart="0.00" from="279049709#0" to="279032146#0"/>
+    <trip id="1" depart="1.00" from="392464674#0" to="-405115644#5"/>
+    <trip id="2" depart="2.00" from="-521131212#3" to="303889712#0"/>
+    <trip id="3" depart="3.00" from="496332201#0" to="496257368#19"/>
+    <trip id="4" depart="4.00" from="-497944541" to="306997512#4"/>
+    <trip id="5" depart="5.00" from="274022921#4" to="-496257366#1"/>
+    <trip id="6" depart="6.00" from="-274022921#1" to="111343195#3"/>
+    <trip id="7" depart="7.00" from="-41389169#11" to="-504514704#4"/>
+    <trip id="8" depart="8.00" from="279365144#1" to="-496257360#8"/>
+    <trip id="9" depart="9.00" from="31794904#3" to="298600773#1"/>
+</routes>
