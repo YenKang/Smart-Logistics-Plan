@@ -30,8 +30,8 @@ public class Main {
 
 	static String sumo_bin = "sumo-gui";
 	// static String config_file = "simulation/map.sumo.cfg";
-	// static String config_file = "simulation_Tainan/map_from_flow.sumo.cfg";
-	   static String config_file = "simulation3/map_edited.sumo.cfg";
+	  static String config_file = "simulation_Tainan/map_from_flow.sumo.cfg";
+	//  static String config_file = "simulation3/map_edited.sumo.cfg";
 	// static double step_length = 0.01; // version1
 	   
 	static double step_length = 0.01;		
@@ -51,7 +51,7 @@ public class Main {
 				
 				conn.do_timestep();
 				
-				/* findRoute
+				/*
 				String fromEdge = "307244665#4";
 			    String toEdge = "31794904#2";
 			    String vType = "routeByDistance";
@@ -59,21 +59,18 @@ public class Main {
 			    int routingMode = 0;
 				//System.out.println(conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart, routingMode)));
 			    SumoStage stage = (SumoStage) conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart, routingMode));
-			    */
-				
-			    /*
+			   
 			    System.out.println("findRoute result stage:");
 	            for (String s : stage.edges) {
 	                System.out.println("  " + s);
-	            }*/
-			    // SumoStringList list = (SumoStringList)stage.edges;
-			    
+	            }
+	            */
+	           
 				/*
 			    System.out.println("stage:"+  stage);
 	            System.out.println("stage.edges:"+  stage.edges);
 	            System.out.println("stage.edges.get(0):"+  stage.edges.get(0));
 	            LinkedList<String> newRoute = new LinkedList<String>();
-	            
 	            for (String eadge : stage.edges) {
 	            	newRoute.add(eadge);
 	            }
@@ -82,13 +79,9 @@ public class Main {
 	            
 	            //conn.do_job_srt(Vehicle.add(vehID, typeID, routeID, depart, pos, speed, lane));
 	            
-	            
-	          
-		
 	        	double timeSeconds = (double)conn.do_job_get(Simulation.getTime());
 	        	
-	        
-	        	
+	       
 	        	if(timeSeconds==90.0) {
 	        		String senderEdgeID ="160253722#1";
 	        		System.out.println("The roadID of flow0.0 at 90s is:");
@@ -114,6 +107,8 @@ public class Main {
 					conn.do_job_set(Vehicle.setStop("flow0.0", receiverEdgeID, 1.0, (byte)0,  duration, sf_rec));
 	        	}
 	        	
+	        	
+	        	
 				if(i%1==0) {
 					
 					//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
@@ -122,7 +117,8 @@ public class Main {
 				}
 				
 			
-				System.out.println("timeSeconds:"+ timeSeconds);
+				// System.out.println("timeSeconds:"+ timeSeconds);
+				
 				if(timeSeconds%1==0) {
 					//System.out.println("The roadID of flow0.0 now is:");
 					//System.out.println(conn.do_job_get(Vehicle.getRoadID("flow0.0")));
@@ -159,19 +155,22 @@ public class Main {
 					
 					/*
 					System.out.println("------------convert2D part-------------");
-					System.out.println("convert2D('307244665#2', 3.6605540809902037, (byte)0, false)");
-					System.out.println(conn.do_job_get(Simulation.convert2D("307244665#2",  3.6605540809902037, (byte)0, false)));
-					System.out.println("convert2D('303466841', 0.0, (byte)0, true)");
-					System.out.println(conn.do_job_get(Simulation.convert2D("307244665#2",  3.6605540809902037, (byte)0, true)));
+					System.out.println("convert2D('-537706053#2', 0.0, (byte)0, false)");
+					System.out.println(conn.do_job_get(Simulation.convert2D("-537706053#2",  0.0, (byte)0, false)));
 					*/
-			
-					/*  
+					
+					// System.out.println("convert2D('313194758#1', 0.0, (byte)0, true)");
+					// System.out.println(conn.do_job_get(Simulation.convert2D("313194758#1",  0, (byte)0, false)));
+					
+					//System.out.println(" ");
+					//System.out.println(" ");
+					
+					/*
 					System.out.println("------------convertRoad part-------------");
-					System.out.println("convertRoad(2466.06, 7243.26, false, 'ignoring'))");
-					System.out.println(conn.do_job_get(Simulation.convertRoad(2466.06, 7243.26, false, "ignoring")));
-					Object j = conn.do_job_get(Simulation.convertRoad(2466.06, 7243.26, false, "ignoring"));
-					System.out.println(j);
+					System.out.println("convertRoad(2989.02, 6765.41, false, 'ignoring'))");
+					System.out.println(conn.do_job_get(Simulation.convertRoad(2989.02, 6765.41, false, "ignoring")));
 					*/
+					
 					
 					/*
 					System.out.println("convertRoad(4061.28, 5207.22, false, 'ignoring'))");
