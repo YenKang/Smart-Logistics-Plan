@@ -30,8 +30,8 @@ public class Main {
 
 	static String sumo_bin = "sumo-gui";
 	// static String config_file = "simulation/map.sumo.cfg";
-	  static String config_file = "simulation_Tainan/map_from_flow.sumo.cfg";
-	//  static String config_file = "simulation3/map_edited.sumo.cfg";
+	//  static String config_file = "simulation_Tainan/map_from_flow.sumo.cfg";
+	   static String config_file = "simulation3/map_edited.sumo.cfg";
 	// static double step_length = 0.01; // version1
 	   
 	static double step_length = 0.01;		
