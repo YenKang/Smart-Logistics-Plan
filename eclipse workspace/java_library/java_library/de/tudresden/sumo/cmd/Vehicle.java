@@ -592,7 +592,7 @@ public class Vehicle {
 	 */
 
 	public static SumoCommand getRoute(String vehID){
-		System.out.println("line590 in Vehicle.java");
+		
 		return new SumoCommand(
 				Constants.CMD_GET_VEHICLE_VARIABLE, 
 				Constants.VAR_EDGES, 

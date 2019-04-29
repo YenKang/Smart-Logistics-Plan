@@ -74,6 +74,20 @@ public class Main {
 						}
 						
 						System.out.println("newRoute:"+ newRoute);
+						System.out.println("Trave time in the new route:"+ stage.travelTime);
+						
+						conn.do_job_get(Vehicle.getRoute("flow0.0"));
+						
+						System.out.println("Default Route:");
+						SumoStringList edgeList = (SumoStringList)conn.do_job_get(Vehicle.getRoute("flow0.0"));
+						LinkedList<String> getRouteList = new LinkedList<String>(); 
+						
+						for(i=0; i<edgeList.size(); i++) {
+							getRouteList.add(edgeList.get(i));
+						}
+						System.out.println("getRouteList:"+ getRouteList);
+						
+						conn.do_job_set(Vehicle.setRoute("flow0.0", stage.edges));
 						
 					}
 				}
@@ -157,8 +171,7 @@ public class Main {
 
 					/*
 					 * System.out.println("getRoute('flow0.0')"); 
-					 * SumoStringList K= (SumoStringList)
-					 * conn.do_job_get(Vehicle.getRoute("flow0.0")); 
+					 * SumoStringList K= (SumoStringList) conn.do_job_get(Vehicle.getRoute("flow0.0")); 
 					 * //String asd[] = K
 					 * System.out.println(K.get(2));
 					 */
