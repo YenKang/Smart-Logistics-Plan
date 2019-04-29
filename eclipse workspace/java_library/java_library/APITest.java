@@ -64,6 +64,7 @@ public class APITest {
             for (String eadge : stage.edges) {
             	newRoute.add(eadge);
             }
+            
             System.out.println("newRoute:"+ newRoute);
             
             //conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
