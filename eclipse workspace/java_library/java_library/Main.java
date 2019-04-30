@@ -31,8 +31,8 @@ public class Main {
 
 	static String sumo_bin = "sumo-gui";
 	// static String config_file = "simulation/map.sumo.cfg";
-	   static String config_file = "simulation_Tainan/map_from_flow.sumo.cfg";
-	// static String config_file = "simulation3/map_edited.sumo.cfg";
+	// static String config_file = "simulation_Tainan/map_from_flow.sumo.cfg";
+	   static String config_file = "simulation3/map_edited.sumo.cfg";
 	// static double step_length = 0.01; // version1
 
 	static double step_length = 0.01;
@@ -53,14 +53,64 @@ public class Main {
 				conn.do_timestep();
 				
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
+				double sender_x = 3003.22;
+				double sender_y = 6763.46;
+				String senderEdge = "-537706053#2";
+				
 				
 				if(timeSeconds % 1==0) {
 					
-					String curEdge = (String)conn.do_job_get(Vehicle.getRoadID("flow0.0"));
-					System.out.println("current edgeID is:" + curEdge +" in " + timeSeconds + " seconds");
 					
+					String curEdge = (String)conn.do_job_get(Vehicle.getRoadID("8")); // String vehID
+					SumoPosition2D v8Position = (SumoPosition2D) conn.do_job_get(Vehicle.getPosition("8"));
+					SumoPosition2D v9Position = (SumoPosition2D) conn.do_job_get(Vehicle.getPosition("9"));
+					
+					System.out.println("current edgeID is:" + curEdge + " in " + timeSeconds + " seconds");
+					System.out.println("current position is:" + v8Position);
+					System.out.println("current position x:" + v8Position.x + " y:" + v8Position.y + " in " + timeSeconds + " seconds");
+		
+					double v8toSenderDistance = (double)(conn.do_job_get(Simulation.getDistance2D(sender_x, sender_y, v8Position.x, v8Position.y, false, false)));
+					System.out.println("current distance between v8 to sender is:" + v8toSenderDistance);
+					
+					double v9toSenderDistance = (double)(conn.do_job_get(Simulation.getDistance2D(sender_x, sender_y, v9Position.x, v9Position.y, false, false)));
+					System.out.println("current distance between v9 to sender is:" + v9toSenderDistance);
+					
+					if((v9toSenderDistance< v8toSenderDistance) && timeSeconds==60.0 ) {
+						System.out.println("we dispath v9 to the sender address!");
+					}
+					
+					else if(v9toSenderDistance > v8toSenderDistance && (timeSeconds==60.0)) {
+						System.out.println("we dispath v8 to the sender address!");
+						
+						System.out.println("Default Route:");
+						SumoStringList edgeList = (SumoStringList)conn.do_job_get(Vehicle.getRoute("8"));
+						LinkedList<String> defaultRouteList = new LinkedList<String>(); 
+						
+						for(i=0; i<edgeList.size(); i++) {
+							defaultRouteList.add(edgeList.get(i));
+						}
+						System.out.println("defaultRouteList:"+ defaultRouteList);
+						
+						conn.do_job_set(Vehicle.changeTarget("8", senderEdge));
+						
+
+						System.out.println("changing Route:");
+						SumoStringList new_edgeList = (SumoStringList)conn.do_job_get(Vehicle.getRoute("8"));
+						LinkedList<String> changedRouteList = new LinkedList<String>(); 
+						
+						for(i=0; i<new_edgeList.size(); i++) {
+							changedRouteList.add(new_edgeList.get(i));
+						}
+						System.out.println("changedRouteList:"+ changedRouteList);
+						
+					}
+					
+					
+					
+					
+					
+					/*
 					if(timeSeconds==130.0) {
-					
 						String fromEdge = curEdge;
 						String toEdge = "160253722#3";
 						String vType ="routeByDistance"; 
@@ -75,9 +125,6 @@ public class Main {
 						
 						System.out.println("newRoute:"+ newRoute);
 						System.out.println("Trave time in the new route:"+ stage.travelTime);
-						
-						conn.do_job_get(Vehicle.getRoute("flow0.0"));
-						
 						System.out.println("Default Route:");
 						SumoStringList edgeList = (SumoStringList)conn.do_job_get(Vehicle.getRoute("flow0.0"));
 						LinkedList<String> getRouteList = new LinkedList<String>(); 
@@ -86,10 +133,16 @@ public class Main {
 							getRouteList.add(edgeList.get(i));
 						}
 						System.out.println("getRouteList:"+ getRouteList);
-						
 						conn.do_job_set(Vehicle.setRoute("flow0.0", stage.edges));
-						
+						System.out.println("Changed Route:");
+						SumoStringList changedEdgeList = (SumoStringList)conn.do_job_get(Vehicle.getRoute("flow0.0"));
+						LinkedList<String> changedRouteList = new LinkedList<String>();
+						for(i=0; i<changedEdgeList.size(); i++) {
+							changedRouteList.add(changedEdgeList.get(i));
+						}
+						System.out.println("changedRouteList:"+ changedRouteList);	
 					}
+					*/
 				}
 				
 				if(timeSeconds==137.00) {

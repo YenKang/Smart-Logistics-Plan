@@ -429,16 +429,16 @@ public class SumoCommand {
 			boolean isDriving = (boolean) array[3];
 
 			if (!isGeo) {
-				System.out.println("Constants.POSITION_2D");
+				
 				this.cmd.content().writeUnsignedByte(Constants.POSITION_2D);
 			}
 
 			else {
-				System.out.println("Constants.POSITION_LON_LAT");
+				
 				this.cmd.content().writeUnsignedByte(Constants.POSITION_LON_LAT);
 			}
 
-			System.out.println("array[0]:" + array[0]);
+			
 
 			add_variable(array[0]);
 
@@ -447,10 +447,10 @@ public class SumoCommand {
 			}
 
 			else {
-				System.out.println("Constants.POSITION_LON_LAT");
+				
 				this.cmd.content().writeUnsignedByte(Constants.POSITION_LON_LAT);
 			}
-			System.out.println("array[1]" + array[1]);
+			
 			add_variable(array[1]);
 
 			if (isDriving) {
