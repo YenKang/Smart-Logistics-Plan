@@ -103,6 +103,15 @@ public class Main {
 						}
 						System.out.println("changedRouteList:"+ changedRouteList);
 						
+						String fromEdge = curEdge;
+						String toEdge = senderEdge;
+						String vType ="routeByDistance"; 
+						double depart = 60.0; 
+						int routingMode = 0;
+						SumoStage stage = (SumoStage)conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart,routingMode));
+						double TravelTimeToSender = stage.travelTime;
+						
+						System.out.println("We need "+ TravelTimeToSender+" s from current edge to sender address");
 					}
 					
 					
@@ -156,8 +165,11 @@ public class Main {
 				 * String vType ="routeByDistance"; 
 				 * double depart = 60.0; 
 				 * int routingMode = 0;
+				 * 
 				 * //System.out.println(conn.do_job_get(Simulation.findRoute(fromEdge, toEdge,
-				 * vType, depart, routingMode))); SumoStage stage = (SumoStage)
+				 * vType, depart, routingMode))); 
+				 * 
+				 * SumoStage stage = (SumoStage)
 				 * conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart,
 				 * routingMode));
 				 * 
@@ -166,7 +178,8 @@ public class Main {
 				 */
 
 				/*
-				 * System.out.println("stage:"+ stage); System.out.println("stage.edges:"+
+				 * System.out.println("stage:"+ stage); 
+				 * System.out.println("stage.edges:"+
 				 * stage.edges); 
 				 * System.out.println("stage.edges.get(0):"+ stage.edges.get(0));
 				 * 
