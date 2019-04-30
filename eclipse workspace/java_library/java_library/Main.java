@@ -112,6 +112,14 @@ public class Main {
 						double TravelTimeToSender = stage.travelTime;
 						
 						System.out.println("We need "+ TravelTimeToSender+" s from current edge to sender address");
+						
+						SumoStopFlags sf_send = new SumoStopFlags(false, false, false, false, false);
+						double stopDuration = 20.0;
+						conn.do_job_set(Vehicle.setStop("8", senderEdge, 1.0, (byte) 0, stopDuration, sf_send));
+						
+			
+						
+						
 					}
 					
 					
@@ -203,6 +211,7 @@ public class Main {
 					// System.out.println(conn.do_job_get(Vehicle.getRoadID("flow0.0")));
 					conn.do_job_set(Vehicle.changeTarget("flow0.0", senderEdgeID));
 					System.out.println("after Vehicle.changeTarget");
+					
 					SumoStopFlags sf_send = new SumoStopFlags(false, false, false, false, false);
 					double duration = 20.0;
 					conn.do_job_set(Vehicle.setStop("flow0.0", senderEdgeID, 1.0, (byte) 1, duration, sf_send));
