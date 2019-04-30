@@ -44,12 +44,12 @@ public class Main {
 			conn.addOption("step-length", step_length + "");
 			conn.addOption("start", "true"); // start sumo immediately
 
+			
 			// start Traci Server
 			conn.runServer(8080);
 			conn.setOrder(1);
 
 			for (int i = 0; i < 360000; i++) {
-
 				conn.do_timestep();
 				
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
@@ -116,10 +116,7 @@ public class Main {
 						SumoStopFlags sf_send = new SumoStopFlags(false, false, false, false, false);
 						double stopDuration = 20.0;
 						conn.do_job_set(Vehicle.setStop("8", senderEdge, 1.0, (byte) 0, stopDuration, sf_send));
-						
-			
-						
-						
+									
 					}
 					
 					
