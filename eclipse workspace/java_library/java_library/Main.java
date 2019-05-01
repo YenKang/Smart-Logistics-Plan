@@ -113,9 +113,13 @@ public class Main {
 						
 						System.out.println("We need "+ TravelTimeToSender+" s from current edge to sender address");
 						
-						SumoStopFlags sf_send = new SumoStopFlags(false, false, false, false, false);
-						double stopDuration = 20.0;
-						conn.do_job_set(Vehicle.setStop("8", senderEdge, 1.0, (byte) 0, stopDuration, sf_send));
+						//SumoStopFlags sf_send = new SumoStopFlags(false, false, false, false, false);
+						//double stopDuration = 20.0;
+						
+						//conn.do_job_set(Vehicle.setContainerStop("8", "-537706053#2", 100.0, 100));
+						
+						
+						
 									
 					}
 					
