@@ -31,8 +31,8 @@ public class Main {
 
 	static String sumo_bin = "sumo-gui";
 	// static String config_file = "simulation/map.sumo.cfg";
-	// static String config_file = "simulation_Tainan/map_from_flow.sumo.cfg";
-	   static String config_file = "simulation3/map_edited.sumo.cfg";
+	   static String config_file = "simulation_Tainan/map_from_flow.sumo.cfg";
+	//   static String config_file = "simulation3/map_edited.sumo.cfg";
 	// static double step_length = 0.01; // version1
 
 	static double step_length = 0.01;
@@ -52,15 +52,18 @@ public class Main {
 			for (int i = 0; i < 360000; i++) {
 				conn.do_timestep();
 				
+				
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
 				double sender_x = 3003.22;
 				double sender_y = 6763.46;
 				String senderEdge = "-537706053#2";
 				
+		
 				
-				if(timeSeconds % 1==0) {
+				if(timeSeconds % 1==0) 
+				{
 					
-					
+					/*
 					String curEdge = (String)conn.do_job_get(Vehicle.getRoadID("8")); // String vehID
 					SumoPosition2D v8Position = (SumoPosition2D) conn.do_job_get(Vehicle.getPosition("8"));
 					SumoPosition2D v9Position = (SumoPosition2D) conn.do_job_get(Vehicle.getPosition("9"));
@@ -74,14 +77,17 @@ public class Main {
 					
 					double v9toSenderDistance = (double)(conn.do_job_get(Simulation.getDistance2D(sender_x, sender_y, v9Position.x, v9Position.y, false, false)));
 					System.out.println("current distance between v9 to sender is:" + v9toSenderDistance);
+					*/
+					
+					/*
 					
 					if((v9toSenderDistance< v8toSenderDistance) && timeSeconds==60.0 ) {
 						System.out.println("we dispath v9 to the sender address!");
 					}
 					
-					else if(v9toSenderDistance > v8toSenderDistance && (timeSeconds==60.0)) {
+					else if(v9toSenderDistance > v8toSenderDistance && (timeSeconds==60.0)) 
+					{
 						System.out.println("we dispath v8 to the sender address!");
-						
 						System.out.println("Default Route:");
 						SumoStringList edgeList = (SumoStringList)conn.do_job_get(Vehicle.getRoute("8"));
 						LinkedList<String> defaultRouteList = new LinkedList<String>(); 
@@ -93,7 +99,6 @@ public class Main {
 						
 						conn.do_job_set(Vehicle.changeTarget("8", senderEdge));
 						
-
 						System.out.println("changing Route:");
 						SumoStringList new_edgeList = (SumoStringList)conn.do_job_get(Vehicle.getRoute("8"));
 						LinkedList<String> changedRouteList = new LinkedList<String>(); 
@@ -113,14 +118,31 @@ public class Main {
 						
 						System.out.println("We need "+ TravelTimeToSender+" s from current edge to sender address");
 						
-						//SumoStopFlags sf_send = new SumoStopFlags(false, false, false, false, false);
-						//double stopDuration = 20.0;
+						SumoStopFlags sf_send = new SumoStopFlags(false, false, false, false, false);
+						// conn.do_job_set(Vehicle.setStop(vehID, edgeID, pos, laneIndex, duration, sf));
 						
-						//conn.do_job_set(Vehicle.setContainerStop("8", "-537706053#2", 100.0, 100));
+						 conn.do_job_set(Vehicle.setContainerStop("8", "senderAddr_stop", 20.0, 100));
+						
+						//conn.do_job_set(Vehicle.setStop("8", senderEdge, 0, (byte)0, 20.0, sf_send ));
+				
+				
+				    }
+				    /*
+					
+
+					if(timeSeconds==212.00) {
+						
+						String receiverEdge = "486363286#0";
+						
+						conn.do_job_set(Vehicle.changeTarget("8", receiverEdge));
 						
 						
+						//SumoStopFlags sf_rec = new SumoStopFlags(false, false, false, false, false);
+			
 						
-									
+						//conn.do_job_set(Vehicle.setStop("8", receiverEdge, 0.0, (byte)0, 20.0, sf_rec ));
+						
+						
 					}
 					
 					
@@ -236,7 +258,7 @@ public class Main {
 					// conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max",
 					// "current", "max", "current", "", "", "", 0, 0));
 
-					// conn.do_job_set(Vehicle.setRoute("flow0.0", stage.edges));
+				
 				}
 
 				// System.out.println("timeSeconds:"+ timeSeconds);

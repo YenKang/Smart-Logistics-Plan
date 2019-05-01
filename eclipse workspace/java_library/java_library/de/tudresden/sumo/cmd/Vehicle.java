@@ -225,7 +225,12 @@ public class Vehicle {
 	 */
 
 	public static SumoCommand getPersonNumber(String vehID){
-		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, Constants.VAR_PERSON_NUMBER, vehID, Constants.RESPONSE_GET_VEHICLE_VARIABLE, Constants.TYPE_INTEGER);
+		return new SumoCommand(
+			Constants.CMD_GET_VEHICLE_VARIABLE, 
+			Constants.VAR_PERSON_NUMBER, 
+			vehID, 
+			Constants.RESPONSE_GET_VEHICLE_VARIABLE, 
+			Constants.TYPE_INTEGER);
 	}
 	
 
