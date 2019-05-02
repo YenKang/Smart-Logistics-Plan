@@ -24,6 +24,7 @@ import de.tudresden.sumo.cmd.Vehicle;
 import java.util.LinkedList;
 
 import de.tudresden.sumo.cmd.Inductionloop;
+import de.tudresden.sumo.cmd.Person;
 import de.tudresden.sumo.cmd.Trafficlight;
 import de.tudresden.ws.container.*;
 
@@ -32,7 +33,7 @@ public class Main {
 	static String sumo_bin = "sumo-gui";
 	// static String config_file = "simulation/map.sumo.cfg";
 	   static String config_file = "simulation_Tainan/map_from_flow.sumo.cfg";
-	//   static String config_file = "simulation3/map_edited.sumo.cfg";
+	// static String config_file = "simulation3/map_edited.sumo.cfg";
 	// static double step_length = 0.01; // version1
 
 	static double step_length = 0.01;
@@ -51,14 +52,12 @@ public class Main {
 
 			for (int i = 0; i < 360000; i++) {
 				conn.do_timestep();
-				
-				
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
+				
 				double sender_x = 3003.22;
 				double sender_y = 6763.46;
 				String senderEdge = "-537706053#2";
 				
-		
 				
 				if(timeSeconds % 1==0) 
 				{
@@ -146,7 +145,7 @@ public class Main {
 					}
 					
 					
-					
+					--------------------------------------------------------------------------------------------------------
 					
 					
 					/*
@@ -226,7 +225,7 @@ public class Main {
 
 			
 				
-				/*
+				
 				if (timeSeconds == 90.0) {
 					String senderEdgeID = "160253722#1";
 					System.out.println("The roadID of flow0.0 at 90s is:");
@@ -239,9 +238,37 @@ public class Main {
 					double duration = 20.0;
 					conn.do_job_set(Vehicle.setStop("flow0.0", senderEdgeID, 1.0, (byte) 1, duration, sf_send));
 				}
-				*/
 				
-				/*
+				
+				String currentEdge = (String)conn.do_job_get(Vehicle.getRoadID("flow0.0"));
+				
+				if(timeSeconds==190.0) {
+					String testPersonID = "ffw";
+					String TestEdgeID = "160253722#1";
+					double testPos = 1.0;
+					double testDepart = timeSeconds;
+					String testTypeID = "DEFAULT_PEDTYPE";
+					
+					conn.do_job_set(Person.add(testPersonID, TestEdgeID, testPos, testDepart, testTypeID));
+					
+					
+					SumoColor curColor = new SumoColor(256, 0 ,0 ,0);
+					
+					conn.do_job_set(Person.setColor("ffw", curColor));
+					
+			
+					
+					System.out.print(conn.do_job_get(Person.getPosition("ffw")));
+					String stopID = "containerStop1";
+					//conn.do_job_set(Person.appendWaitingStage(testPersonID, 20, "waiting", stopID));
+								
+				}
+				
+				if(timeSeconds ==213) {
+					SumoPosition2D position = (SumoPosition2D)conn.do_job_get(Person.getPosition("ffw"));
+					System.out.print("person position:" + position);
+				}
+				
 				if (timeSeconds == 214.0) {
 					String receiverEdgeID = "-279032146#1";
 					conn.do_job_set(Vehicle.changeTarget("flow0.0", receiverEdgeID));
@@ -250,13 +277,16 @@ public class Main {
 
 					double duration = 20.0;
 					conn.do_job_set(Vehicle.setStop("flow0.0", receiverEdgeID, 1.0, (byte) 0, duration, sf_rec));
+				
 				}
-				*/
+				
+				
 
 				if (i % 1 == 0) {
 
-					// conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max",
+					//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max",
 					// "current", "max", "current", "", "", "", 0, 0));
+					
 
 				
 				}

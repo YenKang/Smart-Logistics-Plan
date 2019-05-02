@@ -489,7 +489,11 @@ public class Vehicle {
 	 * @return next traffic lights (compound)
 	 */
 	public static SumoCommand getNextStops(String vehID){
-		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, Constants.VAR_NEXT_STOPS, vehID, Constants.RESPONSE_GET_VEHICLE_VARIABLE, Constants.TYPE_COMPOUND);
+		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, 
+				Constants.VAR_NEXT_STOPS, 
+				vehID, 
+				Constants.RESPONSE_GET_VEHICLE_VARIABLE, 
+				Constants.TYPE_COMPOUND);
 	}
 	
 	
@@ -848,7 +852,13 @@ public class Vehicle {
 	 */
 
 	public static SumoCommand isAtContainerStop(String vehID){
-		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, Constants.VAR_STOPSTATE, vehID, Constants.RESPONSE_GET_VEHICLE_VARIABLE, Constants.TYPE_UBYTE, "isAtContainerStop");
+		return new SumoCommand(
+				Constants.CMD_GET_VEHICLE_VARIABLE, 
+				Constants.VAR_STOPSTATE, 
+				vehID, 
+				Constants.RESPONSE_GET_VEHICLE_VARIABLE, 
+				Constants.TYPE_UBYTE, 
+				"isAtContainerStop");
 	}
 	
 	/**
@@ -868,7 +878,12 @@ public class Vehicle {
 	 */
 
 	public static SumoCommand isAtBusStop(String vehID){
-		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, Constants.VAR_STOPSTATE, vehID, Constants.RESPONSE_GET_VEHICLE_VARIABLE, Constants.TYPE_UBYTE, "isAtBusStop");
+		return new SumoCommand(
+				Constants.CMD_GET_VEHICLE_VARIABLE, 
+				Constants.VAR_STOPSTATE, 
+				vehID, 
+				Constants.RESPONSE_GET_VEHICLE_VARIABLE, 
+				Constants.TYPE_UBYTE, "isAtBusStop");
 	}
 	
 	

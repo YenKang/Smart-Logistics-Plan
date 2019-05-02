@@ -1,7 +1,5 @@
 <additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
 
- <containerStop id="containerStop1" 
- 	lane= "160253722#1_0"
- 	startPos = "5"
- 	endPos = "25"/>
+  <vType id="person" accel="1.5" decel="2.0"  length="0.21" minGap="0.25" maxSpeed="1.5" guiShape="pedestrian" vClass="pedestrian"/>
+ 
 </additional>

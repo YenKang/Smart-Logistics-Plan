@@ -44,7 +44,7 @@ public class Person {
 	
 	*/
 	
-	public static SumoCommand add(String personID, String edgeID, double pos, int depart, String typeID){
+	public static SumoCommand add(String personID, String edgeID, double pos, double depart, String typeID){
 		Object[] array = new Object[]{typeID, edgeID, depart, pos};
 		return new SumoCommand(Constants.CMD_SET_PERSON_VARIABLE, Constants.ADD, personID, array);
 	}
@@ -60,7 +60,11 @@ public class Person {
 	
 	public static SumoCommand appendWaitingStage(String personID, int duration, String description, String stopID){
 		Object[] array = new Object[]{Constants.STAGE_WAITING, duration, description, stopID};
-		return new SumoCommand(Constants.CMD_SET_PERSON_VARIABLE, Constants.APPEND_STAGE, personID, array);
+		return new SumoCommand(
+				Constants.CMD_SET_PERSON_VARIABLE, 
+				Constants.APPEND_STAGE, 
+				personID, 
+				array);
 	}
 	
 	
