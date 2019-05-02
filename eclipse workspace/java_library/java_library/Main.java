@@ -49,6 +49,8 @@ public class Main {
 			// start Traci Server
 			conn.runServer(8080);
 			conn.setOrder(1);
+			
+			SumoStopFlags sf_rec = new SumoStopFlags(false, false, false, false, false);
 
 			for (int i = 0; i < 360000; i++) {
 				conn.do_timestep();
@@ -241,6 +243,7 @@ public class Main {
 				
 				
 				String currentEdge = (String)conn.do_job_get(Vehicle.getRoadID("flow0.0"));
+				int personNum = (Integer)conn.do_job_get(Vehicle.getPersonNumber("flow0.0"));
 				
 				if(timeSeconds==190.0) {
 					String testPersonID = "ffw";
@@ -256,28 +259,53 @@ public class Main {
 					
 					conn.do_job_set(Person.setColor("ffw", curColor));
 					
-			
 					
-					System.out.print(conn.do_job_get(Person.getPosition("ffw")));
-					String stopID = "containerStop1";
+					System.out.println("personNum:" + personNum + " in " + timeSeconds+ " seconds" );
+				
+					//System.out.print(conn.do_job_get(Person.getPosition("ffw")));
+					//String stopID = "containerStop1";
+					
 					//conn.do_job_set(Person.appendWaitingStage(testPersonID, 20, "waiting", stopID));
 								
 				}
 				
 				if(timeSeconds ==213) {
-					SumoPosition2D position = (SumoPosition2D)conn.do_job_get(Person.getPosition("ffw"));
-					System.out.print("person position:" + position);
+					//SumoPosition2D position = (SumoPosition2D)conn.do_job_get(Person.getPosition("ffw"));
+					//System.out.print("person position:" + position);
+					
+					personNum = personNum +1;
+					System.out.println("personNum:" + personNum + " in " + timeSeconds + " seconds");
 				}
 				
+				
+				
 				if (timeSeconds == 214.0) {
+					
 					String receiverEdgeID = "-279032146#1";
 					conn.do_job_set(Vehicle.changeTarget("flow0.0", receiverEdgeID));
 
-					SumoStopFlags sf_rec = new SumoStopFlags(false, false, false, false, false);
+					
 
 					double duration = 20.0;
 					conn.do_job_set(Vehicle.setStop("flow0.0", receiverEdgeID, 1.0, (byte) 0, duration, sf_rec));
 				
+				}
+				
+				if(sf_rec.triggered) {
+					System.out.print("triggered is true" + " in " + timeSeconds);
+					personNum = personNum -1;
+					System.out.println("personNum:" + personNum + " in " + timeSeconds );
+	
+				}
+				
+				String curEdge = (String)conn.do_job_get(Vehicle.getRoadID("flow0.0"));
+				
+				
+				if(curEdge.equals("-279032146#1")) 
+				{
+				    personNum = personNum -1;
+					System.out.print("personNum:" + personNum + " in " + timeSeconds );
+					
 				}
 				
 				
