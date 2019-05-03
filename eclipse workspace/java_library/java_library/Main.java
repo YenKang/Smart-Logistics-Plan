@@ -23,9 +23,9 @@ import de.tudresden.sumo.cmd.Vehicle;
 
 import java.util.LinkedList;
 
-import de.tudresden.sumo.cmd.Inductionloop;
+
 import de.tudresden.sumo.cmd.Person;
-import de.tudresden.sumo.cmd.Trafficlight;
+
 import de.tudresden.ws.container.*;
 
 public class Main {
@@ -50,6 +50,7 @@ public class Main {
 			conn.runServer(8080);
 			conn.setOrder(1);
 			
+			SumoStopFlags sf_send = new SumoStopFlags(false, false, false, false, false);
 			SumoStopFlags sf_rec = new SumoStopFlags(false, false, false, false, false);
 
 			for (int i = 0; i < 360000; i++) {
@@ -236,9 +237,12 @@ public class Main {
 					conn.do_job_set(Vehicle.changeTarget("flow0.0", senderEdgeID));
 					System.out.println("after Vehicle.changeTarget");
 					
-					SumoStopFlags sf_send = new SumoStopFlags(false, false, false, false, false);
+					
 					double duration = 20.0;
 					conn.do_job_set(Vehicle.setStop("flow0.0", senderEdgeID, 1.0, (byte) 1, duration, sf_send));
+					
+					System.out.println("sf_send.stopped:"+sf_send.stopped);
+					System.out.println("sf_send.triggered:"+sf_send.triggered);
 				}
 				
 				
@@ -252,26 +256,55 @@ public class Main {
 					double testDepart = timeSeconds;
 					String testTypeID = "DEFAULT_PEDTYPE";
 					
-					conn.do_job_set(Person.add(testPersonID, TestEdgeID, testPos, testDepart, testTypeID));
+					//conn.do_job_set(Person.add(testPersonID, TestEdgeID, testPos, testDepart, testTypeID));
 					
+					//SumoColor curColor = new SumoColor(256, 0 ,0 ,0);
 					
-					SumoColor curColor = new SumoColor(256, 0 ,0 ,0);
-					
-					conn.do_job_set(Person.setColor("ffw", curColor));
+					//conn.do_job_set(Person.setColor("ffw", curColor));
 					
 					
 					System.out.println("personNum:" + personNum + " in " + timeSeconds+ " seconds" );
-				
+					
+					
 					//System.out.print(conn.do_job_get(Person.getPosition("ffw")));
 					//String stopID = "containerStop1";
 					
 					//conn.do_job_set(Person.appendWaitingStage(testPersonID, 20, "waiting", stopID));
+					
+					System.out.println("sf_send.stopped:"+sf_send.stopped);
+					System.out.println("sf_send.triggered:"+sf_send.triggered);
 								
 				}
+				
+				if(timeSeconds==193.0) {
+					System.out.println( timeSeconds+ " seconds" );
+					System.out.println("sf_send.stopped:"+sf_send.stopped);
+					System.out.println("sf_send.triggered:"+sf_send.triggered);
+				
+				
+					System.out.println("car_isStopped:");
+					System.out.println(conn.do_job_get(Vehicle.isStopped("flow0.0")));
+					
+					//System.out.println("car_isStoppedTriggered:");
+					//System.out.println(conn.do_job_get(Vehicle.isStoppedTriggered("flow0.0")));
+					
+				}
+				
+	
 				
 				if(timeSeconds ==213) {
 					//SumoPosition2D position = (SumoPosition2D)conn.do_job_get(Person.getPosition("ffw"));
 					//System.out.print("person position:" + position);
+					
+					System.out.println( timeSeconds+ " seconds" );
+					System.out.println("sf_send.stopped:"+sf_send.stopped);
+					System.out.println("sf_send.triggered:"+sf_send.triggered);
+					
+					System.out.println("car_isStopped:");
+					System.out.println(conn.do_job_get(Vehicle.isStopped("flow0.0")));
+					
+					//System.out.println("car_isStoppedTriggered:");
+					//System.out.println(conn.do_job_get(Vehicle.isStoppedTriggered("flow0.0")));
 					
 					personNum = personNum +1;
 					System.out.println("personNum:" + personNum + " in " + timeSeconds + " seconds");
