@@ -243,6 +243,9 @@ public class Main {
 					
 					System.out.println("sf_send.stopped:"+sf_send.stopped);
 					System.out.println("sf_send.triggered:"+sf_send.triggered);
+					
+					//conn.do_job_set(Vehicle.setBusStop("flow0.0", "160253722#1", 20.0, 210));
+
 				}
 				
 				
@@ -276,17 +279,22 @@ public class Main {
 								
 				}
 				
+				System.out.println("car_isStopped:");
+				System.out.println( timeSeconds+ " seconds" );
+				System.out.println(conn.do_job_get(Vehicle.isStopped("flow0.0")));
+				
+				
 				if(timeSeconds==193.0) {
 					System.out.println( timeSeconds+ " seconds" );
 					System.out.println("sf_send.stopped:"+sf_send.stopped);
 					System.out.println("sf_send.triggered:"+sf_send.triggered);
 				
-				
 					System.out.println("car_isStopped:");
 					System.out.println(conn.do_job_get(Vehicle.isStopped("flow0.0")));
 					
-					//System.out.println("car_isStoppedTriggered:");
-					//System.out.println(conn.do_job_get(Vehicle.isStoppedTriggered("flow0.0")));
+					sf_send.stopped= true;
+					
+				
 					
 				}
 				
@@ -303,8 +311,11 @@ public class Main {
 					System.out.println("car_isStopped:");
 					System.out.println(conn.do_job_get(Vehicle.isStopped("flow0.0")));
 					
-					//System.out.println("car_isStoppedTriggered:");
-					//System.out.println(conn.do_job_get(Vehicle.isStoppedTriggered("flow0.0")));
+					System.out.println("isStoppedParking:");
+					System.out.println(conn.do_job_get(Vehicle.isStoppedParking("flow0.0")));
+					
+					System.out.println("isStoppedParking:");
+					System.out.println(conn.do_job_get(Vehicle.isAtBusStop("flow0.0")));
 					
 					personNum = personNum +1;
 					System.out.println("personNum:" + personNum + " in " + timeSeconds + " seconds");
