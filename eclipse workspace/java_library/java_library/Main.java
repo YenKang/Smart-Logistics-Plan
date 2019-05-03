@@ -244,7 +244,9 @@ public class Main {
 					System.out.println("sf_send.stopped:"+sf_send.stopped);
 					System.out.println("sf_send.triggered:"+sf_send.triggered);
 					
-					//conn.do_job_set(Vehicle.setBusStop("flow0.0", "160253722#1", 20.0, 210));
+					conn.do_job_set(Vehicle.setBusStop("flow0.0" , "senderStop" , 20.0, 210));
+					
+				
 
 				}
 				
@@ -259,40 +261,35 @@ public class Main {
 					double testDepart = timeSeconds;
 					String testTypeID = "DEFAULT_PEDTYPE";
 					
-					//conn.do_job_set(Person.add(testPersonID, TestEdgeID, testPos, testDepart, testTypeID));
+					conn.do_job_set(Person.add(testPersonID, TestEdgeID, testPos, testDepart, testTypeID));
 					
 					//SumoColor curColor = new SumoColor(256, 0 ,0 ,0);
 					
 					//conn.do_job_set(Person.setColor("ffw", curColor));
 					
 					
-					System.out.println("personNum:" + personNum + " in " + timeSeconds+ " seconds" );
+					System.out.println("personNum:" + personNum + " in " + timeSeconds+ " seconds" );	
+					System.out.println(conn.do_job_get(Person.getPosition("ffw")));
 					
-					
-					//System.out.print(conn.do_job_get(Person.getPosition("ffw")));
-					//String stopID = "containerStop1";
-					
-					//conn.do_job_set(Person.appendWaitingStage(testPersonID, 20, "waiting", stopID));
-					
-					System.out.println("sf_send.stopped:"+sf_send.stopped);
-					System.out.println("sf_send.triggered:"+sf_send.triggered);
-								
-				}
+					conn.do_job_set(Person.appendWaitingStage(testPersonID, 20, "waiting", "senderStop"));
+					System.out.println(conn.do_job_get(Person.getPosition("ffw")));
 				
-				System.out.println("car_isStopped:");
-				System.out.println( timeSeconds+ " seconds" );
-				System.out.println(conn.do_job_get(Vehicle.isStopped("flow0.0")));
+
+				}
 				
 				
 				if(timeSeconds==193.0) {
 					System.out.println( timeSeconds+ " seconds" );
 					System.out.println("sf_send.stopped:"+sf_send.stopped);
-					System.out.println("sf_send.triggered:"+sf_send.triggered);
+				
 				
 					System.out.println("car_isStopped:");
 					System.out.println(conn.do_job_get(Vehicle.isStopped("flow0.0")));
 					
 					sf_send.stopped= true;
+					
+					System.out.println("getNextStops");
+					System.out.println(conn.do_job_get(Vehicle.getNextStops("flow0.0")));
 					
 				
 					
@@ -311,14 +308,11 @@ public class Main {
 					System.out.println("car_isStopped:");
 					System.out.println(conn.do_job_get(Vehicle.isStopped("flow0.0")));
 					
-					System.out.println("isStoppedParking:");
-					System.out.println(conn.do_job_get(Vehicle.isStoppedParking("flow0.0")));
-					
-					System.out.println("isStoppedParking:");
-					System.out.println(conn.do_job_get(Vehicle.isAtBusStop("flow0.0")));
 					
 					personNum = personNum +1;
 					System.out.println("personNum:" + personNum + " in " + timeSeconds + " seconds");
+					
+				
 				}
 				
 				

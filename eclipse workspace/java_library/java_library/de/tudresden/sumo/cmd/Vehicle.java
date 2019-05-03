@@ -489,7 +489,8 @@ public class Vehicle {
 	 * @return next traffic lights (compound)
 	 */
 	public static SumoCommand getNextStops(String vehID){
-		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, 
+		return new SumoCommand(
+				Constants.CMD_GET_VEHICLE_VARIABLE, 
 				Constants.VAR_NEXT_STOPS, 
 				vehID, 
 				Constants.RESPONSE_GET_VEHICLE_VARIABLE, 
@@ -730,13 +731,21 @@ public class Vehicle {
 	}
 
 	/**
-	 *  Returns information in regard to stopping: The returned integer is defined as 1 * stopped + 2 * parking + 4 * personTriggered + 8 * containerTriggered + 16 * isBusStop + 32 * isContainerStop with each of these flags defined as 0 or 1
+	 *  Returns information in regard to stopping: 
+	 *  The returned integer is defined as 
+	 *  1 * stopped + 2 * parking + 4 * personTriggered + 8 * containerTriggered + 16 * isBusStop + 32 * isContainerStop
+	 *   with each of these flags defined as 0 or 1
 	 * @param vehID id of the vehicle
 	 * @return speed in m/s
 	 */
 
 	public static SumoCommand getStopState(String vehID){
-		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, Constants.VAR_STOPSTATE, vehID, Constants.RESPONSE_GET_VEHICLE_VARIABLE, Constants.TYPE_UBYTE);
+		return new SumoCommand(
+				Constants.CMD_GET_VEHICLE_VARIABLE, 
+				Constants.VAR_STOPSTATE, 
+				vehID, 
+				Constants.RESPONSE_GET_VEHICLE_VARIABLE, 
+				Constants.TYPE_UBYTE);
 	}
 	
 	

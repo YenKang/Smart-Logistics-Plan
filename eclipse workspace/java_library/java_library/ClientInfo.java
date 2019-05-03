@@ -7,7 +7,7 @@ public class ClientInfo {
 	private double sender_lat;
 	private double sender_lng;
 	private double receiver_lat;
-	private double receiver_lng;
+	private double receiver_lng; // should be written in "lon"
 	
 	public ClientInfo() {
 		sender_lat = 0.0;
@@ -22,14 +22,14 @@ public class ClientInfo {
 		sender_lat = s_lat;
 		sender_lng = s_lng;
 		receiver_lat = r_lat;
-		receiver_lng = r_lng;
+		receiver_lng = r_lng; // should be written in "lon"
 	}
 	
 	public double[] getLatLng() {
 		result[0] = sender_lng;
 		result[1] = sender_lat;
-		result[2] = receiver_lng;
-		result[3] = receiver_lat;
+		result[2] = receiver_lng; // should be written in "lon"
+		result[3] = receiver_lat; 
 		return result;
 	}
 	
