@@ -291,8 +291,6 @@ public class Main {
 					System.out.println("getNextStops");
 					System.out.println(conn.do_job_get(Vehicle.getNextStops("flow0.0")));
 					
-				
-					
 				}
 				
 	

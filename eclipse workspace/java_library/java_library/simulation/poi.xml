@@ -1,7 +1,7 @@
 <additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 
-	<poi id="t0" color="40,160,0" x="40.0" y="-16.75" width="10" height="15" imgFile="tree1.png" />
+
 	<poi id="s0" color="40,160,0" x="40.0" y="23.25" width="15" height="15" imgFile="tree.png" />
 	<poi id="s1" color="40,160,0" x="80.0" y="23.25" width="15" height="15" imgFile="tree.png" />
 	<poi id="s2" color="40,160,0" x="120.0" y="23.25" width="15" height="15" imgFile="tree.png" />

@@ -297,7 +297,12 @@ public class Person {
 
 	public static SumoCommand getStage(String personID, int nextStageIndex){
 		Object[] array = new Object[]{nextStageIndex};
-		return new SumoCommand(Constants.CMD_GET_PERSON_VARIABLE, Constants.VAR_STAGE, personID, array, Constants.RESPONSE_GET_PERSON_VARIABLE, Constants.TYPE_INTEGER);
+		return new SumoCommand(
+				Constants.CMD_GET_PERSON_VARIABLE, 
+				Constants.VAR_STAGE, 
+				personID, array, 
+				Constants.RESPONSE_GET_PERSON_VARIABLE, 
+				Constants.TYPE_INTEGER);
 	}
 	
 	/**
