@@ -27,7 +27,7 @@
     </vehicle>
 
 
-    <person id="5"  depart="40" >
+    <person id="5"  depart="40"   >
         
         <walk from="160253722#1" to="160253722#3"/>
     </person>

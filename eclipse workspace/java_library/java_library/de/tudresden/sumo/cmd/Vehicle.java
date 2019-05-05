@@ -530,7 +530,13 @@ public class Vehicle {
 
 	public static SumoCommand getParameter(String vehID, String param){
 		Object[] array = new Object[]{param};
-		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, Constants.VAR_PARAMETER, vehID, array, Constants.RESPONSE_GET_VEHICLE_VARIABLE, Constants.TYPE_STRING);
+		return new SumoCommand(
+				Constants.CMD_GET_VEHICLE_VARIABLE, 
+				Constants.VAR_PARAMETER, 
+				vehID, 
+				array, 
+				Constants.RESPONSE_GET_VEHICLE_VARIABLE, 
+				Constants.TYPE_STRING);
 	}
 
 	/**
@@ -857,7 +863,8 @@ public class Vehicle {
 	 */
 
 	public static SumoCommand isStoppedTriggered(String vehID){
-		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, Constants.VAR_STOPSTATE, vehID, Constants.RESPONSE_GET_VEHICLE_VARIABLE, Constants.TYPE_UBYTE, "isStoppedTriggered");
+		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, 
+				Constants.VAR_STOPSTATE, vehID, Constants.RESPONSE_GET_VEHICLE_VARIABLE, Constants.TYPE_UBYTE, "isStoppedTriggered");
 	}
 	
 	/**
@@ -940,7 +947,8 @@ public class Vehicle {
 	 * @param lane lane
 	 * @return SumoCommand
 	 */
-	public static SumoCommand add(String vehID, String typeID, String routeID, int depart, double pos, double speed, byte lane){
+	public static SumoCommand add(String vehID, String typeID, 
+			String routeID, int depart, double pos, double speed, byte lane){
 
 		Object[] array = new Object[]{typeID, routeID, depart, pos, speed, lane};
 		return new SumoCommand(Constants.CMD_SET_VEHICLE_VARIABLE, Constants.ADD, vehID, array);

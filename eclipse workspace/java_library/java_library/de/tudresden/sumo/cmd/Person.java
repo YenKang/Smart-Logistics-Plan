@@ -388,7 +388,8 @@ public class Person {
 
 	public static SumoCommand setParameter(String personID, String param, String value){
 		Object[] array = new Object[]{param, value};
-		return new SumoCommand(Constants.CMD_SET_PERSON_VARIABLE, Constants.VAR_PARAMETER, personID, array);
+		return new SumoCommand(Constants.CMD_SET_PERSON_VARIABLE, 
+				Constants.VAR_PARAMETER, personID, array);
 	}
 
 	/**

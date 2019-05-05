@@ -28,12 +28,12 @@ import de.tudresden.sumo.cmd.Person;
 
 import de.tudresden.ws.container.*;
 
-public class Main {
+public class MainCopy {
 
 	static String sumo_bin = "sumo-gui";
 	// static String config_file = "simulation/map.sumo.cfg";
-	// static String config_file = "simulation_Tainan/map_from_flow.sumo.cfg";
-	   static String config_file = "simulation3/map_edited.sumo.cfg";
+	   static String config_file = "simulation_Tainan/map_from_flow.sumo.cfg";
+	// static String config_file = "simulation3/map_edited.sumo.cfg";
 	// static double step_length = 0.01; // version1
 
 	static double step_length = 0.01;
@@ -50,15 +50,13 @@ public class Main {
 			conn.runServer(8080);
 			conn.setOrder(1);
 			
-			/*
+			
 			SumoStopFlags sf_send = new SumoStopFlags(false, false, false, false, false);
 			SumoStopFlags sf_rec = new SumoStopFlags(false, false, false, false, false);
-			*/
 
 			for (int i = 0; i < 360000; i++) {
 				conn.do_timestep();
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
-				
 				
 				double sender_x = 3003.22;
 				double sender_y = 6763.46;
@@ -68,6 +66,7 @@ public class Main {
 				if(timeSeconds % 1==0) 
 				{
 					
+					/*
 					String curEdge = (String)conn.do_job_get(Vehicle.getRoadID("8")); // String vehID
 					SumoPosition2D v8Position = (SumoPosition2D) conn.do_job_get(Vehicle.getPosition("8"));
 					SumoPosition2D v9Position = (SumoPosition2D) conn.do_job_get(Vehicle.getPosition("9"));
@@ -81,6 +80,9 @@ public class Main {
 					
 					double v9toSenderDistance = (double)(conn.do_job_get(Simulation.getDistance2D(sender_x, sender_y, v9Position.x, v9Position.y, false, false)));
 					System.out.println("current distance between v9 to sender is:" + v9toSenderDistance);
+					*/
+					
+					/*
 					
 					if((v9toSenderDistance< v8toSenderDistance) && timeSeconds==60.0 ) {
 						System.out.println("we dispath v9 to the sender address!");
@@ -132,12 +134,17 @@ public class Main {
 					
 
 					if(timeSeconds==212.00) {
+						
 						String receiverEdge = "486363286#0";
+						
 						conn.do_job_set(Vehicle.changeTarget("8", receiverEdge));
+						
 						
 						//SumoStopFlags sf_rec = new SumoStopFlags(false, false, false, false, false);
 			
+						
 						//conn.do_job_set(Vehicle.setStop("8", receiverEdge, 0.0, (byte)0, 20.0, sf_rec ));
+						
 						
 					}
 					
@@ -224,7 +231,6 @@ public class Main {
 				
 				
 				if (timeSeconds == 90.0) {
-					/*
 					String senderEdgeID = "160253722#1";
 					System.out.println("The roadID of flow0.0 at 90s is:");
 
@@ -232,21 +238,29 @@ public class Main {
 					conn.do_job_set(Vehicle.changeTarget("flow0.0", senderEdgeID));
 					System.out.println("after Vehicle.changeTarget");
 					
+					
 					double duration = 20.0;
 					conn.do_job_set(Vehicle.setStop("flow0.0", senderEdgeID, 1.0, (byte) 1, duration, sf_send));
 					
 					System.out.println("sf_send.stopped:"+sf_send.stopped);
 					System.out.println("sf_send.triggered:"+sf_send.triggered);
+					
 					conn.do_job_set(Vehicle.setBusStop("flow0.0" , "senderStop" , 20.0, 210));
+					
+				
+					
 					conn.do_job_set(Vehicle.setParameter("flow0.0","vehParam", "vehValue"));
 			        System.out.println("vehicle.getParameter: " + (String)conn.do_job_get(Vehicle.getParameter("flow0.0", "vehParam")));
-			        */
+					
+				
+
 				}
 				
 				
-	
+				String currentEdge = (String)conn.do_job_get(Vehicle.getRoadID("flow0.0"));
+				int personNum = (Integer)conn.do_job_get(Vehicle.getPersonNumber("flow0.0"));
+				
 				if(timeSeconds==190.0) {
-					/*
 					String testPersonID = "ffw";
 					String TestEdgeID = "160253722#1";
 					double testPos = 1.0;
@@ -265,14 +279,12 @@ public class Main {
 					
 					conn.do_job_set(Person.appendWaitingStage(testPersonID, 20, "waiting", "senderStop"));
 					System.out.println(conn.do_job_get(Person.getPosition("ffw")));
-					*/
+				
 
 				}
 				
 				
 				if(timeSeconds==193.0) {
-					
-					/*
 					System.out.println( timeSeconds+ " seconds" );
 					System.out.println("sf_send.stopped:"+sf_send.stopped);
 				
@@ -284,14 +296,12 @@ public class Main {
 					
 					System.out.println("getNextStops");
 					System.out.println(conn.do_job_get(Vehicle.getNextStops("flow0.0")));
-					*/
 					
 				}
 				
 	
 				
 				if(timeSeconds ==213) {
-					/*
 					//SumoPosition2D position = (SumoPosition2D)conn.do_job_get(Person.getPosition("ffw"));
 					//System.out.print("person position:" + position);
 					
@@ -305,14 +315,13 @@ public class Main {
 					
 					personNum = personNum +1;
 					System.out.println("personNum:" + personNum + " in " + timeSeconds + " seconds");
-					*/
+					
 				
 				}
 				
 				
 				
 				if (timeSeconds == 214.0) {
-					/*
 					
 					String receiverEdgeID = "-279032146#1";
 					conn.do_job_set(Vehicle.changeTarget("flow0.0", receiverEdgeID));
@@ -321,12 +330,28 @@ public class Main {
 
 					double duration = 20.0;
 					conn.do_job_set(Vehicle.setStop("flow0.0", receiverEdgeID, 1.0, (byte) 0, duration, sf_rec));
-					*/
 				
 				}
 				
-			
-		
+				if(sf_rec.triggered) {
+					System.out.print("triggered is true" + " in " + timeSeconds);
+					personNum = personNum -1;
+					System.out.println("personNum:" + personNum + " in " + timeSeconds );
+	
+				}
+				
+				String curEdge = (String)conn.do_job_get(Vehicle.getRoadID("flow0.0"));
+				
+				
+				if(curEdge.equals("-279032146#1")) 
+				{
+				    personNum = personNum -1;
+					System.out.print("personNum:" + personNum + " in " + timeSeconds );
+					
+				}
+				
+				
+
 				if (i % 1 == 0) {
 
 					//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max",
