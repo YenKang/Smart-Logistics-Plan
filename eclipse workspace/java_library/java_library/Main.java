@@ -60,9 +60,12 @@ public class Main {
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
 				
 				
+				
 				double sender_x = 3003.22;
 				double sender_y = 6763.46;
 				String senderEdge = "-537706053#2";
+				
+			
 				
 				
 				if(timeSeconds % 1==0) 
@@ -81,6 +84,25 @@ public class Main {
 					
 					double v9toSenderDistance = (double)(conn.do_job_get(Simulation.getDistance2D(sender_x, sender_y, v9Position.x, v9Position.y, false, false)));
 					System.out.println("current distance between v9 to sender is:" + v9toSenderDistance);
+					
+					if(timeSeconds==50.0 ) {
+						conn.do_job_set(Vehicle.setParameter("8", "containerNumber", "0"));
+						String j = (String) conn.do_job_get(Vehicle.getParameter("8", "containerNumber"));
+						System.out.println("getParameter:" + j);
+					}
+					
+					if(timeSeconds==53.0 ) {
+						String v8_containerNumber = (String) conn.do_job_get(Vehicle.getParameter("8", "containerNumber"));
+						int v8_int_containerNumber = Integer.valueOf(v8_containerNumber);
+						v8_int_containerNumber = v8_int_containerNumber+1;
+						String stringValue = Integer.toString(v8_int_containerNumber);
+						conn.do_job_set(Vehicle.setParameter("8", "containerNumber", stringValue));
+						
+						String j = (String) conn.do_job_get(Vehicle.getParameter("8", "containerNumber"));
+						System.out.println("getParameter:" + j);
+						
+						
+					}
 					
 					if((v9toSenderDistance< v8toSenderDistance) && timeSeconds==60.0 ) {
 						System.out.println("we dispath v9 to the sender address!");
