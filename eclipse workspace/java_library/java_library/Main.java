@@ -17,6 +17,9 @@
 //
 /****************************************************************************/
 
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+
 import it.polito.appeal.traci.SumoTraciConnection;
 import de.tudresden.sumo.cmd.Simulation;
 import de.tudresden.sumo.cmd.Vehicle;
@@ -27,6 +30,8 @@ import java.util.LinkedList;
 import de.tudresden.sumo.cmd.Person;
 
 import de.tudresden.ws.container.*;
+
+
 
 public class Main {
 
@@ -49,6 +54,15 @@ public class Main {
 			// start Traci Server
 			conn.runServer(8080);
 			conn.setOrder(1);
+			
+			//SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+			
+			Calendar calendar = Calendar.getInstance();
+			 
+			System.out.println(formatter.format(calendar.getTime())); 
+			
+			
 			
 			/*
 			SumoStopFlags sf_send = new SumoStopFlags(false, false, false, false, false);
@@ -89,6 +103,9 @@ public class Main {
 						conn.do_job_set(Vehicle.setParameter("8", "containerNumber", "0"));
 						String j = (String) conn.do_job_get(Vehicle.getParameter("8", "containerNumber"));
 						System.out.println("getParameter:" + j);
+						
+						System.out.println(formatter.format(calendar.getTime())); 
+						
 					}
 					
 					if(timeSeconds==53.0 ) {
@@ -100,6 +117,8 @@ public class Main {
 						
 						String j = (String) conn.do_job_get(Vehicle.getParameter("8", "containerNumber"));
 						System.out.println("getParameter:" + j);
+						
+						System.out.println(formatter.format(calendar.getTime())); 
 						
 						
 					}
@@ -139,17 +158,33 @@ public class Main {
 						SumoStage stage = (SumoStage)conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart,routingMode));
 						double TravelTimeToSender = stage.travelTime;
 						
-						System.out.println("We need "+ TravelTimeToSender+" s from current edge to sender address");
+						System.out.println("We need "+ TravelTimeToSender +" s from current edge to sender address");
 						
 						SumoStopFlags sf_send = new SumoStopFlags(false, false, false, false, false);
-						// conn.do_job_set(Vehicle.setStop(vehID, edgeID, pos, laneIndex, duration, sf));
+					
 						
-						 conn.do_job_set(Vehicle.setContainerStop("8", "senderAddr_stop", 20.0, 100));
+						//conn.do_job_set(Vehicle.setContainerStop("8", "senderAddr_stop", 20.0, 100));
 						
-						//conn.do_job_set(Vehicle.setStop("8", senderEdge, 0, (byte)0, 20.0, sf_send ));
+						conn.do_job_set(Vehicle.setStop("8", senderEdge, 1.0, (byte)0, 20.0, sf_send ));
 				
 				
 				    }
+					
+					int a = (Integer)conn.do_job_get(Vehicle.isStopped("8"));
+					
+					// car stop at the sender's address
+					if(a==1) {
+						System.out.println("timeSeconds:" + timeSeconds);
+						
+					}
+					
+					if(timeSeconds ==195.0) {
+						conn.do_job_set(Vehicle.resume("8"));
+						int b = (Integer)conn.do_job_get(Vehicle.isStopped("8"));
+						
+						System.out.println("isStopped:" + b );
+						
+					}
 				    /*
 					
 
