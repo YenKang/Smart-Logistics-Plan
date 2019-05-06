@@ -1412,7 +1412,8 @@ public class Vehicle {
 	}
 	
 	/**
-	 *  Adds or modifies a stop at a chargingStation with the given parameters. The duration and the until attribute are
+	 *  Adds or modifies a stop at a chargingStation with the given param
+	 *  eters. The duration and the until attribute are
 	    in milliseconds.
 	        
 	 * @param vehID

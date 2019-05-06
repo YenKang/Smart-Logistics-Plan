@@ -95,7 +95,10 @@ class Server extends Thread {
                 System.out.println(jsonResponse.get("sender_lat"));
                 
                 
-                ClientInfo a = new ClientInfo((double)jsonResponse.get("sender_lng"),(double)jsonResponse.get("sender_lat"),(double)jsonResponse.get("sender_lng"),(double)jsonResponse.get("sender_lat"));
+                ClientInfo a = new ClientInfo((double)jsonResponse.get("sender_lng"),
+                		(double)jsonResponse.get("sender_lat"),
+                		(double)jsonResponse.get("sender_lng"),
+                		(double)jsonResponse.get("sender_lat"));
                 clientInfos.add(a);
     			
     			

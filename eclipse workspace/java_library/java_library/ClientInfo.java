@@ -4,10 +4,11 @@ public class ClientInfo {
 	private boolean request;
 	private int user_id;
 	double[] result= new double[4];
-	private double sender_lat;
 	private double sender_lng;
-	private double receiver_lat;
+	private double sender_lat;
 	private double receiver_lng;
+	private double receiver_lat;
+
 	
 	public ClientInfo() {
 		sender_lat = 0.0;
