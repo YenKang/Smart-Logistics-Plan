@@ -225,7 +225,12 @@ public class Vehicle {
 	 */
 
 	public static SumoCommand getPersonNumber(String vehID){
-		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, Constants.VAR_PERSON_NUMBER, vehID, Constants.RESPONSE_GET_VEHICLE_VARIABLE, Constants.TYPE_INTEGER);
+		return new SumoCommand(
+			Constants.CMD_GET_VEHICLE_VARIABLE, 
+			Constants.VAR_PERSON_NUMBER, 
+			vehID, 
+			Constants.RESPONSE_GET_VEHICLE_VARIABLE, 
+			Constants.TYPE_INTEGER);
 	}
 	
 
@@ -484,7 +489,12 @@ public class Vehicle {
 	 * @return next traffic lights (compound)
 	 */
 	public static SumoCommand getNextStops(String vehID){
-		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, Constants.VAR_NEXT_STOPS, vehID, Constants.RESPONSE_GET_VEHICLE_VARIABLE, Constants.TYPE_COMPOUND);
+		return new SumoCommand(
+				Constants.CMD_GET_VEHICLE_VARIABLE, 
+				Constants.VAR_NEXT_STOPS, 
+				vehID, 
+				Constants.RESPONSE_GET_VEHICLE_VARIABLE, 
+				Constants.TYPE_COMPOUND);
 	}
 	
 	
@@ -520,7 +530,13 @@ public class Vehicle {
 
 	public static SumoCommand getParameter(String vehID, String param){
 		Object[] array = new Object[]{param};
-		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, Constants.VAR_PARAMETER, vehID, array, Constants.RESPONSE_GET_VEHICLE_VARIABLE, Constants.TYPE_STRING);
+		return new SumoCommand(
+				Constants.CMD_GET_VEHICLE_VARIABLE, 
+				Constants.VAR_PARAMETER, 
+				vehID, 
+				array, 
+				Constants.RESPONSE_GET_VEHICLE_VARIABLE, 
+				Constants.TYPE_STRING);
 	}
 
 	/**
@@ -721,13 +737,21 @@ public class Vehicle {
 	}
 
 	/**
-	 *  Returns information in regard to stopping: The returned integer is defined as 1 * stopped + 2 * parking + 4 * personTriggered + 8 * containerTriggered + 16 * isBusStop + 32 * isContainerStop with each of these flags defined as 0 or 1
+	 *  Returns information in regard to stopping: 
+	 *  The returned integer is defined as 
+	 *  1 * stopped + 2 * parking + 4 * personTriggered + 8 * containerTriggered + 16 * isBusStop + 32 * isContainerStop
+	 *   with each of these flags defined as 0 or 1
 	 * @param vehID id of the vehicle
 	 * @return speed in m/s
 	 */
 
 	public static SumoCommand getStopState(String vehID){
-		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, Constants.VAR_STOPSTATE, vehID, Constants.RESPONSE_GET_VEHICLE_VARIABLE, Constants.TYPE_UBYTE);
+		return new SumoCommand(
+				Constants.CMD_GET_VEHICLE_VARIABLE, 
+				Constants.VAR_STOPSTATE, 
+				vehID, 
+				Constants.RESPONSE_GET_VEHICLE_VARIABLE, 
+				Constants.TYPE_UBYTE);
 	}
 	
 	
@@ -823,7 +847,13 @@ public class Vehicle {
 	 */
 
 	public static SumoCommand isStopped(String vehID){
-		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, Constants.VAR_STOPSTATE, vehID, Constants.RESPONSE_GET_VEHICLE_VARIABLE, Constants.TYPE_INTEGER, "isStopped");
+		return new SumoCommand(
+				Constants.CMD_GET_VEHICLE_VARIABLE, 
+				Constants.VAR_STOPSTATE, 
+				vehID, 
+				Constants.RESPONSE_GET_VEHICLE_VARIABLE, 
+				Constants.TYPE_INTEGER, 
+				"isStopped");
 	}
 	
 	/**
@@ -833,7 +863,8 @@ public class Vehicle {
 	 */
 
 	public static SumoCommand isStoppedTriggered(String vehID){
-		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, Constants.VAR_STOPSTATE, vehID, Constants.RESPONSE_GET_VEHICLE_VARIABLE, Constants.TYPE_UBYTE, "isStoppedTriggered");
+		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, 
+				Constants.VAR_STOPSTATE, vehID, Constants.RESPONSE_GET_VEHICLE_VARIABLE, Constants.TYPE_UBYTE, "isStoppedTriggered");
 	}
 	
 	/**
@@ -843,7 +874,13 @@ public class Vehicle {
 	 */
 
 	public static SumoCommand isAtContainerStop(String vehID){
-		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, Constants.VAR_STOPSTATE, vehID, Constants.RESPONSE_GET_VEHICLE_VARIABLE, Constants.TYPE_UBYTE, "isAtContainerStop");
+		return new SumoCommand(
+				Constants.CMD_GET_VEHICLE_VARIABLE, 
+				Constants.VAR_STOPSTATE, 
+				vehID, 
+				Constants.RESPONSE_GET_VEHICLE_VARIABLE, 
+				Constants.TYPE_UBYTE, 
+				"isAtContainerStop");
 	}
 	
 	/**
@@ -863,7 +900,12 @@ public class Vehicle {
 	 */
 
 	public static SumoCommand isAtBusStop(String vehID){
-		return new SumoCommand(Constants.CMD_GET_VEHICLE_VARIABLE, Constants.VAR_STOPSTATE, vehID, Constants.RESPONSE_GET_VEHICLE_VARIABLE, Constants.TYPE_UBYTE, "isAtBusStop");
+		return new SumoCommand(
+				Constants.CMD_GET_VEHICLE_VARIABLE, 
+				Constants.VAR_STOPSTATE, 
+				vehID, 
+				Constants.RESPONSE_GET_VEHICLE_VARIABLE, 
+				Constants.TYPE_UBYTE, "isAtBusStop");
 	}
 	
 	
@@ -905,7 +947,8 @@ public class Vehicle {
 	 * @param lane lane
 	 * @return SumoCommand
 	 */
-	public static SumoCommand add(String vehID, String typeID, String routeID, int depart, double pos, double speed, byte lane){
+	public static SumoCommand add(String vehID, String typeID, 
+			String routeID, int depart, double pos, double speed, byte lane){
 
 		Object[] array = new Object[]{typeID, routeID, depart, pos, speed, lane};
 		return new SumoCommand(Constants.CMD_SET_VEHICLE_VARIABLE, Constants.ADD, vehID, array);
