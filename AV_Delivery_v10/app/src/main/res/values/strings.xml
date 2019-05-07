@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">AV_Delivery_v1.0</string>
+    <string name="main_title">自駕車宅配服務</string>
+    <string name="account_button">會員中心</string>
+    <string name="package_send">我要寄貨</string>
+    <string name="my_package">我的貨物</string>
+    <string name="package_search">依貨號查件</string>
+    <string name="setting">偏好設定</string>
+    <string name="about">聯絡我們</string>
+    <string name="title_activity_map_test">Map</string>
+
+    <string-array name="size">
+        <item>L</item>
+        <item>M</item>
+        <item>S</item>
+    </string-array>
+</resources>

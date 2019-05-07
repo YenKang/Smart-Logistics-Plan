@@ -21,9 +21,11 @@ import java.util.Calendar;
 import java.text.SimpleDateFormat;
 
 import it.polito.appeal.traci.SumoTraciConnection;
+import sun.print.PSPrinterJob.PluginPrinter;
 import de.tudresden.sumo.cmd.Simulation;
 import de.tudresden.sumo.cmd.Vehicle;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 
@@ -38,14 +40,28 @@ public class Main {
 	static String sumo_bin = "sumo-gui";
 	// static String config_file = "simulation/map.sumo.cfg";
 	// static String config_file = "simulation_Tainan/map_from_flow.sumo.cfg";
-	   static String config_file = "simulation3/map_edited.sumo.cfg";
-	//   static double step_length = 0.001; // version1
 
-	   static double step_length = 0.01;
+	
+
+	static String config_file = "simulation3/map_edited.sumo.cfg";
+	// static double step_length = 0.01; // version1
+	static double step_length = 0.001;
+	
+	// 使用陣列方式宣告不同使用者的連線資訊，模擬時以此依據改變模擬環境
+	static ArrayList<ClientInfo> clientInfos = new ArrayList<ClientInfo>();
 
 	public static void main(String[] args) {
-	
+		
+		// ClientInfo testClientInfo = new ClientInfo();
+		// 開啟 server thread 並等待其他客戶連線
+		Thread server = new Server(clientInfos);
+		server.start();
+
+		// 進入模擬階段
+
 		try {
+			
+			// 建立SUMO TraCI連線
 			SumoTraciConnection conn = new SumoTraciConnection(sumo_bin, config_file);
 			
 			conn.addOption("step-length", step_length + "");
@@ -53,143 +69,56 @@ public class Main {
 			conn.addOption("start", "true"); // start sumo immediately
 
 			// start Traci Server
-			conn.runServer(8080);
+			conn.runServer(7777);
 			conn.setOrder(1);
+			/////////////////////
 			
-			for (int i = 0; i < 360000; i++) 
-			{
-				
+
+			// 開始模擬環境時間step
+			for (int i = 0; i < 360000; i++) {
 				conn.do_timestep();
 				
-				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
-
-				
-				double sender_x = 3003.22;
-				double sender_y = 6763.46;
-				String senderEdge = "-537706053#2";
-						
-				if(timeSeconds % 1==0) 
-				{
-					
-					String curEdge = (String)conn.do_job_get(Vehicle.getRoadID("8")); // String vehID
-					SumoPosition2D v8Position = (SumoPosition2D) conn.do_job_get(Vehicle.getPosition("8"));
-					SumoPosition2D v9Position = (SumoPosition2D) conn.do_job_get(Vehicle.getPosition("9"));
-					
-					System.out.println("current edgeID is:" + curEdge + " in " + timeSeconds + " seconds");
-					System.out.println("current position is:" + v8Position);
-					System.out.println("current position x:" + v8Position.x + " y:" + v8Position.y + " in " + timeSeconds + " seconds");
-		
-					double v8toSenderDistance = (double)(conn.do_job_get(Simulation.getDistance2D(sender_x, sender_y, v8Position.x, v8Position.y, false, false)));
-					System.out.println("current distance between v8 to sender is:" + v8toSenderDistance);
-					
-					double v9toSenderDistance = (double)(conn.do_job_get(Simulation.getDistance2D(sender_x, sender_y, v9Position.x, v9Position.y, false, false)));
-					System.out.println("current distance between v9 to sender is:" + v9toSenderDistance);
-					
-					if(timeSeconds==50.0 ) {
-						conn.do_job_set(Vehicle.setParameter("8", "containerNumber", "0"));
-						String j = (String) conn.do_job_get(Vehicle.getParameter("8", "containerNumber"));
-						System.out.println("getParameter:" + j);
-						
-						
-						
-					}
-					
-					if(timeSeconds==53.0 ) {
-						String v8_containerNumber = (String) conn.do_job_get(Vehicle.getParameter("8", "containerNumber"));
-						int v8_int_containerNumber = Integer.valueOf(v8_containerNumber);
-						v8_int_containerNumber = v8_int_containerNumber+1;
-						String stringValue = Integer.toString(v8_int_containerNumber);
-						conn.do_job_set(Vehicle.setParameter("8", "containerNumber", stringValue));
-						
-						String j = (String) conn.do_job_get(Vehicle.getParameter("8", "containerNumber"));
-						System.out.println("getParameter:" + j);
-						
-		
-					}
-					
-					if((v9toSenderDistance< v8toSenderDistance) && timeSeconds==60.0 ) {
-						System.out.println("we dispath v9 to the sender address!");
-					}
-					
-					else if(v9toSenderDistance > v8toSenderDistance && (timeSeconds==60.0)) 
-					{
-						System.out.println("we dispath v8 to the sender address!");
-
-						System.out.println("Default Route:");
-						SumoStringList edgeList = (SumoStringList)conn.do_job_get(Vehicle.getRoute("8"));
-						LinkedList<String> defaultRouteList = new LinkedList<String>(); 
-						
-						for(i=0; i<edgeList.size(); i++) {
-							defaultRouteList.add(edgeList.get(i));
+				if (i%10000==0) {
+					//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "routeByDistance", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
+					conn.do_job_set(Vehicle.add("v"+i, "routeByDistance", "r_test", i, 12.0, 15.0, (byte)0));
+					conn.do_job_set(Vehicle.setParameter("v"+i, "persons", "3"));
+					System.out.println(conn.do_job_get(Vehicle.getParameter("v"+i, "persons")));
+					conn.do_job_set(Vehicle.setParameter("v"+i, "persons", "2"));
+					System.out.println(conn.do_job_get(Vehicle.getParameter("v"+i, "persons")));
+					//System.out.println(clientInfos.size());
+					if (clientInfos.size() >0) {
+						double[] testlatlng;
+						double lng, lat;
+						ClientInfo testClientInfo = clientInfos.get(0);
+						testlatlng = testClientInfo.getLatLng();
+						for (int j =0;j<4; j++) {
+							System.out.println(testlatlng[j]);
 						}
-						System.out.println("defaultRouteList:"+ defaultRouteList);
-
-
-						
-						conn.do_job_set(Vehicle.changeTarget("8", senderEdge));
-						
-						System.out.println("changing Route:");
-
-						SumoStringList new_edgeList = (SumoStringList)conn.do_job_get(Vehicle.getRoute("8"));
-						LinkedList<String> changedRouteList = new LinkedList<String>(); 
-						
-						for(i=0; i<new_edgeList.size(); i++) {
-							changedRouteList.add(new_edgeList.get(i));
-						}
-						System.out.println("changedRouteList:"+ changedRouteList);
-						
-
-						String fromEdge = curEdge;
-						String toEdge = senderEdge;
-						String vType ="routeByDistance"; 
-						double depart = 60.0; 
-						int routingMode = 0;
-						
-						SumoStage stage = (SumoStage)conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart,routingMode));
-						double TravelTimeToSender = stage.travelTime;
-						
-						System.out.println("We need "+ TravelTimeToSender +" s from current edge to sender address");
-						
-						SumoStopFlags sf_send = new SumoStopFlags(false, false, false, false, false);
-					
-						
-						//conn.do_job_set(Vehicle.setContainerStop("8", "senderAddr_stop", 20.0, 100));
-						
-						conn.do_job_set(Vehicle.setStop("8", senderEdge, 1.0, (byte)0, 20.0, sf_send ));
-				
-				
-				    }
-					
-					int a = (Integer)conn.do_job_get(Vehicle.isStopped("8"));
-					
-					// car stop at the sender's address
-					if(a==1) {
-						System.out.println("timeSeconds:" + timeSeconds);
-						
+						lng = testlatlng[0];
+						lat = testlatlng[1];
+						//System.out.println(conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring")));
+						SumoPositionRoadMap a =(SumoPositionRoadMap) conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring"));
+						System.out.println(a.edgeID);
+						System.out.println(a.laneIndex);
+						System.out.println(a.pos);
+						//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
 					}
-					
-					if(timeSeconds ==195.0) {
-						conn.do_job_set(Vehicle.resume("8"));
-						int b = (Integer)conn.do_job_get(Vehicle.isStopped("8"));
-						
-						System.out.println("isStopped:" + b );
-						
-					}
-				   
-		
-		
-	             }
-			 
-
-		      }
-			  conn.close();
-			  
+					//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
+				}
+			}
 			
-		}
-		catch (Exception ex) {
+			/*
+			SumoStopFlags sf_send = new SumoStopFlags(false, false, false, false, false);
+			SumoStopFlags sf_rec = new SumoStopFlags(false, false, false, false, false);
+			*/
+
+			
+				
+			conn.close();
+		} catch (Exception ex) {
+
 			ex.printStackTrace();
 		}
-
 	}
-
+	
 }
