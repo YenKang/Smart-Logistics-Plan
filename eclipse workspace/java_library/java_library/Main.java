@@ -44,8 +44,8 @@ public class Main {
 	
 
 	static String config_file = "simulation3/map_edited.sumo.cfg";
-	// static double step_length = 0.01; // version1
-	static double step_length = 0.001;
+	static double step_length = 0.01; // version1
+	//static double step_length = 0.001;
 	
 	// 使用陣列方式宣告不同使用者的連線資訊，模擬時以此依據改變模擬環境
 	static ArrayList<ClientInfo> clientInfos = new ArrayList<ClientInfo>();
@@ -73,18 +73,22 @@ public class Main {
 			conn.setOrder(1);
 			/////////////////////
 			
+			double minDistance=0;
+			double min=0;
+			ArrayList<Double> myList = new ArrayList();
+			
 
 			// 開始模擬環境時間step
 			for (int i = 0; i < 360000; i++) {
+		
+				double timeStep = (double) conn.do_job_get(Simulation.getTime());
 				conn.do_timestep();
 				
 				if (i%10000==0) {
 					//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "routeByDistance", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
-					conn.do_job_set(Vehicle.add("v"+i, "routeByDistance", "r_test", i, 12.0, 15.0, (byte)0));
-					conn.do_job_set(Vehicle.setParameter("v"+i, "persons", "3"));
-					System.out.println(conn.do_job_get(Vehicle.getParameter("v"+i, "persons")));
-					conn.do_job_set(Vehicle.setParameter("v"+i, "persons", "2"));
-					System.out.println(conn.do_job_get(Vehicle.getParameter("v"+i, "persons")));
+					conn.do_job_set(Vehicle.add("v"+i, "routeByDistance", "r_test", i, 12.0, 7.0, (byte)0));
+					
+					
 					//System.out.println(clientInfos.size());
 					if (clientInfos.size() >0) {
 						double[] testlatlng;
@@ -97,14 +101,80 @@ public class Main {
 						lng = testlatlng[0];
 						lat = testlatlng[1];
 						//System.out.println(conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring")));
+						
 						SumoPositionRoadMap a =(SumoPositionRoadMap) conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring"));
 						System.out.println(a.edgeID);
 						System.out.println(a.laneIndex);
 						System.out.println(a.pos);
+						
 						//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
 					}
 					//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
+						
 				}
+				
+				// Initialize containerCapacity of all ten cars
+				
+				for(i=0;i<10;i++) {
+					String vehID = Integer.toString(i);
+					conn.do_job_set(Vehicle.setParameter(vehID, "containerCapacity","6"));
+					String value = (String)conn.do_job_get(Vehicle.getParameter(vehID, "containerCapacity"));
+					System.out.println("vehID:"+ vehID+ ",value:" + value);
+				}
+				
+				
+				// Initialize containerNumber of all ten cars
+			 
+				
+				for(i=0;i<10;i++) {
+					String vehID = Integer.toString(i);
+					conn.do_job_set(Vehicle.setParameter(vehID, "containerNumber","0"));
+					String value = (String)conn.do_job_get(Vehicle.getParameter(vehID, "containerNumber"));
+					System.out.println("vehID:"+ vehID+ ",value:" + value);
+				}
+				
+				
+				if(timeStep %10==0) {
+					SumoPosition2D v8_position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition("8"));
+					SumoPosition2D v8_geo_position = (SumoPosition2D)conn.do_job_get(Simulation.convertGeo(v8_position.x, v8_position.y, false));
+					System.out.println("timeStep:" + timeStep);
+					System.out.println("v8_geo_position:" +v8_geo_position);
+					
+				}
+				
+				System.out.println("--------------------------------");
+				
+				for(i=0;i<10;i++) {
+					String vehID = Integer.toString(i);
+				
+					SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(vehID));
+					
+					double eachDistance = (double)(conn.do_job_get(Simulation.getDistance2D(3006.60, 1681.25, veh_Position.x, veh_Position.y, false, true)));
+					System.out.println(i+ "," + "eachDistance:" + eachDistance );
+				
+					myList.add(eachDistance);
+					
+					min = myList.get(0);				
+				
+				}
+				
+				for(int j=0; j<10;j++) {
+					if(myList.get(j)<min) {
+						min =myList.get(j);
+					}
+				}
+				
+				
+				
+				System.out.println("min:"+ min);
+				int a = myList.indexOf(min);
+				
+				System.out.println("index:" + a);
+				
+				
+			
+				
+			
 			}
 			
 			/*

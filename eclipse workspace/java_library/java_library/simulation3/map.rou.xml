@@ -32,7 +32,9 @@
 
 
   <route id="r_test" edges="158782348#5 -158782348#7"/>
-<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+
+
+
 
     <vType id="routeByDistance" maxSpeed="10"/>
 
