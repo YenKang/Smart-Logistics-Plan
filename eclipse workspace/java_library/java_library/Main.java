@@ -63,6 +63,7 @@ public class Main {
 			
 			// 開始模擬環境時間step
 			for (int i = 0; i < 360000; i++) {
+				conn.do_timestep();
 				
 				if (i%10000==0) {
 					//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "routeByDistance", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
