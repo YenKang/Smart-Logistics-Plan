@@ -39,49 +39,35 @@ public class Main {
 	// static String config_file = "simulation/map.sumo.cfg";
 	// static String config_file = "simulation_Tainan/map_from_flow.sumo.cfg";
 	   static String config_file = "simulation3/map_edited.sumo.cfg";
-	// static double step_length = 0.01; // version1
+	//   static double step_length = 0.001; // version1
 
-	static double step_length = 0.01;
+	   static double step_length = 0.01;
 
 	public static void main(String[] args) {
-
+	
 		try {
 			SumoTraciConnection conn = new SumoTraciConnection(sumo_bin, config_file);
+			
 			conn.addOption("step-length", step_length + "");
+
 			conn.addOption("start", "true"); // start sumo immediately
 
-			
 			// start Traci Server
 			conn.runServer(8080);
 			conn.setOrder(1);
 			
-			//SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-			
-			Calendar calendar = Calendar.getInstance();
-			 
-			System.out.println(formatter.format(calendar.getTime())); 
-			
-			
-			
-			/*
-			SumoStopFlags sf_send = new SumoStopFlags(false, false, false, false, false);
-			SumoStopFlags sf_rec = new SumoStopFlags(false, false, false, false, false);
-			*/
-
-			for (int i = 0; i < 360000; i++) {
+			for (int i = 0; i < 360000; i++) 
+			{
+				
 				conn.do_timestep();
+				
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
-				
-				
+
 				
 				double sender_x = 3003.22;
 				double sender_y = 6763.46;
 				String senderEdge = "-537706053#2";
-				
-			
-				
-				
+						
 				if(timeSeconds % 1==0) 
 				{
 					
@@ -104,7 +90,7 @@ public class Main {
 						String j = (String) conn.do_job_get(Vehicle.getParameter("8", "containerNumber"));
 						System.out.println("getParameter:" + j);
 						
-						System.out.println(formatter.format(calendar.getTime())); 
+						
 						
 					}
 					
@@ -118,9 +104,7 @@ public class Main {
 						String j = (String) conn.do_job_get(Vehicle.getParameter("8", "containerNumber"));
 						System.out.println("getParameter:" + j);
 						
-						System.out.println(formatter.format(calendar.getTime())); 
-						
-						
+		
 					}
 					
 					if((v9toSenderDistance< v8toSenderDistance) && timeSeconds==60.0 ) {
@@ -130,6 +114,7 @@ public class Main {
 					else if(v9toSenderDistance > v8toSenderDistance && (timeSeconds==60.0)) 
 					{
 						System.out.println("we dispath v8 to the sender address!");
+
 						System.out.println("Default Route:");
 						SumoStringList edgeList = (SumoStringList)conn.do_job_get(Vehicle.getRoute("8"));
 						LinkedList<String> defaultRouteList = new LinkedList<String>(); 
@@ -138,10 +123,13 @@ public class Main {
 							defaultRouteList.add(edgeList.get(i));
 						}
 						System.out.println("defaultRouteList:"+ defaultRouteList);
+
+
 						
 						conn.do_job_set(Vehicle.changeTarget("8", senderEdge));
 						
 						System.out.println("changing Route:");
+
 						SumoStringList new_edgeList = (SumoStringList)conn.do_job_get(Vehicle.getRoute("8"));
 						LinkedList<String> changedRouteList = new LinkedList<String>(); 
 						
@@ -150,11 +138,13 @@ public class Main {
 						}
 						System.out.println("changedRouteList:"+ changedRouteList);
 						
+
 						String fromEdge = curEdge;
 						String toEdge = senderEdge;
 						String vType ="routeByDistance"; 
 						double depart = 60.0; 
 						int routingMode = 0;
+						
 						SumoStage stage = (SumoStage)conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart,routingMode));
 						double TravelTimeToSender = stage.travelTime;
 						
@@ -185,355 +175,18 @@ public class Main {
 						System.out.println("isStopped:" + b );
 						
 					}
-				    /*
-					
-
-					if(timeSeconds==212.00) {
-						String receiverEdge = "486363286#0";
-						conn.do_job_set(Vehicle.changeTarget("8", receiverEdge));
-						
-						//SumoStopFlags sf_rec = new SumoStopFlags(false, false, false, false, false);
-			
-						//conn.do_job_set(Vehicle.setStop("8", receiverEdge, 0.0, (byte)0, 20.0, sf_rec ));
-						
-					}
-					
-					
-					--------------------------------------------------------------------------------------------------------
-					
-					
-					/*
-					if(timeSeconds==130.0) {
-						String fromEdge = curEdge;
-						String toEdge = "160253722#3";
-						String vType ="routeByDistance"; 
-						double depart = 60.0; 
-						int routingMode = 0;
-						SumoStage stage = (SumoStage)conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart,routingMode));
-						LinkedList<String> newRoute = new LinkedList<String>(); 
-						
-						for (String eadge :stage.edges){ 
-							newRoute.add(eadge); 
-						}
-						
-						System.out.println("newRoute:"+ newRoute);
-						System.out.println("Trave time in the new route:"+ stage.travelTime);
-						System.out.println("Default Route:");
-						SumoStringList edgeList = (SumoStringList)conn.do_job_get(Vehicle.getRoute("flow0.0"));
-						LinkedList<String> getRouteList = new LinkedList<String>(); 
-						
-						for(i=0; i<edgeList.size(); i++) {
-							getRouteList.add(edgeList.get(i));
-						}
-						System.out.println("getRouteList:"+ getRouteList);
-						conn.do_job_set(Vehicle.setRoute("flow0.0", stage.edges));
-						System.out.println("Changed Route:");
-						SumoStringList changedEdgeList = (SumoStringList)conn.do_job_get(Vehicle.getRoute("flow0.0"));
-						LinkedList<String> changedRouteList = new LinkedList<String>();
-						for(i=0; i<changedEdgeList.size(); i++) {
-							changedRouteList.add(changedEdgeList.get(i));
-						}
-						System.out.println("changedRouteList:"+ changedRouteList);	
-					}
-					*/
-				}
-				
-				if(timeSeconds==137.00) {
-					
-					//String curEdge = (String)conn.do_job_get(Vehicle.getRoadID("flow0.0"));
-					//System.out.println("current edgeID is:" + curEdge );
-				}
-
-				/*
-				 * String fromEdge = "307244665#4"; String toEdge = "31794904#2"; 
-				 * String vType ="routeByDistance"; 
-				 * double depart = 60.0; 
-				 * int routingMode = 0;
-				 * 
-				 * //System.out.println(conn.do_job_get(Simulation.findRoute(fromEdge, toEdge,
-				 * vType, depart, routingMode))); 
-				 * 
-				 * SumoStage stage = (SumoStage)
-				 * conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart,
-				 * routingMode));
-				 * 
-				 * System.out.println("findRoute result stage:"); for (String s : stage.edges) {
-				 * System.out.println("  " + s); }
-				 */
-
-				/*
-				 * System.out.println("stage:"+ stage); 
-				 * System.out.println("stage.edges:"+
-				 * stage.edges); 
-				 * System.out.println("stage.edges.get(0):"+ stage.edges.get(0));
-				 * 
-				 * LinkedList<String> newRoute = new LinkedList<String>(); 
-				 * for (String eadge :stage.edges){ newRoute.add(eadge); } 
-				 * 
-				 * System.out.println("newRoute:"+
-				 * newRoute);
-				 */
-
-				// conn.do_job_srt(Vehicle.add(vehID, typeID, routeID, depart, pos, speed,
-				// lane));
-
-			
-				
-				
-				if (timeSeconds == 90.0) {
-					/*
-					String senderEdgeID = "160253722#1";
-					System.out.println("The roadID of flow0.0 at 90s is:");
-
-					// System.out.println(conn.do_job_get(Vehicle.getRoadID("flow0.0")));
-					conn.do_job_set(Vehicle.changeTarget("flow0.0", senderEdgeID));
-					System.out.println("after Vehicle.changeTarget");
-					
-					double duration = 20.0;
-					conn.do_job_set(Vehicle.setStop("flow0.0", senderEdgeID, 1.0, (byte) 1, duration, sf_send));
-					
-					System.out.println("sf_send.stopped:"+sf_send.stopped);
-					System.out.println("sf_send.triggered:"+sf_send.triggered);
-					conn.do_job_set(Vehicle.setBusStop("flow0.0" , "senderStop" , 20.0, 210));
-					conn.do_job_set(Vehicle.setParameter("flow0.0","vehParam", "vehValue"));
-			        System.out.println("vehicle.getParameter: " + (String)conn.do_job_get(Vehicle.getParameter("flow0.0", "vehParam")));
-			        */
-				}
-				
-				
-	
-				if(timeSeconds==190.0) {
-					/*
-					String testPersonID = "ffw";
-					String TestEdgeID = "160253722#1";
-					double testPos = 1.0;
-					double testDepart = timeSeconds;
-					String testTypeID = "DEFAULT_PEDTYPE";
-					
-					conn.do_job_set(Person.add(testPersonID, TestEdgeID, testPos, testDepart, testTypeID));
-					
-					//SumoColor curColor = new SumoColor(256, 0 ,0 ,0);
-					
-					//conn.do_job_set(Person.setColor("ffw", curColor));
-					
-					
-					System.out.println("personNum:" + personNum + " in " + timeSeconds+ " seconds" );	
-					System.out.println(conn.do_job_get(Person.getPosition("ffw")));
-					
-					conn.do_job_set(Person.appendWaitingStage(testPersonID, 20, "waiting", "senderStop"));
-					System.out.println(conn.do_job_get(Person.getPosition("ffw")));
-					*/
-
-				}
-				
-				
-				if(timeSeconds==193.0) {
-					
-					/*
-					System.out.println( timeSeconds+ " seconds" );
-					System.out.println("sf_send.stopped:"+sf_send.stopped);
-				
-				
-					System.out.println("car_isStopped:");
-					System.out.println(conn.do_job_get(Vehicle.isStopped("flow0.0")));
-					
-					sf_send.stopped= true;
-					
-					System.out.println("getNextStops");
-					System.out.println(conn.do_job_get(Vehicle.getNextStops("flow0.0")));
-					*/
-					
-				}
-				
-	
-				
-				if(timeSeconds ==213) {
-					/*
-					//SumoPosition2D position = (SumoPosition2D)conn.do_job_get(Person.getPosition("ffw"));
-					//System.out.print("person position:" + position);
-					
-					System.out.println( timeSeconds+ " seconds" );
-					System.out.println("sf_send.stopped:"+sf_send.stopped);
-					System.out.println("sf_send.triggered:"+sf_send.triggered);
-					
-					System.out.println("car_isStopped:");
-					System.out.println(conn.do_job_get(Vehicle.isStopped("flow0.0")));
-					
-					
-					personNum = personNum +1;
-					System.out.println("personNum:" + personNum + " in " + timeSeconds + " seconds");
-					*/
-				
-				}
-				
-				
-				
-				if (timeSeconds == 214.0) {
-					/*
-					
-					String receiverEdgeID = "-279032146#1";
-					conn.do_job_set(Vehicle.changeTarget("flow0.0", receiverEdgeID));
-
-					
-
-					double duration = 20.0;
-					conn.do_job_set(Vehicle.setStop("flow0.0", receiverEdgeID, 1.0, (byte) 0, duration, sf_rec));
-					*/
-				
-				}
-				
-			
+				   
 		
-				if (i % 1 == 0) {
+		
+	             }
+			 
 
-					//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max",
-					// "current", "max", "current", "", "", "", 0, 0));
-					
-
-				
-				}
-
-				// System.out.println("timeSeconds:"+ timeSeconds);
-
-				if (timeSeconds % 1 == 0) {
-					// System.out.println("The roadID of flow0.0 now is:");
-					// System.out.println(conn.do_job_get(Vehicle.getRoadID("flow0.0")));
-
-					/*
-					 * System.out.println("getRoute('flow0.0')"); 
-					 * SumoStringList K= (SumoStringList) conn.do_job_get(Vehicle.getRoute("flow0.0")); 
-					 * //String asd[] = K
-					 * System.out.println(K.get(2));
-					 */
-					
-					/*
-					 System.out.println("------------convertGeo part-------------");
-					 System.out.println(conn.do_job_get(Simulation.convertGeo(3414.680, 5591.166, false)));// (x,y)=(3414.680,
-																											// 5591.166)
-					 // System.out.println(conn.do_job_get(Simulation.convertGeo(2466.06, 7243.26,
-					 // false ))); // (x,y)=(2466.06, 2466.06)
-					 System.out.println(conn.do_job_get(Simulation.convertGeo(120.22021170569616, 23.031769661295733, true))); //
-					 System.out.println("----------*******-----------------------");
-					*/
-					
-					 /*
-					 System.out.println("---------------findRoute-----------------"); 
-					 String fromEdge = "307244665#4"; 
-					 String toEdge = "-298597679#1"; 
-					 String vType = "routeByDistance"; 
-					 double depart = 60.0; 
-					 int routingMode = 0;
-					 */
-					 
-					 /*
-					 System.out.println(conn.do_job_get(Simulation.findRoute(fromEdge, toEdge,vType, depart, routingMode))); 
-					 SumoStage stage = (SumoStage)conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart, routingMode)); 
-					 System.out.println(stage.travelTime);
-					 */	
-
-					// SumoStringList KKKK = KKK.edges;
-					// System.out.println(KKKK.get(0));
-
-					/*
-					 * System.out.println("------------convert2D part-------------");
-					 * System.out.println("convert2D('-537706053#2', 0.0, (byte)0, false)");
-					 * System.out.println(conn.do_job_get(Simulation.convert2D("-537706053#2", 0.0,
-					 * (byte)0, false)));
-					 */
-
-					// System.out.println("convert2D('313194758#1', 0.0, (byte)0, true)");
-					// System.out.println(conn.do_job_get(Simulation.convert2D("313194758#1", 0,
-					// (byte)0, false)));
-
-					// System.out.println(" ");
-					// System.out.println(" ");
-
-					/*
-					 * System.out.println("------------convertRoad part-------------");
-					 * System.out.println("convertRoad(2989.02, 6765.41, false, 'ignoring'))");
-					 * System.out.println(conn.do_job_get(Simulation.convertRoad(2989.02, 6765.41,
-					 * false, "ignoring")));
-					 */
-
-					/*
-					 * System.out.println("convertRoad(4061.28, 5207.22, false, 'ignoring'))");
-					 * System.out.println(conn.do_job_get(Simulation.convertRoad(4061.28, 5207.22,
-					 * false, "ignoring"))); System.out.println("-----------------------------");
-					 * 
-					 * System.out.println("convertRoad(120.227524, 22.982570, true, 'ignoring'))");
-					 * System.out.println(conn.do_job_get(Simulation.convertRoad(120.227524,
-					 * 22.982570, true, "ignoring")));
-					 */
-
-					/*
-					 * // getDistance2D & getDistanceRoad
-					 * System.out.println("-------getDistance2D--------"); //
-					 * System.out.println(conn.do_job_get(Simulation.getDistance2D(3414.680,
-					 * 5591.166, 2466.06, 2466.06, false, false))); //
-					 * System.out.println(conn.do_job_get(Simulation.getDistance2D(3414.680,
-					 * 5591.166, 2466.06, 2466.06, false, true)));
-					 * System.out.println("-----------------------------");
-					 * 
-					 * double startPosX = 4061.28; double startPosY = 5207.22; double endPosX =
-					 * 2052.75; double endPosY = 6295.79; double startLon = 120.227524; double
-					 * startLat = 22.982570; double endLon = 120.207748; double endLat = 22.992048;
-					 * 
-					 * // System.out.println(conn.do_job_get(Simulation.getDistance2D(3414.680,
-					 * 5591.166, 2466.06, 2466.06, false, false)));
-					 * 
-					 * System.out.
-					 * println("-------The Distance of non-geo in isdriving condition--------");
-					 * System.out.println(conn.do_job_get(Simulation.getDistance2D(startPosX,
-					 * startPosY, endPosX, endPosY, false, true))); System.out.
-					 * println("-------The Distance of non-geo in non-isdriving condition--------");
-					 * System.out.println(conn.do_job_get(Simulation.getDistance2D(startPosX,
-					 * startPosY, endPosX, endPosY, false, false))); System.out.
-					 * println("-------The Distance of [geo] in isdriving condition--------");
-					 */
-
-					/*
-					 * //System.out.println(conn.do_job_get(Simulation.getDistance2D(startLon,
-					 * startLat, endLon, endLat, true, false)));
-					 * 
-					 * System.out.println("------------------getDistanceRoad-----------------------"
-					 * ); String startEdgeId = "307244665#2"; String endEdgeId = "496332196#1";
-					 * double pos1 = 0.0; double pos2 = 0.0; System.out.
-					 * println("-------The [driving] Distance of [startEdge to endEdge]--------");
-					 * System.out.println(conn.do_job_get(Simulation.getDistanceRoad(startEdgeId,
-					 * pos1, endEdgeId, pos2, false))); System.out.
-					 * println("-------The [air] Distance of [startEdge to endEdge] --------");
-					 * System.out.println(conn.do_job_get(Simulation.getDistanceRoad(startEdgeId,
-					 * pos1, endEdgeId, pos2, true)));
-					 */
-
-					/*
-					 * // findRoute System.out.println("---------------findRoute-----------------");
-					 * String fromEdge = "307244665#2"; String toEdge = "496332196#1"; String vType
-					 * = "routeByDistance"; double depart = 40; int routingMode = 0;
-					 * System.out.println(conn.do_job_get(Simulation.findRoute(fromEdge, toEdge,
-					 * vType, depart, routingMode)));
-					 */
-				}
-
+		      }
+			  conn.close();
+			  
 			
-
-				// int tlsPhase = (int)conn.do_job_get(Trafficlight.getPhase("gneJ1"));
-				// String tlsPhaseName =
-				// (String)conn.do_job_get(Trafficlight.getPhaseName("gneJ1"));
-				// System.out.println(String.format("Step %s, tlsPhase %s (%s)", timeSeconds,
-				// tlsPhase, tlsPhaseName));
-
-				/*
-				 * SumoVehicleData vehData =
-				 * (SumoVehicleData)conn.do_job_get(Inductionloop.getVehicleData("loop1")); for
-				 * (SumoVehicleData.VehicleData d : vehData.ll) {
-				 * System.out.println(String.format("  veh=%s len=%s entry=%s leave=%s type=%s",
-				 * d.vehID, d.length, d.entry_time, d.leave_time, d.typeID)); }
-				 */
-			}
-			conn.close();
-
-		} catch (Exception ex) {
+		}
+		catch (Exception ex) {
 			ex.printStackTrace();
 		}
 
