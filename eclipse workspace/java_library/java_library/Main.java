@@ -214,6 +214,7 @@ public class Main {
 					System.out.println(formatter.format(calendar.getTime()));
 					
 					System.out.println("timeStep:"+ timeStep);
+					
 					for(int k=0;k<10;k++) {
 						String vehID = Integer.toString(k);
 						SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(vehID));
@@ -228,6 +229,9 @@ public class Main {
 							System.out.println(j+ " is the candidate car");
 						}
 					}
+					
+					double a = (double)(conn.do_job_get(Simulation.getDistance2D(862.51, 1188.05, 4423.37, 847.71, false, true)));
+					System.out.println("a:"+a);
 				}
 				
 				
