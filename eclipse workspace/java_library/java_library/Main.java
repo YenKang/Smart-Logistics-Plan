@@ -36,6 +36,8 @@ import de.tudresden.ws.container.*;
 
 
 public class Main {
+	
+
 
 	static String sumo_bin = "sumo-gui";
 	// static String config_file = "simulation/map.sumo.cfg";
@@ -86,7 +88,7 @@ public class Main {
 				
 				if (i%10000==0) {
 					//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "routeByDistance", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
-					conn.do_job_set(Vehicle.add("v"+i, "routeByDistance", "r_test", i, 12.0, 7.0, (byte)0));
+					// conn.do_job_set(Vehicle.add("v"+i, "routeByDistance", "r_test", i, 12.0, 7.0, (byte)0));
 					
 					
 					//System.out.println(clientInfos.size());
@@ -115,23 +117,26 @@ public class Main {
 				
 				// Initialize containerCapacity of all ten cars
 				
+				/*
 				for(i=0;i<10;i++) {
 					String vehID = Integer.toString(i);
 					conn.do_job_set(Vehicle.setParameter(vehID, "containerCapacity","6"));
 					String value = (String)conn.do_job_get(Vehicle.getParameter(vehID, "containerCapacity"));
 					System.out.println("vehID:"+ vehID+ ",value:" + value);
 				}
+				*/
 				
 				
 				// Initialize containerNumber of all ten cars
 			 
-				
+				/*
 				for(i=0;i<10;i++) {
 					String vehID = Integer.toString(i);
 					conn.do_job_set(Vehicle.setParameter(vehID, "containerNumber","0"));
 					String value = (String)conn.do_job_get(Vehicle.getParameter(vehID, "containerNumber"));
 					System.out.println("vehID:"+ vehID+ ",value:" + value);
 				}
+				*/
 				
 				
 				if(timeStep %10==0) {
@@ -142,46 +147,95 @@ public class Main {
 					
 				}
 				
-				System.out.println("--------------------------------");
+	
 				
-				for(i=0;i<10;i++) {
-					String vehID = Integer.toString(i);
+		
 				
-					SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(vehID));
+				/** pick the car within min distance to the destination (3006, 1681.25)**/
+				
+				if(timeStep==20.0) {
+					System.out.println("--------------------------------");
+					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+					Calendar calendar = Calendar.getInstance();
+					System.out.println(formatter.format(calendar.getTime()));
+					System.out.println("timeStep:"+ timeStep);
+					for(int k=0;k<10;k++) {
+						String vehID = Integer.toString(k);
+						SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(vehID));
+						double eachDistance = (double)(conn.do_job_get(Simulation.getDistance2D(3006.60, 1681.25, veh_Position.x, veh_Position.y, false, true)));
+						System.out.println(k+ "," + "eachDistance:" + eachDistance );
 					
-					double eachDistance = (double)(conn.do_job_get(Simulation.getDistance2D(3006.60, 1681.25, veh_Position.x, veh_Position.y, false, true)));
-					System.out.println(i+ "," + "eachDistance:" + eachDistance );
-				
-					myList.add(eachDistance);
+						myList.add(eachDistance);
+						min = myList.get(0);				
 					
-					min = myList.get(0);				
+					}
+					
+					for(int j=0; j<10;j++) {
+						if(myList.get(j)<min) {
+							min =myList.get(j);
+						}
+					}
+					
+					System.out.println("min:"+ min);
+					int a = myList.indexOf(min);
+					
 				
 				}
 				
-				for(int j=0; j<10;j++) {
-					if(myList.get(j)<min) {
-						min =myList.get(j);
+				/**  40  **/
+				if(timeStep==40.0) {
+					System.out.println("--------------------------------");
+					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+					Calendar calendar = Calendar.getInstance();
+					System.out.println(formatter.format(calendar.getTime()));
+					
+					System.out.println("timeStep:"+ timeStep);
+					for(int k=0;k<10;k++) {
+						String vehID = Integer.toString(k);
+						SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(vehID));
+						double eachDistance = (double)(conn.do_job_get(Simulation.getDistance2D(3006.60, 1681.25, veh_Position.x, veh_Position.y, false, true)));
+						System.out.println(k+ "," + "eachDistance:" + eachDistance );
+					
+						myList.add(eachDistance);
+					}
+					
+					for(int j=0; j<10;j++) {
+						if(1800< myList.get(j) && myList.get(j)<2400) {
+							System.out.println(j+ " is the candidate car");
+						}
+					}
+				}
+				
+				/**  80  **/
+				if(timeStep==60.0) {
+					System.out.println("--------------------------------");
+					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+					Calendar calendar = Calendar.getInstance();
+					System.out.println(formatter.format(calendar.getTime()));
+					
+					System.out.println("timeStep:"+ timeStep);
+					for(int k=0;k<10;k++) {
+						String vehID = Integer.toString(k);
+						SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(vehID));
+						double eachDistance = (double)(conn.do_job_get(Simulation.getDistance2D(3006.60, 1681.25, veh_Position.x, veh_Position.y, false, true)));
+						System.out.println(k+ "," + "eachDistance:" + eachDistance );
+					
+						myList.add(eachDistance);
+					}
+					
+					for(int j=0; j<10;j++) {
+						if(1800< myList.get(j) && myList.get(j)<2400) {
+							System.out.println(j+ " is the candidate car");
+						}
 					}
 				}
 				
 				
 				
-				System.out.println("min:"+ min);
-				int a = myList.indexOf(min);
 				
-				System.out.println("index:" + a);
-				
-				
-			
-				
-			
 			}
 			
-			/*
-			SumoStopFlags sf_send = new SumoStopFlags(false, false, false, false, false);
-			SumoStopFlags sf_rec = new SumoStopFlags(false, false, false, false, false);
-			*/
-
+		
 			
 				
 			conn.close();
