@@ -44,7 +44,6 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		// ClientInfo testClientInfo = new ClientInfo();
 		// 開啟 server thread 並等待其他客戶連線
 		Thread server = new Server(clientInfos);
 		server.start();
@@ -65,32 +64,24 @@ public class Main {
 			for (int i = 0; i < 360000; i++) {
 				conn.do_timestep();
 				
-				if (i%10000==0) {
-					//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "routeByDistance", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
-					conn.do_job_set(Vehicle.add("v"+i, "routeByDistance", "r_test", i, 12.0, 15.0, (byte)0));
-					conn.do_job_set(Vehicle.setParameter("v"+i, "persons", "3"));
-					System.out.println(conn.do_job_get(Vehicle.getParameter("v"+i, "persons")));
-					conn.do_job_set(Vehicle.setParameter("v"+i, "persons", "2"));
-					System.out.println(conn.do_job_get(Vehicle.getParameter("v"+i, "persons")));
-					//System.out.println(clientInfos.size());
+				if (i%6000==0) {
+					// 檢查是否有使用者連線進來
 					if (clientInfos.size() >0) {
-						double[] testlatlng;
-						double lng, lat;
-						ClientInfo testClientInfo = clientInfos.get(0);
-						testlatlng = testClientInfo.getLatLng();
-						for (int j =0;j<4; j++) {
-							System.out.println(testlatlng[j]);
+						for (int j  = 0; j < clientInfos.size(); j++) {
+							ClientInfo clientInfo = clientInfos.get(j);
+							if (clientInfo.getRequestNo()==0) {
+								double[] lnglat = new double[4];
+								lnglat = clientInfo.getLatLng();
+								int timeArrived = clientInfo.getTimeArrived();
+							}
 						}
-						lng = testlatlng[0];
-						lat = testlatlng[1];
 						//System.out.println(conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring")));
-						SumoPositionRoadMap a =(SumoPositionRoadMap) conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring"));
-						System.out.println(a.edgeID);
-						System.out.println(a.laneIndex);
-						System.out.println(a.pos);
+						//SumoPositionRoadMap a =(SumoPositionRoadMap) conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring"));
+						//System.out.println(a.edgeID);
+						//System.out.println(a.laneIndex);
+						//System.out.println(a.pos);
 						//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
 					}
-					//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
 				}
 			}
 			
