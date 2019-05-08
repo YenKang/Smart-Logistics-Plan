@@ -54,7 +54,6 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		// ClientInfo testClientInfo = new ClientInfo();
 		// 開啟 server thread 並等待其他客戶連線
 		Thread server = new Server(clientInfos);
 		server.start();
@@ -93,15 +92,14 @@ public class Main {
 					
 					//System.out.println(clientInfos.size());
 					if (clientInfos.size() >0) {
-						double[] testlatlng;
-						double lng, lat;
-						ClientInfo testClientInfo = clientInfos.get(0);
-						testlatlng = testClientInfo.getLatLng();
-						for (int j =0;j<4; j++) {
-							System.out.println(testlatlng[j]);
+						for (int j  = 0; j < clientInfos.size(); j++) {
+							ClientInfo clientInfo = clientInfos.get(j);
+							if (clientInfo.getRequestNo()==0) {
+								double[] lnglat = new double[4];
+								lnglat = clientInfo.getLatLng();
+								int timeArrived = clientInfo.getTimeArrived();
+							}
 						}
-						lng = testlatlng[0];
-						lat = testlatlng[1];
 						//System.out.println(conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring")));
 						
 						SumoPositionRoadMap a =(SumoPositionRoadMap) conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring"));

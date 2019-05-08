@@ -21,7 +21,7 @@ class Server extends Thread {
 	// 宣告ClientInfo陣列以接收從主程式傳來的客戶資料陣列
 	ArrayList<ClientInfo> clientInfos = new ArrayList<ClientInfo>();
 	
-	// 初始化時取得客戶資料陣列
+	// 初始化時取得客戶資料陣列，準備於其中增加此次連線的客戶資料
 	public Server(ArrayList<ClientInfo> clientInfos) {
 		this.clientInfos= clientInfos;
 	}
@@ -91,15 +91,25 @@ class Server extends Thread {
                 this.clientSocket.isInputShutdown();
                 System.out.println(response);
                 JSONObject jsonResponse = new JSONObject(response);
-                System.out.println(jsonResponse.get("sender_lng"));
-                System.out.println(jsonResponse.get("sender_lat"));
+                System.out.println(jsonResponse);
                 
-                
-                ClientInfo a = new ClientInfo((double)jsonResponse.get("sender_lng"),
-                		(double)jsonResponse.get("sender_lat"),
-                		(double)jsonResponse.get("sender_lng"),
-                		(double)jsonResponse.get("sender_lat"));
-                clientInfos.add(a);
+                ClientInfo clientRequest = new ClientInfo(jsonResponse.getInt("request_No"));
+                if (clientRequest.getRequestNo() ==0) {
+                	clientRequest.setContainerSpec(
+                			jsonResponse.getInt("price"), 
+                			jsonResponse.getInt("size"), 
+                			jsonResponse.getDouble("weight"), 
+                			jsonResponse.getString("cargo_content"));
+                	clientRequest.setLatLng(
+                			jsonResponse.getDouble("sender_lng"), 
+                			jsonResponse.getDouble("sender_lat"), 
+                			jsonResponse.getDouble("receiver_lng"), 
+                			jsonResponse.getDouble("receiver_lat"));
+                	clientRequest.setSenderId(jsonResponse.getString("sender_id"));
+                	clientRequest.setReceiverId(jsonResponse.getString("receiver_id"));
+                	clientRequest.setTimeArrived(jsonResponse.getInt("time_arrived"));
+                }
+                clientInfos.add(clientRequest);
     			
     			
                 /// 輸出
