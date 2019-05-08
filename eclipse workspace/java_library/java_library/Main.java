@@ -102,10 +102,10 @@ public class Main {
 						}
 						//System.out.println(conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring")));
 						
-						SumoPositionRoadMap a =(SumoPositionRoadMap) conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring"));
-						System.out.println(a.edgeID);
-						System.out.println(a.laneIndex);
-						System.out.println(a.pos);
+						// SumoPositionRoadMap a =(SumoPositionRoadMap) conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring"));
+						// System.out.println(a.edgeID);
+						// System.out.println(a.laneIndex);
+						// System.out.println(a.pos);
 						
 						//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
 					}
@@ -182,6 +182,9 @@ public class Main {
 				
 				/**  40  **/
 				if(timeStep==40.0) {
+					double v0_speed = (double)conn.do_job_get(Vehicle.getSpeed("0"));
+					System.out.println("v0_speed:" + v0_speed);
+					
 					System.out.println("--------------------------------");
 					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 					Calendar calendar = Calendar.getInstance();
@@ -204,8 +207,12 @@ public class Main {
 					}
 				}
 				
-				/**  80  **/
+				/**  60  **/
 				if(timeStep==60.0) {
+					double v0_speed = (double)conn.do_job_get(Vehicle.getSpeed("0"));
+					System.out.println("v0_speed:" + v0_speed);
+					
+					
 					System.out.println("--------------------------------");
 					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 					Calendar calendar = Calendar.getInstance();
@@ -230,6 +237,24 @@ public class Main {
 					
 					double a = (double)(conn.do_job_get(Simulation.getDistance2D(862.51, 1188.05, 4423.37, 847.71, false, true)));
 					System.out.println("a:"+a);
+					
+					String fromEdge = "41389166#0";
+					String toEdge = "-298597680#3";
+					String vType ="routeByDistance"; // check vtype in rou.xml
+					double depart = 60.0;
+					int routingMode = 0;
+					SumoStage stage = (SumoStage)conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart,routingMode));
+					double TravelTimeToSender = stage.travelTime;
+					
+					double distance = (double)conn.do_job_get(Simulation.getDistanceRoad("41389166#0", 0.0, "-298597680#3", 0.0, true));
+					
+					System.out.println("distance:" + distance);
+					System.out.println("TravelTimeToSender:" + TravelTimeToSender);
+				}
+				
+				if(timeStep%10==0) {
+					double v0_speed = (double)conn.do_job_get(Vehicle.getSpeed("0"));
+					System.out.println("v0_speed:" + v0_speed);
 				}
 				
 				

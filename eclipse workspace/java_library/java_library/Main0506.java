@@ -35,7 +35,7 @@ import de.tudresden.ws.container.*;
 
 
 
-public class Main {
+public class Main0506 {
 	
 
 
@@ -105,7 +105,7 @@ public class Main {
 					}
 				}			
 			}		
-			conn.close();
+			conn.close(); 
 		} catch (Exception ex) {
 
 			ex.printStackTrace();
