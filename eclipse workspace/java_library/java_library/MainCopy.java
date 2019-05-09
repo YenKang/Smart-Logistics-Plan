@@ -32,8 +32,8 @@ public class MainCopy {
 
 	static String sumo_bin = "sumo-gui";
 	// static String config_file = "simulation/map.sumo.cfg";
-	   static String config_file = "simulation_Tainan/map_from_flow.sumo.cfg";
-	// static String config_file = "simulation3/map_edited.sumo.cfg";
+	   static String config_file = "simulation4/map.sumo.cfg";
+	//  static String config_file = "simulation3/map.sumo.cfg";
 	// static double step_length = 0.01; // version1
 
 	static double step_length = 0.01;
@@ -229,7 +229,7 @@ public class MainCopy {
 
 			
 				
-				
+				/*
 				if (timeSeconds == 90.0) {
 					String senderEdgeID = "160253722#1";
 					System.out.println("The roadID of flow0.0 at 90s is:");
@@ -252,11 +252,12 @@ public class MainCopy {
 					conn.do_job_set(Vehicle.setParameter("flow0.0","vehParam", "vehValue"));
 			        System.out.println("vehicle.getParameter: " + (String)conn.do_job_get(Vehicle.getParameter("flow0.0", "vehParam")));
 					
-				
 
 				}
+				*/
 				
 				
+				/*
 				String currentEdge = (String)conn.do_job_get(Vehicle.getRoadID("flow0.0"));
 				int personNum = (Integer)conn.do_job_get(Vehicle.getPersonNumber("flow0.0"));
 				
@@ -282,74 +283,9 @@ public class MainCopy {
 				
 
 				}
+				*/
 				
-				
-				if(timeSeconds==193.0) {
-					System.out.println( timeSeconds+ " seconds" );
-					System.out.println("sf_send.stopped:"+sf_send.stopped);
-				
-				
-					System.out.println("car_isStopped:");
-					System.out.println(conn.do_job_get(Vehicle.isStopped("flow0.0")));
-					
-					sf_send.stopped= true;
-					
-					System.out.println("getNextStops");
-					System.out.println(conn.do_job_get(Vehicle.getNextStops("flow0.0")));
-					
-				}
-				
-	
-				
-				if(timeSeconds ==213) {
-					//SumoPosition2D position = (SumoPosition2D)conn.do_job_get(Person.getPosition("ffw"));
-					//System.out.print("person position:" + position);
-					
-					System.out.println( timeSeconds+ " seconds" );
-					System.out.println("sf_send.stopped:"+sf_send.stopped);
-					System.out.println("sf_send.triggered:"+sf_send.triggered);
-					
-					System.out.println("car_isStopped:");
-					System.out.println(conn.do_job_get(Vehicle.isStopped("flow0.0")));
-					
-					
-					personNum = personNum +1;
-					System.out.println("personNum:" + personNum + " in " + timeSeconds + " seconds");
-					
-				
-				}
-				
-				
-				
-				if (timeSeconds == 214.0) {
-					
-					String receiverEdgeID = "-279032146#1";
-					conn.do_job_set(Vehicle.changeTarget("flow0.0", receiverEdgeID));
-
-					
-
-					double duration = 20.0;
-					conn.do_job_set(Vehicle.setStop("flow0.0", receiverEdgeID, 1.0, (byte) 0, duration, sf_rec));
-				
-				}
-				
-				if(sf_rec.triggered) {
-					System.out.print("triggered is true" + " in " + timeSeconds);
-					personNum = personNum -1;
-					System.out.println("personNum:" + personNum + " in " + timeSeconds );
-	
-				}
-				
-				String curEdge = (String)conn.do_job_get(Vehicle.getRoadID("flow0.0"));
-				
-				
-				if(curEdge.equals("-279032146#1")) 
-				{
-				    personNum = personNum -1;
-					System.out.print("personNum:" + personNum + " in " + timeSeconds );
-					
-				}
-				
+		
 				
 
 				if (i % 1 == 0) {
