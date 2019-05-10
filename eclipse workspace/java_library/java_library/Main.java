@@ -138,11 +138,12 @@ public class Main {
 				
 				
 				if(timeStep %10==0) {
+					/*
 					SumoPosition2D v8_position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition("8"));
 					SumoPosition2D v8_geo_position = (SumoPosition2D)conn.do_job_get(Simulation.convertGeo(v8_position.x, v8_position.y, false));
 					System.out.println("timeStep:" + timeStep);
 					System.out.println("v8_geo_position:" +v8_geo_position);
-					
+					*/
 				}
 				
 				/** pick the car within min distance to the destination (10316, 5407)**/
@@ -156,7 +157,7 @@ public class Main {
 					for(int k=0;k<30;k++) {
 						String vehID = Integer.toString(k);
 						SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(vehID));
-						double eachDistance = (double)(conn.do_job_get(Simulation.getDistance2D(10316, 5407, veh_Position.x, veh_Position.y, false, true)));
+						double eachDistance = (double)(conn.do_job_get(Simulation.getDistance2D(8465, 6338, veh_Position.x, veh_Position.y, false, true)));
 						System.out.println(k+ "," + "eachDistance:" + eachDistance );
 					
 						myList.add(eachDistance);
@@ -176,10 +177,9 @@ public class Main {
 				
 				}
 				
-				/**  40  **/
+				/**  destination (10316, 5407) at 40s  **/
 				if(timeStep==40.0) {
-					double v0_speed = (double)conn.do_job_get(Vehicle.getSpeed("0"));
-					System.out.println("v0_speed:" + v0_speed);
+				
 					
 					System.out.println("--------------------------------");
 					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -190,71 +190,107 @@ public class Main {
 					for(int k=0;k<30;k++) {
 						String vehID = Integer.toString(k);
 						SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(vehID));
-						double eachDistance = (double)(conn.do_job_get(Simulation.getDistance2D(10316, 5407, veh_Position.x, veh_Position.y, false, true)));
+						double eachDistance = (double)(conn.do_job_get(Simulation.getDistance2D(8465, 6338, veh_Position.x, veh_Position.y, false, true)));
+						System.out.println(k+ "," + "eachDistance:" + eachDistance );
+					
+						myList.add(eachDistance);
+					}
+					
+					// arrive within 5-10 mins at (v=10m/s)
+					for(int j=0; j<30;j++) {
+						if(3000< myList.get(j) && myList.get(j)<6000) {
+							System.out.println(j+ " is the candidate car");
+						}
+					}
+					
+				}
+				
+				/**  60  **/
+				
+				if(timeStep==60.0) {
+				
+					
+					
+					System.out.println("--------------------------------");
+					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+					Calendar calendar = Calendar.getInstance();
+					System.out.println(formatter.format(calendar.getTime()));
+					
+					System.out.println("timeStep:"+ timeStep);
+					
+					for(int k=0;k<30;k++) {
+						String vehID = Integer.toString(k);
+						SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(vehID));
+						double eachDistance = (double)(conn.do_job_get(Simulation.getDistance2D(8465, 6338, veh_Position.x, veh_Position.y, false, true)));
 						System.out.println(k+ "," + "eachDistance:" + eachDistance );
 					
 						myList.add(eachDistance);
 					}
 					
 					/*
-					for(int j=0; j<10;j++) {
-						if(1800< myList.get(j) && myList.get(j)<2400) {
-							System.out.println(j+ " is the candidate car");
-						}
-					}
-					*/
-				}
-				
-				/**  60  **/
-				/*
-				if(timeStep==60.0) {
-					double v0_speed = (double)conn.do_job_get(Vehicle.getSpeed("0"));
-					System.out.println("v0_speed:" + v0_speed);
-					
-					
-					System.out.println("--------------------------------");
-					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-					Calendar calendar = Calendar.getInstance();
-					System.out.println(formatter.format(calendar.getTime()));
-					
-					System.out.println("timeStep:"+ timeStep);
-					
-					for(int k=0;k<30;k++) {
-						String vehID = Integer.toString(k);
-						SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(vehID));
-						double eachDistance = (double)(conn.do_job_get(Simulation.getDistance2D(10316, 5407, veh_Position.x, veh_Position.y, false, true)));
-						System.out.println(k+ "," + "eachDistance:" + eachDistance );
-					
-						myList.add(eachDistance);
-					}
-					
 					for(int j=0; j<30;j++) {
 						if(1800< myList.get(j) && myList.get(j)<2400) {
 							System.out.println(j+ " is the candidate car");
 						}
-					}
+					}*/
 					
-					double a = (double)(conn.do_job_get(Simulation.getDistance2D(862.51, 1188.05, 4423.37, 847.71, false, true)));
-					System.out.println("a:"+a);
+					//double a = (double)(conn.do_job_get(Simulation.getDistance2D(862.51, 1188.05, 8465, 6338, false, true)));
+					// System.out.println("a:"+a);
 					
-					String fromEdge = "41389166#0";
-					String toEdge = "-298597680#3";
-					String vType ="routeByDistance"; // check vtype in rou.xml
+					String fromEdge = "561954792#3";
+					String fromEdge2 = "159315448#6";
+					String fromEdge3 = "250709918#1";
+					String fromEdge4 = "-119612644#0";
+					String fromEdge5 = "31794910#6";
+					
+					
+					String toEdge = "-537706053#0";
+					String vType ="truck"; // check vtype in rou.xml
 					double depart = 60.0;
 					int routingMode = 0;
 					SumoStage stage = (SumoStage)conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart,routingMode));
 					double TravelTimeToSender = stage.travelTime;
 					
-					double distance = (double)conn.do_job_get(Simulation.getDistanceRoad("41389166#0", 0.0, "-298597680#3", 0.0, true));
+					SumoStage stage2 = (SumoStage)conn.do_job_get(Simulation.findRoute(fromEdge2, toEdge, vType, depart,routingMode));
+					double TravelTimeToSender2 = stage2.travelTime;
+					
+					SumoStage stage3 = (SumoStage)conn.do_job_get(Simulation.findRoute(fromEdge3, toEdge, vType, depart,routingMode));
+					double TravelTimeToSender3 = stage3.travelTime;
+					
+					SumoStage stage5 = (SumoStage)conn.do_job_get(Simulation.findRoute(fromEdge5, toEdge, vType, depart,routingMode));
+					double TravelTimeToSender5 = stage5.travelTime;
+					
+			
+					
+					double distance = (double)conn.do_job_get(Simulation.getDistanceRoad("561954792#3", 70.0, "-537706053#0", 0.0, true));
+					double distance2 = (double)conn.do_job_get(Simulation.getDistanceRoad("159315448#6", 70.0, "-537706053#0", 0.0, true));
+					double distance3 = (double)conn.do_job_get(Simulation.getDistanceRoad("250709918#1", 26.0, "-537706053#0", 0.0, true));
+					double distance4 = (double)conn.do_job_get(Simulation.getDistanceRoad("-119612644#0", 80.0, "-537706053#0", 0.0, true));
+					double distance5 = (double)conn.do_job_get(Simulation.getDistanceRoad("31794910#6", 80.0, "-537706053#0", 0.0, true));
 					
 					System.out.println("distance:" + distance);
 					System.out.println("TravelTimeToSender:" + TravelTimeToSender);
+					conn.do_job_set(Vehicle.changeTarget("10", "-537706053#0"));
+					
+					System.out.println("distance2:" + distance2);
+					System.out.println("TravelTimeToSender:" + TravelTimeToSender2);
+					conn.do_job_set(Vehicle.changeTarget("1", "-537706053#0"));
+					
+					System.out.println("distance_v12:" + distance3);
+					System.out.println("TravelTimeToSender:" + TravelTimeToSender3);
+					conn.do_job_set(Vehicle.changeTarget("12", "-537706053#0"));
+					
+					System.out.println("distance5:" + distance5);
+					System.out.println("TravelTimeToSender5:" + TravelTimeToSender5);
+					conn.do_job_set(Vehicle.changeTarget("17", "-537706053#0"));
+				
+					
 				}
-				*/
+			
 				
 				if(timeStep%10==0) {
-					double v0_speed = (double)conn.do_job_get(Vehicle.getSpeed("0"));
-					System.out.println("v0_speed:" + v0_speed);
+					//double v10_speed = (double)conn.do_job_get(Vehicle.getSpeed("10"));
+					//System.out.println("v10_speed:" + v10_speed);
 				}
 				
 				
