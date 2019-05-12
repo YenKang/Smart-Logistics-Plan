@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
             OutputStream output = null;
             InputStream input = null;
             try{
-                InetAddress serverIP = InetAddress.getByName("140.116.72.134");
+                InetAddress serverIP = InetAddress.getByName("140.116.72.162"); //Bryan's IP address =140.116.72.162
                 int serverPort = 6678;
                 clientSocket = new Socket(serverIP, serverPort);
                 //System.out.println("456");

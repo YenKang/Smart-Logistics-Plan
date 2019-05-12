@@ -37,6 +37,7 @@ import de.tudresden.ws.container.*;
 
 public class Main0506 {
 
+
 	static String sumo_bin = "sumo-gui";
 	// static String config_file = "simulation/map.sumo.cfg";
 	// static String config_file = "simulation_Tainan/map_from_flow.sumo.cfg";
@@ -47,21 +48,21 @@ public class Main0506 {
 	static double step_length = 0.01; // version1
 	//static double step_length = 0.001;
 	
-	// ¨Ï¥Î°}¦C¤è¦¡«Å§i¤£¦P¨Ï¥ÎªÌªº³s½u¸ê°T¡A¼ÒÀÀ®É¥H¦¹¨Ì¾Ú§ïÅÜ¼ÒÀÀÀô¹Ò
+	// ï¿½Ï¥Î°}ï¿½Cï¿½è¦¡ï¿½Å§iï¿½ï¿½ï¿½Pï¿½Ï¥ÎªÌªï¿½ï¿½sï¿½uï¿½ï¿½Tï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½É¥Hï¿½ï¿½ï¿½Ì¾Ú§ï¿½ï¿½Ü¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	static ArrayList<ClientInfo> clientInfos = new ArrayList<ClientInfo>();
 	static int assignSuccess = 0;
 
 	public static void main(String[] args) {
 		
-		// ¶}±Ò server thread ¨Ãµ¥«Ý¨ä¥L«È¤á³s½u
+		// ï¿½}ï¿½ï¿½ server thread ï¿½Ãµï¿½ï¿½Ý¨ï¿½Lï¿½È¤ï¿½sï¿½u
 		Thread server = new Server(clientInfos, assignSuccess);
 		server.start();
 
-		// ¶i¤J¼ÒÀÀ¶¥¬q
+		// ï¿½iï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½q
 
 		try {
 			
-			// «Ø¥ßSUMO TraCI³s½u
+			// ï¿½Ø¥ï¿½SUMO TraCIï¿½sï¿½u
 			SumoTraciConnection conn = new SumoTraciConnection(sumo_bin, config_file);
 			
 			conn.addOption("step-length", step_length + "");
@@ -78,7 +79,7 @@ public class Main0506 {
 			double timeStep;
 			ArrayList<Double> myList = new ArrayList();
 
-			// ¶}©l¼ÒÀÀÀô¹Ò®É¶¡step
+			// ï¿½}ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò®É¶ï¿½step
 			for (int i = 0; i < 360000; i++) {
 				timeStep = (double) conn.do_job_get(Simulation.getTime());
 				System.out.println(timeStep);
@@ -112,7 +113,7 @@ public class Main0506 {
 				}
 				
 				if (i%100==0) {
-					// ÀË¬d¬O§_¦³¨Ï¥ÎªÌ³s½u¶i¨Ó
+					// ï¿½Ë¬dï¿½Oï¿½_ï¿½ï¿½ï¿½Ï¥ÎªÌ³sï¿½uï¿½iï¿½ï¿½
 					if (clientInfos.size() >0) {
 						//System.out.println(clientInfos.size());
 						for (int j  = 0; j < clientInfos.size(); j++) {
@@ -134,7 +135,7 @@ public class Main0506 {
 					}
 				}			
 			}		
-			conn.close();
+			conn.close(); 
 		} catch (Exception ex) {
 
 			ex.printStackTrace();

@@ -41,24 +41,24 @@ public class Main {
 
 	
 
-	static String config_file = "simulation3/map_edited.sumo.cfg";
+	static String config_file = "simulation4/map.sumo.cfg";
 	static double step_length = 0.01; // version1
 	//static double step_length = 0.001;
 	
-	// ¨Ï¥Î°}¦C¤è¦¡«Å§i¤£¦P¨Ï¥ÎªÌªº³s½u¸ê°T¡A¼ÒÀÀ®É¥H¦¹¨Ì¾Ú§ïÅÜ¼ÒÀÀÀô¹Ò
+	// ï¿½Ï¥Î°}ï¿½Cï¿½è¦¡ï¿½Å§iï¿½ï¿½ï¿½Pï¿½Ï¥ÎªÌªï¿½ï¿½sï¿½uï¿½ï¿½Tï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½É¥Hï¿½ï¿½ï¿½Ì¾Ú§ï¿½ï¿½Ü¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	static ArrayList<ClientInfo> clientInfos = new ArrayList<ClientInfo>();
 
 	public static void main(String[] args) {
 		
-		// ¶}±Ò server thread ¨Ãµ¥«Ý¨ä¥L«È¤á³s½u
+		// ï¿½}ï¿½ï¿½ server thread ï¿½Ãµï¿½ï¿½Ý¨ï¿½Lï¿½È¤ï¿½sï¿½u
 		//Thread server = new Server(clientInfos, );
 		//server.start();
 
-		// ¶i¤J¼ÒÀÀ¶¥¬q
+		// ï¿½iï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½q
 
 		try {
 			
-			// «Ø¥ßSUMO TraCI³s½u
+			// ï¿½Ø¥ï¿½SUMO TraCIï¿½sï¿½u
 			SumoTraciConnection conn = new SumoTraciConnection(sumo_bin, config_file);
 			
 			conn.addOption("step-length", step_length + "");
@@ -72,10 +72,13 @@ public class Main {
 			
 			double minDistance=0;
 			double min=0;
+			
+			String pickVeh="";
 			ArrayList<Double> myList = new ArrayList();
+			int isStopped=0;
 			
 
-			// ¶}©l¼ÒÀÀÀô¹Ò®É¶¡step
+			// ï¿½}ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò®É¶ï¿½step
 			for (int i = 0; i < 360000; i++) {
 		
 				double timeStep = (double) conn.do_job_get(Simulation.getTime());
@@ -98,10 +101,11 @@ public class Main {
 						}
 						//System.out.println(conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring")));
 						
-						//SumoPositionRoadMap a =(SumoPositionRoadMap) conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring"));
-						//System.out.println(a.edgeID);
-						//System.out.println(a.laneIndex);
-						//System.out.println(a.pos);
+
+						// SumoPositionRoadMap a =(SumoPositionRoadMap) conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring"));
+						// System.out.println(a.edgeID);
+						// System.out.println(a.laneIndex);
+						// System.out.println(a.pos);
 						
 						//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
 					}
@@ -134,18 +138,15 @@ public class Main {
 				
 				
 				if(timeStep %10==0) {
+					/*
 					SumoPosition2D v8_position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition("8"));
 					SumoPosition2D v8_geo_position = (SumoPosition2D)conn.do_job_get(Simulation.convertGeo(v8_position.x, v8_position.y, false));
 					System.out.println("timeStep:" + timeStep);
 					System.out.println("v8_geo_position:" +v8_geo_position);
-					
+					*/
 				}
 				
-	
-				
-		
-				
-				/** pick the car within min distance to the destination (3006, 1681.25)**/
+				/** pick the car within min distance to the destination (10316, 5407)**/
 				
 				if(timeStep==20.0) {
 					System.out.println("--------------------------------");
@@ -153,75 +154,149 @@ public class Main {
 					Calendar calendar = Calendar.getInstance();
 					System.out.println(formatter.format(calendar.getTime()));
 					System.out.println("timeStep:"+ timeStep);
-					for(int k=0;k<10;k++) {
+					
+					for(int k=1;k<31;k++) {
 						String vehID = Integer.toString(k);
 						SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(vehID));
-						double eachDistance = (double)(conn.do_job_get(Simulation.getDistance2D(3006.60, 1681.25, veh_Position.x, veh_Position.y, false, true)));
+						double eachDistance = (double)(conn.do_job_get(Simulation.getDistance2D(8465, 6338, veh_Position.x, veh_Position.y, false, true)));
 						System.out.println(k+ "," + "eachDistance:" + eachDistance );
 					
 						myList.add(eachDistance);
-						min = myList.get(0);				
+						min = myList.get( 0);				
 					
 					}
 					
-					for(int j=0; j<10;j++) {
+					
+					for(int j=0; j<30;j++) {
 						if(myList.get(j)<min) {
 							min =myList.get(j);
 						}
 					}
 					
+					
 					System.out.println("min:"+ min);
-					int a = myList.indexOf(min);
+					int a = myList.indexOf(min)+1;
+					System.out.println("min car Index:"+ a);
+					pickVeh = Integer.toString(a);
 					
-				
+					/*
+					conn.do_job_set(Vehicle.changeTarget("17", "-537706053#0"));
+					SumoStopFlags sf = new SumoStopFlags(false, false, false, false, false);
+					conn.do_job_set(Vehicle.setStop(pickVeh, "-537706053#0", 1.0, (byte)0, 50.0, sf));
+					
+					System.out.println("isStopped:"+ isStopped +" timeStep:"+ timeStep);
+					isStopped = (Integer)conn.do_job_get(Vehicle.isStopped(pickVeh));
+					*/
 				}
 				
-				/**  40  **/
+				// got the request of sender
+				if(timeStep>20.0) {
+					/*
+					isStopped = (Integer)conn.do_job_get(Vehicle.isStopped(pickVeh));
+					if(isStopped==1) {
+						System.out.println("isStopped:"+ isStopped+ "timeStep:"+ timeStep);
+					}
+					*/
+				}
+				
+				
+				
+			     
+				
+		
+				/**  destination (10316, 5407) at 40s  **/
 				if(timeStep==40.0) {
-					System.out.println("--------------------------------");
-					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-					Calendar calendar = Calendar.getInstance();
-					System.out.println(formatter.format(calendar.getTime()));
 					
-					System.out.println("timeStep:"+ timeStep);
-					for(int k=0;k<10;k++) {
-						String vehID = Integer.toString(k);
-						SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(vehID));
-						double eachDistance = (double)(conn.do_job_get(Simulation.getDistance2D(3006.60, 1681.25, veh_Position.x, veh_Position.y, false, true)));
-						System.out.println(k+ "," + "eachDistance:" + eachDistance );
+				
 					
-						myList.add(eachDistance);
-					}
+					SumoPosition2D v8Position = (SumoPosition2D) conn.do_job_get(Vehicle.getPosition("8"));
 					
-					for(int j=0; j<10;j++) {
-						if(1800< myList.get(j) && myList.get(j)<2400) {
-							System.out.println(j+ " is the candidate car");
+					SumoPosition2D v8_geo_position = (SumoPosition2D)conn.do_job_get(Simulation.convertGeo(v8Position.x, v8Position.y,false ));
+					
+					System.out.println("v8_geo_position:"+ v8_geo_position);
+					
+					/*
+						System.out.println("--------------------------------");
+						SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+						Calendar calendar = Calendar.getInstance();
+						System.out.println(formatter.format(calendar.getTime()));
+						
+						System.out.println("timeStep:"+ timeStep);
+						for(int k=0;k<30;k++) {
+							String vehID = Integer.toString(k);
+							SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(vehID));
+							double eachDistance = (double)(conn.do_job_get(Simulation.getDistance2D(8465, 6338, veh_Position.x, veh_Position.y, false, true)));
+							System.out.println(k+ "," + "eachDistance:" + eachDistance );
+						
+							myList.add(eachDistance);
 						}
-					}
+						
+						// arrive within 5-10 mins at (v=10m/s)
+						for(int j=0; j<30;j++) {
+							if(3000< myList.get(j) && myList.get(j)<6000) {
+								System.out.println(j+ " is the candidate car");
+							}
+						}
+					
+					*/
+					
 				}
 				
-				/**  80  **/
+				/**  60  **/
+				
 				if(timeStep==60.0) {
+					
+					/*
 					System.out.println("--------------------------------");
 					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 					Calendar calendar = Calendar.getInstance();
 					System.out.println(formatter.format(calendar.getTime()));
 					
 					System.out.println("timeStep:"+ timeStep);
-					for(int k=0;k<10;k++) {
+					
+					for(int k=0;k<30;k++) {
 						String vehID = Integer.toString(k);
 						SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(vehID));
-						double eachDistance = (double)(conn.do_job_get(Simulation.getDistance2D(3006.60, 1681.25, veh_Position.x, veh_Position.y, false, true)));
+						double eachDistance = (double)(conn.do_job_get(Simulation.getDistance2D(8465, 6338, veh_Position.x, veh_Position.y, false, true)));
 						System.out.println(k+ "," + "eachDistance:" + eachDistance );
 					
 						myList.add(eachDistance);
 					}
+					/*
 					
-					for(int j=0; j<10;j++) {
+					/*
+					for(int j=0; j<30;j++) {
 						if(1800< myList.get(j) && myList.get(j)<2400) {
 							System.out.println(j+ " is the candidate car");
 						}
-					}
+					}*/
+					
+					//double a = (double)(conn.do_job_get(Simulation.getDistance2D(862.51, 1188.05, 8465, 6338, false, true)));
+					// System.out.println("a:"+a);
+					
+					/*
+					String fromEdge = "561954792#3";
+					String toEdge = "-537706053#0";
+					String vType ="truck"; // check vtype in rou.xml
+					double depart = 60.0;
+					int routingMode = 0;
+					SumoStage stage = (SumoStage)conn.do_job_get(Simulation.findRoute(fromEdge, toEdge, vType, depart,routingMode));
+					double TravelTimeToSender = stage.travelTime;
+				
+					double distance = (double)conn.do_job_get(Simulation.getDistanceRoad("561954792#3", 70.0, "-537706053#0", 0.0, true));
+				
+					System.out.println("distance:" + distance);
+					System.out.println("TravelTimeToSender:" + TravelTimeToSender);
+					conn.do_job_set(Vehicle.changeTarget("10", "-537706053#0"));
+					*/
+				
+				}
+		       
+			
+				
+				if(timeStep%10==0) {
+					//double v10_speed = (double)conn.do_job_get(Vehicle.getSpeed("10"));
+					//System.out.println("v10_speed:" + v10_speed);
 				}
 				
 				
