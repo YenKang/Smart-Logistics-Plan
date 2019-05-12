@@ -45,20 +45,20 @@ public class Main {
 	static double step_length = 0.01; // version1
 	//static double step_length = 0.001;
 	
-	// �ϥΰ}�C�覡�ŧi���P�ϥΪ̪��s�u��T�A�����ɥH���̾ڧ��ܼ������
+	// 嚙誕用陣嚙瘠嚙質式嚙褐告嚙踝蕭嚙瞑嚙誕用者迎蕭嚙編嚙線嚙踝蕭T嚙璀嚙踝蕭嚙踝蕭嚙褕以嚙踝蕭嚙諒據改蕭嚙豌潘蕭嚙踝蕭嚙踝蕭嚙�
 	static ArrayList<ClientInfo> clientInfos = new ArrayList<ClientInfo>();
 
 	public static void main(String[] args) {
 		
-		// �}�� server thread �õ��ݨ�L�Ȥ�s�u
+		// 嚙罷嚙踝蕭 server thread 嚙衛蛛蕭嚙豎剁蕭L嚙褓歹蕭s嚙線
 		//Thread server = new Server(clientInfos, );
 		//server.start();
 
-		// �i�J�������q
+		// 嚙箠嚙皚嚙踝蕭嚙踝蕭嚙踝蕭嚙緬
 
 		try {
 			
-			// �إ�SUMO TraCI�s�u
+			// 嚙諍伐蕭SUMO TraCI嚙編嚙線
 			SumoTraciConnection conn = new SumoTraciConnection(sumo_bin, config_file);
 			
 			conn.addOption("step-length", step_length + "");
@@ -78,7 +78,7 @@ public class Main {
 			int isStopped=0;
 			
 
-			// �}�l������Үɶ�step
+			// 嚙罷嚙締嚙踝蕭嚙踝蕭嚙踝蕭珖伅嚙編tep
 			for (int i = 0; i < 360000; i++) {
 		
 				double timeStep = (double) conn.do_job_get(Simulation.getTime());
@@ -230,12 +230,10 @@ public class Main {
 					System.out.println("isStopped:"+ isStopped +" timeStep:"+ timeStep);
 					isStopped = (Integer)conn.do_job_get(Vehicle.isStopped(pickVeh));
 					
-					
-					
+				
 				}
 				
-				
-				
+			
 				// got the request of sender
 				if(timeStep>20.0) {
 					SumoPosition2D currPos = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(pickVeh));
