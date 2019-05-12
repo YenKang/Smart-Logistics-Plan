@@ -48,21 +48,21 @@ public class Main0506 {
 	static double step_length = 0.01; // version1
 	//static double step_length = 0.001;
 	
-	// �ϥΰ}�C�覡�ŧi���P�ϥΪ̪��s�u��T�A�����ɥH���̾ڧ��ܼ������
+
 	static ArrayList<ClientInfo> clientInfos = new ArrayList<ClientInfo>();
 	static int assignSuccess = 0;
 
 	public static void main(String[] args) {
 		
-		// �}�� server thread �õ��ݨ�L�Ȥ�s�u
+	
 		Thread server = new Server(clientInfos, assignSuccess);
 		server.start();
 
-		// �i�J�������q
+	
 
 		try {
 			
-			// �إ�SUMO TraCI�s�u
+		
 			SumoTraciConnection conn = new SumoTraciConnection(sumo_bin, config_file);
 			
 			conn.addOption("step-length", step_length + "");
@@ -79,7 +79,7 @@ public class Main0506 {
 			double timeStep;
 			ArrayList<Double> myList = new ArrayList();
 
-			// �}�l������Үɶ�step
+	
 			for (int i = 0; i < 360000; i++) {
 				timeStep = (double) conn.do_job_get(Simulation.getTime());
 				System.out.println(timeStep);
@@ -113,7 +113,7 @@ public class Main0506 {
 				}
 				
 				if (i%100==0) {
-					// �ˬd�O�_���ϥΪ̳s�u�i��
+			
 					if (clientInfos.size() >0) {
 						//System.out.println(clientInfos.size());
 						for (int j  = 0; j < clientInfos.size(); j++) {
