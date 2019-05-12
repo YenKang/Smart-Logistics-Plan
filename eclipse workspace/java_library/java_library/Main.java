@@ -179,24 +179,57 @@ public class Main {
 					System.out.println("min car Index:"+ a);
 					pickVeh = Integer.toString(a);
 					
-					/*
+					
 					conn.do_job_set(Vehicle.changeTarget("17", "-537706053#0"));
 					SumoStopFlags sf = new SumoStopFlags(false, false, false, false, false);
 					conn.do_job_set(Vehicle.setStop(pickVeh, "-537706053#0", 1.0, (byte)0, 50.0, sf));
 					
 					System.out.println("isStopped:"+ isStopped +" timeStep:"+ timeStep);
 					isStopped = (Integer)conn.do_job_get(Vehicle.isStopped(pickVeh));
-					*/
+					
 				}
 				
 				// got the request of sender
 				if(timeStep>20.0) {
-					/*
+					SumoPosition2D currPos = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(pickVeh));
+					double currDistance = (double)(conn.do_job_get(Simulation.getDistance2D(8465, 6338,currPos.x, currPos.y,false, true )));
+					
+					if (currDistance<305.0 && currDistance>300.0) {
+						System.out.println("The car would arrive to the sender's address within 300m");
+					}
+					
 					isStopped = (Integer)conn.do_job_get(Vehicle.isStopped(pickVeh));
+					
 					if(isStopped==1) {
+						System.out.println("Now the car arrived to the sender's address"+ " at timeStep:"+ timeStep);
 						System.out.println("isStopped:"+ isStopped+ "timeStep:"+ timeStep);
+
+						conn.do_job_set(Vehicle.changeTarget(pickVeh, "405115649"));
+						SumoStopFlags sf_r = new SumoStopFlags(false, false, false, false, false);
+						conn.do_job_set(Vehicle.setStop(pickVeh, "405115649", 1.0, (byte)0, 50.0, sf_r));
+						
+						if(timeStep==315.0) {
+							conn.do_job_set(Vehicle.resume(pickVeh));
+							isStopped = (Integer)conn.do_job_get(Vehicle.isStopped(pickVeh));
+						}
+					}
+					
+					/*
+					while(isStopped==1) {
+						// wait for the reply of receiver
+						
+						conn.do_job_set(Vehicle.changeTarget(pickVeh, "405115649"));
+						SumoStopFlags sf_r = new SumoStopFlags(false, false, false, false, false);
+						conn.do_job_set(Vehicle.setStop(pickVeh, "405115649", 1.0, (byte)0, 50.0, sf_r));
+						
+						if(timeStep==315.0) {
+							conn.do_job_set(Vehicle.resume(pickVeh));
+							isStopped = (Integer)conn.do_job_get(Vehicle.isStopped(pickVeh));
+						}
 					}
 					*/
+					
+					//System.out.println("isStopped:"+ isStopped+ ",timeStep:"+ timeStep);
 				}
 				
 				
