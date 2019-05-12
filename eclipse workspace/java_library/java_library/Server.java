@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -13,6 +14,8 @@ import java.util.concurrent.Executors;
 
 import org.json.JSONObject;
 
+import sun.applet.Main;
+
 class Server extends Thread {
 	private static int server_port = 6678;
 	private static ServerSocket serverSocket =null;
@@ -20,10 +23,13 @@ class Server extends Thread {
 	 
 	// 宣告ClientInfo陣列以接收從主程式傳來的客戶資料陣列
 	ArrayList<ClientInfo> clientInfos = new ArrayList<ClientInfo>();
+	int assignSuccess;
 	
 	// 初始化時取得客戶資料陣列，準備於其中增加此次連線的客戶資料
-	public Server(ArrayList<ClientInfo> clientInfos) {
+	public Server(ArrayList<ClientInfo> clientInfos, int assignSuccessFromSumo) {
 		this.clientInfos= clientInfos;
+		this.assignSuccess = assignSuccessFromSumo;
+		
 	}
 	
 	public void run(){
@@ -110,18 +116,17 @@ class Server extends Thread {
                 	clientRequest.setTimeArrived(jsonResponse.getInt("time_arrived"));
                 }
                 clientInfos.add(clientRequest);
-    			
-    			
+    		    
                 /// 輸出
                 output = new DataOutputStream(this.clientSocket.getOutputStream());
+                //System.out.println(clientRequest.assignTest);
+                Thread.sleep(3000);
+                //System.out.println(clientRequest.assignTest);
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(output));
-               
-            	bufferedWriter.write("YOYOYOYo"+"\n");
+            	bufferedWriter.write(Integer.toString(clientRequest.assignTest)+"\n");
             	bufferedWriter.flush();
             	bufferedWriter.close();
           
-                /*JSONObject jsonResponse = new JSONObject(responseFromSocket);
-            	System.out.println(jsonResponse.get("FFW"));*/
 			} catch (Exception e) {
 				// TODO: handle exception
 				System.out.println(e);

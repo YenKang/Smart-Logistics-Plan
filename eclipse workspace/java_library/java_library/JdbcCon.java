@@ -38,7 +38,7 @@ public class JdbcCon {
 	      Class.forName("com.mysql.jdbc.Driver"); 
 	      //µù¥Udriver 
 	      con = (Connection) DriverManager.getConnection( 
-	      "jdbc:mysql://127.0.0.1/av_delivery?useUnicode=true&characterEncoding=Big5", "root",""); 
+	      "jdbc:mysql://140.116.72.134/av_delivery?useUnicode=true&characterEncoding=Big5", "root",""); 
 	      System.out.println("fuck!!Ya~"); 
 	      //¨ú±oconnection
 	 

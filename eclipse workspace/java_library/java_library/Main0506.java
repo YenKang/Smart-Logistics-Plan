@@ -36,7 +36,6 @@ import de.tudresden.ws.container.*;
 
 
 public class Main0506 {
-	
 
 
 	static String sumo_bin = "sumo-gui";
@@ -49,20 +48,21 @@ public class Main0506 {
 	static double step_length = 0.01; // version1
 	//static double step_length = 0.001;
 	
-	// ¨Ï¥Î°}¦C¤è¦¡«Å§i¤£¦P¨Ï¥ÎªÌªº³s½u¸ê°T¡A¼ÒÀÀ®É¥H¦¹¨Ì¾Ú§ïÅÜ¼ÒÀÀÀô¹Ò
+	// ï¿½Ï¥Î°}ï¿½Cï¿½è¦¡ï¿½Å§iï¿½ï¿½ï¿½Pï¿½Ï¥ÎªÌªï¿½ï¿½sï¿½uï¿½ï¿½Tï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½É¥Hï¿½ï¿½ï¿½Ì¾Ú§ï¿½ï¿½Ü¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	static ArrayList<ClientInfo> clientInfos = new ArrayList<ClientInfo>();
+	static int assignSuccess = 0;
 
 	public static void main(String[] args) {
 		
-		// ¶}±Ò server thread ¨Ãµ¥«Ý¨ä¥L«È¤á³s½u
-		Thread server = new Server(clientInfos);
+		// ï¿½}ï¿½ï¿½ server thread ï¿½Ãµï¿½ï¿½Ý¨ï¿½Lï¿½È¤ï¿½sï¿½u
+		Thread server = new Server(clientInfos, assignSuccess);
 		server.start();
 
-		// ¶i¤J¼ÒÀÀ¶¥¬q
+		// ï¿½iï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½q
 
 		try {
 			
-			// «Ø¥ßSUMO TraCI³s½u
+			// ï¿½Ø¥ï¿½SUMO TraCIï¿½sï¿½u
 			SumoTraciConnection conn = new SumoTraciConnection(sumo_bin, config_file);
 			
 			conn.addOption("step-length", step_length + "");
@@ -70,30 +70,60 @@ public class Main0506 {
 			conn.addOption("start", "true"); // start sumo immediately
 
 			// start Traci Server
-			conn.runServer(7777);
+			conn.runServer(7788);
 			conn.setOrder(1);
 			/////////////////////
 			
 			double minDistance=0;
 			double min=0;
+			double timeStep;
 			ArrayList<Double> myList = new ArrayList();
-			
 
-			// ¶}©l¼ÒÀÀÀô¹Ò®É¶¡step
+			// ï¿½}ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò®É¶ï¿½step
 			for (int i = 0; i < 360000; i++) {
-		
-				double timeStep = (double) conn.do_job_get(Simulation.getTime());
+				timeStep = (double) conn.do_job_get(Simulation.getTime());
+				System.out.println(timeStep);
 				conn.do_timestep();
 				
-				if (i%6000==0) {
-					// ÀË¬d¬O§_¦³¨Ï¥ÎªÌ³s½u¶i¨Ó
+				if (i == 1000) {
+					JDBC_AVD init_truck = new JDBC_AVD();
+					
+					for (int j = 1; j<31; j++) {
+						SumoPosition2D vPosition = (SumoPosition2D) conn.do_job_get(Vehicle.getPosition(Integer.toString( j )));
+						SumoPosition2D v_geo_position = (SumoPosition2D)conn.do_job_get(Simulation.convertGeo(vPosition.x, vPosition.y,false ));
+						double x = v_geo_position.x;
+						double y = v_geo_position.y;
+						double speed = (double)conn.do_job_get(Vehicle.getSpeed(Integer.toString(j)));
+						init_truck.insertVehicle(Integer.toString(j), x, y, speed);
+						System.out.println(x+y);
+					}
+					
+					//init_truck.insertVehicle(truck_No, lat_now, lng_now, speed);
+					for (int j = 1; j<31; j++ ) {
+						for (int k = 1; k<4; k++) {
+							init_truck.insertContainer("c"+j+"-"+k, 0, "0", j);
+						}
+						for (int k = 4 ; k<7; k++) {
+							init_truck.insertContainer("c"+j+"-"+k, 1, "0", j);
+						}
+						for (int k = 7 ; k<10; k++) {
+							init_truck.insertContainer("c"+j+"-"+k, 2, "0", j);
+						}
+					}
+				}
+				
+				if (i%100==0) {
+					// ï¿½Ë¬dï¿½Oï¿½_ï¿½ï¿½ï¿½Ï¥ÎªÌ³sï¿½uï¿½iï¿½ï¿½
 					if (clientInfos.size() >0) {
+						//System.out.println(clientInfos.size());
 						for (int j  = 0; j < clientInfos.size(); j++) {
 							ClientInfo clientInfo = clientInfos.get(j);
 							if (clientInfo.getRequestNo()==0) {
 								double[] lnglat = new double[4];
 								lnglat = clientInfo.getLatLng();
 								int timeArrived = clientInfo.getTimeArrived();
+								clientInfo.assignTest = 5;
+								//System.out.println(assignSuccess);
 							}
 						}
 						//System.out.println(conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring")));

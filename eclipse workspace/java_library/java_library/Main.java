@@ -33,11 +33,7 @@ import de.tudresden.sumo.cmd.Person;
 
 import de.tudresden.ws.container.*;
 
-
-
 public class Main {
-	
-
 
 	static String sumo_bin = "sumo-gui";
 	// static String config_file = "simulation/map.sumo.cfg";
@@ -49,20 +45,20 @@ public class Main {
 	static double step_length = 0.01; // version1
 	//static double step_length = 0.001;
 	
-	// ¨Ï¥Î°}¦C¤è¦¡«Å§i¤£¦P¨Ï¥ÎªÌªº³s½u¸ê°T¡A¼ÒÀÀ®É¥H¦¹¨Ì¾Ú§ïÅÜ¼ÒÀÀÀô¹Ò
+	// ï¿½Ï¥Î°}ï¿½Cï¿½è¦¡ï¿½Å§iï¿½ï¿½ï¿½Pï¿½Ï¥ÎªÌªï¿½ï¿½sï¿½uï¿½ï¿½Tï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½É¥Hï¿½ï¿½ï¿½Ì¾Ú§ï¿½ï¿½Ü¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	static ArrayList<ClientInfo> clientInfos = new ArrayList<ClientInfo>();
 
 	public static void main(String[] args) {
 		
-		// ¶}±Ò server thread ¨Ãµ¥«Ý¨ä¥L«È¤á³s½u
-		Thread server = new Server(clientInfos);
-		server.start();
+		// ï¿½}ï¿½ï¿½ server thread ï¿½Ãµï¿½ï¿½Ý¨ï¿½Lï¿½È¤ï¿½sï¿½u
+		//Thread server = new Server(clientInfos, );
+		//server.start();
 
-		// ¶i¤J¼ÒÀÀ¶¥¬q
+		// ï¿½iï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½q
 
 		try {
 			
-			// «Ø¥ßSUMO TraCI³s½u
+			// ï¿½Ø¥ï¿½SUMO TraCIï¿½sï¿½u
 			SumoTraciConnection conn = new SumoTraciConnection(sumo_bin, config_file);
 			
 			conn.addOption("step-length", step_length + "");
@@ -82,7 +78,7 @@ public class Main {
 			int isStopped=0;
 			
 
-			// ¶}©l¼ÒÀÀÀô¹Ò®É¶¡step
+			// ï¿½}ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò®É¶ï¿½step
 			for (int i = 0; i < 360000; i++) {
 		
 				double timeStep = (double) conn.do_job_get(Simulation.getTime());
@@ -105,6 +101,7 @@ public class Main {
 						}
 						//System.out.println(conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring")));
 						
+
 						// SumoPositionRoadMap a =(SumoPositionRoadMap) conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring"));
 						// System.out.println(a.edgeID);
 						// System.out.println(a.laneIndex);
