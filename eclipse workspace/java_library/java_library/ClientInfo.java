@@ -10,6 +10,8 @@ public class ClientInfo {
 	private String sender_id, receiver_id, cargo_content;
 	private int price, size;
 	private double weight;
+	
+	public int assignTest;
 
 	
 	public ClientInfo() {

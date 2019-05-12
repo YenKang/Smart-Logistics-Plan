@@ -35,9 +35,7 @@ import de.tudresden.ws.container.*;
 
 
 
-public class Main {
-	
-
+public class Main0506 {
 
 	static String sumo_bin = "sumo-gui";
 	// static String config_file = "simulation/map.sumo.cfg";
@@ -51,11 +49,12 @@ public class Main {
 	
 	// 使用陣列方式宣告不同使用者的連線資訊，模擬時以此依據改變模擬環境
 	static ArrayList<ClientInfo> clientInfos = new ArrayList<ClientInfo>();
+	static int assignSuccess = 0;
 
 	public static void main(String[] args) {
 		
 		// 開啟 server thread 並等待其他客戶連線
-		Thread server = new Server(clientInfos);
+		Thread server = new Server(clientInfos, assignSuccess);
 		server.start();
 
 		// 進入模擬階段
@@ -70,30 +69,60 @@ public class Main {
 			conn.addOption("start", "true"); // start sumo immediately
 
 			// start Traci Server
-			conn.runServer(7777);
+			conn.runServer(7788);
 			conn.setOrder(1);
 			/////////////////////
 			
 			double minDistance=0;
 			double min=0;
+			double timeStep;
 			ArrayList<Double> myList = new ArrayList();
-			
 
 			// 開始模擬環境時間step
 			for (int i = 0; i < 360000; i++) {
-		
-				double timeStep = (double) conn.do_job_get(Simulation.getTime());
+				timeStep = (double) conn.do_job_get(Simulation.getTime());
+				System.out.println(timeStep);
 				conn.do_timestep();
 				
-				if (i%6000==0) {
+				if (i == 1000) {
+					JDBC_AVD init_truck = new JDBC_AVD();
+					
+					for (int j = 1; j<31; j++) {
+						SumoPosition2D vPosition = (SumoPosition2D) conn.do_job_get(Vehicle.getPosition(Integer.toString( j )));
+						SumoPosition2D v_geo_position = (SumoPosition2D)conn.do_job_get(Simulation.convertGeo(vPosition.x, vPosition.y,false ));
+						double x = v_geo_position.x;
+						double y = v_geo_position.y;
+						double speed = (double)conn.do_job_get(Vehicle.getSpeed(Integer.toString(j)));
+						init_truck.insertVehicle(Integer.toString(j), x, y, speed);
+						System.out.println(x+y);
+					}
+					
+					//init_truck.insertVehicle(truck_No, lat_now, lng_now, speed);
+					for (int j = 1; j<31; j++ ) {
+						for (int k = 1; k<4; k++) {
+							init_truck.insertContainer("c"+j+"-"+k, 0, "0", j);
+						}
+						for (int k = 4 ; k<7; k++) {
+							init_truck.insertContainer("c"+j+"-"+k, 1, "0", j);
+						}
+						for (int k = 7 ; k<10; k++) {
+							init_truck.insertContainer("c"+j+"-"+k, 2, "0", j);
+						}
+					}
+				}
+				
+				if (i%100==0) {
 					// 檢查是否有使用者連線進來
 					if (clientInfos.size() >0) {
+						//System.out.println(clientInfos.size());
 						for (int j  = 0; j < clientInfos.size(); j++) {
 							ClientInfo clientInfo = clientInfos.get(j);
 							if (clientInfo.getRequestNo()==0) {
 								double[] lnglat = new double[4];
 								lnglat = clientInfo.getLatLng();
 								int timeArrived = clientInfo.getTimeArrived();
+								clientInfo.assignTest = 5;
+								//System.out.println(assignSuccess);
 							}
 						}
 						//System.out.println(conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring")));

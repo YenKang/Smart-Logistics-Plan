@@ -33,11 +33,7 @@ import de.tudresden.sumo.cmd.Person;
 
 import de.tudresden.ws.container.*;
 
-
-
 public class Main {
-	
-
 
 	static String sumo_bin = "sumo-gui";
 	// static String config_file = "simulation/map.sumo.cfg";
@@ -55,8 +51,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 		// 開啟 server thread 並等待其他客戶連線
-		Thread server = new Server(clientInfos);
-		server.start();
+		//Thread server = new Server(clientInfos, );
+		//server.start();
 
 		// 進入模擬階段
 
@@ -102,10 +98,10 @@ public class Main {
 						}
 						//System.out.println(conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring")));
 						
-						SumoPositionRoadMap a =(SumoPositionRoadMap) conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring"));
-						System.out.println(a.edgeID);
-						System.out.println(a.laneIndex);
-						System.out.println(a.pos);
+						//SumoPositionRoadMap a =(SumoPositionRoadMap) conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring"));
+						//System.out.println(a.edgeID);
+						//System.out.println(a.laneIndex);
+						//System.out.println(a.pos);
 						
 						//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
 					}
