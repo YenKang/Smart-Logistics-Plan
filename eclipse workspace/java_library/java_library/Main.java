@@ -116,6 +116,23 @@ public class Main {
 						
 				}
 				
+				// Initialize boxIndex of all thirty cars
+				if(timeStep==1.0) {
+					for(int n=1;n<31;n++) {
+						String vehID = Integer.toString(n);
+						
+						for(int p=1;p<10;p++) {
+							conn.do_job_set(Vehicle.setParameter(vehID, "boxIndex"+p,"0"));
+						}
+					
+						
+						//String value = (String)conn.do_job_get(Vehicle.getParameter(vehID, "containerCapacity"));
+						
+						//System.out.println("vehID:"+ vehID+ ",value:" + value);
+					}
+					
+				} 
+				
 				// Initialize containerCapacity of all ten cars
 				
 				/*
@@ -156,8 +173,21 @@ public class Main {
 					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 					Calendar calendar = Calendar.getInstance();
 					System.out.println(formatter.format(calendar.getTime()));
+					
 					System.out.println("timeStep:"+ timeStep);
 					
+					for(int q=1;q<31;q++) {
+						String vehID = Integer.toString(q);
+						// examine the small size boxes
+						for(int z=1;z<4;z++) {
+							String value = (String)conn.do_job_get(Vehicle.getParameter(vehID, "boxIndex"+z));
+							System.out.println("value:"+ value);
+							
+						}
+						
+					}
+					
+					// compute the shortest distance to the sender
 					for(int k=1;k<31;k++) {
 						String vehID = Integer.toString(k);
 						SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(vehID));
@@ -182,22 +212,39 @@ public class Main {
 					System.out.println("min car Index:"+ a);
 					pickVeh = Integer.toString(a);
 					
+					// if  a container existed in boxIndex1
+					conn.do_job_set(Vehicle.setParameter(pickVeh,  "boxIndex1", "1"));
+					
+					for(int boxIndex=1;boxIndex<4;boxIndex++ ) {
+						String boxValue= (String)conn.do_job_get(Vehicle.getParameter(pickVeh, "boxIndex"+boxIndex));
+						if(boxValue.equals("0")) {
+							conn.do_job_set(Vehicle.setParameter(pickVeh,  "boxIndex"+boxIndex, "1"));
+							break;
+						}
+						////
+					}
+					
 					
 					conn.do_job_set(Vehicle.changeTarget("17", "-537706053#0"));
 					SumoStopFlags sf = new SumoStopFlags(false, false, false, false, false);
+					
 					conn.do_job_set(Vehicle.setStop(pickVeh, "-537706053#0", 1.0, (byte)0, 50.0, sf));
 					
 					System.out.println("isStopped:"+ isStopped +" timeStep:"+ timeStep);
 					isStopped = (Integer)conn.do_job_get(Vehicle.isStopped(pickVeh));
 					
+					
+					
 				}
+				
+				
 				
 				// got the request of sender
 				if(timeStep>20.0) {
 					SumoPosition2D currPos = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(pickVeh));
 					double currDistance = (double)(conn.do_job_get(Simulation.getDistance2D(8465, 6338,currPos.x, currPos.y,false, true )));
 					
-					if (currDistance<305.0 && currDistance>300.0) {
+					if (currDistance>300.0 && currDistance<302.0) {
 						System.out.println("The car would arrive to the sender's address within 300m");
 					}
 					
@@ -211,7 +258,7 @@ public class Main {
 						SumoStopFlags sf_r = new SumoStopFlags(false, false, false, false, false);
 						conn.do_job_set(Vehicle.setStop(pickVeh, "405115649", 1.0, (byte)0, 50.0, sf_r));
 						
-						if(timeStep==315.0) {
+						if(timeStep==315.0) { // when triggered 
 							conn.do_job_set(Vehicle.resume(pickVeh));
 							isStopped = (Integer)conn.do_job_get(Vehicle.isStopped(pickVeh));
 						}
