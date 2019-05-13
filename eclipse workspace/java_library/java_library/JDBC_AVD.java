@@ -167,7 +167,7 @@ public class JDBC_AVD {
 	   
 	  //完整使用完資料庫後,記得要關閉所有Object 
 	  //否則在等待Timeout時,可能會有Connection poor的狀況 
-	  private void Close() 
+	  public void Close() 
 	  { 
 		  try 
 		  { 

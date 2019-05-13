@@ -27,7 +27,7 @@
 </configuration>
 -->
 
-<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <vType id="truck"  maxSpeed="10.00" vClass="truck"/>
 
     <vehicle id="0" type="truck" depart="0.00">

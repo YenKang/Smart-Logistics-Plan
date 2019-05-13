@@ -44,25 +44,21 @@ public class Main0506 {
 
 	
 
-	static String config_file = "simulation3/map_edited.sumo.cfg";
+	static String config_file = "simulation4/map.sumo.cfg";
 	static double step_length = 0.01; // version1
 	//static double step_length = 0.001;
 	
-	// �ϥΰ}�C�覡�ŧi���P�ϥΪ̪��s�u��T�A�����ɥH���̾ڧ��ܼ������
 	static ArrayList<ClientInfo> clientInfos = new ArrayList<ClientInfo>();
 	static int assignSuccess = 0;
 
 	public static void main(String[] args) {
 		
-		// �}�� server thread �õ��ݨ�L�Ȥ�s�u
 		Thread server = new Server(clientInfos, assignSuccess);
 		server.start();
 
-		// �i�J�������q
 
 		try {
 			
-			// �إ�SUMO TraCI�s�u
 			SumoTraciConnection conn = new SumoTraciConnection(sumo_bin, config_file);
 			
 			conn.addOption("step-length", step_length + "");
@@ -70,7 +66,7 @@ public class Main0506 {
 			conn.addOption("start", "true"); // start sumo immediately
 
 			// start Traci Server
-			conn.runServer(7788);
+			conn.runServer(7789);
 			conn.setOrder(1);
 			/////////////////////
 			
@@ -79,7 +75,6 @@ public class Main0506 {
 			double timeStep;
 			ArrayList<Double> myList = new ArrayList();
 
-			// �}�l������Үɶ�step
 			for (int i = 0; i < 360000; i++) {
 				timeStep = (double) conn.do_job_get(Simulation.getTime());
 				System.out.println(timeStep);
@@ -87,14 +82,14 @@ public class Main0506 {
 				
 				if (i == 1000) {
 					JDBC_AVD init_truck = new JDBC_AVD();
-					
+					/*
 					for (int j = 1; j<31; j++) {
 						SumoPosition2D vPosition = (SumoPosition2D) conn.do_job_get(Vehicle.getPosition(Integer.toString( j )));
 						SumoPosition2D v_geo_position = (SumoPosition2D)conn.do_job_get(Simulation.convertGeo(vPosition.x, vPosition.y,false ));
 						double x = v_geo_position.x;
 						double y = v_geo_position.y;
 						double speed = (double)conn.do_job_get(Vehicle.getSpeed(Integer.toString(j)));
-						init_truck.insertVehicle(Integer.toString(j), x, y, speed);
+						init_truck.insertVehicle(Integer.toString(j), y, x, speed);
 						System.out.println(x+y);
 					}
 					
@@ -109,11 +104,12 @@ public class Main0506 {
 						for (int k = 7 ; k<10; k++) {
 							init_truck.insertContainer("c"+j+"-"+k, 2, "0", j);
 						}
-					}
+					}*/
+					init_truck.Close();
 				}
 				
 				if (i%100==0) {
-					// �ˬd�O�_���ϥΪ̳s�u�i��
+
 					if (clientInfos.size() >0) {
 						//System.out.println(clientInfos.size());
 						for (int j  = 0; j < clientInfos.size(); j++) {
