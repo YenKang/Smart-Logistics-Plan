@@ -80,7 +80,7 @@ public class Main0506 {
 
 			for (int i = 0; i < 360000; i++) {
 				timeStep = (double) conn.do_job_get(Simulation.getTime());
-				System.out.println(timeStep);
+				//System.out.println(timeStep);
 				conn.do_timestep();
 				
 				if (i == 1000) {
@@ -117,12 +117,36 @@ public class Main0506 {
 						//System.out.println(clientInfos.size());
 						for (int j  = 0; j < clientInfos.size(); j++) {
 							ClientInfo clientInfo = clientInfos.get(j);
-							if (clientInfo.getRequestNo()==0) {
+							if (clientInfo.getRequestNo() == 0) {
 								double[] lnglat = new double[4];
 								lnglat = clientInfo.getLatLng();
-								int timeArrived = clientInfo.getTimeArrived();
-								clientInfo.assignTest = 5;
+								double sender_lng = lnglat[0];
+								double sender_lat = lnglat[1];
+								SumoPositionRoadMap sender_roadmap = (SumoPositionRoadMap) conn.do_job_get(Simulation.convertRoad(sender_lng, sender_lat, true, "ignoring"));
+								String sender_edge = sender_roadmap.edgeID;
+								int sender_lane = sender_roadmap.laneIndex;
+								double sender_pos = sender_roadmap.pos;
+								conn.do_job_set(Vehicle.changeTarget("3", sender_edge));
+								SumoStopFlags sf = new SumoStopFlags(false, false, false, false, false);
+								conn.do_job_set(Vehicle.setStop("3", sender_edge, 1.0, (byte)0, 20.0, sf));
+								
+								//int timeArrived = clientInfo.getTimeArrived();
+								//clientInfo.assignTest = 5;
 								//System.out.println(assignSuccess);
+								//clientInfos.
+							}
+							else if (clientInfo.getRequestNo() == 1) {
+								String vid = clientInfo.getTruckNo();
+								double[] lnglat = new double[4];
+								lnglat = clientInfo.getLatLng();
+								double receiver_lng = lnglat[2];
+								double receiver_lat = lnglat[3];
+								SumoPositionRoadMap receiver_roadmap = (SumoPositionRoadMap) conn.do_job_get(Simulation.convertRoad(receiver_lng, receiver_lat, true, "ignoring"));
+								String receiver_edge = receiver_roadmap.edgeID;
+								int receiver_lane = receiver_roadmap.laneIndex;
+								double receiver_pos = receiver_roadmap.pos;
+								conn.do_job_set(Vehicle.changeTarget(vid, receiver_edge));
+								conn.do_job_set(Vehicle.resume(vid));
 							}
 						}
 						//System.out.println(conn.do_job_get(Simulation.convertRoad(lng, lat, true, "ignoring")));
@@ -131,7 +155,9 @@ public class Main0506 {
 						//System.out.println(a.laneIndex);
 						//System.out.println(a.pos);
 						//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
+						clientInfos.clear();
 					}
+					
 				}			
 			}		
 			conn.close(); 

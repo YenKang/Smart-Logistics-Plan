@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -9,7 +10,17 @@ public class test1231 {
 
 	public static void main(String[] args) throws IOException {
 		// TODO 自動產生的方法 Stub
-		JDBC_AVD init = new JDBC_AVD();
+		
+		ArrayList  a =new ArrayList(3);
+		a.add(1);
+		a.add(2);
+		a.add(3);
+		System.out.println(a.get(0));
+		a.clear();
+		a.add(444);
+		System.out.println(a.get(1));
+		
+		// JDBC_AVD init = new JDBC_AVD();
 		//a.insertOrder();
 		//SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
 		//Date date = new Date();
