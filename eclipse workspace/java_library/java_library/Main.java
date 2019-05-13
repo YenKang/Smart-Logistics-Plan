@@ -18,6 +18,7 @@
 /****************************************************************************/
 
 import java.util.Calendar;
+import java.util.Collections;
 import java.text.SimpleDateFormat;
 
 import it.polito.appeal.traci.SumoTraciConnection;
@@ -27,9 +28,12 @@ import de.tudresden.sumo.cmd.Vehicle;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 
-import de.tudresden.sumo.cmd.Person;
+
 
 import de.tudresden.ws.container.*;
 
@@ -44,7 +48,6 @@ public class Main {
 	static String config_file = "simulation4/map.sumo.cfg";
 	static double step_length = 0.01; // version1
 	//static double step_length = 0.001;
-	
 	
 	static ArrayList<ClientInfo> clientInfos = new ArrayList<ClientInfo>();
 
@@ -68,13 +71,24 @@ public class Main {
 			conn.setOrder(1);
 			/////////////////////
 			
-			double minDistance=0;
+		
 			double min=0;
+			double minDistance=0;
 			
 			String pickVeh="";
 			ArrayList<Double> myList = new ArrayList();
+			//HashMap dispatchedCars = new HashMap();
+			
+			Map<String, Integer[]> dispatchedCars = new HashMap<String, Integer[]>();
+			Integer[] boxType = new Integer[] {0,0,0};
+			
+			HashMap<String, Double> CarsWithAvailableBox = new HashMap<String, Double>();	
+			
+			
 			int isStopped=0;
 			
+			
+
 
 			for (int i = 0; i < 360000; i++) {
 		
@@ -112,54 +126,73 @@ public class Main {
 				
 				// Initialize boxIndex of all thirty cars
 				if(timeStep==1.0) {
+					
 					for(int n=1;n<31;n++) {
 						String vehID = Integer.toString(n);
 						
 						for(int p=1;p<10;p++) {
 							conn.do_job_set(Vehicle.setParameter(vehID, "boxIndex"+p,"0"));
 						}
-					
-						
-						//String value = (String)conn.do_job_get(Vehicle.getParameter(vehID, "containerCapacity"));
-						
 						//System.out.println("vehID:"+ vehID+ ",value:" + value);
 					}
 					
+					// Initialize the HashMap named dispatchedCars
+					for(int k=1;k<31;k++) {
+						String dispatchCar = Integer.toString(k);
+						dispatchedCars.put(dispatchCar, boxType);
+					}
+					
+					
+				     for (Object key : dispatchedCars.keySet()) 
+				     {
+				    	 
+				        //System.out.println(key + " : " + dispatchedCars.get(key));
+				        
+				        Integer[] getBoxType = dispatchedCars.get(key);
+				        System.out.println("key:"+key+ ","+ "boxType[0]:"+getBoxType[0]);
+				     }
+				     
+				     
 				} 
 				
-				// Initialize containerCapacity of all ten cars
+				// check the cars with available box
 				
-				/*
-				for(i=0;i<10;i++) {
-					String vehID = Integer.toString(i);
-					conn.do_job_set(Vehicle.setParameter(vehID, "containerCapacity","6"));
-					String value = (String)conn.do_job_get(Vehicle.getParameter(vehID, "containerCapacity"));
-					System.out.println("vehID:"+ vehID+ ",value:" + value);
+				if(timeStep==15.0) {
+				
+				  for (String key : dispatchedCars.keySet()) 
+				     {
+				    	 
+				        //System.out.println(key + " : " + dispatchedCars.get(key));
+				        
+				        Integer[] getBoxType = dispatchedCars.get(key);
+				        
+				        // check whether this car have the small box space
+				        if(getBoxType[0]<3) {
+				        	System.out.println(key+" have small box space");
+				        	CarsWithAvailableBox.put(key,0.0);
+				        	System.out.println("CarsWithAvailableBox:"+CarsWithAvailableBox);
+				        }
+				        
+				        // check whether this car have the medium box space
+				        else if(getBoxType[1]<3) {
+				        	System.out.println(key+" have medium box space");
+				        	CarsWithAvailableBox.put(key,0.0);
+				        	System.out.println("CarsWithAvailableBox:"+CarsWithAvailableBox);
+				        }
+				        
+				        else if(getBoxType[2]<3) {
+				        	System.out.println(key+" have large box space");
+				        	CarsWithAvailableBox.put(key,0.0);
+				        	System.out.println("CarsWithAvailableBox:"+CarsWithAvailableBox);
+				        }
+				        
+				     }
 				}
-				*/
+				
+		
 				
 				
-				// Initialize containerNumber of all ten cars
-			 
-				/*
-				for(i=0;i<10;i++) {
-					String vehID = Integer.toString(i);
-					conn.do_job_set(Vehicle.setParameter(vehID, "containerNumber","0"));
-					String value = (String)conn.do_job_get(Vehicle.getParameter(vehID, "containerNumber"));
-					System.out.println("vehID:"+ vehID+ ",value:" + value);
-				}
-				*/
-				
-				
-				if(timeStep %10==0) {
-					/*
-					SumoPosition2D v8_position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition("8"));
-					SumoPosition2D v8_geo_position = (SumoPosition2D)conn.do_job_get(Simulation.convertGeo(v8_position.x, v8_position.y, false));
-					System.out.println("timeStep:" + timeStep);
-					System.out.println("v8_geo_position:" +v8_geo_position);
-					*/
-				}
-				
+	
 				/** pick the car within min distance to the destination (10316, 5407)**/
 				
 				if(timeStep==20.0) {
@@ -170,6 +203,7 @@ public class Main {
 					
 					System.out.println("timeStep:"+ timeStep);
 					
+					/* boxIndex initialization of setParameter
 					for(int q=1;q<31;q++) {
 						String vehID = Integer.toString(q);
 						// examine the small size boxes
@@ -180,35 +214,46 @@ public class Main {
 						}
 						
 					}
+					*/
 					
-					// compute the shortest distance to the sender
-					for(int k=1;k<31;k++) {
-						String vehID = Integer.toString(k);
+					// compute the shortest distance in the Cars with available box
+					
+				
+					for (String vehID : CarsWithAvailableBox.keySet()) {
 						SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(vehID));
+					
 						double eachDistance = (double)(conn.do_job_get(Simulation.getDistance2D(8465, 6338, veh_Position.x, veh_Position.y, false, true)));
-						System.out.println(k+ "," + "eachDistance:" + eachDistance );
+						CarsWithAvailableBox.put(vehID, eachDistance);
+						System.out.println("CarsWithAvailableBox:" + CarsWithAvailableBox);
+						
+					} 
 					
-						myList.add(eachDistance);
-						min = myList.get( 0);				
 					
+					List<Double> alist = new ArrayList<Double>();
+					
+					for(String vehID : CarsWithAvailableBox.keySet()) {
+						double distance = CarsWithAvailableBox.get(vehID);
+						alist.add(distance);
+						System.out.println("alist:"+ alist);
+						
 					}
+					double minValueInList = Collections.min(alist); 
+					System.out.println("minValueInList:"+ minValueInList);
 					
+				   for(String vehID : CarsWithAvailableBox.keySet()) {
+					  double value = CarsWithAvailableBox.get(vehID);
+					  if(value==minValueInList) {
+						  System.out.println(vehID + " IS THE DISPATCHING CAR!");
+					  }
+							 
+				   }
 					
-					for(int j=0; j<30;j++) {
-						if(myList.get(j)<min) {
-							min =myList.get(j);
-						}
-					}
-					
-					
-					System.out.println("min:"+ min);
-					int a = myList.indexOf(min)+1;
-					System.out.println("min car Index:"+ a);
-					pickVeh = Integer.toString(a);
+			
 					
 					// if  a container existed in boxIndex1
-					conn.do_job_set(Vehicle.setParameter(pickVeh,  "boxIndex1", "1"));
+					//conn.do_job_set(Vehicle.setParameter(pickVeh,  "boxIndex1", "1"));
 					
+					/*
 					for(int boxIndex=1;boxIndex<4;boxIndex++ ) {
 						String boxValue= (String)conn.do_job_get(Vehicle.getParameter(pickVeh, "boxIndex"+boxIndex));
 						if(boxValue.equals("0")) {
@@ -217,8 +262,9 @@ public class Main {
 						}
 						////
 					}
+					*/
 					
-					
+					/*
 					conn.do_job_set(Vehicle.changeTarget("17", "-537706053#0"));
 					SumoStopFlags sf = new SumoStopFlags(false, false, false, false, false);
 					
@@ -226,17 +272,20 @@ public class Main {
 					
 					System.out.println("isStopped:"+ isStopped +" timeStep:"+ timeStep);
 					isStopped = (Integer)conn.do_job_get(Vehicle.isStopped(pickVeh));
-					
+					*/
 				
 				}
 				
 			
 				// got the request of sender
 				if(timeStep>20.0) {
+					
+					/*
 					SumoPosition2D currPos = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(pickVeh));
 					double currDistance = (double)(conn.do_job_get(Simulation.getDistance2D(8465, 6338,currPos.x, currPos.y,false, true )));
 					
-					if (currDistance>300.0 && currDistance<302.0) {
+					// one nitification within 300m
+					if (currDistance>300.0 && currDistance<300.1) {
 						System.out.println("The car would arrive to the sender's address within 300m");
 					}
 					
@@ -255,6 +304,7 @@ public class Main {
 							isStopped = (Integer)conn.do_job_get(Vehicle.isStopped(pickVeh));
 						}
 					}
+					*/
 					
 					/*
 					while(isStopped==1) {
