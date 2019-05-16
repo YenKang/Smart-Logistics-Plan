@@ -100,7 +100,7 @@ class Server extends Thread {
                 System.out.println(jsonResponse);
                 
                 ClientInfo clientRequest = new ClientInfo(jsonResponse.getInt("request_No"));
-                if (clientRequest.getRequestNo() ==0) {
+                if (clientRequest.getRequestNo() == 0) {
                 	clientRequest.setContainerSpec(
                 			jsonResponse.getInt("price"), 
                 			jsonResponse.getInt("size"), 
@@ -114,6 +114,10 @@ class Server extends Thread {
                 	clientRequest.setSenderId(jsonResponse.getString("sender_id"));
                 	clientRequest.setReceiverId(jsonResponse.getString("receiver_id"));
                 	clientRequest.setTimeArrived(jsonResponse.getInt("time_arrived"));
+                }
+                else if (clientRequest.getRequestNo() == 1) {
+                	clientRequest.setTruckNo(jsonResponse.getString("truck_No"));
+                	clientRequest.setLatLng(0.0, 0.0, jsonResponse.getDouble("receiver_lng"), jsonResponse.getDouble("receiver_lat"));
                 }
                 clientInfos.add(clientRequest);
     		    

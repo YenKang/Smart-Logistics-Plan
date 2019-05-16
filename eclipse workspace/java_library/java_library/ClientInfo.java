@@ -11,6 +11,8 @@ public class ClientInfo {
 	private int price, size;
 	private double weight;
 	
+	private String truckNo;
+	
 	public int assignTest;
 
 	
@@ -19,6 +21,14 @@ public class ClientInfo {
 	
 	public ClientInfo(int requestNo){
 		this.requestNo = requestNo;
+	}
+	
+	public void setTruckNo(String truckNo) {
+		this.truckNo = truckNo;
+	}
+	
+	public String getTruckNo() {
+		return truckNo;
 	}
 	
 	public void setSenderId(String sender_id) {
@@ -54,6 +64,29 @@ public class ClientInfo {
 		return timeArrived;
 	}
 	
+	public String getSenderID() {
+		return sender_id;
+	}
+	
+	public String getReceiverID() {
+		return receiver_id;
+	}
+	
+	public String getCargoContent() {
+		return cargo_content;
+	}
+	
+	public int getSize() {
+		return size;
+	}
+	
+	public int getPrice() {
+		return price;
+	}
+	
+	public double getWeight() {
+		return weight;
+	}
 	
 	public double[] getLatLng() {
 		double[] result= new double[4];

@@ -49,20 +49,17 @@ public class Main {
 	static double step_length = 0.01; // version1
 	//static double step_length = 0.001;
 	
-
 	static ArrayList<ClientInfo> clientInfos = new ArrayList<ClientInfo>();
 
 	public static void main(String[] args) {
 		
-
 		//Thread server = new Server(clientInfos, );
 		//server.start();
 
-	
 
 		try {
 			
-
+			//
 			SumoTraciConnection conn = new SumoTraciConnection(sumo_bin, config_file);
 			
 			conn.addOption("step-length", step_length + "");
@@ -92,7 +89,7 @@ public class Main {
 			
 			
 
-			// 
+
 			for (int i = 0; i < 360000; i++) {
 		
 				double timeStep = (double) conn.do_job_get(Simulation.getTime());

@@ -101,7 +101,8 @@ public class JDBC_AVD {
 	  
 	  // 使用者下訂單並且成功選定貨車
 	  public void insertOrder(String sender_name, String receiver_name, int container_id, int truck_id,
-			  double weight, String cargo_content, int size, int price) {
+			  double weight, String cargo_content, int size, int price, double sender_lng, double sender_lat,
+			  double receiver_lng, double receiver_lat) {
 		   String sql = "insert into user_order (id, sender_name, receiver_name, container_id, in_time, out_time, "
 		   		+ "truck_id, status, weight, cargo_content, size, price) values (?,?,?,?,?,?,?,?,?,?,?,?)";
 		   try {
@@ -120,6 +121,10 @@ public class JDBC_AVD {
 			   pst.setString(10, cargo_content);
 			   pst.setInt(11, size);
 			   pst.setInt(12, price);
+			   pst.setDouble(13, sender_lng);
+			   pst.setDouble(14, sender_lat);
+			   pst.setDouble(15, receiver_lng);
+			   pst.setDouble(16, receiver_lat);
 			   pst.executeUpdate();
 			   
 		   } catch (SQLException e) {
@@ -167,7 +172,7 @@ public class JDBC_AVD {
 	   
 	  //完整使用完資料庫後,記得要關閉所有Object 
 	  //否則在等待Timeout時,可能會有Connection poor的狀況 
-	  private void Close() 
+	  public void Close() 
 	  { 
 		  try 
 		  { 
