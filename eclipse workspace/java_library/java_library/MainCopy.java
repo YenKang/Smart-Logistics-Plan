@@ -116,6 +116,7 @@ public class MainCopy {
 				
 				// the request1[10:00, sender1]
 				if(timeSeconds==20.0) {
+					System.out.println("------------------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
 					/*
 					double sender1_x = 2818.27;
@@ -133,6 +134,7 @@ public class MainCopy {
 					int insertTime = 600;
 					timeSchedule.add(insertTime);
 					timeMapToSender.put(insertTime, sender1Array);
+					int indexValue = timeSchedule.indexOf(insertTime);
 					
 					System.out.println("timeSchedule:"+timeSchedule);
 					System.out.println("timeMapToSender:"+timeMapToSender);
@@ -149,20 +151,29 @@ public class MainCopy {
 					// current time is 09:00
 					// the request1[10:00, sender1]
 					// 10:00-09:00 = 60min=3600s
-					if(travelTimeToSender1 < 3600) { // the car can arrive to sender1 before 10:00
+					
+					double duration_curPos_to_Index = (insertTime-540)*60;
+					
+					if(travelTimeToSender1 < duration_curPos_to_Index) { // the car can arrive to sender1 before 10:00
 						// 10:00 =10hr = 600min
 						// [10:00=sender1]
-						conn.do_job_set(Vehicle.changeTarget("8", sender1_edgeID));		
+						int Key_indexValue =  timeSchedule.get(indexValue);
+						String senderEdge_indexValue = (String)timeMapToSender.get(Key_indexValue).get(0);
+						System.out.println("senderEdge_indexValue:"+senderEdge_indexValue);
+						
+						conn.do_job_set(Vehicle.changeTarget("8", senderEdge_indexValue));		
 					
 					}
 					
+					System.out.println("After arranging the schedule:");
 					System.out.println("timeSchedule:"+timeSchedule);
-					System.out.println("timeMap:"+timeMap);
+					System.out.println("timeMapToSender:"+timeMapToSender);
 					
 				}
 				
 				// request3 from sender3
 				if(timeSeconds==30.0) {
+					System.out.println("------------------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
 					// the request2[09:30, sender2]->09:30=570 min
 					
@@ -180,16 +191,20 @@ public class MainCopy {
 					System.out.println("timeSchedule:"+timeSchedule);
 					System.out.println("timeMapToSender:"+timeMapToSender);
 					
+					
 					Collections.sort(timeSchedule);  // Sort timeSchedule
 					
 					int indexValue = timeSchedule.indexOf(insertTime);
-					System.out.println("indexValue of"+ insertTime+ ":" + indexValue);
+			
 					
 					
 					if(indexValue==0) {
 						System.out.println("indexValue of 0");
 						
 						SumoPosition2D v8Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition("8")); 
+						
+						System.out.println((double)sender2Array.get(1));
+						
 						double Distance_v8toSender2 = (double)(conn.do_job_get(Simulation.getDistance2D((double)sender2Array.get(1), (double)sender2Array.get(2),
 								v8Position.x, v8Position.y, false, true)));
 						double travelTimeToSender2 = Distance_v8toSender2/5.0; // V=5.0m/s
@@ -199,20 +214,28 @@ public class MainCopy {
 						int Key_indexValue =  timeSchedule.get(indexValue);
 						double sender_x_indexValue = (double)timeMapToSender.get(Key_indexValue).get(1);
 						double sender_y_indexValue = (double)timeMapToSender.get(Key_indexValue).get(2);
-					
 						
-						double Distance_S2toS1 = (double)(conn.do_job_get(Simulation.getDistance2D(sender_x_indexValue, sender_y_indexValue,
-								sender1_x, sender2_y, false, true)));
+						int Key_afterIndex =  timeSchedule.get(indexValue+1);
+						double sender_x_afterIndex = (double)timeMapToSender.get(Key_afterIndex).get(1);
+						double sender_y_afterIndex = (double)timeMapToSender.get(Key_afterIndex).get(2);
 						
-						double travelTime_S2ToS1 = Distance_S2toS1/5.0; // V=5.0m/s
+						double afterIndexToIndex = (double)(conn.do_job_get(Simulation.getDistance2D(sender_x_indexValue, sender_y_indexValue,
+								sender_x_afterIndex, sender_y_afterIndex, false, true)));
 						
-						double diffDuration = timeSchedule.get(indexValue+1)-timeSchedule.get(indexValue); //  gap between this element and next element 
-						System.out.println("duration:"+ diffDuration + " mins"); // 600min-570min
+						double travelTime_afterIndexToIndex = afterIndexToIndex/5.0; // V=5.0m/s
+						
+						double diffDuration_afterIndexToIndex = (timeSchedule.get(indexValue+1)-timeSchedule.get(indexValue))*60; //  gap between this element and next element 
+						System.out.println("diffDuration_afterIndexToIndex:"+ diffDuration_afterIndexToIndex + " seconds"); // 600min-570min
 						
 						// 09:00 starts, 30 mins
-						if(timeSeconds+travelTimeToSender2 <1800 && travelTime_S2ToS1<(diffDuration*60)) { // 30min*60=1800s
+						if(timeSeconds+travelTimeToSender2 <((insertTime-540)*60) 
+								&& travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) { // 30min*60=1800s
 							// change the original route to the new route
-							conn.do_job_set(Vehicle.changeTarget("8", sender2_edgeID));	
+							
+					
+							
+							String senderEdge_indexValue = (String)timeMapToSender.get(Key_indexValue).get(0);
+							conn.do_job_set(Vehicle.changeTarget("8", senderEdge_indexValue));	
 							
 							// need arrange the route after executing the current route
 						}
@@ -230,28 +253,36 @@ public class MainCopy {
 						System.out.println(timeSchedule.get(beforeIndex));
 						System.out.println(timeSchedule.get(afterIndex));
 					}
-					System.out.println("timeMap:"+timeMap);
+
+					System.out.println("After arranging the schedule:");
 					System.out.println("timeSchedule:"+timeSchedule);
+					System.out.println("timeMapToSender:"+timeMapToSender);
 													
 				}
 				
+				// request3 from sender3 11:00
 				if(timeSeconds==40.0) {
-					timeMap.put(660, "sender3");
-					timeSchedule.add(660); // request3, sender3, 11:00->660
-					
+					System.out.println("------------------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
+					ArrayList sender3Array = new ArrayList();
 					
-					SumoPosition2D v8Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition("8")); 
-					double Distance_v8toSender3= (double)(conn.do_job_get(Simulation.getDistance2D(sender3_x, sender3_y,v8Position.x, v8Position.y, false, true)));
-					double travelTimeToSender3 = Distance_v8toSender3/5.0; // V=5.0m/s
-					
-					//double distance_S2ToS1= (double)(conn.do_job_get(Simulation.getDistance2D(sender2_x, sender2_y, sender1_x, sender1_y, false, true)));
-					
-				
 			
+					sender3Array.add("24452776");
+					sender3Array.add(2513.37);
+					sender3Array.add(1747.28);
+					
+					int insertTime = 660;
+					timeSchedule.add(insertTime); // request3, sender3, 11:00->660
+					timeMapToSender.put(insertTime, sender3Array);
+					
+					System.out.println("timeSchedule:"+timeSchedule);
+					System.out.println("timeMapToSender:"+timeMapToSender);
+				
+					
 					Collections.sort(timeSchedule);  // Sort timeSchedule
 					
-					int indexValue = timeSchedule.indexOf(660);
+					int indexValue = timeSchedule.indexOf(insertTime);
+				
 					System.out.println("indexValue of 660:"+indexValue);
 					
 					if(indexValue==0) {
@@ -263,42 +294,64 @@ public class MainCopy {
 						System.out.println("indexValue of "+ (timeSchedule.size()-1));
 						
 						// get the sender's position of this index and the previous element
-						double Distance_S1ToS3= (double)(conn.do_job_get(Simulation.getDistance2D(sender3_x, sender3_y,sender1_x, sender1_y, false, true)));
-						double travelTime_S1ToS3 = Distance_S1ToS3/5.0; // V=5.0m/s
+						int Key_indexValue =  timeSchedule.get(indexValue);
+						double sender_x_indexValue = (double)timeMapToSender.get(Key_indexValue).get(1);
+						double sender_y_indexValue = (double)timeMapToSender.get(Key_indexValue).get(2);
 						
+						int Key_beforeIndex =  timeSchedule.get(indexValue-1);
+						double sender_x_beforeIndex = (double)timeMapToSender.get(Key_beforeIndex).get(1);
+						double sender_y_beforeIndex = (double)timeMapToSender.get(Key_beforeIndex).get(2);
 						
-						double diffDuration = (timeSchedule.get(indexValue)-timeSchedule.get(indexValue-1))*60; //  gap between this element and next element 
-						System.out.println("duration:"+ diffDuration + " seconds"); // 600min-570min
+						double Distance_preIndexToIndex= (double)(conn.do_job_get(Simulation.getDistance2D(sender_x_indexValue, sender_y_indexValue,
+								sender_x_beforeIndex, sender_y_beforeIndex, false, true)));
+						double travelTime_preIndexToIndex = Distance_preIndexToIndex/5.0; // V=5.0m/s
+						System.out.println("travelTime_preIndexToIndex:"+travelTime_preIndexToIndex);
 						
-						if(travelTime_S1ToS3 < diffDuration) {
-							System.out.println("request3 was inserted into the scedule successfully");
-							
-							
+						double diffDuration_preIndexToIndex = (timeSchedule.get(indexValue)-timeSchedule.get(indexValue-1))*60; //  gap between this element and next element 
+						System.out.println("duration:"+ diffDuration_preIndexToIndex + " seconds"); // 600min-570min
+						
+						if(travelTime_preIndexToIndex < diffDuration_preIndexToIndex) {
+							System.out.println("request3 was inserted into the scedule successfully");		
 						}
+						
+						else {
+							// remove the request3
+							// timeSchedule.remove(indexValue);
+							// timeMap.remove(timeSchedule.get(indexValue));
+						}
+						
+						
 						
 					}
 					
 					else {
-						// 
+						// 	System.out.println("index has two adjacent elements");
 					}
 					
-					System.out.println("timeMap:"+timeMap);
+					System.out.println("After arranging the schedule:");
 					System.out.println("timeSchedule:"+timeSchedule);
+					System.out.println("timeMapToSender:"+timeMapToSender);
 					
 				}
 				
 				if(timeSeconds==50.0) {
+					
+					System.out.println("------------------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
 					// the request4[10:30, sender4]->10:30=630 min
+					ArrayList sender4Array = new ArrayList();
+					sender4Array.add("496493919#2");
+					sender4Array.add(1517.62);
+					sender4Array.add(1207.92);
 					
-					int insertMin = (10*60+30);
+					int insertTime = 630;
+					timeSchedule.add(insertTime); // request4, sender4, 10:30->630
+					timeMapToSender.put(insertTime, sender4Array);
 					
-					timeSchedule.add(insertMin);
-					timeMap.put(insertMin, "sender4");
-					
+	
 					Collections.sort(timeSchedule);  // Sort timeSchedule
 					
-					int indexValue = timeSchedule.indexOf(insertMin);
+					int indexValue = timeSchedule.indexOf(insertTime);
 					System.out.println("indexValue:"+indexValue);
 					
 					if(indexValue==0) {
@@ -307,62 +360,50 @@ public class MainCopy {
 					
 					else if(indexValue==(timeSchedule.size()-1)) {
 			
-						System.out.println("indexValue of "+ (timeSchedule.size()-1));
-						
-						// get the sender's position of this index and the previous element
-						double Distance_S1ToS3= (double)(conn.do_job_get(Simulation.getDistance2D(sender3_x, sender3_y,sender1_x, sender1_y, false, true)));
-						double travelTime_S1ToS3 = Distance_S1ToS3/5.0; // V=5.0m/s
-						
-						
-						double diffDuration = (timeSchedule.get(indexValue)-timeSchedule.get(indexValue-1))*60; //  gap between this element and next element 
-						System.out.println("duration:"+ diffDuration + " seconds"); // 600min-570min
-						
-						if(travelTime_S1ToS3 < diffDuration) {
-							System.out.println("request3 was inserted into the scedule successfully");
-							
-							
-						}
 						
 					}
 					
 					else {
-						// 
-						int beforeIndex = indexValue-1;
-						int afterIndex = indexValue+1;
 						
-						System.out.println(timeSchedule.get(beforeIndex));
-						System.out.println(timeSchedule.get(afterIndex));
+						int Key_indexValue =  timeSchedule.get(indexValue);
+						double sender_x_indexValue = (double)timeMapToSender.get(Key_indexValue).get(1);
+						double sender_y_indexValue = (double)timeMapToSender.get(Key_indexValue).get(2);
 						
-						String EdgeOfBeforeIndex = (String) timeMap.get(timeSchedule.get(beforeIndex));
-						String EdgeOfAfterIndex = (String) timeMap.get(timeSchedule.get(afterIndex));
-						String EdgeOfIndex = (String) timeMap.get(timeSchedule.get(indexValue));
+						int Key_afterIndex =  timeSchedule.get(indexValue+1);
+						double sender_x_afterIndex = (double)timeMapToSender.get(Key_afterIndex).get(1);
+						double sender_y_afterIndex = (double)timeMapToSender.get(Key_afterIndex).get(2);
 						
-						System.out.println("EdgeOfBeforeIndex:"+EdgeOfBeforeIndex);
-						System.out.println("EdgeOfAfterIndex:"+EdgeOfAfterIndex);
+						int Key_beforeIndex =  timeSchedule.get(indexValue-1);
+						double sender_x_beforeIndex = (double)timeMapToSender.get(Key_beforeIndex).get(1);
+						double sender_y_beforeIndex = (double)timeMapToSender.get(Key_beforeIndex).get(2);
+						
+						double Distance_preIndexToIndex= (double)(conn.do_job_get(Simulation.getDistance2D(sender_x_indexValue, sender_y_indexValue,
+								sender_x_beforeIndex, sender_y_beforeIndex, false, true)));
+						System.out.println("Distance_preIndexToIndex:"+ Distance_preIndexToIndex);
+						
+						double travelTime_preIndexToIndex = Distance_preIndexToIndex/5.0; // V=5.0m/s
+						System.out.println("travelTime_preIndexToIndex:" + travelTime_preIndexToIndex);
+						
+						double diffDuration_preIndexToIndex = (timeSchedule.get(indexValue)-timeSchedule.get(indexValue-1))*60; //  gap between this element and previous element 
+						System.out.println("diffDuration_preIndexToIndex:"+ diffDuration_preIndexToIndex + " seconds");
+						
+						double Distance_afterIndexToIndex = (double)(conn.do_job_get(Simulation.getDistance2D(sender_x_indexValue, sender_y_indexValue,
+								sender_x_afterIndex, sender_y_afterIndex, false, true)));
+						double travelTime_afterIndexToIndex = Distance_afterIndexToIndex/5.0; // V=5.0m/s
+						double diffDuration_afterIndexToIndex = (timeSchedule.get(indexValue+1)-timeSchedule.get(indexValue))*60; // gap between this element and next element 
+						System.out.println("Distance_afterIndexToIndex:"+ Distance_afterIndexToIndex);
+						System.out.println("travelTime_afterIndexToIndex:"+travelTime_afterIndexToIndex);
+						System.out.println("diffDuration_afterIndexToIndex:"+ diffDuration_afterIndexToIndex + " seconds");
+						
 					
 						
-						double DistanceBeforeIndex = (double)(conn.do_job_get(Simulation.getDistanceRoad(sender4_edgeID, 0.0, sender1_edgeID, 0.0, true)));
-						double TravelTime_BeforeIndex = DistanceBeforeIndex/5.0;
-						System.out.println("TravelTime_BeforeIndex:"+ TravelTime_BeforeIndex);
-						
-						
-						double DistanceAfterIndex = (double)(conn.do_job_get(Simulation.getDistanceRoad(sender4_edgeID, 0.0, sender3_edgeID, 0.0, true)));
-						double TravelTime_AfterIndex = DistanceAfterIndex/5.0;
-						System.out.println("TravelTime_AfterIndex:"+ TravelTime_AfterIndex);
-						
-						
-						double diffDuration_AfterIndex = (timeSchedule.get(indexValue+1)-timeSchedule.get(indexValue))*60; //  gap between this element and next element 
-						System.out.println("diffDuration_AfterIndex:"+ diffDuration_AfterIndex + " seconds"); // 660min-630min
-						
-						double diffDuration_BeforeIndex = (timeSchedule.get(indexValue)-timeSchedule.get(indexValue-1))*60; //  gap between this element and next element 
-						System.out.println("diffDuration_BeforeIndex:"+ diffDuration_BeforeIndex + " seconds"); // 630min-600min
-						
-						if(TravelTime_BeforeIndex<diffDuration_BeforeIndex && TravelTime_AfterIndex< diffDuration_AfterIndex ) {
+						if(travelTime_preIndexToIndex<diffDuration_preIndexToIndex 
+								&& travelTime_afterIndexToIndex< diffDuration_afterIndexToIndex ) {
 							// 
-							System.out.println("timeMap:"+timeMap);
 							System.out.println("timeSchedule:"+timeSchedule);
-							
-						
+							System.out.println("timeMapToSender:"+timeMapToSender);
+					
+		
 						}
 						
 						// remove the request4
@@ -377,35 +418,16 @@ public class MainCopy {
 						
 						
 						
-						
-						
-						
-						
-						
 					}
 					
-					
+
+					System.out.println("After arranging the schedule:");
+					System.out.println("timeSchedule:"+timeSchedule);
+					System.out.println("timeMapToSender:"+timeMapToSender);
 					
 				}
 				
-				if(timeSeconds==150.0) {
-					System.out.println("timeSeconds:"+ timeSeconds);
-					
-					SumoPosition2D v8Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition("8")); 
-					double v8toSender3Distance= (double)(conn.do_job_get(Simulation.getDistance2D(sender3_x, sender3_y,v8Position.x, v8Position.y, false, true)));
-					double travelTimeToSender3 = v8toSender3Distance/5.0; // V=5.0m/s
-					
-					double distance_S3ToS1 = (double)(conn.do_job_get(Simulation.getDistance2D(sender3_x, sender3_y,sender1_x, sender1_y, false, true)));
-					double distance_S1ToS2 = (double)(conn.do_job_get(Simulation.getDistance2D(sender3_x, sender3_y,sender1_x, sender1_y, false, true)));
-					
-					double sumTime1 = travelTimeToSender3 + (300)+ distance_S3ToS1/5.0;
-					double sumTime2 = travelTimeToSender3 + (300)+ distance_S3ToS1/5.0 + (300)+ distance_S1ToS2/5.0;
-					
-					if(sumTime1<sender1_expected_arrival_duration && sumTime2< sender2_expected_arrival_duration ) {
-						// conn.do_job_set(Vehicle.changeTarget("8", sender3_edgeID));
-						
-					}
-				}
+	
 				
 				
 				if (timeSeconds % 10 == 0) {
