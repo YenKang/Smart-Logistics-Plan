@@ -96,18 +96,33 @@ public class MainCopy {
 				
 				if(timeSeconds==10.0) {
 					ArrayList testlist = new ArrayList();
+					ArrayList insertlist = new ArrayList();
+					ArrayList count_of_BoxType = new ArrayList();
+					
+					insertlist.add(400);
+					insertlist.add(500);
+					
 					testlist.add("edgeID");
 					testlist.add(3.0);
 					testlist.add(5.0);
+					testlist.add(insertlist);
 					
+					int[] BoxIndex= {1, 0, 0, 0,
+							0,0,0,
+							0,0,0 };
+				
+					count_of_BoxType.add(BoxIndex);
+				
+					System.out.println("count_of_BoxType:"+ count_of_BoxType);
+					System.out.println("count_of_BoxType.get(0):"+  (int[])count_of_BoxType.get(0));
+		
 					System.out.println("testlist:"+testlist);
 					System.out.println("testlist:"+testlist.get(0));
+					System.out.println("testlist.get(3):"+testlist.get(3));
+					
 					String a = (String)testlist.get(0);
 					double s = (double)testlist.get(1);
-					Map<Integer,ArrayList> m2 = new HashMap<Integer,ArrayList>();
-					 
-				
-
+					
 					System.out.println("timeSeconds:"+ timeSeconds);
 					System.out.println("timeSchedule:"+timeSchedule);
 					System.out.println("timeMap:"+timeMap);
