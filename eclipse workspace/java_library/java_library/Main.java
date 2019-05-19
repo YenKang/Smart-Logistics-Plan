@@ -149,7 +149,7 @@ public class Main {
 				        //System.out.println(key + " : " + dispatchedCars.get(key));
 				        
 				        Integer[] getBoxType = dispatchedCars.get(key);
-				        System.out.println("key:"+key+ ","+ "boxType[0]:"+getBoxType[0]);
+				        // System.out.println("key:"+key+ ","+ "boxType[0]:"+getBoxType[0]);
 				     }
 				     
 				     
@@ -224,7 +224,7 @@ public class Main {
 					
 						double eachDistance = (double)(conn.do_job_get(Simulation.getDistance2D(8465, 6338, veh_Position.x, veh_Position.y, false, true)));
 						CarsWithAvailableBox.put(vehID, eachDistance);
-						System.out.println("CarsWithAvailableBox:" + CarsWithAvailableBox);
+						//System.out.println("CarsWithAvailableBox:" + CarsWithAvailableBox);
 						
 					} 
 					
@@ -234,7 +234,7 @@ public class Main {
 					for(String vehID : CarsWithAvailableBox.keySet()) {
 						double distance = CarsWithAvailableBox.get(vehID);
 						alist.add(distance);
-						System.out.println("alist:"+ alist);
+						//System.out.println("alist:"+ alist);
 						
 					}
 					double minValueInList = Collections.min(alist); 
@@ -244,6 +244,7 @@ public class Main {
 					  double value = CarsWithAvailableBox.get(vehID);
 					  if(value==minValueInList) {
 						  System.out.println(vehID + " IS THE DISPATCHING CAR!");
+						  pickVeh = vehID;
 					  }
 							 
 				   }
@@ -264,15 +265,15 @@ public class Main {
 					}
 					*/
 					
-					/*
-					conn.do_job_set(Vehicle.changeTarget("17", "-537706053#0"));
+					
+					conn.do_job_set(Vehicle.changeTarget(pickVeh, "-537706053#0"));
 					SumoStopFlags sf = new SumoStopFlags(false, false, false, false, false);
 					
 					conn.do_job_set(Vehicle.setStop(pickVeh, "-537706053#0", 1.0, (byte)0, 50.0, sf));
 					
 					System.out.println("isStopped:"+ isStopped +" timeStep:"+ timeStep);
 					isStopped = (Integer)conn.do_job_get(Vehicle.isStopped(pickVeh));
-					*/
+					
 				
 				}
 				
