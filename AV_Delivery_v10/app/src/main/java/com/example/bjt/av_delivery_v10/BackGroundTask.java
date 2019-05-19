@@ -172,6 +172,7 @@ public class BackGroundTask extends AsyncTask<String, Void, String> {
 
                 Intent it = new Intent();
                 it.setClass(ctx, AccountActivity.class);
+
                 Bundle bundle = new Bundle();
                 bundle.putInt("user_id",user_id);
                 bundle.putString("username",username);
@@ -182,7 +183,7 @@ public class BackGroundTask extends AsyncTask<String, Void, String> {
                 it.putExtras(bundle);
                 ctx.startActivity(it);
                 Toast.makeText(ctx, "您好，"+username, Toast.LENGTH_LONG).show();
-                //int user_id = Integer.parseInt(testS);
+                // int user_id = Integer.parseInt(testS);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

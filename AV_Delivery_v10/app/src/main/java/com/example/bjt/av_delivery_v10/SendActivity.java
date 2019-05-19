@@ -39,6 +39,7 @@ public class SendActivity extends AppCompatActivity {
     private int sizeSelected;
     // 宣告訂單的各個內容，如貨品名稱及細部地址等
     private EditText cargo_name, price, weight, receiver_id, et_origin, et_dest;
+    private String sender_id;
     // 將來使用者選擇地址後，將整合地址放入的字串
     private String originAddressSelected="";
     private String destAddressSelected="";
@@ -58,6 +59,7 @@ public class SendActivity extends AppCompatActivity {
         }
         // 若有使用者登入資訊，則正式執行本頁面，將對應欄位的layout指派好
         else{
+            sender_id = sharedPreferences.getString("username","");
             origin = findViewById(R.id.bt_origin);
             dest = findViewById(R.id.bt_dest);
             bt_next = findViewById(R.id.btn_next);
@@ -80,7 +82,7 @@ public class SendActivity extends AppCompatActivity {
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     sizeSelected = position;
                     // 測試是否顯示正確選擇
-                    // Toast.makeText(SendActivity.this, Integer.toString(sizeSelected), Toast.LENGTH_SHORT).show();
+                     Toast.makeText(SendActivity.this, Integer.toString(sizeSelected), Toast.LENGTH_SHORT).show();
                 }
                 // 因預設會選擇L，因此不可能觸發此函式，但此介面必須覆寫
                 @Override
@@ -96,10 +98,18 @@ public class SendActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(), MapTestActivity.class);
+
                 // 使用 bundle 將頁面資訊傳送給下一階段，準備與 SUMO SERVER 連線
                 Bundle bundle = new Bundle();
-                bundle.putString("origin_address",originAddressSelected+et_origin.getText().toString());
-                bundle.putString("dest_address",destAddressSelected+et_dest.getText().toString());
+                bundle.putString("origin_address",originAddressSelected + et_origin.getText().toString());
+                bundle.putString("dest_address",destAddressSelected + et_dest.getText().toString());
+                bundle.putString("sender_id",sender_id);
+                bundle.putString("cargo_content",cargo_name.getText().toString());
+                bundle.putInt("price",Integer.parseInt(price.getText().toString()));
+                bundle.putDouble("weight",Double.parseDouble(weight.getText().toString()));
+                bundle.putString("receiver_id", receiver_id.getText().toString());
+                bundle.putInt("size",sizeSelected);
+
                 i.putExtras(bundle);
                 startActivity(i);
             }

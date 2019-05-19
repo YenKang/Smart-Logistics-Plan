@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 刪除xmlns:android的設定 -->
+    <TableLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1"
+        tools:context=".ItemActivity">
+
+        <TableRow>
+            <TextView
+                android:text="訂單編號"
+                android:padding="8sp"
+                android:layout_margin="2sp"
+                android:gravity="center_horizontal"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/order_No_activity_text"
+                android:padding="8sp"
+                android:layout_margin="2sp"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="@string/cargo_content"
+                android:padding="8sp"
+                android:layout_margin="2sp"
+                android:gravity="center_horizontal"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/cargo_content_activity_text"
+                android:padding="8sp"
+                android:layout_margin="2sp"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="@string/price"
+                android:padding="8sp"
+                android:layout_margin="2sp"
+                android:gravity="center_horizontal"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/price_activity_text"
+                android:padding="8sp"
+                android:layout_margin="2sp"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="物流狀態"
+                android:padding="8sp"
+                android:layout_margin="2sp"
+                android:gravity="center_horizontal"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/status_activity_text"
+                android:padding="8sp"
+                android:layout_margin="2sp"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </TableRow>
+        <Button
+            android:id="@+id/btn_check_order_status"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="確認物流狀態" />
+
+        <TableRow>
+            <TextView
+                android:text="貨車編號"
+                android:padding="8sp"
+                android:layout_margin="2sp"
+                android:gravity="center_horizontal"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/truck_No_activity_text"
+                android:padding="8sp"
+                android:layout_margin="2sp"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="貨櫃編號"
+                android:padding="8sp"
+                android:layout_margin="2sp"
+                android:gravity="center_horizontal"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/container_activity_text"
+                android:padding="8sp"
+                android:layout_margin="2sp"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="寄件人"
+                android:padding="8sp"
+                android:layout_margin="2sp"
+                android:gravity="center_horizontal"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/sender_name_activity_text"
+                android:padding="8sp"
+                android:layout_margin="2sp"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="收件人"
+                android:padding="8sp"
+                android:layout_margin="2sp"
+                android:gravity="center_horizontal"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/receiver_name_activity_text"
+                android:padding="8sp"
+                android:layout_margin="2sp"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </TableRow>
+    </TableLayout>
+
+    <!-- ScrollView的結束標籤 -->
+</ScrollView>
