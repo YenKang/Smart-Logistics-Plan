@@ -47,6 +47,7 @@ public class AccountActivity extends AppCompatActivity {
             editor.putString("gender",gender);
             editor.putString("phone_number",phone_number);
             editor.putString("register_time",registerTime);
+            //editor.putStringSet()
             editor.commit();
         }
         // 若已登入，則直接從記憶體取得資料

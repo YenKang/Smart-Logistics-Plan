@@ -33,37 +33,27 @@
         android:padding="5dp"
         android:layout_margin="5dp"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-    <RadioGroup
-        android:id="@+id/radio123"
+
+    <Spinner
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:padding="5dp"
-        android:layout_margin="5dp">
+        android:id="@+id/spTimeInterval"
+        android:layout_gravity="center"
+        android:padding="10sp"
+        android:layout_margin="2sp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <RadioButton
-            android:id="@+id/warwick"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="12:00 ~ 14:59" />
 
-        <RadioButton
-            android:id="@+id/kyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="15:00 ~ 17:59" />
-        <RadioButton
-            android:id="@+id/twitch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="18:00 ~ 20:59" />
-
-    </RadioGroup>
     <Button
         android:id="@+id/btn_submit"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="確認" />
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="取消" />
     <!--
     <TextView
         android:id="@+id/lng1"

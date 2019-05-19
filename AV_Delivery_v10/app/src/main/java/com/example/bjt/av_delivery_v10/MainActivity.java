@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -34,9 +35,20 @@ public class MainActivity extends AppCompatActivity {
     private Socket clientSocket;
     private String temp;
     private JSONObject jsonR, jsonW;
-    Map hashmap = new HashMap();
-    JSONObject jsonTest;
+    private JSONObject jsonTest;
 
+    // 點選返回鍵不關閉程式
+    /*@Override
+    public boolean onKeyDown(int keyCode, KeyEvent event){
+        if (keyCode == KeyEvent.KEYCODE_BACK){
+            Intent home = new Intent(Intent.ACTION_MAIN);
+            home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            home.addCategory(Intent.CATEGORY_HOME);
+            startActivity(home);
+            return true;
+        }
+        return super.onKeyDown(keyCode,event);
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +59,10 @@ public class MainActivity extends AppCompatActivity {
         send = findViewById(R.id.send_button);
         myOrder = findViewById(R.id.my_package_button);
         testbyabout = findViewById(R.id.about_button);
-        hashmap.put("sender_lng", 120.213878);
+        Toast.makeText(this, Integer.toString(123), Toast.LENGTH_SHORT).show();
+        /*hashmap.put("sender_lng", 120.213878);
         hashmap.put("sender_lat", 22.996839);
-        jsonTest = new JSONObject(hashmap);
+        jsonTest = new JSONObject(hashmap);*/
         // 負責監聽按鈕事件的函式
         processControllers();
     }
@@ -80,8 +93,19 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener myOrderListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), MyOrderActivity.class);
-                startActivity(i);
+                SharedPreferences sharedPreferences = getSharedPreferences("user_info",0);
+                int user_id = sharedPreferences.getInt("user_id",-99);
+                if (user_id == -99){
+                    Intent i = new Intent(MainActivity.this, Login.class);
+                    startActivity(i);
+                    //finish();
+                }
+                else{
+                    String user_name = sharedPreferences.getString("username","");
+                    new OrderQuery(MainActivity.this).execute(user_name);
+                }
+                // Intent i = new Intent(view.getContext(), MyOrderActivity.class);
+                // startActivity(i);
             }
         };
         myOrder.setOnClickListener(myOrderListener);
@@ -90,24 +114,31 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener testListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Thread threadSocket = new Thread(Connection);
+                /*Thread threadSocket = new Thread(Connection);
                 threadSocket.start();
-                System.out.println("123");
+                System.out.println("123");*/
             }
         };
         testbyabout.setOnClickListener(testListener);
 
     }
-
+    // 連線測試用
     private Runnable Connection = new Runnable() {
         @Override
         public void run() {
             OutputStream output = null;
             InputStream input = null;
             try{
-                InetAddress serverIP = InetAddress.getByName("140.116.72.162"); //Bryan's IP address =140.116.72.162
+                InetAddress serverIP = InetAddress.getByName("140.116.72.134");
                 int serverPort = 6678;
                 clientSocket = new Socket(serverIP, serverPort);
+                Map hashmap = new HashMap();
+                hashmap.put("request_No", 1);
+                hashmap.put("truck_No", "17");
+                //22.988340  120.194807
+                hashmap.put("receiver_lng", 120.194807);
+                hashmap.put("receiver_lat", 22.988340);
+                jsonTest = new JSONObject(hashmap);
                 //System.out.println("456");
 
                 // 取得網路輸出流 //////////////////////////////////////////
