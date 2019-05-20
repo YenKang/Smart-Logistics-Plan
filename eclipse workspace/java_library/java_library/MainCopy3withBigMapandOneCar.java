@@ -1,0 +1,262 @@
+/****************************************************************************/
+// Eclipse SUMO, Simulation of Urban MObility; see https://eclipse.org/sumo
+// Copyright (C) 2017-2018 German Aerospace Center (DLR) and others.
+// TraaS module
+// Copyright (C) 2013-2017 Dresden University of Technology
+// This program and the accompanying materials
+// are made available under the terms of the Eclipse Public License v2.0
+// which accompanies this distribution, and is available at
+// http://www.eclipse.org/legal/epl-v20.html
+// SPDX-License-Identifier: EPL-2.0
+/****************************************************************************/
+/// @file    Main.java
+/// @author  Mario Krumnow
+/// @date    2013
+/// @version $Id$
+///
+//
+/****************************************************************************/
+
+import it.polito.appeal.traci.SumoTraciConnection;
+
+import de.tudresden.sumo.cmd.Simulation;
+import de.tudresden.sumo.cmd.Vehicle;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Set;
+import java.util.Arrays;
+import java.util.Collections;
+
+import de.tudresden.ws.container.*;
+
+public class MainCopy3withBigMapandOneCar {
+
+	static String sumo_bin = "sumo-gui";
+	// static String config_file = "simulation/map.sumo.cfg";
+	  static String config_file = "simulation4/map.sumo.cfg";
+
+	// static double step_length = 0.01; // version1
+
+	static double step_length = 0.3;
+	//double vehicle_speed = 5.0; //5 [m/s]
+
+	public static void main(String[] args) {
+
+		try {
+			
+			SumoTraciConnection conn = new SumoTraciConnection(sumo_bin, config_file);
+			conn.addOption("step-length", step_length + "");
+			conn.addOption("start", "true"); // start sumo immediately
+			
+
+			// start Traci Server
+			conn.runServer(8080);
+			conn.setOrder(1);
+			
+			Map  CarsMapWithSchedule = new HashMap();
+			ArrayList v1_sender_TimeSchedule = new ArrayList();
+			
+			double vehicle_speed = 5.0; //5 [m/s]
+			
+			// vehicle1
+	
+		
+
+			
+			// vehicle2
+			ArrayList v2_sender_TimeSchedule = new ArrayList();
+			
+			v2_sender_TimeSchedule.add(600);
+			CarsMapWithSchedule.put("2",v2_sender_TimeSchedule);
+			
+			Map v2_TimeToSenderInfo = new HashMap();
+			
+			ArrayList sender2_Array = new ArrayList();
+			sender2_Array.add("496257308#5");
+			sender2_Array.add(3937.13);
+			sender2_Array.add(5039.67);
+			
+			v2_TimeToSenderInfo.put(600, sender2_Array);
+		
+			
+			System.out.println("v2_TimeToSenderInfo:"+ v2_TimeToSenderInfo);
+			System.out.println("sender2_Array:"+ sender2_Array);
+			
+			System.out.println("CarsMapWithSchedule:"+ CarsMapWithSchedule);
+			
+			v2_sender_TimeSchedule.add(660);
+			CarsMapWithSchedule.put("2",v2_sender_TimeSchedule);
+			
+			ArrayList sender3_Array = new ArrayList();
+			sender3_Array.add("273445903#7");
+			sender3_Array.add(2966.38);
+			sender3_Array.add(6993.0);
+			v2_TimeToSenderInfo.put(660, sender3_Array);
+			
+			System.out.println("v2_TimeToSenderInfo:"+ v2_TimeToSenderInfo);
+			System.out.println("sender3_Array:"+ sender3_Array);
+			
+			System.out.println("CarsMapWithSchedule:"+ CarsMapWithSchedule);
+			System.out.println("-----------------------------------------------");
+			
+			
+			
+			
+		
+			for (int i = 0; i < 360000; i++) {
+				conn.do_timestep();
+				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
+				//System.out.println("timeSeconds:"+ timeSeconds);
+				
+				double Distance_Sender2ToSender3 = (double)(conn.do_job_get(Simulation.getDistance2D(
+						(double)sender2_Array.get(1), 
+						(double)sender2_Array.get(2), 
+						(double)sender3_Array.get(1), 
+						(double)sender3_Array.get(2), false, true)));
+				
+				//System.out.println("Distance_Sender2ToSender3:"+ Distance_Sender2ToSender3);
+				
+				double Distance_StartToSender3 = (double)(conn.do_job_get(Simulation.getDistance2D(
+						(double)sender2_Array.get(1), 
+						(double)sender2_Array.get(2), 
+						10806.12, 3567.21, false, true)));
+				
+				//System.out.println("Distance_Sender2ToSender3:"+ Distance_Sender2ToSender3);
+				
+				
+				
+				// vehicle1 route
+				/*
+				ArrayList v1_send_Schedule = new ArrayList();
+				v1_send_Schedule = (ArrayList) CarsMapWithSchedule.get(1);
+				int firstTime = (int) v1_send_Schedule.get(0);
+				ArrayList first_SendInfo = new ArrayList();
+				first_SendInfo=(ArrayList) v1_TimeToSenderInfo.get(firstTime);
+				conn.do_job_set(Vehicle.changeTarget("1", (String)first_SendInfo.get(0)));
+				*/
+				
+				// got send_Request10 of 10:00->10hr->600min
+				
+	
+				if(timeSeconds==10.3) {
+					System.out.println("Distance_Sender2ToSender3:"+ Distance_Sender2ToSender3);
+					System.out.println("Distance_StartToSender3:"+ Distance_StartToSender3);
+					
+					conn.do_job_set(Vehicle.changeTarget("2", (String)sender2_Array.get(0)));
+					
+					//conn.do_job_set(Vehicle.changeTarget("2", (String)sender3_Array.get(0)));
+				}
+				
+				
+				// At 09:06 (360), got the request of sender4 with  09:30
+				/*
+				if(timeSeconds>360.0 && timeSeconds<361.0) {
+					ArrayList sender4_Array = new ArrayList();
+					sender4_Array.add("297579234");
+					sender4_Array.add(8973.76);
+					sender4_Array.add(3772.53);
+					
+					SumoPosition2D v2_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition("2")); 
+					double Distance_v2toSender4= (double)(conn.do_job_get(
+							Simulation.getDistance2D((double)sender4_Array.get(1), (double)sender4_Array.get(2),
+									v2_Position.x, v2_Position.y, false, true)));
+					double travelTime_v2toSender4 = Distance_v2toSender4/vehicle_speed;
+					
+					double duration_curPos_to_Index = 1440; //(570min-546min)*60=24min*60 s/min= 1440s
+					System.out.println("travelTime_v2toSender4:"+ travelTime_v2toSender4);
+					System.out.println("duration_curPos_to_Index:"+ duration_curPos_to_Index);
+					
+					double Distance_Sender2ToSender4 = (double)(conn.do_job_get(Simulation.getDistance2D(
+							(double)sender4_Array.get(1), 
+							(double)sender4_Array.get(2), 
+							(double)sender2_Array.get(1), 
+							(double)sender2_Array.get(2), false, true)));
+					
+					System.out.println("Distance_Sender2ToSender4:"+ Distance_Sender2ToSender4);
+					
+					if(travelTime_v2toSender4< duration_curPos_to_Index 
+							&& Distance_Sender2ToSender4/vehicle_speed<1800 ) {
+						System.out.println("sender4_Array passed");
+					}	
+					
+				}*/
+				
+				if(timeSeconds>600.3) { //09:10 
+					System.out.println("timeSeconds:"+ timeSeconds);
+					ArrayList sender4_Array = new ArrayList();
+					sender4_Array.add("297579234");
+					sender4_Array.add(8973.76);
+					sender4_Array.add(3772.53);
+					
+					SumoPosition2D v2_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition("2")); 
+					
+					System.out.println("v2_Position:"+ v2_Position);
+					
+					double Distance_v2toSender4= (double)(conn.do_job_get(
+							Simulation.getDistance2D((double)sender4_Array.get(1), (double)sender4_Array.get(2),
+									v2_Position.x, v2_Position.y, false, true)));
+					
+					double travelTime_v2toSender4 = Distance_v2toSender4/vehicle_speed;
+					
+					double duration_curPos_to_Index = 1200; //(570min-550min)*60=20min*60 s/min= 1200s
+					System.out.println("travelTime_v2toSender4:"+ travelTime_v2toSender4);
+					System.out.println("duration_curPos_to_Index:"+ duration_curPos_to_Index);
+					
+					double Distance_Sender2ToSender4 = (double)(conn.do_job_get(Simulation.getDistance2D(
+							(double)sender4_Array.get(1), 
+							(double)sender4_Array.get(2), 
+							(double)sender2_Array.get(1), 
+							(double)sender2_Array.get(2), false, true)));
+					
+					System.out.println("Distance_Sender2ToSender4:"+ Distance_Sender2ToSender4);
+					System.out.println("TravelTime_Sender2ToSender4:"+ Distance_Sender2ToSender4/vehicle_speed);
+					
+					if(travelTime_v2toSender4< duration_curPos_to_Index 
+							&& Distance_Sender2ToSender4/vehicle_speed<1800 ) {
+						System.out.println("sender4_Array passed");
+						conn.do_job_set(Vehicle.changeTarget("2", (String)sender4_Array.get(0)));
+						
+						v2_sender_TimeSchedule.add(570); //09:30
+						Collections.sort(v2_sender_TimeSchedule);
+						System.out.println("v2_TimeToSenderInfo:"+ v2_TimeToSenderInfo);
+						
+						v2_TimeToSenderInfo.put(570, sender4_Array);
+						
+				
+						CarsMapWithSchedule.put(2, v2_sender_TimeSchedule);
+						System.out.println("CarsMapWithSchedule:"+ CarsMapWithSchedule);
+					
+						System.out.println("v2_sender_TimeSchedule:"+ v2_sender_TimeSchedule);
+					
+						
+						
+					}	
+					
+					else {
+						System.out.println("the insertion of sender4_Array failed");
+					}
+					
+				}
+				
+				
+				
+				if(timeSeconds>2109.0 && timeSeconds<2183.0)  {
+					System.out.println("timeSeconds:"+ timeSeconds);
+					System.out.println("Distance_Sender2ToSender3:"+ Distance_Sender2ToSender3);
+					conn.do_job_set(Vehicle.changeTarget("2", (String)sender3_Array.get(0)));
+					//conn.do_job_set(Vehicle.changeTarget("2", "496257308#5"));
+				}
+	
+			}
+			conn.close();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+	}
+
+}
