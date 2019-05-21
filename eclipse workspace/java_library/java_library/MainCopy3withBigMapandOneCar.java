@@ -59,7 +59,7 @@ public class MainCopy3withBigMapandOneCar {
 			Map  CarsMapWithSchedule = new HashMap();
 			ArrayList v1_sender_TimeSchedule = new ArrayList();
 			
-			double vehicle_speed = 5.0; //5 [m/s]
+			double vehicle_speed = 4.0; //4 [m/s]
 			
 			// vehicle1
 	
@@ -142,6 +142,7 @@ public class MainCopy3withBigMapandOneCar {
 				
 	
 				if(timeSeconds==10.3) {
+					System.out.println("-----------------------------------------------");
 					System.out.println("Distance_Sender2ToSender3:"+ Distance_Sender2ToSender3);
 					System.out.println("Distance_StartToSender3:"+ Distance_StartToSender3);
 					
@@ -185,6 +186,7 @@ public class MainCopy3withBigMapandOneCar {
 				}*/
 				
 				if(timeSeconds==600.6) { //09:10 i==2001
+					System.out.println("-----------------------------------------------");
 					System.out.println("i:"+ i);
 					System.out.println("timeSeconds:"+ timeSeconds);
 					ArrayList sender4_Array = new ArrayList();
@@ -203,6 +205,7 @@ public class MainCopy3withBigMapandOneCar {
 					double travelTime_v2toSender4 = Distance_v2toSender4/vehicle_speed;
 					
 					double duration_curPos_to_Index = 1200; //(570min-550min)*60=20min*60 s/min= 1200s
+					System.out.println("Distance_v2toSender4:"+ Distance_v2toSender4);
 					System.out.println("travelTime_v2toSender4:"+ travelTime_v2toSender4);
 					System.out.println("duration_curPos_to_Index:"+ duration_curPos_to_Index);
 					
@@ -230,7 +233,7 @@ public class MainCopy3withBigMapandOneCar {
 						
 						v2_TimeToSenderInfo.put(570, sender4_Array);
 						
-						CarsMapWithSchedule.put(2, v2_sender_TimeSchedule);
+						//CarsMapWithSchedule.put(2, v2_sender_TimeSchedule);
 						System.out.println("CarsMapWithSchedule:"+ CarsMapWithSchedule);
 					
 						System.out.println("v2_sender_TimeSchedule:"+ v2_sender_TimeSchedule);
@@ -250,12 +253,13 @@ public class MainCopy3withBigMapandOneCar {
 				// At 09:40, a request of sender5 in 10:30
 
 				if(timeSeconds==1200.0) {
+					System.out.println("-----------------------------------------------");
 					//System.out.println("i:"+ i);
 					System.out.println("timeSeconds:"+ timeSeconds);
 					ArrayList sender5_Array = new ArrayList();
-					sender5_Array.add("4051156420"); // T.S. Dream Mall
-					sender5_Array.add(10353.5);
-					sender5_Array.add(5583.48);
+					sender5_Array.add("496493919#2"); // Hayashi Department Store
+					sender5_Array.add(7147.89);
+					sender5_Array.add(5832.08);
 					
 					
 	
@@ -286,14 +290,15 @@ public class MainCopy3withBigMapandOneCar {
 						
 						v2_sender_TimeSchedule.add(630); //10:30
 						Collections.sort(v2_sender_TimeSchedule);
-						System.out.println("v2_TimeToSenderInfo:"+ v2_TimeToSenderInfo);
+						System.out.println("v2_sender_TimeSchedule:"+ v2_sender_TimeSchedule);
 						
 						v2_TimeToSenderInfo.put(630, sender5_Array);
-						
+						System.out.println("v2_TimeToSenderInfo:"+ v2_TimeToSenderInfo);
 					
 						System.out.println("CarsMapWithSchedule:"+ CarsMapWithSchedule);
 					
-						System.out.println("v2_sender_TimeSchedule:"+ v2_sender_TimeSchedule);
+						
+	
 					}
 					
 				}
@@ -302,29 +307,118 @@ public class MainCopy3withBigMapandOneCar {
 				// stopped for 10mins, and arranged the new route to 
 				
 				if(timeSeconds==1800) {
-					
+					System.out.println("-----------------------------------------------");
+					System.out.println("timeSeconds:"+ timeSeconds);
 					conn.do_job_set(Vehicle.changeTarget("2", (String)sender2_Array.get(0)));
 					
 					SumoStopFlags sf_v2 = new SumoStopFlags(false, false, false, false, false);
 					
-					conn.do_job_set(Vehicle.setStop("2", (String)sender2_Array.get(0) , 50.0, (byte)0, 600.0, sf_v2));
+					conn.do_job_set(Vehicle.setStop("2", (String)sender2_Array.get(0) , 50.0, (byte)0, 1200.0, sf_v2));
 					
 					conn.do_job_set(Vehicle.resume("2"));
 					//conn.do_job_set(Vehicle.changeTarget("2", (String)sender2_Array.get(0)));
 					
+
+				}
+				
+				if(timeSeconds==4200.0) {
+				
+					System.out.println("-----------------------------------------------");
+					System.out.println("timeSeconds:"+ timeSeconds);
+					conn.do_job_set(Vehicle.changeTarget("2", (String)((ArrayList) v2_TimeToSenderInfo.get(630)).get(0)));
+					
+					SumoStopFlags sf_v2 = new SumoStopFlags(false, false, false, false, false);
+					
+					conn.do_job_set(Vehicle.setStop("2", (String)((ArrayList) v2_TimeToSenderInfo.get(630)).get(0) , 
+							150.0, (byte)0, 1200.0, sf_v2));
+					
+					conn.do_job_set(Vehicle.resume("2"));
+					//conn.do_job_set(Vehicle.changeTarget("2", (String)sender2_Array.get(0)));
 					
 
 				}
 				
+				if(timeSeconds==5400.0) {
+					System.out.println("-----------------------------------------------");
+					//System.out.println("i:"+ i);
+					System.out.println("timeSeconds:"+ timeSeconds);
+					ArrayList sender6_Array = new ArrayList();
+					sender6_Array.add("405115648#1"); // medical school of ncku
+					sender6_Array.add(8950.04);
+					sender6_Array.add(6800.84);
+					sender6_Array.add(240.0); // pos
+					
+					
+	
+					double Distance_Sender3ToSender6 = (double)(conn.do_job_get(Simulation.getDistance2D(
+							(double)sender3_Array.get(1), 
+							(double)sender6_Array.get(2), 
+							(double)sender6_Array.get(1), 
+							(double)sender6_Array.get(2), false, true)));
+					
+				
+					
+					double TravelTime_Sender3ToSender6 = Distance_Sender3ToSender6/vehicle_speed;
+					
+			
+					System.out.println("Distance_Sender3ToSender6:"+ Distance_Sender3ToSender6);
+					System.out.println("TravelTime_Sender3ToSender6:"+ TravelTime_Sender3ToSender6);
+					
+					if(TravelTime_Sender3ToSender6 < 1800) {
+						System.out.println("sender6_Array passed");
+						//conn.do_job_set(Vehicle.changeTarget("2", (String)sender4_Array.get(0)));
+						
+						v2_sender_TimeSchedule.add(690); //11:30
+						Collections.sort(v2_sender_TimeSchedule);
+						System.out.println("v2_sender_TimeSchedule:"+ v2_sender_TimeSchedule);
+						
+						v2_TimeToSenderInfo.put(690, sender6_Array);
+						System.out.println("v2_TimeToSenderInfo:"+ v2_TimeToSenderInfo);
+					
+						System.out.println("CarsMapWithSchedule:"+ CarsMapWithSchedule);
+					}
+				}
+				
+				if(timeSeconds==6000.0) { // 10:40
+					System.out.println("-----------------------------------------------");
+					System.out.println("timeSeconds:"+ timeSeconds);
+					conn.do_job_set(Vehicle.changeTarget("2", (String)sender3_Array.get(0)));
+					
+					SumoStopFlags sf_v2 = new SumoStopFlags(false, false, false, false, false);
+					
+					conn.do_job_set(Vehicle.setStop("2", (String)sender3_Array.get(0) , 60.0, (byte)0, 1200.0, sf_v2));
+					
+					conn.do_job_set(Vehicle.resume("2"));
+					//conn.do_job_set(Vehicle.changeTarget("2", (String)sender2_Array.get(0)));
+				}
+				
+				if(timeSeconds==7800.0) { //11:10
+					System.out.println("-----------------------------------------------");
+					System.out.println("timeSeconds:"+ timeSeconds);
+					conn.do_job_set(Vehicle.changeTarget("2", 
+							(String)((ArrayList) v2_TimeToSenderInfo.get(690)).get(0)));
+					
+					SumoStopFlags sf_v2 = new SumoStopFlags(false, false, false, false, false);
+					
+					conn.do_job_set(Vehicle.setStop("2", 
+							(String)((ArrayList) v2_TimeToSenderInfo.get(690)).get(0) , 
+							(double)((ArrayList) v2_TimeToSenderInfo.get(690)).get(3), 
+							(byte)0, 1200.0, sf_v2));
+					
+					conn.do_job_set(Vehicle.resume("2"));
+				}
 				
 				
+				
+				
+				/*
 				if(timeSeconds>2109.0 && timeSeconds<2183.0)  {
 					System.out.println("timeSeconds:"+ timeSeconds);
 					System.out.println("Distance_Sender2ToSender3:"+ Distance_Sender2ToSender3);
 				
 					conn.do_job_set(Vehicle.changeTarget("2", (String)sender3_Array.get(0)));
 					//conn.do_job_set(Vehicle.changeTarget("2", "496257308#5"));
-				}
+				}*/
 	
 			}
 			conn.close();
