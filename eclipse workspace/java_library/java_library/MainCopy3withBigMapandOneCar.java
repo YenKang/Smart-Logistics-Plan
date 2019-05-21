@@ -184,7 +184,8 @@ public class MainCopy3withBigMapandOneCar {
 					
 				}*/
 				
-				if(timeSeconds>600.3) { //09:10 
+				if(timeSeconds==600.6) { //09:10 i==2001
+					System.out.println("i:"+ i);
 					System.out.println("timeSeconds:"+ timeSeconds);
 					ArrayList sender4_Array = new ArrayList();
 					sender4_Array.add("297579234");
@@ -219,17 +220,21 @@ public class MainCopy3withBigMapandOneCar {
 						System.out.println("sender4_Array passed");
 						conn.do_job_set(Vehicle.changeTarget("2", (String)sender4_Array.get(0)));
 						
+						SumoStopFlags sf_v2 = new SumoStopFlags(false, false, false, false, false);
+						
+						conn.do_job_set(Vehicle.setStop("2", (String)sender4_Array.get(0) , 540.0, (byte)0, 1200.0, sf_v2));
+						
 						v2_sender_TimeSchedule.add(570); //09:30
 						Collections.sort(v2_sender_TimeSchedule);
 						System.out.println("v2_TimeToSenderInfo:"+ v2_TimeToSenderInfo);
 						
 						v2_TimeToSenderInfo.put(570, sender4_Array);
 						
-				
 						CarsMapWithSchedule.put(2, v2_sender_TimeSchedule);
 						System.out.println("CarsMapWithSchedule:"+ CarsMapWithSchedule);
 					
 						System.out.println("v2_sender_TimeSchedule:"+ v2_sender_TimeSchedule);
+						
 					
 						
 						
@@ -239,6 +244,76 @@ public class MainCopy3withBigMapandOneCar {
 						System.out.println("the insertion of sender4_Array failed");
 					}
 					
+					
+					
+				}
+				// At 09:40, a request of sender5 in 10:30
+
+				if(timeSeconds==1200.0) {
+					//System.out.println("i:"+ i);
+					System.out.println("timeSeconds:"+ timeSeconds);
+					ArrayList sender5_Array = new ArrayList();
+					sender5_Array.add("4051156420"); // T.S. Dream Mall
+					sender5_Array.add(10353.5);
+					sender5_Array.add(5583.48);
+					
+					
+	
+					double Distance_Sender2ToSender5 = (double)(conn.do_job_get(Simulation.getDistance2D(
+							(double)sender5_Array.get(1), 
+							(double)sender5_Array.get(2), 
+							(double)sender2_Array.get(1), 
+							(double)sender2_Array.get(2), false, true)));
+					
+					double Distance_Sender5ToSender3 = (double)(conn.do_job_get(Simulation.getDistance2D(
+							(double)sender5_Array.get(1), 
+							(double)sender5_Array.get(2), 
+							(double)sender3_Array.get(1), 
+							(double)sender3_Array.get(2), false, true)));
+					
+					double TravelTime_Sender2ToSender5 = Distance_Sender2ToSender5/vehicle_speed;
+					double TravelTime_Sender5ToSender3 = Distance_Sender5ToSender3/vehicle_speed;
+			
+					System.out.println("Distance_Sender2ToSender5:"+ Distance_Sender2ToSender5);
+					System.out.println("TravelTime_Sender2ToSender5:"+ TravelTime_Sender2ToSender5);
+					
+					System.out.println("Distance_Sender5ToSender3:"+ Distance_Sender5ToSender3);
+					System.out.println("TravelTime_Sender5ToSender3:"+ TravelTime_Sender5ToSender3);
+					
+					if(TravelTime_Sender2ToSender5<1800 && TravelTime_Sender5ToSender3<1800) {
+						System.out.println("sender5_Array passed");
+						//conn.do_job_set(Vehicle.changeTarget("2", (String)sender4_Array.get(0)));
+						
+						v2_sender_TimeSchedule.add(630); //10:30
+						Collections.sort(v2_sender_TimeSchedule);
+						System.out.println("v2_TimeToSenderInfo:"+ v2_TimeToSenderInfo);
+						
+						v2_TimeToSenderInfo.put(630, sender5_Array);
+						
+					
+						System.out.println("CarsMapWithSchedule:"+ CarsMapWithSchedule);
+					
+						System.out.println("v2_sender_TimeSchedule:"+ v2_sender_TimeSchedule);
+					}
+					
+				}
+				
+				// the vehicle2 arrived to the sender4 at 09:18, 
+				// stopped for 10mins, and arranged the new route to 
+				
+				if(timeSeconds==1800) {
+					
+					conn.do_job_set(Vehicle.changeTarget("2", (String)sender2_Array.get(0)));
+					
+					SumoStopFlags sf_v2 = new SumoStopFlags(false, false, false, false, false);
+					
+					conn.do_job_set(Vehicle.setStop("2", (String)sender2_Array.get(0) , 50.0, (byte)0, 600.0, sf_v2));
+					
+					conn.do_job_set(Vehicle.resume("2"));
+					//conn.do_job_set(Vehicle.changeTarget("2", (String)sender2_Array.get(0)));
+					
+					
+
 				}
 				
 				
@@ -246,6 +321,7 @@ public class MainCopy3withBigMapandOneCar {
 				if(timeSeconds>2109.0 && timeSeconds<2183.0)  {
 					System.out.println("timeSeconds:"+ timeSeconds);
 					System.out.println("Distance_Sender2ToSender3:"+ Distance_Sender2ToSender3);
+				
 					conn.do_job_set(Vehicle.changeTarget("2", (String)sender3_Array.get(0)));
 					//conn.do_job_set(Vehicle.changeTarget("2", "496257308#5"));
 				}
