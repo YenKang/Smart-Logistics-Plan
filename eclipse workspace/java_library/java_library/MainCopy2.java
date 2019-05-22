@@ -40,7 +40,7 @@ public class MainCopy2 {
 	static String config_file = "simulation3/map.sumo.cfg";
 	// static double step_length = 0.01; // version1
 
-	static double step_length = 0.01;
+	static double step_length = 0.1;
 	//double vehicle_speed = 5.0; //5 [m/s]
 
 	public static void main(String[] args) {
@@ -236,13 +236,23 @@ public class MainCopy2 {
 				conn.do_timestep();
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
 				
+				// vehicle1 route
+				/*
+				ArrayList v1_send_Schedule = new ArrayList();
+				v1_send_Schedule = (ArrayList) CarsMapWithSchedule.get(1);
+				int firstTime = (int) v1_send_Schedule.get(0);
+				ArrayList first_SendInfo = new ArrayList();
+				first_SendInfo=(ArrayList) v1_TimeToSenderInfo.get(firstTime);
+				conn.do_job_set(Vehicle.changeTarget("1", (String)first_SendInfo.get(0)));
+				*/
 				
 				// got send_Request10 of 10:00->10hr->600min
-				if(timeSeconds==20.0) {
+				if(timeSeconds==30.0) {
 				
 					System.out.println("------------------------");
 					System.out.println("got send_Request10 of 10:00->10hr->600min");
 					System.out.println("timeSeconds:"+ timeSeconds);
+					
 					ArrayList sender10_Array = new ArrayList();
 					
 					sender10_Array.add("496493919#2");
@@ -275,7 +285,10 @@ public class MainCopy2 {
 					}
 					System.out.println("mapResult:"+ mapResult);
 					
-					SumoPosition2D v3_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition("3")); 
+					SumoPosition2D v3_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition("3"));
+					
+					System.out.println("v3_Position:"+ v3_Position);
+					
 					ArrayList vehicle_array = new ArrayList();
 					vehicle_array = (ArrayList) v3_TimeToSenderInfo.get(630); // s4 in 10:30
 					System.out.println("vehicle_array:"+ vehicle_array);
@@ -331,9 +344,146 @@ public class MainCopy2 {
 					
 				}
 				
+				if(timeSeconds ==40.0) {
+					
+				
+					ArrayList V1_first_SendInfo = new ArrayList();
+					
+					V1_first_SendInfo = (ArrayList)v1_TimeToSenderInfo.get(
+							(int)((ArrayList) CarsMapWithSchedule.get("1")).get(0)); // 0 means first-time
+					
+					conn.do_job_set(Vehicle.changeTarget("1", (String)V1_first_SendInfo.get(0)));
+						
+				}
+				
+				// arrange the new route of vehicle2
+				if(timeSeconds ==41.0) {
+					
+					
+					ArrayList v2_first_SendInfo = new ArrayList();
+					
+					v2_first_SendInfo = (ArrayList)v2_TimeToSenderInfo.get(
+							(int)((ArrayList) CarsMapWithSchedule.get("2")).get(0)); // 0 means first-time
+					
+					conn.do_job_set(Vehicle.changeTarget("2", (String)v2_first_SendInfo.get(0)));
+					
+					SumoStopFlags sf_send2 = new SumoStopFlags(false, false, false, false, false);
+					
+					conn.do_job_set(Vehicle.setStop("2", (String)v2_first_SendInfo.get(0), 600.0, (byte)0, 2880.0, sf_send2));
+					
+				
+				
+				}
+				
+				/*
+				if() {
+					ArrayList V2_second_SendInfo = new ArrayList();
+					
+					V2_second_SendInfo = (ArrayList)v2_TimeToSenderInfo.get(
+							(int)((ArrayList) CarsMapWithSchedule.get("2")).get(0)); // 0 means first-time
+					
+					conn.do_job_set(Vehicle.changeTarget("2", (String)V2_second_SendInfo.get(0)));
+					
+					//SumoStopFlags sf_send2 = new SumoStopFlags(false, false, false, false, false);
+					SumoStopFlags sf_send2 = new SumoStopFlags(false, false, false, false, false);
+					
+					conn.do_job_set(Vehicle.setStop("2", (String)V2_second_SendInfo.get(0), 600.0, (byte)0, 600.0, sf_send2));
+				}*/
+				
+				
+				if(timeSeconds ==42.0) {
+					
+				
+					ArrayList V3_first_SendInfo = new ArrayList();
+					
+					V3_first_SendInfo = (ArrayList)v3_TimeToSenderInfo.get(
+							(int)((ArrayList) CarsMapWithSchedule.get("3")).get(0)); // 0 means first-time
+					
+					conn.do_job_set(Vehicle.changeTarget("3", (String)V3_first_SendInfo.get(0)));
+					
+				}
+				
+				if(timeSeconds ==3000.0) { // 09:50 [9h50min]
+					ArrayList sender11_Array = new ArrayList(); // tainan art museum
+					
+					sender11_Array.add("286847289#1");
+					sender11_Array.add(1181.84);
+					sender11_Array.add(1025.39);
+					
+					System.out.println("-----------------------------------------------");
+					System.out.println("CarsMapWithSchedule:"+ CarsMapWithSchedule);
+					int insertTime = 630;
+					
+					Map  CarsMap_Specific_Schedule = new HashMap();
+					Map  mapResult = new HashMap();
+					CarsMap_Specific_Schedule = CarsMapWithSchedule;
+					Set keyset=CarsMap_Specific_Schedule.keySet();
+					
+					double Distance_Sender2ToSender11 = (double)(conn.do_job_get(Simulation.getDistance2D(
+							(double)sender11_Array.get(1), 
+							(double)sender11_Array.get(2), 
+							(double)sender2_Array.get(1), 
+							(double)sender2_Array.get(2), false, true)));
+					
+					double Distance_Sender11ToSender3 = (double)(conn.do_job_get(Simulation.getDistance2D(
+							(double)sender11_Array.get(1), 
+							(double)sender11_Array.get(2), 
+							(double)sender3_Array.get(1), 
+							(double)sender3_Array.get(2), false, true)));
+					
+					if((Distance_Sender2ToSender11/vehicle_speed) <1800 && 
+							(Distance_Sender11ToSender3/vehicle_speed) <1800){
+						
+						System.out.println("Distance_Sender2ToSender11:" + Distance_Sender2ToSender11);
+						System.out.println("Distance_Sender11ToSender3:" + Distance_Sender11ToSender3);
+						
+						System.out.println("timeSeconds:"+ timeSeconds);
+						System.out.println("send11 request is inserted  between sender2 and sender3!");
+					}
+					
+
+				
+					v2_sender_TimeSchedule.add(insertTime);
+					Collections.sort(v2_sender_TimeSchedule);
+					
+					v2_TimeToSenderInfo.put(630, sender11_Array);
+					
+					CarsMapWithSchedule.put(2, v3_sender_TimeSchedule);
+					
+					System.out.println("v2_sender_TimeSchedule:"+ v2_sender_TimeSchedule);
+					System.out.println("CarsMapWithSchedule:"+ CarsMapWithSchedule);
+					System.out.println("v2_TimeToSenderInfo:"+ v2_TimeToSenderInfo);
+					
+					
+					
+					
+					
+				}
+				
+				if(timeSeconds ==3500.0) {
+					System.out.println("timeSeconds:"+ timeSeconds);
+					conn.do_job_set(Vehicle.resume("2"));
+					
+					ArrayList v2_second_SendInfo = new ArrayList();
+					
+					v2_second_SendInfo = (ArrayList)v2_TimeToSenderInfo.get(
+							(int)((ArrayList) CarsMapWithSchedule.get("2")).get(1)); // 0 means first-time
+					
+					System.out.println("v2_second_SendInfo:"+ v2_second_SendInfo);
+					
+					conn.do_job_set(Vehicle.changeTarget("2", (String)v2_second_SendInfo.get(0)));
+					
+					SumoStopFlags sf_send2 = new SumoStopFlags(false, false, false, false, false);
+					
+					conn.do_job_set(Vehicle.setStop("2", (String)v2_second_SendInfo.get(0), 10.0, (byte)0, 1200.0, sf_send2));
+				}
+				
+				
+		
+				
 				/*
 				// the request1[10:00, sender1]
-				if(timeSeconds==20.0) {
+				if(timeSeconds==30.0) {
 					
 					System.out.println("------------------------");
 					System.out.println("timeSeconds:"+ timeSeconds);

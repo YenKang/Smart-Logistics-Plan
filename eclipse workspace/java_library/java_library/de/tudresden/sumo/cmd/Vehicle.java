@@ -1448,7 +1448,8 @@ public class Vehicle {
 	 * @param sf stop flags
 	 * @return SumoCommand
 	 */
-	public static SumoCommand setStop(String vehID, String edgeID, double pos, byte laneIndex, double duration, SumoStopFlags sf){
+	public static SumoCommand setStop(String vehID, String edgeID, 
+			double pos, byte laneIndex, double duration, SumoStopFlags sf){
 
 		Object[] array = new Object[]{edgeID, pos, laneIndex, duration, sf};
 		return new SumoCommand(Constants.CMD_SET_VEHICLE_VARIABLE, Constants.CMD_STOP, vehID, array);
