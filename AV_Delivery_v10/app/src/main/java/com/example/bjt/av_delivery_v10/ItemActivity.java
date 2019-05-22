@@ -14,7 +14,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class ItemActivity extends AppCompatActivity implements OnMapReadyCallback  {
+public class ItemActivity extends AppCompatActivity  {
 
     //private TextView cargo_content_text, price_text;
 
@@ -70,25 +70,9 @@ public class ItemActivity extends AppCompatActivity implements OnMapReadyCallbac
         container_No_text.setText(container_No);
         sender_name_text.setText(sender_name);
         receiver_name_text.setText(receiver_name);
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map_order_status);
-        mapFragment.getMapAsync(this);
-        mapFragment.getView().setVisibility(View.INVISIBLE);
 
 
         //Toast.makeText(this,order_item.getOrderNo(),Toast.LENGTH_SHORT).show();
 
-    }
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-        // Add a marker in Sydney and move the camera
-        /*LatLng origin = new LatLng(lat1, lng1);
-        LatLng dest = new LatLng(lat2,lng2);
-        LatLng cameraPlace = new LatLng(cameraLat, cameraLng);
-        mMap.addMarker(new MarkerOptions().position(origin).title("貨車取貨地點"));
-        mMap.addMarker(new MarkerOptions().position(dest).title("送貨目的地點"));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(cameraPlace, 8.0f));*/
     }
 }
