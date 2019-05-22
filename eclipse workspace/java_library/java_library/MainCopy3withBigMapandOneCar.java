@@ -51,6 +51,12 @@ public class MainCopy3withBigMapandOneCar {
 			conn.addOption("step-length", step_length + "");
 			conn.addOption("start", "true"); // start sumo immediately
 			
+			String gateway_EdgeID = "228022808#0";
+			double gateway_x = 8038.25;
+			double gateway_y = 6425.07;
+			double gateway_pos =25.0;
+			int    gateway_laneIndex = 0;
+			
 
 			// start Traci Server
 			conn.runServer(8080);
@@ -321,7 +327,7 @@ public class MainCopy3withBigMapandOneCar {
 
 				}
 				
-				if(timeSeconds==4200.0) {
+				if(timeSeconds==4200.0) { //At 10:10, the car would leave from the sender2 
 				
 					System.out.println("-----------------------------------------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
@@ -335,7 +341,6 @@ public class MainCopy3withBigMapandOneCar {
 					conn.do_job_set(Vehicle.resume("2"));
 					//conn.do_job_set(Vehicle.changeTarget("2", (String)sender2_Array.get(0)));
 					
-
 				}
 				
 				if(timeSeconds==5400.0) {
@@ -379,7 +384,7 @@ public class MainCopy3withBigMapandOneCar {
 					}
 				}
 				
-				if(timeSeconds==6000.0) { // 10:40
+				if(timeSeconds==6000.0) { // At 10:40, the car would leave from the sender5
 					System.out.println("-----------------------------------------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
 					conn.do_job_set(Vehicle.changeTarget("2", (String)sender3_Array.get(0)));
@@ -392,7 +397,7 @@ public class MainCopy3withBigMapandOneCar {
 					//conn.do_job_set(Vehicle.changeTarget("2", (String)sender2_Array.get(0)));
 				}
 				
-				if(timeSeconds==7800.0) { //11:10
+				if(timeSeconds==7800.0) { //At 11:10, the car would leave from the sender3
 					System.out.println("-----------------------------------------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
 					conn.do_job_set(Vehicle.changeTarget("2", 
@@ -406,6 +411,22 @@ public class MainCopy3withBigMapandOneCar {
 							(byte)0, 1200.0, sf_v2));
 					
 					conn.do_job_set(Vehicle.resume("2"));
+				}
+				
+				if(timeSeconds==9600.0) { //At 11:40, the car the car would leave from the sender6 of NCKU
+					
+					
+					System.out.println("-----------------------------------------------");
+					System.out.println("timeSeconds:"+ timeSeconds);
+					conn.do_job_set(Vehicle.changeTarget("2", gateway_EdgeID));
+					
+					SumoStopFlags sf_v2 = new SumoStopFlags(false, false, false, false, false);
+					
+					conn.do_job_set(Vehicle.setStop("2", 
+							gateway_EdgeID , gateway_pos, (byte)0, 1200.0, sf_v2));
+					
+			
+				
 				}
 				
 				
