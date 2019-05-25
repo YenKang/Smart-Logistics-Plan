@@ -220,8 +220,10 @@ public class MainCopy {
 						
 						System.out.println((double)sender2Array.get(1));
 						
-						double Distance_v8toSender2 = (double)(conn.do_job_get(Simulation.getDistance2D((double)sender2Array.get(1), (double)sender2Array.get(2),
+						double Distance_v8toSender2 = (double)(conn.do_job_get(
+								Simulation.getDistance2D((double)sender2Array.get(1), (double)sender2Array.get(2),
 								v8Position.x, v8Position.y, false, true)));
+						
 						double travelTimeToSender2 = Distance_v8toSender2/5.0; // V=5.0m/s
 						System.out.println("Distance_v8toSender2:"+ Distance_v8toSender2);
 						System.out.println("travelTimeToSender2:"+ travelTimeToSender2);
