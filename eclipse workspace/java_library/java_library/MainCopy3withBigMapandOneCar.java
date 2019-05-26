@@ -231,7 +231,7 @@ public class MainCopy3withBigMapandOneCar {
 						
 						SumoStopFlags sf_v2 = new SumoStopFlags(false, false, false, false, false);
 						
-						conn.do_job_set(Vehicle.setStop("2", (String)sender4_Array.get(0) , 540.0, (byte)0, 1200.0, sf_v2));
+						//conn.do_job_set(Vehicle.setStop("2", (String)sender4_Array.get(0) , 540.0, (byte)0, 1200.0, sf_v2));
 						
 						v2_sender_TimeSchedule.add(570); //09:30
 						Collections.sort(v2_sender_TimeSchedule);
@@ -319,7 +319,7 @@ public class MainCopy3withBigMapandOneCar {
 					
 					SumoStopFlags sf_v2 = new SumoStopFlags(false, false, false, false, false);
 					
-					conn.do_job_set(Vehicle.setStop("2", (String)sender2_Array.get(0) , 50.0, (byte)0, 1200.0, sf_v2));
+					//conn.do_job_set(Vehicle.setStop("2", (String)sender2_Array.get(0) , 50.0, (byte)0, 1200.0, sf_v2));
 					
 					conn.do_job_set(Vehicle.resume("2"));
 					//conn.do_job_set(Vehicle.changeTarget("2", (String)sender2_Array.get(0)));
@@ -335,8 +335,7 @@ public class MainCopy3withBigMapandOneCar {
 					
 					SumoStopFlags sf_v2 = new SumoStopFlags(false, false, false, false, false);
 					
-					conn.do_job_set(Vehicle.setStop("2", (String)((ArrayList) v2_TimeToSenderInfo.get(630)).get(0) , 
-							150.0, (byte)0, 1200.0, sf_v2));
+					//conn.do_job_set(Vehicle.setStop("2", (String)((ArrayList) v2_TimeToSenderInfo.get(630)).get(0) , 150.0, (byte)0, 1200.0, sf_v2));
 					
 					conn.do_job_set(Vehicle.resume("2"));
 					//conn.do_job_set(Vehicle.changeTarget("2", (String)sender2_Array.get(0)));
@@ -391,7 +390,7 @@ public class MainCopy3withBigMapandOneCar {
 					
 					SumoStopFlags sf_v2 = new SumoStopFlags(false, false, false, false, false);
 					
-					conn.do_job_set(Vehicle.setStop("2", (String)sender3_Array.get(0) , 60.0, (byte)0, 1200.0, sf_v2));
+					// conn.do_job_set(Vehicle.setStop("2", (String)sender3_Array.get(0) , 60.0, (byte)0, 1200.0, sf_v2));
 					
 					conn.do_job_set(Vehicle.resume("2"));
 					//conn.do_job_set(Vehicle.changeTarget("2", (String)sender2_Array.get(0)));
@@ -405,10 +404,12 @@ public class MainCopy3withBigMapandOneCar {
 					
 					SumoStopFlags sf_v2 = new SumoStopFlags(false, false, false, false, false);
 					
+					/*
 					conn.do_job_set(Vehicle.setStop("2", 
 							(String)((ArrayList) v2_TimeToSenderInfo.get(690)).get(0) , 
 							(double)((ArrayList) v2_TimeToSenderInfo.get(690)).get(3), 
 							(byte)0, 1200.0, sf_v2));
+					*/
 					
 					conn.do_job_set(Vehicle.resume("2"));
 				}
@@ -422,9 +423,10 @@ public class MainCopy3withBigMapandOneCar {
 					
 					SumoStopFlags sf_v2 = new SumoStopFlags(false, false, false, false, false);
 					
+					/*
 					conn.do_job_set(Vehicle.setStop("2", 
 							gateway_EdgeID , gateway_pos, (byte)0, 1200.0, sf_v2));
-					
+					*/
 			
 				
 				}

@@ -369,7 +369,7 @@ public class MainCopy2 {
 					
 					SumoStopFlags sf_send2 = new SumoStopFlags(false, false, false, false, false);
 					
-					conn.do_job_set(Vehicle.setStop("2", (String)v2_first_SendInfo.get(0), 600.0, (byte)0, 2880.0, sf_send2));
+					//conn.do_job_set(Vehicle.setStop("2", (String)v2_first_SendInfo.get(0), 600.0, (byte)0, 2880.0, sf_send2));
 					
 				
 				
@@ -475,7 +475,7 @@ public class MainCopy2 {
 					
 					SumoStopFlags sf_send2 = new SumoStopFlags(false, false, false, false, false);
 					
-					conn.do_job_set(Vehicle.setStop("2", (String)v2_second_SendInfo.get(0), 10.0, (byte)0, 1200.0, sf_send2));
+					//conn.do_job_set(Vehicle.setStop("2", (String)v2_second_SendInfo.get(0), 10.0, (byte)0, 1200.0, sf_send2));
 				}
 				
 				

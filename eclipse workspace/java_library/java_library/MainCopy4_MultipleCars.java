@@ -21,6 +21,7 @@ import it.polito.appeal.traci.SumoTraciConnection;
 
 import de.tudresden.sumo.cmd.Simulation;
 import de.tudresden.sumo.cmd.Vehicle;
+import de.tudresden.sumo.util.SumoCommand;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,7 +41,7 @@ public class MainCopy4_MultipleCars {
 
 	// static double step_length = 0.01; // version1
 
-	static double step_length = 0.3;
+	static double step_length = 0.1;
 	//double vehicle_speed = 5.0; //5 [m/s]
 
 	public static void main(String[] args) {
@@ -127,6 +128,28 @@ public class MainCopy4_MultipleCars {
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
 				//System.out.println("timeSeconds:"+ timeSeconds);
 				
+				if(timeSeconds==100.0) {
+					System.out.println("timeSeconds:"+ timeSeconds);
+					conn.do_job_set(Vehicle.changeTarget("1", "496257308#5"));
+					
+					SumoStopFlags sf_v1 = new SumoStopFlags(false, false, false, false, false);
+					
+					/**
+					 * public static SumoCommand setStop(String vehID, String edgeID, 
+					double pos, byte laneIndex, double duration, SumoStopFlags sf, double startPos, double until)
+					 */
+					 
+	
+					conn.do_job_set(Vehicle.setStop("1","496257308#5", 50.0, (byte)0,  0.0, sf_v1, 30.0, 1500.0));
+					
+					
+					
+					//conn.do_job_set(Vehicle.setContainerStop("1", "containerStop1", 10.0, 500));
+					
+					
+					
+				}
+				
 				
 				if(timeSeconds==30.0) {
 					System.out.println("timeSeconds:"+ timeSeconds);
@@ -182,11 +205,40 @@ public class MainCopy4_MultipleCars {
 										request_x_afterIndex, request_y_afterIndex,
 										(double)request3_array.get(1), (double)request3_array.get(2), false, true)));
 								
+								double travelTime_afterIndexToIndex = distance_afterIndexToIndex/vehicle_speed;
 								System.out.println("distance_afterIndexToIndex:"+ distance_afterIndexToIndex);
+								System.out.println("travelTime_afterIndexToIndex:"+ travelTime_afterIndexToIndex);
 								
 								double diffDuration_afterIndexToIndex = ((int) veh_array.get(indexValue+1)-(int) veh_array.get(indexValue))*60;
-								
+							
 								System.out.println("diffDuration_afterIndexToIndex:"+ diffDuration_afterIndexToIndex);
+								
+								System.out.println("timeSeconds+travelTime_curr_To_Index:"+ (timeSeconds+travelTime_curr_To_Index));
+								System.out.println("insertTime-key_afterIndex:"+ (key_afterIndex-insertTime));
+								
+								if((travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) &&
+										(timeSeconds+travelTime_curr_To_Index) <(key_afterIndex-insertTime)*60) {
+									
+									
+									Map_requestInfo.put(insertTime, request3_array ); // request3_array should be dynamic
+									CarsMap_time_to_requestInfo.put(key, Map_requestInfo);
+									System.out.println("-----------after inserting------------");
+									System.out.println("Map_requestInfo:"+ Map_requestInfo);
+									System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
+									
+									conn.do_job_set(Vehicle.changeTarget((String) key, 
+											(String)((ArrayList) Map_requestInfo.get(key_afterIndex)).get(0)));
+									
+									SumoStopFlags sf_v2 = new SumoStopFlags(false, false, false, false, false);
+									
+									/*
+									conn.do_job_set(Vehicle.setStop((String) key,
+											(String)((ArrayList) Map_requestInfo.get(key_afterIndex)).get(0), 
+											(double)((ArrayList) Map_requestInfo.get(key_afterIndex)).get(3), 
+											(byte)0, 1200.0, sf_v2));
+									*/
+								
+								}
 							}
 							
 							else if(indexValue==(veh_array.size()-1)) {

@@ -269,7 +269,7 @@ public class Main {
 					conn.do_job_set(Vehicle.changeTarget(pickVeh, "-537706053#0"));
 					SumoStopFlags sf = new SumoStopFlags(false, false, false, false, false);
 					
-					conn.do_job_set(Vehicle.setStop(pickVeh, "-537706053#0", 1.0, (byte)0, 50.0, sf));
+					//conn.do_job_set(Vehicle.setStop(pickVeh, "-537706053#0", 1.0, (byte)0, 50.0, sf));
 					
 					System.out.println("isStopped:"+ isStopped +" timeStep:"+ timeStep);
 					isStopped = (Integer)conn.do_job_get(Vehicle.isStopped(pickVeh));

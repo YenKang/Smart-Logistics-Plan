@@ -261,14 +261,16 @@ public class SumoCommand {
 				|| (Integer) input2 == Constants.CMD_REROUTE_TRAVELTIME || (Integer) input2 == Constants.CMD_RESUME) {
 			cmd.content().writeUnsignedByte(Constants.TYPE_COMPOUND);
 			cmd.content().writeInt(0);
-		} else if ((Integer) input2 == Constants.VAR_VIEW_OFFSET) {
+		} 
+		else if ((Integer) input2 == Constants.VAR_VIEW_OFFSET) {
 
 			cmd.content().writeUnsignedByte(Constants.POSITION_2D);
 			for (int i = 0; i < array.length; i++) {
 				add_variable(array[i]);
 			}
 
-		} else if ((Integer) input1 == Constants.CMD_SET_POLYGON_VARIABLE && (Integer) input2 == Constants.ADD) {
+		} 
+		else if ((Integer) input1 == Constants.CMD_SET_POLYGON_VARIABLE && (Integer) input2 == Constants.ADD) {
 
 			cmd.content().writeUnsignedByte(Constants.TYPE_COMPOUND);
 			cmd.content().writeInt(5);
@@ -292,13 +294,15 @@ public class SumoCommand {
 			add_type(array[0]);
 			add_variable(array[0]);
 
-		} else if ((Integer) input1 == Constants.CMD_SET_POI_VARIABLE && (Integer) input2 == Constants.VAR_POSITION) {
+		} 
+		else if ((Integer) input1 == Constants.CMD_SET_POI_VARIABLE && (Integer) input2 == Constants.VAR_POSITION) {
 
 			cmd.content().writeUnsignedByte(Constants.POSITION_2D);
 			add_variable(array[0]);
 			add_variable(array[1]);
 
-		} else if ((Integer) input1 == Constants.CMD_SET_POI_VARIABLE && (Integer) input2 == Constants.ADD) {
+		} 
+		else if ((Integer) input1 == Constants.CMD_SET_POI_VARIABLE && (Integer) input2 == Constants.ADD) {
 
 			cmd.content().writeUnsignedByte(Constants.TYPE_COMPOUND);
 			cmd.content().writeInt(4);
@@ -319,9 +323,13 @@ public class SumoCommand {
 			add_variable(array[0]);
 			add_variable(array[1]);
 
-		} else {
+		} 
+		
+		else {
+			System.out.println("test");
 			cmd.content().writeUnsignedByte(Constants.TYPE_COMPOUND);
 			cmd.content().writeInt(array.length);
+			
 			for (int i = 0; i < array.length; i++) {
 				add_type(array[i]);
 				add_variable(array[i]);
@@ -599,7 +607,8 @@ public class SumoCommand {
 			this.cmd.content().writeUnsignedByte(Constants.TYPE_STRING);
 			cmd.content().writeStringASCII(stp.name);
 
-		} else if (input.getClass().equals(SumoStringList.class)) {
+		} 
+		else if (input.getClass().equals(SumoStringList.class)) {
 
 			SumoStringList sl = (SumoStringList) input;
 			cmd.content().writeInt(sl.size());

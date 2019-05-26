@@ -128,7 +128,7 @@ public class Main0506 {
 								double sender_pos = sender_roadmap.pos;
 								conn.do_job_set(Vehicle.changeTarget("17", sender_edge));
 								SumoStopFlags sf = new SumoStopFlags(false, false, false, false, false);
-								conn.do_job_set(Vehicle.setStop("17", sender_edge, 1.0, (byte)0, 20.0, sf));
+								//conn.do_job_set(Vehicle.setStop("17", sender_edge, 1.0, (byte)0, 20.0, sf));
 								
 								//int timeArrived = clientInfo.getTimeArrived();
 								//clientInfo.assignTest = 5;
