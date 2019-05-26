@@ -57,7 +57,7 @@ public class MainCopy4_MultipleCars {
 			
 			ArrayList v1_TimeSchedule = new ArrayList();
 			v1_TimeSchedule.add(570);
-			v1_TimeSchedule.add(600);
+			v1_TimeSchedule.add(660);
 			CarsMap_with_Schedule.put("1", v1_TimeSchedule);
 			
 			
@@ -140,13 +140,14 @@ public class MainCopy4_MultipleCars {
 					
 					for(Object key: CarsMap_with_Schedule.keySet()) {
 						
-				
+						System.out.println("-------------------------");
+						System.out.println("key:"+ key);
 						ArrayList veh_array = new ArrayList();
 						veh_array = (ArrayList)CarsMap_with_Schedule.get(key);
 						Map  Map_requestInfo = new HashMap();
 						
 						System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
-						Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get(insertTime);
+						Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get(key);
 						System.out.println("Map_requestInfo111:"+ Map_requestInfo);
 						
 						if((veh_array.contains(insertTime))!=true) {
@@ -173,24 +174,77 @@ public class MainCopy4_MultipleCars {
 								
 								int key_afterIndex = (int) veh_array.get(indexValue+1);
 								System.out.println("key_afterIndex:"+ key_afterIndex);
-								//double request_x_afterIndex = (double)(Map_requestInfo.get(key_afterIndex)).get(1);
-								//double request_y_afterIndex = (double)(Map_requestInfo.get(key_afterIndex)).get(2);
+								double request_x_afterIndex = (double)((ArrayList) Map_requestInfo.get(key_afterIndex)).get(1);
+								double request_y_afterIndex = (double)((ArrayList) Map_requestInfo.get(key_afterIndex)).get(2);
 								
-								/*
+								
 								double distance_afterIndexToIndex = (double)(conn.do_job_get(Simulation.getDistance2D(
 										request_x_afterIndex, request_y_afterIndex,
 										(double)request3_array.get(1), (double)request3_array.get(2), false, true)));
 								
 								System.out.println("distance_afterIndexToIndex:"+ distance_afterIndexToIndex);
-								*/
+								
+								double diffDuration_afterIndexToIndex = ((int) veh_array.get(indexValue+1)-(int) veh_array.get(indexValue))*60;
+								
+								System.out.println("diffDuration_afterIndexToIndex:"+ diffDuration_afterIndexToIndex);
 							}
 							
 							else if(indexValue==(veh_array.size()-1)) {
+								int key_IndexValue = (int) veh_array.get(indexValue);
+								double request_x_IndexValue = (double)((ArrayList) Map_requestInfo.get(key_IndexValue)).get(1);
+								double request_y_IndexValue = (double)((ArrayList) Map_requestInfo.get(key_IndexValue)).get(2);
+								
+								int key_beforeIndex = (int) veh_array.get(indexValue-1);
+								double request_x_beforeIndex = (double)((ArrayList) Map_requestInfo.get(key_beforeIndex)).get(1);
+								double request_y_beforeIndex = (double)((ArrayList) Map_requestInfo.get(key_beforeIndex)).get(2);
+								
+								double distance_IndexToBeforeIndex = (double)(conn.do_job_get(Simulation.getDistance2D(
+										request_x_IndexValue, request_y_IndexValue,
+										request_x_beforeIndex, request_y_beforeIndex, false, true)));
+								double travelTime_IndexToBeforeIndex = distance_IndexToBeforeIndex/vehicle_speed;
+								
+								double diffDuration_IndexToBeforeIndex = ((int) veh_array.get(indexValue)-(int) veh_array.get(indexValue-1))*60;
+								
+								System.out.println("travelTime_IndexToBeforeIndex:"+travelTime_IndexToBeforeIndex);
+								System.out.println("diffDuration_IndexToBeforeIndex:"+ diffDuration_IndexToBeforeIndex);
+								
+								
 								
 							}
 							
 							else {
+								/*
+								int key_IndexValue = (int) veh_array.get(indexValue);
+								double request_x_IndexValue = (double)((ArrayList) Map_requestInfo.get(key_IndexValue)).get(1);
+								double request_y_IndexValue = (double)((ArrayList) Map_requestInfo.get(key_IndexValue)).get(2);
 								
+								int key_beforeIndex = (int) veh_array.get(indexValue-1);
+								double request_x_beforeIndex = (double)((ArrayList) Map_requestInfo.get(key_beforeIndex)).get(1);
+								double request_y_beforeIndex = (double)((ArrayList) Map_requestInfo.get(key_beforeIndex)).get(2);
+								
+								int key_afterIndex = (int) veh_array.get(indexValue+1);
+						
+								double request_x_afterIndex = (double)((ArrayList) Map_requestInfo.get(key_afterIndex)).get(1);
+								double request_y_afterIndex = (double)((ArrayList) Map_requestInfo.get(key_afterIndex)).get(2);
+								
+								double distance_IndexToBeforeIndex = (double)(conn.do_job_get(Simulation.getDistance2D(
+										request_x_IndexValue, request_y_IndexValue,
+										request_x_beforeIndex, request_y_beforeIndex, false, true)));
+								double travelTime_IndexToBeforeIndex = distance_IndexToBeforeIndex/vehicle_speed;
+								double distance_afterIndexToIndex = (double)(conn.do_job_get(Simulation.getDistance2D(
+										request_x_afterIndex, request_y_afterIndex,
+										request_x_IndexValue, request_y_IndexValue, false, true)));
+								double travelTime_afterIndexToIndex = distance_afterIndexToIndex/vehicle_speed;
+								
+								double diffDuration_IndexToBeforeIndex = ((int) veh_array.get(indexValue)-(int) veh_array.get(indexValue-1))*60;
+								double diffDuration_afterIndexToIndex = ((int) veh_array.get(indexValue+1)-(int) veh_array.get(indexValue))*60;
+								
+								System.out.println("travelTime_IndexToBeforeIndex:"+travelTime_IndexToBeforeIndex);
+								System.out.println("travelTime_afterIndexToIndex:"+ travelTime_afterIndexToIndex);
+								
+								System.out.println("diffDuration_IndexToBeforeIndex:"+diffDuration_IndexToBeforeIndex);
+								System.out.println("diffDuration_afterIndexToIndex:"+ diffDuration_afterIndexToIndex);
+								*/
 							}
 						}
 					}
