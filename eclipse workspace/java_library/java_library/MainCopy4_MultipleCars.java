@@ -118,7 +118,7 @@ public class MainCopy4_MultipleCars {
 			
 			double vehicle_speed = 4.0; //4 [m/s]
 			
-			int insertTime=630;
+		
 			
 			
 			
@@ -150,8 +150,9 @@ public class MainCopy4_MultipleCars {
 					
 				}
 				
-				
+				// receive the request of sender4 with 10:30
 				if(timeSeconds==30.0) {
+					int insertTime=630;
 					System.out.println("timeSeconds:"+ timeSeconds);
 					// receive the request
 					
