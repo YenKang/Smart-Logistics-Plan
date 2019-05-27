@@ -31,7 +31,7 @@ import java.util.Map;
 // 進入程式後主功能頁面
 public class MainActivity extends AppCompatActivity {
 
-    private Button account, send, myOrder, testbyabout;
+    private Button account, send, myOrder, search, testbyabout;
     private Socket clientSocket;
     private String temp;
     private JSONObject jsonR, jsonW;
@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         account = findViewById(R.id.account_button);
         send = findViewById(R.id.send_button);
         myOrder = findViewById(R.id.my_package_button);
+        search = findViewById(R.id.search_button);
         testbyabout = findViewById(R.id.about_button);
         Toast.makeText(this, Integer.toString(123), Toast.LENGTH_SHORT).show();
         /*hashmap.put("sender_lng", 120.213878);
@@ -109,6 +110,16 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         myOrder.setOnClickListener(myOrderListener);
+
+        // 依貨號查詢
+        View.OnClickListener searchListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(i);
+            }
+        };
+        search.setOnClickListener(searchListener);
 
         // 測式按鈕，目前為測式 socket 連線之用
         View.OnClickListener testListener = new View.OnClickListener() {

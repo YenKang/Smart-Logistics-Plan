@@ -35,7 +35,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Spinner
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_width="wrap_content"
         android:id="@+id/spTimeInterval"
         android:layout_gravity="center"

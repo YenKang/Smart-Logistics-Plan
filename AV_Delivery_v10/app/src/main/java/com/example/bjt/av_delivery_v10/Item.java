@@ -13,14 +13,15 @@ public class Item implements java.io.Serializable {
     private int price;
     private String container_No;
     private Timestamp in_time, out_time;
-    private int status;
+    private String status;
     private String truck_No;
     private double[] lnglat;
     private Timestamp order_time;
+    private int sender_time, receiver_time;
 
     public Item(int item_id,String order_No, String sender_name, String receiver_name, String cargo_content,
-                int price, String container_No, Timestamp in_time, Timestamp out_time, int status,
-                String truck_No, double[] lnglat, Timestamp order_time){
+                int price, String container_No, Timestamp in_time, Timestamp out_time, String status,
+                String truck_No, double[] lnglat, Timestamp order_time, int sender_time, int receiver_time){
         this.item_id = item_id;
         this.order_No = order_No;
         this.sender_name = sender_name;
@@ -34,6 +35,8 @@ public class Item implements java.io.Serializable {
         this.truck_No = truck_No;
         this.lnglat = lnglat;
         this.order_time = order_time;
+        this.sender_time = sender_time;
+        this.receiver_time = receiver_time;
     }
     public int getItemId(){
         return item_id;
@@ -75,7 +78,7 @@ public class Item implements java.io.Serializable {
         return out_time;
     }
 
-    public int getStatus(){
+    public String getStatus(){
         return status;
     }
 
@@ -85,5 +88,13 @@ public class Item implements java.io.Serializable {
 
     public double[] getLnglat(){
         return lnglat;
+    }
+
+    public int getSenderTime(){
+        return sender_time;
+    }
+
+    public int getReceiverTime(){
+        return receiver_time;
     }
 }

@@ -99,6 +99,8 @@ public class SendActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(), MapTestActivity.class);
 
+                i.putExtra("isReceiver", 0);
+
                 // 使用 bundle 將頁面資訊傳送給下一階段，準備與 SUMO SERVER 連線
                 Bundle bundle = new Bundle();
                 bundle.putString("origin_address",originAddressSelected + et_origin.getText().toString());

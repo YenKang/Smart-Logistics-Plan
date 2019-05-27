@@ -19,42 +19,17 @@
     </string-array>
 
     <string-array name="timeInterval">
-        <item>00:00 ~ 00:30</item>
-        <item>00:30 ~ 00:59</item>
-        <item>01:00 ~ 01:30</item>
-        <item>01:30 ~ 01:59</item>
-        <item>02:00 ~ 02:30</item>
-        <item>02:30 ~ 02:59</item>
-        <item>03:00 ~ 03:30</item>
-        <item>03:30 ~ 03:59</item>
-        <item>04:00 ~ 04:30</item>
-        <item>04:30 ~ 04:59</item>
-        <item>05:00 ~ 05:30</item>
-        <item>05:30 ~ 05:59</item>
-        <item>06:00 ~ 06:30</item>
-        <item>06:30 ~ 06:59</item>
-        <item>07:00 ~ 07:30</item>
-        <item>07:30 ~ 07:59</item>
-        <item>08:00 ~ 08:30</item>
-        <item>08:30 ~ 08:59</item>
-        <item>09:00 ~ 09:30</item>
-        <item>09:30 ~ 09:59</item>
-        <item>10:00 ~ 10:30</item>
-        <item>10:30 ~ 10:59</item>
-        <item>11:00 ~ 11:30</item>
-        <item>11:30 ~ 11:59</item>
-        <item>12:00 ~ 12:30</item>
-        <item>12:30 ~ 12:59</item>
-        <item>13:00 ~ 13:30</item>
-        <item>14:00 ~ 14:30</item>
-        <item>15:00 ~ 15:30</item>
-        <item>16:00 ~ 16:30</item>
-        <item>17:00 ~ 17:30</item>
-        <item>18:00 ~ 18:30</item>
-        <item>19:00 ~ 19:30</item>
-        <item>20:00 ~ 20:30</item>
-        <item>21:00 ~ 21:30</item>
-        <item>22:00 ~ 22:30</item>
-        <item>23:00 ~ 23:30</item>
+        <item>09:30</item>
+        <item>10:00</item>
+        <item>10:30</item>
+        <item>11:00</item>
+        <item>11:30</item>
+        <item>12:00</item>
+        <item>12:30</item>
+        <item>13:00</item>
+        <item>13:30</item>
+        <item>14:00</item>
+        <item>14:30</item>
+        <item>15:00</item>
     </string-array>
 </resources>
