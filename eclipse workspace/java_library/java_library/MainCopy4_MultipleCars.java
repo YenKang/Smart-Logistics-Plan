@@ -41,7 +41,7 @@ public class MainCopy4_MultipleCars {
 
 	// static double step_length = 0.01; // version1
 
-	static double step_length = 0.1;
+	static double step_length = 0.01;
 	//double vehicle_speed = 5.0; //5 [m/s]
 
 	public static void main(String[] args) {
@@ -88,7 +88,7 @@ public class MainCopy4_MultipleCars {
 			v1_660_to_requestInfo.add(60.0);
 			
 			v1_time_to_requestInfo.put(570, v1_570_to_requestInfo );
-			v1_time_to_requestInfo.put(660, v1_570_to_requestInfo );
+			v1_time_to_requestInfo.put(660, v1_660_to_requestInfo );
 			
 			System.out.println("v1_time_to_requestInfo:"+ v1_time_to_requestInfo);
 			
@@ -123,16 +123,17 @@ public class MainCopy4_MultipleCars {
 			
 			
 		
-			for (int i = 0; i < 360000; i++) {
+			for (int i = 0; i < 360000000; i++) {
 				conn.do_timestep();
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
 				//System.out.println("timeSeconds:"+ timeSeconds);
 				
-				if(timeSeconds==100.0) {
+				if(timeSeconds==50.0) {
+					System.out.println("-------------------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
-					conn.do_job_set(Vehicle.changeTarget("1", "496257308#5"));
+					//conn.do_job_set(Vehicle.changeTarget("1", "496257308#5"));
 					
-					SumoStopFlags sf_v1 = new SumoStopFlags(false, false, false, false, false);
+					//SumoStopFlags sf_v1 = new SumoStopFlags(false, false, false, false, false);
 					
 					/**
 					 * public static SumoCommand setStop(String vehID, String edgeID, 
@@ -140,12 +141,73 @@ public class MainCopy4_MultipleCars {
 					 */
 					 
 	
-					conn.do_job_set(Vehicle.setStop("1","496257308#5", 50.0, (byte)0,  0.0, sf_v1, 30.0, 1500.0));
+					//conn.do_job_set(Vehicle.setStop("1","496257308#5", 50.0, (byte)0,  0.0, sf_v1, 30.0, 1500.0));
+					
+					
+					for(int veh=1; veh<=CarsMap_with_Schedule.size();veh++) {
+						String vehID = Integer.toString(veh); 
+						ArrayList veh_array = new ArrayList();
+						veh_array = (ArrayList)CarsMap_with_Schedule.get(vehID);
+						Map  Map_requestInfo = new HashMap();
+					}
+
+					
+					String curEdge = (String)conn.do_job_get(Vehicle.getRoadID("1"));
+					String fromEdge = curEdge;
+					String Edge1 = "496257308#5";
+					String Edge2 = "273445903#7";
+					String vType ="truck"; 
+					double depart = 100.0; 
+					int routingMode = 0;
+					SumoStage stage1 = (SumoStage)conn.do_job_get(Simulation.findRoute(curEdge, Edge1, vType, depart,routingMode));
+					
+					SumoStage stage2 = (SumoStage)conn.do_job_get(Simulation.findRoute(Edge1, Edge2, vType, depart,routingMode));
+					
+					LinkedList<String> newRoute = new LinkedList<String>(); 
+					LinkedList<String> a_route = new LinkedList<String>(); 
+					LinkedList<String> newRoute1_addOne = new LinkedList<String>(); 
+					SumoStringList a = new SumoStringList();
+					
+					//a= stage1.edges;
+
+					//conn.do_job_set(Vehicle.setRoute("1", stage1.edges));
+					
+					for (String edge :stage1.edges){ 
+						newRoute.add(edge); 
+					}
+					
+					System.out.println("newRoute_before:"+ newRoute);
+					
+					
+					a = stage1.edges;
+				
+					
+					for (int j=1;j<stage2.edges.size();j++){ 
+						String edge = stage2.edges.get(j);
+				
+						a.add(edge); 
+					}
+					
+			
+					for (String edge :a){ 
+						a_route.add(edge); 
+					}
+					
+					System.out.println("a_route:"+ a_route);
+					
+					conn.do_job_set(Vehicle.setRoute("1", a));
 					
 					
 					
-					//conn.do_job_set(Vehicle.setContainerStop("1", "containerStop1", 10.0, 500));
+					SumoStopFlags sf_v1 = new SumoStopFlags(false, false, false, false, false);
+					conn.do_job_set(Vehicle.setStop("1", Edge1, 50.0, (byte)0,  0.0, sf_v1, 30.0, 2400.0));
+					conn.do_job_set(Vehicle.setStop("1", Edge2, 50.0, (byte)0,  0.0, sf_v1, 30.0, 7800.0));
 					
+					
+					/*
+					conn.do_job_set(Vehicle.setRoute("1", stage2.edges));
+					conn.do_job_set(Vehicle.setStop("1", Edge2, 60.0, (byte)0,  0.0, sf_v1, 30.0, 7800.0));
+					*/
 					
 					
 				}

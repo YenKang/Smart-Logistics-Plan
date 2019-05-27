@@ -326,7 +326,7 @@ public class SumoCommand {
 		} 
 		
 		else {
-			System.out.println("test");
+
 			cmd.content().writeUnsignedByte(Constants.TYPE_COMPOUND);
 			cmd.content().writeInt(array.length);
 			
