@@ -52,6 +52,10 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
     private double weight;
     private Double lng1, lat1, lng2, lat2, cameraLng, cameraLat;
     private Button submit_button;
+
+    private int isReceiver;
+    private Item order_item;
+    private Map hashmap = new HashMap();
     // private TextView tvLng1, tvLat1, tvLng2, tvLat2;
 
     @Override
@@ -59,47 +63,85 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_test);
         submit_button = findViewById(R.id.btn_submit);
-       /* tvLng1 = findViewById(R.id.lng1);
-        tvLat1 = findViewById(R.id.lat1);
-        tvLng2 = findViewById(R.id.lng2);
-        tvLat2 = findViewById(R.id.lat2);*/
 
-        // 從send頁面取得的經緯度資訊存起來準備
-        Bundle bundle = getIntent().getExtras();
-        originAddress = bundle.getString("origin_address");
-        destAddress = bundle.getString("dest_address");
-        receiver_id = bundle.getString("receiver_id");
-        sender_id = bundle.getString("cargo_content");
-        price = bundle.getInt("price");
-        weight = bundle.getDouble("weight");
-        cargo_content = bundle.getString("cargo_content");
-        size = bundle.getInt("size");
+        Intent intent = getIntent();
+        isReceiver = intent.getIntExtra("isReceiver", -1);
 
-        Toast.makeText(this,sender_id,Toast.LENGTH_LONG).show();
+        if (isReceiver ==0){
+            // 從send頁面取得的經緯度資訊存起來準備
+            Bundle bundle = getIntent().getExtras();
+            originAddress = bundle.getString("origin_address");
+            destAddress = bundle.getString("dest_address");
+            receiver_id = bundle.getString("receiver_id");
+            sender_id = bundle.getString("sender_id");
+            price = bundle.getInt("price");
+            weight = bundle.getDouble("weight");
+            cargo_content = bundle.getString("cargo_content");
+            size = bundle.getInt("size");
+            // Toast.makeText(this,sender_id,Toast.LENGTH_LONG).show();
+            // 從前一個ACTIVITY取得地址後把地址轉為經緯度
+            LatLng originLL = getLocationFromAddress(originAddress);
+            lng1 = originLL.longitude;
+            lat1 = originLL.latitude;
+            LatLng destLL = getLocationFromAddress(destAddress);
+            lng2 = destLL.longitude;
+            lat2 = destLL.latitude;
 
-        /// 從前一個ACTIVITY取得地址後把地址轉為經緯度
-        LatLng originLL = getLocationFromAddress(originAddress);
-        lng1 = originLL.longitude;
-        lat1 = originLL.latitude;
+            hashmap.put("sender_id", sender_id);
+            hashmap.put("receiver_id",receiver_id);
+            hashmap.put("price",price);
+            hashmap.put("weight",weight);
+            hashmap.put("cargo_content", cargo_content);
+            hashmap.put("size", size);
+            hashmap.put("request_No", 0);
+            hashmap.put("sender_lng", lng1);
+            hashmap.put("sender_lat", lat1);
+            hashmap.put("receiver_lng", lng2);
+            hashmap.put("receiver_lat", lat2);
+            hashmap.put("time_arrived", timeArrived);
+            jsonW = new JSONObject(hashmap);
+        }
+        else if (isReceiver == 1 ){
+            order_item = (Item)intent.getExtras().getSerializable("order_item");
+            double[] lnglat = order_item.getLnglat();
+            receiver_id = order_item.getReceiverName();
+            sender_id = order_item.getSenderName();
+            price = order_item.getPrice();
+            cargo_content = order_item.getCargoContent();
+            weight = 0.0;
+            size = 0;
+            lng1 = lnglat[0];
+            lat1 = lnglat[1];
+            lng2 = lnglat[2];
+            lat2 = lnglat[3];
 
-        LatLng destLL = getLocationFromAddress(destAddress);
-        lng2 = destLL.longitude;
-        lat2 = destLL.latitude;
+            hashmap.put("sender_id", sender_id);
+            hashmap.put("receiver_id",receiver_id);
+            hashmap.put("price",price);
+            hashmap.put("weight",weight);
+            hashmap.put("cargo_content", cargo_content);
+            hashmap.put("size", size);
+            hashmap.put("request_No", 1);
+            hashmap.put("sender_lng", lng1);
+            hashmap.put("sender_lat", lat1);
+            hashmap.put("receiver_lng", lng2);
+            hashmap.put("receiver_lat", lat2);
+            jsonW = new JSONObject(hashmap);
+        }
 
         cameraLng = (lng1+lng2)/2;
         cameraLat = (lat1+lat2)/2;
 
-        Spinner spinnerSize = findViewById(R.id.spTimeInterval);
+        Spinner spinnerTime = findViewById(R.id.spTimeInterval);
         final ArrayAdapter<CharSequence> timeList = ArrayAdapter.createFromResource(this, R.array.timeInterval, android.R.layout.simple_spinner_dropdown_item);
-        spinnerSize.setAdapter(timeList);
-        spinnerSize.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerTime.setAdapter(timeList);
+        spinnerTime.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             // 判斷使用者目前選擇的到達時間
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 timeArrived = position;
-                //Toast.makeText(MapTestActivity.this, Integer.toString(position), Toast.LENGTH_SHORT).show();
-                // 測試是否顯示正確選擇
-                // Toast.makeText(SendActivity.this, Integer.toString(sizeSelected), Toast.LENGTH_SHORT).show();
+                hashmap.put("time_arrived", timeArrived + 1);
+                Toast.makeText(MapTestActivity.this, hashmap.get("time_arrived").toString(), Toast.LENGTH_SHORT).show();
             }
             // 因預設會選擇L，因此不可能觸發此函式，但此介面必須覆寫
             @Override
@@ -107,29 +149,12 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
             }
         });
 
-        Map hashmap = new HashMap();
-        hashmap.put("sender_id", sender_id);
-        hashmap.put("receiver_id",receiver_id);
-        hashmap.put("price",price);
-        hashmap.put("weight",weight);
-        hashmap.put("cargo_content", cargo_content);
-        hashmap.put("size", size);
-        hashmap.put("request_No", 0);
-        // 22.996193, 120.220860
-        hashmap.put("sender_lng", lng1);
-        hashmap.put("sender_lat", lat1);
-        hashmap.put("receiver_lng", lng2);
-        hashmap.put("receiver_lat", lat2);
-        hashmap.put("time_arrived", timeArrived);
-        jsonW = new JSONObject(hashmap);
-
-        // Toast.makeText(this, lng1.toString(), Toast.LENGTH_LONG).show();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        // 使用者點選確定
+        // 使用者點選確定，啟用 socket ，與 sumo 進行溝通，並指定上貨、卸貨時間
         View.OnClickListener submitListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,17 +166,6 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
         submit_button.setOnClickListener(submitListener);
 
     }
-
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -159,10 +173,16 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
         LatLng origin = new LatLng(lat1, lng1);
         LatLng dest = new LatLng(lat2,lng2);
         LatLng cameraPlace = new LatLng(cameraLat, cameraLng);
-        mMap.addMarker(new MarkerOptions().position(origin).title("貨車取貨地點"));
-        mMap.addMarker(new MarkerOptions().position(dest).title("送貨目的地點"));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(cameraPlace, 8.0f));
+        if (isReceiver == 0){
+            mMap.addMarker(new MarkerOptions().position(origin).title("貨車取貨地點"));
+            mMap.addMarker(new MarkerOptions().position(dest).title("送貨目的地點"));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(cameraPlace, 13.0f));
+        }
+        else if (isReceiver == 1){
+            mMap.addMarker(new MarkerOptions().position(origin).title("寄件人上貨地點"));
+            mMap.addMarker(new MarkerOptions().position(dest).title("您的取貨地點"));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(cameraPlace, 13.0f));
+        }
     }
     /// 地址轉經緯度!!
     public LatLng getLocationFromAddress(String Address) {
@@ -180,7 +200,7 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
         }
         return point;
     }
-    // 測試連線
+    // 測試與 sumo 進行溝通，並指定上貨、卸貨時間
     private Runnable Connection = new Runnable() {
         @Override
         public void run() {
@@ -194,7 +214,7 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
                 // 取得網路輸出流 //////////////////////////////////////////
                 output = new DataOutputStream(clientSocket.getOutputStream());
                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(output));
-                //bw.write("123");
+                // bw.write("123");
                 bw.write(jsonW.toString());
                 bw.flush();
                 // 指關閉輸出流

@@ -84,7 +84,7 @@ public class MyOrderActivity extends AppCompatActivity {
                 Timestamp in_time = new java.sql.Timestamp(parsedDate.getTime());
                 Timestamp out_time = new java.sql.Timestamp(parsedDate2.getTime());
                 /////////
-                int status = orderArray.getJSONObject(i).getInt("status");
+                String status = orderArray.getJSONObject(i).getString("status");
                 String truck_No = orderArray.getJSONObject(i).getString("truck_id");
                 double[] lnglat = new double[4];
                 double slng = orderArray.getJSONObject(i).getDouble("sender_lng");
@@ -98,19 +98,21 @@ public class MyOrderActivity extends AppCompatActivity {
                 String order_time_DB = orderArray.getJSONObject(i).getString("order_time");
                 Date parsedDate3 = dateFormat.parse(order_time_DB);
                 Timestamp order_time = new java.sql.Timestamp(parsedDate3.getTime());
+                int sender_time = orderArray.getJSONObject(i).getInt("sender_time");
+                int receiver_time = orderArray.getJSONObject(i).getInt("receiver_time");
 
                 if (sender_name.equals(username)){
                     items_send.add(new Item(i, order_No, sender_name, receiver_name, cargo_content, price,
-                            container_No, in_time, out_time, status, truck_No, lnglat, order_time));
+                            container_No, in_time, out_time, status, truck_No, lnglat, order_time, sender_time, receiver_time));
                 }
                 else if (receiver_name.equals(username)){
                     items_receive.add(new Item(i, order_No, sender_name, receiver_name, cargo_content, price,
-                            container_No, in_time, out_time, status, truck_No, lnglat, order_time));
+                            container_No, in_time, out_time, status, truck_No, lnglat, order_time, sender_time, receiver_time));
                 }
 
                 // 初始化 item 並加入 items
                 items.add(new Item(i, order_No, sender_name, receiver_name, cargo_content, price,
-                        container_No, in_time, out_time, status, truck_No, lnglat, order_time));
+                        container_No, in_time, out_time, status, truck_No, lnglat, order_time, sender_time, receiver_time));
                 // Toast.makeText(this,in_time.toString(), Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -194,7 +196,7 @@ public class MyOrderActivity extends AppCompatActivity {
 
     private void processControllers() {
 
-        // 建立選單項目點擊監聽物件
+        // 我寄出的
         AdapterView.OnItemClickListener item1Listener = new AdapterView.OnItemClickListener(){
             // 第一個參數是使用者操作的ListView物件
             // 第二個參數是使用者選擇的項目
@@ -202,23 +204,19 @@ public class MyOrderActivity extends AppCompatActivity {
             // 第四個參數在這裡沒有用途
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                // 讀取被點選的記事物件
-                // 測試寫法，測試成功
-                // Item item = items.get(position);
+                // 讀取被點選的物件
                 Item item = itemAdapter1.getItem(position);
-
                 Intent intent = new Intent(MyOrderActivity.this,ItemActivity.class);
-                // 設定記事編號與標題
-                intent.putExtra("position", position);
+                // 設定是否為收件者以及該訂單資訊
+                intent.putExtra("receiver", 0);
                 intent.putExtra("item", item);
-                // 呼叫「startActivityForResult」，第二個參數「1」表示執行修改
                 startActivity(intent);
             }
         };
         // 註冊選單項目點擊監聽物件
         order_list_1.setOnItemClickListener(item1Listener);
 
-        // 建立選單項目點擊監聽物件
+        // 寄給我的
         AdapterView.OnItemClickListener item2Listener = new AdapterView.OnItemClickListener(){
             // 第一個參數是使用者操作的ListView物件
             // 第二個參數是使用者選擇的項目
@@ -226,16 +224,13 @@ public class MyOrderActivity extends AppCompatActivity {
             // 第四個參數在這裡沒有用途
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                // 讀取被點選的記事物件
-                // 測試寫法，測試成功
-                // Item item = items.get(position);
+                // 讀取被點選的物件
                 Item item = itemAdapter2.getItem(position);
 
                 Intent intent = new Intent(MyOrderActivity.this,ItemActivity.class);
-                // 設定記事編號與標題
-                intent.putExtra("position", position);
+                // 設定是否為收件者以及該訂單資訊
+                intent.putExtra("receiver", 1);
                 intent.putExtra("item", item);
-                // 呼叫「startActivityForResult」，第二個參數「1」表示執行修改
                 startActivity(intent);
             }
         };

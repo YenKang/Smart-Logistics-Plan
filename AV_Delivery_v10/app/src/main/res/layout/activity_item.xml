@@ -8,6 +8,10 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:stretchColumns="1"
         tools:context=".ItemActivity">
 
@@ -67,12 +71,13 @@
                 android:layout_margin="2sp"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </TableRow>
+        <!--
         <Button
             android:id="@+id/btn_check_order_status"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="確認物流狀態" />
-
+        -->
         <TableRow>
             <TextView
                 android:text="貨車編號"
@@ -130,6 +135,32 @@
                 android:layout_margin="2sp"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/arrived_time_name"
+                android:text=""
+                android:padding="8sp"
+                android:layout_margin="2sp"
+                android:gravity="center_horizontal"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/arrived_time"
+                android:padding="8sp"
+                android:layout_margin="2sp"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </TableRow>
+        <Button
+            android:id="@+id/btn_receive_time"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="選擇取貨時間"
+            android:visibility="invisible"/>
+        <Button
+            android:id="@+id/btn_return"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="返回訂單列表" />
     </TableLayout>
 
     <!-- ScrollView的結束標籤 -->
