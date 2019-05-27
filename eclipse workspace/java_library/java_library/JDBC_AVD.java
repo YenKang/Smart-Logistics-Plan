@@ -113,7 +113,7 @@ public class JDBC_AVD {
 			   pst.setInt(4, container_id);
 			   Date date = new Date();
 			   java.sql.Timestamp timestamp =new Timestamp(date.getTime());
-			   pst.setTimestamp(5, timestamp);
+			   pst.setTimestamp(5, timestamp); 
 			   pst.setTimestamp(6, timestamp);
 			   pst.setInt(7, truck_id);
 			   pst.setInt(8, 0);
