@@ -128,7 +128,7 @@ public class MainCopy4_MultipleCars {
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
 				//System.out.println("timeSeconds:"+ timeSeconds);
 				
-				if(timeSeconds==50.0) {
+				if(timeSeconds==40.0) {
 					System.out.println("-------------------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
 					//conn.do_job_set(Vehicle.changeTarget("1", "496257308#5"));
@@ -146,9 +146,49 @@ public class MainCopy4_MultipleCars {
 					
 					for(int veh=1; veh<=CarsMap_with_Schedule.size();veh++) {
 						String vehID = Integer.toString(veh); 
-						ArrayList veh_array = new ArrayList();
+						ArrayList veh_array = new ArrayList();//veh_array:[570, 660]
+					
 						veh_array = (ArrayList)CarsMap_with_Schedule.get(vehID);
 						Map  Map_requestInfo = new HashMap();
+						Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get(vehID);
+						
+						ArrayList edges_list = new ArrayList();
+						ArrayList stages_list = new ArrayList();
+						
+						String curEdge = (String)conn.do_job_get(Vehicle.getRoadID(vehID));
+						edges_list.add(curEdge);
+						
+						for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {
+							String edge = (String) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(0); // 570
+							System.out.println("edge:"+ edge);
+							edges_list.add(edge);
+						}
+						
+						for(int edge_index=0;edge_index<edges_list.size()-1;edge_index++) {
+							String vType ="truck"; 
+							double depart = 0.0; 
+							int routingMode = 0;
+							SumoStage stage = (SumoStage)conn.do_job_get(
+									Simulation.findRoute((String)edges_list.get(edge_index), (String)edges_list.get(edge_index+1), vType, depart,routingMode));
+							stages_list.add(stage);
+						}
+						
+						System.out.println("stages_list:"+ stages_list);
+						
+						
+						
+						
+						
+						
+						System.out.println("veh:"+ veh);
+						System.out.println("veh_array:"+veh_array);
+						System.out.println("Map_requestInfo:"+ Map_requestInfo);
+						
+						
+						System.out.println("Map_requestInfo.get(veh_array.get(0))"+ Map_requestInfo.get(veh_array.get(0)));
+						
+						System.out.println("edges_list:"+ edges_list);
+						
 					}
 
 					
@@ -159,6 +199,8 @@ public class MainCopy4_MultipleCars {
 					String vType ="truck"; 
 					double depart = 100.0; 
 					int routingMode = 0;
+					
+					
 					SumoStage stage1 = (SumoStage)conn.do_job_get(Simulation.findRoute(curEdge, Edge1, vType, depart,routingMode));
 					
 					SumoStage stage2 = (SumoStage)conn.do_job_get(Simulation.findRoute(Edge1, Edge2, vType, depart,routingMode));
@@ -172,11 +214,7 @@ public class MainCopy4_MultipleCars {
 
 					//conn.do_job_set(Vehicle.setRoute("1", stage1.edges));
 					
-					for (String edge :stage1.edges){ 
-						newRoute.add(edge); 
-					}
-					
-					System.out.println("newRoute_before:"+ newRoute);
+				
 					
 					
 					a = stage1.edges;
@@ -185,17 +223,13 @@ public class MainCopy4_MultipleCars {
 					for (int j=1;j<stage2.edges.size();j++){ 
 						String edge = stage2.edges.get(j);
 				
-						a.add(edge); 
+						stage1.edges.add(edge); 
 					}
 					
 			
-					for (String edge :a){ 
-						a_route.add(edge); 
-					}
+				
 					
-					System.out.println("a_route:"+ a_route);
-					
-					conn.do_job_set(Vehicle.setRoute("1", a));
+					conn.do_job_set(Vehicle.setRoute("1", stage1.edges));
 					
 					
 					
@@ -213,7 +247,7 @@ public class MainCopy4_MultipleCars {
 				}
 				
 				// receive the request of sender4 with 10:30
-				if(timeSeconds==30.0) {
+				if(timeSeconds==600.0) {
 					int insertTime=630;
 					System.out.println("timeSeconds:"+ timeSeconds);
 					// receive the request
