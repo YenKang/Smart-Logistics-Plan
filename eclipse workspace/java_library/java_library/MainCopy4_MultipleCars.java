@@ -43,6 +43,7 @@ public class MainCopy4_MultipleCars {
 
 	static double step_length = 0.01;
 	//double vehicle_speed = 5.0; //5 [m/s]
+	
 
 	public static void main(String[] args) {
 
@@ -118,38 +119,43 @@ public class MainCopy4_MultipleCars {
 			
 			double vehicle_speed = 4.0; //4 [m/s]
 			
-		
+			SumoColor veh1_color = new SumoColor(255 ,105, 180,0);
+			conn.do_job_set(Vehicle.setColor("1", veh1_color));
 			
 			
 			
 		
 			for (int i = 0; i < 360000000; i++) {
+				
+				
 				conn.do_timestep();
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
 				//System.out.println("timeSeconds:"+ timeSeconds);
 				
 				if(timeSeconds==50.0 ) {
+
 					System.out.println("-------------------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
-					//conn.do_job_set(Vehicle.changeTarget("1", "496257308#5"));
-					
-					//SumoStopFlags sf_v1 = new SumoStopFlags(false, false, false, false, false);
-					
-					/**
-					 * public static SumoCommand setStop(String vehID, String edgeID, 
-					double pos, byte laneIndex, double duration, SumoStopFlags sf, double startPos, double until)
-					 */
-					 
-	
-					//conn.do_job_set(Vehicle.setStop("1","496257308#5", 50.0, (byte)0,  0.0, sf_v1, 30.0, 1500.0));
-					
-					
+					double currentMin = (540+ timeSeconds/60.0);
+			
 					for(int veh=1; veh<=CarsMap_with_Schedule.size();veh++) {
 						System.out.println("---------------------------------");
 						String vehID = Integer.toString(veh); 
 						ArrayList veh_array = new ArrayList();//veh_array:[570, 660]
 						
 						veh_array = (ArrayList)CarsMap_with_Schedule.get(vehID);
+						veh_array.add((int)currentMin);
+						Collections.sort(veh_array);
+						System.out.println("Collections.sort(veh_array):"+ veh_array);
+						int remove_time =0;
+						while(remove_time<(int)veh_array.indexOf((int)currentMin)+1) {
+							veh_array.remove(0);
+							remove_time++;
+						}
+						
+						System.out.println("veh_array after removing:"+ veh_array);
+						
+				
 						Map  Map_requestInfo = new HashMap();
 						Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get(vehID);
 						
@@ -232,7 +238,7 @@ public class MainCopy4_MultipleCars {
 				
 				// At 09:05, we receive the request of sender4 with 10:30
 				if(timeSeconds==300.0) {
-					int insertTime=630;
+					int insertTime=570;
 					System.out.println("timeSeconds:"+ timeSeconds);
 					// receive the request
 					
@@ -411,30 +417,28 @@ public class MainCopy4_MultipleCars {
 					
 				}
 				
-				if(timeSeconds==900.0 ) {
+				if(timeSeconds==360.0 ) {
+
 					System.out.println("-------------------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
-					//conn.do_job_set(Vehicle.changeTarget("1", "496257308#5"));
-					
-					//SumoStopFlags sf_v1 = new SumoStopFlags(false, false, false, false, false);
-					
-					/**
-					 * public static SumoCommand setStop(String vehID, String edgeID, 
-					double pos, byte laneIndex, double duration, SumoStopFlags sf, double startPos, double until)
-					 */
-					 
-	
-					//conn.do_job_set(Vehicle.setStop("1","496257308#5", 50.0, (byte)0,  0.0, sf_v1, 30.0, 1500.0));
-					
-					
+					double currentMin = (540+ timeSeconds/60.0);
+			
 					for(int veh=1; veh<=CarsMap_with_Schedule.size();veh++) {
 						System.out.println("---------------------------------");
 						String vehID = Integer.toString(veh); 
 						ArrayList veh_array = new ArrayList();//veh_array:[570, 660]
 						
 						veh_array = (ArrayList)CarsMap_with_Schedule.get(vehID);
+						veh_array.add((int)currentMin);
+						Collections.sort(veh_array);
+						System.out.println("Collections.sort(veh_array):"+ veh_array);
+						int remove_time =0;
+						while(remove_time<(int)veh_array.indexOf((int)currentMin)+1) {
+							veh_array.remove(0);
+							remove_time++;
+						}
 						
-						System.out.println("veh_array in 900s:"+ veh_array);
+						System.out.println("veh_array after removing:"+ veh_array);
 						
 						Map  Map_requestInfo = new HashMap();
 						Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get(vehID);
@@ -497,15 +501,17 @@ public class MainCopy4_MultipleCars {
 						conn.do_job_set(Vehicle.setRoute(vehID, routes));
 						
 						for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {
+							
 							String edge = (String) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(0); // 570
 							double pos =  (double) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(3);
-						
-							conn.do_job_set(Vehicle.setStop(vehID, edge, pos, (byte)0,  0.0, 
-									new SumoStopFlags(false, false, false, false, false), 
-									pos, 60.0*((Integer) veh_array.get(veh_array_index)-530)));
 							
-						
+							System.out.println("edge:"+ edge);
+							System.out.println("pos:"+ pos);
+							SumoStopFlags sf = new SumoStopFlags(false, false, false, false, false);
 							
+							conn.do_job_set(Vehicle.setStop(vehID, edge, pos+10, (byte)0,  0.0, 
+									sf, pos, 60.0*((Integer) veh_array.get(veh_array_index)-530)));
+						
 						}
 						//conn.do_job_set(Vehicle.setStop("1", Edge1, 50.0, (byte)0,  0.0, sf_v1, 30.0, 2400.0));
 					}
@@ -516,10 +522,404 @@ public class MainCopy4_MultipleCars {
 					
 				}
 				
+				// receive the request5 if 10:00
+				if(timeSeconds==480.0) {
+					int insertTime=600; // dream mall
+					System.out.println("timeSeconds:"+ timeSeconds);
+					// receive the request
+					
+					ArrayList request4_array = new ArrayList();
+					request4_array.add("405115649");
+					request4_array.add(10353.5);
+					request4_array.add(5583.48);
+					request4_array.add(260.0);
+					
+					for(int veh=1; veh<=CarsMap_with_Schedule.size();veh++) {
+						String vehID = Integer.toString(veh); 
+						System.out.println("-------------------------");
+						System.out.println("key:"+ vehID);
+						ArrayList veh_array = new ArrayList();
+						veh_array = (ArrayList)CarsMap_with_Schedule.get(vehID);
+						Map  Map_requestInfo = new HashMap();
+						
+						System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
+						Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get(vehID);
+						System.out.println("Map_requestInfo111:"+ Map_requestInfo);
+						
+						if((veh_array.contains(insertTime))!=true) {
+							
+							
+							veh_array.add(insertTime);
+							System.out.println("veh_array:"+ veh_array);
+							Collections.sort(veh_array);
+							System.out.println("veh_array after sorting:"+ veh_array);
+							
+							int indexValue = veh_array.indexOf(insertTime);
+							Map_requestInfo.put(insertTime, request4_array ); // request3_array should be dynamic
+							
+							if(indexValue==0) {
+								SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(vehID));
+								
+								double distance_curr_To_Index = (double)conn.do_job_get(Simulation.getDistance2D(
+										(double)request4_array.get(1), (double)request4_array.get(2), 
+										veh_Position.x, veh_Position.y, false, true));
+								
+								System.out.println("distance_curr_To_Index:"+ distance_curr_To_Index);
+								double travelTime_curr_To_Index = distance_curr_To_Index/vehicle_speed;
+								
+								System.out.println("Map_requestInfo22:"+ Map_requestInfo);
+								
+								int key_afterIndex = (int) veh_array.get(indexValue+1);
+								System.out.println("key_afterIndex:"+ key_afterIndex);
+								double request_x_afterIndex = (double)((ArrayList) Map_requestInfo.get(key_afterIndex)).get(1);
+								double request_y_afterIndex = (double)((ArrayList) Map_requestInfo.get(key_afterIndex)).get(2);
+								
+								
+								double distance_afterIndexToIndex = (double)(conn.do_job_get(Simulation.getDistance2D(
+										request_x_afterIndex, request_y_afterIndex,
+										(double)request4_array.get(1), (double)request4_array.get(2), false, true)));
+								
+								double travelTime_afterIndexToIndex = distance_afterIndexToIndex/vehicle_speed;
+								System.out.println("distance_afterIndexToIndex:"+ distance_afterIndexToIndex);
+								System.out.println("travelTime_afterIndexToIndex:"+ travelTime_afterIndexToIndex);
+								
+								double diffDuration_afterIndexToIndex = ((int) veh_array.get(indexValue+1)-(int) veh_array.get(indexValue))*60;
+							
+								System.out.println("diffDuration_afterIndexToIndex:"+ diffDuration_afterIndexToIndex);
+								
+								System.out.println("timeSeconds+travelTime_curr_To_Index:"+ (timeSeconds+travelTime_curr_To_Index));
+								System.out.println("insertTime key_afterIndex:"+ (key_afterIndex-insertTime));
+								
+								if((travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) &&
+										(timeSeconds+travelTime_curr_To_Index) <(key_afterIndex-insertTime)*60) {
+									
+									
+									//Map_requestInfo.put(insertTime, request3_array ); // request3_array should be dynamic
+									CarsMap_time_to_requestInfo.put(vehID, Map_requestInfo);
+									
+									System.out.println("-----------after inserting------------");
+									System.out.println("Map_requestInfo:"+ Map_requestInfo);
+									System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
+									
+									
+									System.out.println("CarsMap_time_to_requestInfo in 900s:"+ CarsMap_time_to_requestInfo);
+									break;
+								}
+								
+								else {
+									Map_requestInfo.remove(insertTime);
+									break;
+								}
+							}
+							
+							else if(indexValue==(veh_array.size()-1)) {
+								int key_IndexValue = (int) veh_array.get(indexValue);
+								double request_x_IndexValue = (double)((ArrayList) Map_requestInfo.get(key_IndexValue)).get(1);
+								double request_y_IndexValue = (double)((ArrayList) Map_requestInfo.get(key_IndexValue)).get(2);
+								
+								int key_beforeIndex = (int) veh_array.get(indexValue-1);
+								double request_x_beforeIndex = (double)((ArrayList) Map_requestInfo.get(key_beforeIndex)).get(1);
+								double request_y_beforeIndex = (double)((ArrayList) Map_requestInfo.get(key_beforeIndex)).get(2);
+								
+								double distance_IndexToBeforeIndex = (double)(conn.do_job_get(Simulation.getDistance2D(
+										request_x_IndexValue, request_y_IndexValue,
+										request_x_beforeIndex, request_y_beforeIndex, false, true)));
+								double travelTime_IndexToBeforeIndex = distance_IndexToBeforeIndex/vehicle_speed;
+								
+								double diffDuration_IndexToBeforeIndex = ((int) veh_array.get(indexValue)-(int) veh_array.get(indexValue-1))*60;
+								
+								System.out.println("travelTime_IndexToBeforeIndex:"+travelTime_IndexToBeforeIndex);
+								System.out.println("diffDuration_IndexToBeforeIndex:"+ diffDuration_IndexToBeforeIndex);
+								
+								System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
+								if(travelTime_IndexToBeforeIndex<diffDuration_IndexToBeforeIndex) {
+									Map_requestInfo.put(insertTime, request4_array ); // request3_array should be dynamic
+									CarsMap_time_to_requestInfo.put(vehID, Map_requestInfo);
+									System.out.println("-----------after inserting------------");
+									System.out.println("Map_requestInfo:"+ Map_requestInfo);
+									System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
+									break;
+								}
+								else {
+									Map_requestInfo.remove(insertTime);
+									break;
+								}
+								
+							}
+							
+							else {
+								
+								int key_IndexValue = (int) veh_array.get(indexValue);
+								double request_x_IndexValue = (double)((ArrayList) Map_requestInfo.get(key_IndexValue)).get(1);
+								double request_y_IndexValue = (double)((ArrayList) Map_requestInfo.get(key_IndexValue)).get(2);
+								
+								int key_beforeIndex = (int) veh_array.get(indexValue-1);
+								double request_x_beforeIndex = (double)((ArrayList) Map_requestInfo.get(key_beforeIndex)).get(1);
+								double request_y_beforeIndex = (double)((ArrayList) Map_requestInfo.get(key_beforeIndex)).get(2);
+								
+								int key_afterIndex = (int) veh_array.get(indexValue+1);
+						
+								double request_x_afterIndex = (double)((ArrayList) Map_requestInfo.get(key_afterIndex)).get(1);
+								double request_y_afterIndex = (double)((ArrayList) Map_requestInfo.get(key_afterIndex)).get(2);
+								
+								double distance_IndexToBeforeIndex = (double)(conn.do_job_get(Simulation.getDistance2D(
+										request_x_IndexValue, request_y_IndexValue,
+										request_x_beforeIndex, request_y_beforeIndex, false, true)));
+								double travelTime_IndexToBeforeIndex = distance_IndexToBeforeIndex/vehicle_speed;
+								double distance_afterIndexToIndex = (double)(conn.do_job_get(Simulation.getDistance2D(
+										request_x_afterIndex, request_y_afterIndex,
+										request_x_IndexValue, request_y_IndexValue, false, true)));
+								double travelTime_afterIndexToIndex = distance_afterIndexToIndex/vehicle_speed;
+								
+								double diffDuration_IndexToBeforeIndex = ((int) veh_array.get(indexValue)-(int) veh_array.get(indexValue-1))*60;
+								double diffDuration_afterIndexToIndex = ((int) veh_array.get(indexValue+1)-(int) veh_array.get(indexValue))*60;
+								
+								System.out.println("travelTime_IndexToBeforeIndex:"+travelTime_IndexToBeforeIndex);
+								System.out.println("travelTime_afterIndexToIndex:"+ travelTime_afterIndexToIndex);
+								
+								System.out.println("diffDuration_IndexToBeforeIndex:"+diffDuration_IndexToBeforeIndex);
+								System.out.println("diffDuration_afterIndexToIndex:"+ diffDuration_afterIndexToIndex);
+								
+								if(travelTime_IndexToBeforeIndex<diffDuration_IndexToBeforeIndex && 
+										travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) {
+									//Map_requestInfo.put(insertTime, request3_array ); // request3_array should be dynamic
+									CarsMap_time_to_requestInfo.put(vehID, Map_requestInfo);
+									
+									System.out.println("-----------after inserting------------");
+									System.out.println("Map_requestInfo:"+ Map_requestInfo);
+									System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
+								
+									
+									break;
+								}
+								
+								else {
+									Map_requestInfo.remove(insertTime);
+									break;
+								}
+							}
+						}
+					}
+					
+				}
 			
 				
+				if(timeSeconds==500.0 ) {
+					System.out.println("-------------------------");
+					System.out.println("timeSeconds:"+ timeSeconds);
+					double currentMin = (540+ timeSeconds/60.0);
+					
+		
+					for(int veh=1; veh<=CarsMap_with_Schedule.size();veh++) {
+						System.out.println("---------------------------------");
+						String vehID = Integer.toString(veh); 
+						ArrayList veh_array = new ArrayList();//veh_array:[570, 660]
+						
+						veh_array = (ArrayList)CarsMap_with_Schedule.get(vehID);
+						veh_array.add((int)currentMin);
+						Collections.sort(veh_array);
+						System.out.println("Collections.sort(veh_array):"+ veh_array);
+						int remove_time =0;
+						while(remove_time<(int)veh_array.indexOf((int)currentMin)+1) {
+							veh_array.remove(0);
+							remove_time++;
+						}
+						
+						System.out.println("veh_array after removing:"+ veh_array);
+						
+						Map  Map_requestInfo = new HashMap();
+						Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get(vehID);
+						
+						ArrayList edges_list = new ArrayList();
+						ArrayList stages_list = new ArrayList();
+						SumoStringList routes = new SumoStringList();
+						
+						String curEdge = (String)conn.do_job_get(Vehicle.getRoadID(vehID));
+						System.out.println("curEdge:"+ curEdge);
+						edges_list.add(curEdge);
+						
+						for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {
+							String edge = (String) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(0); // 570
+						
+							//System.out.println("edge:"+ edge);
+							edges_list.add(edge);
+						}
+						
+						for(int edge_index=0;edge_index<edges_list.size()-1;edge_index++) {
+							String vType ="truck"; 
+							double depart = 0.0; 
+							int routingMode = 0;
+							SumoStage stage = (SumoStage)conn.do_job_get(
+									Simulation.findRoute((String)edges_list.get(edge_index), (String)edges_list.get(edge_index+1), vType, depart,routingMode));
+							stages_list.add(stage);
+						}
+						
+				
+						
+						
+						for(int stageIndex=1; stageIndex<stages_list.size();stageIndex++) {
+							//(((SumoStage) stages_list.get(stageIndex)).edges).size();
+							SumoStage each_stage= (SumoStage) stages_list.get(stageIndex);
+							for(int edgeIndex=1; edgeIndex< each_stage.edges.size(); edgeIndex++) {
+								
+								String edge= each_stage.edges.get(edgeIndex);
+								
+								((SumoStage)stages_list.get(0)).edges.add(edge);
+							}
+							
+						}
+						
+						
+						routes = ((SumoStage)stages_list.get(0)).edges;
+						
+						LinkedList<String> newRoute = new LinkedList<String>(); 
+						
+						for (String edge :routes){ 
+							newRoute.add(edge); 
+						}
+						
+						System.out.println("newRoute_before:"+ newRoute);
+						
+						System.out.println("veh:"+ veh);
+						System.out.println("veh_array:"+veh_array);
+						System.out.println("Map_requestInfo:"+ Map_requestInfo);
+						
+						System.out.println("edges_list:"+ edges_list);
+						conn.do_job_set(Vehicle.setRoute(vehID, routes));
+						
+						for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {
+							
+							String edge = (String) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(0); // 570
+							double pos =  (double) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(3);
+							
+							System.out.println("edge:"+ edge);
+							System.out.println("pos:"+ pos);
+							SumoStopFlags sf = new SumoStopFlags(false, false, false, false, false);
+							
+							conn.do_job_set(Vehicle.setStop(vehID, edge, pos+10, (byte)0,  0.0, 
+									sf, pos, 60.0*((Integer) veh_array.get(veh_array_index)-530)));
+						
+						}
+						//conn.do_job_set(Vehicle.setStop("1", Edge1, 50.0, (byte)0,  0.0, sf_v1, 30.0, 2400.0));
+					}
+
+					
+					
+			
+					
+				}
 				
 				
+					if(timeSeconds==2000.0 ) {
+					System.out.println("-------------------------");
+					System.out.println("timeSeconds:"+ timeSeconds);
+					double currentMin = (540+ timeSeconds/60.0);
+					
+		
+					for(int veh=1; veh<=CarsMap_with_Schedule.size();veh++) {
+						System.out.println("---------------------------------");
+						String vehID = Integer.toString(veh); 
+						ArrayList veh_array_0 = new ArrayList();//veh_array:[570, 660]
+						ArrayList veh_array = new ArrayList();//veh_array:[570, 660]
+						veh_array_0 = (ArrayList)CarsMap_with_Schedule.get(vehID);
+						veh_array_0.add((int)currentMin);
+						Collections.sort(veh_array_0);
+						System.out.println("Collections.sort(veh_array):"+ veh_array_0);
+						
+						int currTime_index = (int)veh_array_0.indexOf((int)currentMin);
+						for(int p=currTime_index+1; p<veh_array_0.size();p++) {
+							veh_array.add(veh_array_0.get(p));
+						}
+						/*
+						int remove_time =0;
+						while(remove_time<(int)veh_array.indexOf((int)currentMin)+1) {
+							veh_array.remove(0);
+							remove_time++;
+						}
+						*/
+						System.out.println("veh_array after removing:"+ veh_array);
+						
+						Map  Map_requestInfo = new HashMap();
+						Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get(vehID);
+						
+						ArrayList edges_list = new ArrayList();
+						ArrayList stages_list = new ArrayList();
+						SumoStringList routes = new SumoStringList();
+						
+						String curEdge = (String)conn.do_job_get(Vehicle.getRoadID(vehID));
+						System.out.println("curEdge:"+ curEdge);
+						edges_list.add(curEdge);
+						
+						for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {
+							String edge = (String) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(0); // 570
+						
+							//System.out.println("edge:"+ edge);
+							edges_list.add(edge);
+						}
+						
+						for(int edge_index=0;edge_index<edges_list.size()-1;edge_index++) {
+							String vType ="truck"; 
+							double depart = 0.0; 
+							int routingMode = 0;
+							SumoStage stage = (SumoStage)conn.do_job_get(
+									Simulation.findRoute((String)edges_list.get(edge_index), (String)edges_list.get(edge_index+1), vType, depart,routingMode));
+							stages_list.add(stage);
+						}
+						
+				
+						
+						
+						for(int stageIndex=1; stageIndex<stages_list.size();stageIndex++) {
+							//(((SumoStage) stages_list.get(stageIndex)).edges).size();
+							SumoStage each_stage= (SumoStage) stages_list.get(stageIndex);
+							for(int edgeIndex=1; edgeIndex< each_stage.edges.size(); edgeIndex++) {
+								
+								String edge= each_stage.edges.get(edgeIndex);
+								
+								((SumoStage)stages_list.get(0)).edges.add(edge);
+							}
+							
+						}
+						
+						
+						routes = ((SumoStage)stages_list.get(0)).edges;
+						
+						LinkedList<String> newRoute = new LinkedList<String>(); 
+						
+						for (String edge :routes){ 
+							newRoute.add(edge); 
+						}
+						
+						System.out.println("newRoute_before:"+ newRoute);
+						
+						System.out.println("veh:"+ veh);
+						System.out.println("veh_array:"+veh_array);
+						System.out.println("Map_requestInfo:"+ Map_requestInfo);
+						
+						System.out.println("edges_list:"+ edges_list);
+						conn.do_job_set(Vehicle.setRoute(vehID, routes));
+						
+						for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {
+							
+							String edge = (String) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(0); // 570
+							double pos =  (double) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(3);
+							
+							System.out.println("edge:"+ edge);
+							System.out.println("pos:"+ pos);
+							SumoStopFlags sf = new SumoStopFlags(false, false, false, false, false);
+							
+							conn.do_job_set(Vehicle.setStop(vehID, edge, pos+10, (byte)0,  0.0, 
+									sf, pos, 60.0*((Integer) veh_array.get(veh_array_index)-530)));
+						
+						}
+						//conn.do_job_set(Vehicle.setStop("1", Edge1, 50.0, (byte)0,  0.0, sf_v1, 30.0, 2400.0));
+					}
+
+					
+					
+			
+					
+				}
 				
 			
 			
