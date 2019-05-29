@@ -158,6 +158,7 @@ public class MainCopy4_MultipleCars {
 						SumoStringList routes = new SumoStringList();
 						
 						String curEdge = (String)conn.do_job_get(Vehicle.getRoadID(vehID));
+						System.out.println("curEdge:"+ curEdge);
 						edges_list.add(curEdge);
 						
 						for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {
@@ -229,8 +230,8 @@ public class MainCopy4_MultipleCars {
 					
 				}
 				
-				// receive the request of sender4 with 10:30
-				if(timeSeconds==600.0) {
+				// At 09:05, we receive the request of sender4 with 10:30
+				if(timeSeconds==300.0) {
 					int insertTime=630;
 					System.out.println("timeSeconds:"+ timeSeconds);
 					// receive the request
@@ -259,9 +260,10 @@ public class MainCopy4_MultipleCars {
 							veh_array.add(insertTime);
 							System.out.println("veh_array:"+ veh_array);
 							Collections.sort(veh_array);
-							System.out.println("veh_array_88:"+ veh_array);
+							System.out.println("veh_array after sorting:"+ veh_array);
 							
 							int indexValue = veh_array.indexOf(insertTime);
+							Map_requestInfo.put(insertTime, request3_array ); // request3_array should be dynamic
 							
 							if(indexValue==0) {
 								SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(vehID));
@@ -294,23 +296,27 @@ public class MainCopy4_MultipleCars {
 								System.out.println("diffDuration_afterIndexToIndex:"+ diffDuration_afterIndexToIndex);
 								
 								System.out.println("timeSeconds+travelTime_curr_To_Index:"+ (timeSeconds+travelTime_curr_To_Index));
-								System.out.println("insertTime-key_afterIndex:"+ (key_afterIndex-insertTime));
+								System.out.println("insertTime key_afterIndex:"+ (key_afterIndex-insertTime));
 								
 								if((travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) &&
 										(timeSeconds+travelTime_curr_To_Index) <(key_afterIndex-insertTime)*60) {
 									
 									
-									Map_requestInfo.put(insertTime, request3_array ); // request3_array should be dynamic
+									//Map_requestInfo.put(insertTime, request3_array ); // request3_array should be dynamic
 									CarsMap_time_to_requestInfo.put(vehID, Map_requestInfo);
+									
 									System.out.println("-----------after inserting------------");
 									System.out.println("Map_requestInfo:"+ Map_requestInfo);
 									System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
 									
-									conn.do_job_set(Vehicle.changeTarget(vehID, 
-											(String)((ArrayList) Map_requestInfo.get(key_afterIndex)).get(0)));
 									
-								
 									System.out.println("CarsMap_time_to_requestInfo in 900s:"+ CarsMap_time_to_requestInfo);
+									break;
+								}
+								
+								else {
+									Map_requestInfo.remove(insertTime);
+									break;
 								}
 							}
 							
@@ -334,11 +340,23 @@ public class MainCopy4_MultipleCars {
 								System.out.println("diffDuration_IndexToBeforeIndex:"+ diffDuration_IndexToBeforeIndex);
 								
 								System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
+								if(travelTime_IndexToBeforeIndex<diffDuration_IndexToBeforeIndex) {
+									Map_requestInfo.put(insertTime, request3_array ); // request3_array should be dynamic
+									CarsMap_time_to_requestInfo.put(vehID, Map_requestInfo);
+									System.out.println("-----------after inserting------------");
+									System.out.println("Map_requestInfo:"+ Map_requestInfo);
+									System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
+									break;
+								}
+								else {
+									Map_requestInfo.remove(insertTime);
+									break;
+								}
 								
 							}
 							
 							else {
-								/*
+								
 								int key_IndexValue = (int) veh_array.get(indexValue);
 								double request_x_IndexValue = (double)((ArrayList) Map_requestInfo.get(key_IndexValue)).get(1);
 								double request_y_IndexValue = (double)((ArrayList) Map_requestInfo.get(key_IndexValue)).get(2);
@@ -369,7 +387,24 @@ public class MainCopy4_MultipleCars {
 								
 								System.out.println("diffDuration_IndexToBeforeIndex:"+diffDuration_IndexToBeforeIndex);
 								System.out.println("diffDuration_afterIndexToIndex:"+ diffDuration_afterIndexToIndex);
-								*/
+								
+								if(travelTime_IndexToBeforeIndex<diffDuration_IndexToBeforeIndex && 
+										travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) {
+									//Map_requestInfo.put(insertTime, request3_array ); // request3_array should be dynamic
+									CarsMap_time_to_requestInfo.put(vehID, Map_requestInfo);
+									
+									System.out.println("-----------after inserting------------");
+									System.out.println("Map_requestInfo:"+ Map_requestInfo);
+									System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
+								
+									
+									break;
+								}
+								
+								else {
+									Map_requestInfo.remove(insertTime);
+									break;
+								}
 							}
 						}
 					}
@@ -409,6 +444,7 @@ public class MainCopy4_MultipleCars {
 						SumoStringList routes = new SumoStringList();
 						
 						String curEdge = (String)conn.do_job_get(Vehicle.getRoadID(vehID));
+						System.out.println("curEdge:"+ curEdge);
 						edges_list.add(curEdge);
 						
 						for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {
