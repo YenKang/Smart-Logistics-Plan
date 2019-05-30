@@ -110,7 +110,7 @@ public class SendActivity extends AppCompatActivity {
                 bundle.putInt("price",Integer.parseInt(price.getText().toString()));
                 bundle.putDouble("weight",Double.parseDouble(weight.getText().toString()));
                 bundle.putString("receiver_id", receiver_id.getText().toString());
-                bundle.putInt("size",sizeSelected);
+                bundle.putInt("size",sizeSelected+1);
 
                 i.putExtras(bundle);
                 startActivity(i);
@@ -138,7 +138,7 @@ public class SendActivity extends AppCompatActivity {
         dest.setOnClickListener(destListener);
         ////// 以上兩個事件會根據不同的 requestCode 將回傳的結果傳入不同的變數 //////
 
-        // 使用者選擇下一步，此為正式版本的功能，回真實流程的一部份
+        // 使用者選擇下一步，此為正式版本的功能，真實流程的一部份
         View.OnClickListener nextListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -146,8 +146,8 @@ public class SendActivity extends AppCompatActivity {
                         weight.getText().toString().equals("")||receiver_id.getText().toString().equals("")||
                         et_origin.getText().toString().equals("")||et_dest.getText().toString().equals(""))
                 {
-                    new ReceiverQuery().execute(receiver_id.getText().toString());
-                    // Toast.makeText(view.getContext(),"請完整填寫資料!!",Toast.LENGTH_LONG).show();
+                    // new ReceiverQuery().execute(receiver_id.getText().toString());
+                    Toast.makeText(view.getContext(),"請完整填寫資料!!",Toast.LENGTH_LONG).show();
                 }
                 else {
                     new ReceiverQuery().execute(receiver_id.getText().toString());
@@ -237,9 +237,23 @@ public class SendActivity extends AppCompatActivity {
                 Toast.makeText(SendActivity.this, "收件人帳號不存在！", Toast.LENGTH_LONG).show();
             }
             else  {
-                Intent intent = new Intent(SendActivity.this, MapTestActivity.class);
-                startActivityForResult(intent,2);
-                Toast.makeText(SendActivity.this, result, Toast.LENGTH_LONG).show();
+                Intent i = new Intent(SendActivity.this, MapTestActivity.class);
+
+                i.putExtra("isReceiver", 0);
+
+                // 使用 bundle 將頁面資訊傳送給下一階段，準備與 SUMO SERVER 連線
+                Bundle bundle = new Bundle();
+                bundle.putString("origin_address",originAddressSelected + et_origin.getText().toString());
+                bundle.putString("dest_address",destAddressSelected + et_dest.getText().toString());
+                bundle.putString("sender_id",sender_id);
+                bundle.putString("cargo_content",cargo_name.getText().toString());
+                bundle.putInt("price",Integer.parseInt(price.getText().toString()));
+                bundle.putDouble("weight",Double.parseDouble(weight.getText().toString()));
+                bundle.putString("receiver_id", receiver_id.getText().toString());
+                bundle.putInt("size",sizeSelected);
+
+                i.putExtras(bundle);
+                startActivity(i);
             }
         }
         // 意味不明的東西

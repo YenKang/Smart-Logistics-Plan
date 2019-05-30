@@ -13,9 +13,9 @@
     <string name="price">價格</string>
 
     <string-array name="size">
-        <item>L</item>
-        <item>M</item>
         <item>S</item>
+        <item>M</item>
+        <item>L</item>
     </string-array>
 
     <string-array name="timeInterval">

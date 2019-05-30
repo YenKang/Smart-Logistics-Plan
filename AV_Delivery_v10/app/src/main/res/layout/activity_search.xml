@@ -25,9 +25,8 @@
         android:id="@+id/search_btn"
         android:layout_width="107dp"
         android:layout_height="58dp"
-        android:layout_marginStart="28dp"
         android:text="查詢"
         app:layout_constraintStart_toEndOf="@+id/textInputLayout"
-        tools:layout_editor_absoluteY="78dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="83dp" />
 </android.support.constraint.ConstraintLayout>

@@ -53,12 +53,92 @@ public class ItemActivity extends AppCompatActivity  {
         // 若為收件人
         if (isReceiver == 1){
             receive_time_btn.setVisibility(View.VISIBLE);
-            arrived_time_name.setText("貨物預計到達時間");
+            arrived_time_name.setText("貨物到達時間");
+            if (order_item.getReceiverTime()==0){
+                arrived_time.setText("尚未選擇取貨時間");
+            }else{
+                switch (order_item.getSenderTime()){
+                    case 1:
+                        arrived_time.setText("09:30");
+                        break;
+                    case 2:
+                        arrived_time.setText("10:00");
+                        break;
+                    case 3:
+                        arrived_time.setText("10:30");
+                        break;
+                    case 4:
+                        arrived_time.setText("11:00");
+                        break;
+                    case 5:
+                        arrived_time.setText("11:30");
+                        break;
+                    case 6:
+                        arrived_time.setText("12:00");
+                        break;
+                    case 7:
+                        arrived_time.setText("12:30");
+                        break;
+                    case 8:
+                        arrived_time.setText("13:00");
+                        break;
+                    case 9:
+                        arrived_time.setText("13:30");
+                        break;
+                    case 10:
+                        arrived_time.setText("14:00");
+                        break;
+                    case 11:
+                        arrived_time.setText("14:30");
+                        break;
+                    case 12:
+                        arrived_time.setText("15:00");
+                        break;
+                }
+            }
             // arrived_time.setText(order_item.getReceiverTime());
         }
         // 若為寄件人
         else if (isReceiver == 0){
-            arrived_time_name.setText("預計收貨時間");
+            arrived_time_name.setText("貨車收貨時間");
+            switch (order_item.getSenderTime()){
+                case 1:
+                    arrived_time.setText("09:30");
+                    break;
+                case 2:
+                    arrived_time.setText("10:00");
+                    break;
+                case 3:
+                    arrived_time.setText("10:30");
+                    break;
+                case 4:
+                    arrived_time.setText("11:00");
+                    break;
+                case 5:
+                    arrived_time.setText("11:30");
+                    break;
+                case 6:
+                    arrived_time.setText("12:00");
+                    break;
+                case 7:
+                    arrived_time.setText("12:30");
+                    break;
+                case 8:
+                    arrived_time.setText("13:00");
+                    break;
+                case 9:
+                    arrived_time.setText("13:30");
+                    break;
+                case 10:
+                    arrived_time.setText("14:00");
+                    break;
+                case 11:
+                    arrived_time.setText("14:30");
+                    break;
+                case 12:
+                    arrived_time.setText("15:00");
+                    break;
+            }
             // arrived_time.setText(order_item.getSenderTime());
         }
 

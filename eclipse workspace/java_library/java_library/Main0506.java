@@ -69,8 +69,6 @@ public class Main0506 {
 			double minDistance=0;
 			double min=0;
 			double timeStep;
-			ArrayList<Double> myList = new ArrayList();
-
 
 			for (int i = 0; i < 360000; i++) {
 				timeStep = (double) conn.do_job_get(Simulation.getTime());
@@ -114,16 +112,15 @@ public class Main0506 {
 							AssignResult assignResult = assignResults.get(j);
 							if (clientInfo.getRequestNo() == 0) {
 								double[] lnglat = new double[4];
-								lnglat = clientInfo.getLatLng();
+								lnglat = clientInfo.getLngLat();
 								double sender_lng = lnglat[0];
 								double sender_lat = lnglat[1];
-								SumoPositionRoadMap sender_roadmap = (SumoPositionRoadMap) conn.do_job_get(Simulation.convertRoad(sender_lng, sender_lat, true, "ignoring"));
+								SumoPositionRoadMap sender_roadmap = (SumoPositionRoadMap) conn.do_job_get
+										(Simulation.convertRoad(sender_lng, sender_lat, true, "ignoring"));
 								String sender_edge = sender_roadmap.edgeID;
 								int sender_lane = sender_roadmap.laneIndex;
 								double sender_pos = sender_roadmap.pos;
-								//conn.do_job_set(Vehicle.changeTarget("17", sender_edge));
-								//SumoStopFlags sf = new SumoStopFlags(false, false, false, false, false);
-								//conn.do_job_set(Vehicle.setStop("17", sender_edge, 1.0, (byte)0, 20.0, sf));
+							
 								synchronized(assignResult) {
 									System.out.println(j);
 									 Thread.sleep(1000);
@@ -138,13 +135,11 @@ public class Main0506 {
 									 }
 				                	 assignResult.notify();
 				                } 
-								clientInfo.assignTest = 5;
-								//int timeArrived = clientInfo.getTimeArrived();
 							}
 							else if (clientInfo.getRequestNo() == 1) {
 								String vid = clientInfo.getTruckNo();
 								double[] lnglat = new double[4];
-								lnglat = clientInfo.getLatLng();
+								//lnglat = clientInfo.getLatLng();
 								double receiver_lng = lnglat[2];
 								double receiver_lat = lnglat[3];
 								SumoPositionRoadMap receiver_roadmap = (SumoPositionRoadMap) conn.do_job_get(Simulation.convertRoad(receiver_lng, receiver_lat, true, "ignoring"));

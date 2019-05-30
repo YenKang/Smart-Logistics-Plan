@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.Parcelable;
 import android.view.View;
 import android.widget.Toast;
@@ -26,7 +28,6 @@ import java.util.ArrayList;
 
 // 根據使用者名稱取得該使用者的 Order 資料
 class OrderQuery extends AsyncTask<String, Integer, String> {
-
 
     Context ctx;
     OrderQuery(Context ctx){

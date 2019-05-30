@@ -1,6 +1,8 @@
 package com.example.bjt.av_delivery_v10;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
@@ -33,12 +35,28 @@ public class AddressActivity extends AppCompatActivity {
     private GridLayout gridLayout;
     private String countySelected = "", townshipSelected = "";
 
+    private Dialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
         gridLayout = findViewById(R.id.root);
         new GetCounty().execute();
+        dialog = ProgressDialog.show(AddressActivity.this,
+                "讀取中", "正在讀取地址資料...",true);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(500);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    dialog.dismiss();
+                }
+            }
+        }).start();
     }
 
     class GetCounty extends AsyncTask<String, Integer, String> {
@@ -124,6 +142,20 @@ public class AddressActivity extends AppCompatActivity {
                                 for (int i = 0; i < arraySize; i++)
                                     gridLayout.removeView(buttons[i]);
                                 new GetTownShip().execute(Integer.toString(countyID));
+                                dialog = ProgressDialog.show(AddressActivity.this,
+                                        "讀取中", "正在讀取地址資料...",true);
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            Thread.sleep(500);
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        } finally {
+                                            dialog.dismiss();
+                                        }
+                                    }
+                                }).start();
                             }
                         });
                     }

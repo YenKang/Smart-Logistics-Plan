@@ -117,6 +117,7 @@ class Server extends Thread {
                 	clientRequest.setSenderId(jsonResponse.getString("sender_id"));
                 	clientRequest.setReceiverId(jsonResponse.getString("receiver_id"));
                 	clientRequest.setTimeArrived(jsonResponse.getInt("time_arrived"));
+                	clientRequest.setContainerNo(jsonResponse.getString("container_id"));
                 }
                 else if (clientRequest.getRequestNo() == 1) {
                 	clientRequest.setTruckNo(jsonResponse.getString("truck_No"));

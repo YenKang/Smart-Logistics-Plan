@@ -1,7 +1,11 @@
 package com.example.bjt.av_delivery_v10;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     private String temp;
     private JSONObject jsonR, jsonW;
     private JSONObject jsonTest;
+
+    private Dialog dialog;
 
     // 點選返回鍵不關閉程式
     /*@Override
@@ -104,6 +110,20 @@ public class MainActivity extends AppCompatActivity {
                 else{
                     String user_name = sharedPreferences.getString("username","");
                     new OrderQuery(MainActivity.this).execute(user_name);
+                    dialog = ProgressDialog.show(MainActivity.this,
+                            "讀取中", "正在讀取使用者訂單資料...",true);
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(1500);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            } finally {
+                                dialog.dismiss();
+                            }
+                        }
+                    }).start();
                 }
                 // Intent i = new Intent(view.getContext(), MyOrderActivity.class);
                 // startActivity(i);

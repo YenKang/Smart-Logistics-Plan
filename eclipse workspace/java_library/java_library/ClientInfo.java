@@ -10,17 +10,23 @@ public class ClientInfo {
 	private String sender_id, receiver_id, cargo_content;
 	private int price, size;
 	private double weight;
-	
 	private String truckNo;
 	
-	public Object assignTest = -99;
-
+	private String containerNo;
 	
 	public ClientInfo() {
 	}
 	
 	public ClientInfo(int requestNo){
 		this.requestNo = requestNo;
+	}
+	
+	public String getContainerNo() {
+		return containerNo;
+	}
+	
+	public void setContainerNo(String container_id) {
+		this.containerNo = container_id;
 	}
 	
 	public void setTruckNo(String truckNo) {
@@ -88,11 +94,11 @@ public class ClientInfo {
 		return weight;
 	}
 	
-	public double[] getLatLng() {
+	public double[] getLngLat() {
 		double[] result= new double[4];
 		result[0] = sender_lng;
 		result[1] = sender_lat;
-		result[2] = receiver_lng; // should be written in "lon"
+		result[2] = receiver_lng; 
 		result[3] = receiver_lat; 
 		return result;
 	}

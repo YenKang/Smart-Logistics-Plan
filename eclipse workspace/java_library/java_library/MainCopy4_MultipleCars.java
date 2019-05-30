@@ -28,6 +28,9 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
+
+import com.sun.xml.internal.bind.v2.model.core.ID;
+
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -39,29 +42,34 @@ public class MainCopy4_MultipleCars {
 	// static String config_file = "simulation/map.sumo.cfg";
 	  static String config_file = "simulation4/map.sumo.cfg";
 
-	// static double step_length = 0.01; // version1
-
 	static double step_length = 0.01;
 	//double vehicle_speed = 5.0; //5 [m/s]
 	
-
+	// 宣告「使用者資訊陣列」(儲存從 android 發送來的 request 資料) 以及「指派成功與否」(以通知 android 端) 的陣列
+	static ArrayList<ClientInfo> clientInfos = new ArrayList<ClientInfo>();
+	static ArrayList<AssignResult> assignResults = new ArrayList<AssignResult>();
+	
 	public static void main(String[] args) {
 
+		Thread server = new Server(clientInfos, assignResults);
+		server.start();
+		
+		// 正式進入模擬階段
 		try {
 			
+			// 設定模擬環境
 			SumoTraciConnection conn = new SumoTraciConnection(sumo_bin, config_file);
 			conn.addOption("step-length", step_length + "");
 			conn.addOption("start", "true"); // start sumo immediately
 			
+			// 初始化派遣排程資訊
 			Map  CarsMap_with_Schedule = new HashMap();
 			//CarsMap_with_Schedule = {"1"=[570, 660], "2"=[660]};
-			
 			
 			ArrayList v1_TimeSchedule = new ArrayList();
 			v1_TimeSchedule.add(570);
 			v1_TimeSchedule.add(660);
 			CarsMap_with_Schedule.put("1", v1_TimeSchedule);
-			
 			
 			ArrayList v2_TimeSchedule = new ArrayList();
 			v2_TimeSchedule.add(660);
@@ -80,8 +88,7 @@ public class MainCopy4_MultipleCars {
 			v1_570_to_requestInfo.add(3937.13);
 			v1_570_to_requestInfo.add(5039.67);
 			v1_570_to_requestInfo.add(50.0);
-		
-			
+				
 			ArrayList v1_660_to_requestInfo = new ArrayList();
 			v1_660_to_requestInfo.add("273445903#7");
 			v1_660_to_requestInfo.add(2966.38);
@@ -110,9 +117,12 @@ public class MainCopy4_MultipleCars {
 			
 			System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
 			
+			///////////////////////////////////////////////////////////////////////////////////////////
+			// 開始啟動 SUMO SERVER 進行模擬
 			// start Traci Server
 			conn.runServer(8080);
 			conn.setOrder(1);
+			///////////////////////////////////////////////////////////////////////////////////////////
 			
 			Map  CarsMapWithSchedule = new HashMap();
 			//ArrayList v1_sender_TimeSchedule = new ArrayList();
@@ -120,17 +130,93 @@ public class MainCopy4_MultipleCars {
 			double vehicle_speed = 4.0; //4 [m/s]
 			
 			SumoColor veh1_color = new SumoColor(255 ,105, 180,0);
-			conn.do_job_set(Vehicle.setColor("1", veh1_color));
-			
-			
-			
+			conn.do_job_set(Vehicle.setColor("1", veh1_color));		
 		
-			for (int i = 0; i < 360000000; i++) {
-				
-				
+			for (int i = 0; i < 3600000; i++) {
+							
 				conn.do_timestep();
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
-				//System.out.println("timeSeconds:"+ timeSeconds);
+				
+				// 進行資料庫的初始化，將設定情境中的車輛、貨櫃資料上傳資料庫
+				if (i == 10) {
+					// 建立 JDBC 物件準備初始化
+					JDBC_AVD init_DB = new JDBC_AVD();
+					for (int j = 1; j < 4; j++) {
+						// 取得目前模擬環境中的3台車之經緯度、速度，並初始化至資料庫
+						SumoPosition2D vPosition = (SumoPosition2D) conn.do_job_get(Vehicle.getPosition(Integer.toString( j )));
+						SumoPosition2D v_geo_position = (SumoPosition2D)conn.do_job_get(Simulation.convertGeo(vPosition.x, vPosition.y,false ));
+						double x = v_geo_position.x;
+						double y = v_geo_position.y;
+						double speed = (double)conn.do_job_get(Vehicle.getSpeed(Integer.toString(j)));
+						init_DB.insertVehicle(Integer.toString(j), y, x, speed);
+						System.out.println(x+y);
+						if ( j == 1) {
+							init_DB.insertContainer("111", 1, 1, "0", "1");
+							init_DB.insertContainer("112", 1, 1, "0", "1");
+							init_DB.insertContainer("113", 1, 0, "0", "1");
+							init_DB.insertContainer("121", 2, 1, "0", "1");
+							init_DB.insertContainer("122", 2, 0, "0", "1");
+							init_DB.insertContainer("123", 2, 0, "0", "1");
+							init_DB.insertContainer("131", 3, 0, "0", "1");
+							init_DB.insertContainer("132", 3, 0, "0", "1");
+							init_DB.insertContainer("133", 3, 0, "0", "1");
+						}
+						else if ( j == 2) {
+							init_DB.insertContainer("211", 1, 0, "0", "2");
+							init_DB.insertContainer("212", 1, 0, "0", "2");
+							init_DB.insertContainer("213", 1, 0, "0", "2");
+							init_DB.insertContainer("221", 2, 1, "0", "2");
+							init_DB.insertContainer("222", 2, 0, "0", "2");
+							init_DB.insertContainer("223", 2, 0, "0", "2");
+							init_DB.insertContainer("231", 3, 0, "0", "2");
+							init_DB.insertContainer("232", 3, 0, "0", "2");
+							init_DB.insertContainer("233", 3, 0, "0", "2");
+						}
+						else if ( j == 3) {
+							init_DB.insertContainer("311", 3, 0, "0", "3");
+							init_DB.insertContainer("312", 3, 0, "0", "3");
+							init_DB.insertContainer("313", 3, 0, "0", "3");
+							init_DB.insertContainer("321", 3, 0, "0", "3");
+							init_DB.insertContainer("322", 3, 0, "0", "3");
+							init_DB.insertContainer("323", 3, 0, "0", "3");
+							init_DB.insertContainer("331", 3, 0, "0", "3");
+							init_DB.insertContainer("332", 3, 0, "0", "3");
+							init_DB.insertContainer("333", 3, 0, "0", "3");
+						}
+					}
+				}
+				
+				// 定期監聽是否有 Requset 由 socket 進入
+				if ( i % 100 == 0) {
+					if (clientInfos.size() > 0) {
+						for (int j =0; j < clientInfos.size(); j++) {
+							// 若有發現 request，則一一取出作處理
+							ClientInfo clientInfo = clientInfos.get(j);
+							AssignResult assignResult = assignResults.get(j);
+							// 若 RequestNo 為 0，代表為 sender 下訂單的動作
+							if (clientInfo.getRequestNo() == 0) {
+								// 取出 sender 資料中的經緯度，利用 convertRoad 將其轉換為 RoadMap 格式，並取得詳細道路資訊
+								double[] lnglat = clientInfo.getLngLat();
+								double sender_lng = lnglat[0];
+								double sender_lat = lnglat[1];
+								SumoPositionRoadMap sender_roadmap = (SumoPositionRoadMap) conn.do_job_get(
+										Simulation.convertRoad(sender_lng, sender_lat, true, "ignoring"));
+								String sender_edge = sender_roadmap.edgeID;
+								int sender_lane = sender_roadmap.laneIndex;
+								double sender_pos = sender_roadmap.pos;
+								// 開始派遣演算法
+								
+								
+							}
+							// 若 RequestNo 為 0，代表為 receiver 決定取貨時間
+							else if (clientInfo.getRequestNo() == 1) {
+								
+							}
+						}
+					}
+				}
+				
+				
 				
 				if(timeSeconds==50.0 ) {
 
@@ -154,7 +240,6 @@ public class MainCopy4_MultipleCars {
 						}
 						
 						System.out.println("veh_array after removing:"+ veh_array);
-						
 				
 						Map  Map_requestInfo = new HashMap();
 						Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get(vehID);
@@ -183,9 +268,6 @@ public class MainCopy4_MultipleCars {
 							stages_list.add(stage);
 						}
 						
-				
-						
-						
 						for(int stageIndex=1; stageIndex<stages_list.size();stageIndex++) {
 							//(((SumoStage) stages_list.get(stageIndex)).edges).size();
 							SumoStage each_stage= (SumoStage) stages_list.get(stageIndex);
@@ -194,10 +276,8 @@ public class MainCopy4_MultipleCars {
 								String edge= each_stage.edges.get(edgeIndex);
 								
 								((SumoStage)stages_list.get(0)).edges.add(edge);
-							}
-							
+							}	
 						}
-						
 						
 						routes = ((SumoStage)stages_list.get(0)).edges;
 						
@@ -222,18 +302,10 @@ public class MainCopy4_MultipleCars {
 						
 							conn.do_job_set(Vehicle.setStop(vehID, edge, pos, (byte)0,  0.0, 
 									new SumoStopFlags(false, false, false, false, false), 
-									pos, 60.0*((Integer) veh_array.get(veh_array_index)-530)));
-							
-						
-							
+									pos, 60.0*((Integer) veh_array.get(veh_array_index)-530)));		
 						}
 						//conn.do_job_set(Vehicle.setStop("1", Edge1, 50.0, (byte)0,  0.0, sf_v1, 30.0, 2400.0));
-					}
-
-					
-					
-			
-					
+					}				
 				}
 				
 				// At 09:05, we receive the request of sender4 with 10:30
@@ -914,24 +986,12 @@ public class MainCopy4_MultipleCars {
 						}
 						//conn.do_job_set(Vehicle.setStop("1", Edge1, 50.0, (byte)0,  0.0, sf_v1, 30.0, 2400.0));
 					}
-
-					
-					
-			
-					
-				}
-				
-			
-			
-	
 		
+				}
 			}
 			conn.close();
-
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-
 	}
-
 }

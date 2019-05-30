@@ -81,16 +81,16 @@ public class JDBC_AVD {
 	  }
 	  
 	  // 初始化貨櫃資訊
-	  public void insertContainer(String container_number, int size, String lock_password, int truck_id) {
+	  public void insertContainer(String container_number, int size, int status, String lock_password, String truck_id) {
 		   String sql = "insert into container (id, container_number, size, status, lock_password, truck_id) values (?,?,?,?,?,?)";
 			   try {
 				   pst = (PreparedStatement) con.prepareStatement(sql);
 				   pst.setInt(1, 0);
 				   pst.setString(2, container_number);
 				   pst.setInt(3, size);
-				   pst.setInt(4, 0);
+				   pst.setInt(4, status);
 				   pst.setString(5, lock_password);
-				   pst.setInt(6, truck_id);
+				   pst.setString(6, truck_id);
 				   pst.executeUpdate();
 				   
 			   } catch (SQLException e) {

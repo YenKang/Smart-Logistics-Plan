@@ -1,8 +1,14 @@
 package com.example.bjt.av_delivery_v10;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,6 +45,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import static java.security.AccessController.getContext;
+
 public class MapTestActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private Socket clientSocket;
@@ -51,7 +59,12 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
     private int timeArrived;
     private double weight;
     private Double lng1, lat1, lng2, lat2, cameraLng, cameraLat;
-    private Button submit_button;
+    private Button submit_button, cancel_button;
+
+    private Dialog dialog;
+    private Handler handler;
+
+    private String container_id;
 
     private int isReceiver;
     private Item order_item;
@@ -62,7 +75,9 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_test);
+        //Activity sendActivity = SendActivity.class;
         submit_button = findViewById(R.id.btn_submit);
+        cancel_button = findViewById(R.id.btn_cancel);
 
         Intent intent = getIntent();
         isReceiver = intent.getIntExtra("isReceiver", -1);
@@ -98,8 +113,7 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
             hashmap.put("sender_lat", lat1);
             hashmap.put("receiver_lng", lng2);
             hashmap.put("receiver_lat", lat2);
-            hashmap.put("time_arrived", timeArrived);
-            jsonW = new JSONObject(hashmap);
+            hashmap.put("container_id","000");
         }
         else if (isReceiver == 1 ){
             order_item = (Item)intent.getExtras().getSerializable("order_item");
@@ -115,6 +129,8 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
             lng2 = lnglat[2];
             lat2 = lnglat[3];
 
+            container_id = order_item.getContainerNo();
+
             hashmap.put("sender_id", sender_id);
             hashmap.put("receiver_id",receiver_id);
             hashmap.put("price",price);
@@ -126,7 +142,7 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
             hashmap.put("sender_lat", lat1);
             hashmap.put("receiver_lng", lng2);
             hashmap.put("receiver_lat", lat2);
-            jsonW = new JSONObject(hashmap);
+            hashmap.put("container_id", container_id);
         }
 
         cameraLng = (lng1+lng2)/2;
@@ -158,12 +174,37 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
         View.OnClickListener submitListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                jsonW = new JSONObject(hashmap);
                 Thread threadSocket = new Thread(Connection);
                 threadSocket.start();
                 System.out.println("123");
             }
         };
         submit_button.setOnClickListener(submitListener);
+
+        // 使用者點選取消
+        View.OnClickListener cancelListener = new View.OnClickListener() {
+            @SuppressLint("HandlerLeak")
+            @Override
+            public void onClick(View view) {
+                //finish();
+                dialog = ProgressDialog.show(MapTestActivity.this,
+                        "讀取中", "正在確認派遣車輛...",true);
+                handler = new Handler(){
+                    @Override
+                    public void handleMessage(Message msg) {
+                        super.handleMessage(msg);
+                        if(msg.what == 1) {
+                            dialog.dismiss();
+                        }
+                    }
+                };
+                jsonW = new JSONObject(hashmap);
+                Thread threadSocket = new Thread(Connection);
+                threadSocket.start();
+            }
+        };
+        cancel_button.setOnClickListener(cancelListener);
 
     }
     @Override
@@ -200,7 +241,8 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
         }
         return point;
     }
-    // 測試與 sumo 進行溝通，並指定上貨、卸貨時間
+
+    // 與 sumo 進行溝通，並指定上貨、卸貨時間
     private Runnable Connection = new Runnable() {
         @Override
         public void run() {
@@ -229,6 +271,10 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
                 br.close();
                 output.close();
                 input.close();
+                // 通知 UI 關閉讀取畫面
+                Message msg = new Message();
+                msg.what = 1;
+                handler.sendMessage(msg);
                 //clientSocket.close();
                 /*while (clientSocket.isConnected()) {
                     //宣告一個緩衝,從br串流讀取 Server 端傳來的訊息
