@@ -14,6 +14,8 @@ import java.util.concurrent.Executors;
 
 import org.json.JSONObject;
 
+import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
+
 import sun.applet.Main;
 
 class Server extends Thread {
@@ -23,18 +25,17 @@ class Server extends Thread {
 	 
 	// 宣告ClientInfo陣列以接收從主程式傳來的客戶資料陣列
 	ArrayList<ClientInfo> clientInfos = new ArrayList<ClientInfo>();
-	int assignSuccess;
+	ArrayList<AssignResult> assignResults = new ArrayList<AssignResult>();
 	
 	// 初始化時取得客戶資料陣列，準備於其中增加此次連線的客戶資料
-	public Server(ArrayList<ClientInfo> clientInfos, int assignSuccessFromSumo) {
+	public Server(ArrayList<ClientInfo> clientInfos, ArrayList<AssignResult> assignResults) {
 		this.clientInfos= clientInfos;
-		this.assignSuccess = assignSuccessFromSumo;
-		
+		this.assignResults = assignResults;
 	}
 	
 	public void run(){
         System.out.println("Hello World in MyThread");
-        //Server server = new Server();
+        // Server server = new Server();
 		listening();
     }
 	
@@ -45,8 +46,10 @@ class Server extends Thread {
 		try {			
 			serverSocket = new ServerSocket(server_port);
 			System.out.println("等待連線中..."); 
+			// 開始等待 android 連線
 			while(true) {
 				Socket socket = serverSocket.accept();
+				// 有連線進來則開啟新的 thread 並準備做派遣處理
 				threadExecutor.execute(new RequestThread(socket));
 			}
 		} catch (Exception e) {
@@ -95,7 +98,7 @@ class Server extends Thread {
                     response = response + line;
                 }
                 this.clientSocket.isInputShutdown();
-                System.out.println(response);
+                // System.out.println(response);
                 JSONObject jsonResponse = new JSONObject(response);
                 System.out.println(jsonResponse);
                 
@@ -120,14 +123,21 @@ class Server extends Thread {
                 	clientRequest.setLatLng(0.0, 0.0, jsonResponse.getDouble("receiver_lng"), jsonResponse.getDouble("receiver_lat"));
                 }
                 clientInfos.add(clientRequest);
-    		    
+                AssignResult assignResult = new AssignResult();
+                assignResults.add(assignResult);
+                
                 /// 輸出
                 output = new DataOutputStream(this.clientSocket.getOutputStream());
-                //System.out.println(clientRequest.assignTest);
-                Thread.sleep(3000);
-                //System.out.println(clientRequest.assignTest);
+                
+                System.out.println(assignResult.getResult());
+                //Thread.sleep(3000);
+                synchronized(assignResult) {
+                	 assignResult.wait();
+                }        
+                System.out.println(assignResult.getResult());
+                
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(output));
-            	bufferedWriter.write(Integer.toString(clientRequest.assignTest)+"\n");
+            	//bufferedWriter.write((clientRequest.assignTest)+"\n");
             	bufferedWriter.flush();
             	bufferedWriter.close();
           

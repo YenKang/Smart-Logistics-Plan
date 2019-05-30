@@ -13,7 +13,7 @@ public class ClientInfo {
 	
 	private String truckNo;
 	
-	public int assignTest;
+	public Object assignTest = -99;
 
 	
 	public ClientInfo() {
