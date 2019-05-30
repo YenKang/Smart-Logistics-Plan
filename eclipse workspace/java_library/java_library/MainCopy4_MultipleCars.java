@@ -45,7 +45,7 @@ public class MainCopy4_MultipleCars {
 	static double step_length = 0.01;
 	//double vehicle_speed = 5.0; //5 [m/s]
 	
-	// «Å§i¡u¨Ï¥ÎªÌ¸ê°T°}¦C¡v(Àx¦s±q android µo°e¨Óªº request ¸ê®Æ) ¥H¤Î¡u«ü¬£¦¨¥\»P§_¡v(¥H³qª¾ android ºÝ) ªº°}¦C
+	// ï¿½Å§iï¿½uï¿½Ï¥ÎªÌ¸ï¿½Tï¿½}ï¿½Cï¿½v(ï¿½xï¿½sï¿½q android ï¿½oï¿½eï¿½Óªï¿½ request ï¿½ï¿½ï¿½) ï¿½Hï¿½Î¡uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½Pï¿½_ï¿½v(ï¿½Hï¿½qï¿½ï¿½ android ï¿½ï¿½) ï¿½ï¿½ï¿½}ï¿½C
 	static ArrayList<ClientInfo> clientInfos = new ArrayList<ClientInfo>();
 	static ArrayList<AssignResult> assignResults = new ArrayList<AssignResult>();
 	
@@ -54,15 +54,56 @@ public class MainCopy4_MultipleCars {
 		Thread server = new Server(clientInfos, assignResults);
 		server.start();
 		
-		// ¥¿¦¡¶i¤J¼ÒÀÀ¶¥¬q
+		// ï¿½ï¿½ï¿½ï¿½ï¿½iï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½q
 		try {
 			
-			// ³]©w¼ÒÀÀÀô¹Ò
+			// ï¿½]ï¿½wï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			SumoTraciConnection conn = new SumoTraciConnection(sumo_bin, config_file);
 			conn.addOption("step-length", step_length + "");
 			conn.addOption("start", "true"); // start sumo immediately
 			
-			// ªì©l¤Æ¬£»º±Æµ{¸ê°T
+			Map  CarsMapSchedule_afterBoxFilter = new HashMap();
+			Map  CarsMap_timeToRequestInfo_afterBoxFilter = new HashMap();
+			
+			Map  cars_Box = new HashMap();
+			ArrayList v1_small_Box = new ArrayList();
+			v1_small_Box.add(111);
+			v1_small_Box.add(112);
+			v1_small_Box.add(113);
+			ArrayList v1_medium_Box = new ArrayList();
+			ArrayList v1_large_Box = new ArrayList();
+			Map  v1_Box = new HashMap();
+			v1_Box.put(1, v1_small_Box); // "1" means for small box
+			v1_Box.put(2, v1_medium_Box); // "2" means for medium box
+			v1_Box.put(3, v1_large_Box); // "3" means for large box
+			System.out.println("v1_Box:"+ v1_Box);
+			
+			ArrayList v2_small_Box = new ArrayList();
+			ArrayList v2_medium_Box = new ArrayList();
+			v2_medium_Box.add(221);
+			ArrayList v2_large_Box = new ArrayList();
+			Map  v2_Box = new HashMap();
+			v2_Box.put(1, v2_small_Box); // "1" means for small box
+			v2_Box.put(2, v2_medium_Box); // "2" means for medium box
+			v2_Box.put(3, v2_large_Box); // "3" means for large box
+			System.out.println("v2_Box:"+ v2_Box);
+			
+			ArrayList v3_small_Box = new ArrayList();
+			ArrayList v3_medium_Box = new ArrayList();
+			ArrayList v3_large_Box = new ArrayList();
+			Map  v3_Box = new HashMap();
+			v3_Box.put(1, v3_small_Box); // "1" means for small box
+			v3_Box.put(2, v3_medium_Box); // "2" means for medium box
+			v3_Box.put(3, v3_large_Box); // "3" means for large box
+			System.out.println("v3_Box:"+ v3_Box);
+			
+			cars_Box.put(1, v1_Box);
+			cars_Box.put(2, v2_Box);
+			cars_Box.put(3, v3_Box);
+			
+			System.out.println("cars_Box:"+ cars_Box);
+			
+			
 			Map  CarsMap_with_Schedule = new HashMap();
 			//CarsMap_with_Schedule = {"1"=[570, 660], "2"=[660]};
 			
@@ -111,14 +152,16 @@ public class MainCopy4_MultipleCars {
 			v2_time_to_requestInfo.put(660, v2_660_to_requestInfo);
 			
 			System.out.println("v2_time_to_requestInfo:"+ v2_time_to_requestInfo);
+			Map  v3_time_to_requestInfo = new HashMap();
 			
 			CarsMap_time_to_requestInfo.put("1", v1_time_to_requestInfo);
 			CarsMap_time_to_requestInfo.put("2", v2_time_to_requestInfo);
+			CarsMap_time_to_requestInfo.put("3", v3_time_to_requestInfo);
 			
 			System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
 			
 			///////////////////////////////////////////////////////////////////////////////////////////
-			// ¶}©l±Ò°Ê SUMO SERVER ¶i¦æ¼ÒÀÀ
+			// ï¿½}ï¿½lï¿½Ò°ï¿½ SUMO SERVER ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½
 			// start Traci Server
 			conn.runServer(8080);
 			conn.setOrder(1);
@@ -137,12 +180,12 @@ public class MainCopy4_MultipleCars {
 				conn.do_timestep();
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
 				
-				// ¶i¦æ¸ê®Æ®wªºªì©l¤Æ¡A±N³]©w±¡¹Ò¤¤ªº¨®½ø¡B³fÂd¸ê®Æ¤W¶Ç¸ê®Æ®w
+				// ï¿½iï¿½ï¿½ï¿½Æ®wï¿½ï¿½ï¿½ï¿½lï¿½Æ¡Aï¿½Nï¿½]ï¿½wï¿½ï¿½ï¿½Ò¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Bï¿½fï¿½dï¿½ï¿½Æ¤Wï¿½Ç¸ï¿½Æ®w
 				if (i == 10) {
-					// «Ø¥ß JDBC ª«¥ó·Ç³Æªì©l¤Æ
+					// ï¿½Ø¥ï¿½ JDBC ï¿½ï¿½ï¿½ï¿½Ç³Æªï¿½lï¿½ï¿½
 					JDBC_AVD init_DB = new JDBC_AVD();
 					for (int j = 1; j < 4; j++) {
-						// ¨ú±o¥Ø«e¼ÒÀÀÀô¹Ò¤¤ªº3¥x¨®¤§¸g½n«×¡B³t«×¡A¨Ãªì©l¤Æ¦Ü¸ê®Æ®w
+						// ï¿½ï¿½ï¿½oï¿½Ø«eï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¤ï¿½ï¿½ï¿½3ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½gï¿½nï¿½×¡Bï¿½tï¿½×¡Aï¿½Ãªï¿½lï¿½Æ¦Ü¸ï¿½Æ®w
 						SumoPosition2D vPosition = (SumoPosition2D) conn.do_job_get(Vehicle.getPosition(Integer.toString( j )));
 						SumoPosition2D v_geo_position = (SumoPosition2D)conn.do_job_get(Simulation.convertGeo(vPosition.x, vPosition.y,false ));
 						double x = v_geo_position.x;
@@ -186,16 +229,16 @@ public class MainCopy4_MultipleCars {
 					}
 				}
 				
-				// ©w´ÁºÊÅ¥¬O§_¦³ Requset ¥Ñ socket ¶i¤J
+				// ï¿½wï¿½ï¿½ï¿½ï¿½Å¥ï¿½Oï¿½_ï¿½ï¿½ Requset ï¿½ï¿½ socket ï¿½iï¿½J
 				if ( i % 100 == 0) {
 					if (clientInfos.size() > 0) {
 						for (int j =0; j < clientInfos.size(); j++) {
-							// ­Y¦³µo²{ request¡A«h¤@¤@¨ú¥X§@³B²z
+							// ï¿½Yï¿½ï¿½ï¿½oï¿½{ requestï¿½Aï¿½hï¿½@ï¿½@ï¿½ï¿½ï¿½Xï¿½@ï¿½Bï¿½z
 							ClientInfo clientInfo = clientInfos.get(j);
 							AssignResult assignResult = assignResults.get(j);
-							// ­Y RequestNo ¬° 0¡A¥Nªí¬° sender ¤U­q³æªº°Ê§@
+							// ï¿½Y RequestNo ï¿½ï¿½ 0ï¿½Aï¿½Nï¿½ï¿½ sender ï¿½Uï¿½qï¿½æªºï¿½Ê§@
 							if (clientInfo.getRequestNo() == 0) {
-								// ¨ú¥X sender ¸ê®Æ¤¤ªº¸g½n«×¡A§Q¥Î convertRoad ±N¨äÂà´«¬° RoadMap ®æ¦¡¡A¨Ã¨ú±o¸Ô²Ó¹D¸ô¸ê°T
+								// ï¿½ï¿½ï¿½X sender ï¿½ï¿½Æ¤ï¿½ï¿½ï¿½ï¿½gï¿½nï¿½×¡Aï¿½Qï¿½ï¿½ convertRoad ï¿½Nï¿½ï¿½ï¿½à´«ï¿½ï¿½ RoadMap ï¿½æ¦¡ï¿½Aï¿½Ã¨ï¿½ï¿½oï¿½Ô²Ó¹Dï¿½ï¿½ï¿½T
 								double[] lnglat = clientInfo.getLngLat();
 								double sender_lng = lnglat[0];
 								double sender_lat = lnglat[1];
@@ -204,11 +247,11 @@ public class MainCopy4_MultipleCars {
 								String sender_edge = sender_roadmap.edgeID;
 								int sender_lane = sender_roadmap.laneIndex;
 								double sender_pos = sender_roadmap.pos;
-								// ¶}©l¬£»ººtºâªk
+								// ï¿½}ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½tï¿½ï¿½k
 								
 								
 							}
-							// ­Y RequestNo ¬° 0¡A¥Nªí¬° receiver ¨M©w¨ú³f®É¶¡
+							// ï¿½Y RequestNo ï¿½ï¿½ 0ï¿½Aï¿½Nï¿½ï¿½ receiver ï¿½Mï¿½wï¿½ï¿½ï¿½fï¿½É¶ï¿½
 							else if (clientInfo.getRequestNo() == 1) {
 								
 							}
@@ -218,15 +261,49 @@ public class MainCopy4_MultipleCars {
 				
 				
 				
+				
+				if(timeSeconds==30.0) {
+					System.out.println("-------------------------");
+					System.out.println("timeSeconds:"+ timeSeconds);
+					
+					int insert_BoxSize=1; // small box insertion
+					CarsMapSchedule_afterBoxFilter = CarsMap_with_Schedule;
+					CarsMap_timeToRequestInfo_afterBoxFilter= CarsMap_time_to_requestInfo;
+					
+					System.out.println("CarsMapSchedule_afterBoxFilter"+ CarsMapSchedule_afterBoxFilter);
+					System.out.println("CarsMap_timeToRequestInfo_afterBoxFilter:"+ CarsMap_timeToRequestInfo_afterBoxFilter);
+					
+					for(int veh=1;veh<cars_Box.size()+1;veh++) {
+						String vehID = Integer.toString(veh); 
+						Map  veh_box = new HashMap();
+						ArrayList insert_Size_Box = new ArrayList();
+						veh_box =(Map) cars_Box.get(veh);
+						
+						int insert_capacity = ((ArrayList) veh_box.get(insert_BoxSize)).size();
+						//insert_Size_Box.size();
+						System.out.println("veh:"+ veh + "insert_capacity:"+ insert_capacity);
+						if(insert_capacity==3) {
+							CarsMapSchedule_afterBoxFilter.remove(vehID);
+							CarsMap_timeToRequestInfo_afterBoxFilter.remove(vehID);
+						}
+					}
+					
+					System.out.println("CarsMapSchedule_afterBoxFilter"+ CarsMapSchedule_afterBoxFilter);
+					System.out.println("CarsMap_timeToRequestInfo_afterBoxFilter:"+ CarsMap_timeToRequestInfo_afterBoxFilter);
+					
+				}
+				
 				if(timeSeconds==50.0 ) {
 
 					System.out.println("-------------------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
 					double currentMin = (540+ timeSeconds/60.0);
-			
-					for(int veh=1; veh<=CarsMap_with_Schedule.size();veh++) {
+					
+					
+					for(Object vehID:CarsMapSchedule_afterBoxFilter.keySet()) {
+						
 						System.out.println("---------------------------------");
-						String vehID = Integer.toString(veh); 
+						//String vehID = Integer.toString(veh); 
 						ArrayList veh_array = new ArrayList();//veh_array:[570, 660]
 						
 						veh_array = (ArrayList)CarsMap_with_Schedule.get(vehID);
@@ -248,7 +325,7 @@ public class MainCopy4_MultipleCars {
 						ArrayList stages_list = new ArrayList();
 						SumoStringList routes = new SumoStringList();
 						
-						String curEdge = (String)conn.do_job_get(Vehicle.getRoadID(vehID));
+						String curEdge = (String)conn.do_job_get(Vehicle.getRoadID((String) vehID));
 						System.out.println("curEdge:"+ curEdge);
 						edges_list.add(curEdge);
 						
@@ -289,18 +366,18 @@ public class MainCopy4_MultipleCars {
 						
 						System.out.println("newRoute_before:"+ newRoute);
 						
-						System.out.println("veh:"+ veh);
+						System.out.println("veh:"+ vehID);
 						System.out.println("veh_array:"+veh_array);
 						System.out.println("Map_requestInfo:"+ Map_requestInfo);
 						
 						System.out.println("edges_list:"+ edges_list);
-						conn.do_job_set(Vehicle.setRoute(vehID, routes));
+						conn.do_job_set(Vehicle.setRoute((String) vehID, routes));
 						
 						for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {
 							String edge = (String) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(0); // 570
 							double pos =  (double) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(3);
 						
-							conn.do_job_set(Vehicle.setStop(vehID, edge, pos, (byte)0,  0.0, 
+							conn.do_job_set(Vehicle.setStop((String) vehID, edge, pos, (byte)0,  0.0, 
 									new SumoStopFlags(false, false, false, false, false), 
 									pos, 60.0*((Integer) veh_array.get(veh_array_index)-530)));		
 						}
@@ -501,7 +578,9 @@ public class MainCopy4_MultipleCars {
 						ArrayList veh_array = new ArrayList();//veh_array:[570, 660]
 						
 						veh_array = (ArrayList)CarsMap_with_Schedule.get(vehID);
+						
 						veh_array.add((int)currentMin);
+						
 						Collections.sort(veh_array);
 						System.out.println("Collections.sort(veh_array):"+ veh_array);
 						int remove_time =0;
@@ -534,6 +613,7 @@ public class MainCopy4_MultipleCars {
 							String vType ="truck"; 
 							double depart = 0.0; 
 							int routingMode = 0;
+							
 							SumoStage stage = (SumoStage)conn.do_job_get(
 									Simulation.findRoute((String)edges_list.get(edge_index), (String)edges_list.get(edge_index+1), vType, depart,routingMode));
 							stages_list.add(stage);
