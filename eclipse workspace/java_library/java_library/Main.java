@@ -106,7 +106,7 @@ public class Main {
 							ClientInfo clientInfo = clientInfos.get(j);
 							if (clientInfo.getRequestNo()==0) {
 								double[] lnglat = new double[4];
-								lnglat = clientInfo.getLatLng();
+								//lnglat = clientInfo.getLatLng();
 								int timeArrived = clientInfo.getTimeArrived();
 							}
 						}

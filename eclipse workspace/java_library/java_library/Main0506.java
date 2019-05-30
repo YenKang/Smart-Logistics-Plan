@@ -107,12 +107,12 @@ public class Main0506 {
 
 					if (clientInfos.size() >0) {
 						//System.out.println(clientInfos.size());
-						for (int j  = 0; j < clientInfos.size(); j++) {
+				for (int j  = 0; j < clientInfos.size(); j++) {
 							ClientInfo clientInfo = clientInfos.get(j);
 							AssignResult assignResult = assignResults.get(j);
 							if (clientInfo.getRequestNo() == 0) {
 								double[] lnglat = new double[4];
-								lnglat = clientInfo.getLngLat();
+								//lnglat = clientInfo.getLngLat();
 								double sender_lng = lnglat[0];
 								double sender_lat = lnglat[1];
 								SumoPositionRoadMap sender_roadmap = (SumoPositionRoadMap) conn.do_job_get

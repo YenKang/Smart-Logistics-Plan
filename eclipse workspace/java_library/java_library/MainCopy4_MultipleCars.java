@@ -45,7 +45,7 @@ public class MainCopy4_MultipleCars {
 	static double step_length = 0.01;
 	//double vehicle_speed = 5.0; //5 [m/s]
 	
-	// �ŧi�u�ϥΪ̸�T�}�C�v(�x�s�q android �o�e�Ӫ� request ���) �H�Ρu�������\�P�_�v(�H�q�� android ��) ���}�C
+	// 
 	static ArrayList<ClientInfo> clientInfos = new ArrayList<ClientInfo>();
 	static ArrayList<AssignResult> assignResults = new ArrayList<AssignResult>();
 	
@@ -54,10 +54,10 @@ public class MainCopy4_MultipleCars {
 		Thread server = new Server(clientInfos, assignResults);
 		server.start();
 		
-		// �����i�J�������q
+		// 
 		try {
 			
-			// �]�w�������
+			// 
 			SumoTraciConnection conn = new SumoTraciConnection(sumo_bin, config_file);
 			conn.addOption("step-length", step_length + "");
 			conn.addOption("start", "true"); // start sumo immediately
@@ -161,7 +161,7 @@ public class MainCopy4_MultipleCars {
 			System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
 			
 			///////////////////////////////////////////////////////////////////////////////////////////
-			// �}�l�Ұ� SUMO SERVER �i�����
+			// 
 			// start Traci Server
 			conn.runServer(8080);
 			conn.setOrder(1);
@@ -180,12 +180,12 @@ public class MainCopy4_MultipleCars {
 				conn.do_timestep();
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
 				
-				// �i���Ʈw����l�ơA�N�]�w���Ҥ��������B�f�d��ƤW�Ǹ�Ʈw
+				// 
 				if (i == 10) {
-					// �إ� JDBC ����ǳƪ�l��
+					// 
 					JDBC_AVD init_DB = new JDBC_AVD();
 					for (int j = 1; j < 4; j++) {
-						// ���o�ثe������Ҥ���3�x�����g�n�סB�t�סA�ê�l�Ʀܸ�Ʈw
+						// 
 						SumoPosition2D vPosition = (SumoPosition2D) conn.do_job_get(Vehicle.getPosition(Integer.toString( j )));
 						SumoPosition2D v_geo_position = (SumoPosition2D)conn.do_job_get(Simulation.convertGeo(vPosition.x, vPosition.y,false ));
 						double x = v_geo_position.x;
@@ -229,16 +229,16 @@ public class MainCopy4_MultipleCars {
 					}
 				}
 				
-				// �w����ť�O�_�� Requset �� socket �i�J
+				// 
 				if ( i % 100 == 0) {
 					if (clientInfos.size() > 0) {
 						for (int j =0; j < clientInfos.size(); j++) {
-							// �Y���o�{ request�A�h�@�@���X�@�B�z
+							// 
 							ClientInfo clientInfo = clientInfos.get(j);
 							AssignResult assignResult = assignResults.get(j);
-							// �Y RequestNo �� 0�A�N�� sender �U�q�檺�ʧ@
+							// 
 							if (clientInfo.getRequestNo() == 0) {
-								// ���X sender ��Ƥ����g�n�סA�Q�� convertRoad �N���ഫ�� RoadMap �榡�A�è��o�ԲӹD���T
+								// 
 								double[] lnglat = clientInfo.getLngLat();
 								double sender_lng = lnglat[0];
 								double sender_lat = lnglat[1];
@@ -247,11 +247,11 @@ public class MainCopy4_MultipleCars {
 								String sender_edge = sender_roadmap.edgeID;
 								int sender_lane = sender_roadmap.laneIndex;
 								double sender_pos = sender_roadmap.pos;
-								// �}�l�����t��k
+								// 
 								
 								
 							}
-							// �Y RequestNo �� 0�A�N�� receiver �M�w���f�ɶ�
+							// 
 							else if (clientInfo.getRequestNo() == 1) {
 								
 							}
