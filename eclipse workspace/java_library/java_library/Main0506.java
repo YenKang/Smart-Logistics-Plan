@@ -42,29 +42,23 @@ public class Main0506 {
 	// static String config_file = "simulation/map.sumo.cfg";
 	// static String config_file = "simulation_Tainan/map_from_flow.sumo.cfg";
 
-	
-
 	static String config_file = "simulation4/map.sumo.cfg";
 	static double step_length = 0.01; // version1
-	//static double step_length = 0.001;
 	
 
 	static ArrayList<ClientInfo> clientInfos = new ArrayList<ClientInfo>();
-	static int assignSuccess = 0;
-
+	static ArrayList<AssignResult> assignResults = new ArrayList<AssignResult>();
+	
 	public static void main(String[] args) {
 		
-		Thread server = new Server(clientInfos, assignSuccess);
+		Thread server = new Server(clientInfos, assignResults);
 		server.start();
 
 
 		try {
-			
-
+			// 模擬環境初始設定
 			SumoTraciConnection conn = new SumoTraciConnection(sumo_bin, config_file);
-			
 			conn.addOption("step-length", step_length + "");
-
 			conn.addOption("start", "true"); // start sumo immediately
 
 			// start Traci Server
@@ -82,10 +76,10 @@ public class Main0506 {
 				timeStep = (double) conn.do_job_get(Simulation.getTime());
 				//System.out.println(timeStep);
 				conn.do_timestep();
-				
+				/*
 				if (i == 1000) {
 					JDBC_AVD init_truck = new JDBC_AVD();
-					/*
+					
 					for (int j = 1; j<31; j++) {
 						SumoPosition2D vPosition = (SumoPosition2D) conn.do_job_get(Vehicle.getPosition(Integer.toString( j )));
 						SumoPosition2D v_geo_position = (SumoPosition2D)conn.do_job_get(Simulation.convertGeo(vPosition.x, vPosition.y,false ));
@@ -107,16 +101,17 @@ public class Main0506 {
 						for (int k = 7 ; k<10; k++) {
 							init_truck.insertContainer("c"+j+"-"+k, 2, "0", j);
 						}
-					}*/
+					}
 					init_truck.Close();
 				}
-				
+				*/
 				if (i%100==0) {
 
 					if (clientInfos.size() >0) {
 						//System.out.println(clientInfos.size());
 						for (int j  = 0; j < clientInfos.size(); j++) {
 							ClientInfo clientInfo = clientInfos.get(j);
+							AssignResult assignResult = assignResults.get(j);
 							if (clientInfo.getRequestNo() == 0) {
 								double[] lnglat = new double[4];
 								lnglat = clientInfo.getLatLng();
@@ -126,14 +121,25 @@ public class Main0506 {
 								String sender_edge = sender_roadmap.edgeID;
 								int sender_lane = sender_roadmap.laneIndex;
 								double sender_pos = sender_roadmap.pos;
-								conn.do_job_set(Vehicle.changeTarget("17", sender_edge));
-								SumoStopFlags sf = new SumoStopFlags(false, false, false, false, false);
+								//conn.do_job_set(Vehicle.changeTarget("17", sender_edge));
+								//SumoStopFlags sf = new SumoStopFlags(false, false, false, false, false);
 								//conn.do_job_set(Vehicle.setStop("17", sender_edge, 1.0, (byte)0, 20.0, sf));
-								
+								synchronized(assignResult) {
+									System.out.println(j);
+									 Thread.sleep(1000);
+									 if (j == 1) {
+										 assignResult.setResult(111);
+									 }
+									 else if (j == 2) {
+										 assignResult.setResult(222);
+									 }
+									 else {
+										 assignResult.setResult(777);
+									 }
+				                	 assignResult.notify();
+				                } 
+								clientInfo.assignTest = 5;
 								//int timeArrived = clientInfo.getTimeArrived();
-								//clientInfo.assignTest = 5;
-								//System.out.println(assignSuccess);
-								//clientInfos.
 							}
 							else if (clientInfo.getRequestNo() == 1) {
 								String vid = clientInfo.getTruckNo();
@@ -156,6 +162,7 @@ public class Main0506 {
 						//System.out.println(a.pos);
 						//conn.do_job_set(Vehicle.addFull("v"+i, "r1", "car", "now", "0", "0", "max", "current", "max", "current", "", "", "", 0, 0));
 						clientInfos.clear();
+						assignResults.clear();
 					}
 					
 				}			
