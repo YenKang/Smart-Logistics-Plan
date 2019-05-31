@@ -260,9 +260,6 @@ public class MainCopy4_MultipleCars {
 					}
 				}
 				
-				
-				
-				
 				if(timeSeconds==30.0) {
 					System.out.println("-------------------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
