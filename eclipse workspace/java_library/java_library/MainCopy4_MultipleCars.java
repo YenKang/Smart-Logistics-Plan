@@ -180,7 +180,7 @@ public class MainCopy4_MultipleCars {
 				conn.do_timestep();
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
 				
-				// 
+				/*
 				if (i == 10) {
 					// 
 					JDBC_AVD init_DB = new JDBC_AVD();
@@ -228,6 +228,7 @@ public class MainCopy4_MultipleCars {
 						}
 					}
 				}
+				*/
 				
 				// 
 				if ( i % 100 == 0) {

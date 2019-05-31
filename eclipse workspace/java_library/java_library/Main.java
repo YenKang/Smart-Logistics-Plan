@@ -38,6 +38,8 @@ import java.util.HashMap;
 import de.tudresden.ws.container.*;
 
 public class Main {
+	
+	// 測試中文
 
 	static String sumo_bin = "sumo-gui";
 	// static String config_file = "simulation/map.sumo.cfg";
