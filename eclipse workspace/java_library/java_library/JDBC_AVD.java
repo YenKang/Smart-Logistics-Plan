@@ -100,31 +100,37 @@ public class JDBC_AVD {
 	  }
 	  
 	  // 使用者下訂單並且成功選定貨車
-	  public void insertOrder(String sender_name, String receiver_name, int container_id, int truck_id,
+	  public void insertOrder(String order_No, String sender_name, String receiver_name, String container_id, String truck_id,
 			  double weight, String cargo_content, int size, int price, double sender_lng, double sender_lat,
-			  double receiver_lng, double receiver_lat) {
+			  double receiver_lng, double receiver_lat, int sender_time) {
 		   String sql = "insert into user_order (id, sender_name, receiver_name, container_id, in_time, out_time, "
 		   		+ "truck_id, status, weight, cargo_content, size, price) values (?,?,?,?,?,?,?,?,?,?,?,?)";
 		   try {
 			   pst = (PreparedStatement) con.prepareStatement(sql);
 			   pst.setInt(1, 0);
-			   pst.setString(2, sender_name);
-			   pst.setString(3, receiver_name);
-			   pst.setInt(4, container_id);
+			   pst.setString(2, order_No);
+			   pst.setString(3, sender_name);
+			   pst.setString(4, receiver_name);
+			   pst.setString(5, container_id);
 			   Date date = new Date();
 			   java.sql.Timestamp timestamp =new Timestamp(date.getTime());
-			   pst.setTimestamp(5, timestamp); 
-			   pst.setTimestamp(6, timestamp);
-			   pst.setInt(7, truck_id);
-			   pst.setInt(8, 0);
-			   pst.setDouble(9, weight);
-			   pst.setString(10, cargo_content);
-			   pst.setInt(11, size);
-			   pst.setInt(12, price);
-			   pst.setDouble(13, sender_lng);
-			   pst.setDouble(14, sender_lat);
-			   pst.setDouble(15, receiver_lng);
-			   pst.setDouble(16, receiver_lat);
+			   pst.setTimestamp(6, timestamp); 
+			   pst.setTimestamp(7, timestamp);
+			   pst.setString(8, truck_id);
+			   pst.setString(9,"00");
+			   pst.setDouble(10, weight);
+			   pst.setString(11, cargo_content);
+			   pst.setInt(12, size);
+			   pst.setInt(13, price);
+			   pst.setDouble(14, sender_lng);
+			   pst.setDouble(15, sender_lat);
+			   pst.setDouble(16, receiver_lng);
+			   pst.setDouble(17, receiver_lat);
+			   Date dateOrder = new Date();
+			   java.sql.Timestamp timestampOrder =new Timestamp(dateOrder.getTime());
+			   pst.setTimestamp(18, timestampOrder); 
+			   pst.setInt(19, sender_time);
+			   pst.setInt(20, 0);
 			   pst.executeUpdate();
 			   
 		   } catch (SQLException e) {

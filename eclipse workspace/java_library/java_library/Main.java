@@ -41,6 +41,7 @@ public class Main {
 	
 	// 測試中文
 
+	// 在測一次
 	static String sumo_bin = "sumo-gui";
 	// static String config_file = "simulation/map.sumo.cfg";
 	// static String config_file = "simulation_Tainan/map_from_flow.sumo.cfg";
