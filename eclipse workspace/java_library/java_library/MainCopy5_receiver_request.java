@@ -23,6 +23,7 @@ import de.tudresden.sumo.cmd.Simulation;
 import de.tudresden.sumo.cmd.Vehicle;
 import de.tudresden.sumo.util.SumoCommand;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -30,6 +31,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 
 import de.tudresden.ws.container.*;
 
@@ -289,6 +291,15 @@ public class MainCopy5_receiver_request {
 								request_array.add(sender_pos);
 								
 								System.out.println("request_array:"+request_array);
+								
+								// 測試新增 order 
+								JDBC_AVD insertOrder = new JDBC_AVD();
+								SimpleDateFormat sdft = new SimpleDateFormat("yyMMddhhmmss");
+								Date nowdate = new Date();
+								String str = sdft.format(nowdate);
+								insertOrder.insertOrder(str, clientInfo.getSenderID(), clientInfo.getReceiverID(), "container_id_NO!",
+										"1", clientInfo.getWeight(), clientInfo.getCargoContent(), clientInfo.getSize(), clientInfo.getPrice(), 
+										sender_lng, sender_lat, lnglat[2], lnglat[3], sender_time);
 								
 								CarsMapSchedule_afterBoxFilter = CarsMap_with_Schedule;
 								CarsMap_timeToRequestInfo_afterBoxFilter = CarsMap_time_to_requestInfo;
@@ -588,6 +599,8 @@ public class MainCopy5_receiver_request {
 								
 							}
 						}
+						clientInfos.clear();
+						assignResults.clear();
 					}
 				}
 				/*

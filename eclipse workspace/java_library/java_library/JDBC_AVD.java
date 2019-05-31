@@ -103,8 +103,9 @@ public class JDBC_AVD {
 	  public void insertOrder(String order_No, String sender_name, String receiver_name, String container_id, String truck_id,
 			  double weight, String cargo_content, int size, int price, double sender_lng, double sender_lat,
 			  double receiver_lng, double receiver_lat, int sender_time) {
-		   String sql = "insert into user_order (id, sender_name, receiver_name, container_id, in_time, out_time, "
-		   		+ "truck_id, status, weight, cargo_content, size, price) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+		   String sql = "insert into user_order (id, order_number, sender_name, receiver_name, container_id, in_time, out_time, "
+		   		+ "truck_id, status, weight, cargo_content, size, price, sender_lng, sender_lat, receiver_lng, receiver_lat, order_time,"
+		   		+ " sender_time, receiver_time) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		   try {
 			   pst = (PreparedStatement) con.prepareStatement(sql);
 			   pst.setInt(1, 0);
