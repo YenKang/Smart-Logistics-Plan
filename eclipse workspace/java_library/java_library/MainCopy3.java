@@ -350,7 +350,7 @@ public class MainCopy3 {
 				// CarsMap_with_Schedule:{1=[570, 660], 2=[660]}
 				// CarsMap_time_to_requestInfo:{1={660=[273445903#7, 2966.38, 6993.0, 60.0], 570=[496257308#5, 3937.13, 5039.67, 50.0]}, 
 				// 2={660=[297579234, 8973.76, 3772.53, 200.0]}, 3={}}
-				
+		
 				if(timeSeconds%600==0) {
 					for(int veh=1;veh<CarsMap_with_Schedule.size()+1;veh++) {
 						String vehID = Integer.toString(veh); 
@@ -374,15 +374,16 @@ public class MainCopy3 {
 									(double)requestInfo.get(1), (double)requestInfo.get(2), 
 									veh_Position.x, veh_Position.y, false, true));
 							*/
-							
+				
 							/*
 							System.out.println("arrival_time:"+ arrival_time);
 							System.out.println("requestInfo:"+ requestInfo);
 							System.out.println("distance_curAdd_To_Des:"+ distance_curAdd_To_Des);
 							*/
 							
-							if(timeSeconds==lowerBound_time) {
+							if(timeSeconds==lowerBound_time) { // specific time
 								System.out.println("send nitification to the specific sender");
+								
 							}
 						}
 					}
