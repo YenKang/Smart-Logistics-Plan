@@ -705,6 +705,7 @@ public class MainCopy2 {
 					
 				}
 				
+				// route
 				if(timeSeconds==360.0 ) {
 
 					System.out.println("-------------------------");

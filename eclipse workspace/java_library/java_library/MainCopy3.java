@@ -1,3 +1,4 @@
+
 /****************************************************************************/
 // Eclipse SUMO, Simulation of Urban MObility; see https://eclipse.org/sumo
 // Copyright (C) 2017-2018 German Aerospace Center (DLR) and others.
@@ -60,7 +61,10 @@ public class MainCopy3 {
 			ArrayList v1_small_Box = new ArrayList();
 			v1_small_Box.add(111);
 			v1_small_Box.add(112);
-			//v1_small_Box.add(113);
+
+			//
+			v1_small_Box.add(113);
+			//
 			ArrayList v1_medium_Box = new ArrayList();
 			ArrayList v1_large_Box = new ArrayList();
 			Map  v1_Box = new HashMap();
@@ -73,6 +77,11 @@ public class MainCopy3 {
 			ArrayList v2_medium_Box = new ArrayList();
 			v2_medium_Box.add(221);
 			ArrayList v2_large_Box = new ArrayList();
+			//
+			v2_small_Box.add(211);
+			v2_small_Box.add(212);
+			v2_small_Box.add(213);
+			//
 			Map  v2_Box = new HashMap();
 			v2_Box.put(1, v2_small_Box); // "1" means for small box
 			v2_Box.put(2, v2_medium_Box); // "2" means for medium box
@@ -91,15 +100,12 @@ public class MainCopy3 {
 			cars_Box.put(1, v1_Box);
 			cars_Box.put(2, v2_Box);
 			cars_Box.put(3, v3_Box);
-			
 			System.out.println("cars_Box:"+ cars_Box);
-			
 			
 
 			Map  CarsMap_with_Schedule = new HashMap();
 			//CarsMap_with_Schedule = {"1"=[570, 660], "2"=[660]};
-			
-			
+						
 			ArrayList v1_TimeSchedule = new ArrayList();
 			v1_TimeSchedule.add(570);
 			v1_TimeSchedule.add(660);
@@ -135,7 +141,7 @@ public class MainCopy3 {
 			v1_time_to_requestInfo.put(660, v1_660_to_requestInfo );
 			
 			System.out.println("v1_time_to_requestInfo:"+ v1_time_to_requestInfo);
-			
+		
 			Map  v2_time_to_requestInfo = new HashMap();
 
 			ArrayList v2_660_to_requestInfo = new ArrayList();
@@ -180,38 +186,7 @@ public class MainCopy3 {
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
 				//System.out.println("timeSeconds:"+ timeSeconds);
 				
-				/*
-				if(timeSeconds==30.0) {
-					System.out.println("-------------------------");
-					System.out.println("timeSeconds:"+ timeSeconds);
-					
-					int insert_BoxSize=1; // small box insertion
-					CarsMapSchedule_afterBoxFilter = CarsMap_with_Schedule;
-					CarsMap_timeToRequestInfo_afterBoxFilter= CarsMap_time_to_requestInfo;
-					
-					System.out.println("CarsMapSchedule_afterBoxFilter"+ CarsMapSchedule_afterBoxFilter);
-					System.out.println("CarsMap_timeToRequestInfo_afterBoxFilter:"+ CarsMap_timeToRequestInfo_afterBoxFilter);
-					
-					for(int veh=1;veh<cars_Box.size()+1;veh++) {
-						String vehID = Integer.toString(veh); 
-						Map  veh_box = new HashMap();
-						ArrayList insert_Size_Box = new ArrayList();
-						veh_box =(Map) cars_Box.get(veh);
-						
-						int insert_capacity = ((ArrayList) veh_box.get(insert_BoxSize)).size();
-						//insert_Size_Box.size();
-						System.out.println("veh:"+ veh + "insert_capacity:"+ insert_capacity);
-						if(insert_capacity==3) {
-							CarsMapSchedule_afterBoxFilter.remove(vehID);
-							CarsMap_timeToRequestInfo_afterBoxFilter.remove(vehID);
-						}
-					}
-					
-					System.out.println("CarsMapSchedule_afterBoxFilter"+ CarsMapSchedule_afterBoxFilter);
-					System.out.println("CarsMap_timeToRequestInfo_afterBoxFilter:"+ CarsMap_timeToRequestInfo_afterBoxFilter);
-					
-				}
-				*/
+			
 				
 				if(timeSeconds==50.0 ) {
 
@@ -220,6 +195,14 @@ public class MainCopy3 {
 					double currentMin = (540+ timeSeconds/60.0);
 					
 					int insert_BoxSize=1; // small box insertion
+					int insertTime=570;
+					ArrayList request_array = new ArrayList();
+					
+					request_array.add("496493919#2");
+					request_array.add(7147.59);
+					request_array.add(5832.08);
+					request_array.add(150.0);
+					
 					CarsMapSchedule_afterBoxFilter = CarsMap_with_Schedule;
 					CarsMap_timeToRequestInfo_afterBoxFilter= CarsMap_time_to_requestInfo;
 					
@@ -228,12 +211,14 @@ public class MainCopy3 {
 					
 					for(int veh=1;veh<cars_Box.size()+1;veh++) {
 						String vehID = Integer.toString(veh); 
+						
 						Map  veh_box = new HashMap();
 						ArrayList insert_Size_Box = new ArrayList();
+						
 						veh_box =(Map) cars_Box.get(veh);
 						
 						int insert_capacity = ((ArrayList) veh_box.get(insert_BoxSize)).size();
-						//insert_Size_Box.size();
+						
 						System.out.println("veh:"+ veh + ",insert_capacity:"+ insert_capacity);
 						if(insert_capacity==3) {
 							CarsMapSchedule_afterBoxFilter.remove(vehID);
@@ -245,10 +230,11 @@ public class MainCopy3 {
 						
 						System.out.println("---------------------------------");
 						System.out.println("veh:"+ vehID);
+						int int_vehID = Integer.valueOf((String) vehID);
 						//String vehID = Integer.toString(veh); 
 						ArrayList veh_array = new ArrayList();//veh_array:[570, 660]
 						
-						veh_array = (ArrayList)CarsMap_with_Schedule.get(vehID);
+						veh_array = (ArrayList)CarsMap_with_Schedule.get((String) vehID);
 						veh_array.add((int)currentMin);
 						Collections.sort(veh_array);
 						System.out.println("Collections.sort(veh_array):"+ veh_array);
@@ -262,83 +248,45 @@ public class MainCopy3 {
 						
 				
 						Map  Map_requestInfo = new HashMap();
-						Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get(vehID);
+						Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get((String) vehID);
+						////////////////////////////////////////////////////////////////////
+						Map  veh_box = new HashMap();
+						ArrayList insert_Size_Box = new ArrayList();
+						veh_box =(Map) cars_Box.get((String) vehID); // eg. veh_Box=v3_Box:{1=[], 2=[], 3=[]}
+						//int insert_capacity = ((ArrayList) veh_box.get(insert_BoxSize)).size(); // if insert_BoxSize=1, arrayList(v3_small_Box[])
+						System.out.println("veh_box:"+veh_box);
 						
-						ArrayList edges_list = new ArrayList();
-						ArrayList stages_list = new ArrayList();
-						SumoStringList routes = new SumoStringList();
-						
-						String curEdge = (String)conn.do_job_get(Vehicle.getRoadID((String) vehID));
-						System.out.println("curEdge:"+ curEdge);
-						edges_list.add(curEdge);
-						
-						for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {
-							String edge = (String) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(0); // 570
-						
-							//System.out.println("edge:"+ edge);
-							edges_list.add(edge);
+						if(veh_array.size()==0) {
+							
+							SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition((String) vehID));
+							
+							double distance_curr_To_Index = (double)conn.do_job_get(Simulation.getDistance2D(
+									(double)request_array.get(1), (double)request_array.get(2), 
+									veh_Position.x, veh_Position.y, false, true));
+							System.out.println("distance_curr_To_Index:"+ distance_curr_To_Index);
+							double travelTime_curr_To_Index = distance_curr_To_Index/vehicle_speed;
+							
+							
+							double diffDuration_curAddrTo_Des = 60*(insertTime-540)-timeSeconds;
+							System.out.println("diffDuration_curAddrTo_Des:"+ diffDuration_curAddrTo_Des);
+							
+							if(travelTime_curr_To_Index<diffDuration_curAddrTo_Des) {
+								int insert_BoxIndex = 1+ 10*insert_BoxSize+100*int_vehID;
+								System.out.println("insert_BoxIndex:"+insert_BoxIndex);
+								System.out.println("veh_box:"+veh_box);
+								System.out.println("veh_box.get(insert_BoxSize):"+ veh_box.get(insert_BoxSize));
+								
+								((ArrayList) veh_box.get(insert_BoxSize)).add(insert_BoxIndex);
+								System.out.println("(ArrayList) veh_box.get(insert_BoxSize):"+ (ArrayList) veh_box.get(insert_BoxSize));
+								// setParameter
+								cars_Box.put(int_vehID, veh_box);
+								System.out.println("cars_Box:"+ cars_Box);
+							}
 						}
-						
-						for(int edge_index=0;edge_index<edges_list.size()-1;edge_index++) {
-							String vType ="truck"; 
-							double depart = 0.0; 
-							int routingMode = 0;
-							SumoStage stage = (SumoStage)conn.do_job_get(
-									Simulation.findRoute((String)edges_list.get(edge_index), (String)edges_list.get(edge_index+1), vType, depart,routingMode));
-							stages_list.add(stage);
-						}
+					
 						
 				
-						
-						
-						for(int stageIndex=1; stageIndex<stages_list.size();stageIndex++) {
-							//(((SumoStage) stages_list.get(stageIndex)).edges).size();
-							SumoStage each_stage= (SumoStage) stages_list.get(stageIndex);
-							for(int edgeIndex=1; edgeIndex< each_stage.edges.size(); edgeIndex++) {
-								
-								String edge= each_stage.edges.get(edgeIndex);
-								
-								((SumoStage)stages_list.get(0)).edges.add(edge);
-							}
-							
-						}
-						
-						if(stages_list.size()>0) {
-							routes = ((SumoStage)stages_list.get(0)).edges;
-						}
-						
-						
-						
-						LinkedList<String> newRoute = new LinkedList<String>(); 
-						
-						for (String edge :routes){ 
-							newRoute.add(edge); 
-						}
-						
-						System.out.println("newRoute_before:"+ newRoute);
-						
-						
-						System.out.println("veh_array:"+veh_array);
-						System.out.println("Map_requestInfo:"+ Map_requestInfo);
-						
-						System.out.println("edges_list:"+ edges_list);
-						
-						if(stages_list.size()>0) {
-							conn.do_job_set(Vehicle.setRoute((String) vehID, routes));
-						}
-						
-						
-						for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {
-							String edge = (String) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(0); // 570
-							double pos =  (double) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(3);
-						
-							conn.do_job_set(Vehicle.setStop((String) vehID, edge, pos, (byte)0,  0.0, 
-									new SumoStopFlags(false, false, false, false, false), 
-									pos, 60.0*((Integer) veh_array.get(veh_array_index)-530)));
-							
-						
-							
-						}
+		
 						//conn.do_job_set(Vehicle.setStop("1", Edge1, 50.0, (byte)0,  0.0, sf_v1, 30.0, 2400.0));
 					}
 
@@ -407,3 +355,4 @@ public class MainCopy3 {
 	}
 
 }
+
