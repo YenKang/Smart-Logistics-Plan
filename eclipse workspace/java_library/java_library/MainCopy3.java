@@ -203,10 +203,22 @@ public class MainCopy3 {
 					request_array.add(7147.59);
 					request_array.add(5832.08);
 					request_array.add(150.0);
+					/*
 					
+					Map  CarsMap_timeToRequestInfo_afterBoxFilter = new HashMap();
+					*/
+					
+					Map  CarsMapSchedule_afterBoxFilter = new HashMap();
+					CarsMapSchedule_afterBoxFilter=(Map) ((HashMap) CarsMap_with_Schedule).clone();
+					
+					
+					
+					
+					//newmap2=(HashMap)newmap1.clone();
+					/*
 					CarsMapSchedule_afterBoxFilter = CarsMap_with_Schedule;
 					CarsMap_timeToRequestInfo_afterBoxFilter= CarsMap_time_to_requestInfo;
-					
+					*/
 					
 					for(int veh=1;veh<cars_Box.size()+1;veh++) {
 						String vehID = Integer.toString(veh); 
