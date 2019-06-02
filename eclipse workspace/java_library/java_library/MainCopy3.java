@@ -26,6 +26,7 @@ import de.tudresden.sumo.util.SumoCommand;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
@@ -54,8 +55,8 @@ public class MainCopy3 {
 			conn.addOption("step-length", step_length + "");
 			conn.addOption("start", "true"); // start sumo immediately
 			
-			Map  CarsMapSchedule_afterBoxFilter = new HashMap();
-			Map  CarsMap_timeToRequestInfo_afterBoxFilter = new HashMap();
+			// Map  CarsMapSchedule_afterBoxFilter = new HashMap(); // CarsMapSchedule_afterBoxFilter is local variable
+			// Map  CarsMap_timeToRequestInfo_afterBoxFilter = new HashMap();
 			
 			Map  cars_Box = new HashMap();
 			ArrayList v1_small_Box = new ArrayList();
@@ -162,13 +163,15 @@ public class MainCopy3 {
 			CarsMap_time_to_requestInfo.put("2", v2_time_to_requestInfo);
 			CarsMap_time_to_requestInfo.put("3", v3_time_to_requestInfo);
 			
+			
+			
 			System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
+			
 			
 			// start Traci Server
 			conn.runServer(8080);
 			conn.setOrder(1);
-			
-			Map  CarsMapWithSchedule = new HashMap();
+		
 			//ArrayList v1_sender_TimeSchedule = new ArrayList();
 			
 			double vehicle_speed = 4.0; //4 [m/s]
@@ -176,9 +179,6 @@ public class MainCopy3 {
 			SumoColor veh1_color = new SumoColor(255 ,105, 180,0);
 			conn.do_job_set(Vehicle.setColor("1", veh1_color));
 			
-			
-			
-		
 			for (int i = 0; i < 360000000; i++) {
 				
 				
@@ -208,18 +208,24 @@ public class MainCopy3 {
 					Map  CarsMap_timeToRequestInfo_afterBoxFilter = new HashMap();
 					*/
 					
-					Map  CarsMapSchedule_afterBoxFilter = new HashMap();
-					CarsMapSchedule_afterBoxFilter=(Map) ((HashMap) CarsMap_with_Schedule).clone();
+					HashMap  CarsMapSchedule_afterBoxFilter = new HashMap();
+					Iterator iter = CarsMap_with_Schedule.entrySet().iterator(); 
+					while (iter.hasNext()) {
+						Map.Entry entry = (Map.Entry) iter.next(); 
+						 Object key = entry.getKey(); 
+						 Object value = entry.getValue(); 
+						 CarsMapSchedule_afterBoxFilter.put(key, value);
+					}
 					
-					
-					
-					
-					//newmap2=(HashMap)newmap1.clone();
-					/*
-					CarsMapSchedule_afterBoxFilter = CarsMap_with_Schedule;
-					CarsMap_timeToRequestInfo_afterBoxFilter= CarsMap_time_to_requestInfo;
-					*/
-					
+					HashMap  CarsMap_timeToRequestInfo_afterBoxFilter = new HashMap();
+					Iterator iterInfo = CarsMap_time_to_requestInfo.entrySet().iterator(); 
+					while (iterInfo.hasNext()) {
+						Map.Entry entry = (Map.Entry) iterInfo.next(); 
+						 Object key = entry.getKey(); 
+						 Object value = entry.getValue(); 
+						 CarsMap_timeToRequestInfo_afterBoxFilter.put(key, value);
+					}
+				
 					for(int veh=1;veh<cars_Box.size()+1;veh++) {
 						String vehID = Integer.toString(veh); 
 						
