@@ -257,26 +257,11 @@ public class MainCopy3 {
 						int int_vehID = Integer.valueOf((String) vehID);
 						//String vehID = Integer.toString(veh); 
 						ArrayList veh_array = new ArrayList();//veh_array:[570, 660]
-						
+			
 						veh_array = (ArrayList)CarsMap_with_Schedule.get((String) vehID);
-
-						/*
-						veh_array.add((int)currentMin);
-						Collections.sort(veh_array);
-
-						int remove_time =0;
-						while(remove_time<(int)veh_array.indexOf((int)currentMin)+1) {
-							veh_array.remove(0);
-							remove_time++;
-						}
-						*/
-						
-						
 						Map  Map_requestInfo = new HashMap();
-					
 						Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get((String) vehID);
-						
-						
+							
 						////////////////////////////////////////////////////////////////////
 						Map  veh_box = new HashMap();
 						ArrayList insert_Size_Box = new ArrayList();
@@ -562,9 +547,11 @@ public class MainCopy3 {
 
 						//conn.do_job_set(Vehicle.setStop("1", Edge1, 50.0, (byte)0,  0.0, sf_v1, 30.0, 2400.0));
 					}
+					
 					System.out.println("-------------route arrangement-------------");
 					// set routes
-						for(int veh=1; veh<=CarsMap_with_Schedule.size();veh++) {
+
+					for(int veh=1; veh<=CarsMap_with_Schedule.size();veh++) {
 						System.out.println("---------------------------------");
 						
 						String vehID = Integer.toString(veh); 
