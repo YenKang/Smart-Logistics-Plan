@@ -285,10 +285,12 @@ public class MainCopy5_receiver_request {
 								ArrayList insert_Size_Box = new ArrayList(); 
 								ArrayList request_array = new ArrayList();
 								
+								// request_array 
 								request_array.add(sender_edge);
 								request_array.add(sender_x);
 								request_array.add(sender_y);
 								request_array.add(sender_pos);
+								
 								
 								System.out.println("request_array:"+request_array);
 								
