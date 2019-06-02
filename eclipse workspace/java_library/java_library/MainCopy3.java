@@ -58,6 +58,7 @@ public class MainCopy3 {
 			// Map  CarsMapSchedule_afterBoxFilter = new HashMap(); // CarsMapSchedule_afterBoxFilter is local variable
 			// Map  CarsMap_timeToRequestInfo_afterBoxFilter = new HashMap();
 			
+	
 			Map  cars_Box = new HashMap();
 			ArrayList v1_small_Box = new ArrayList();
 			v1_small_Box.add(111);
@@ -150,11 +151,9 @@ public class MainCopy3 {
 			v2_660_to_requestInfo.add(8973.76);
 			v2_660_to_requestInfo.add(3772.53);
 			v2_660_to_requestInfo.add(200.0);
-			
 			v2_time_to_requestInfo.put(660, v2_660_to_requestInfo);
 			
 			System.out.println("v2_time_to_requestInfo:"+ v2_time_to_requestInfo);
-			
 			ArrayList v3_TimeSchedule = new ArrayList();
 			CarsMap_with_Schedule.put("3", v3_TimeSchedule);
 			Map  v3_time_to_requestInfo = new HashMap();
@@ -162,21 +161,27 @@ public class MainCopy3 {
 			CarsMap_time_to_requestInfo.put("1", v1_time_to_requestInfo);
 			CarsMap_time_to_requestInfo.put("2", v2_time_to_requestInfo);
 			CarsMap_time_to_requestInfo.put("3", v3_time_to_requestInfo);
-			
-			
-			
 			System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
-			
 			
 			// start Traci Server
 			conn.runServer(8080);
 			conn.setOrder(1);
 		
-			//ArrayList v1_sender_TimeSchedule = new ArrayList();
-			
+			//BoxIndex initialization
+			for(int veh=1;veh<4;veh++) {
+				for(int boxSizeIndex=1;boxSizeIndex<4;boxSizeIndex++) {
+					for(int boxOrder=1;boxOrder<4;boxOrder++) {
+						int int_boxIndex = veh*100+boxSizeIndex*10+boxOrder;
+						String veh_ID = Integer.toString(veh);
+						String boxIndex = Integer.toString(int_boxIndex);
+						conn.do_job_set(Vehicle.setParameter(veh_ID, boxIndex, "0"));
+					}
+				}	
+			}
+			conn.do_job_set(Vehicle.setParameter("1", "111", "1"));
+			///////////////////////////////////////////////////////////////////////////////
 			double vehicle_speed = 4.0; //4 [m/s]
-			
-			SumoColor veh1_color = new SumoColor(255 ,105, 180,0);
+			SumoColor veh1_color = new SumoColor(255 ,105, 180, 8);
 			conn.do_job_set(Vehicle.setColor("1", veh1_color));
 			
 			for (int i = 0; i < 360000000; i++) {
@@ -225,7 +230,8 @@ public class MainCopy3 {
 						 Object value = entry.getValue(); 
 						 CarsMap_timeToRequestInfo_afterBoxFilter.put(key, value);
 					}
-				
+					
+					// Box filtering stage
 					for(int veh=1;veh<cars_Box.size()+1;veh++) {
 						String vehID = Integer.toString(veh); 
 						
