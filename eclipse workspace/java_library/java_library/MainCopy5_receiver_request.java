@@ -61,6 +61,8 @@ public class MainCopy5_receiver_request {
 			conn.addOption("step-length", step_length + "");
 			conn.addOption("start", "true"); // start sumo immediately
 			
+
+			// init HashMap
 			Map  cars_Box = new HashMap();
 			ArrayList v1_small_Box = new ArrayList();
 			v1_small_Box.add(111);
@@ -101,11 +103,8 @@ public class MainCopy5_receiver_request {
 			
 			System.out.println("cars_Box:"+ cars_Box);
 			
-			
-
 			Map  CarsMap_with_Schedule = new HashMap();
 			//CarsMap_with_Schedule = {"1"=[570, 660], "2"=[660]};
-			
 			
 			ArrayList v1_TimeSchedule = new ArrayList();
 			v1_TimeSchedule.add(570);
@@ -161,7 +160,6 @@ public class MainCopy5_receiver_request {
 			
 			System.out.println("v2_time_to_requestInfo:"+ v2_time_to_requestInfo);
 			
-			
 			Map  v3_time_to_requestInfo = new HashMap();
 			
 			ArrayList v3_720_to_requestInfo = new ArrayList();
@@ -178,6 +176,8 @@ public class MainCopy5_receiver_request {
 			
 			System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
 			
+			// HashMap init finish
+
 			// start Traci Server
 			conn.runServer(7789);
 			conn.setOrder(1);
@@ -649,6 +649,7 @@ public class MainCopy5_receiver_request {
 						assignResults.clear();
 					}
 				}
+
 			}
 			conn.close();
 		} 
