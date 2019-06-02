@@ -14,5 +14,16 @@ public class test1231 {
 		Date nowdate = new Date();
 		String str = sdft.format(nowdate);
 		System.out.println(str);
+
+	/*
+	// ´ú¸Õ·s¼W order 
+	JDBC_AVD insertOrder = new JDBC_AVD();
+	SimpleDateFormat sdft = new SimpleDateFormat("yyMMddhhmmss");
+	Date nowdate = new Date();
+	String str = sdft.format(nowdate);
+	insertOrder.insertOrder(str, clientInfo.getSenderID(), clientInfo.getReceiverID(), "container_id_NO!",
+			"1", clientInfo.getWeight(), clientInfo.getCargoContent(), clientInfo.getSize(), clientInfo.getPrice(), 
+			sender_lng, sender_lat, lnglat[2], lnglat[3], sender_time);
+	*/
 }
 }
