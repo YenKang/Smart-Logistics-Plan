@@ -178,7 +178,7 @@ public class MainCopy3 {
 					}
 				}	
 			}
-			conn.do_job_set(Vehicle.setParameter("1", "111", "1"));
+			
 			///////////////////////////////////////////////////////////////////////////////
 			double vehicle_speed = 4.0; //4 [m/s]
 			SumoColor veh1_color = new SumoColor(255 ,105, 180, 8);
@@ -198,10 +198,11 @@ public class MainCopy3 {
 
 					System.out.println("-------------------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
+
 					double currentMin = (540+ timeSeconds/60.0);
 					
 					int insert_BoxSize=1; // small box insertion
-					int insertTime=570;
+					int insertTime=570; // 570 means 09:30
 					ArrayList request_array = new ArrayList();
 					
 					request_array.add("496493919#2");
@@ -249,8 +250,8 @@ public class MainCopy3 {
 						}
 					}
 					
+					// Time schedule filtering
 					for(Object vehID:CarsMapSchedule_afterBoxFilter.keySet()) {
-						System.out.println("In line229, CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
 						System.out.println("---------------------------------");
 						System.out.println("veh:"+ vehID);
 						int int_vehID = Integer.valueOf((String) vehID);
@@ -258,6 +259,8 @@ public class MainCopy3 {
 						ArrayList veh_array = new ArrayList();//veh_array:[570, 660]
 						
 						veh_array = (ArrayList)CarsMap_with_Schedule.get((String) vehID);
+
+						/*
 						veh_array.add((int)currentMin);
 						Collections.sort(veh_array);
 
@@ -266,11 +269,11 @@ public class MainCopy3 {
 							veh_array.remove(0);
 							remove_time++;
 						}
+						*/
 						
 						
 						Map  Map_requestInfo = new HashMap();
-						System.out.println("In line247, CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
-						
+					
 						Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get((String) vehID);
 						
 						
@@ -282,6 +285,8 @@ public class MainCopy3 {
 						int insert_capacity = ((ArrayList) veh_box.get(insert_BoxSize)).size(); // if insert_BoxSize=1, arrayList(v3_small_Box[])
 						System.out.println("insert_capacity:"+ insert_capacity);
 						
+
+						// there is no schedule in this car
 						if(veh_array.size()==0) {
 							SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition((String) vehID));
 							double distance_curr_To_Index = (double)conn.do_job_get(Simulation.getDistance2D(
@@ -554,14 +559,111 @@ public class MainCopy3 {
 								}
 							}
 						}
-					
-						
-				
-		
+
 						//conn.do_job_set(Vehicle.setStop("1", Edge1, 50.0, (byte)0,  0.0, sf_v1, 30.0, 2400.0));
 					}
+					System.out.println("-------------route arrangement-------------");
+					// set routes
+						for(int veh=1; veh<=CarsMap_with_Schedule.size();veh++) {
+						System.out.println("---------------------------------");
+						
+						String vehID = Integer.toString(veh); 
+						ArrayList veh_array = new ArrayList();//veh_array:[570, 660]
+						
+						veh_array = (ArrayList)CarsMap_with_Schedule.get(vehID);
+						
+						veh_array.add((int)currentMin);
+						
+						Collections.sort(veh_array);
+						System.out.println("Collections.sort(veh_array):"+ veh_array);
+						int remove_time =0;
+						while(remove_time<(int)veh_array.indexOf((int)currentMin)+1) {
+							veh_array.remove(0);
+							remove_time++;
+						}
+						
+						System.out.println("veh_array after removing:"+ veh_array);
+						
+						Map  Map_requestInfo = new HashMap();
+						Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get(vehID);
+						
+						ArrayList edges_list = new ArrayList();
+						ArrayList stages_list = new ArrayList();
+						SumoStringList routes = new SumoStringList();
+						
+						String curEdge = (String)conn.do_job_get(Vehicle.getRoadID(vehID));
+						System.out.println("curEdge:"+ curEdge);
+						edges_list.add(curEdge);
+						
+						for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {
+							String edge = (String) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(0); // 570
+						
+							//System.out.println("edge:"+ edge);
+							edges_list.add(edge);
+						}
+						
+						for(int edge_index=0;edge_index<edges_list.size()-1;edge_index++) {
+							String vType ="truck"; 
+							double depart = 0.0; 
+							int routingMode = 0;
+							
+							SumoStage stage = (SumoStage)conn.do_job_get(
+									Simulation.findRoute((String)edges_list.get(edge_index), (String)edges_list.get(edge_index+1), vType, depart,routingMode));
+							stages_list.add(stage);
+						}
+						
+						for(int stageIndex=1; stageIndex<stages_list.size();stageIndex++) {
+							//(((SumoStage) stages_list.get(stageIndex)).edges).size();
+							SumoStage each_stage= (SumoStage) stages_list.get(stageIndex);
+							for(int edgeIndex=1; edgeIndex< each_stage.edges.size(); edgeIndex++) {
+								
+								String edge= each_stage.edges.get(edgeIndex);
+								
+								((SumoStage)stages_list.get(0)).edges.add(edge);
+							}
+							
+						}
+						
+						if(stages_list.size()>0){
+							routes = ((SumoStage)stages_list.get(0)).edges;
+						}
+						
+						
+						LinkedList<String> newRoute = new LinkedList<String>(); 
+						
+						for (String edge :routes){ 
+							newRoute.add(edge); 
+						}
+						
+						System.out.println("newRoute_before:"+ newRoute);
+						
+						System.out.println("veh:"+ veh);
+						System.out.println("veh_array:"+veh_array);
+						System.out.println("Map_requestInfo:"+ Map_requestInfo);
+						
+						System.out.println("edges_list:"+ edges_list);
 
-					
+						if(stages_list.size()>0){
+							conn.do_job_set(Vehicle.setRoute(vehID, routes));
+
+						}
+
+						
+						for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {
+							
+							String edge = (String) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(0); // 570
+							double pos =  (double) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(3);
+							
+							System.out.println("edge:"+ edge);
+							System.out.println("pos:"+ pos);
+							SumoStopFlags sf = new SumoStopFlags(false, false, false, false, false);
+							
+							conn.do_job_set(Vehicle.setStop(vehID, edge, pos+10, (byte)0,  0.0, 
+									sf, pos, 60.0*((Integer) veh_array.get(veh_array_index)-530)));
+						
+						}
+						//conn.do_job_set(Vehicle.setStop("1", Edge1, 50.0, (byte)0,  0.0, sf_v1, 30.0, 2400.0));
+					}
 					
 				}
 				
