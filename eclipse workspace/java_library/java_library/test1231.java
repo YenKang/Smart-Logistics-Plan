@@ -25,5 +25,5 @@ public class test1231 {
 			"1", clientInfo.getWeight(), clientInfo.getCargoContent(), clientInfo.getSize(), clientInfo.getPrice(), 
 			sender_lng, sender_lat, lnglat[2], lnglat[3], sender_time);
 	*/
-}
+   }
 }
