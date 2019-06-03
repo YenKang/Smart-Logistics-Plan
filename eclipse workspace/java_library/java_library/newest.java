@@ -36,7 +36,7 @@ import java.util.Date;
 
 import de.tudresden.ws.container.*;
 
-public class MainCopy5_receiver_request {
+public class newest {
 
 	static String sumo_bin = "sumo-gui";
 	// static String config_file = "simulation/map.sumo.cfg";
@@ -200,7 +200,7 @@ public class MainCopy5_receiver_request {
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
 				//System.out.println("timeSeconds:"+ timeSeconds);
 				
-				// 初始化資料庫
+				// ��l�Ƹ�Ʈw
 				/*
 				if (i == 10) {
 					// 
@@ -258,9 +258,9 @@ public class MainCopy5_receiver_request {
 							// 
 							ClientInfo clientInfo = clientInfos.get(j);
 							AssignResult assignResult = assignResults.get(j);
-							// 若使用者為 sender
+							// �Y�ϥΪ̬� sender
 							if (clientInfo.getRequestNo() == 0) {
-								// 從 clientInfo 取得使用者相關資料
+								// �q clientInfo ���o�ϥΪ̬������
 								double[] lnglat = clientInfo.getLngLat();
 								double sender_lng = lnglat[0];
 								double sender_lat = lnglat[1];
@@ -319,8 +319,6 @@ public class MainCopy5_receiver_request {
 										CarsMap_timeToRequestInfo_afterBoxFilter.remove(vehID);
 									}
 								}
-								// 若無箱子的偵測
-							
 					
 								// Time schedule filtering
 								for(Object vehID:CarsMapSchedule_afterBoxFilter.keySet()) {
@@ -340,7 +338,7 @@ public class MainCopy5_receiver_request {
 									int insert_capacity = ((ArrayList) veh_box.get(insert_BoxSize)).size(); // if insert_BoxSize=1, arrayList(v3_small_Box[])
 									
 
-									// there is no schedule in this car [""]
+									// there is no schedule in this car
 									if(veh_array.size()==0) {
 										SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition((String) vehID));
 										double distance_curr_To_Index = (double)conn.do_job_get(Simulation.getDistance2D(
@@ -351,7 +349,6 @@ public class MainCopy5_receiver_request {
 										double diffDuration_curAddrTo_Des = 60*(insertTime-540)-timeSeconds;
 										System.out.println("diffDuration_curAddrTo_Des:"+ diffDuration_curAddrTo_Des);
 										
-										// 
 										if(travelTime_curr_To_Index<diffDuration_curAddrTo_Des) {
 											veh_array.add(insertTime); // v3_timeSchedule [570]
 											int insert_BoxIndex = 1+ 10*insert_BoxSize+ 100*int_vehID;
@@ -369,14 +366,8 @@ public class MainCopy5_receiver_request {
 											System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
 											System.out.println("cars_Box:"+ cars_Box);
 										}
-
-										else{
-											// can not arrive!
-										}
-
-
 									}
-									// 此車目前排程非空 line379-562
+									
 									else {
 										if((veh_array.contains(insertTime))!=true) {
 
@@ -387,7 +378,6 @@ public class MainCopy5_receiver_request {
 											int indexValue = veh_array.indexOf(insertTime);
 											Map_requestInfo.put(insertTime, request_array ); // request_array should be dynamic
 											
-											// 
 											if(indexValue==0) {
 												SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition((String) vehID));
 												
@@ -410,11 +400,10 @@ public class MainCopy5_receiver_request {
 												double diffDuration_afterIndexToIndex = ((int) veh_array.get(indexValue+1)-(int) veh_array.get(indexValue))*60;
 											
 								
-												// 此時段可到達
 												if((travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) &&
 														(timeSeconds+travelTime_curr_To_Index) <(key_afterIndex-insertTime)*60) {
 													
-													// BoxIndex insertion 416-439
+													// BoxIndex insertion
 													if(insert_capacity==0) {
 														int insert_BoxIndex = (insert_capacity+1)+ 10*insert_BoxSize+100*int_vehID;
 														
@@ -437,15 +426,16 @@ public class MainCopy5_receiver_request {
 														((ArrayList) veh_box.get(insert_BoxSize)).add(insert_BoxIndex);													
 														// setParameter
 														cars_Box.put(int_vehID, veh_box);
-													}	
+													}
+
+													
 													CarsMap_time_to_requestInfo.put(vehID, Map_requestInfo);
+									
 													break;
 												}
-
-												// 
+												
 												else {
 													Map_requestInfo.remove(insertTime);
-													// NEED TO CHANGE CARSMAP_TO_REQUEST
 													break;
 												}
 											}
@@ -491,7 +481,6 @@ public class MainCopy5_receiver_request {
 													
 													break;
 												}
-												// 
 												else {
 													Map_requestInfo.remove(insertTime);
 													break;
@@ -554,19 +543,21 @@ public class MainCopy5_receiver_request {
 																																	
 													break;
 												}
-												// 篩選失敗，代表此時段無車可派
+												
 												else {
 													Map_requestInfo.remove(insertTime);
 													break;
 												}
 											}
 										}
-									}		
+									}
+
+									
 								}
 								
 								System.out.println("-------------route arrangement-------------");
 								// set routes
-								// 無論前面是否成功皆可進行 SET ROUTES
+
 								for(int veh=1; veh<=CarsMap_with_Schedule.size();veh++) {
 									System.out.println("---------------------------------");
 									
