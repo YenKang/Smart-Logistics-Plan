@@ -56,7 +56,7 @@ public class Main0506 {
 
 
 		try {
-			// ¼ÒÀÀÀô¹Òªì©l³]©w
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½lï¿½]ï¿½w
 			SumoTraciConnection conn = new SumoTraciConnection(sumo_bin, config_file);
 			conn.addOption("step-length", step_length + "");
 			conn.addOption("start", "true"); // start sumo immediately
@@ -104,12 +104,13 @@ public class Main0506 {
 				}
 				*/
 				if (i%100==0) {
-
 					if (clientInfos.size() >0) {
 						//System.out.println(clientInfos.size());
-				for (int j  = 0; j < clientInfos.size(); j++) {
+						for (int j  = 0; j < clientInfos.size(); j++) {
 							ClientInfo clientInfo = clientInfos.get(j);
 							AssignResult assignResult = assignResults.get(j);
+							int container_DB_insert;
+							String truck_DB_insertS;
 							if (clientInfo.getRequestNo() == 0) {
 								double[] lnglat = new double[4];
 								//lnglat = clientInfo.getLngLat();
@@ -124,15 +125,7 @@ public class Main0506 {
 								synchronized(assignResult) {
 									System.out.println(j);
 									 Thread.sleep(1000);
-									 if (j == 1) {
-										 assignResult.setResult(111);
-									 }
-									 else if (j == 2) {
-										 assignResult.setResult(222);
-									 }
-									 else {
-										 assignResult.setResult(777);
-									 }
+									 assignResult.setResult(-1);
 				                	 assignResult.notify();
 				                } 
 							}
