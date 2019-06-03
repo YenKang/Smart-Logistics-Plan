@@ -172,7 +172,7 @@ public class MainCopy3 {
 				}	
 			}
 			
-			///////////////////////////////////////////////////////////////////////////////
+			///////////////////////////////////////////////////////////////////
 			double vehicle_speed = 4.0; //4 [m/s]
 			SumoColor veh1_color = new SumoColor(255 ,105, 180, 8);
 			conn.do_job_set(Vehicle.setColor("1", veh1_color));
@@ -182,14 +182,11 @@ public class MainCopy3 {
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
 				//System.out.println("timeSeconds:"+ timeSeconds);
 
+				// 
 				if(timeSeconds==50.0 ) {
-					System.out.println("In line192, CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
-
 					System.out.println("-------------------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
-
-					double currentMin = (540+ timeSeconds/60.0);
-					
+					double currentMin = (540+ timeSeconds/60.0);			
 					int insert_BoxSize=1; // small box insertion
 					int insertTime=570; // 570 means 09:30
 					ArrayList request_array = new ArrayList();
@@ -579,14 +576,12 @@ public class MainCopy3 {
 						ArrayList edges_list = new ArrayList();
 						ArrayList stages_list = new ArrayList();
 						SumoStringList routes = new SumoStringList();
-						
 						String curEdge = (String)conn.do_job_get(Vehicle.getRoadID(vehID));
 						
 						edges_list.add(curEdge);
 						
 						for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {
 							String edge = (String) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(0); // 570
-						
 							//System.out.println("edge:"+ edge);
 							edges_list.add(edge);
 						}
@@ -754,8 +749,15 @@ public class MainCopy3 {
 
 									if((travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) &&
 											(timeSeconds+travelTime_curr_To_Index) <(key_afterIndex-insertTime)*60) {
-										
-										CarsMap_time_to_requestInfo.put(vehID, Map_requestInfo);
+					
+										CarsMap_with_Schedule.put((String) vehID, veh_array);
+										Map_requestInfo.put(insertTime, request_array ); 
+										CarsMap_time_to_requestInfo.put((String) vehID, Map_requestInfo);
+										System.out.println("-----------after inserting------------");
+										System.out.println("Map_requestInfo:"+ Map_requestInfo);
+										System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
+										System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
+										System.out.println("cars_Box:"+ cars_Box);
 										break;
 									}
 									
@@ -779,8 +781,15 @@ public class MainCopy3 {
 									double diffDuration_IndexToBeforeIndex = ((int) veh_array.get(indexValue)-(int) veh_array.get(indexValue-1))*60;
 									
 									if(travelTime_IndexToBeforeIndex<diffDuration_IndexToBeforeIndex) {
-										Map_requestInfo.put(insertTime, request_array ); // request_array should be dynamic
-										CarsMap_time_to_requestInfo.put(vehID, Map_requestInfo);
+										
+										CarsMap_with_Schedule.put((String) vehID, veh_array);
+										Map_requestInfo.put(insertTime, request_array ); 
+										CarsMap_time_to_requestInfo.put((String) vehID, Map_requestInfo);
+										System.out.println("-----------after inserting------------");
+										System.out.println("Map_requestInfo:"+ Map_requestInfo);
+										System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
+										System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
+										System.out.println("cars_Box:"+ cars_Box);
 										
 										break;
 									}
@@ -820,7 +829,15 @@ public class MainCopy3 {
 									
 									if(travelTime_IndexToBeforeIndex<diffDuration_IndexToBeforeIndex && 
 											travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) {											
-										CarsMap_time_to_requestInfo.put(vehID, Map_requestInfo);
+										
+										CarsMap_with_Schedule.put((String) vehID, veh_array);
+										Map_requestInfo.put(insertTime, request_array ); 
+										CarsMap_time_to_requestInfo.put((String) vehID, Map_requestInfo);
+										System.out.println("-----------after inserting------------");
+										System.out.println("Map_requestInfo:"+ Map_requestInfo);
+										System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
+										System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
+										System.out.println("cars_Box:"+ cars_Box);
 																														
 										break;
 									}
@@ -867,7 +884,7 @@ public class MainCopy3 {
 							System.out.println("distance_curAdd_To_Des:"+ distance_curAdd_To_Des);
 							*/
 							if(timeSeconds==lowerBound_time) { // specific time
-								System.out.println("send nitification to the specific sender");	
+								System.out.println("send notification to the specific sender ten minutes in advance");	
 							}
 						}
 					}
@@ -891,12 +908,12 @@ public class MainCopy3 {
 													
 						
 							if(timeSeconds==specific_time) { // specific time
-								System.out.println("send nitification to the specific sender");	
+								System.out.println("send notification to the specific sender");	
 								int isReceiver = (int) requestInfo.get(4);
 								// case1:sender destination
 								if(isReceiver==0) {
 									// notify sender that the car arrived to sender's address via userDevicekeyID
-									
+									System.out.println("we arrive to the sender's address");
 									// notify receiver ID
 									// wait for receiver's time-selection
 								}
@@ -920,8 +937,8 @@ public class MainCopy3 {
 									
 									veh_Box.put(boxSize, boxList);
 									cars_Box.put(veh,veh_Box);
-									
-									System.out.print("after unloading container, cars_Box is "+ cars_Box);
+									System.out.println("we arrive to the receiver's address");
+									System.out.println("after unloading container, cars_Box is "+ cars_Box);
 									
 								}
 							}
