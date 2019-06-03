@@ -376,7 +376,7 @@ public class MainCopy3 {
 										CarsMap_time_to_requestInfo.put(vehID, Map_requestInfo);
 										
 										System.out.println("-----------after inserting------------");
-										System.out.println("This request is inserted!"+ "veh"+ vehID);
+										System.out.println("This request is inserted into "+ "veh"+ vehID);
 										System.out.println("boxSize:"+ insert_BoxSize);
 										System.out.println("Map_requestInfo:"+ Map_requestInfo);
 										System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
@@ -560,7 +560,7 @@ public class MainCopy3 {
 						System.out.println("---------------------------------");
 						
 						String vehID = Integer.toString(veh); 
-						System.out.print("vehID:"+ vehID);
+						System.out.println("vehID:"+ vehID);
 						ArrayList veh_array = new ArrayList();//veh_array:[570, 660]			
 						veh_array = (ArrayList)CarsMap_with_Schedule.get(vehID);
 						veh_array.add((int)currentMin);
@@ -581,7 +581,7 @@ public class MainCopy3 {
 						SumoStringList routes = new SumoStringList();
 						
 						String curEdge = (String)conn.do_job_get(Vehicle.getRoadID(vehID));
-						System.out.println("curEdge:"+ curEdge);
+						
 						edges_list.add(curEdge);
 						
 						for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {
@@ -617,10 +617,12 @@ public class MainCopy3 {
 						
 						for (String edge :routes){ 
 							newRoute.add(edge); 
-						}						
-						System.out.println("edges_list:"+ edges_list);
+						}
+						
 						System.out.println("veh_array:"+veh_array);
-						System.out.println("Map_requestInfo:"+ Map_requestInfo);	
+						System.out.println("Map_requestInfo:"+ Map_requestInfo);
+						System.out.println("curEdge:"+ curEdge);
+						System.out.println("Arrival edges_list:"+ edges_list);	
 						System.out.println("newRoute_before:"+ newRoute);
 	
 						if(stages_list.size()>0){
@@ -706,11 +708,7 @@ public class MainCopy3 {
 							
 							if(travelTime_curr_To_Index<diffDuration_curAddrTo_Des) {
 								veh_array.add(insertTime); // v3_timeSchedule [570]
-								
-								
-						
-								cars_Box.put(int_vehID, veh_box);
-								
+								cars_Box.put(int_vehID, veh_box);							
 								Map_requestInfo.put(insertTime, request_array ); 
 								CarsMap_time_to_requestInfo.put((String) vehID, Map_requestInfo);
 								CarsMap_with_Schedule.put((String) vehID, veh_array);
