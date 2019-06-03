@@ -5,7 +5,7 @@ public class AssignResult {
 	
 	public AssignResult() {
 		// TODO 自動產生的建構子 Stub
-		rs = -1;
+		rs = 1;
 	}	
 	
 	public int getResult() {

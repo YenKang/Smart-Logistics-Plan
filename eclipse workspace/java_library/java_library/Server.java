@@ -135,12 +135,16 @@ class Server extends Thread {
                 synchronized(assignResult) {
                 	 assignResult.wait();
                 }        
-                System.out.println(assignResult.getResult());
-                
+                int assign_condition = assignResult.getResult();
+                System.out.println(assign_condition);
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(output));
-            	//bufferedWriter.write((clientRequest.assignTest)+"\n");
+            	bufferedWriter.write(Integer.toString(assign_condition));
+                //bufferedWriter.write(assign_condition);
             	bufferedWriter.flush();
             	bufferedWriter.close();
+            	input.close();
+            	output.close();
+            	this.clientSocket.close();
           
 			} catch (Exception e) {
 				// TODO: handle exception

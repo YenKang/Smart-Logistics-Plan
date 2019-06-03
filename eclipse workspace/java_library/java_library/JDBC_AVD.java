@@ -7,6 +7,7 @@ import java.util.Date;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
+import com.sun.org.apache.regexp.internal.recompile;
 
 public class JDBC_AVD {
 	  // 建立連線物件
@@ -140,6 +141,36 @@ public class JDBC_AVD {
 		   }
 	  }
 	  
+	// 取得使用者的 Device_ID
+		  public String QueryDeviceKey(String user_name)
+		  { 
+			  String result = "No";
+		    try 
+		    {  
+		    	String sql = "select device_key from user where username = ? ";
+		    	pst = (PreparedStatement) con.prepareStatement(sql);
+		    	pst.setString(1, user_name);
+		    	rs = pst.executeQuery();
+		      
+		    	while(rs.next()) {
+		    		result = rs.getString("device_key");
+		    	}
+		    	System.out.println(result); 
+		    	return result;		      
+		    } 
+		    catch(SQLException e) 
+		    { 
+		      System.out.println("DropDB Exception :" + e.toString()); 
+		    } 
+		    finally 
+		    { 
+		      Close(); 
+		      System.out.println("already close!");
+		    }
+		    return "No";   
+		  } 
+		  //////////////////////////////////////////////
+	  
 	  
 	  // 登入並取得user_id
 	  public int Login(int user_id)
@@ -196,6 +227,7 @@ public class JDBC_AVD {
 				  pst = null; 
 			  }
 			  con.close();
+			  // System.out.println("already close!");
 		  } 
 		  catch(SQLException e) 
 		  { 

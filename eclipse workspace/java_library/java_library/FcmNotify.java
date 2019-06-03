@@ -11,9 +11,8 @@ public class FcmNotify {
     
     private String user_mac_token="";
     
-    public FcmNotify(String token) {
+    public FcmNotify() {
 		// TODO 自動產生的建構子 Stub
-    	user_mac_token = token;
 	}
     
     // userDeviceIdKey is the device id you will query from your database
