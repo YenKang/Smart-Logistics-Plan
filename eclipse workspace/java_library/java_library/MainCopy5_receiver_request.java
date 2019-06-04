@@ -282,10 +282,11 @@ public class MainCopy5_receiver_request {
 								String sender_name = clientInfo.getSenderID();
 								String receiver_name = clientInfo.getReceiverID();
 								
-								JDBC_AVD deviceID_getterS = new JDBC_AVD();
+								/*JDBC_AVD deviceID_getterS = new JDBC_AVD();
 								String sender_DID = deviceID_getterS.QueryDeviceKey(sender_name);
 								JDBC_AVD deviceID_getterR = new JDBC_AVD();
 								String receiver_DID = deviceID_getterR.QueryDeviceKey(receiver_name);
+								*/
 								
 								ArrayList request_array = new ArrayList();
 								
@@ -297,8 +298,8 @@ public class MainCopy5_receiver_request {
 								
 								request_array.add(0);
 								request_array.add(0);
-								request_array.add(sender_DID);
-								request_array.add(receiver_DID);
+								request_array.add("ceyC2imRkXo:APA91bGQqkLMjPhFZPP1FHmPdiMIPGpPANR7YxdkNyFQM46bTGd55Bt1K2ep6pDE8VWZ1StzpIjuO32xmKmf606vZVzI9Zr71dFDcLA6SeWDj9eMFH-8f2doArFWaP3PWO6LOsqS_zdX");
+								request_array.add("ceyC2imRkXo:APA91bGQqkLMjPhFZPP1FHmPdiMIPGpPANR7YxdkNyFQM46bTGd55Bt1K2ep6pDE8VWZ1StzpIjuO32xmKmf606vZVzI9Zr71dFDcLA6SeWDj9eMFH-8f2doArFWaP3PWO6LOsqS_zdX");
 								
 								
 								System.out.println("request_array:"+ request_array);
@@ -626,7 +627,7 @@ public class MainCopy5_receiver_request {
 										Thread.sleep(500);
 										assignResult.notify();
 									}
-									JDBC_AVD order_success = new JDBC_AVD();								
+									//JDBC_AVD order_success = new JDBC_AVD();								
 									
 									String container_id = Integer.toString(container_DB_insert);
 									String truck_id = Integer.toString(truck_DB_insert);
@@ -635,8 +636,8 @@ public class MainCopy5_receiver_request {
 									int price = clientInfo.getPrice();
 									double receiver_lng = lnglat[2];
 									double receiver_lat = lnglat[3];
-									order_success.insertOrder("fuckU", sender_name, receiver_name, container_id, truck_id, weight,
-											cargo_content, insert_BoxSize, price, sender_lng, sender_lat, receiver_lng, receiver_lat, sender_time);
+									//order_success.insertOrder("fuckU", sender_name, receiver_name, container_id, truck_id, weight,
+											//cargo_content, insert_BoxSize, price, sender_lng, sender_lat, receiver_lng, receiver_lat, sender_time);
 								}
 								System.out.println("-------------route arrangement-------------");
 								// set routes
@@ -765,14 +766,15 @@ public class MainCopy5_receiver_request {
 							*/
 							if(timeSeconds==lowerBound_time) { // specific time
 								if (veh ==2) {
-									System.out.println("send nitification to the specific sender");	
+									System.out.println("The system is in the notification stage!");	
+									System.out.println("send notification to the specific sender");	
 									String sender_DID = (String) requestInfo.get(6);
 									System.out.println(sender_DID);
 									FcmNotify notifySenderEarly = new FcmNotify();
 									notifySenderEarly.pushFCMNotification(sender_DID, "貨車即將到達", "貨車將於約10分後到達。");
 								}
 								/*
-								System.out.println("send nitification to the specific sender");	
+								System.out.println("send notification to the specific sender");	
 								FcmNotify notifySenderEarly = new FcmNotify();
 								String sender_DID = (String) requestInfo.get(6);
 								System.out.println(sender_DID);
