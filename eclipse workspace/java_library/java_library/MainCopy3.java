@@ -648,8 +648,8 @@ public class MainCopy3 {
 					System.out.println("-------------------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
 					double currentMin = (540+ timeSeconds/60.0);			
-					int insert_BoxSize=1; // small box insertion
-					int insertTime=600; // 600 means 10:00
+					int insert_BoxSize=3; // small box insertion
+					int insertTime=660; // 600 means 10:00
 					ArrayList request_array = new ArrayList();
 					request_array.add("287304445#7"); // costco
 					request_array.add(6308.47);
