@@ -34,7 +34,8 @@ public class JDBC_AVD {
 			    e.printStackTrace();
 		   } 
 	  }
-	  
+	  // 時代眼淚
+	  /*
 	  public JDBC_AVD( String usernameX,String passwordX) 
 	  { 
 		  username = usernameX;
@@ -59,7 +60,7 @@ public class JDBC_AVD {
 			  System.out.println("Exception :"+x.toString()); 
 		  } 
 	  } 
-	  
+	  */
 	  // 初始化貨車資訊
 	  public void insertVehicle(String truck_No, double lat_now, double lng_now, double speed) {
 		   String sql = "insert into truck (id, truck_number, lat_now, lng_now, lat_dest, lng_dest, "
@@ -140,11 +141,25 @@ public class JDBC_AVD {
 			   e.printStackTrace();
 		   }
 	  }
+	 // hi I am fuck;) 幽默 你是最強的
+	 // 貨物到達 sender 或 receiver，需改變貨物狀態 (status)
+	 public void UpdateOrderStatus(String order_No, String status) {
+		 String sql = "update user_order set status = ? where order_number = ?";
+		 try {
+			pst = (PreparedStatement) con.prepareStatement(sql);
+			pst.setString(1, status);
+			pst.setString(2, order_No);
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			// TODO 自動產生的 catch 區塊
+			e.printStackTrace();
+		}
+		 
+	 }
 	  
 	// 取得使用者的 Device_ID
-		  public String QueryDeviceKey(String user_name)
-		  { 
-			  String result = "No";
+	 public String QueryDeviceKey(String user_name) { 
+			String result = "No";
 		    try 
 		    {  
 		    	String sql = "select device_key from user where username = ? ";

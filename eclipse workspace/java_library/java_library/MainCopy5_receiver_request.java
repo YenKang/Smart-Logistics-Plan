@@ -287,6 +287,12 @@ public class MainCopy5_receiver_request {
 								JDBC_AVD deviceID_getterR = new JDBC_AVD();
 								String receiver_DID = deviceID_getterR.QueryDeviceKey(receiver_name);
 								
+								// 這裡要隨機產生 order_No!!
+								// 先以時間生成流水號代替
+								SimpleDateFormat sdft = new SimpleDateFormat("yyMMddhhmmss");
+								Date nowdate = new Date();
+								String order_No = sdft.format(nowdate);
+								
 								ArrayList request_array = new ArrayList();
 								
 								// request_array 
@@ -295,10 +301,11 @@ public class MainCopy5_receiver_request {
 								request_array.add(sender_y);
 								request_array.add(sender_pos);
 								
-								request_array.add(0);
-								request_array.add(0);
-								request_array.add(sender_DID);
-								request_array.add(receiver_DID);
+								request_array.add(0); // 4
+								request_array.add(0); // 5
+								request_array.add(sender_DID); // 6
+								request_array.add(receiver_DID); // 7
+								request_array.add(order_No); // 8
 								
 								
 								System.out.println("request_array:"+ request_array);
@@ -635,7 +642,10 @@ public class MainCopy5_receiver_request {
 									int price = clientInfo.getPrice();
 									double receiver_lng = lnglat[2];
 									double receiver_lat = lnglat[3];
-									order_success.insertOrder("fuckU", sender_name, receiver_name, container_id, truck_id, weight,
+									
+									// order_No 在前面 (line 290) 即產生
+									// 新增訂單
+									order_success.insertOrder(order_No, sender_name, receiver_name, container_id, truck_id, weight,
 											cargo_content, insert_BoxSize, price, sender_lng, sender_lat, receiver_lng, receiver_lat, sender_time);
 								}
 								System.out.println("-------------route arrangement-------------");
@@ -764,6 +774,7 @@ public class MainCopy5_receiver_request {
 							System.out.println("distance_curAdd_To_Des:"+ distance_curAdd_To_Des);
 							*/
 							if(timeSeconds==lowerBound_time) { // specific time
+								// 因為還沒初始設置完畢，先只用第二台測試
 								if (veh ==2) {
 									System.out.println("send nitification to the specific sender");	
 									String sender_DID = (String) requestInfo.get(6);
@@ -782,6 +793,86 @@ public class MainCopy5_receiver_request {
 					}
 				}
 				// 通知完後繼續移動
+				// 當車子已經到達 sender 位置，則通知 sender 及 receiver 選擇時間
+				// when the vehicle arrive to the destination (sender address & receiver address)
+				if(timeSeconds%900==0) {
+					for(int veh=1;veh<CarsMap_with_Schedule.size()+1;veh++) {
+						String vehID = Integer.toString(veh); 
+						ArrayList veh_array = new ArrayList();
+						veh_array = (ArrayList)CarsMap_with_Schedule.get(vehID); // {1=[570,660]}
+						Map eachVeh_requestInfo = new HashMap();
+						eachVeh_requestInfo = (Map) CarsMap_time_to_requestInfo.get(vehID);
+						
+						for(int veh_array_Index=0; veh_array_Index<veh_array.size();veh_array_Index++) {
+							int arrival_time =(int) veh_array.get(veh_array_Index); // [570,660] ->570
+							ArrayList requestInfo = new ArrayList();
+							requestInfo = (ArrayList) eachVeh_requestInfo.get(arrival_time);// 570=[496257308#5, 3937.13, 5039.67, 50.0, 0,111, "kjkjk44"] //userDEvicekeyID
+							
+							int specific_time = (arrival_time-540)*60;
+													 
+							if(timeSeconds==specific_time) { // specific time
+								System.out.println("send notification to the specific sender");	
+								int isReceiver = (int) requestInfo.get(4);
+								// case1:sender destination
+								if(isReceiver==0) {
+									// notify sender that the car arrived to sender's address via userDevicekeyID	
+									
+									System.out.println("we arrive to the sender's address");
+									System.out.println("send nitification to the specific sender");							
+									// 4: isreceiver 5: container 6: senderDID 7. receiverDID
+									String sender_DID =(String) requestInfo.get(6);
+									FcmNotify notifySender = new FcmNotify();
+									notifySender.pushFCMNotification(sender_DID, "貨車已到達", "貨車已到達收貨點，請準備上貨。");
+									
+									// 更新資料庫中的貨物狀態，以便 android 介面進行更改
+									String order_No = (String)requestInfo.get(8);
+									JDBC_AVD arrive_at_sender = new JDBC_AVD();
+									arrive_at_sender.UpdateOrderStatus(order_No, "10");
+									
+									// notify receiver ID       
+									// 其實到時候應該是 +5 分鐘，同時模擬 sender 上貨及通知 receiver 選擇取貨時間，但先寫在這
+									String receiver_DID = (String) requestInfo.get(7);
+									FcmNotify notifyReceiverTimeSelect = new FcmNotify();
+									notifyReceiverTimeSelect.pushFCMNotification(receiver_DID, "貨物已上車", "寄件人已將貨物寄出，已可選擇取貨時間。");
+									// wait for receiver's time-selection
+								}
+								// case2:receiver destination
+								if(isReceiver==1) {
+									// notify receiver to unload the container
+									// step1:notify receiver that the car arrived to receiver via userDevicekeyID
+									
+									String receiver_DID = (String) requestInfo.get(7);
+									FcmNotify notifyReceiver = new FcmNotify();
+									notifyReceiver.pushFCMNotification(receiver_DID, "貨車已到達", "貨物已送達，請準備簽收。");
+									
+									// 更新資料庫的貨物狀態，確認此訂單流程已結束
+									String order_No = (String)requestInfo.get(8);
+									JDBC_AVD arrive_at_receiver = new JDBC_AVD();
+									arrive_at_receiver.UpdateOrderStatus(order_No, "99");
+									
+									// step2:unload the container
+									int int_boxIndex = (int) requestInfo.get(5);
+									String boxIndex = Integer.toString(int_boxIndex); 
+									// change container id of the car in SUMO
+									conn.do_job_set(Vehicle.setParameter(vehID, boxIndex, "0"));
+									Map veh_Box = new HashMap();
+									veh_Box = (Map) cars_Box.get(veh); // v1_Box:{1=[111, 112], 2=[], 3=[]}
+									int boxSize = (int_boxIndex-veh*100)/10;
+									ArrayList boxList = new ArrayList();
+									boxList = (ArrayList) veh_Box.get(boxSize); // [111, 112]
+									int Index_specific_Box = boxList.indexOf(int_boxIndex);
+									boxList.remove(Index_specific_Box);
+									
+									veh_Box.put(boxSize, boxList);
+									cars_Box.put(veh,veh_Box);
+									System.out.println("we arrive to the receiver's address");
+									System.out.println("after unloading container, cars_Box is "+ cars_Box);
+									
+								}
+							}
+						}
+					}
+				}
 				
 				
 				
