@@ -186,7 +186,7 @@ public class MainCopy2 {
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
 				//System.out.println("timeSeconds:"+ timeSeconds);
 				
-				// ������澈
+				//
 				/*
 				if (i == 10) {
 					// 

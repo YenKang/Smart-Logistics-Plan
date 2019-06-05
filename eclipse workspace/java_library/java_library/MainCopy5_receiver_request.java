@@ -282,10 +282,11 @@ public class MainCopy5_receiver_request {
 								String sender_name = clientInfo.getSenderID();
 								String receiver_name = clientInfo.getReceiverID();
 								
-								JDBC_AVD deviceID_getterS = new JDBC_AVD();
+								/*JDBC_AVD deviceID_getterS = new JDBC_AVD();
 								String sender_DID = deviceID_getterS.QueryDeviceKey(sender_name);
 								JDBC_AVD deviceID_getterR = new JDBC_AVD();
 								String receiver_DID = deviceID_getterR.QueryDeviceKey(receiver_name);
+								*/
 								
 								// 這裡要隨機產生 order_No!!
 								// 先以時間生成流水號代替
@@ -633,7 +634,7 @@ public class MainCopy5_receiver_request {
 										Thread.sleep(500);
 										assignResult.notify();
 									}
-									JDBC_AVD order_success = new JDBC_AVD();								
+									//JDBC_AVD order_success = new JDBC_AVD();								
 									
 									String container_id = Integer.toString(container_DB_insert);
 									String truck_id = Integer.toString(truck_DB_insert);
@@ -776,14 +777,15 @@ public class MainCopy5_receiver_request {
 							if(timeSeconds==lowerBound_time) { // specific time
 								// 因為還沒初始設置完畢，先只用第二台測試
 								if (veh ==2) {
-									System.out.println("send nitification to the specific sender");	
+									System.out.println("The system is in the notification stage!");	
+									System.out.println("send notification to the specific sender");	
 									String sender_DID = (String) requestInfo.get(6);
 									System.out.println(sender_DID);
 									FcmNotify notifySenderEarly = new FcmNotify();
 									notifySenderEarly.pushFCMNotification(sender_DID, "貨車即將到達", "貨車將於約10分後到達。");
 								}
 								/*
-								System.out.println("send nitification to the specific sender");	
+								System.out.println("send notification to the specific sender");	
 								FcmNotify notifySenderEarly = new FcmNotify();
 								String sender_DID = (String) requestInfo.get(6);
 								System.out.println(sender_DID);
