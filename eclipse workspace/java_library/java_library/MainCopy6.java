@@ -19,7 +19,7 @@
 /****************************************************************************/
 
 import it.polito.appeal.traci.SumoTraciConnection;
-
+import de.tudresden.sumo.cmd.Junction;
 import de.tudresden.sumo.cmd.Simulation;
 import de.tudresden.sumo.cmd.Vehicle;
 import de.tudresden.sumo.util.SumoCommand;
@@ -178,8 +178,8 @@ public class MainCopy6 {
 			
 			///////////////////////////////////////////////////////////////////
 			double vehicle_speed = 4.0; //4 [m/s]
-			SumoColor veh1_color = new SumoColor(255 ,105, 180, 8);
-			conn.do_job_set(Vehicle.setColor("1", veh1_color));
+			//SumoColor veh1_color = new SumoColor(255 ,105, 180, 8);
+			//conn.do_job_set(Vehicle.setColor("1", veh1_color));
 			
 			for (int i = 0; i < 360000000; i++) {
 				conn.do_timestep();
@@ -203,6 +203,17 @@ public class MainCopy6 {
 					System.out.println("insert_BoxSize:"+ insert_BoxSize);
 					System.out.println("insertTime:"+ insertTime);
 					System.out.println("request_array:"+ request_array);
+					
+					SumoStringList junctions = new SumoStringList();
+					junctions = (SumoStringList) conn.do_job_get(Junction.getIDList());
+					System.out.println("junctions:"+ junctions);
+					LinkedList<String> junction_list = new LinkedList<String>(); 
+					
+					for (String each_junction :junctions){ 
+						junction_list.add(each_junction); 
+					}
+					
+					//System.out.println("junction_list:"+ junction_list);
 					
 					HashMap  CarsMapSchedule_afterBoxFilter = new HashMap();
 					Iterator iter = CarsMap_with_Schedule.entrySet().iterator(); 
@@ -644,7 +655,7 @@ public class MainCopy6 {
 					}
 				}
 
-				if(timeSeconds==110.0 ) {
+				if(timeSeconds==100.0 ) {
 					System.out.println("-------------------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
 					double currentMin = (540+ timeSeconds/60.0);			
@@ -1099,7 +1110,7 @@ public class MainCopy6 {
 					}
 				}
 				
-				if(timeSeconds==150.0 ) {
+				if(timeSeconds==139.0 ) {
 					System.out.println("-------------------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
 					double currentMin = (540+ timeSeconds/60.0);			
@@ -1468,6 +1479,18 @@ public class MainCopy6 {
 					
 					System.out.println("-------------route arrangement----------------------------------------------------------");
 					// set routes
+					SumoStringList getRoute_list = new SumoStringList();
+					getRoute_list =  (SumoStringList) conn.do_job_get(Vehicle.getRoute("1"));
+					System.out.println("getRoute_list:"+ getRoute_list);
+					
+					LinkedList<String> v1_routeList = new LinkedList<String>(); 
+					
+					for (String edge :getRoute_list){ 
+						v1_routeList.add(edge); 
+					}
+					
+					System.out.println("v1_routeList:"+ v1_routeList);
+					
 
 					for(int veh=1; veh<=CarsMap_with_Schedule.size();veh++) {
 						System.out.println("---------------------------------");

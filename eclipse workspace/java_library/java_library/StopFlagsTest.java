@@ -70,6 +70,24 @@ public class StopFlagsTest {
 				
 				// 
 				
+				if(timeSeconds==78.0) {
+					System.out.println("timeSeconds:"+ timeSeconds);
+					String currentEdgeId = (String) conn.do_job_get(Vehicle.getRoadID("1"));
+					System.out.println("currentEdgeId:"+ currentEdgeId);
+					SumoPosition2D currentPosition = (SumoPosition2D) conn.do_job_get(Vehicle.getPosition("1"));
+					System.out.println("currentPosition:"+ currentPosition);
+					
+					SumoPositionRoadMap current_converted_Road = (SumoPositionRoadMap) conn.do_job_get(
+							Simulation.convertRoad(currentPosition.x, currentPosition.y, false, "ignoring"));
+					String converted_road_Edge = current_converted_Road.edgeID;
+					System.out.println("converted_road_Edge:"+ converted_road_Edge);
+					
+					SumoPositionRoadMap converted_Road = (SumoPositionRoadMap) conn.do_job_get(
+							Simulation.convertRoad(8251.0, 2767.0, false, "ignoring"));
+					String converted_Edge = converted_Road.edgeID;
+					System.out.println("converted_Edge:"+ converted_Edge);
+				}
+				
 				if(timeSeconds==100.0) {
 					String edge1 = "41389174#2";
 					double pos1 = 10.0;
@@ -94,6 +112,7 @@ public class StopFlagsTest {
 					SumoStopFlags sf2 = new SumoStopFlags(false, false, false, false, false);
 					conn.do_job_set(Vehicle.setStop("1", edge2 , pos2, (byte)0,  0.0,  
 							sf2, pos2, until_2));
+
 				}
 				
 				if(timeSeconds==250.0) {
@@ -127,6 +146,19 @@ public class StopFlagsTest {
 					SumoStopFlags sf2 = new SumoStopFlags(false, false, false, false, false);
 					conn.do_job_set(Vehicle.setStop("1", edge2 , pos2, (byte)0,  0.0,  
 							sf2, pos2, until_2));
+				}
+				
+				if(timeSeconds==314.0) {
+					System.out.println("timeSeconds:"+ timeSeconds);
+					String currentEdgeId = (String) conn.do_job_get(Vehicle.getRoadID("1"));
+					System.out.println("currentEdgeId:"+ currentEdgeId);
+					SumoPosition2D currentPosition = (SumoPosition2D) conn.do_job_get(Vehicle.getPosition("1"));
+					System.out.println("currentPosition:"+ currentPosition);
+					
+					SumoPositionRoadMap current_converted_Road = (SumoPositionRoadMap) conn.do_job_get(
+							Simulation.convertRoad(currentPosition.x, currentPosition.y, false, "ignoring"));
+					String converted_road_Edge = current_converted_Road.edgeID;
+					System.out.println("converted_road_Edge:"+ converted_road_Edge);
 				}
 
 			}
