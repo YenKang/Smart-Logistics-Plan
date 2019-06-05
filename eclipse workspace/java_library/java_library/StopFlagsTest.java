@@ -86,6 +86,43 @@ public class StopFlagsTest {
 							Simulation.convertRoad(8251.0, 2767.0, false, "ignoring"));
 					String converted_Edge = converted_Road.edgeID;
 					System.out.println("converted_Edge:"+ converted_Edge);
+					
+					
+					String vType ="truck"; 
+					double depart = 0.0; 
+					int routingMode = 0;
+					String startEdgeID = ":cluster_1240288780_2365426109_0";
+					String endEdgeID= "30438916#0";
+					SumoStage stage = (SumoStage)conn.do_job_get(Simulation.findRoute(startEdgeID, 
+							endEdgeID, vType, depart,routingMode));
+		
+					LinkedList<String> v1_route_from_Junctions_to_validEdge = new LinkedList<String>(); 
+					
+					for (String edge :stage.edges){ 
+						v1_route_from_Junctions_to_validEdge.add(edge); 
+					}
+					
+					System.out.println("v1_route_from_Junctions_to_validEdge:"+ v1_route_from_Junctions_to_validEdge);
+					conn.do_job_set(Vehicle.setRoute("1", stage.edges));
+
+					/*
+					if(startEdgeID.contains(":cluster")) {
+
+						
+						String edited_start_EdgeID = v1_route_from_Junctions_to_validEdge.get(1);
+						System.out.println("edited_start_EdgeID:"+ edited_start_EdgeID);
+						SumoStage edited_stage = (SumoStage)conn.do_job_get(Simulation.findRoute(edited_start_EdgeID, 
+								"30438916#0", "truck", 0.0,0));
+						LinkedList<String> v1_route_from_newStartEdge_to_validEdge = new LinkedList<String>(); 
+						
+						for (String edge :edited_stage.edges){ 
+							v1_route_from_newStartEdge_to_validEdge.add(edge); 
+						}
+						System.out.println("v1_route_from_newStartEdge_to_validEdge:"+ v1_route_from_newStartEdge_to_validEdge);
+						conn.do_job_set(Vehicle.setRoute("1", edited_stage.edges));
+					}
+					*/
+					
 				}
 				
 				if(timeSeconds==100.0) {
