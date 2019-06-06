@@ -349,7 +349,7 @@ public class MainCopy6 {
 						int int_vehID = Integer.valueOf((String) vehID);
 						//String vehID = Integer.toString(veh); 
 						ArrayList veh_array = new ArrayList();//veh_array:[570, 660]
-			
+
 						veh_array = (ArrayList)CarsMap_with_Schedule.get((String) vehID);
 						Map  Map_requestInfo = new HashMap();
 						Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get((String) vehID);
@@ -396,6 +396,12 @@ public class MainCopy6 {
 								System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
 								System.out.println("cars_Box:"+ cars_Box);
 							}
+
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
+							}
 						}
 						
 						else {
@@ -439,7 +445,7 @@ public class MainCopy6 {
 									System.out.println("insertTime key_afterIndex:"+ (key_afterIndex-insertTime));
 									
 									if((travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) &&
-											(timeSeconds+travelTime_curr_To_Index) <(key_afterIndex-insertTime)*60) {
+											(timeSeconds+travelTime_curr_To_Index) <(insertTime-540)*60) {
 										
 										// BoxIndex insertion
 										if(insert_capacity==0) {
@@ -665,6 +671,12 @@ public class MainCopy6 {
 										break;
 									}
 								}
+							}
+
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
 							}
 						}
 					}
@@ -816,14 +828,7 @@ public class MainCopy6 {
 					System.out.println("insertTime:"+ insertTime);
 					System.out.println("request_array:"+ request_array);
 
-					SumoStringList junctions = new SumoStringList();
-					junctions = (SumoStringList) conn.do_job_get(Junction.getIDList());
-					System.out.println("junctions:"+ junctions);
-					LinkedList<String> junction_list = new LinkedList<String>(); 
-
-					for (String each_junction :junctions){ 
-						junction_list.add(each_junction); 
-					}
+				
 
 					//System.out.println("junction_list:"+ junction_list);
 
@@ -914,6 +919,12 @@ public class MainCopy6 {
 								System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
 								System.out.println("cars_Box:"+ cars_Box);
 							}
+
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
+							}
 						}
 						
 						else {
@@ -957,7 +968,7 @@ public class MainCopy6 {
 									System.out.println("insertTime key_afterIndex:"+ (key_afterIndex-insertTime));
 									
 									if((travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) &&
-											(timeSeconds+travelTime_curr_To_Index) <(key_afterIndex-insertTime)*60) {
+											(timeSeconds+travelTime_curr_To_Index) <(insertTime-540)*60) {
 										
 										// BoxIndex insertion
 										if(insert_capacity==0) {
@@ -1183,6 +1194,12 @@ public class MainCopy6 {
 										break;
 									}
 								}
+							}
+
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
 							}
 						}
 					}
@@ -1423,6 +1440,12 @@ public class MainCopy6 {
 								System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
 								System.out.println("cars_Box:"+ cars_Box);
 							}
+
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
+							}
 						}
 						
 						else {
@@ -1466,7 +1489,7 @@ public class MainCopy6 {
 									System.out.println("insertTime key_afterIndex:"+ (key_afterIndex-insertTime));
 									
 									if((travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) &&
-											(timeSeconds+travelTime_curr_To_Index) <(key_afterIndex-insertTime)*60) {
+											(timeSeconds+travelTime_curr_To_Index) <(insertTime-540)*60) {
 										
 										// BoxIndex insertion
 										if(insert_capacity==0) {
@@ -1692,6 +1715,12 @@ public class MainCopy6 {
 										break;
 									}
 								}
+							}
+
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
 							}
 						}
 					}
@@ -1926,6 +1955,12 @@ public class MainCopy6 {
 								System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
 								System.out.println("cars_Box:"+ cars_Box);
 							}
+
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
+							}
 						}
 						
 						else {
@@ -1969,7 +2004,7 @@ public class MainCopy6 {
 									System.out.println("insertTime key_afterIndex:"+ (key_afterIndex-insertTime));
 									
 									if((travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) &&
-											(timeSeconds+travelTime_curr_To_Index) <(key_afterIndex-insertTime)*60) {
+											(timeSeconds+travelTime_curr_To_Index) <(insertTime-540)*60) {
 										
 										// BoxIndex insertion
 										if(insert_capacity==0) {
@@ -2195,6 +2230,12 @@ public class MainCopy6 {
 										break;
 									}
 								}
+							}
+
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
 							}
 						}
 					}
@@ -2432,6 +2473,12 @@ public class MainCopy6 {
 								System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
 								System.out.println("cars_Box:"+ cars_Box);
 							}
+
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
+							}
 						}
 						
 						else {
@@ -2475,7 +2522,7 @@ public class MainCopy6 {
 									System.out.println("insertTime key_afterIndex:"+ (key_afterIndex-insertTime));
 									
 									if((travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) &&
-											(timeSeconds+travelTime_curr_To_Index) <(key_afterIndex-insertTime)*60) {
+											(timeSeconds+travelTime_curr_To_Index) <(insertTime-540)*60) {
 										
 										// BoxIndex insertion
 										if(insert_capacity==0) {
@@ -2701,6 +2748,12 @@ public class MainCopy6 {
 										break;
 									}
 								}
+							}
+
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
 							}
 						}
 					}
@@ -2938,6 +2991,12 @@ public class MainCopy6 {
 								System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
 								System.out.println("cars_Box:"+ cars_Box);
 							}
+
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
+							}
 						}
 						
 						else {
@@ -2981,7 +3040,7 @@ public class MainCopy6 {
 									System.out.println("insertTime key_afterIndex:"+ (key_afterIndex-insertTime));
 									
 									if((travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) &&
-											(timeSeconds+travelTime_curr_To_Index) <(key_afterIndex-insertTime)*60) {
+											(timeSeconds+travelTime_curr_To_Index) <(insertTime-540)*60) {
 										
 										// BoxIndex insertion
 										if(insert_capacity==0) {
@@ -3204,9 +3263,16 @@ public class MainCopy6 {
 									
 									else {
 										Map_requestInfo.remove(insertTime);
+										System.out.print("this request can not be inserted into the schedule, please pick other time!");
 										break;
 									}
 								}
+							}
+
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
 							}
 						}
 					}
@@ -3391,6 +3457,8 @@ public class MainCopy6 {
 						}
 					}
 	
+				
+
 					// Time schedule filtering
 					for(Object vehID:CarsMapSchedule_afterBoxFilter.keySet()) {
 						System.out.println("---------------------------------");
@@ -3445,6 +3513,12 @@ public class MainCopy6 {
 								System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
 								System.out.println("cars_Box:"+ cars_Box);
 							}
+
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
+							}
 						}
 						
 						else {
@@ -3466,8 +3540,7 @@ public class MainCopy6 {
 									
 									System.out.println("distance_curr_To_Index:"+ distance_curr_To_Index);
 									double travelTime_curr_To_Index = distance_curr_To_Index/vehicle_speed;
-									System.out.println("travelTime_curr_To_Index:"+ travelTime_curr_To_Index);
-									System.out.println("Map_requestInfo:"+ Map_requestInfo);
+									System.out.println("Map_requestInfo22:"+ Map_requestInfo);
 									
 									int key_afterIndex = (int) veh_array.get(indexValue+1);
 									System.out.println("key_afterIndex:"+ key_afterIndex);
@@ -3489,7 +3562,7 @@ public class MainCopy6 {
 									System.out.println("insertTime key_afterIndex:"+ (key_afterIndex-insertTime));
 									
 									if((travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) &&
-											(timeSeconds+travelTime_curr_To_Index) <(key_afterIndex-insertTime)*60) {
+											(timeSeconds+travelTime_curr_To_Index) <(insertTime-540)*60) {
 										
 										// BoxIndex insertion
 										if(insert_capacity==0) {
@@ -3545,7 +3618,7 @@ public class MainCopy6 {
 									
 									else {
 										Map_requestInfo.remove(insertTime);
-										System.out.println("this request can not be inserted into the schedule, please pick other time!");
+										System.out.print("this request can not be inserted into the schedule, please pick other time!");
 										break;
 									}
 								}
@@ -3715,6 +3788,12 @@ public class MainCopy6 {
 										break;
 									}
 								}
+							}
+
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
 							}
 						}
 					}
@@ -3952,6 +4031,12 @@ public class MainCopy6 {
 								System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
 								System.out.println("cars_Box:"+ cars_Box);
 							}
+
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
+							}
 						}
 						
 						else {
@@ -3995,7 +4080,7 @@ public class MainCopy6 {
 									System.out.println("insertTime key_afterIndex:"+ (key_afterIndex-insertTime));
 									
 									if((travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) &&
-											(timeSeconds+travelTime_curr_To_Index) <(key_afterIndex-insertTime)*60) {
+											(timeSeconds+travelTime_curr_To_Index) <(insertTime-540)*60) {
 										
 										// BoxIndex insertion
 										if(insert_capacity==0) {
@@ -4221,6 +4306,12 @@ public class MainCopy6 {
 										break;
 									}
 								}
+							}
+
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
 							}
 						}
 					}
