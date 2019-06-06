@@ -298,16 +298,6 @@ public class MainCopy6 {
 					System.out.println("insertTime:"+ insertTime);
 					System.out.println("request_array:"+ request_array);
 					
-					SumoStringList junctions = new SumoStringList();
-					junctions = (SumoStringList) conn.do_job_get(Junction.getIDList());
-					System.out.println("junctions:"+ junctions);
-					LinkedList<String> junction_list = new LinkedList<String>(); 
-					
-					for (String each_junction :junctions){ 
-						junction_list.add(each_junction); 
-					}
-					
-					//System.out.println("junction_list:"+ junction_list);
 					
 					HashMap  CarsMapSchedule_afterBoxFilter = new HashMap();
 					Iterator iter = CarsMap_with_Schedule.entrySet().iterator(); 
@@ -343,6 +333,7 @@ public class MainCopy6 {
 					}
 					
 					// Time schedule filtering
+					ArrayList isFull_in_all_Veh_arrays = new ArrayList();
 					for(Object vehID:CarsMapSchedule_afterBoxFilter.keySet()) {
 						System.out.println("---------------------------------");
 						System.out.println("veh:"+ vehID);
@@ -399,11 +390,12 @@ public class MainCopy6 {
 
 							else{
 								Map_requestInfo.remove(insertTime);
-								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								System.out.println("this request can not be inserted into the schedule, please pick other time!");
 								break;
 							}
 						}
 						
+						// this vehicle has already the schedule
 						else {
 							if((veh_array.contains(insertTime))!=true) {
 
@@ -673,15 +665,22 @@ public class MainCopy6 {
 								}
 							}
 
+							isFull_in_all_Veh_arrays.add(veh_array.contains(insertTime));
+
+							// 如果你的時段是10:00,2 但全部的三台車都有10:00這個時段
+							/*
 							else{
 								Map_requestInfo.remove(insertTime);
 								System.out.print("this request can not be inserted into the schedule, please pick other time!");
 								break;
 							}
+							*/
 						}
+						System.out.println("isFull_in_all_Veh_arrays:"+ isFull_in_all_Veh_arrays);
+
 					}
 					
-					System.out.println("-------------route arrangement----------------------------------------------------------");
+					System.out.println("-------------route arrangement--------------------------------");
 					// set routes
 
 					for(int veh=1; veh<=CarsMap_with_Schedule.size();veh++) {
@@ -831,7 +830,6 @@ public class MainCopy6 {
 				
 
 					//System.out.println("junction_list:"+ junction_list);
-
 					HashMap  CarsMapSchedule_afterBoxFilter = new HashMap();
 					Iterator iter = CarsMap_with_Schedule.entrySet().iterator(); 
 					while (iter.hasNext()) {
@@ -1196,11 +1194,7 @@ public class MainCopy6 {
 								}
 							}
 
-							else{
-								Map_requestInfo.remove(insertTime);
-								System.out.print("this request can not be inserted into the schedule, please pick other time!");
-								break;
-							}
+							
 						}
 					}
 	
@@ -1717,11 +1711,7 @@ public class MainCopy6 {
 								}
 							}
 
-							else{
-								Map_requestInfo.remove(insertTime);
-								System.out.print("this request can not be inserted into the schedule, please pick other time!");
-								break;
-							}
+							
 						}
 					}
 	
@@ -2232,11 +2222,7 @@ public class MainCopy6 {
 								}
 							}
 
-							else{
-								Map_requestInfo.remove(insertTime);
-								System.out.print("this request can not be inserted into the schedule, please pick other time!");
-								break;
-							}
+							
 						}
 					}
 	
@@ -2750,11 +2736,7 @@ public class MainCopy6 {
 								}
 							}
 
-							else{
-								Map_requestInfo.remove(insertTime);
-								System.out.print("this request can not be inserted into the schedule, please pick other time!");
-								break;
-							}
+							
 						}
 					}
 	
@@ -3269,11 +3251,7 @@ public class MainCopy6 {
 								}
 							}
 
-							else{
-								Map_requestInfo.remove(insertTime);
-								System.out.print("this request can not be inserted into the schedule, please pick other time!");
-								break;
-							}
+							
 						}
 					}
 	
@@ -3790,11 +3768,7 @@ public class MainCopy6 {
 								}
 							}
 
-							else{
-								Map_requestInfo.remove(insertTime);
-								System.out.print("this request can not be inserted into the schedule, please pick other time!");
-								break;
-							}
+							
 						}
 					}
 	
@@ -4308,11 +4282,7 @@ public class MainCopy6 {
 								}
 							}
 
-							else{
-								Map_requestInfo.remove(insertTime);
-								System.out.print("this request can not be inserted into the schedule, please pick other time!");
-								break;
-							}
+							
 						}
 					}
 	
