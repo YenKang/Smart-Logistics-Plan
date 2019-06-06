@@ -52,7 +52,67 @@ public class StopFlagsTest {
 			// 模擬開始
 			for (int i = 0; i < 360000000; i++) {
 				conn.do_timestep();
-				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());			
+
+				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
+				//System.out.println("timeSeconds:"+ timeSeconds);
+				
+				// 
+				
+				if(timeSeconds==78.0) {
+					System.out.println("timeSeconds:"+ timeSeconds);
+					String currentEdgeId = (String) conn.do_job_get(Vehicle.getRoadID("1"));
+					System.out.println("currentEdgeId:"+ currentEdgeId);
+					SumoPosition2D currentPosition = (SumoPosition2D) conn.do_job_get(Vehicle.getPosition("1"));
+					System.out.println("currentPosition:"+ currentPosition);
+					
+					SumoPositionRoadMap current_converted_Road = (SumoPositionRoadMap) conn.do_job_get(
+							Simulation.convertRoad(currentPosition.x, currentPosition.y, false, "ignoring"));
+					String converted_road_Edge = current_converted_Road.edgeID;
+					System.out.println("converted_road_Edge:"+ converted_road_Edge);
+					
+					SumoPositionRoadMap converted_Road = (SumoPositionRoadMap) conn.do_job_get(
+							Simulation.convertRoad(8251.0, 2767.0, false, "ignoring"));
+					String converted_Edge = converted_Road.edgeID;
+					System.out.println("converted_Edge:"+ converted_Edge);
+					
+					
+					String vType ="truck"; 
+					double depart = 0.0; 
+					int routingMode = 0;
+					String startEdgeID = ":cluster_1240288780_2365426109_0";
+					String endEdgeID= "30438916#0";
+					SumoStage stage = (SumoStage)conn.do_job_get(Simulation.findRoute(startEdgeID, 
+							endEdgeID, vType, depart,routingMode));
+		
+					LinkedList<String> v1_route_from_Junctions_to_validEdge = new LinkedList<String>(); 
+					
+					for (String edge :stage.edges){ 
+						v1_route_from_Junctions_to_validEdge.add(edge); 
+					}
+					
+					System.out.println("v1_route_from_Junctions_to_validEdge:"+ v1_route_from_Junctions_to_validEdge);
+					conn.do_job_set(Vehicle.setRoute("1", stage.edges));
+
+					/*
+					if(startEdgeID.contains(":cluster")) {
+
+						
+						String edited_start_EdgeID = v1_route_from_Junctions_to_validEdge.get(1);
+						System.out.println("edited_start_EdgeID:"+ edited_start_EdgeID);
+						SumoStage edited_stage = (SumoStage)conn.do_job_get(Simulation.findRoute(edited_start_EdgeID, 
+								"30438916#0", "truck", 0.0,0));
+						LinkedList<String> v1_route_from_newStartEdge_to_validEdge = new LinkedList<String>(); 
+						
+						for (String edge :edited_stage.edges){ 
+							v1_route_from_newStartEdge_to_validEdge.add(edge); 
+						}
+						System.out.println("v1_route_from_newStartEdge_to_validEdge:"+ v1_route_from_newStartEdge_to_validEdge);
+						conn.do_job_set(Vehicle.setRoute("1", edited_stage.edges));
+					}
+					*/
+					
+				}
+				
 				if(timeSeconds==100.0) {
 					String edge1 = "41389174#2";
 					double pos1 = 10.0;
@@ -70,11 +130,20 @@ public class StopFlagsTest {
 					String edge2 = "304973679#2";
 					double pos2 = 5.4;
 					double until_2 = 800.0;
+
 					SumoStopFlags sf1 = new SumoStopFlags(false, false, false, false, false);
 					conn.do_job_set(Vehicle.setStop("1", edge2 , pos2, (byte)0,  0.0,  sf1, pos2, until_2));
 				}			
 				if(timeSeconds==200.0) {
 					/*String edge1 = "41389174#2";
+					SumoStopFlags sf2 = new SumoStopFlags(false, false, false, false, false);
+					conn.do_job_set(Vehicle.setStop("1", edge2 , pos2, (byte)0,  0.0,  
+							sf2, pos2, until_2));
+
+				}
+				
+				if(timeSeconds==250.0) {
+					String edge1 = "41389174#2";
 					double pos1 = 10.0;
 					double until_1 = 500.0;
 					SumoStopFlags sf1 = new SumoStopFlags(false, false, false, false, false);
@@ -99,6 +168,20 @@ public class StopFlagsTest {
 					double until_2 = 800.0;
 					SumoStopFlags sf2 = new SumoStopFlags(false, false, false, false, false);
 					conn.do_job_set(Vehicle.setStop("1", edge2 , pos2, (byte)0,  0.0,  sf2, pos2, until_2));
+				}
+
+				
+				if(timeSeconds==314.0) {
+					System.out.println("timeSeconds:"+ timeSeconds);
+					String currentEdgeId = (String) conn.do_job_get(Vehicle.getRoadID("1"));
+					System.out.println("currentEdgeId:"+ currentEdgeId);
+					SumoPosition2D currentPosition = (SumoPosition2D) conn.do_job_get(Vehicle.getPosition("1"));
+					System.out.println("currentPosition:"+ currentPosition);
+					
+					SumoPositionRoadMap current_converted_Road = (SumoPositionRoadMap) conn.do_job_get(
+							Simulation.convertRoad(currentPosition.x, currentPosition.y, false, "ignoring"));
+					String converted_road_Edge = current_converted_Road.edgeID;
+					System.out.println("converted_road_Edge:"+ converted_road_Edge);
 				}
 			}
 			conn.close();
