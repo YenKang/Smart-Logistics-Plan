@@ -120,7 +120,7 @@ public class JDBC_AVD {
 			   pst.setTimestamp(6, timestamp); 
 			   pst.setTimestamp(7, timestamp);
 			   pst.setString(8, truck_id);
-			   pst.setString(9,"00");
+			   pst.setString(9,"0");
 			   pst.setDouble(10, weight);
 			   pst.setString(11, cargo_content);
 			   pst.setInt(12, size);

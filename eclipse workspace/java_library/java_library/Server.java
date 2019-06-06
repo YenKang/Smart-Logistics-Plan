@@ -119,9 +119,25 @@ class Server extends Thread {
                 	clientRequest.setTimeArrived(jsonResponse.getInt("time_arrived"));
                 	clientRequest.setContainerNo(jsonResponse.getString("container_id"));
                 }
+                // й|е╝з╣жи
                 else if (clientRequest.getRequestNo() == 1) {
-                	clientRequest.setTruckNo(jsonResponse.getString("truck_No"));
-                	clientRequest.setLatLng(0.0, 0.0, jsonResponse.getDouble("receiver_lng"), jsonResponse.getDouble("receiver_lat"));
+                	clientRequest.setContainerSpec(
+                			jsonResponse.getInt("price"), 
+                			jsonResponse.getInt("size"), 
+                			jsonResponse.getDouble("weight"), 
+                			jsonResponse.getString("cargo_content"));
+                	clientRequest.setLatLng(
+                			jsonResponse.getDouble("sender_lng"), 
+                			jsonResponse.getDouble("sender_lat"), 
+                			jsonResponse.getDouble("receiver_lng"), 
+                			jsonResponse.getDouble("receiver_lat"));
+                	clientRequest.setSenderId(jsonResponse.getString("sender_id"));
+                	clientRequest.setReceiverId(jsonResponse.getString("receiver_id"));
+                	clientRequest.setTimeArrived(jsonResponse.getInt("time_arrived"));
+                	clientRequest.setContainerNo(jsonResponse.getString("container_id"));
+                	
+                	clientRequest.setTruckNo(jsonResponse.getString("truck_id"));
+                	clientRequest.setOrderNo(jsonResponse.getString("order_No"));
                 }
                 clientInfos.add(clientRequest);
                 AssignResult assignResult = new AssignResult();

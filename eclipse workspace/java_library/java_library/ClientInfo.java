@@ -13,12 +13,21 @@ public class ClientInfo {
 	private String truckNo;
 	
 	private String containerNo;
+	private String order_No;
 	
 	public ClientInfo() {
 	}
 	
 	public ClientInfo(int requestNo){
 		this.requestNo = requestNo;
+	}
+	
+	public void setOrderNo(String order_No) {
+		this.order_No = order_No;
+	}
+	
+	public String getOrderNo() {
+		return order_No;
 	}
 	
 	public String getContainerNo() {
