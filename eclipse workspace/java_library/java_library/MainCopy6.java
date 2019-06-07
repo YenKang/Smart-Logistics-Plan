@@ -268,9 +268,9 @@ public class MainCopy6 {
 							double pos =  (double) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(3);		
 							// SumoStopFlags sf3 = new SumoStopFlags(false, false, false, false, false);
 							double until = 60.0*((Integer) veh_array.get(veh_array_index)-530);
-							System.out.println("edge:"+ edge);
-							System.out.println("pos:"+ pos);
-							System.out.println("until"+ until);
+							//System.out.println("edge:"+ edge);
+							//System.out.println("pos:"+ pos);
+							//System.out.println("until:"+ until);
 							SumoStopFlags sf_0 = new SumoStopFlags(false, false, false, false, false);
 							conn.do_job_set(Vehicle.setStop(vehID, edge, pos, (byte)0,  0.0,  
 									sf_0, pos, until));
@@ -285,7 +285,7 @@ public class MainCopy6 {
 					System.out.println("timeSeconds:"+ timeSeconds);
 					double currentMin = (540+ timeSeconds/60.0);			
 					int insert_BoxSize=1; // small box insertion
-					int insertTime=570; // 570 means 09:30
+					int insertTime=660; // 570 means 09:30
 					int insertCar = 0;
 					ArrayList request_array = new ArrayList();
 					request_array.add("496493919#2");
@@ -397,6 +397,10 @@ public class MainCopy6 {
 						
 						// this vehicle has already the schedule
 						else {
+							boolean isFull_this_veh = veh_array.contains(insertTime);
+							isFull_in_all_Veh_arrays.add(isFull_this_veh);
+							System.out.println("isFull_this_veh:"+ isFull_this_veh);
+							System.out.println("isFull_in_all_Veh_arrays:"+ isFull_in_all_Veh_arrays);
 							if((veh_array.contains(insertTime))!=true) {
 
 								veh_array.add(insertTime);
@@ -665,7 +669,7 @@ public class MainCopy6 {
 								}
 							}
 
-							isFull_in_all_Veh_arrays.add(veh_array.contains(insertTime));
+							
 
 							// 如果你的時段是10:00,2 但全部的三台車都有10:00這個時段
 							/*
@@ -676,10 +680,18 @@ public class MainCopy6 {
 							}
 							*/
 						}
-						System.out.println("isFull_in_all_Veh_arrays:"+ isFull_in_all_Veh_arrays);
+						
 
 					}
-					
+
+					// 3 means the number of all cars
+					// 插入的時程，全部的車都已有該時程，通知使用者另選時間
+					if(isFull_in_all_Veh_arrays.size()==CarsMapSchedule_afterBoxFilter.size()){
+						if(isFull_in_all_Veh_arrays.contains(false)!=true) {
+							System.out.println("this request insertion failed, please pick other time!");
+						}
+					}
+
 					System.out.println("-------------route arrangement--------------------------------");
 					// set routes
 
@@ -815,7 +827,7 @@ public class MainCopy6 {
 					double currentMin = (540+ timeSeconds/60.0);
 					int insertCar=0;
 					int insert_BoxSize=3; // small box insertion
-					int insertTime=600; // 600 means 10:00
+					int insertTime=660; // 600 means 10:00
 					ArrayList request_array = new ArrayList();
 					request_array.add("287304445#7"); // costco
 					request_array.add(6308.47);
@@ -864,6 +876,7 @@ public class MainCopy6 {
 					}
 	
 					// Time schedule filtering
+					ArrayList isFull_in_all_Veh_arrays = new ArrayList();
 					for(Object vehID:CarsMapSchedule_afterBoxFilter.keySet()) {
 						System.out.println("---------------------------------");
 						System.out.println("veh:"+ vehID);
@@ -920,12 +933,17 @@ public class MainCopy6 {
 
 							else{
 								Map_requestInfo.remove(insertTime);
-								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								System.out.println("this request can not be inserted into the schedule, please pick other time!");
 								break;
 							}
 						}
 						
+						// this vehicle has already the schedule
 						else {
+							boolean isFull_this_veh = veh_array.contains(insertTime);
+							isFull_in_all_Veh_arrays.add(isFull_this_veh);
+							System.out.println("isFull_this_veh:"+ isFull_this_veh);
+							System.out.println("isFull_in_all_Veh_arrays:"+ isFull_in_all_Veh_arrays);
 							if((veh_array.contains(insertTime))!=true) {
 
 								veh_array.add(insertTime);
@@ -1195,6 +1213,25 @@ public class MainCopy6 {
 							}
 
 							
+
+							// 如果你的時段是10:00,2 但全部的三台車都有10:00這個時段
+							/*
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
+							}
+							*/
+						}
+						
+
+					}
+
+					// 3 means the number of all cars
+					// 插入的時程，全部的車都已有該時程，通知使用者另選時間
+					if(isFull_in_all_Veh_arrays.size()==CarsMapSchedule_afterBoxFilter.size()){
+						if(isFull_in_all_Veh_arrays.contains(false)!=true) {
+							System.out.println("this request insertion failed, please pick other time!");
 						}
 					}
 	
@@ -1334,7 +1371,7 @@ public class MainCopy6 {
 					double currentMin = (540+ timeSeconds/60.0);
 					int insertCar = 0;			
 					int insert_BoxSize=1; // small box insertion
-					int insertTime=690; // 720 means 10:00
+					int insertTime=660; // 720 means 10:00
 					ArrayList request_array = new ArrayList();
 					request_array.add("-111343192#8"); // 
 					request_array.add(8975.38);
@@ -1381,6 +1418,7 @@ public class MainCopy6 {
 					}
 	
 					// Time schedule filtering
+					ArrayList isFull_in_all_Veh_arrays = new ArrayList();
 					for(Object vehID:CarsMapSchedule_afterBoxFilter.keySet()) {
 						System.out.println("---------------------------------");
 						System.out.println("veh:"+ vehID);
@@ -1437,12 +1475,17 @@ public class MainCopy6 {
 
 							else{
 								Map_requestInfo.remove(insertTime);
-								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								System.out.println("this request can not be inserted into the schedule, please pick other time!");
 								break;
 							}
 						}
 						
+						// this vehicle has already the schedule
 						else {
+							boolean isFull_this_veh = veh_array.contains(insertTime);
+							isFull_in_all_Veh_arrays.add(isFull_this_veh);
+							System.out.println("isFull_this_veh:"+ isFull_this_veh);
+							System.out.println("isFull_in_all_Veh_arrays:"+ isFull_in_all_Veh_arrays);
 							if((veh_array.contains(insertTime))!=true) {
 
 								veh_array.add(insertTime);
@@ -1712,6 +1755,23 @@ public class MainCopy6 {
 							}
 
 							
+
+							// 如果你的時段是10:00,2 但全部的三台車都有10:00這個時段
+							/*
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
+							}
+							*/
+						}
+						
+					}
+					// 3 means the number of all cars
+					// 插入的時程，全部的車都已有該時程，通知使用者另選時間
+					if(isFull_in_all_Veh_arrays.size()==CarsMapSchedule_afterBoxFilter.size()){
+						if(isFull_in_all_Veh_arrays.contains(false)!=true) {
+							System.out.println("this request insertion failed, please pick other time!");
 						}
 					}
 	
@@ -1892,6 +1952,7 @@ public class MainCopy6 {
 					}
 	
 					// Time schedule filtering
+					ArrayList isFull_in_all_Veh_arrays = new ArrayList();
 					for(Object vehID:CarsMapSchedule_afterBoxFilter.keySet()) {
 						System.out.println("---------------------------------");
 						System.out.println("veh:"+ vehID);
@@ -1948,12 +2009,17 @@ public class MainCopy6 {
 
 							else{
 								Map_requestInfo.remove(insertTime);
-								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								System.out.println("this request can not be inserted into the schedule, please pick other time!");
 								break;
 							}
 						}
 						
+						// this vehicle has already the schedule
 						else {
+							boolean isFull_this_veh = veh_array.contains(insertTime);
+							isFull_in_all_Veh_arrays.add(isFull_this_veh);
+							System.out.println("isFull_this_veh:"+ isFull_this_veh);
+							System.out.println("isFull_in_all_Veh_arrays:"+ isFull_in_all_Veh_arrays);
 							if((veh_array.contains(insertTime))!=true) {
 
 								veh_array.add(insertTime);
@@ -2223,6 +2289,25 @@ public class MainCopy6 {
 							}
 
 							
+
+							// 如果你的時段是10:00,2 但全部的三台車都有10:00這個時段
+							/*
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
+							}
+							*/
+						}
+						
+
+					}
+
+					// 3 means the number of all cars
+					// 插入的時程，全部的車都已有該時程，通知使用者另選時間
+					if(isFull_in_all_Veh_arrays.size()==CarsMapSchedule_afterBoxFilter.size()){
+						if(isFull_in_all_Veh_arrays.contains(false)!=true) {
+							System.out.println("this request insertion failed, please pick other time!");
 						}
 					}
 	
@@ -2406,6 +2491,7 @@ public class MainCopy6 {
 					}
 	
 					// Time schedule filtering
+					ArrayList isFull_in_all_Veh_arrays = new ArrayList();
 					for(Object vehID:CarsMapSchedule_afterBoxFilter.keySet()) {
 						System.out.println("---------------------------------");
 						System.out.println("veh:"+ vehID);
@@ -2737,6 +2823,14 @@ public class MainCopy6 {
 							}
 
 							
+						}
+					}
+
+					// 3 means the number of all cars
+					// 插入的時程，全部的車都已有該時程，通知使用者另選時間
+					if(isFull_in_all_Veh_arrays.size()==CarsMapSchedule_afterBoxFilter.size()){
+						if(isFull_in_all_Veh_arrays.contains(false)!=true) {
+							System.out.println("this request insertion failed, please pick other time!");
 						}
 					}
 	
@@ -2920,6 +3014,7 @@ public class MainCopy6 {
 					}
 	
 					// Time schedule filtering
+					ArrayList isFull_in_all_Veh_arrays = new ArrayList();
 					for(Object vehID:CarsMapSchedule_afterBoxFilter.keySet()) {
 						System.out.println("---------------------------------");
 						System.out.println("veh:"+ vehID);
@@ -2976,12 +3071,17 @@ public class MainCopy6 {
 
 							else{
 								Map_requestInfo.remove(insertTime);
-								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								System.out.println("this request can not be inserted into the schedule, please pick other time!");
 								break;
 							}
 						}
 						
+						// this vehicle has already the schedule
 						else {
+							boolean isFull_this_veh = veh_array.contains(insertTime);
+							isFull_in_all_Veh_arrays.add(isFull_this_veh);
+							System.out.println("isFull_this_veh:"+ isFull_this_veh);
+							System.out.println("isFull_in_all_Veh_arrays:"+ isFull_in_all_Veh_arrays);
 							if((veh_array.contains(insertTime))!=true) {
 
 								veh_array.add(insertTime);
@@ -3245,13 +3345,31 @@ public class MainCopy6 {
 									
 									else {
 										Map_requestInfo.remove(insertTime);
-										System.out.print("this request can not be inserted into the schedule, please pick other time!");
 										break;
 									}
 								}
 							}
 
 							
+
+							// 如果你的時段是10:00,2 但全部的三台車都有10:00這個時段
+							/*
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
+							}
+							*/
+						}
+						
+
+					}
+
+					// 3 means the number of all cars
+					// 插入的時程，全部的車都已有該時程，通知使用者另選時間
+					if(isFull_in_all_Veh_arrays.size()==CarsMapSchedule_afterBoxFilter.size()){
+						if(isFull_in_all_Veh_arrays.contains(false)!=true) {
+							System.out.println("this request insertion failed, please pick other time!");
 						}
 					}
 	
@@ -3438,6 +3556,7 @@ public class MainCopy6 {
 				
 
 					// Time schedule filtering
+					ArrayList isFull_in_all_Veh_arrays = new ArrayList();
 					for(Object vehID:CarsMapSchedule_afterBoxFilter.keySet()) {
 						System.out.println("---------------------------------");
 						System.out.println("veh:"+ vehID);
@@ -3494,12 +3613,17 @@ public class MainCopy6 {
 
 							else{
 								Map_requestInfo.remove(insertTime);
-								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								System.out.println("this request can not be inserted into the schedule, please pick other time!");
 								break;
 							}
 						}
 						
+						// this vehicle has already the schedule
 						else {
+							boolean isFull_this_veh = veh_array.contains(insertTime);
+							isFull_in_all_Veh_arrays.add(isFull_this_veh);
+							System.out.println("isFull_this_veh:"+ isFull_this_veh);
+							System.out.println("isFull_in_all_Veh_arrays:"+ isFull_in_all_Veh_arrays);
 							if((veh_array.contains(insertTime))!=true) {
 
 								veh_array.add(insertTime);
@@ -3769,6 +3893,25 @@ public class MainCopy6 {
 							}
 
 							
+
+							// 如果你的時段是10:00,2 但全部的三台車都有10:00這個時段
+							/*
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
+							}
+							*/
+						}
+						
+
+					}
+
+					// 3 means the number of all cars
+					// 插入的時程，全部的車都已有該時程，通知使用者另選時間
+					if(isFull_in_all_Veh_arrays.size()==CarsMapSchedule_afterBoxFilter.size()){
+						if(isFull_in_all_Veh_arrays.contains(false)!=true) {
+							System.out.println("this request insertion failed, please pick other time!");
 						}
 					}
 	
@@ -3878,6 +4021,7 @@ public class MainCopy6 {
 
 							// only add one new setStop on the dispatched car
 							if(veh==insertCar){
+								System.out.println("-----------add a new setStop--------------");
 								ArrayList veh_array_for_setStop = new ArrayList();
 								Map  Map_requestInfo_for_setStop = new HashMap();
 								String insertCar_ID = Integer.toString(insertCar);
@@ -3952,6 +4096,7 @@ public class MainCopy6 {
 					}
 	
 					// Time schedule filtering
+					ArrayList isFull_in_all_Veh_arrays = new ArrayList();
 					for(Object vehID:CarsMapSchedule_afterBoxFilter.keySet()) {
 						System.out.println("---------------------------------");
 						System.out.println("veh:"+ vehID);
@@ -4008,12 +4153,17 @@ public class MainCopy6 {
 
 							else{
 								Map_requestInfo.remove(insertTime);
-								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								System.out.println("this request can not be inserted into the schedule, please pick other time!");
 								break;
 							}
 						}
 						
+						// this vehicle has already the schedule
 						else {
+							boolean isFull_this_veh = veh_array.contains(insertTime);
+							isFull_in_all_Veh_arrays.add(isFull_this_veh);
+							System.out.println("isFull_this_veh:"+ isFull_this_veh);
+							System.out.println("isFull_in_all_Veh_arrays:"+ isFull_in_all_Veh_arrays);
 							if((veh_array.contains(insertTime))!=true) {
 
 								veh_array.add(insertTime);
@@ -4283,6 +4433,25 @@ public class MainCopy6 {
 							}
 
 							
+
+							// 如果你的時段是10:00,2 但全部的三台車都有10:00這個時段
+							/*
+							else{
+								Map_requestInfo.remove(insertTime);
+								System.out.print("this request can not be inserted into the schedule, please pick other time!");
+								break;
+							}
+							*/
+						}
+						
+
+					}
+
+					// 3 means the number of all cars
+					// 插入的時程，全部的車都已有該時程，通知使用者另選時間
+					if(isFull_in_all_Veh_arrays.size()==CarsMapSchedule_afterBoxFilter.size()){
+						if(isFull_in_all_Veh_arrays.contains(false)!=true) {
+							System.out.println("this request insertion failed, please pick other time!");
 						}
 					}
 	
@@ -4637,7 +4806,7 @@ public class MainCopy6 {
 						}
 					}
 
-					System.out.println("-------------route arrangement----------------------------------------------------------");
+					System.out.println("-------------route arrangement--------------------------------");
 					// set routes
 
 					for(int veh=1; veh<=CarsMap_with_Schedule.size();veh++) {
