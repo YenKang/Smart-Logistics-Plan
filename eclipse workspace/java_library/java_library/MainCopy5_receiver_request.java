@@ -289,21 +289,23 @@ public class MainCopy5_receiver_request {
 								isJunction_in_all_vehs.add(isJunction);
 							}
 							
+							int junction = 0;
+							// 當只要有其中一台車此刻是在十字路口
 							if(isJunction_in_all_vehs.contains(true)) {
+								junction = 1;
+								synchronized(assignResult) {
+									Thread.sleep(500);
+									assignResult.setResult(-2);
+									assignResult.notify();
+								}
 								System.out.print("this request insertion failed, please pick other time!");
 							}
-							
-							else {
-								
-							}
-							
-
 
 							//////////////////////////////////////////////////////////////////////////////////////////////////
 							//////////////////////////////////////////////////////////////////////////////////////////////////
 							//////////////////////////////////////////////////////////////////////////////////////////////////
 							// 若使用者為 sender
-							if (clientInfo.getRequestNo() == 0) {
+							if ( (clientInfo.getRequestNo() == 0) && ( junction == 0 ))  {
 
 								// 從 clientInfo 取得使用者相關資料
 								double[] lnglat = clientInfo.getLngLat();
@@ -888,7 +890,7 @@ public class MainCopy5_receiver_request {
 							//////////////////////////////////////////////////////////////////////////////////////////////////
 							//////////////////////////////////////////////////////////////////////////////////////////////////
 							// 若為 receiver 的 request
-							else if (clientInfo.getRequestNo() == 1) {
+							else if  ( (clientInfo.getRequestNo() == 1) && ( junction==0 )) {
 								
 								// 從 clientInfo 取得使用者相關資料
 								String order_No = clientInfo.getOrderNo();
@@ -1305,6 +1307,7 @@ public class MainCopy5_receiver_request {
 				//////////////////////////////////////////////////////////////////////////////////////////////////
 				//////////////////////////////////////////////////////////////////////////////////////////////////
 				// 到達目的地的前 10 分鐘 (提前作通知)
+				/*
 				if(timeSeconds % 600==0) {
 					for(int veh=1;veh<CarsMap_with_Schedule.size()+1;veh++) {
 						String vehID = Integer.toString(veh); 
@@ -1355,6 +1358,7 @@ public class MainCopy5_receiver_request {
 						}
 					}
 				}
+				*/
 				// 通知完後繼續移動
 				// 當車子已經到達 sender 位置，則通知 sender 及 receiver 選擇時間
 				// when the vehicle arrive to the destination (sender address & receiver address)
@@ -1466,10 +1470,11 @@ public class MainCopy5_receiver_request {
 							
 							int specific_time = (arrival_time-540)*60;						
 							int upload_Unload_time = (arrival_time-540+5)*60;
+							int lowerBound_time =  (arrival_time-540-5)*60;
 							
 							// 先確定是 sender or receiver  
 							int isReceiver = (int) requestInfo.get(4);
-							// 到達目的地後3分鐘 (模擬 sender 進行上貨及 receiver 收貨)
+							// 到達目的地後5分鐘 (模擬 sender 進行上貨及 receiver 收貨)
 							if (timeSeconds == upload_Unload_time) {
 								System.out.println("Do something after 3 mins");
 								// sender 上貨完畢
@@ -1510,7 +1515,32 @@ public class MainCopy5_receiver_request {
 									System.out.println("we arrive to the receiver's address");
 									System.out.println("after unloading container, cars_Box is "+ cars_Box);
 								}
-							}						
+							}
+							if(timeSeconds==lowerBound_time) { // specific time
+								// sender 及 receiver 都要通知
+								// 因為還沒初始設置完畢，先只用第二台測試
+								// 提前通知的部分包括 sender 以及 receiver，因此要做判斷
+								//int isReceiver = (int) requestInfo.get(4);
+								FcmNotify notifyEarly = new FcmNotify();
+								// 通知 sender
+								if (isReceiver == 0) {
+									System.out.println("The system is in the notification stage!");	
+									System.out.println("send notification to the specific sender");	
+									String sender_DID = (String) requestInfo.get(6);
+									System.out.println(sender_DID);
+									// FcmNotify notifySenderEarly = new FcmNotify();
+									notifyEarly.pushFCMNotification(sender_DID, "貨車即將到達", "貨車將於約5分後到達。");							
+								}
+								// 通知 receiver
+								else if (isReceiver == 1) {
+									System.out.println("The system is in the notification stage!");	
+									System.out.println("send notification to the specific sender");	
+									String receiver_DID = (String) requestInfo.get(7);
+									System.out.println(receiver_DID);
+									// FcmNotify notifySenderEarly = new FcmNotify();
+									notifyEarly.pushFCMNotification(receiver_DID, "貨車即將到達", "貨車將於約5分後到達。");
+								}
+							}
 						}
 					}
 				}
