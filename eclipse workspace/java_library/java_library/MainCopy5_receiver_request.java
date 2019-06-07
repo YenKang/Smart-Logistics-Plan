@@ -299,18 +299,17 @@ public class MainCopy5_receiver_request {
 								double currentMin = (540+ timeSeconds/60.0);
 								int insertTime = 540+ sender_time*30;
 								int insert_BoxSize = clientInfo.getSize();
+								// 新增變數確定要插入的是哪一台車
 								int insertCar =0;
 								
 								
 								String sender_name = clientInfo.getSenderID();
 								String receiver_name = clientInfo.getReceiverID();
-								
+								// 取得 device key
 								JDBC_AVD deviceID_getterS = new JDBC_AVD();
 								String sender_DID = deviceID_getterS.QueryDeviceKey(sender_name);
 								JDBC_AVD deviceID_getterR = new JDBC_AVD();
-								String receiver_DID = deviceID_getterR.QueryDeviceKey(receiver_name);
-								
-								
+								String receiver_DID = deviceID_getterR.QueryDeviceKey(receiver_name);						
 								// 這裡要隨機產生 order_No!!
 								// 先以時間生成流水號代替
 								SimpleDateFormat sdft = new SimpleDateFormat("yyMMddhhmmss");
@@ -376,6 +375,7 @@ public class MainCopy5_receiver_request {
 								//////////////////////////////////////////////////////
 								// 若貨櫃篩選通過則進入時間篩選
 								// Time schedule filtering
+								// 全部插滿
 								ArrayList isFull_in_all_Veh_arrays = new ArrayList();
 								for(Object vehID:CarsMapSchedule_afterBoxFilter.keySet()) {
 									System.out.println("---------------------------------");
@@ -697,7 +697,8 @@ public class MainCopy5_receiver_request {
 								// 3 means the number of all cars
 								// 插入的時程，全部的車都已有該時程，通知使用者另選時間
 								if(isFull_in_all_Veh_arrays.size()==CarsMapSchedule_afterBoxFilter.size()){
-									if(isFull_in_all_Veh_arrays.contains(false)!=true) {
+									if (isFull_in_all_Veh_arrays.contains(false)!=true) {
+										
 										System.out.println("this request insertion failed, please pick other time!");
 									}
 								}
@@ -930,20 +931,15 @@ public class MainCopy5_receiver_request {
 						ArrayList veh_array = new ArrayList();
 						veh_array = (ArrayList)CarsMap_with_Schedule.get(vehID);
 						Map eachVeh_requestInfo = new HashMap();
-						eachVeh_requestInfo = (Map) CarsMap_time_to_requestInfo.get(vehID);
-						
-						//System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
-						
-						//System.out.println("eachVeh_requestInfo:"+ eachVeh_requestInfo);
-						
+						eachVeh_requestInfo = (Map) CarsMap_time_to_requestInfo.get(vehID);				
+						//System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);					
+						//System.out.println("eachVeh_requestInfo:"+ eachVeh_requestInfo);						
 						for(int veh_array_Index=0; veh_array_Index<veh_array.size();veh_array_Index++) {
 							int arrival_time =(int) veh_array.get(veh_array_Index);
 							ArrayList requestInfo = new ArrayList();
 							
-							requestInfo = (ArrayList) eachVeh_requestInfo.get(arrival_time);
-							
-							//System.out.println("requestInfo in line745:"+ requestInfo);
-							
+							requestInfo = (ArrayList) eachVeh_requestInfo.get(arrival_time);					
+							//System.out.println("requestInfo in line745:"+ requestInfo);							
 							int upperBound_time = (arrival_time-540)*60;
 							int lowerBound_time = (arrival_time-540-10)*60; //1200s							
 
@@ -988,18 +984,20 @@ public class MainCopy5_receiver_request {
 						ArrayList veh_array = new ArrayList();
 						veh_array = (ArrayList)CarsMap_with_Schedule.get(vehID); // {1=[570,660]}
 						Map eachVeh_requestInfo = new HashMap();
-						eachVeh_requestInfo = (Map) CarsMap_time_to_requestInfo.get(vehID);
-						
+						eachVeh_requestInfo = (Map) CarsMap_time_to_requestInfo.get(vehID);			
 						for(int veh_array_Index=0; veh_array_Index<veh_array.size();veh_array_Index++) {
 							int arrival_time =(int) veh_array.get(veh_array_Index); // [570,660] ->570
 							ArrayList requestInfo = new ArrayList();
 							requestInfo = (ArrayList) eachVeh_requestInfo.get(arrival_time);// 570=[496257308#5, 3937.13, 5039.67, 50.0, 0,111, "kjkjk44"] //userDEvicekeyID
 							
-							int specific_time = (arrival_time-540)*60;
-													 
+							int specific_time = (arrival_time-540)*60;						
+							int upload_download_time = (arrival_time-540+3)*60;
+							
+							// 先確定是 sender or receiver  
+							int isReceiver = (int) requestInfo.get(4);
+							// 到達目的地
 							if(timeSeconds==specific_time) { // specific time
 								System.out.println("send notification to the specific sender");	
-								int isReceiver = (int) requestInfo.get(4);
 								// case1:sender destination
 								if(isReceiver==0) {
 									// notify sender that the car arrived to sender's address via userDevicekeyID								
@@ -1010,19 +1008,32 @@ public class MainCopy5_receiver_request {
 									FcmNotify notifySender = new FcmNotify();
 									notifySender.pushFCMNotification(sender_DID, "貨車已到達", "貨車已到達收貨點，請準備上貨。");
 									
-									// 更新資料庫中的貨物狀態，以便 android 介面進行更改
+									// 更新資料庫中的貨物狀態，以便 android 介面進行更改 ( 狀態: 已到 S )
 									String order_No = (String)requestInfo.get(8);
 									JDBC_AVD arrive_at_sender = new JDBC_AVD();
-									arrive_at_sender.UpdateOrderStatus(order_No, "1");
-									
-									//////////////////////////////////////////////////////////////////////////////////////////////////
-									//////////////////////////////////////////////////////////////////////////////////////////////////
-									//////////////////////////////////////////////////////////////////////////////////////////////////
-									//////////////////////////////////////////////////////////////////////////////////////////////////
-									//////////////////////////////////////////////////////////////////////////////////////////////////
+									arrive_at_sender.UpdateOrderStatus(order_No, "1");							
+								}
+								// case2:receiver destination
+								else if(isReceiver==1) {
+									// notify receiver to unload the container
+									// step1:notify receiver that the car arrived to receiver via userDevicekeyID						
+									String receiver_DID = (String) requestInfo.get(7);
+									FcmNotify notifyReceiver = new FcmNotify();
+									notifyReceiver.pushFCMNotification(receiver_DID, "貨車已到達", "貨物已送達，請準備簽收。");
+									// 更新資料庫中的貨物狀態，以便 android 介面進行更改 ( 狀態: 已到 R )
+									String order_No = (String)requestInfo.get(8);
+									JDBC_AVD arrive_at_receiver = new JDBC_AVD();
+									arrive_at_receiver.UpdateOrderStatus(order_No, "4");																	
+								}
+							}
+							// 到達目的地後3分鐘 (模擬 sender 進行上貨及 receiver 收貨)
+							else if (timeSeconds == upload_download_time) {
+								System.out.println("Do something after 3 mins");
+								// sender 上貨完畢
+								if (isReceiver == 0) {
 									// notify receiver ID       
-									// 其實到時候應該是 +5 分鐘，同時模擬 sender 上貨及通知 receiver 選擇取貨時間，但先寫在這
-									// String order_No = (String)requestInfo.get(8); 這行之後要寫，因為改成過3~5分鐘才收
+									// 更新資料庫中的貨物狀態，以便 android 介面進行更改  ( 狀態: 已寄出)
+									String order_No = (String)requestInfo.get(8);
 									JDBC_AVD sender_confirt = new JDBC_AVD();
 									sender_confirt.UpdateOrderStatus(order_No, "2");
 									String receiver_DID = (String) requestInfo.get(7);
@@ -1030,23 +1041,12 @@ public class MainCopy5_receiver_request {
 									notifyReceiverTimeSelect.pushFCMNotification(receiver_DID, "貨物已上車", "寄件人已將貨物寄出，已可選擇取貨時間。");
 									// wait for receiver's time-selection
 								}
-								// case2:receiver destination
-								if(isReceiver==1) {
-									// notify receiver to unload the container
-									// step1:notify receiver that the car arrived to receiver via userDevicekeyID
-									
+								// receiver 收貨完畢
+								else if (isReceiver == 1) {
+									// 更新資料庫的貨物狀態，確認此訂單流程已結束 ( 狀態: 已簽收)
 									String order_No = (String)requestInfo.get(8);
-									String receiver_DID = (String) requestInfo.get(7);
-									FcmNotify notifyReceiver = new FcmNotify();
-									notifyReceiver.pushFCMNotification(receiver_DID, "貨車已到達", "貨物已送達，請準備簽收。");
-									JDBC_AVD arrive_at_receiver = new JDBC_AVD();
-									arrive_at_receiver.UpdateOrderStatus(order_No, "4");
-									
-									
-									// 更新資料庫的貨物狀態，確認此訂單流程已結束
-									// String order_No = (String)requestInfo.get(8); 這行之後要寫，因為改成過3~5分鐘才收
 									JDBC_AVD receiver_confirt = new JDBC_AVD();
-									receiver_confirt.UpdateOrderStatus(order_No, "9");
+									receiver_confirt.UpdateOrderStatus(order_No, "5");
 									
 									// step2:unload the container
 									int int_boxIndex = (int) requestInfo.get(5);
@@ -1065,15 +1065,11 @@ public class MainCopy5_receiver_request {
 									cars_Box.put(veh,veh_Box);
 									System.out.println("we arrive to the receiver's address");
 									System.out.println("after unloading container, cars_Box is "+ cars_Box);
-									
 								}
-							}
+							}						
 						}
 					}
-				}
-				
-				
-				
+				}			
 			}
 			conn.close();
 		} 
