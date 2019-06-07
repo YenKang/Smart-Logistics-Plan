@@ -1814,7 +1814,7 @@ public class MainCopy6 {
 						if(insertCar!=0){
 							Map  Map_requestInfo = new HashMap();
 							Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get(vehID);
-							
+							String insertCarID = Integer.toString(insertCar);
 							ArrayList edges_list = new ArrayList();
 							ArrayList stages_list = new ArrayList();
 							SumoStringList routes = new SumoStringList();
@@ -1870,20 +1870,52 @@ public class MainCopy6 {
 							if(veh==insertCar){
 								ArrayList veh_array_for_setStop = new ArrayList();
 								Map  Map_requestInfo_for_setStop = new HashMap();
-								String insertCar_ID = Integer.toString(insertCar);
-								veh_array_for_setStop = (ArrayList)CarsMap_with_Schedule.get(insertCar_ID);
-								Map_requestInfo_for_setStop =(Map) CarsMap_time_to_requestInfo.get(insertCar_ID);
+								//String insertCar_ID = Integer.toString(insertCar);
+								veh_array_for_setStop = (ArrayList)CarsMap_with_Schedule.get(insertCarID);
+								Map_requestInfo_for_setStop =(Map) CarsMap_time_to_requestInfo.get(insertCarID);
 								
-								System.out.println("insertCar_ID:"+insertCar_ID);
+								System.out.println("insertCar_ID:"+insertCarID);
 								System.out.println("insertTime:"+insertTime);
 								System.out.println("veh_array_for_setStop:"+ veh_array_for_setStop);
 								System.out.println("Map_requestInfo_for_setStop:"+ Map_requestInfo_for_setStop);
-								String edge = (String) ((ArrayList) Map_requestInfo_for_setStop.get(insertTime)).get(0); // 570
-								double pos =  (double) ((ArrayList) Map_requestInfo_for_setStop.get(insertTime)).get(3);
-								double until = 60.0*(insertTime-530);
-								SumoStopFlags sf = new SumoStopFlags(false, false, false, false, false);
-								conn.do_job_set(Vehicle.setStop(insertCar_ID, edge, pos, (byte)0,  0.0,  sf, pos, until));
+								
+								
+								
+								int isStopped_of_insertCar = (int) conn.do_job_get(Vehicle.isStopped(insertCarID));
+								if(isStopped_of_insertCar==1) {
+									System.out.println("insertCar_ID:"+insertCarID);
+									conn.do_job_set(Vehicle.resume(insertCarID));
+									
+									String edge = (String) ((ArrayList) Map_requestInfo_for_setStop.get(insertTime)).get(0); // 
+									double pos =  (double) ((ArrayList) Map_requestInfo_for_setStop.get(insertTime)).get(3);
+									double until = 60.0*(insertTime-530);
+									SumoStopFlags sf = new SumoStopFlags(false, false, false, false, false);
+									conn.do_job_set(Vehicle.setStop(insertCarID, edge, pos, (byte)0,  0.0,  sf, pos, until));
+									
+									////////////////////////////////////////////////////////////////////////////////////////////
+									int index_after_InsertTime = veh_array_for_setStop.indexOf(insertTime)+1;
+									int value_after_InsertTime = (int) veh_array_for_setStop.get(index_after_InsertTime);
+									// setStop to  time-schedule after the insert car
+									String edge_after_InsertTime = (String) ((ArrayList) Map_requestInfo_for_setStop.get(value_after_InsertTime)).get(0); // 570
+									double pos_after_InsertTime =  (double) ((ArrayList) Map_requestInfo_for_setStop.get(value_after_InsertTime)).get(3);		
+									SumoStopFlags sf_after_InsertTime = new SumoStopFlags(false, false, false, false, false);
+									double until_after_InsertTime = 60.0*(value_after_InsertTime-530);
+									conn.do_job_set(Vehicle.setStop(insertCarID, edge_after_InsertTime, pos_after_InsertTime, (byte)0,  0.0, sf_after_InsertTime, pos_after_InsertTime, until_after_InsertTime));
+								}
+								
+								else if(isStopped_of_insertCar==0) {
+									String edge = (String) ((ArrayList) Map_requestInfo_for_setStop.get(insertTime)).get(0); // 
+									double pos =  (double) ((ArrayList) Map_requestInfo_for_setStop.get(insertTime)).get(3);
+									double until = 60.0*(insertTime-530);
+									SumoStopFlags sf = new SumoStopFlags(false, false, false, false, false);
+									conn.do_job_set(Vehicle.setStop(insertCarID, edge, pos, (byte)0,  0.0,  sf, pos, until));
+								}
 							}
+							
+							
+						
+							
+							
 
 						}
 	
