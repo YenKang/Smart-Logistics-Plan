@@ -98,13 +98,13 @@ public class MainCopy6 {
 			//CarsMap_with_Schedule = {"1"=[570, 660], "2"=[660]};
 						
 			ArrayList v1_TimeSchedule = new ArrayList();
-			v1_TimeSchedule.add(630);
-			v1_TimeSchedule.add(690);
+			v1_TimeSchedule.add(570);
+			v1_TimeSchedule.add(660);
 			CarsMap_with_Schedule.put("1", v1_TimeSchedule);
 			
 			
 			ArrayList v2_TimeSchedule = new ArrayList();
-			v2_TimeSchedule.add(690);
+			v2_TimeSchedule.add(660);
 			CarsMap_with_Schedule.put("2", v2_TimeSchedule);
 			
 			System.out.println("CarsMap_with_Schedule:"+CarsMap_with_Schedule);
@@ -132,8 +132,8 @@ public class MainCopy6 {
 			v1_660_to_requestInfo.add(0);
 			v1_660_to_requestInfo.add(112);
 			
-			v1_time_to_requestInfo.put(630, v1_570_to_requestInfo );
-			v1_time_to_requestInfo.put(690, v1_660_to_requestInfo );
+			v1_time_to_requestInfo.put(570, v1_570_to_requestInfo );
+			v1_time_to_requestInfo.put(660, v1_660_to_requestInfo );
 			
 			System.out.println("v1_time_to_requestInfo:"+ v1_time_to_requestInfo);
 		
@@ -146,7 +146,7 @@ public class MainCopy6 {
 			v2_660_to_requestInfo.add(200.0);
 			v2_660_to_requestInfo.add(0);
 			v2_660_to_requestInfo.add(221);
-			v2_time_to_requestInfo.put(690, v2_660_to_requestInfo);
+			v2_time_to_requestInfo.put(660, v2_660_to_requestInfo);
 			
 			System.out.println("v2_time_to_requestInfo:"+ v2_time_to_requestInfo);
 			ArrayList v3_TimeSchedule = new ArrayList();
@@ -285,7 +285,7 @@ public class MainCopy6 {
 					System.out.println("timeSeconds:"+ timeSeconds);
 					double currentMin = (540+ timeSeconds/60.0);			
 					int insert_BoxSize=1; // small box insertion
-					int insertTime=690; // 570 means 09:30
+					int insertTime=570; // 570 means 09:30
 					int insertCar = 0;
 					ArrayList request_array = new ArrayList();
 					request_array.add("496493919#2");
@@ -729,7 +729,7 @@ public class MainCopy6 {
 								System.out.println("veh_array after for-loop:"+ veh_array);
 							}
 						}
-
+						
 						System.out.println("veh_array after configuration:"+ veh_array);
 						if(insertCar!=0){
 							Map  Map_requestInfo = new HashMap();
@@ -811,6 +811,7 @@ public class MainCopy6 {
 			
 				}
 
+				/*
 				if(timeSeconds==100.0 ) {
 					System.out.println("----------************************************************************---------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
@@ -1202,16 +1203,6 @@ public class MainCopy6 {
 								}
 							}
 
-							
-
-							// 如果你的時段是10:00,2 但全部的三台車都有10:00這個時段
-							/*
-							else{
-								Map_requestInfo.remove(insertTime);
-								System.out.print("this request can not be inserted into the schedule, please pick other time!");
-								break;
-							}
-							*/
 						}
 						
 
@@ -1351,12 +1342,10 @@ public class MainCopy6 {
 						}
 	
 					}
-					
-		
-				}
+				}*/
 				
 				
-		
+				/*		
 				if(timeSeconds==1920.0 ) {
 					System.out.println("----------************************************************************---------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
@@ -1920,9 +1909,9 @@ public class MainCopy6 {
 						}
 	
 					}
-	
-				}
+				}*/
 
+				/*
 				if(timeSeconds==2460.0 ) {
 					System.out.println("----------************************************************************---------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
@@ -2459,8 +2448,9 @@ public class MainCopy6 {
 						}
 	
 					}
-				}
+				}*/
 
+				/*
 				if(timeSeconds==3660.0 ) {
 					System.out.println("----------************************************************************---------------");
 					System.out.println("timeSeconds:"+ timeSeconds);
@@ -2993,10 +2983,9 @@ public class MainCopy6 {
 						}
 	
 					}
-				}
+				}*/
 			
 
-				/*
 				// Got the receiver-request
 				if(timeSeconds==1920.0) { //09:32, got the receiver-request 
 					System.out.println("-------------------------");
@@ -3230,13 +3219,42 @@ public class MainCopy6 {
 						veh_array.add((int)currentMin);
 						Collections.sort(veh_array);
 						System.out.println("sort(veh_array):"+ veh_array);
-						int remove_time =0;
-						while(remove_time<(int)veh_array.indexOf((int)currentMin)+1) {
-							veh_array.remove(0);
-							remove_time++;
-						}
-						System.out.println("veh_array after removing:"+ veh_array);
 						
+						// 判斷 (int)currentMin 此刻時間，在veh_array中的index 是否為0
+						int index_currentMin = veh_array.indexOf((int)currentMin);
+						if(index_currentMin==0){
+							veh_array.remove(index_currentMin); // remove the currentMin element
+						}
+
+						else{
+							int previousIndex_currentMin = index_currentMin-1;
+
+							// the vehicle is in the stopping stage
+							int curMin_fromArray = (int) veh_array.get(index_currentMin);
+							int value_before_curMin_fromArray = (int) veh_array.get(index_currentMin)+10;
+							if(curMin_fromArray<value_before_curMin_fromArray){
+								// configure veh_array
+								// [570, 630, 660, 667, 720]-> [660, 720]
+								for(int remove_Time=0;remove_Time<index_currentMin-1;remove_Time++){
+									veh_array.remove(0);
+								}
+
+								System.out.println("veh_array after for-loop:"+ veh_array);
+								veh_array.remove((int)veh_array.indexOf((int)currentMin));
+							}
+
+							//  the vehicle is in the moving stage
+							else{
+								// configure veh_array
+								// [570, 601, 720]-> [720]
+								for(int remove_Time=0;remove_Time<index_currentMin+1;remove_Time++){
+									veh_array.remove(0);
+								}
+								System.out.println("veh_array after for-loop:"+ veh_array);
+							}
+						}
+						System.out.println("veh_array after configuration:"+ veh_array);
+						////////////////////////////////////////////////////////////////////
 						Map  Map_requestInfo = new HashMap();
 						Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get(vehID);
 						
@@ -3302,7 +3320,7 @@ public class MainCopy6 {
 						}
 					}
 				}
-				*/
+			
 
 				// notification stage
 				// CarsMap_with_Schedule:{1=[570, 660], 2=[660]}
