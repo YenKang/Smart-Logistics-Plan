@@ -132,7 +132,8 @@ public class MainCopy5_receiver_request {
 			v1_570_to_requestInfo.add(50.0);
 			v1_570_to_requestInfo.add(0);
 			v1_570_to_requestInfo.add("111");
-			v1_570_to_requestInfo.add("111");
+			v1_570_to_requestInfo.add("ABC");
+			v1_570_to_requestInfo.add("ABC");
 			v1_570_to_requestInfo.add("test_order");
 			
 			
@@ -143,7 +144,8 @@ public class MainCopy5_receiver_request {
 			v1_660_to_requestInfo.add(60.0);
 			v1_660_to_requestInfo.add(0);
 			v1_660_to_requestInfo.add("111");
-			v1_660_to_requestInfo.add("111");
+			v1_660_to_requestInfo.add("ABC");
+			v1_660_to_requestInfo.add("ABC");
 			v1_660_to_requestInfo.add("test_order");
 			
 			v1_time_to_requestInfo.put(570, v1_570_to_requestInfo );
@@ -160,7 +162,8 @@ public class MainCopy5_receiver_request {
 			v2_660_to_requestInfo.add(200.0);
 			v2_660_to_requestInfo.add(0);
 			v2_660_to_requestInfo.add("111");
-			v2_660_to_requestInfo.add("111");
+			v2_660_to_requestInfo.add("ABC");
+			v2_660_to_requestInfo.add("ABC");
 			v2_660_to_requestInfo.add("test_order");
 			
 			v2_time_to_requestInfo.put(660, v2_660_to_requestInfo);
@@ -176,7 +179,8 @@ public class MainCopy5_receiver_request {
 			v3_720_to_requestInfo.add(240.0);
 			v3_720_to_requestInfo.add(0);
 			v3_720_to_requestInfo.add("111");
-			v3_720_to_requestInfo.add("111");
+			v3_720_to_requestInfo.add("ABC");
+			v3_720_to_requestInfo.add("ABC");
 			v3_720_to_requestInfo.add("test_order");
 			
 			v3_time_to_requestInfo.put(720, v3_720_to_requestInfo);
@@ -276,11 +280,19 @@ public class MainCopy5_receiver_request {
 							// 宣告派遣成功時上船資料庫的暫存資料
 							int container_DB_insert = 0;
 							int truck_DB_insert = 0;
+
+							/* junction
+							{
+	
+							}*/
+
+
 							//////////////////////////////////////////////////////////////////////////////////////////////////
 							//////////////////////////////////////////////////////////////////////////////////////////////////
 							//////////////////////////////////////////////////////////////////////////////////////////////////
 							// 若使用者為 sender
 							if (clientInfo.getRequestNo() == 0) {
+
 								// 從 clientInfo 取得使用者相關資料
 								double[] lnglat = clientInfo.getLngLat();
 								double sender_lng = lnglat[0];
@@ -1269,8 +1281,6 @@ public class MainCopy5_receiver_request {
 										}
 									}
 								}
-
-
 							}
 						}
 						clientInfos.clear();
@@ -1297,7 +1307,7 @@ public class MainCopy5_receiver_request {
 							ArrayList requestInfo = new ArrayList();
 							
 							requestInfo = (ArrayList) eachVeh_requestInfo.get(arrival_time);					
-							//System.out.println("requestInfo in line745:"+ requestInfo);							
+							System.out.println("requestInfo in line745:"+ requestInfo);							
 							int upperBound_time = (arrival_time-540)*60;
 							int lowerBound_time = (arrival_time-540-10)*60; //1200s							
 
@@ -1360,7 +1370,8 @@ public class MainCopy5_receiver_request {
 								if(isReceiver==0) {
 									// notify sender that the car arrived to sender's address via userDevicekeyID								
 									System.out.println("we arrive to the sender's address");
-									System.out.println("send nitification to the specific sender");							
+									System.out.println("send notification to the specific sender");	
+									System.out.println("line1370" +requestInfo);
 									// 4: isReceiver, 5: container id, 6: senderDID, 7. receiverDID
 									String sender_DID =(String) requestInfo.get(6);
 									FcmNotify notifySender = new FcmNotify();
@@ -1391,6 +1402,7 @@ public class MainCopy5_receiver_request {
 								if (isReceiver == 0) {
 									// notify receiver ID       
 									// 更新資料庫中的貨物狀態，以便 android 介面進行更改  ( 狀態: 已寄出)
+									System.out.println("line 1405:" +requestInfo);
 									String order_No = (String)requestInfo.get(8);
 									JDBC_AVD sender_confirt = new JDBC_AVD();
 									sender_confirt.UpdateOrderStatus(order_No, "2");
@@ -1427,7 +1439,69 @@ public class MainCopy5_receiver_request {
 							}						
 						}
 					}
-				}			
+				}
+				if(timeSeconds%300 == 0) {
+					for(int veh=1;veh<CarsMap_with_Schedule.size()+1;veh++) {
+						String vehID = Integer.toString(veh); 
+						ArrayList veh_array = new ArrayList();
+						veh_array = (ArrayList)CarsMap_with_Schedule.get(vehID); // {1=[570,660]}
+						Map eachVeh_requestInfo = new HashMap();
+						eachVeh_requestInfo = (Map) CarsMap_time_to_requestInfo.get(vehID);			
+						for(int veh_array_Index=0; veh_array_Index<veh_array.size();veh_array_Index++) {
+							int arrival_time =(int) veh_array.get(veh_array_Index); // [570,660] ->570
+							ArrayList requestInfo = new ArrayList();
+							requestInfo = (ArrayList) eachVeh_requestInfo.get(arrival_time);// 570=[496257308#5, 3937.13, 5039.67, 50.0, 0,111, "kjkjk44"] //userDEvicekeyID
+							
+							int specific_time = (arrival_time-540)*60;						
+							int upload_Unload_time = (arrival_time-540+5)*60;
+							
+							// 先確定是 sender or receiver  
+							int isReceiver = (int) requestInfo.get(4);
+							// 到達目的地後3分鐘 (模擬 sender 進行上貨及 receiver 收貨)
+							if (timeSeconds == upload_Unload_time) {
+								System.out.println("Do something after 3 mins");
+								// sender 上貨完畢
+								if (isReceiver == 0) {
+									// notify receiver ID       
+									// 更新資料庫中的貨物狀態，以便 android 介面進行更改  ( 狀態: 已寄出)
+									System.out.println("line 1405:" +requestInfo);
+									String order_No = (String)requestInfo.get(8);
+									JDBC_AVD sender_confirt = new JDBC_AVD();
+									sender_confirt.UpdateOrderStatus(order_No, "2");
+									String receiver_DID = (String) requestInfo.get(7);
+									FcmNotify notifyReceiverTimeSelect = new FcmNotify();
+									notifyReceiverTimeSelect.pushFCMNotification(receiver_DID, "貨物已上車", "寄件人已將貨物寄出，已可選擇取貨時間。");
+									// wait for receiver's time-selection
+								}
+								// receiver 收貨完畢
+								else if (isReceiver == 1) {
+									// 更新資料庫的貨物狀態，確認此訂單流程已結束 ( 狀態: 已簽收)
+									String order_No = (String)requestInfo.get(8);
+									JDBC_AVD receiver_confirt = new JDBC_AVD();
+									receiver_confirt.UpdateOrderStatus(order_No, "5");
+									
+									// step2:unload the container
+									int int_boxIndex = (int) requestInfo.get(5);
+									String boxIndex = Integer.toString(int_boxIndex); 
+									// change container id of the car in SUMO
+									conn.do_job_set(Vehicle.setParameter(vehID, boxIndex, "0"));
+									Map veh_Box = new HashMap();
+									veh_Box = (Map) cars_Box.get(veh); // v1_Box:{1=[111, 112], 2=[], 3=[]}
+									int boxSize = (int_boxIndex-veh*100)/10;
+									ArrayList boxList = new ArrayList();
+									boxList = (ArrayList) veh_Box.get(boxSize); // [111, 112]
+									int Index_specific_Box = boxList.indexOf(int_boxIndex);
+									boxList.remove(Index_specific_Box);
+									
+									veh_Box.put(boxSize, boxList);
+									cars_Box.put(veh,veh_Box);
+									System.out.println("we arrive to the receiver's address");
+									System.out.println("after unloading container, cars_Box is "+ cars_Box);
+								}
+							}						
+						}
+					}
+				}
 			}
 			conn.close();
 		} 
