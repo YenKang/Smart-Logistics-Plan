@@ -299,6 +299,7 @@ public class MainCopy5_receiver_request {
 								double currentMin = (540+ timeSeconds/60.0);
 								int insertTime = 540+ sender_time*30;
 								int insert_BoxSize = clientInfo.getSize();
+								int insertCar =0;
 								
 								
 								String sender_name = clientInfo.getSenderID();
@@ -331,6 +332,8 @@ public class MainCopy5_receiver_request {
 								request_array.add(order_No); // 8
 								
 								System.out.println("request_array:"+ request_array);
+								System.out.println("insert_BoxSize:"+ insert_BoxSize);
+								System.out.println("insertTime:"+ insertTime);
 								
 								HashMap  CarsMapSchedule_afterBoxFilter = new HashMap();
 								Iterator iter = CarsMap_with_Schedule.entrySet().iterator(); 
@@ -344,9 +347,9 @@ public class MainCopy5_receiver_request {
 								Iterator iterInfo = CarsMap_time_to_requestInfo.entrySet().iterator(); 
 								while (iterInfo.hasNext()) {
 									Map.Entry entry = (Map.Entry) iterInfo.next(); 
-									 Object key = entry.getKey(); 
-									 Object value = entry.getValue(); 
-									 CarsMap_timeToRequestInfo_afterBoxFilter.put(key, value);
+									Object key = entry.getKey(); 
+									Object value = entry.getValue(); 
+									CarsMap_timeToRequestInfo_afterBoxFilter.put(key, value);
 								}				
 								// Box filtering stage
 								for(int veh=1;veh<cars_Box.size()+1;veh++) {
@@ -373,6 +376,7 @@ public class MainCopy5_receiver_request {
 								//////////////////////////////////////////////////////
 								// 若貨櫃篩選通過則進入時間篩選
 								// Time schedule filtering
+								ArrayList isFull_in_all_Veh_arrays = new ArrayList();
 								for(Object vehID:CarsMapSchedule_afterBoxFilter.keySet()) {
 									System.out.println("---------------------------------");
 									//System.out.println("veh:"+ vehID);
@@ -403,11 +407,14 @@ public class MainCopy5_receiver_request {
 										if(travelTime_curr_To_Index<diffDuration_curAddrTo_Des) {
 											veh_array.add(insertTime); // v3_timeSchedule [570]
 											int insert_BoxIndex = 1+ 10*insert_BoxSize+ 100*int_vehID;
+											insertCar = int_vehID;
+											String String_insert_BoxIndex = Integer.toString(insert_BoxIndex);
 											((ArrayList) veh_box.get(insert_BoxSize)).add(insert_BoxIndex);
 											
 											//setParameter
+											conn.do_job_set(Vehicle.setParameter((String) vehID, String_insert_BoxIndex, "1"));
 											cars_Box.put(int_vehID, veh_box);
-											
+
 											Map_requestInfo.put(insertTime, request_array ); 
 											CarsMap_time_to_requestInfo.put((String) vehID, Map_requestInfo);
 											CarsMap_with_Schedule.put((String) vehID, veh_array);
@@ -419,19 +426,25 @@ public class MainCopy5_receiver_request {
 											
 											truck_DB_insert = int_vehID;
 											container_DB_insert = insert_BoxIndex;
+											break;
 										}
 										// 此時間段無法到達
 										else{
 											// can not arrive!
+
 											synchronized(assignResult) {
 												Thread.sleep(500);
 												assignResult.setResult(0);
 												assignResult.notify();
 											}
+											System.out.println("this request insertion falied, please pick other time!");
+											break;
 										}
 									}
 									// 此車目前排程非空 line379-562
 									else {
+										boolean isFull_this_veh = veh_array.contains(insertTime);
+										isFull_in_all_Veh_arrays.add(isFull_this_veh);
 										if((veh_array.contains(insertTime))!=true) {
 											veh_array.add(insertTime);
 											//System.out.println("veh_array:"+ veh_array);
@@ -459,15 +472,19 @@ public class MainCopy5_receiver_request {
 														(double)request_array.get(1), (double)request_array.get(2), false, true)));
 												
 												double travelTime_afterIndexToIndex = distance_afterIndexToIndex/vehicle_speed;			
-												double diffDuration_afterIndexToIndex = ((int) veh_array.get(indexValue+1)-(int) veh_array.get(indexValue))*60;						
+												double diffDuration_afterIndexToIndex = ((int) veh_array.get(indexValue+1)-(int) veh_array.get(indexValue))*60*0.67;						
 												// 此時段可到達
 												if((travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) &&
-														(timeSeconds+travelTime_curr_To_Index) <(key_afterIndex-insertTime)*60) {													
+														(timeSeconds+travelTime_curr_To_Index) <(insertTime-540)*60) {													
 													// BoxIndex insertion 416-439
 													if(insert_capacity==0) {
-														int insert_BoxIndex = (insert_capacity+1)+ 10*insert_BoxSize+100*int_vehID;														
+														int insert_BoxIndex = (insert_capacity+1)+ 10*insert_BoxSize+100*int_vehID;
+														insertCar = int_vehID;
+														String String_insert_BoxIndex = Integer.toString(insert_BoxIndex);
+
 														((ArrayList) veh_box.get(insert_BoxSize)).add(insert_BoxIndex);
 														// setParameter
+														conn.do_job_set(Vehicle.setParameter((String) vehID, String_insert_BoxIndex, "1"));
 														cars_Box.put(int_vehID, veh_box);
 														System.out.println("cars_Box:"+ cars_Box);
 														
@@ -476,8 +493,11 @@ public class MainCopy5_receiver_request {
 													}
 													else if(insert_capacity==1){
 														int insert_BoxIndex = (insert_capacity+1)+ 10*insert_BoxSize+100*int_vehID;
+														insertCar = int_vehID;
+														String String_insert_BoxIndex = Integer.toString(insert_BoxIndex);
 														((ArrayList) veh_box.get(insert_BoxSize)).add(insert_BoxIndex);											
 														// setParameter
+														conn.do_job_set(Vehicle.setParameter((String) vehID, String_insert_BoxIndex, "1"));
 														cars_Box.put(int_vehID, veh_box);
 														System.out.println("cars_Box:"+ cars_Box);
 														
@@ -485,9 +505,12 @@ public class MainCopy5_receiver_request {
 														container_DB_insert = insert_BoxIndex;
 													}									
 													else if(insert_capacity==2){
-														int insert_BoxIndex = (insert_capacity+1)+ 10*insert_BoxSize+100*int_vehID;														
+														int insert_BoxIndex = (insert_capacity+1)+ 10*insert_BoxSize+100*int_vehID;	
+														insertCar = int_vehID;
+														String String_insert_BoxIndex = Integer.toString(insert_BoxIndex);													
 														((ArrayList) veh_box.get(insert_BoxSize)).add(insert_BoxIndex);													
 														// setParameter
+														conn.do_job_set(Vehicle.setParameter((String) vehID, String_insert_BoxIndex, "1"));
 														cars_Box.put(int_vehID, veh_box);
 														
 														truck_DB_insert = int_vehID;
@@ -503,7 +526,11 @@ public class MainCopy5_receiver_request {
 														assignResult.setResult(0);
 														assignResult.notify();
 													}
+													veh_array.remove((int)veh_array.indexOf(insertTime));
 													Map_requestInfo.remove(insertTime);
+													System.out.print("this request insertion failed, please pick other time!");
+													System.out.println("Map_requestInfo after removing:"+ Map_requestInfo);
+													
 													// NEED TO CHANGE CARSMAP_TO_REQUEST
 													break;
 												}
@@ -520,32 +547,41 @@ public class MainCopy5_receiver_request {
 														request_x_IndexValue, request_y_IndexValue,
 														request_x_beforeIndex, request_y_beforeIndex, false, true)));
 												double travelTime_IndexToBeforeIndex = distance_IndexToBeforeIndex/vehicle_speed;											
-												double diffDuration_IndexToBeforeIndex = ((int) veh_array.get(indexValue)-(int) veh_array.get(indexValue-1))*60;
+												double diffDuration_IndexToBeforeIndex = ((int) veh_array.get(indexValue)-(int) veh_array.get(indexValue-1))*60*0.67;
 												// 此時段可插入排程
 												if(travelTime_IndexToBeforeIndex<diffDuration_IndexToBeforeIndex) {
 													// BoxIndex insertion
 													if(insert_capacity==0) {
-														int insert_BoxIndex = (insert_capacity+1)+ 10*insert_BoxSize+100*int_vehID;												
+														int insert_BoxIndex = (insert_capacity+1)+ 10*insert_BoxSize+100*int_vehID;
+														insertCar = int_vehID;
+														String String_insert_BoxIndex = Integer.toString(insert_BoxIndex);												
 														((ArrayList) veh_box.get(insert_BoxSize)).add(insert_BoxIndex);													
 														// setParameter
+														conn.do_job_set(Vehicle.setParameter((String) vehID, String_insert_BoxIndex, "1"));
 														cars_Box.put(int_vehID, veh_box);		
 														
 														truck_DB_insert = int_vehID;
 														container_DB_insert = insert_BoxIndex;
 													}
 													else if(insert_capacity==1){
-														int insert_BoxIndex = (insert_capacity+1)+ 10*insert_BoxSize+100*int_vehID;												
+														int insert_BoxIndex = (insert_capacity+1)+ 10*insert_BoxSize+100*int_vehID;
+														insertCar = int_vehID;
+														String String_insert_BoxIndex = Integer.toString(insert_BoxIndex);	
 														((ArrayList) veh_box.get(insert_BoxSize)).add(insert_BoxIndex);														
 														// setParameter
+														conn.do_job_set(Vehicle.setParameter((String) vehID, String_insert_BoxIndex, "1"));
 														cars_Box.put(int_vehID, veh_box);
 														
 														truck_DB_insert = int_vehID;
 														container_DB_insert = insert_BoxIndex;
 													}								
 													else if(insert_capacity==2){
-														int insert_BoxIndex = (insert_capacity+1)+ 10*insert_BoxSize+100*int_vehID;														
+														int insert_BoxIndex = (insert_capacity+1)+ 10*insert_BoxSize+100*int_vehID;
+														insertCar = int_vehID;
+														String String_insert_BoxIndex = Integer.toString(insert_BoxIndex);															
 														((ArrayList) veh_box.get(insert_BoxSize)).add(insert_BoxIndex);														
 														// setParameter
+														conn.do_job_set(Vehicle.setParameter((String) vehID, String_insert_BoxIndex, "1"));
 														cars_Box.put(int_vehID, veh_box);
 														
 														truck_DB_insert = int_vehID;
@@ -563,7 +599,11 @@ public class MainCopy5_receiver_request {
 														assignResult.setResult(0);
 														assignResult.notify();
 													}
+
+													veh_array.remove((int)veh_array.indexOf(insertTime));
 													Map_requestInfo.remove(insertTime);
+													System.out.print("this request insertion failed, please pick other time!");
+													System.out.println("Map_requestInfo after removing:"+ Map_requestInfo);
 													break;
 												}			
 											}
@@ -591,34 +631,43 @@ public class MainCopy5_receiver_request {
 														request_x_IndexValue, request_y_IndexValue, false, true)));
 												double travelTime_afterIndexToIndex = distance_afterIndexToIndex/vehicle_speed;
 												
-												double diffDuration_IndexToBeforeIndex = ((int) veh_array.get(indexValue)-(int) veh_array.get(indexValue-1))*60;
-												double diffDuration_afterIndexToIndex = ((int) veh_array.get(indexValue+1)-(int) veh_array.get(indexValue))*60;
+												double diffDuration_IndexToBeforeIndex = ((int) veh_array.get(indexValue)-(int) veh_array.get(indexValue-1))*60*0.67;
+												double diffDuration_afterIndexToIndex = ((int) veh_array.get(indexValue+1)-(int) veh_array.get(indexValue))*60*0.67;
 												// 此時段可插入排程
 												if(travelTime_IndexToBeforeIndex<diffDuration_IndexToBeforeIndex && 
-														travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) {
+														travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex){
 													// BoxIndex insertion
 													if(insert_capacity==0) {
-														int insert_BoxIndex = (insert_capacity+1)+ 10*insert_BoxSize+100*int_vehID;													
+														int insert_BoxIndex = (insert_capacity+1)+ 10*insert_BoxSize+100*int_vehID;
+														insertCar = int_vehID;
+														String String_insert_BoxIndex = Integer.toString(insert_BoxIndex);														
 														((ArrayList) veh_box.get(insert_BoxSize)).add(insert_BoxIndex);													
 														// setParameter
+														conn.do_job_set(Vehicle.setParameter((String) vehID, String_insert_BoxIndex, "1"));
 														cars_Box.put(int_vehID, veh_box);			
 														
 														truck_DB_insert = int_vehID;
 														container_DB_insert = insert_BoxIndex;
 													}
 													else if(insert_capacity==1){
-														int insert_BoxIndex = (insert_capacity+1)+ 10*insert_BoxSize+100*int_vehID;													
+														int insert_BoxIndex = (insert_capacity+1)+ 10*insert_BoxSize+100*int_vehID;
+														insertCar = int_vehID;
+														String String_insert_BoxIndex = Integer.toString(insert_BoxIndex);														
 														((ArrayList) veh_box.get(insert_BoxSize)).add(insert_BoxIndex);										
 														// setParameter
+														conn.do_job_set(Vehicle.setParameter((String) vehID, String_insert_BoxIndex, "1"));
 														cars_Box.put(int_vehID, veh_box);	
 														
 														truck_DB_insert = int_vehID;
 														container_DB_insert = insert_BoxIndex;
 													}
 													else if(insert_capacity==2){
-														int insert_BoxIndex = (insert_capacity+1)+ 10*insert_BoxSize+100*int_vehID;													
+														int insert_BoxIndex = (insert_capacity+1)+ 10*insert_BoxSize+100*int_vehID;
+														insertCar = int_vehID;
+														String String_insert_BoxIndex = Integer.toString(insert_BoxIndex);														
 														((ArrayList) veh_box.get(insert_BoxSize)).add(insert_BoxIndex);										
 														// setParameter
+														conn.do_job_set(Vehicle.setParameter((String) vehID, String_insert_BoxIndex, "1"));
 														cars_Box.put(int_vehID, veh_box);			
 														
 														truck_DB_insert = int_vehID;
@@ -634,13 +683,25 @@ public class MainCopy5_receiver_request {
 														assignResult.setResult(0);
 														assignResult.notify();
 													}
+													veh_array.remove((int)veh_array.indexOf(insertTime));
 													Map_requestInfo.remove(insertTime);
+													System.out.print("this request insertion failed, please pick other time!");
+													System.out.println("Map_requestInfo after removing:"+ Map_requestInfo);
 													break;
 												}
 											}
 										}
 									}		
 								}
+
+								// 3 means the number of all cars
+								// 插入的時程，全部的車都已有該時程，通知使用者另選時間
+								if(isFull_in_all_Veh_arrays.size()==CarsMapSchedule_afterBoxFilter.size()){
+									if(isFull_in_all_Veh_arrays.contains(false)!=true) {
+										System.out.println("this request insertion failed, please pick other time!");
+									}
+								}
+
 								//////////////////////////////////////////////////////////////////////////////////////////////////
 								//////////////////////////////////////////////////////////////////////////////////////////////////
 								//////////////////////////////////////////////////////////////////////////////////////////////////
@@ -676,80 +737,124 @@ public class MainCopy5_receiver_request {
 								// 無論前面是否成功皆進行 SET ROUTES
 								for(int veh=1; veh<=CarsMap_with_Schedule.size();veh++) {
 									System.out.println("---------------------------------");
-									
+						
 									String vehID = Integer.toString(veh); 
-									ArrayList veh_array = new ArrayList();//veh_array:[570, 660]
-									
+									System.out.println("vehID:"+ vehID);
+									ArrayList veh_array = new ArrayList();//veh_array:[570, 660]			
 									veh_array = (ArrayList)CarsMap_with_Schedule.get(vehID);
-									
 									veh_array.add((int)currentMin);
-									
-									Collections.sort(veh_array);							
-									int remove_time =0;
-									while(remove_time<(int)veh_array.indexOf((int)currentMin)+1) {
-										veh_array.remove(0);
-										remove_time++;
-									}
-															
-									Map  Map_requestInfo = new HashMap();
-									Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get(vehID);
-									
-									ArrayList edges_list = new ArrayList();
-									ArrayList stages_list = new ArrayList();
-									SumoStringList routes = new SumoStringList();
-									
-									String curEdge = (String)conn.do_job_get(Vehicle.getRoadID(vehID));
-									System.out.println("curEdge:"+ curEdge);
-									edges_list.add(curEdge);
-									
-									for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {
-										String edge = (String) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(0); // 570
-										edges_list.add(edge);
-									}
-									
-									for(int edge_index=0;edge_index<edges_list.size()-1;edge_index++) {
-										String vType ="truck"; 
-										double depart = 0.0; 
-										int routingMode = 0;
-										
-										SumoStage stage = (SumoStage)conn.do_job_get(
-												Simulation.findRoute((String)edges_list.get(edge_index), (String)edges_list.get(edge_index+1), vType, depart,routingMode));
-										stages_list.add(stage);
-									}
-									
-									for(int stageIndex=1; stageIndex<stages_list.size();stageIndex++) {
-										SumoStage each_stage= (SumoStage) stages_list.get(stageIndex);
-										for(int edgeIndex=1; edgeIndex< each_stage.edges.size(); edgeIndex++) {
-											
-											String edge= each_stage.edges.get(edgeIndex);
-											
-											((SumoStage)stages_list.get(0)).edges.add(edge);
-										}		
-									}
-									
-									if(stages_list.size()>0){
-										routes = ((SumoStage)stages_list.get(0)).edges;
-									}
-									
-									LinkedList<String> newRoute = new LinkedList<String>(); 									
-									for (String edge :routes){ 
-										newRoute.add(edge); 
-									}
-									
-									if(stages_list.size()>0){
-										conn.do_job_set(Vehicle.setRoute(vehID, routes));
+									Collections.sort(veh_array);
+									System.out.println("sort(veh_array):"+ veh_array);
+
+									// 判斷 (int)currentMin 此刻時間，在veh_array中的index 是否為0
+									int index_currentMin = veh_array.indexOf((int)currentMin);
+									if(index_currentMin==0){
+										veh_array.remove(index_currentMin); // remove the currentMin element
 									}
 
-									for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {										
-										String edge = (String) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(0); // 570
-										double pos =  (double) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(3);										
-									    //System.out.println("edge:"+ edge);
-										//System.out.println("pos:"+ pos);
-										SumoStopFlags sf = new SumoStopFlags(false, false, false, false, false);		
-										conn.do_job_set(Vehicle.setStop(vehID, edge, pos+10, (byte)0,  0.0, 
-												sf, pos, 60.0*((Integer) veh_array.get(veh_array_index)-530)));									
+									else{
+										int previousIndex_currentMin = index_currentMin-1;
+
+										// the vehicle is in the stopping stage
+										int curMin_fromArray = (int) veh_array.get(index_currentMin);
+										int value_before_curMin_fromArray = (int) veh_array.get(index_currentMin)+10;
+										if(curMin_fromArray<value_before_curMin_fromArray){
+											// configure veh_array
+											// [570, 630, 660, 667, 720]-> [660, 720]
+											for(int remove_Time=0;remove_Time<index_currentMin-1;remove_Time++){
+												veh_array.remove(0);
+											}
+
+											System.out.println("veh_array after for-loop:"+ veh_array);
+											veh_array.remove((int)veh_array.indexOf((int)currentMin));
+										}
+
+										//  the vehicle is in the moving stage
+										else{
+											// configure veh_array
+											// [570, 601, 720]-> [720]
+											for(int remove_Time=0;remove_Time<index_currentMin+1;remove_Time++){
+												veh_array.remove(0);
+											}
+											System.out.println("veh_array after for-loop:"+ veh_array);
+										}
 									}
-									//conn.do_job_set(Vehicle.setStop("1", Edge1, 50.0, (byte)0,  0.0, sf_v1, 30.0, 2400.0));
+									System.out.println("veh_array after configuration:"+ veh_array);
+									////////////////////////////////////////////////////////////////////						
+									if(insertCar!=0){
+										Map  Map_requestInfo = new HashMap();
+										Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get(vehID);
+										
+										ArrayList edges_list = new ArrayList();
+										ArrayList stages_list = new ArrayList();
+										SumoStringList routes = new SumoStringList();
+										String curEdge = (String)conn.do_job_get(Vehicle.getRoadID(vehID));
+										
+										edges_list.add(curEdge);
+										
+										for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {
+											String edge = (String) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(0); // 570
+											//System.out.println("edge:"+ edge);
+											edges_list.add(edge);
+										}
+										
+										for(int edge_index=0;edge_index<edges_list.size()-1;edge_index++) {
+											String vType ="truck"; 
+											double depart = 0.0; 
+											int routingMode = 0;
+											SumoStage stage = (SumoStage)conn.do_job_get(Simulation.findRoute((String)edges_list.get(edge_index), 
+													(String)edges_list.get(edge_index+1), vType, depart,routingMode));
+											stages_list.add(stage);
+										}
+										
+										for(int stageIndex=1; stageIndex<stages_list.size();stageIndex++) {
+											//(((SumoStage) stages_list.get(stageIndex)).edges).size();
+											SumoStage each_stage= (SumoStage) stages_list.get(stageIndex);
+											for(int edgeIndex=1; edgeIndex< each_stage.edges.size(); edgeIndex++) {	
+												String edge= each_stage.edges.get(edgeIndex);						
+												((SumoStage)stages_list.get(0)).edges.add(edge);
+											}		
+										}
+
+										if(stages_list.size()>0){
+											routes = ((SumoStage)stages_list.get(0)).edges;
+										}
+
+										LinkedList<String> newRoute = new LinkedList<String>(); 
+										
+										for (String edge :routes){ 
+											newRoute.add(edge); 
+										}
+										
+										System.out.println("veh_array:"+veh_array);
+										System.out.println("Map_requestInfo:"+ Map_requestInfo);
+										System.out.println("curEdge:"+ curEdge);
+										System.out.println("Arrival edges_list:"+ edges_list);	
+										//System.out.println("newRoute_before:"+ newRoute);
+
+										if(stages_list.size()>0){
+											conn.do_job_set(Vehicle.setRoute(vehID, routes));
+										}
+
+										// only add one new setStop on the dispatched car
+										if(veh==insertCar){
+											ArrayList veh_array_for_setStop = new ArrayList();
+											Map  Map_requestInfo_for_setStop = new HashMap();
+											String insertCar_ID = Integer.toString(insertCar);
+											veh_array_for_setStop = (ArrayList)CarsMap_with_Schedule.get(insertCar_ID);
+											Map_requestInfo_for_setStop =(Map) CarsMap_time_to_requestInfo.get(insertCar_ID);
+											
+											System.out.println("insertCar_ID:"+insertCar_ID);
+											System.out.println("insertTime:"+insertTime);
+											System.out.println("veh_array_for_setStop:"+ veh_array_for_setStop);
+											System.out.println("Map_requestInfo_for_setStop:"+ Map_requestInfo_for_setStop);
+											String edge = (String) ((ArrayList) Map_requestInfo_for_setStop.get(insertTime)).get(0); // 570
+											double pos =  (double) ((ArrayList) Map_requestInfo_for_setStop.get(insertTime)).get(3);
+											double until = 60.0*(insertTime-530);
+											SumoStopFlags sf = new SumoStopFlags(false, false, false, false, false);
+											conn.do_job_set(Vehicle.setStop(insertCar_ID, edge, pos, (byte)0,  0.0,  sf, pos, until));
+										}
+									}
 								}
 							}
 							//////////////////////////////////////////////////////////////////////////////////////////////////
