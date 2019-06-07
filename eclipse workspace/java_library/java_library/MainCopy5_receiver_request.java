@@ -281,10 +281,22 @@ public class MainCopy5_receiver_request {
 							int container_DB_insert = 0;
 							int truck_DB_insert = 0;
 
-							/* junction
-							{
-	
-							}*/
+							ArrayList isJunction_in_all_vehs = new ArrayList();
+							for(int veh=1;veh<cars_Box.size()+1;veh++) {
+								String vehID = Integer.toString(veh); 			
+								String curEdge =(String) conn.do_job_get(Vehicle.getRoadID(vehID));
+								boolean isJunction =curEdge.contains(":cluster");
+								isJunction_in_all_vehs.add(isJunction);
+							}
+							
+							if(isJunction_in_all_vehs.contains(true)) {
+								System.out.print("this request insertion failed, please pick other time!");
+							}
+							
+							else {
+								
+							}
+							
 
 
 							//////////////////////////////////////////////////////////////////////////////////////////////////
