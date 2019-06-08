@@ -173,6 +173,11 @@ public class MainCopy6 {
 					}
 				}	
 			}
+
+			conn.do_job_set(Vehicle.setParameter("1", "111", "1"));
+			conn.do_job_set(Vehicle.setParameter("1", "112", "1"));
+			conn.do_job_set(Vehicle.setParameter("2", "221", "1"));
+
 			/////////////////////////////////////////////////////////////////
 			
 			
@@ -191,6 +196,7 @@ public class MainCopy6 {
 					System.out.println("timeSeconds:"+ timeSeconds);
 					double currentMin = (540+ timeSeconds/60.0);
 
+					/*
 					String vType1 ="truck"; 
 					double depart1 = 0.0; 
 					int routingMode1 = 0;
@@ -202,7 +208,7 @@ public class MainCopy6 {
 						newRoute2.add(edge); 
 					}
 					System.out.println("newRoute2:"+ newRoute2);
-						
+					*/	
 
 					for(int veh=1; veh<=CarsMap_with_Schedule.size();veh++) 
 					{
@@ -290,6 +296,8 @@ public class MainCopy6 {
 									sf_0, pos, until));
 
 						}
+						
+						
 				  	}
 				}
 

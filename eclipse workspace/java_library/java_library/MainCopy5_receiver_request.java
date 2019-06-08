@@ -197,6 +197,24 @@ public class MainCopy5_receiver_request {
 			// start Traci Server
 			conn.runServer(7789);
 			conn.setOrder(1);
+
+			//BoxIndex initialization
+			for(int veh=1;veh<4;veh++) {
+				for(int boxSizeIndex=1;boxSizeIndex<4;boxSizeIndex++) {
+					for(int boxOrder=1;boxOrder<4;boxOrder++) {
+						int int_boxIndex = veh*100+boxSizeIndex*10+boxOrder;
+						String veh_ID = Integer.toString(veh);
+						String boxIndex = Integer.toString(int_boxIndex);
+						conn.do_job_set(Vehicle.setParameter(veh_ID, boxIndex, "0"));
+					}
+				}	
+			}
+
+			conn.do_job_set(Vehicle.setParameter("1", "111", "1"));
+			conn.do_job_set(Vehicle.setParameter("1", "112", "1"));
+			conn.do_job_set(Vehicle.setParameter("2", "221", "1"));
+
+			/////////////////////////////////////////////////////////////////
 			
 			Map  CarsMapWithSchedule = new HashMap();
 			//ArrayList v1_sender_TimeSchedule = new ArrayList();
