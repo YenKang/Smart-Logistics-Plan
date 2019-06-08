@@ -303,7 +303,7 @@ public class MainCopy5_receiver_request {
 							for(int veh=1;veh<cars_Box.size()+1;veh++) {
 								String vehID = Integer.toString(veh); 			
 								String curEdge =(String) conn.do_job_get(Vehicle.getRoadID(vehID));
-								boolean isJunction =curEdge.contains(":cluster");
+								boolean isJunction =curEdge.contains(":");
 								isJunction_in_all_vehs.add(isJunction);
 							}
 							
