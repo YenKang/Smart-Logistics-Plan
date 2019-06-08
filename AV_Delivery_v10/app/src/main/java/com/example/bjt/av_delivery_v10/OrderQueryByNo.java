@@ -133,8 +133,6 @@ public class OrderQueryByNo extends AsyncTask<String, Integer, String> {
 
                         Item item = new Item(i, order_No, sender_name, receiver_name, cargo_content, price,
                                 container_No, in_time, out_time, status, truck_No, lnglat, order_time, sender_time, receiver_time);
-
-
                         Intent intent = new Intent(ctx, ItemActivity.class);
                         // 設定記事編號與標題
                         intent.putExtra("item", item);
@@ -146,7 +144,6 @@ public class OrderQueryByNo extends AsyncTask<String, Integer, String> {
                         e.printStackTrace();
                     }
                 }
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }

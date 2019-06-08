@@ -90,28 +90,26 @@ class OrderQuery extends AsyncTask<String, Integer, String> {
     {
         super.onPreExecute();
         //Toast.makeText(, result, Toast.LENGTH_LONG).show();
-        //System.out.println(result);
         // 若伺服器回傳 "No_match" 則表示查詢失敗，表示使用者輸入錯誤
-            if (result.equals("No_match")) {
-                Toast.makeText(ctx, "您目前沒有訂單！", Toast.LENGTH_SHORT).show();
+        if (result.equals("No_match")) {
+            Toast.makeText(ctx, "您目前沒有訂單！", Toast.LENGTH_SHORT).show();
+        }
+        else  {
+            //Toast.makeText(ctx, result, Toast.LENGTH_SHORT).show();
+            try {
+                // 以jsonArray形式儲存從資料庫取得的訂單資料
+                JSONArray jsonArray = new JSONArray(result);
+                // 以自定義的類別物件將取得的 JSON 格式資料以 Serialize 的格式存入 Bundle
+                SerializableJSONArray jsonReceiver = new SerializableJSONArray(jsonArray);
+                Intent it = new Intent(ctx, MyOrderActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("orderReceived", jsonReceiver);
+                // 跳轉至 MyOrderActivity 後即可使用 bundle 中的資料
+                it.putExtras(bundle);
+                ctx.startActivity(it);
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-            else  {
-                //Toast.makeText(ctx, result, Toast.LENGTH_SHORT).show();
-                try {
-                    // 以jsonArray形式儲存從資料庫取得的訂單資料
-                    JSONArray jsonArray = new JSONArray(result);
-                    // 以自定義的類別物件將取得的 JSON 格式資料以 Serialize 的格式存入 Bundle
-                    SerializableJSONArray jsonReceiver = new SerializableJSONArray(jsonArray);
-                    Intent it = new Intent(ctx, MyOrderActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("orderReceived", jsonReceiver);
-                    // 跳轉至 MyOrderActivity 後即可使用 bundle 中的資料
-                    it.putExtras(bundle);
-                    ctx.startActivity(it);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
                 //Intent intent = new Intent(ctx, MapTestActivity.class);
                 //startActivity(intent,2);
                 //Toast.makeText(SendActivity.this, result, Toast.LENGTH_LONG).show();

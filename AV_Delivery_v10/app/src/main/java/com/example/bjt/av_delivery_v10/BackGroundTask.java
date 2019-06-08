@@ -170,6 +170,8 @@ public class BackGroundTask extends AsyncTask<String, Void, String> {
                 String gender = jsonObject.getString("gender");
                 String register_time = jsonObject.getString("register_time");
 
+                Toast.makeText(ctx, jsonObject.getString("device_key"), Toast.LENGTH_LONG).show();
+
                 Intent it = new Intent();
                 it.setClass(ctx, AccountActivity.class);
 
@@ -180,6 +182,8 @@ public class BackGroundTask extends AsyncTask<String, Void, String> {
                 bundle.putString("phone_number",phone_number);
                 bundle.putString("gender",gender);
                 bundle.putString("register_time",register_time);
+                // 儲存用來進行推播通知的 key
+                bundle.putString("device_key", jsonObject.getString("device_key"));
                 it.putExtras(bundle);
                 ctx.startActivity(it);
                 Toast.makeText(ctx, "您好，"+username, Toast.LENGTH_LONG).show();
@@ -210,32 +214,6 @@ public class BackGroundTask extends AsyncTask<String, Void, String> {
             //alertDialog.setMessage("Register Success!!");
             //alertDialog.show();
             Toast.makeText(ctx, "Username Duplicate!!", Toast.LENGTH_LONG).show();
-        }
-        else {
-            a=0;
-            //Toast.makeText(ctx, result, Toast.LENGTH_LONG).show();
-            //Toast.makeText(ctx, result, Toast.LENGTH_LONG).show();
-            try {
-                JSONArray jsonArray = new JSONArray(result);
-                JSONObject test =jsonArray.getJSONObject(0);
-                String testS = test.getString("user_id");
-                int user_id = Integer.parseInt(testS);
-                a=1;
-                //Toast.makeText(ctx, testS, Toast.LENGTH_LONG).show();
-                Intent it = new Intent();
-                it.setClass(ctx,MainActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putInt("user_id", user_id);
-                it.putExtras(bundle);
-                ctx.startActivity(it);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            if (a == 0){
-                //Toast.makeText(ctx, result, Toast.LENGTH_LONG).show();
-            }
-
-            //Toast.makeText(ctx, result, Toast.LENGTH_LONG).show();
         }
         */
     }

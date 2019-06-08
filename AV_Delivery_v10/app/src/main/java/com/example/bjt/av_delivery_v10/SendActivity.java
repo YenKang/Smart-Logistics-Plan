@@ -44,10 +44,14 @@ public class SendActivity extends AppCompatActivity {
     private String originAddressSelected="";
     private String destAddressSelected="";
 
+    static SendActivity instance;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send);
+
+        instance =this;
         // 使用 sharedpreferences 判斷使用者是否已在此裝置登入過，若 user_id 不存在則預設 -1
         SharedPreferences sharedPreferences = getSharedPreferences("user_info",0);
         int login = sharedPreferences.getInt("user_id",-1);
@@ -80,7 +84,7 @@ public class SendActivity extends AppCompatActivity {
                 // 判斷使用者目前選擇的貨櫃大小，預設為L，0為L、1為M、2為S
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    sizeSelected = position;
+                    sizeSelected = position + 1;
                     // 測試是否顯示正確選擇
                      Toast.makeText(SendActivity.this, Integer.toString(sizeSelected), Toast.LENGTH_SHORT).show();
                 }
@@ -98,9 +102,8 @@ public class SendActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(), MapTestActivity.class);
-
+                // 標示為 sender
                 i.putExtra("isReceiver", 0);
-
                 // 使用 bundle 將頁面資訊傳送給下一階段，準備與 SUMO SERVER 連線
                 Bundle bundle = new Bundle();
                 bundle.putString("origin_address",originAddressSelected + et_origin.getText().toString());
@@ -110,14 +113,12 @@ public class SendActivity extends AppCompatActivity {
                 bundle.putInt("price",Integer.parseInt(price.getText().toString()));
                 bundle.putDouble("weight",Double.parseDouble(weight.getText().toString()));
                 bundle.putString("receiver_id", receiver_id.getText().toString());
-                bundle.putInt("size",sizeSelected+1);
-
+                bundle.putInt("size",sizeSelected);
                 i.putExtras(bundle);
                 startActivity(i);
             }
         };
         mapTest.setOnClickListener(accountListener);
-
         // 使用者選擇收貨地址的事件
         View.OnClickListener originListener = new View.OnClickListener() {
             @Override
@@ -136,12 +137,12 @@ public class SendActivity extends AppCompatActivity {
             }
         };
         dest.setOnClickListener(destListener);
-        ////// 以上兩個事件會根據不同的 requestCode 將回傳的結果傳入不同的變數 //////
-
+        // 以上兩個事件會根據不同的 requestCode 將回傳的結果傳入不同的變數 //////
         // 使用者選擇下一步，此為正式版本的功能，真實流程的一部份
         View.OnClickListener nextListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // 檢查使用者是否輸入完整資料
                 if (price.getText().toString().equals("")||cargo_name.getText().toString().equals("")||
                         weight.getText().toString().equals("")||receiver_id.getText().toString().equals("")||
                         et_origin.getText().toString().equals("")||et_dest.getText().toString().equals(""))
@@ -149,6 +150,7 @@ public class SendActivity extends AppCompatActivity {
                     // new ReceiverQuery().execute(receiver_id.getText().toString());
                     Toast.makeText(view.getContext(),"請完整填寫資料!!",Toast.LENGTH_LONG).show();
                 }
+                // 若無空白則檢查收件人是否存在
                 else {
                     new ReceiverQuery().execute(receiver_id.getText().toString());
                     // Toast.makeText(view.getContext(),"123!!",Toast.LENGTH_LONG).show();
@@ -197,7 +199,6 @@ public class SendActivity extends AppCompatActivity {
                 httpURLConnection.setDoInput(true);
                 httpURLConnection.setReadTimeout(10000);
                 httpURLConnection.setConnectTimeout(15000);
-
                 // 將資料輸出到伺服器
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
@@ -206,7 +207,6 @@ public class SendActivity extends AppCompatActivity {
                 bufferedWriter.flush();
                 bufferedWriter.close();
                 outputStream.close();
-
                 // 從伺服器輸入資料
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"UTF-8"));
@@ -238,9 +238,7 @@ public class SendActivity extends AppCompatActivity {
             }
             else  {
                 Intent i = new Intent(SendActivity.this, MapTestActivity.class);
-
                 i.putExtra("isReceiver", 0);
-
                 // 使用 bundle 將頁面資訊傳送給下一階段，準備與 SUMO SERVER 連線
                 Bundle bundle = new Bundle();
                 bundle.putString("origin_address",originAddressSelected + et_origin.getText().toString());
@@ -251,7 +249,6 @@ public class SendActivity extends AppCompatActivity {
                 bundle.putDouble("weight",Double.parseDouble(weight.getText().toString()));
                 bundle.putString("receiver_id", receiver_id.getText().toString());
                 bundle.putInt("size",sizeSelected);
-
                 i.putExtras(bundle);
                 startActivity(i);
             }

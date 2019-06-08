@@ -47,6 +47,9 @@ public class AccountActivity extends AppCompatActivity {
             editor.putString("gender",gender);
             editor.putString("phone_number",phone_number);
             editor.putString("register_time",registerTime);
+            // 儲存用來進行推播通知的 key
+            editor.putString("device_key", bundle.getString("device_key"));
+
             //editor.putStringSet()
             editor.commit();
         }

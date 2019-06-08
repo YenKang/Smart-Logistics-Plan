@@ -161,10 +161,16 @@ public class ItemActivity extends AppCompatActivity  {
                 status_text.setText("貨車已到達寄件人地點");
                 break;
             case '2':
-                status_text.setText("貨車正在前往收件人地點");
+                status_text.setText("貨物已上車，等待收件人選擇取貨時間");
                 break;
             case '3':
-                status_text.setText("貨車已到達收件人地點");
+                status_text.setText("貨車正在前往收件人地點");
+                break;
+            case '4':
+                status_text.setText("貨車已到達收件人地點，等待收件");
+                break;
+            case '5':
+                status_text.setText("收件人已簽收完成");
                 break;
         }
         truck_No_text.setText(truck_No);
@@ -176,20 +182,28 @@ public class ItemActivity extends AppCompatActivity  {
         View.OnClickListener receiver_timeListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (status.charAt(0) == '0'){
-                    Toast.makeText(ItemActivity.this,"貨物尚未到達寄件者位置。",Toast.LENGTH_SHORT).show();
-                }
-                else if ((status.charAt(0) == '1') && (status.charAt(1) == '0')) {
-                    Intent i = new Intent(view.getContext(), MapTestActivity.class);
-                    i.putExtra("isReceiver", 1);
-                    i.putExtra("order_item", order_item);
-                    startActivity(i);
-                }
-                else if ((status.charAt(0) == '1') && (status.charAt(1) == '1')){
-                    Toast.makeText(ItemActivity.this, "您已選擇取貨時間！", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Toast.makeText(ItemActivity.this, "您已選擇取貨時間！", Toast.LENGTH_SHORT).show();
+                switch (status.charAt(0)){
+                    case '0':
+                        Toast.makeText(ItemActivity.this,"貨物尚未到達寄件者位置。",Toast.LENGTH_SHORT).show();
+                        break;
+                    case '1':
+                        Toast.makeText(ItemActivity.this,"正在等待寄件者上貨。",Toast.LENGTH_SHORT).show();
+                        break;
+                    case '2':
+                        Intent i = new Intent(view.getContext(), MapTestActivity.class);
+                        i.putExtra("isReceiver", 1);
+                        i.putExtra("order_item", order_item);
+                        startActivity(i);
+                        break;
+                    case '3':
+                        status_text.setText("已選擇過取貨時間。");
+                        break;
+                    case '4':
+                        status_text.setText("已選擇過取貨時間。");
+                        break;
+                    case '5':
+                        status_text.setText("已選擇過取貨時間。");
+                        break;
                 }
             }
         };

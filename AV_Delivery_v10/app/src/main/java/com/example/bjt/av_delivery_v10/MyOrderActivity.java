@@ -105,7 +105,7 @@ public class MyOrderActivity extends AppCompatActivity {
                     items_send.add(new Item(i, order_No, sender_name, receiver_name, cargo_content, price,
                             container_No, in_time, out_time, status, truck_No, lnglat, order_time, sender_time, receiver_time));
                 }
-                else if (receiver_name.equals(username)){
+                if (receiver_name.equals(username)){
                     items_receive.add(new Item(i, order_No, sender_name, receiver_name, cargo_content, price,
                             container_No, in_time, out_time, status, truck_No, lnglat, order_time, sender_time, receiver_time));
                 }

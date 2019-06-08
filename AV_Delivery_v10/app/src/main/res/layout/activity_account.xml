@@ -35,28 +35,39 @@
         android:paddingVertical="10dp"
         android:text="" />
 
-    <Button
-        android:id="@+id/btn_fix"
-        android:layout_width="150dp"
-        android:layout_height="45dp"
-        android:paddingVertical="10dp"
-        android:layout_marginTop="80dp"
-        android:text="修改會員資料" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
-    <Button
-        android:id="@+id/btn_logout"
-        android:layout_width="150dp"
-        android:layout_height="45dp"
-        android:paddingVertical="10dp"
-        android:layout_marginTop="20dp"
-        android:text="Logout" />
+        <Button
+            android:id="@+id/btn_fix"
+            android:layout_width="120dp"
+            android:layout_height="45dp"
+            android:paddingVertical="10dp"
+            android:text="修改會員資料" />
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="120dp"
+            android:layout_height="45dp"
+            android:paddingVertical="10dp"
+            android:text="Logout" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_return"
-        android:layout_width="150dp"
+        android:layout_width="120dp"
         android:layout_height="45dp"
         android:paddingVertical="10dp"
-        android:layout_marginTop="20dp"
         android:text="回首頁" />
+
+
+
+
 
 </LinearLayout>

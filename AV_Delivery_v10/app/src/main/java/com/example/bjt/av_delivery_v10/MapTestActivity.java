@@ -130,6 +130,8 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
             lat2 = lnglat[3];
 
             container_id = order_item.getContainerNo();
+            String truck_id = order_item.getTruckNo();
+            String order_No = order_item.getOrderNo();
 
             hashmap.put("sender_id", sender_id);
             hashmap.put("receiver_id",receiver_id);
@@ -143,6 +145,8 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
             hashmap.put("receiver_lng", lng2);
             hashmap.put("receiver_lat", lat2);
             hashmap.put("container_id", container_id);
+            hashmap.put("truck_id", truck_id);
+            hashmap.put("order_No", order_No);
         }
 
         cameraLng = (lng1+lng2)/2;
@@ -172,17 +176,52 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
 
         // 使用者點選確定，啟用 socket ，與 sumo 進行溝通，並指定上貨、卸貨時間
         View.OnClickListener submitListener = new View.OnClickListener() {
+            @SuppressLint("HandlerLeak")
             @Override
             public void onClick(View view) {
+                //finish();
+                dialog = ProgressDialog.show(MapTestActivity.this,
+                        "讀取中", "正在確認派遣車輛...",true);
+                handler = new Handler(){
+                    @Override
+                    public void handleMessage(Message msg) {
+                        super.handleMessage(msg);
+                        // SUMO 回傳 1 代表派遣成功
+                        // SUMO 回傳 0 代表此時段無車可以到達
+                        // SUMO 回傳 -1 代表使用者選擇的貨櫃尺寸皆已滿載
+                        // SUMO 回傳 -2 代表系統忙碌中 (車輛處於路口)
+                        if(msg.what == 1) {
+                            dialog.dismiss();
+                            Toast.makeText(MapTestActivity.this,"貨車已派遣成功，請從「我的訂單」查看車輛狀態。", Toast.LENGTH_LONG).show();
+                            //SendActivity.instance.finish();
+                            //finish();
+                        }
+                        else if (msg.what == 0){
+                            dialog.dismiss();
+                            Toast.makeText(MapTestActivity.this,"本時段無車可以到達。", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (msg.what == -1){
+                            dialog.dismiss();
+                            Toast.makeText(MapTestActivity.this,"此貨櫃大小已經滿載，請選擇其他尺寸或稍後下單。", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (msg.what == -2){
+                            dialog.dismiss();
+                            Toast.makeText(MapTestActivity.this,"系統忙碌中。", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                };
                 jsonW = new JSONObject(hashmap);
                 Thread threadSocket = new Thread(Connection);
                 threadSocket.start();
-                System.out.println("123");
+                /*jsonW = new JSONObject(hashmap);
+                Thread threadSocket = new Thread(Connection);
+                threadSocket.start();
+                System.out.println("123");*/
             }
         };
         submit_button.setOnClickListener(submitListener);
 
-        // 使用者點選取消
+        // 使用者點選取消 ，目前拿來測試 socket 用
         View.OnClickListener cancelListener = new View.OnClickListener() {
             @SuppressLint("HandlerLeak")
             @Override
@@ -194,8 +233,27 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
                     @Override
                     public void handleMessage(Message msg) {
                         super.handleMessage(msg);
+                        // SUMO 回傳 1 代表派遣成功
+                        // SUMO 回傳 0 代表此時段無車可以到達
+                        // SUMO 回傳 -1 代表使用者選擇的貨櫃尺寸皆已滿載
+                        // SUMO 回傳 -2 代表系統忙碌中 (車輛處於路口)
                         if(msg.what == 1) {
                             dialog.dismiss();
+                            Toast.makeText(MapTestActivity.this,"貨車已派遣成功，請從「我的訂單」查看車輛狀態。", Toast.LENGTH_LONG).show();
+                            SendActivity.instance.finish();
+                            finish();
+                        }
+                        else if (msg.what == 0){
+                            dialog.dismiss();
+                            Toast.makeText(MapTestActivity.this,"本時段無車可以到達。", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (msg.what == -1){
+                            dialog.dismiss();
+                            Toast.makeText(MapTestActivity.this,"此貨櫃大小已經滿載，請選擇其他尺寸或稍後下單。", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (msg.what == -2){
+                            dialog.dismiss();
+                            Toast.makeText(MapTestActivity.this,"系統忙碌中。", Toast.LENGTH_SHORT).show();
                         }
                     }
                 };
@@ -205,8 +263,80 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
             }
         };
         cancel_button.setOnClickListener(cancelListener);
-
     }
+    // 與 sumo 進行溝通，並指定上貨、卸貨時間
+    private Runnable Connection = new Runnable() {
+        @Override
+        public void run() {
+            OutputStream output = null;
+            InputStream input = null;
+            try{
+                InetAddress serverIP = InetAddress.getByName("140.116.72.134");
+                int serverPort = 6678;
+                clientSocket = new Socket(serverIP, serverPort);
+                // 取得網路輸出流 //////////////////////////////////////////
+                output = new DataOutputStream(clientSocket.getOutputStream());
+                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(output));
+                // 將訂單資訊傳送至 sumo server
+                bw.write(jsonW.toString());
+                bw.flush();
+                // 只關閉輸出流
+                clientSocket.shutdownOutput();
+                // 取得網路輸入流 /////////////////////////////////////////////
+                input = new DataInputStream(clientSocket.getInputStream());
+                BufferedReader br = new BufferedReader(new InputStreamReader(input));
+                while (clientSocket.isConnected()) {
+                    //宣告一個緩衝,從br串流讀取 Server 端傳來的訊息
+                    temp = br.readLine();
+                    if (temp != null) {
+                        break;
+                    }
+                }
+                System.out.println(temp);
+                bw.close();
+                br.close();
+                output.close();
+                input.close();
+                // 通知 UI 關閉讀取畫面
+                //Message msg = new Message();
+                Message msg = new Message();
+                // SUMO 回傳 1 代表派遣成功
+                // SUMO 回傳 0 代表此時段無車可以到達
+                // SUMO 回傳 -1 代表使用者選擇的貨櫃尺寸皆已滿載
+                // SUMO 回傳 -2 代表系統忙碌中 (車輛處於路口)
+                if (temp != null){
+                    System.out.println("Sumo return: "+ temp);
+                    msg.what = Integer.parseInt(temp);
+                }
+                else{
+                    msg.what = 99;
+                }
+                handler.sendMessage(msg);
+            }
+            catch (Exception e){
+                //當斷線時會跳到 catch,可以在這裡處理斷開連線後的邏輯
+                e.printStackTrace();
+                System.out.println("斷線囉~~");
+                Log.e("text","Socket連線="+e.toString());
+            }
+            finally
+            {
+                try
+                {
+                    if ( input != null )
+                        input.close();
+                    if ( output != null )
+                        output.close();
+                    if ( clientSocket != null && !clientSocket.isClosed() )
+                        clientSocket.close();
+                }
+                catch ( IOException e )
+                {
+                    e.printStackTrace();
+                }
+            }
+        }
+    };
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -241,70 +371,4 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
         }
         return point;
     }
-
-    // 與 sumo 進行溝通，並指定上貨、卸貨時間
-    private Runnable Connection = new Runnable() {
-        @Override
-        public void run() {
-            OutputStream output = null;
-            InputStream input = null;
-            try{
-                InetAddress serverIP = InetAddress.getByName("140.116.72.134");
-                int serverPort = 6678;
-                clientSocket = new Socket(serverIP, serverPort);
-
-                // 取得網路輸出流 //////////////////////////////////////////
-                output = new DataOutputStream(clientSocket.getOutputStream());
-                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(output));
-                // bw.write("123");
-                bw.write(jsonW.toString());
-                bw.flush();
-                // 指關閉輸出流
-                clientSocket.shutdownOutput();
-
-                // 取得網路輸入流 /////////////////////////////////////////////
-                input = new DataInputStream(clientSocket.getInputStream());
-                BufferedReader br = new BufferedReader(new InputStreamReader(input));
-                temp = br.readLine();
-                System.out.println(temp);
-                bw.close();
-                br.close();
-                output.close();
-                input.close();
-                // 通知 UI 關閉讀取畫面
-                Message msg = new Message();
-                msg.what = 1;
-                handler.sendMessage(msg);
-                //clientSocket.close();
-                /*while (clientSocket.isConnected()) {
-                    //宣告一個緩衝,從br串流讀取 Server 端傳來的訊息
-                    temp = br.readLine();
-                    System.out.println(temp);
-                    //break;
-                }*/
-            }
-            catch (Exception e){
-                //當斷線時會跳到 catch,可以在這裡處理斷開連線後的邏輯
-                e.printStackTrace();
-                System.out.println("斷線囉~~");
-                Log.e("text","Socket連線="+e.toString());
-            }
-            finally
-            {
-                try
-                {
-                    if ( input != null )
-                        input.close();
-                    if ( output != null )
-                        output.close();
-                    if ( clientSocket != null && !clientSocket.isClosed() )
-                        clientSocket.close();
-                }
-                catch ( IOException e )
-                {
-                    e.printStackTrace();
-                }
-            }
-        }
-    };
 }
