@@ -1233,15 +1233,16 @@ public class MainCopy5_receiver_request {
 													break;
 												}
 												else {
+													veh_array.remove((int)veh_array.indexOf(insertTime));
+													Map_requestInfo.remove(insertTime);
+													System.out.print("this request insertion failed, please pick other time!");
+													System.out.println("Map_requestInfo after removing:"+ Map_requestInfo);
 													synchronized(assignResult) {
 														Thread.sleep(500);
 														assignResult.setResult(0);
 														assignResult.notify();
 													}
-													veh_array.remove((int)veh_array.indexOf(insertTime));
-													Map_requestInfo.remove(insertTime);
-													System.out.print("this request insertion failed, please pick other time!");
-													System.out.println("Map_requestInfo after removing:"+ Map_requestInfo);
+													
 													break;
 													
 												}
@@ -1309,9 +1310,32 @@ public class MainCopy5_receiver_request {
 												}
 											}
 										}
+
+										// 此時段已有插入時段的排程
+										else{
+											veh_array.remove((int)veh_array.indexOf(insertTime));
+											Map_requestInfo.remove(insertTime);
+											System.out.print("this request insertion failed, please pick other time!");
+											System.out.println("Map_requestInfo after removing:"+ Map_requestInfo);
+											synchronized(assignResult) {
+												Thread.sleep(500);
+												assignResult.setResult(0);
+												assignResult.notify();
+											}
+											// 本時段本車已有排程 (android之後要改)
+											/*synchronized(assignResult) {
+												Thread.sleep(500);
+												assignResult.setResult(-3);
+												assignResult.notify();
+											}*/
+											
+											break;
+										}
+
+
 									}
 								}
-								System.out.println("-------------route arrangement--------------------------------");
+								System.out.println("-------------route arrangement----------------------");
 								// set routes
 								for(int veh=1; veh<=CarsMap_with_Schedule.size();veh++) {
 									System.out.println("---------------------------------");
@@ -1577,6 +1601,7 @@ public class MainCopy5_receiver_request {
 									int int_boxIndex = (int) requestInfo.get(5);
 									String boxIndex = Integer.toString(int_boxIndex); 
 									// change container id of the car in SUMO
+									System.out.println("boxIndex:"+ boxIndex);
 									conn.do_job_set(Vehicle.setParameter(vehID, boxIndex, "0"));
 									Map veh_Box = new HashMap();
 									veh_Box = (Map) cars_Box.get(veh); // v1_Box:{1=[111, 112], 2=[], 3=[]}
@@ -1626,7 +1651,8 @@ public class MainCopy5_receiver_request {
 									sender_confirt.UpdateOrderStatus(order_No, "2");
 									String receiver_DID = (String) requestInfo.get(7);
 									FcmNotify notifyReceiverTimeSelect = new FcmNotify();
-									notifyReceiverTimeSelect.pushFCMNotification(receiver_DID, "貨物已上車", "寄件人已將貨物寄出，已可選擇取貨時間。");
+									notifyReceiverTimeSelect.pushFCMNotification(receiver_DID, "貨物已上車", "寄件人已將貨物寄出，請到我的貨物可選擇收貨時間。");
+
 									// wait for receiver's time-selection
 								}
 								// receiver 收貨完畢
@@ -1670,8 +1696,10 @@ public class MainCopy5_receiver_request {
 									System.out.println("veh"+ vehID+ " will soon arrived to the sender's address!");	
 									String sender_DID = (String) requestInfo.get(6);
 									System.out.println(sender_DID);
+									System.out.println("貨車即將到達寄件人,貨車將於約5分後到達。");
 									// FcmNotify notifySenderEarly = new FcmNotify();
-									notifyEarly.pushFCMNotification(sender_DID, "貨車即將到達寄件人", "貨車將於約5分後到達。");							
+									notifyEarly.pushFCMNotification(sender_DID, "貨車即將到達", "貨車將於約5分後到達。");							
+																
 								}
 								// 通知 receiver
 								else if (isReceiver == 1) {
@@ -1681,7 +1709,9 @@ public class MainCopy5_receiver_request {
 									String receiver_DID = (String) requestInfo.get(7);
 									System.out.println(receiver_DID);
 									// FcmNotify notifySenderEarly = new FcmNotify();
-									notifyEarly.pushFCMNotification(receiver_DID, "貨車即將到達收件人", "貨車將於約5分後到達。");
+									
+									notifyEarly.pushFCMNotification(receiver_DID, "貨車即將到達", "貨車將於約5分後到達。");
+									System.out.println("貨車即將到達收件人,貨車將於約5分後到達。");
 								}
 							}
 						}
