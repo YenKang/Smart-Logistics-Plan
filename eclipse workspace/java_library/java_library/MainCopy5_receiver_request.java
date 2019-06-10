@@ -478,17 +478,17 @@ public class MainCopy5_receiver_request {
 								System.out.println("request_array:"+ request_array);
 								System.out.println("insertTime:"+ insertTime);
 
-								// 插入時間在此刻時間點之後
+								// 插入時間在此刻時間點之前
 								Double double_insertTime=Double.valueOf(insertTime);
 								if(double_insertTime<currentMin){
-									System.out.println("this request insertion-time is over than crrent time");
+									System.out.println("insertion-time is earlier than current time!");
 									synchronized(assignResult) {
 										Thread.sleep(500);
 										assignResult.setResult(0);
 										assignResult.notify();
 									}
 								}
-								// 插入時間在此刻時間點之前
+								// 插入時間在此刻時間點之後
 								else if(double_insertTime>currentMin){
 									//
 									HashMap  CarsMapSchedule_afterBoxFilter = new HashMap();
@@ -1103,9 +1103,8 @@ public class MainCopy5_receiver_request {
 								// 插入時間在此刻時間點之後
 								Double double_insertTime=Double.valueOf(insertTime);
 							
-
 								if(double_insertTime<currentMin){
-									System.out.println("this request insertion-time is over than crrent time");
+									System.out.println("this request insertion-time is less than crrent time");
 									synchronized(assignResult) {
 										Thread.sleep(500);
 										assignResult.setResult(0);
@@ -1166,11 +1165,13 @@ public class MainCopy5_receiver_request {
 												System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
 												System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
 												System.out.println("cars_Box:"+ cars_Box);
+												/*
 												synchronized(assignResult) {
 													Thread.sleep(500);
 													assignResult.setResult(1);
 													assignResult.notify();
 												}
+												*/
 											}
 
 										}
@@ -1218,13 +1219,14 @@ public class MainCopy5_receiver_request {
 														System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
 														System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
 														System.out.println("cars_Box:"+ cars_Box);
-														
-
+													
+														/*
 														synchronized(assignResult) {
 															Thread.sleep(500);
 															assignResult.setResult(1);
 															assignResult.notify();
 														}
+														*/
 														break;
 													}
 													// 此時段無法插入排程
@@ -1266,12 +1268,13 @@ public class MainCopy5_receiver_request {
 														System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
 														System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
 														System.out.println("cars_Box:"+ cars_Box);
-														
+														/*
 														synchronized(assignResult) {
 															Thread.sleep(500);
 															assignResult.setResult(1);
 															assignResult.notify();
 														}
+														*/
 														break;
 													}
 													else {
@@ -1284,12 +1287,9 @@ public class MainCopy5_receiver_request {
 															assignResult.setResult(0);
 															assignResult.notify();
 														}
-														break;
-														
-													}
-													
-												}
-												
+														break;							
+													}											
+												}										
 												else {
 													int key_IndexValue = (int) veh_array.get(indexValue);
 													double request_x_IndexValue = (double)((ArrayList) Map_requestInfo.get(key_IndexValue)).get(1);
@@ -1324,11 +1324,13 @@ public class MainCopy5_receiver_request {
 														System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
 														System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
 														System.out.println("cars_Box:"+ cars_Box);
+														/*
 														synchronized(assignResult) {
 															Thread.sleep(500);
 															assignResult.setResult(1);
 															assignResult.notify();
-														}																			
+														}		
+														*/																	
 														break;
 													}
 													// 篩選失敗，此時段無法插入排程
@@ -1367,6 +1369,20 @@ public class MainCopy5_receiver_request {
 												break;
 											}
 										}
+									}
+									// 若篩選成功，則 rs 會維持1，準備更新資料庫狀態
+									if (assignResult.getResult() == 1) {
+										//System.out.println("ya!");
+										synchronized(assignResult) {
+											Thread.sleep(500);
+											assignResult.notify();
+										}
+										// 新增訂單
+										JDBC_AVD order_success = new JDBC_AVD();			
+										order_success.UpdateOrderStatus(order_No, "3");
+										// order_success.insertOrder(order_No, sender_name, receiver_name, container_id, truck_id, weight,
+										//		cargo_content, insert_BoxSize, price, sender_lng, sender_lat, receiver_lng, receiver_lat, sender_time);
+											
 									}
 
 									System.out.println("-------------route arrangement---------------");
