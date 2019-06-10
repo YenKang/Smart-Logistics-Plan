@@ -1143,6 +1143,7 @@ public class MainCopy5_receiver_request {
 										veh_box =(Map) cars_Box.get(int_vehID); // eg. veh_Box=v3_Box:{1=[], 2=[], 3=[]}
 							
 						
+										// 不可能發生 首次到的狀況
 										// there is no schedule in this car
 										if(veh_array.size()==0) {
 											SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition((String) vehID));
@@ -1206,7 +1207,6 @@ public class MainCopy5_receiver_request {
 													double travelTime_afterIndexToIndex = distance_afterIndexToIndex/vehicle_speed;			
 													double diffDuration_afterIndexToIndex = ((int) veh_array.get(indexValue+1)-(int) veh_array.get(indexValue))*60*0.67;
 												
-
 													if((travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) &&
 															(timeSeconds+travelTime_curr_To_Index) <(insertTime-540)*60) {
 									
@@ -1218,6 +1218,7 @@ public class MainCopy5_receiver_request {
 														System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
 														System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
 														System.out.println("cars_Box:"+ cars_Box);
+														
 
 														synchronized(assignResult) {
 															Thread.sleep(500);
