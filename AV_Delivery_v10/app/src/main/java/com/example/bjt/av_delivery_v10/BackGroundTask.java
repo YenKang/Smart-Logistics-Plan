@@ -51,7 +51,8 @@ public class BackGroundTask extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... params) {
 
         String reg_url = "http://140.116.72.134/AV_user/register.php";
-        String login_url = "http://140.116.72.134/AV_user/Login.php";
+        // 記得改回來 0610
+        String login_url = "http://140.116.72.162/AV_user/Login.php";
         String method = params[0];
         if (method.equals("register")){
             String name = params[1];

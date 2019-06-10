@@ -59,6 +59,7 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
     private int timeArrived;
     private double weight;
     private Double lng1, lat1, lng2, lat2, cameraLng, cameraLat;
+    private Double camaraLng2, cameraLat2;
     private Button submit_button, cancel_button;
 
     private Dialog dialog;
@@ -114,6 +115,9 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
             hashmap.put("receiver_lng", lng2);
             hashmap.put("receiver_lat", lat2);
             hashmap.put("container_id","000");
+
+            camaraLng2 = lng1;
+            cameraLat2 = lat1;
         }
         else if (isReceiver == 1 ){
             order_item = (Item)intent.getExtras().getSerializable("order_item");
@@ -147,10 +151,14 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
             hashmap.put("container_id", container_id);
             hashmap.put("truck_id", truck_id);
             hashmap.put("order_No", order_No);
+
+            camaraLng2 = lng2;
+            cameraLat2 = lat2;
         }
 
         cameraLng = (lng1+lng2)/2;
         cameraLat = (lat1+lat2)/2;
+
 
         Spinner spinnerTime = findViewById(R.id.spTimeInterval);
         final ArrayAdapter<CharSequence> timeList = ArrayAdapter.createFromResource(this, R.array.timeInterval, android.R.layout.simple_spinner_dropdown_item);
@@ -193,8 +201,8 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
                         if(msg.what == 1) {
                             dialog.dismiss();
                             Toast.makeText(MapTestActivity.this,"貨車已派遣成功，請從「我的訂單」查看車輛狀態。", Toast.LENGTH_LONG).show();
-                            //SendActivity.instance.finish();
-                            //finish();
+                            SendActivity.instance.finish();
+                            finish();
                         }
                         else if (msg.what == 0){
                             dialog.dismiss();
@@ -240,20 +248,20 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
                         if(msg.what == 1) {
                             dialog.dismiss();
                             Toast.makeText(MapTestActivity.this,"貨車已派遣成功，請從「我的訂單」查看車輛狀態。", Toast.LENGTH_LONG).show();
-                            SendActivity.instance.finish();
-                            finish();
+                            // SendActivity.instance.finish();
+                            // finish();
                         }
                         else if (msg.what == 0){
                             dialog.dismiss();
-                            Toast.makeText(MapTestActivity.this,"本時段無車可以到達。", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MapTestActivity.this,"本時段無車可以到達。", Toast.LENGTH_LONG).show();
                         }
                         else if (msg.what == -1){
                             dialog.dismiss();
-                            Toast.makeText(MapTestActivity.this,"此貨櫃大小已經滿載，請選擇其他尺寸或稍後下單。", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MapTestActivity.this,"此貨櫃大小已經滿載，請選擇其他尺寸或稍後下單。", Toast.LENGTH_LONG).show();
                         }
                         else if (msg.what == -2){
                             dialog.dismiss();
-                            Toast.makeText(MapTestActivity.this,"系統忙碌中。", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MapTestActivity.this,"系統忙碌中，請再輸入一次。", Toast.LENGTH_LONG).show();
                         }
                     }
                 };
@@ -271,7 +279,8 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
             OutputStream output = null;
             InputStream input = null;
             try{
-                InetAddress serverIP = InetAddress.getByName("140.116.72.134");
+                // 0610 記得改回來
+                InetAddress serverIP = InetAddress.getByName("140.116.72.162");
                 int serverPort = 6678;
                 clientSocket = new Socket(serverIP, serverPort);
                 // 取得網路輸出流 //////////////////////////////////////////
@@ -344,15 +353,16 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
         LatLng origin = new LatLng(lat1, lng1);
         LatLng dest = new LatLng(lat2,lng2);
         LatLng cameraPlace = new LatLng(cameraLat, cameraLng);
+        LatLng cameraPlace2 = new LatLng(cameraLat2, camaraLng2);
         if (isReceiver == 0){
-            mMap.addMarker(new MarkerOptions().position(origin).title("貨車取貨地點"));
-            mMap.addMarker(new MarkerOptions().position(dest).title("送貨目的地點"));
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(cameraPlace, 13.0f));
+            mMap.addMarker(new MarkerOptions().position(origin).title("貨車收貨地點"));
+            // mMap.addMarker(new MarkerOptions().position(dest).title("送貨目的地點"));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(cameraPlace2, 13.0f));
         }
         else if (isReceiver == 1){
-            mMap.addMarker(new MarkerOptions().position(origin).title("寄件人上貨地點"));
+            // mMap.addMarker(new MarkerOptions().position(origin).title("寄件人上貨地點"));
             mMap.addMarker(new MarkerOptions().position(dest).title("您的取貨地點"));
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(cameraPlace, 13.0f));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(cameraPlace2, 13.0f));
         }
     }
     /// 地址轉經緯度!!

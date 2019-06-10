@@ -106,6 +106,7 @@ public class SendActivity extends AppCompatActivity {
                 i.putExtra("isReceiver", 0);
                 // 使用 bundle 將頁面資訊傳送給下一階段，準備與 SUMO SERVER 連線
                 Bundle bundle = new Bundle();
+                /*
                 bundle.putString("origin_address",originAddressSelected + et_origin.getText().toString());
                 bundle.putString("dest_address",destAddressSelected + et_dest.getText().toString());
                 bundle.putString("sender_id",sender_id);
@@ -114,8 +115,30 @@ public class SendActivity extends AppCompatActivity {
                 bundle.putDouble("weight",Double.parseDouble(weight.getText().toString()));
                 bundle.putString("receiver_id", receiver_id.getText().toString());
                 bundle.putInt("size",sizeSelected);
+                */
+                /*
+                bundle.putString("origin_address","台南市中西區忠義路二段63號");
+                bundle.putString("dest_address", "台南市東區大學路17號");
+                bundle.putString("sender_id","Bryan1023");
+                bundle.putString("cargo_content","測試用貨物");
+                bundle.putInt("price",777);
+                bundle.putDouble("weight",40.0);
+                bundle.putString("receiver_id", "Bryan1023");
+                bundle.putInt("size",sizeSelected);
                 i.putExtras(bundle);
                 startActivity(i);
+                */
+
+                originAddressSelected = "台南市中西區";
+                destAddressSelected = "台南市東區";
+                origin.setText(originAddressSelected);
+                dest.setText(destAddressSelected);
+                receiver_id.setText("Bryan1023");
+                cargo_name.setText("測試用貨物");
+                price.setText("777");
+                weight.setText("30.0");
+                et_origin.setText("忠義路二段63號");
+                et_dest.setText("大學路17號");
             }
         };
         mapTest.setOnClickListener(accountListener);
@@ -187,7 +210,8 @@ public class SendActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             // 連上 web server 中確定收件人存在的查詢功能 (ReceiverQuery.php)
-            String queryReceiverUrl = "http://140.116.72.134/AV_user/ReceiverQuery.php";
+            // 0610 記得要改
+            String queryReceiverUrl = "http://140.116.72.162/AV_user/ReceiverQuery.php";
             // 將傳入的收件人帳號存入變數，以便進行後續查詢
             String receiver_id = params[0];
             try{

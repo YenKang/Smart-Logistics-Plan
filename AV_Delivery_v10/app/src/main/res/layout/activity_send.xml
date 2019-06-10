@@ -186,7 +186,7 @@
             android:id="@+id/btn_mapTest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Map_Test" />
+            android:text="測試值自動輸入" />
         </TableRow>
 
     </TableLayout>
