@@ -19,6 +19,7 @@
 /****************************************************************************/
 
 import it.polito.appeal.traci.SumoTraciConnection;
+import de.tudresden.sumo.cmd.Gui;
 import de.tudresden.sumo.cmd.Junction;
 import de.tudresden.sumo.cmd.Simulation;
 import de.tudresden.sumo.cmd.Vehicle;
@@ -179,7 +180,11 @@ public class MainCopy6 {
 			conn.do_job_set(Vehicle.setParameter("2", "221", "1"));
 
 			/////////////////////////////////////////////////////////////////
-			
+
+			SumoColor veh1_color = new SumoColor(255 ,204, 239,0);
+			conn.do_job_set(Vehicle.setColor("1", veh1_color));
+			SumoColor veh2_color = new SumoColor(0 ,255, 255,0);
+			conn.do_job_set(Vehicle.setColor("2", veh2_color));
 			
 			///////////////////////////////////////////////////////////////////
 			double vehicle_speed = 4.0; //4 [m/s]
@@ -300,7 +305,31 @@ public class MainCopy6 {
 						
 				  	}
 				}
+				
+				if(timeSeconds==50.0) {
+					System.out.println("timeSeconds:"+ timeSeconds);
+					double zoomValue = (double) conn.do_job_get(Gui.getZoom("View #0"));
+					System.out.println("zoomValue:"+ zoomValue);
+					//hasView(self, viewID='View #0')
+					//hasView(string): -> bool
+					
+					
+					
+				}
 
+				if(timeSeconds==70.0) {
+					System.out.println("timeSeconds:"+ timeSeconds);
+					double zoomValue = (double) conn.do_job_get(Gui.getZoom("View #0"));
+					//conn.do_job_set(Gui.setZoom("View #0", 5000.0));
+					System.out.println("zoomValue:"+ zoomValue);
+					conn.do_job_set(Gui.setSchema("View #0", "real world"));
+					//hasView(self, viewID='View #0')
+					//hasView(string): -> bool
+					//conn.do_job_get(Gui.trackVehicle("View #0", "2"));
+					
+					conn.do_job_set(Gui.trackVehicle("View #0", "2"));
+					conn.do_job_set(Gui.setZoom("View #0", 6000.0));
+				}
 				// 
 				if(timeSeconds==78.5) {
 					System.out.println("this request insertion failed, please pick other time!");
