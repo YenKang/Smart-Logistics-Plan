@@ -312,7 +312,7 @@ public class MainCopy5_receiver_request {
 							}
 
 							System.out.println("veh_array:"+veh_array);
-							System.out.println("Map_requestInfo:"+ Map_requestInfo);
+							//System.out.println("Map_requestInfo:"+ Map_requestInfo);
 							//System.out.println("curEdge:"+ curEdge);
 							//System.out.println("Arrival edges_list:"+ edges_list);	
 							//System.out.println("newRoute_before:"+ newRoute);
@@ -584,7 +584,7 @@ public class MainCopy5_receiver_request {
 												CarsMap_time_to_requestInfo.put((String) vehID, Map_requestInfo);
 												CarsMap_with_Schedule.put((String) vehID, veh_array);
 												System.out.println("-----------after inserting------------");
-												System.out.println("Map_requestInfo:"+ Map_requestInfo);
+												//System.out.println("Map_requestInfo:"+ Map_requestInfo);
 												System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
 												System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
 												System.out.println("cars_Box:"+ cars_Box);
@@ -596,7 +596,6 @@ public class MainCopy5_receiver_request {
 											// 此時間段無法到達
 											else{
 												// can not arrive!
-
 												synchronized(assignResult) {
 													Thread.sleep(500);
 													assignResult.setResult(0);
@@ -697,7 +696,7 @@ public class MainCopy5_receiver_request {
 													veh_array.remove((int)veh_array.indexOf(insertTime));
 													Map_requestInfo.remove(insertTime);
 													System.out.print("this request insertion failed, please pick other time!");
-													System.out.println("Map_requestInfo after removing:"+ Map_requestInfo);
+													//System.out.println("Map_requestInfo after removing:"+ Map_requestInfo);
 													
 													// NEED TO CHANGE CARSMAP_TO_REQUEST
 													break;
@@ -774,7 +773,7 @@ public class MainCopy5_receiver_request {
 													veh_array.remove((int)veh_array.indexOf(insertTime));
 													Map_requestInfo.remove(insertTime);
 													System.out.print("this request insertion failed, please pick other time!");
-													System.out.println("Map_requestInfo after removing:"+ Map_requestInfo);
+													//System.out.println("Map_requestInfo after removing:"+ Map_requestInfo);
 													break;
 												}			
 											}
@@ -860,7 +859,7 @@ public class MainCopy5_receiver_request {
 													veh_array.remove((int)veh_array.indexOf(insertTime));
 													Map_requestInfo.remove(insertTime);
 													System.out.println("this request insertion failed, please pick other time!");
-													System.out.println("Map_requestInfo after removing:"+ Map_requestInfo);
+													//System.out.println("Map_requestInfo after removing:"+ Map_requestInfo);
 													break;
 												}
 											}
@@ -1003,7 +1002,7 @@ public class MainCopy5_receiver_request {
 											}
 											
 											System.out.println("veh_array:"+veh_array);
-											System.out.println("Map_requestInfo:"+ Map_requestInfo);
+											//System.out.println("Map_requestInfo:"+ Map_requestInfo);
 											System.out.println("curEdge:"+ curEdge);
 											//System.out.println("Arrival edges_list:"+ edges_list);	
 											//System.out.println("newRoute_before:"+ newRoute);
@@ -1023,7 +1022,7 @@ public class MainCopy5_receiver_request {
 												System.out.println("insertCar_ID:"+insertCar_ID);
 												System.out.println("insertTime:"+insertTime);
 												System.out.println("veh_array_for_setStop:"+ veh_array_for_setStop);
-												System.out.println("Map_requestInfo_for_setStop:"+ Map_requestInfo_for_setStop);
+												//System.out.println("Map_requestInfo_for_setStop:"+ Map_requestInfo_for_setStop);
 												String edge = (String) ((ArrayList) Map_requestInfo_for_setStop.get(insertTime)).get(0); // 570
 												double pos =  (double) ((ArrayList) Map_requestInfo_for_setStop.get(insertTime)).get(3);
 												double until = 60.0*(insertTime-530);
@@ -1168,7 +1167,7 @@ public class MainCopy5_receiver_request {
 												CarsMap_time_to_requestInfo.put((String) vehID, Map_requestInfo);
 												CarsMap_with_Schedule.put((String) vehID, veh_array);
 												System.out.println("-----------after inserting------------");
-												System.out.println("Map_requestInfo:"+ Map_requestInfo);
+												//System.out.println("Map_requestInfo:"+ Map_requestInfo);
 												System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
 												System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
 												System.out.println("cars_Box:"+ cars_Box);
@@ -1222,7 +1221,7 @@ public class MainCopy5_receiver_request {
 														Map_requestInfo.put(insertTime, request_array ); 
 														CarsMap_time_to_requestInfo.put((String) vehID, Map_requestInfo);
 														System.out.println("-----------after inserting------------");
-														System.out.println("Map_requestInfo:"+ Map_requestInfo);
+														//System.out.println("Map_requestInfo:"+ Map_requestInfo);
 														System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
 														System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
 														System.out.println("cars_Box:"+ cars_Box);
@@ -1241,7 +1240,7 @@ public class MainCopy5_receiver_request {
 														veh_array.remove((int)veh_array.indexOf(insertTime));
 														Map_requestInfo.remove(insertTime);
 														System.out.print("this request insertion failed, please pick other time!");
-														System.out.println("Map_requestInfo after removing:"+ Map_requestInfo);
+														//System.out.println("Map_requestInfo after removing:"+ Map_requestInfo);
 														synchronized(assignResult) {
 															Thread.sleep(500);
 															assignResult.setResult(0);
@@ -1271,7 +1270,7 @@ public class MainCopy5_receiver_request {
 														Map_requestInfo.put(insertTime, request_array ); 
 														CarsMap_time_to_requestInfo.put((String) vehID, Map_requestInfo);
 														System.out.println("-----------after inserting------------");
-														System.out.println("Map_requestInfo:"+ Map_requestInfo);
+														//System.out.println("Map_requestInfo:"+ Map_requestInfo);
 														System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
 														System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
 														System.out.println("cars_Box:"+ cars_Box);
@@ -1288,7 +1287,7 @@ public class MainCopy5_receiver_request {
 														veh_array.remove((int)veh_array.indexOf(insertTime));
 														Map_requestInfo.remove(insertTime);
 														System.out.print("this request insertion failed, please pick other time!");
-														System.out.println("Map_requestInfo after removing:"+ Map_requestInfo);
+														//System.out.println("Map_requestInfo after removing:"+ Map_requestInfo);
 														synchronized(assignResult) {
 															Thread.sleep(500);
 															assignResult.setResult(0);
@@ -1327,7 +1326,7 @@ public class MainCopy5_receiver_request {
 														Map_requestInfo.put(insertTime, request_array ); 
 														CarsMap_time_to_requestInfo.put((String) vehID, Map_requestInfo);
 														System.out.println("-----------after inserting------------");
-														System.out.println("Map_requestInfo:"+ Map_requestInfo);
+														//System.out.println("Map_requestInfo:"+ Map_requestInfo);
 														System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
 														System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
 														System.out.println("cars_Box:"+ cars_Box);
@@ -1345,7 +1344,7 @@ public class MainCopy5_receiver_request {
 														veh_array.remove((int)veh_array.indexOf(insertTime));
 														Map_requestInfo.remove(insertTime);
 														System.out.print("this request insertion failed, please pick other time!");
-														System.out.println("Map_requestInfo after removing:"+ Map_requestInfo);
+														//System.out.println("Map_requestInfo after removing:"+ Map_requestInfo);
 														synchronized(assignResult) {
 															Thread.sleep(500);
 															assignResult.setResult(0);
@@ -1361,7 +1360,7 @@ public class MainCopy5_receiver_request {
 												veh_array.remove((int)veh_array.indexOf(insertTime));
 												Map_requestInfo.remove(insertTime);
 												System.out.println("this request insertion failed, please pick other time!");
-												System.out.println("Map_requestInfo after removing:"+ Map_requestInfo);
+												//System.out.println("Map_requestInfo after removing:"+ Map_requestInfo);
 												synchronized(assignResult) {
 													Thread.sleep(500);
 													assignResult.setResult(0);
@@ -1442,7 +1441,7 @@ public class MainCopy5_receiver_request {
 									if(veh_array.contains(insertTime)==true){
 										Map  Map_requestInfo = new HashMap();
 										Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get(vehID);
-										System.out.println("Map_requestInfo:"+ Map_requestInfo);
+										//System.out.println("Map_requestInfo:"+ Map_requestInfo);
 										
 										ArrayList edges_list = new ArrayList();
 										ArrayList stages_list = new ArrayList();
@@ -1486,7 +1485,7 @@ public class MainCopy5_receiver_request {
 										}
 										
 										System.out.println("veh_array:"+veh_array);
-										System.out.println("Map_requestInfo:"+ Map_requestInfo);
+										//System.out.println("Map_requestInfo:"+ Map_requestInfo);
 										System.out.println("curEdge:"+ curEdge);
 										System.out.println("Arrival edges_list:"+ edges_list);	
 										//System.out.println("newRoute_before:"+ newRoute);
@@ -1506,7 +1505,7 @@ public class MainCopy5_receiver_request {
 										System.out.println("insertCar_ID:"+insertCar_ID);
 										System.out.println("insertTime:"+insertTime);
 										System.out.println("veh_array_for_setStop:"+ veh_array_for_setStop);
-										System.out.println("Map_requestInfo_for_setStop:"+ Map_requestInfo_for_setStop);
+										//System.out.println("Map_requestInfo_for_setStop:"+ Map_requestInfo_for_setStop);
 										String edge = (String) ((ArrayList) Map_requestInfo_for_setStop.get(insertTime)).get(0); // 570
 										double pos =  (double) ((ArrayList) Map_requestInfo_for_setStop.get(insertTime)).get(3);
 										double until = 60.0*(insertTime-530);
@@ -1712,7 +1711,7 @@ public class MainCopy5_receiver_request {
 								if (isReceiver == 0) {
 									// notify receiver ID       
 									// 更新資料庫中的貨物狀態，以便 android 介面進行更改  ( 狀態: 已寄出)
-									System.out.println("line 1405:" +requestInfo);
+									//System.out.println("line 1405:" +requestInfo);
 									String order_No = (String)requestInfo.get(8);
 									JDBC_AVD sender_confirt = new JDBC_AVD();
 									sender_confirt.UpdateOrderStatus(order_No, "2");
@@ -1762,7 +1761,7 @@ public class MainCopy5_receiver_request {
 									System.out.println("send notification to the specific sender");	
 									System.out.println("veh"+ vehID+ " will soon arrived to the sender's address!");	
 									String sender_DID = (String) requestInfo.get(6);
-									System.out.println(sender_DID);
+									//System.out.println(sender_DID);
 									System.out.println("貨車即將到達寄件人,貨車將於約5分後到達。");
 									// FcmNotify notifySenderEarly = new FcmNotify();
 									notifyEarly.pushFCMNotification(sender_DID, "貨車即將到達", "貨車將於約5分後到達。");							
@@ -1774,7 +1773,7 @@ public class MainCopy5_receiver_request {
 									System.out.println("send notification to the specific reciver");	
 									System.out.println("veh"+ vehID+ " will soon arrived to the reveiver's address!");
 									String receiver_DID = (String) requestInfo.get(7);
-									System.out.println(receiver_DID);
+									// System.out.println(receiver_DID);
 									// FcmNotify notifySenderEarly = new FcmNotify();
 									
 									notifyEarly.pushFCMNotification(receiver_DID, "貨車即將到達", "貨車將於約5分後到達。");
