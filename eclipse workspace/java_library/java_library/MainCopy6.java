@@ -19,6 +19,7 @@
 /****************************************************************************/
 
 import it.polito.appeal.traci.SumoTraciConnection;
+import de.tudresden.sumo.cmd.Edge;
 import de.tudresden.sumo.cmd.Gui;
 import de.tudresden.sumo.cmd.Junction;
 import de.tudresden.sumo.cmd.Simulation;
@@ -214,7 +215,15 @@ public class MainCopy6 {
 					}
 					System.out.println("newRoute2:"+ newRoute2);
 					*/	
-
+					
+					int junctionNum = (int) conn.do_job_get(Junction.getIDCount());
+					int EdgeNum = (int) conn.do_job_get(Edge.getIDCount());
+					
+					System.out.println("junctionNum:"+ junctionNum);
+					System.out.println("EdgeNum:"+ EdgeNum);
+					
+					
+					
 					for(int veh=1; veh<=CarsMap_with_Schedule.size();veh++) 
 					{
 						System.out.println("---------------------------------");

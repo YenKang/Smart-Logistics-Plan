@@ -87,7 +87,9 @@ public class MainCopy5_receiver_request {
 			ArrayList v3_small_Box = new ArrayList();
 			ArrayList v3_medium_Box = new ArrayList();
 			ArrayList v3_large_Box = new ArrayList();
+			/*
 			v3_large_Box.add(331);
+			*/
 			
 			Map  v3_Box = new HashMap();
 			v3_Box.put(1, v3_small_Box); // "1" means for small box
@@ -114,7 +116,9 @@ public class MainCopy5_receiver_request {
 			CarsMap_with_Schedule.put("2", v2_TimeSchedule);
 			
 			ArrayList v3_TimeSchedule = new ArrayList();
+			/*
 			v3_TimeSchedule.add(720);
+			*/
 			CarsMap_with_Schedule.put("3", v3_TimeSchedule);
 			
 			System.out.println("CarsMap_with_Schedule:"+CarsMap_with_Schedule);
@@ -172,6 +176,7 @@ public class MainCopy5_receiver_request {
 			
 			Map  v3_time_to_requestInfo = new HashMap();
 			
+			/*
 			ArrayList v3_720_to_requestInfo = new ArrayList();
 			v3_720_to_requestInfo.add("405115648#1");
 			v3_720_to_requestInfo.add(8950.04);
@@ -182,9 +187,10 @@ public class MainCopy5_receiver_request {
 			v3_720_to_requestInfo.add("ABC");
 			v3_720_to_requestInfo.add("ABC");
 			v3_720_to_requestInfo.add("test_order");
-			
 			v3_time_to_requestInfo.put(720, v3_720_to_requestInfo);
-			System.out.println("v3_time_to_requestInfo:"+ v3_time_to_requestInfo);
+			System.out.println("v3_time_to_requestInfo:"+ v3_time_to_requestInfo);*/
+			
+			ArrayList v3_requestInfo = new ArrayList();
 			
 			CarsMap_time_to_requestInfo.put("1", v1_time_to_requestInfo);
 			CarsMap_time_to_requestInfo.put("2", v2_time_to_requestInfo);
@@ -223,9 +229,9 @@ public class MainCopy5_receiver_request {
 			
 			double vehicle_speed = 4.0; //4 [m/s]
 			
-			SumoColor veh1_color = new SumoColor(255 ,204, 239,0);
+			SumoColor veh1_color = new SumoColor(255 ,204, 239,255);
 			conn.do_job_set(Vehicle.setColor("1", veh1_color));
-			SumoColor veh2_color = new SumoColor(0 ,255, 255,0);
+			SumoColor veh2_color = new SumoColor(0 ,255, 255,255);
 			conn.do_job_set(Vehicle.setColor("2", veh2_color));
 			
 			//////////////////////////////////////////////////////////////////////////////////////////////////	
@@ -262,72 +268,73 @@ public class MainCopy5_receiver_request {
 						Map  Map_requestInfo = new HashMap();
 						Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get(vehID);
 
-						ArrayList edges_list = new ArrayList();
-						ArrayList stages_list = new ArrayList();
-						SumoStringList routes = new SumoStringList();
-						String curEdge = (String)conn.do_job_get(Vehicle.getRoadID(vehID));
+						if(Map_requestInfo.size()!=0) {
+							
+							ArrayList edges_list = new ArrayList();
+							ArrayList stages_list = new ArrayList();
+							SumoStringList routes = new SumoStringList();
+							String curEdge = (String)conn.do_job_get(Vehicle.getRoadID(vehID));
 
-						edges_list.add(curEdge);
+							edges_list.add(curEdge);
 
-						for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {
-							String edge = (String) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(0); // 570
-							//System.out.println("edge:"+ edge);
-							edges_list.add(edge);
-						}
+							for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {
+								String edge = (String) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(0); // 570
+								//System.out.println("edge:"+ edge);
+								edges_list.add(edge);
+							}
 
-						for(int edge_index=0;edge_index<edges_list.size()-1;edge_index++) {
-							String vType ="truck"; 
-							double depart = 0.0; 
-							int routingMode = 0;
-							SumoStage stage = (SumoStage)conn.do_job_get(Simulation.findRoute((String)edges_list.get(edge_index), 
-									(String)edges_list.get(edge_index+1), vType, depart,routingMode));
-							stages_list.add(stage);
-						}
+							for(int edge_index=0;edge_index<edges_list.size()-1;edge_index++) {
+								String vType ="truck"; 
+								double depart = 0.0; 
+								int routingMode = 0;
+								SumoStage stage = (SumoStage)conn.do_job_get(Simulation.findRoute((String)edges_list.get(edge_index), 
+										(String)edges_list.get(edge_index+1), vType, depart,routingMode));
+								stages_list.add(stage);
+							}
 
-						for(int stageIndex=1; stageIndex<stages_list.size();stageIndex++) {
-							//(((SumoStage) stages_list.get(stageIndex)).edges).size();
-							SumoStage each_stage= (SumoStage) stages_list.get(stageIndex);
-							for(int edgeIndex=1; edgeIndex< each_stage.edges.size(); edgeIndex++) {	
-								String edge= each_stage.edges.get(edgeIndex);						
-								((SumoStage)stages_list.get(0)).edges.add(edge);
-							}		
-						}
+							for(int stageIndex=1; stageIndex<stages_list.size();stageIndex++) {
+								//(((SumoStage) stages_list.get(stageIndex)).edges).size();
+								SumoStage each_stage= (SumoStage) stages_list.get(stageIndex);
+								for(int edgeIndex=1; edgeIndex< each_stage.edges.size(); edgeIndex++) {	
+									String edge= each_stage.edges.get(edgeIndex);						
+									((SumoStage)stages_list.get(0)).edges.add(edge);
+								}		
+							}
 
-						if(stages_list.size()>0){
-							routes = ((SumoStage)stages_list.get(0)).edges;
-						}
+							if(stages_list.size()>0){
+								routes = ((SumoStage)stages_list.get(0)).edges;
+							}
 
-						LinkedList<String> newRoute = new LinkedList<String>(); 
+							LinkedList<String> newRoute = new LinkedList<String>(); 
 
-						for (String edge :routes){ 
-							newRoute.add(edge); 
-						}
+							for (String edge :routes){ 
+								newRoute.add(edge); 
+							}
 
-						System.out.println("veh_array:"+veh_array);
-						System.out.println("Map_requestInfo:"+ Map_requestInfo);
-						//System.out.println("curEdge:"+ curEdge);
-						//System.out.println("Arrival edges_list:"+ edges_list);	
-						//System.out.println("newRoute_before:"+ newRoute);
+							System.out.println("veh_array:"+veh_array);
+							System.out.println("Map_requestInfo:"+ Map_requestInfo);
+							//System.out.println("curEdge:"+ curEdge);
+							//System.out.println("Arrival edges_list:"+ edges_list);	
+							//System.out.println("newRoute_before:"+ newRoute);
 
-						if(stages_list.size()>0){
-							conn.do_job_set(Vehicle.setRoute(vehID, routes));
-						}
+							if(stages_list.size()>0){
+								conn.do_job_set(Vehicle.setRoute(vehID, routes));
+							}
 						// setStop stage
-						for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {
-							String edge = (String) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(0); // 570
-							double pos =  (double) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(3);		
-							// SumoStopFlags sf3 = new SumoStopFlags(false, false, false, false, false);
-							double until = 60.0*((Integer) veh_array.get(veh_array_index)-530);
-							//System.out.println("edge:"+ edge);
-							//System.out.println("pos:"+ pos);
-							//System.out.println("until:"+ until);
-							SumoStopFlags sf_0 = new SumoStopFlags(false, false, false, false, false);
-							conn.do_job_set(Vehicle.setStop(vehID, edge, pos, (byte)0,  0.0,  
-									sf_0, pos, until));
+							for(int veh_array_index=0; veh_array_index<veh_array.size();veh_array_index++) {
+								String edge = (String) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(0); // 570
+								double pos =  (double) ((ArrayList) Map_requestInfo.get(veh_array.get(veh_array_index))).get(3);		
+								// SumoStopFlags sf3 = new SumoStopFlags(false, false, false, false, false);
+								double until = 60.0*((Integer) veh_array.get(veh_array_index)-530);
+								//System.out.println("edge:"+ edge);
+								//System.out.println("pos:"+ pos);
+								//System.out.println("until:"+ until);
+								SumoStopFlags sf_0 = new SumoStopFlags(false, false, false, false, false);
+								conn.do_job_set(Vehicle.setStop(vehID, edge, pos, (byte)0,  0.0,  
+										sf_0, pos, until));
 
-						}
-						
-						
+							}
+						}	
 				  	}
 					
 					//////////////////////////////////////////// 
