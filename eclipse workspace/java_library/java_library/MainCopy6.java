@@ -202,19 +202,19 @@ public class MainCopy6 {
 					System.out.println("timeSeconds:"+ timeSeconds);
 					double currentMin = (540+ timeSeconds/60.0);
 
-					/*
+					
 					String vType1 ="truck"; 
 					double depart1 = 0.0; 
 					int routingMode1 = 0;
-					SumoStage stage1 = (SumoStage)conn.do_job_get(Simulation.findRoute("158854921#2", 
-							"210406803#1", vType1, depart1,routingMode1));
+					SumoStage stage1 = (SumoStage)conn.do_job_get(Simulation.findRoute("229039623#0", 
+							"-152801180#7", vType1, depart1,routingMode1));
 					LinkedList<String> newRoute2 = new LinkedList<String>(); 
 
 					for (String edge :stage1.edges){ 
 						newRoute2.add(edge); 
 					}
 					System.out.println("newRoute2:"+ newRoute2);
-					*/	
+					
 					
 					int junctionNum = (int) conn.do_job_get(Junction.getIDCount());
 					int EdgeNum = (int) conn.do_job_get(Edge.getIDCount());
