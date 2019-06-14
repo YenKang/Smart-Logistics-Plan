@@ -1642,7 +1642,7 @@ public class MainCopy5_receiver_request {
 							}
 							// 到達目的地後3分鐘 (模擬 sender 進行上貨及 receiver 收貨)
 							else if (timeSeconds == upload_Unload_time) {
-								System.out.println("Do something after 3 mins");
+								
 								// sender 上貨完畢
 								if (isReceiver == 0) {
 									// notify receiver ID       
@@ -1653,7 +1653,7 @@ public class MainCopy5_receiver_request {
 									sender_confirt.UpdateOrderStatus(order_No, "2");
 									String receiver_DID = (String) requestInfo.get(7);
 									FcmNotify notifyReceiverTimeSelect = new FcmNotify();
-									notifyReceiverTimeSelect.pushFCMNotification(receiver_DID, "貨物已上車", "寄件人已將貨物寄出，已可選擇取貨時間。");
+									notifyReceiverTimeSelect.pushFCMNotification(receiver_DID, "貨物已上車", "寄件人已將貨物寄出，可選擇取貨時間。");
 									// wait for receiver's time-selection
 								}
 								// receiver 收貨完畢
