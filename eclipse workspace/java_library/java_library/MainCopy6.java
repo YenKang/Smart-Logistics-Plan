@@ -182,9 +182,9 @@ public class MainCopy6 {
 
 			/////////////////////////////////////////////////////////////////
 
-			SumoColor veh1_color = new SumoColor(255 ,204, 239,0);
+			SumoColor veh1_color = new SumoColor(255 ,204, 239,255);
 			conn.do_job_set(Vehicle.setColor("1", veh1_color));
-			SumoColor veh2_color = new SumoColor(0 ,255, 255,0);
+			SumoColor veh2_color = new SumoColor(0 ,255, 255,255);
 			conn.do_job_set(Vehicle.setColor("2", veh2_color));
 			
 			///////////////////////////////////////////////////////////////////
@@ -321,6 +321,8 @@ public class MainCopy6 {
 					System.out.println("zoomValue:"+ zoomValue);
 					//hasView(self, viewID='View #0')
 					//hasView(string): -> bool
+					
+					
 					
 					
 					

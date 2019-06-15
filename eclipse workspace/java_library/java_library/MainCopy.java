@@ -188,37 +188,17 @@ public class MainCopy {
 					System.out.println("timeMapToSender:"+timeMapToSender);
 					
 				}
-				/*
-				 * double sender4_x = 1517.62;
-				double sender4_y = 1207.92;
-				String sender4_edgeID = "496493919#2";
-				 * */
+			
 
-				if(timeSeconds==30.0){
-					conn.do_job_set(Vehicle.changeTarget("2", "279049706#7")); //
-					conn.do_job_set(Gui.trackVehicle("View #0", "2"));
+				if(timeSeconds==1500.0){
 					
-					SumoPosition2D v2_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition("2")); 
-					double Distancev_v2_to_Sender= (double)(conn.do_job_get(Simulation.getDistance2D(9166.64, 6317.01,
-							v2_Position.x, v2_Position.y, false, true)));
-					System.out.println("Distancev_v2_to_Sender:"+ Distancev_v2_to_Sender);
-					conn.do_job_set(Gui.setOffset("View #0", v2_Position.x, v2_Position.y));
-					String edge ="279049706#7"; // 570
-					double pos =  68.83; // 
-					double until = 0;
+					//conn.do_job_set(Gui.trackVehicle("View #0", "2"));
+
+					conn.do_job_set(Vehicle.changeTarget("2", "72871329#0"));
+					//conn.do_job_set(Vehicle.setStop(VehID, edgeID, pos, laneIndex, duration, sf, startPos, until));
 					SumoStopFlags sf = new SumoStopFlags(false, false, false, false, false);
-					conn.do_job_set(Vehicle.setStop("2", edge, pos, (byte)0,  300.0,  sf, pos, until));
-					
-					String vType ="truck"; 
-					String fromEdge = (String) conn.do_job_get(Vehicle.getRoadID("2"));
-					String endEdge = "279049706#7"; //
-					double depart = 0.0; 
-					int routingMode = 0;
-					SumoStage stage = (SumoStage)conn.do_job_get(Simulation.findRoute(fromEdge, endEdge, vType, depart,routingMode));
+					conn.do_job_set(Vehicle.setStop("2", "72871329#0", 7.3, (byte)0, 0.0, sf, 7.3, 2400.0));
 
-					System.out.println("travelTime_v2_to_Sender:"+ stage.travelTime);
-					System.out.println("stage_v2_to_Sender:"+ stage.length);
-					System.out.println("e_spped_v2_to_Sender:"+ (stage.length/stage.travelTime));
 				}
 				
 			
