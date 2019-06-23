@@ -227,7 +227,7 @@ public class MainCopy5_receiver_request {
 			Map  CarsMapWithSchedule = new HashMap();
 			//ArrayList v1_sender_TimeSchedule = new ArrayList();
 			
-			double vehicle_speed = 4.0; //4 [m/s]
+			double vehicle_speed = 3.8; //4 [m/s] , estimated average vehicle speed
 			
 			SumoColor veh1_color = new SumoColor(255 ,204, 239,255);
 			conn.do_job_set(Vehicle.setColor("1", veh1_color));

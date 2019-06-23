@@ -188,7 +188,7 @@ public class MainCopy6 {
 			conn.do_job_set(Vehicle.setColor("2", veh2_color));
 			
 			///////////////////////////////////////////////////////////////////
-			double vehicle_speed = 4.0; //4 [m/s]
+			double vehicle_speed = 4.0; //4 [m/s], estimated average vehicle speed
 			//SumoColor veh1_color = new SumoColor(255 ,105, 180, 8);
 			//conn.do_job_set(Vehicle.setColor("1", veh1_color));
 			
