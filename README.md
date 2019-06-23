@@ -7,3 +7,5 @@ http://127.0.0.1/phpmyadmin/sql.php?server=1&db=av_delivery&table=user_order&pos
 ### 
 
 - ppt 在introduction前要加入motivation
+
+- 口試30分鐘講完(30-35分)
