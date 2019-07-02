@@ -89,7 +89,7 @@ Finally, I would like to thank my family and friends for their support.}
 %------------------------- Introduction -------------------------%
 \chapter{Introduction} \label{Chap:Introduction}
 
-Freight transportation problem is an important issue in our daily lives [1]. With the development of transportation technology, the customers have the higher expectation on more efficient and more rapid delivery service. Besides, as the self-driving car technology grows [2], the self-driving vehicle delivery begins to be a crucial research topic. After reviewing the self-driving car delivery market, there is no complete self-driving delivery system. 
+Freight transportation problem is an important issue in our daily lives \cite{Anand2012} . With the development of transportation technology, the customers have the higher expectation on more efficient and more rapid delivery service. Besides, as the self-driving car technology grows \cite{Lutin2013}, the self-driving vehicle delivery begins to be a crucial research topic. After reviewing the self-driving car delivery market, there is no complete self-driving delivery system. 
 Before introducing the autonomous cars to the real road network, so far the thesis wants to focus on building the software part of the whole system, which can run delivery simulation. As the software part of the system can be established, the administrator can get the car’s real-time information including vehicle’s location, the container’s values, and the vehicle’s speed. As a result, in the future the user can apply the above functions into the actual self-driving cars for achieving the goal of system integration directly.
 
 As illustrated in Figure 1.1, this thesis implemented a vehicle dispatching and monitoring system in the red frame. This system includes two main components such as Simulation of Urban Mobility (SUMO) simulator and a SUMO server. The SUMO server was implemented by Traffic Control Interface, which have the access to retrieve the vehicle’s values or manipulate the vehicle’s behaviors on a running road traffic simulation.
@@ -103,7 +103,7 @@ As illustrated in Figure 1.1, this thesis implemented a vehicle dispatching and 
 \label{Fig:System_Overview}
 \end{figure}
 
-In the previous scheme [3], senders can select their delivery time, but receivers only can wait for the coming parcels passively. This delivery service has the problem that the arrival time of parcels does not match receivers’ available time, which leads to the loss of taking delivery of goods. Hence, the thesis offers a new delivery service where receivers have the chances to select their expected arrival time of the package, which can improve the delivery loss problem. This thesis illustrates the flow chart of the new delivery process including the sender’s part and the receiver’s part.
+In the previous scheme \cite{Jiang2018}, senders can select their delivery time, but receivers only can wait for the coming parcels passively. This delivery service has the problem that the arrival time of parcels does not match receivers’ available time, which leads to the loss of taking delivery of goods. Hence, the thesis offers a new delivery service where receivers have the chances to select their expected arrival time of the package, which can improve the delivery loss problem. This thesis illustrates the flow chart of the new delivery process including the sender’s part and the receiver’s part.
 
 Besides, the SUMO server developed a dispatching mechanism to deal with the order requests and arranged the routes dynamically and immediately. In this mechanism, vehicles have to pass through the two stages. First is box filtering stage, which filters out the vehicle without the available space of the appointed box size and the other vehicles can enter into the second stage named as simple time scheduling stage. This stage would judge whether the order can be inserted into the original time schedule or nor. Moreover, the thesis would demonstrate the dispatching mechanism would be applied to the scenario of the sender and the receiver in the different ways.
 
@@ -117,7 +117,7 @@ To sum up, the thesis is organized as follows. Chapter 1 describes the motivatio
 
 \chapter{Related Work} \label{Chap:Related}
 %------------------------- Related Works -------------------------%
-\cite{Anand2012} proposed a method
+As the e-commence and the technology of logistics has developed for several years, this bought about the general tendency in logistics toward higher delivery frequency, single orders, and smaller freight \cite{Visser2014}.
 
 In the traditional taxi industry, taxis are owned by the company and do not have a cooperation with each other. Hanna et al. considered the taxi dispatching problem as an assignment problem. There are several matching approaches in the study \cite{MCMAC}, including (i) a refined Hungarian method for finding a minimum cost bipartite matching between passengers and taxis, (ii) a bipartite matching method that minimizes the maximal cost of a matched request-taxi pair, and (iii) a greedy solution that matches a passenger to its geometrically nearest taxi. 
 

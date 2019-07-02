@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  2 JUL 2019 21:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  2 JUL 2019 21:57
 entering extended mode
 **./Thesis-CHUNG.tex
 (Thesis-CHUNG.tex
@@ -380,23 +380,26 @@ Package pdftex.def Info: ./Thesis_figures/F1-1_System_Design_Overview.PNG  used
 ] [2 <./Thesis_figures/F1-1_System_Design_Overview.PNG>] [3]
 Chapter 2.
 
+LaTeX Warning: Citation `Visser2014' on page 4 undefined on input line 120.
+
+
 LaTeX Warning: Citation `OFAAVS' on page 4 undefined on input line 124.
 
 
 LaTeX Warning: Citation `AORSPPSPVS' on page 4 undefined on input line 124.
 
-
-LaTeX Warning: Citation `TALSDTRS' on page 4 undefined on input line 126.
-
-
-LaTeX Warning: Citation `RTCTR' on page 4 undefined on input line 126.
-
-
-LaTeX Warning: Citation `CPRIDE' on page 4 undefined on input line 126.
-
 [4
 
 ]
+
+LaTeX Warning: Citation `TALSDTRS' on page 5 undefined on input line 126.
+
+
+LaTeX Warning: Citation `RTCTR' on page 5 undefined on input line 126.
+
+
+LaTeX Warning: Citation `CPRIDE' on page 5 undefined on input line 126.
+
 
 LaTeX Warning: Citation `AFRTRS' on page 5 undefined on input line 130.
 
@@ -748,10 +751,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3591 strings out of 492895
- 53651 string characters out of 3124669
- 114178 words of memory out of 3000000
- 7377 multiletter control sequences out of 15000+200000
+ 3594 strings out of 492895
+ 53685 string characters out of 3124669
+ 114184 words of memory out of 3000000
+ 7380 multiletter control sequences out of 15000+200000
  11779 words of font info for 45 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,5n,27p,958b,298s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -766,7 +769,7 @@ n/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:
 /Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
 y10.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmti12.pfb>
-Output written on Thesis-CHUNG.pdf (55 pages, 6581838 bytes).
+Output written on Thesis-CHUNG.pdf (55 pages, 6583457 bytes).
 PDF statistics:
  270 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
