@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  2 JUL 2019 18:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  2 JUL 2019 21:32
 entering extended mode
 **./Thesis-CHUNG.tex
 (Thesis-CHUNG.tex
@@ -230,25 +230,7 @@ Package: cite 2015/02/27  v 5.5
 
 (Thesis-CHUNG.aux
 
-LaTeX Warning: Label `Fig:System_Overview' multiply defined.
-
-
-LaTeX Warning: Label `Fig:System_Overview' multiply defined.
-
-
 LaTeX Warning: Label `Chap:Architecture' multiply defined.
-
-
-LaTeX Warning: Label `Fig:Improved architecture of web service' multiply define
-d.
-
-
-LaTeX Warning: Label `Fig:Change the end edge of the destination' multiply defi
-ned.
-
-
-LaTeX Warning: Label `Fig:Convert the latitude and longitude into a road segmen
-t and pos' multiply defined.
 
 )
 \openout1 = `Thesis-CHUNG.aux'.
@@ -365,7 +347,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout4 = `Thesis-CHUNG.toc'.
 
  [6] (Thesis-CHUNG.lof
-Overfull \hbox (0.25648pt too wide) in paragraph at lines 18--18
+Overfull \hbox (0.25648pt too wide) in paragraph at lines 17--17
  [][] []\OT1/cmr/m/n/12 Dispatch mech-a-nism con-sists of box fil-ter-ing stage
  and sim-ple time schedul- 
  []
@@ -397,9 +379,50 @@ Package pdftex.def Info: ./Thesis_figures/F1-1_System_Design_Overview.PNG  used
 
 ] [2 <./Thesis_figures/F1-1_System_Design_Overview.PNG>] [3]
 Chapter 2.
+
+LaTeX Warning: Citation `OFAAVS' on page 4 undefined on input line 124.
+
+
+LaTeX Warning: Citation `AORSPPSPVS' on page 4 undefined on input line 124.
+
+
+LaTeX Warning: Citation `TALSDTRS' on page 4 undefined on input line 126.
+
+
+LaTeX Warning: Citation `RTCTR' on page 4 undefined on input line 126.
+
+
+LaTeX Warning: Citation `CPRIDE' on page 4 undefined on input line 126.
+
 [4
 
-] [5] [6]
+]
+
+LaTeX Warning: Citation `AFRTRS' on page 5 undefined on input line 130.
+
+
+LaTeX Warning: Citation `IDRCURTRS' on page 5 undefined on input line 132.
+
+
+LaTeX Warning: Citation `APBMMADR' on page 5 undefined on input line 132.
+
+
+LaTeX Warning: Citation `GAME' on page 5 undefined on input line 134.
+
+[5]
+
+LaTeX Warning: Citation `CMEA' on page 6 undefined on input line 137.
+
+
+LaTeX Warning: Citation `TICTAC' on page 6 undefined on input line 139.
+
+
+LaTeX Warning: Citation `TASET' on page 6 undefined on input line 139.
+
+
+LaTeX Warning: Citation `NMIPM' on page 6 undefined on input line 139.
+
+[6]
 Chapter 3.
 <./Thesis_figures/F3-1_a_whole_system.PNG, id=51, 832.61063pt x 459.21562pt>
 File: ./Thesis_figures/F3-1_a_whole_system.PNG Graphic file (type png)
@@ -712,39 +735,26 @@ loadingProcess.PNG>]
 Chapter 8.
 [45
 
-] [46] (Thesis-CHUNG.bbl [47
+] [46] (Thesis-CHUNG.bbl) [47
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 110--113
-[]\OT1/cmr/m/n/12 ``SUMO Wiki.'' [On-line]. Avail-able:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 116--120
-[]\OT1/cmr/m/n/12 ``SUMO DLR.'' [On-line]. Avail-able:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 116--120
-\OT1/cmr/m/n/12 http://www.dlr.de/ts/en/desktopdefault.aspx/tabid-9883/16931[]r
-ead-41000/,
- []
-
-) [48] [49
+] [48
 
 ] (Thesis-CHUNG.aux)
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3619 strings out of 492895
- 54244 string characters out of 3124669
- 115194 words of memory out of 3000000
- 7405 multiletter control sequences out of 15000+200000
+ 3591 strings out of 492895
+ 53651 string characters out of 3124669
+ 114178 words of memory out of 3000000
+ 7377 multiletter control sequences out of 15000+200000
  11779 words of font info for 45 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,5n,27p,951b,298s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,5n,27p,958b,298s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmbx12.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmbxti10.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts
@@ -756,9 +766,9 @@ n/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:
 /Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
 y10.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmti12.pfb>
-Output written on Thesis-CHUNG.pdf (56 pages, 6588285 bytes).
+Output written on Thesis-CHUNG.pdf (55 pages, 6581838 bytes).
 PDF statistics:
- 273 PDF objects out of 1000 (max. 8388607)
+ 270 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  146 words of extra memory for PDF output out of 10000 (max. 10000000)
 
