@@ -2,36 +2,36 @@
 \contentsline {figure}{\numberline {1.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont A Vehicle dispatching and monitoring system.}}{2}% 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont A Whole System.}}{8}% 
+\contentsline {figure}{\numberline {3.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont A Whole System.}}{6}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont Improved architecture of web service.}}{11}% 
-\contentsline {figure}{\numberline {4.2}{\ignorespaces \relax \fontsize {12}{14}\selectfont The connection of Traffic Control Interface.}}{12}% 
-\contentsline {figure}{\numberline {4.3}{\ignorespaces \relax \fontsize {12}{14}\selectfont Change the end edge of the destination.}}{14}% 
-\contentsline {figure}{\numberline {4.4}{\ignorespaces \relax \fontsize {12}{14}\selectfont Set stop at the destination.}}{15}% 
-\contentsline {figure}{\numberline {4.5}{\ignorespaces \relax \fontsize {12}{14}\selectfont The latitude and longitude in Google Map.}}{16}% 
-\contentsline {figure}{\numberline {4.6}{\ignorespaces \relax \fontsize {12}{14}\selectfont Convert the latitude and longitude into a road segment and pos.}}{17}% 
+\contentsline {figure}{\numberline {4.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont Improved architecture of web service.}}{9}% 
+\contentsline {figure}{\numberline {4.2}{\ignorespaces \relax \fontsize {12}{14}\selectfont The connection of Traffic Control Interface.}}{10}% 
+\contentsline {figure}{\numberline {4.3}{\ignorespaces \relax \fontsize {12}{14}\selectfont Change the end edge of the destination.}}{12}% 
+\contentsline {figure}{\numberline {4.4}{\ignorespaces \relax \fontsize {12}{14}\selectfont Set stop at the destination.}}{13}% 
+\contentsline {figure}{\numberline {4.5}{\ignorespaces \relax \fontsize {12}{14}\selectfont The latitude and longitude in Google Map.}}{14}% 
+\contentsline {figure}{\numberline {4.6}{\ignorespaces \relax \fontsize {12}{14}\selectfont Convert the latitude and longitude into a road segment and pos.}}{15}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont The sender\IeC {\textquoteright }s parcel delivery process.}}{19}% 
-\contentsline {figure}{\numberline {5.2}{\ignorespaces \relax \fontsize {12}{14}\selectfont The receiver's parcel delivery process.}}{21}% 
+\contentsline {figure}{\numberline {5.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont The sender\IeC {\textquoteright }s parcel delivery process.}}{17}% 
+\contentsline {figure}{\numberline {5.2}{\ignorespaces \relax \fontsize {12}{14}\selectfont The receiver's parcel delivery process.}}{19}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont Dispatch mechanism consists of box filtering stage and simple time scheduling stage.}}{24}% 
-\contentsline {figure}{\numberline {6.2}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case one of the car-box map.}}{25}% 
-\contentsline {figure}{\numberline {6.3}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case two of the car-box map.}}{26}% 
-\contentsline {figure}{\numberline {6.4}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case one of simple time filtering stage.}}{27}% 
-\contentsline {figure}{\numberline {6.5}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case two of simple time filtering stage.}}{28}% 
-\contentsline {figure}{\numberline {6.6}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case three of simple time filtering stage.}}{29}% 
-\contentsline {figure}{\numberline {6.7}{\ignorespaces \relax \fontsize {12}{14}\selectfont The sender's scenario of parcel delivery process.}}{31}% 
-\contentsline {figure}{\numberline {6.8}{\ignorespaces \relax \fontsize {12}{14}\selectfont The receiver's first scenario of parcel delivery process.}}{32}% 
-\contentsline {figure}{\numberline {6.9}{\ignorespaces \relax \fontsize {12}{14}\selectfont The receiver's second scenario of parcel delivery process.}}{33}% 
+\contentsline {figure}{\numberline {6.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont Dispatch mechanism consists of box filtering stage and simple time scheduling stage.}}{22}% 
+\contentsline {figure}{\numberline {6.2}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case one of the car-box map.}}{23}% 
+\contentsline {figure}{\numberline {6.3}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case two of the car-box map.}}{24}% 
+\contentsline {figure}{\numberline {6.4}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case one of simple time filtering stage.}}{25}% 
+\contentsline {figure}{\numberline {6.5}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case two of simple time filtering stage.}}{26}% 
+\contentsline {figure}{\numberline {6.6}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case three of simple time filtering stage.}}{27}% 
+\contentsline {figure}{\numberline {6.7}{\ignorespaces \relax \fontsize {12}{14}\selectfont The sender's scenario of parcel delivery process.}}{29}% 
+\contentsline {figure}{\numberline {6.8}{\ignorespaces \relax \fontsize {12}{14}\selectfont The receiver's first scenario of parcel delivery process.}}{30}% 
+\contentsline {figure}{\numberline {6.9}{\ignorespaces \relax \fontsize {12}{14}\selectfont The receiver's second scenario of parcel delivery process.}}{31}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont Downtown area of Tainan in OpenStreetMap.}}{35}% 
-\contentsline {figure}{\numberline {7.2}{\ignorespaces \relax \fontsize {12}{14}\selectfont Service Region of the Experiment on SUMO.}}{36}% 
-\contentsline {figure}{\numberline {7.3}{\ignorespaces \relax \fontsize {12}{14}\selectfont Service Region of the Experiment on Google Map.}}{37}% 
-\contentsline {figure}{\numberline {7.4}{\ignorespaces \relax \fontsize {12}{14}\selectfont Parameters of Simulation.}}{38}% 
-\contentsline {figure}{\numberline {7.5}{\ignorespaces \relax \fontsize {12}{14}\selectfont Average vehicle speed estimation.}}{39}% 
-\contentsline {figure}{\numberline {7.6}{\ignorespaces \relax \fontsize {12}{14}\selectfont Initialization of Simulation.}}{40}% 
-\contentsline {figure}{\numberline {7.7}{\ignorespaces \relax \fontsize {12}{14}\selectfont The Sender\IeC {\textquoteright }s Request Insertion in simulation.}}{41}% 
-\contentsline {figure}{\numberline {7.8}{\ignorespaces \relax \fontsize {12}{14}\selectfont The loading process at the sender\IeC {\textquoteright }s sddress in simulation.}}{42}% 
-\contentsline {figure}{\numberline {7.9}{\ignorespaces \relax \fontsize {12}{14}\selectfont The receiver\IeC {\textquoteright }s request insertion in simulation.}}{43}% 
-\contentsline {figure}{\numberline {7.10}{\ignorespaces \relax \fontsize {12}{14}\selectfont The unloading process at the receiver\IeC {\textquoteright }s address in simulation.}}{44}% 
+\contentsline {figure}{\numberline {7.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont Downtown area of Tainan in OpenStreetMap.}}{33}% 
+\contentsline {figure}{\numberline {7.2}{\ignorespaces \relax \fontsize {12}{14}\selectfont Service Region of the Experiment on SUMO.}}{34}% 
+\contentsline {figure}{\numberline {7.3}{\ignorespaces \relax \fontsize {12}{14}\selectfont Service Region of the Experiment on Google Map.}}{35}% 
+\contentsline {figure}{\numberline {7.4}{\ignorespaces \relax \fontsize {12}{14}\selectfont Parameters of Simulation.}}{36}% 
+\contentsline {figure}{\numberline {7.5}{\ignorespaces \relax \fontsize {12}{14}\selectfont Average vehicle speed estimation.}}{37}% 
+\contentsline {figure}{\numberline {7.6}{\ignorespaces \relax \fontsize {12}{14}\selectfont Initialization of Simulation.}}{38}% 
+\contentsline {figure}{\numberline {7.7}{\ignorespaces \relax \fontsize {12}{14}\selectfont The Sender\IeC {\textquoteright }s Request Insertion in simulation.}}{39}% 
+\contentsline {figure}{\numberline {7.8}{\ignorespaces \relax \fontsize {12}{14}\selectfont The loading process at the sender\IeC {\textquoteright }s sddress in simulation.}}{40}% 
+\contentsline {figure}{\numberline {7.9}{\ignorespaces \relax \fontsize {12}{14}\selectfont The receiver\IeC {\textquoteright }s request insertion in simulation.}}{41}% 
+\contentsline {figure}{\numberline {7.10}{\ignorespaces \relax \fontsize {12}{14}\selectfont The unloading process at the receiver\IeC {\textquoteright }s address in simulation.}}{42}% 
 \addvspace {10\p@ }
