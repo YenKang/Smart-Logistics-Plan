@@ -37,19 +37,9 @@ L.~Jiang, C.~Liang, J.~Dong, W.~Lu, and M.~Mladenovic, ``{A Disruption Recovery
   Shopping},'' \emph{Mathematical Problems in Engineering}, vol. 2018, pp.
   1--10, 2018.
 
-\bibitem{MCMAC}
-J.~P. Hanna, M.~Albert, D.~Chen, and P.~Stone, ``{Minimum Cost Matching for
-  Autonomous Carsharing},'' in \emph{{IFAC Symposium on Intelligent Autonomous
-  Vehicles}}, June 2016.
-
-\bibitem{OOBUTDPDMS}
-H.~Zheng and J.~Wu, ``{Online to Offline Business: Urban Taxi Dispatching with
-  Passenger-Driver Matching Stability},'' in \emph{{International Conference on
-  Distributed Computing Systems}}, July 2017, pp. 816--825.
-
-\bibitem{MAPDPT}
-B.~Coltin, ``{Multi-agent Pickup and Delivery Planning with Transfers},''
-  Master's thesis, The Robotics Institute, Carnegie Mellon University, May
-  2014.
+\bibitem{Visser2014}
+J.~Visser, T.~Nemoto, and M.~Browne, ``{Home Delivery and the Impacts on Urban
+  Freight Transport: A Review},'' \emph{Procedia - Social and Behavioral
+  Sciences}, vol. 125, pp. 15--27, 2014.
 
 \end{thebibliography}
