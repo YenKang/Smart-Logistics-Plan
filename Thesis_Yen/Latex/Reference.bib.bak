@@ -1,0 +1,328 @@
+
+Reference.bib
+Version 1.0
+2017.06
+By Fu-Hua Hsu
+
+------------------------- CONFERENCEs -------------------------
+
+@CONFERENCE{AGMBA,
+author = {Yao Jan Wu and Yinhai Wang and Dalin Qian},
+title = "{A Google-Map-Based Arterial Traffic Information System}",
+booktitle = "{Intelligent Transportation Systems Conference}",
+year = {2007},
+month = {Oct},
+}
+
+@CONFERENCE{UGGMM,
+author = {Vikky Aprelia Windarni and Eko Sediyono and Adi Setiawan},
+title = "{Using GPS and Google maps for mapping digital land certificates}",
+booktitle = "{International Conference on Informatics and Computing}",
+year = {2016},
+month = {Oct},
+}
+
+@CONFERENCE{RFEVS,
+author = {Yang Wei and Zheng Ling and Ren Yue},
+title = "{Research on Fusion Estimation of Vehicle State Based on GPS Information}",
+booktitle = "{International Conference on Intelligent and Connected Vehicles}",
+year = {2016},
+month = {Sept},
+}
+
+@CONFERENCE{AHRCP,
+author = {Jinfeng Huang and Xu Li and Yuhui Sun},
+title = "{A Highly-Reliable Combined Positioning Method for Vehicle in Urban Complex Environments}",
+booktitle = "{International Conference on Vehicular Electronics and Safety}",
+year = {2013},
+month = {July},
+}
+
+@CONFERENCE{ANADI,
+author = {Xingzhe Xie and Wenzhi Liao and Hamid Aghajan},
+title = "{A Novel Approach for Detecting Intersections from GPS Traces}",
+booktitle = "{International Geoscience and Remote Sensing Symposium}",
+year = {2016},
+month = {July},
+}
+
+@CONFERENCE{ANMSR,
+author = {Xun Zhou and Changle Li and Xiaoming Yuan},
+title = "{A Novel Method for Smoothing Raw GPS Data with Low Cost and High Reliability}",
+booktitle = "{Vehicular Technology Conference}",
+year = {2016},
+month = {Sept},
+}
+
+@CONFERENCE{AECVB,
+author = {Xiaoliang Li and Qiang Wang and Xueqiang Zhang},
+title = "{Application of Electronic Compass and Vision-Based Camera in Robot Navigation and Map Building}",
+booktitle = "{International Conference on Mobile Ad-hoc and Sensor Networks}",
+year = {2013},
+month = {Dec},
+}
+
+@CONFERENCE{STADV,
+author = {Pei Jin He and Kuo Feng Ssu and Yu Yuan Lin},
+title = "{Sharing Trajectories of Autonomous Driving Vehicles to Achieve Time-Efficient Path Navigation}",
+booktitle = "{Vehicular Networking Conference}",
+year = {2013},
+month = {Dec},
+}
+
+------------------------- ONLINEs -------------------------
+
+@ONLINE{GoogleMaps,
+title = {{Google Maps}},
+url = {https://www.google.com.tw/maps, 2017.},
+}
+
+@ONLINE{OpenStreetMap,
+title = {{OpenStreetMap}},
+url = {https://www.openstreetmap.org.},
+}
+
+@ONLINE{UrMap,
+title = {{UrMap}},
+url = {http://www.urmap.com/, 2013.},
+}
+
+@ONLINE{TaiwanMap,
+title = {{Taiwan Map}},
+url = {http://www.map.com.tw/.},
+}
+
+@ONLINE{Geocoding,
+title = {{Google Maps Geocoding API}},
+url = {https://developers.google.com/maps/documentation/geocoding/start, 2017.},
+}
+
+------------------------- MASTERSTHESISs-------------------------
+
+@MASTERSTHESIS{CHICHIH,
+author = {Chi Chih Chuang},
+title = "{An Auxiliary System for Road Inspection Based on Geotagged Videos and Map Services}",
+school={National Central University},
+year = {2017},
+}
+
+@ONLINE{AndroidDeveloper,
+title = {{Android Developers}},
+url = {http://developer.android.com/index.html, 2016.},
+access = {2016},
+}
+
+@ONLINE{MSDN,
+title = {{Microsoft Developer Network}},
+url = {http://msdn.microsoft.com, 2016.},
+}
+
+@ONLINE{GoogleMapAPI,
+title = {{Google Maps Android API}},
+url = {http://developers.google.com/maps/documentation/android-api, 2016.},
+}
+
+@ONLINE{ShopSavvy,
+title = {{ShopSavvy}},
+url = {http://shopsavvy.com, 2016.},
+}
+
+@ONLINE{ShopAdvisor,
+title = {{ShopAdvisor}},
+url = {http://www.shopadvisor.com, 2016.},
+}
+
+@ONLINE{PriceJump,
+title = {{PriceJump}},
+url = {http://www.savings.com/pricejump, 2016.},
+}
+
+@ONLINE{RetailMeNot,
+title = {{RetailMeNot}},
+url = {http://www.retailmenot.com, 2016.},
+}
+
+------------------------- TECHREPORTs -------------------------
+
+@TECHREPORT{TimeTrade,
+author = {Sarah Wallace},
+title = "{The State of Retail 2016}",
+institution = {TimeTrade},
+year = {2016},
+}
+
+@TECHREPORT{Gartner,
+title = "{Market Share Alert: Preliminary, Mobile Phones, Worldwide, 1Q16}",
+institution = {Gartner},
+year = {2016},
+month = {May},
+url = {http://www.gartner.com/newsroom/id/3323017.},
+}
+
+------------------------- ARTICLEs -------------------------
+
+@ARTICLE{RecommenderSurvey,
+author = {Gediminas Adomavicius and Alexander Tuzhilin},
+title = "{Toward the Next Generation of Recommender Systems: A Survey of the State-of-the-Art and Possible Extensions}",
+journal = {IEEE Transactions on Knowledge and Data Engineering},
+year = {2005},
+month = {June},
+volume = {17},
+number = {6},
+pages = "734-749",
+}
+
+@ARTICLE{PromotionRank,
+author = {Petteri Nurmi and Antti Salovaara and Andreas Forsblom and Fabian Bohnert and Patrik Flor{\'{e}}en},
+title = "{PromotionRank: Ranking and Recommending Grocery Product Promotions Using Personal Shopping Lists}",
+journal = {ACM Transactions on Interactive Intelligent Systems (TiiS) - Special Issue on Interactive Computational Visual Analytics},
+year = {2014},
+month = {Apr.},
+volume = {4},
+number = {1},
+pages = "1:1-1:23",
+}
+
+@ARTICLE{HealthAR,
+author = {Junho Ahn and James Williamson and Mike Gartrell and Richard Han and Qin Lv and Shivakant Mishra},
+title = "{Supporting Healthy Grocery Shopping via Mobile Augmented Reality}",
+journal = {ACM Transactions on Multimedia Computing, Communications, and Applications (TOMM) - Special Issue on Smartphone-Based Interactive Technologies, Systems, and Applications and Special Issue on Extended Best Papers from ACM Multimedia 2014},
+year = {2015},
+month = {Oct.},
+volume = {12},
+number = {1s},
+pages = "16:1-16:24",
+}
+
+------------------------- INPROCEEDINGs -------------------------
+
+@INPROCEEDINGS{DiscountSensitive,
+author = {Masahiro Sato and Hidetaka Izumo and Takashi Sonoda},
+title = "{Discount Sensitive Recommender System for Retail Business}",
+booktitle = {Proceedings of the 3rd Workshop on Emotions and Personality in Personalized Systems},
+year = {2015},
+month = {Sept.},
+pages = "33-40",
+}
+
+@INPROCEEDINGS{SearchEngineQuery,
+author = {Srikanth Jagabathula and Nina Mishra and Sreenivas Gollapudi},
+title = "{Shopping for Products You Don't Know You Need}",
+booktitle = {Proceedings of the 4th ACM International Conference on Web Search and Data Mining},
+year = {2011},
+month = {Feb.},
+pages = "705-714",
+}
+
+@INPROCEEDINGS{WhenToBuy,
+author = {Rakesh Agrawal and Samuel Ieong and Raja Velu},
+title = "{Timing When to Buy}",
+booktitle = {Proceedings of the 20th ACM International Conference on Information and Knowledge Management},
+year = {2011},
+month = {Oct.},
+pages = "709-718",
+}
+
+@INPROCEEDINGS{TransactionDataModel,
+author = {Pengfei Wang and Jiangfeng Guo and Yanyan Lan and Xueqi Cheng},
+title = "{Modeling Retail Transaction Data for Personalized Shopping Recommendation}",
+booktitle = {Proceedings of the 23rd ACM International Conference on Conference on Information and Knowledge Management},
+year = {2014},
+month = {Nov.},
+pages = "1979-1982",
+}
+
+@INPROCEEDINGS{BasketSensitive,
+author = {Ming Li and Benjamin Dias and Ian Jarman and Wael El-Deredy and Paulo J. G. Lisboa},
+title = "{Grocery Shopping Recommendations Based on Basket-Sensitive Random Walk}",
+booktitle = {Proceedings of the 15th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
+year = {2009},
+month = {June},
+pages = "1215-1224",
+}
+
+@INPROCEEDINGS{ProductOrigin,
+author = {Sotirios-Foivos Stamopoulos and Andreas Komninos and Ioannis Garofalakis},
+title = "{A Mobile Shopping Assistant to Support Product Domesticity in Consumer Decisions}",
+booktitle = {Proceedings of the 18th Panhellenic Conference on Informatics},
+year = {2014},
+month = {Oct.},
+pages = "1-6",
+}
+
+----------------------------------------------------------------------------
+
+An example of a IEEEtran control entry which can change some IEEEtran.bst
+settings. An entry like this must be cited via \bstctlcite{} command
+before the first real \cite{}. The same entry key cannot be called twice
+(just like multiple \cite{} of the same entry key place only one entry
+in the bibliography.)
+The available control fields are:
+
+CTLuse_article_number
+"no" turns off the display of the number for articles.
+"yes" enables
+
+CTLuse_paper
+"no" turns off the display of the paper and type fields in inproceedings.
+"yes" enables
+
+CTLuse_forced_etal
+"no" turns off the forced use of "et al."
+"yes" enables
+
+CTLmax_names_forced_etal
+The maximum number of names that can be present beyond which an "et al."
+usage is forced. Be sure that CTLnames_show_etal (below)
+is not greater than this value!
+
+CTLnames_show_etal
+The number of names that will be shown with a forced "et al.".
+Must be less than or equal to CTLmax_names_forced_etal
+
+CTLuse_alt_spacing
+"no" turns off the alternate interword spacing for entries with URLs.
+"yes" enables
+
+CTLalt_stretch_factor
+If alternate interword spacing for entries with URLs is enabled, this is
+the interword spacing stretch factor that will be used. For example, the
+default "4" here means that the interword spacing in entries with URLs can
+stretch to four times normal. Does not have to be an integer.
+
+CTLdash_repeated_names
+"no" turns off the "dashification" of repeated (i.e., identical to those
+of the previous entry) names. IEEE normally does this.
+"yes" enables
+
+CTLname_format_string
+The name format control string as explained in the BibTeX style hacking
+guide.
+IEEE style "{f.~}{vv~}{ll}{, jj}" is the default,
+
+CTLname_latex_cmd
+A LaTeX command that each name will be fed to (e.g., "\textsc").
+Leave empty if no special font is desired for the names.
+The default is empty.
+
+CTLname_url_prefix
+The prefix text used before URLs.
+The default is "[Online]. Available:" A space will be inserted after this
+text. If this space is not wanted, just use \relax at the end of the
+prefix text.
+
+
+Those fields that are not to be changed can be left out.
+@IEEEtranBSTCTL{IEEEexample:BSTcontrol,
+  CTLuse_article_number     = "yes",
+  CTLuse_paper              = "yes",
+  CTLuse_forced_etal        = "no",
+  CTLmax_names_forced_etal  = "10",
+  CTLnames_show_etal        = "1",
+  CTLuse_alt_spacing        = "yes",
+  CTLalt_stretch_factor     = "4",
+  CTLdash_repeated_names    = "yes",
+  CTLname_format_string     = "{f.~}{vv~}{ll}{, jj}",
+  CTLname_latex_cmd         = "",
+  CTLname_url_prefix        = "[Online]. Available:"
+}
