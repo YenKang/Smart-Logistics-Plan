@@ -121,39 +121,34 @@ As the e-commence and the technology of logistics has developed for several year
 
 In the freight transportation industry, logistics models can be divided into several types of logistic channel including post, shelf picking, dedicated warehouse, workspace, and home delivery.
 
-Gevaers et al. developed a cost simulation tool, which showed that the Last Mile delivery is one of the most expensive stages of the entire e-logistics chain [5] \cite{Gevaers2014}. Besides, in the Last Mile delivery, the most widespread delivery mode is home delivery.
+Gevaers et al. developed a cost simulation tool, which showed that the Last Mile delivery is one of the most expensive stages of the entire e-logistics chain \cite{Gevaers2014}. Besides, in the Last Mile delivery, the most widespread delivery mode is home delivery.
 
-As the result, home delivery (HD) is a crucial topic to discuss and long time ago, retailers delivered a large amount of the daily consignment to the customer’s home. So far home delivery can be a delivery point to one’s home address, to another address, or to a pickup point [6] \cite{Zhou2016}. 
+As the result, home delivery (HD) is a crucial topic to discuss and long time ago, retailers delivered a large amount of the daily consignment to the customer’s home. So far home delivery can be a delivery point to one’s home address, to another address, or to a pickup point  \cite{Zhou2016}. 
 
 However, there are some issues about home delivery, including delay of delivery service, the customer’s absence at home, and too long delivery time. Thus, to meet the increasing demand of more rapid parcel delivery service, a small package delivery aerial vehicle is proposed by the professors in George Mason University.
 
-A multi-rotor aerial vehicles can provide fast and urgent parcel delivery service such as rapid food delivery and remote medical supply delivery. However, this application has some design technical difficulties, which includes extending battery life, handling the increase weight of the parcel, and dealing with sudden climate change [7] \cite{Ali2015}. In one word, an aerial vehicle has lower reliability, scalability and capacity than a delivery truck.
+A multi-rotor aerial vehicles can provide fast and urgent parcel delivery service such as rapid food delivery and remote medical supply delivery. However, this application has some design technical difficulties, which includes extending battery life, handling the increase weight of the parcel, and dealing with sudden climate change \cite{Ali2015}. In one word, an aerial vehicle has lower reliability, scalability and capacity than a delivery truck.
 
-Moreover, [8] \cite{Sawadsitang2018} introduced a joint ground and aerial delivery service framework. The framework consists of two delivery modes, which can complement each other due to their unique features and benefits. With this integration of ground-based delivery and drone delivery, the approach not only can cope with sudden service interruption like accident, but also can maximize service quality and minimize cost. However, this approach has the problem of the uncertainty in customer’s demand and computation time of routing the delivery path. 
+Moreover, \cite{Sawadsitang2018} introduced a joint ground and aerial delivery service framework. The framework consists of two delivery modes, which can complement each other due to their unique features and benefits. With this integration of ground-based delivery and drone delivery, the approach not only can cope with sudden service interruption like accident, but also can maximize service quality and minimize cost. However, this approach has the problem of the uncertainty in customer’s demand and computation time of routing the delivery path. 
 
 %% [9], [10]
-In some metropolitan areas in the U.S. like Seattle, [9] \cite{Sheth2019} deployed alternative delivery mode such as cargo bikes. Due to the increasing freight volumes on the road and scarce road space, cargo bicycles are being utilized for the last mile deliveries in several urban cities [10] \cite{Melo2017}. The advantage of using delivery bikes is that cargo bicycles are not encumbered by the same parking and congestion constraints as trucks. However, delivery trucks are more cost effective for greater distances than cargo bikes.
+In some metropolitan areas in the U.S. like Seattle, \cite{Sheth2019} deployed alternative delivery mode such as cargo bikes. Due to the increasing freight volumes on the road and scarce road space, cargo bicycles are being utilized for the last mile deliveries in several urban cities \cite{Melo2017}. The advantage of using delivery bikes is that cargo bicycles are not encumbered by the same parking and congestion constraints as trucks. However, delivery trucks are more cost effective for greater distances than cargo bikes.
 
 %% [11]
-In China, [11] \cite{Delivery2017} showed that JD.com, which is the largest e-commence platform by revenue, used autonomous driving vehicles to hit the open road in Beijing. The vehicle can store up to thirty containers, and can travel 15 km/hr. The current concerns of this approach are the autonomous driving technology and government regulations.
+In China, \cite{Delivery2017} showed that JD.com, which is the largest e-commence platform by revenue, used autonomous driving vehicles to hit the open road in Beijing. The vehicle can store up to thirty containers, and can travel 15 km/hr. The current concerns of this approach are the autonomous driving technology and government regulations.
 
 \section{Traffic Simulation}
-SUMO is an open source traffic simulation package including net import and demand modeling components. Besides, SUMO helps to investigate several research topics, which includes route choice and simulating vehicular communication [12] \cite{Krajzewicz2007}.
+SUMO is an open source traffic simulation package including net import and demand modeling components. Besides, SUMO helps to investigate several research topics, which includes route choice and simulating vehicular communication  \cite{Krajzewicz2007}.
 
 %% [13]
-[13] \cite{10.1007/978-3-662-45079-6_5} introduced the real-time I/O data interface and proposed an approach to building up a Web service. Beside, by knowing the commands of traffic control interface (TraCI), the user can handle the communication with SUMO Traffic Simulation Suite. Finally, [13] \cite{10.1007/978-3-662-45079-6_5} demonstrated an example of the code, which provides the base for a new Web service called TraaS (TraCI as a service).
+\cite{10.1007/978-3-662-45079-6_5} introduced the real-time I/O data interface and proposed an approach to building up a Web service. Beside, by knowing the commands of traffic control interface (TraCI), the user can handle the communication with SUMO Traffic Simulation Suite. Finally, \cite{10.1007/978-3-662-45079-6_5} demonstrated an example of the code, which provides the base for a new Web service called TraaS (TraCI as a service).
 
 %% [14]
-[14] \cite{Tunku2016} showed the transportation simulation for food distribution. The author used TraaS to assign trucks backup when the original tricks unable to cover the destination shops at certain time threshold, and re-route the path for the backup vehicles.
+\cite{Tunku2016} showed the transportation simulation for food distribution. The author used TraaS to assign trucks backup when the original tricks unable to cover the destination shops at certain time threshold, and re-route the path for the backup vehicles.
 
 %% [15]
-[15] \cite{Kendziorra2015} aims to achieve simulation scenarios in which incidents occur and introduced the implementation of logistic transport. The concept of freight and goods was implemented to enable the simulation of good traffic, which consists of the containers and stop.
+\cite{Kendziorra2015} aims to achieve simulation scenarios in which incidents occur and introduced the implementation of logistic transport. The concept of freight and goods was implemented to enable the simulation of good traffic, which consists of the containers and stop.
 
-
-
-
-%\chapter{Ridesharing Scenario Analysis} \label{Chap:Scenario}
-%------------------------- Ridesharing Scenario Analysis -------------------------%
 
 
 \chapter{System Design Overview}\label{Chap:Architecture}
@@ -212,9 +207,9 @@ As illustrated in Figure 4.1, this architecture involves three parts, including 
 
 
 \section{Traffic Control Interface}
-To interact with a simulation, Real-time I/O data Interface offers a possibility to communicate between the simulation and the user application bi-directionally [16] \cite{Fischer}. Besides, Traffic Control Interface, which is called “TraCI”, is a kind of Real-time I/O data Interface in SUMO suite.
+To interact with a simulation, Real-time I/O data Interface offers a possibility to communicate between the simulation and the user application bi-directionally \cite{Fischer}. Besides, Traffic Control Interface, which is called “TraCI”, is a kind of Real-time I/O data Interface in SUMO suite.
 TraCI can implement online interaction with the simulation and have the access to a running road traffic simulation. This access allows TraCI to retrieve values of simulated objects and to manipulate their online behavior.
-To consider the portability of system implementation and the popularity in web service and Android Studio area, this study chose TraaS [13] as the traffic control interface. TraaS is a java library for working with TraCI, which is viewed as a java traci client. The client can be used to write TraCI scripts directly, and TraaS stands for TraCI as a Service.
+To consider the portability of system implementation and the popularity in web service and Android Studio area, this study chose TraaS as the traffic control interface. TraaS is a java library for working with TraCI, which is viewed as a java traci client. The client can be used to write TraCI scripts directly, and TraaS stands for TraCI as a Service.
 
 \subsection{TraCI to SUMO Simulator}
 Before communicating with the SUMO simulator, TraCI would establish a connection to SUMO. As illustrated in Figure 4.2, TraCI client connects to SUMO by setting up a TCP connection to the to the appointed SUMO port. As a result, SUMO can interact with TraCI client, and SUMO receives commands from the client application, which have the influence on a vehicle’s behavior and environment details.
@@ -527,7 +522,7 @@ SUMO is used to be the simulator for running the parcel delivery simulation [12]
 
 \subsection{Road Network}
 
-The dataset, which was acquired from OpenStreetMap [17] \cite{Haklay2008} , uses the road network of part of Tainan, which is the south of Taiwan. The region of the selected road contains the partial Tainan East District, partial Tainan West Central District, partial Tainan North District, partial Tainan South District and partial Tainan Anping District.
+The dataset, which was acquired from OpenStreetMap \cite{Haklay2008} , uses the road network of part of Tainan, which is the south of Taiwan. The region of the selected road contains the partial Tainan East District, partial Tainan West Central District, partial Tainan North District, partial Tainan South District and partial Tainan Anping District.
 
 The road network, which is pruned by estimating unreachable streets and roads for a truck, contains 25069 roads segments and 6785 junctions with approximately $50km^{2}$ in the downtown of Tainan.
 
@@ -713,11 +708,7 @@ There are some issues that should be discussed to complete the vehicle dispatchi
 %------------------------- Vita -------------------------%
 \Thesisspace \large{
 
-Hsu-Cheng Chung was born on March 7, 1994, in Taipei City, Taiwan. He
-received the B.S. degree in Electrical Engineering from National Cheng
-Kung University, Taiwan, in 2016. In September 2016, He enrolled at
-the National Cheng Kung University as a master student in the
-Institute of Computer and Communication Engineering.
+Kang Yen was born on December 3, 1993, in Yunlin, Taiwan.  He received the B.S. degree in Electrical Engineering from National Cheng Kung University, Taiwan, in 2017. In September 2017, he enrolled at the National Cheng Kung University as a master student in the Institute of Computer and Communication Engineering.
 
 }\end{vita}
 
