@@ -378,9 +378,9 @@ After the vehicle unloads the parcel successfully, the receiver’s delivery pro
 
 \chapter{Dispatching Mechanism}\label{Chap:Dispatching Mechanism}
 The chapter aims to how the system uses dispatch mechanism to judge whether the sender’s delivery order can be established.
-As illustrated in Figure 6.1, the dispatching mechanism consists of two filtering stages. After the user places the delivery order, picks the box size, and selects the arrival time of the parcel, the order request would enter into the box filtering.
+As illustrated in Figure 6.1, the dispatching mechanism consists of two filtering stages. One is box filtering stage, and the second is simple time scheduling stage. After the user places the delivery order, picks the box size, and selects the arrival time of the parcel, the order request would enter into the box filtering stage.
 If all vehicles do not have any space for this picked box size, the user would select the other choice of box size. In contrast, if the vehicle’s box capacity is lower than three, this vehicle is qualified to enter into second filtering stage (simple time scheduling stage) 
-Furthermore, if there are no available vehicles that can serve the order at the simple time scheduling stage, the user would pick the other appropriate arrival time.
+Furthermore, if there are no available vehicles that can serve this order in the simple time scheduling stage, the user should pick the other appropriate arrival time.
 
 \begin{figure}[H]
 \centering
@@ -402,7 +402,7 @@ To sum up, in this case of box index number “221”, the number shows that the
 \label{Fig:CaseOne_carBox_Map}
 \end{figure}
 
-As illustrated in Figure 6.2, the form shows the first case of the car-box map. In the figure, the top raw means different vehicles id number, and the far left column means three kinds of box size. Then, the vehicle 1 has two box index number belonging to the small box size, the vehicle 2 has one box number belonging the medium box size, and the vehicle 3’s all boxes are empty.
+As illustrated in Figure 6.2, the figure shows the first case of the car-box map. In the figure, the top raw means different vehicles id, and the far left column means three kinds of box size. Then, the vehicle 1 has two box index number belonging to the \textbf{small box size}, the vehicle 2 has one box number belonging the medium box size, and the vehicle 3’s all boxes are empty.
 As the delivery order with small box size is inserted to the system, the system will filter the suitable vehicles to the next stage according the form. Because the number of small box in vehicle 1 is two, the number of vehicle 2’s small boxes is zero, and the number of vehicle 3’s small box is zero as well. Each number of small box in each vehicle is lower than three. As a result, all three vehicles are the candidates which can enter the next stage.
 
 \begin{figure}[t]
@@ -413,11 +413,11 @@ As the delivery order with small box size is inserted to the system, the system 
 \label{Fig:CaseTwo_carBox_Map}
 \end{figure}
 
-As illustrated in Figure 6.3, the form is the second case of the car-box map. As the system receives the delivery order with the medium box size, the box filtering execution starts. Therefore, vehicle 2, vehicle 4, and vehicle 5 are the candidates because all their available number of medium box are lower than three.
+As illustrated in Figure 6.3, the form is the second case of the car-box map. As the system receives the delivery order with the medium box size, the box filtering execution starts. Therefore, vehicle 2, vehicle 4, and vehicle 5 are the candidates because all their occupancy of medium box are lower than three.
 
 \section{Simple Time Scheduling Stage}
 
-After passing the previous filtering stage, there are some vehicles entering into simple time scheduling stage. This stage aims to judge whether the new delivery request can be inserted into the system’s time schedule.
+After passing the previous filtering stage, there are some vehicles entering into simple time scheduling stage. This stage aims to judge whether the new delivery request can be inserted into the delivery time schedule.
 
 \begin{figure}[H]
 \centering
@@ -427,14 +427,14 @@ After passing the previous filtering stage, there are some vehicles entering int
 \label{Fig:CaseOne_TimeFiltering}
 \end{figure}
 
-As illustrated in Figure 6.4, this picture is the first case of simple time filtering stage.
-In left side of the figure, the time schedule includes three vehicles with previous tasks and the schedule starts from 09:30 AM to 11:30 AM. To be more specific, vehicle 1 has the delivery task of the sender 4 with the box index number “111”, which indicates the vehicle 1 has to arrive to the Taiwan Tainan District Court before 09:30 AM and this task is located at the small box in the vehicle 1.
-When the simulation time is 09:05 AM, the sender4 submitted the delivery order request with the small box size and the expected arrival time to Hayashi Department Store is 09:30 AM.
+As illustrated in Figure 6.4, this picture means the first case of simple time filtering stage.
+In left side of the figure, the time schedule includes three vehicles with previous tasks, and the schedule starts from 09:30 AM to 11:30 AM. To be more specific, vehicle 1 has the delivery task of the sender 4 with the box index number “111”, which indicates the vehicle 1 has to arrive to the Taiwan Tainan District Court before 09:30 AM, and this task is located at the small box in the vehicle 1.
+When the simulation time is 09:05 AM, the sender4 submits the delivery order request with the small box size and the expected arrival time to Hayashi Department Store is 09:30 AM.
 
-Because the vehicle 1 has already the task of 09:30 AM, the system would turn to the next vehicle to decide that this request could be accepted by the vehicle.
+Because the vehicle 1 has already the task of 09:30 AM, the system would turn to the next vehicle to deal with the request.
 The right side of the figure shows the map with the vehicle 2’s routes which contains the new destination with the expected arrival time.
-According to the map, the vehicle 2 has to meet two conditions, first condition is that after passing through the blue route, the vehicle 2 should arrive to Hayashi Department Store before 09:30 AM. 
-When the vehicle 2 starts at 09:40 in Hayashi Department Store, and forwards to the Durban Department Store. Then, the condition is that the vehicle 2 should arrive before 11:00 AM.
+According to the map, the vehicle 2 has to meet two conditions. First condition is that after passing through the blue route, the vehicle 2 should arrive to Hayashi Department Store before 09:30 AM. 
+When the vehicle 2 starts at 09:40 in Hayashi Department Store, and forwards to the Durban Department Store. Then, the second condition is that the vehicle 2 should arrive before 11:00 AM.
 After satisfying the two above conditions, the sender 4’s delivery task would be inserted into the time schedule and come with the box index number. 
 
 \begin{figure}[H]
@@ -445,8 +445,8 @@ After satisfying the two above conditions, the sender 4’s delivery task would 
 \label{Fig:CaseTwo_TimeFiltering}
 \end{figure}
 
-As illustrated in Figure 6.5, this picture is the second case of simple time filtering stage. In left side of the figure, the time schedule includes three vehicles with four tasks. When the simulation time is 09:15 AM, the sender5 submitted the delivery order request with the medium box size and the expected arrival time to Tainan Chenggong Road Post Office is 10:00 AM.
-According to the box conditions of all vehicles, the system selects vehicle 1 to filter the sender 5’s delivery request. At the same time, the map in the right side of the figure show that this request has to meet the two conditions. Firstly, when the vehicle 1 arrives to the Taiwan Tainan District Court, the vehicle 1 will stop until 09:40 and will forward to Tainan Chenggong Road Post Office. The travel time of the green route should be less than twenty minutes. Secondly, after staying at Tainan Chenggong Road Post Office for ten minutes, the vehicle 1 will leave at 10:00 AM and have to go to Anping Fort before 11:00 AM. 
+As illustrated in Figure 6.5, this picture is the second case of simple time filtering stage. In left side of the figure, the time schedule includes three vehicles with four tasks. When the simulation time is 09:15 AM, the sender5 submits the delivery order request with the medium box size and the expected arrival time to Tainan Chenggong Road Post Office is 10:00 AM.
+According to the box conditions of all vehicles, the system selects vehicle 1 to filter the sender 5’s delivery request. At the same time, the map in the right side of the figure show that this request has to meet the two conditions. Firstly, when the vehicle 1 arrives to the Taiwan Tainan District Court, the vehicle 1 would stop until 09:40, and would forward to Tainan Chenggong Road Post Office. The travel time of the green route should be less than twenty minutes. Secondly, after staying at Tainan Chenggong Road Post Office for ten minutes, the vehicle 1 will leave at 10:00 AM, and have to go to Anping Fort before 11:00 AM. 
 As the vehicle 1 can fulfill the two conditions, the sender 5’s delivery request can be inserted into the time schedule.
 
 
@@ -460,8 +460,8 @@ As the vehicle 1 can fulfill the two conditions, the sender 5’s delivery reque
 \label{Fig:CaseThree_TimeFiltering}
 \end{figure}
 
-As illustrated in Figure 6.6, this picture is the third case of simple time filtering stage. At simulation time of 09:20, the system receives the sender 6’s delivery request with the expected arrival time of 09:30 AM. Because the vehicle 1 and vehicle 2 already have the task of 09:30 AM, the vehicle3 has to deal with this request. In right side of the figure, the vehicle 1 just has to match one condition because there is no task before this request. Thus, when the vehicle3 starts from current position at 09:20, the travel time of blue route to T.S. Mall has to be less than ten minutes.
-Moreover, the vehicle will execute the tasks according to the time schedule and follow the flow chart of delivery process mentioned in the Figure 5.1 and Figure 5.2.
+As illustrated in Figure 6.6, this picture is the third case of simple time filtering stage. At simulation time of 09:20, the system receives the sender 6’s delivery request with the expected arrival time of 09:30 AM. Because the vehicle 1 and vehicle 2 already have the task of 09:30 AM, and the vehicle3 has to deal with this request. In right side of the figure, the vehicle 1 just has to match one condition because there is no task before this request. Thus, when the vehicle3 starts from current position at 09:20, the travel time of blue route to T.S. Mall has to be less than ten minutes.
+Moreover, the vehicle will execute the tasks according to the time schedule, and follow the flow chart of delivery process mentioned in the Figure 5.1 and Figure 5.2.
 
 
 \section{User Scenario}
@@ -478,7 +478,7 @@ This section shows the user scenarios when the vehicle arrives to the destinatio
 \label{Fig:senderScenario_DeliveryPorcess}
 \end{figure}
 
-As illustrated in Figure 6.7, the vehicle 2 will demonstrate how to react in the task of 09:30 AM in the sender scenario of delivery process. As the simulation time is 09:25, the vehicle 2 will be at the black point of position, and the SUMO server will use FCM to send coming notification to the sender4. Then, when the simulation time is 09:30 AM, the vehicle 2 will be at Hayashi department store, start to park for ten minutes, and the sender4 will get the arriving notification.
+As illustrated in Figure 6.7, the vehicle 2 would demonstrate how to react in the task of 09:30 AM in the sender scenario of delivery process. As the simulation time is 09:25, the vehicle 2 would be at the black point of position, and the SUMO server would use FCM to send coming notification to the sender4. Then, when the simulation time is 09:30 AM, the vehicle 2 would be at Hayashi department store, start to park for ten minutes, and the sender4 would get the arriving notification.
 As the simulation time is 09:35, the vehicle 2 will finish the loading process of the parcel. Finally, at the simulation of 09:40, the vehicle 2 would end parking in the Hayashi department store, and would forward to the next station.
 
 \subsection{Receiver Scenario}
@@ -491,8 +491,8 @@ As the simulation time is 09:35, the vehicle 2 will finish the loading process o
 \label{Fig:FirsrtReceiverScenario_deliveryProcess}
 \end{figure}
 
-As illustrated in Figure 6.8, the vehicle 2 will demonstrate how the receiver 4 participates in the delivery process. Firstly, the vehicle 2 follows the sender scenario of figure 6.6 and the vehicle2 has already finished the loading process.
-However, the current simulation time is 09:37 AM, and the vehicle 2 starts to deal with the receiver 4’s task of National Cheng Kung University Hospital (NCKUH). When the simulation time is 09:40, the vehicle 2 leaves Hayashi department store, and forwards to NCKUH. Besides, As the time is 09:55 AM, the vehicle 2 will be close to the NCKUH, and the receiver 4 would get the coming notification.
+As illustrated in Figure 6.8, the vehicle 2 would demonstrate how the receiver 4 participates in the delivery process. Firstly, the vehicle 2 follows the sender scenario in figure 6.6, and the vehicle2 has already finished the loading process.
+However, the current simulation time is 09:37 AM, and the vehicle 2 starts to deal with the receiver 4’s task of National Cheng Kung University Hospital (NCKUH). When the simulation time is 09:40, the vehicle 2 leaves Hayashi department store, and forwards to NCKUH. Besides, As the time is 09:55 AM, the vehicle 2 would be close to the NCKUH, and the receiver 4 would get the coming notification.
 
 
 \begin{figure}[H]
@@ -503,7 +503,7 @@ However, the current simulation time is 09:37 AM, and the vehicle 2 starts to de
 \label{Fig:Second_ReceiverScenario_DeliveryProcess}
 \end{figure}
 
-As illustrated in Figure 6.9, the vehicle 2 will show the receiver’s scenario of delivery process. As the simulation is 10:00 AM, the receiver 4 would get the arriving notification and prepare to pick up the parcel. At the time of 10:05 AM, the vehicle 2 would finish the unloading process. Finally, the vehicle 2 would end parking in National Cheng Kung University Hospital (NCKUH) and forward to the next station.
+As illustrated in Figure 6.9, the vehicle 2 will show the receiver’s scenario of delivery process. As the simulation is 10:00 AM, the receiver 4 would get the arriving notification, and prepare to pick up the parcel. At the time of 10:05 AM, the vehicle 2 would finish the unloading process. Finally, the vehicle 2 would end parking in National Cheng Kung University Hospital (NCKUH), and forward to the next station.
 
 
 
@@ -519,13 +519,13 @@ As illustrated in Figure 6.9, the vehicle 2 will show the receiver’s scenario 
 \section{Simulation Setting}
 
 \subsection{Simulator}
-SUMO is used to be the simulator for running the parcel delivery simulation [12]. “Simulation of Urban Mobility”, or “SUMO” for short, is an open source, multi-modal traffic, highly portable, microscopic and continuous road traffic simulator. The method to control the SUMO simulator is to use the TraCI client Python Application Program Interface (API) which is available in SUMO packages.
+SUMO is used to be the simulator for running the parcel delivery simulation [12]. “Simulation of Urban Mobility”, or “SUMO” for short, is an open source, multi-modal traffic, highly portable, microscopic and continuous road traffic simulator. The method to control the SUMO simulator is to use the TraCI client Python Application Program Interface (API), which is available in SUMO packages.
 
 \subsection{Road Network}
 
-The dataset, which was acquired from OpenStreetMap \cite{Haklay2008} , uses the road network of part of Tainan, which is the south of Taiwan. The region of the selected road contains the partial Tainan East District, partial Tainan West Central District, partial Tainan North District, partial Tainan South District and partial Tainan Anping District.
+The dataset, which was acquired from OpenStreetMap \cite{Haklay2008} , uses the road network of part of Tainan, which is the south of Taiwan. The region of the selected road contains the partial Tainan East District, Tainan West Central District, partial Tainan North District, partial Tainan South District, and partial Tainan Anping District.
 
-The road network, which is pruned by estimating unreachable streets and roads for a truck, contains 25069 roads segments and 6785 junctions with approximately $50km^{2}$ in the downtown of Tainan.
+The road network, which is pruned by estimating unreachable streets and roads for a truck, contains 25069 roads segments, and 6785 junctions with approximately $50km^{2}$ in the downtown of Tainan.
 
 \begin{figure}[H]
 \centering
@@ -551,7 +551,7 @@ Figure 7.3 shows the selected road network on Google Map.
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\textwidth]{./Thesis_figures/F7-2_SUMOMap.PNG}
-\caption{\large  Service Region of the Experiment on SUMO.}
+\caption{\large  Service region of the experiment on SUMO.}
 \vspace{0.5cm}
 \label{Fig:SUMOMap}
 \end{figure}
@@ -559,26 +559,26 @@ Figure 7.3 shows the selected road network on Google Map.
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\textwidth]{./Thesis_figures/F7-3_GoogleMap.PNG}
-\caption{\large Service Region of the Experiment on Google Map.}
+\caption{\large Service region of the experiment on Google Map.}
 \vspace{0.5cm}
 \label{Fig:GoogleMap}
 \end{figure}
 
 \subsection{Parameters}
-Parameters of the simulation are showed in Table 7.1. Note that the number of trucks is three in the simulation time $T_{start}$ to $T_{end}$. 
-Then, the maximum speed of truck is 18 km/hr, and the range of speed limit on each lane is 10-100 km/hr. It is noteworthy that trucks will not exceed the speed limit on each lane even the truck has a higher maximum speed. Besides, a truck has nine boxes which are grouped by small size, medium size, and large size and the capacity of each box size is three. Then, the loading process time is five minutes, and the unloading process time is five minutes as well. Finally, when the SUMO server counts the travel time of the vehicle, which is equal to the driving distance divided by the estimated average vehicle speed. Thus, the estimated average vehicle speed is 14.4 km/hr.
+Parameters of the simulation are showed in Table 7.1. Note that the number of trucks is three from the simulation time $T_{start}$ to $T_{end}$. 
+Then, the maximum speed of truck is 18 km/hr, and the range of speed limit on each lane is 10-100 km/hr. It is noteworthy that trucks will not exceed the speed limit on each lane even the truck has a higher maximum speed. Besides, a truck has nine boxes which are grouped by small size, medium size, and large size. The capacity of each box size is three. Then, the loading process time is five minutes, and the unloading process time is five minutes as well. Finally, when the SUMO server counts the travel time of the vehicle, which is equal to the driving distance divided by the estimated average vehicle speed. Thus, the estimated average vehicle speed is 14.4 km/hr.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\textwidth]{./Thesis_figures/F7-4_parameters.PNG}
-\caption{\large Parameters of Simulation.}
+\caption{\large Parameters of simulation.}
 \vspace{0.5cm}
 \label{Fig:Parameters_of_Simulation}
 \end{figure}
 
 \subsection{Average Vehicle Speed Estimation}
 
-As illustrated in Figure 7.5, the horizontal axis represents the different routes in Tainan downtown, and the vertical axis shows the vehicle speed. Take the route 1 as an example, the route1 starts from Anping Fort to the Taiwan Tainan District Court and the driving distance is 2.9 kilometers. In this case, the blue line represents the maximum speed of truck in SUMO, the green line indicates the average vehicle speed in Google Map, and the orange line is real average vehicle speed in SUMO. Thus, according to the seven cases in this figure, to avoid the delay in delivery, the estimated average vehicle speed is 3.80 m/s (13.68 km/hr).
+As illustrated in Figure 7.5, the horizontal axis represents the different routes in Tainan downtown, and the vertical axis shows the vehicle's speed. Take the route 1 as an example, the route1 starts from Anping Fort to the Taiwan Tainan District Court, and the driving distance is 2.9 kilometers. In this case, the blue line represents the maximum speed of truck in SUMO, and the green line indicates the average vehicle speed in Google Map, and the orange line is real average vehicle speed in SUMO. Thus, according to the seven cases in this figure, to avoid the delay in delivery, the study sets estimated average vehicle speed to \textbf{"3.80"} m/s (13.68 km/hr).
 
 
 \begin{figure}[H]
@@ -590,9 +590,9 @@ As illustrated in Figure 7.5, the horizontal axis represents the different route
 \end{figure}
 
 \section{Simulation Result}
-It this section, there are five stages of simulation results, which includes simulation initialization, the sender’s request insertion, the loading process, the receiver’s request and the unloading process.
+It this section, there are five stages of simulation results, which includes simulation initialization, the sender’s request insertion, the loading process, the receiver’s request, and the unloading process.
 
-As illustrated in Figure 7.6, the picture shows the simulation initialization without any request insertion. According to the time schedule in the left side of the Figure, each vehicle has different column color, which indicates the distinct routes. Take the vehicle 2 as an example, the system arranges blue route with one task in the right side of the Figure. Thus, the vehicle 2 would arrive to the Durban Department Store before 11:00 AM, stay in the destination until 11:10 AM.
+As illustrated in Figure 7.6, the picture shows the simulation initialization without any request insertion. According to the time schedule in the left side of the Figure, each vehicle has different column color, which indicates the distinct routes. Take the vehicle 2 as an example, the system arranges blue route with one task in the right side of the Figure. Thus, the vehicle 2 would arrive to the Durban Department Store before 11:00 AM, and stay in the destination until 11:10 AM.
 
 \begin{figure}[H]
 \centering
@@ -603,7 +603,7 @@ As illustrated in Figure 7.6, the picture shows the simulation initialization wi
 \end{figure}
 
 As illustrated in Figure 7.7, the figure shows how the original route changes after receiving the sender’s request.
-The left side of graph shows that when the simulation time is 1203 seconds, which means 09:20:03, the user wants to pick 09:30 as the expected sender’s arrival time and the vehicle 2 follows the yellow route. However, at the time of 1218 seconds, which means 09:20:18, the vehicle 2 replaces original blue route with yellow route and would stop at Hayashi Department Store until 09:40 AM.
+The left side of graph shows that when the simulation time is 1203 seconds, which means 09:20:03, and the user wants to pick 09:30 as the expected sender’s arrival time. Then, the vehicle 2 follows the yellow route. However, at the time of 1218 seconds, which means 09:20:18, the vehicle 2 replaces original blue route with yellow route and would stop at Hayashi Department Store until 09:40 AM.
 
 \begin{figure}[H]
 \centering
@@ -614,7 +614,7 @@ The left side of graph shows that when the simulation time is 1203 seconds, whic
 \end{figure}
 
 
-As illustrated in Figure 7.8, the receiver’s phone in the left side of the figure gets the notification of finishing loading process in sender’s address at 09:35. The box index number “211” has the value of one, which means the parcel exists in the vehicle 2. Thus, the receiver can start to select the expected arrival time of the parcel.
+As illustrated in Figure 7.8, the receiver’s phone in the left side of the figure gets the notification of finishing loading process at sender’s address in 09:35. The box index number “211” has the value of one, which means that the parcel exists in the vehicle 2. Thus, the receiver can start to select the expected arrival time of the parcel.
 
 \begin{figure}[H]
 \centering
@@ -637,7 +637,7 @@ Moreover, at 09:36:16, the vehicle 2 replaces the original blue route with the y
 \label{Fig:Receiver_request}
 \end{figure}
 
-As illustrated in Figure 7.10, the receiver receives the arriving notification of the parcel at 10:00 AM. Then, at 10:07:29, the vehicle 2 finishes the unloading process and the parameters of box also changes and the vehicle 2 still has to stay in receiver’s address until 10:10 AM.
+As illustrated in Figure 7.10, the receiver receives the arriving notification of the parcel at 10:00 AM. Then, at 10:07:29, the vehicle 2 finishes the unloading process and the parameters of box also changes. Besides, the vehicle 2 still has to stay in receiver’s address until 10:10 AM.
 
 \begin{figure}[H]
 \centering
@@ -664,11 +664,11 @@ As illustrated in Figure 7.10, the receiver receives the arriving notification o
 %------------------------- Conclusion -------------------------%
 
 \section{Conclusion}
-In this study, thesis implemented a vehicle dispatching and monitoring system to simulate the parcel delivery process. In this system, the thesis used the commands of Traffic Control Interface (TraCI) to manipulate vehicle’s behavior and retrieve the vehicle’s values in SUMO simulator. As the system receives the delivery order request from Android client, the system would use dispatching mechanism to judge whether this order can be established successfully or not. If there is no vehicle that can serve this request, the user would pick their box size or select the other arrival time of the package, and submit the order again. In contrast, as the order is established, the system would arrange the routes via the time schedule and change the container’s value. With this schedule, the system can deal with the delivery order request more orderly. 
+The thesis implemented a vehicle dispatching and monitoring system to simulate the parcel delivery process. In this system, the thesis used the commands of Traffic Control Interface (TraCI) to manipulate vehicle’s behavior, and retrieve the vehicle’s values in SUMO simulator. As the system received the delivery order request from Android client, the system would use dispatching mechanism to judge whether this order can be established successfully or not. If there is no vehicle that can serve this request, the user would pick their box size or select the other arrival time of the package, and submit the order again. In contrast, as the order is established, the system would arrange the routes via the time schedule and change the container’s value. With this schedule, the system can deal with the delivery order request more orderly. 
 
 Besides, the system would set the parking duration to simulate the loading and unloading process when the vehicle arrives to the destination. As a result, the users can have enough time to interact with the truck in simulator. 
 
-Finally, the thesis used three trucks and nine containers to simulate the delivery process including sender’s scenario and receiver’s scenario in the downtown area of Tainan. By using the vehicle dispatching and monitoring system, the administrator can arrange the route dynamically and track the vehicle’s movement immediately, and implement the simulation of the parcel delivery process.
+Finally, the thesis used three trucks and nine containers to simulate the delivery process including sender’s scenario and receiver’s scenario in the downtown area of Tainan. By using the vehicle dispatching and monitoring system, the administrator can arrange the route dynamically and track the vehicle’s movement immediately, and monitor the simulation of the parcel delivery process.
 
 
 
@@ -681,10 +681,10 @@ There are some issues that should be discussed to complete the vehicle dispatchi
 
 
 \item
-\textbf{Scalability}: So far the system only contains three trucks in the downtown area of Tainan, whose area is 50 km2. Thus, in the future the system would be used in larger map and distribute more trucks into different areas. Besides, In the dispatch mechanism, the system current empirical time scheduling method to filter the suitable order. However, in the future the system should have the ability to implement different routing algorithms to schedule tasks on the same simulation platform.
+\textbf{Scalability}: So far the system only contains three trucks in the downtown area of Tainan, whose area is $50km^{2}$. Thus, in the future the system would be used in larger map and distribute more trucks into different areas according to the quantity of parcels. Besides, In the dispatch mechanism, the system current empirical time scheduling method to filter the suitable order. However, in the future the system should have the ability to implement different routing algorithms to schedule tasks on the same simulation platform.
 
 \item
-\textbf{Quantity}: Now the system runs the delivery simulation with a small amount of order requests. However, the system has to deal with a batch of orders in a brief period of time.
+\textbf{Quantity}: Now the system runs the delivery simulation with a small amount of order requests. However, the system has to deal with a batch of orders in a brief period of time in the future.
 
 \item
 \textbf{Accuracy}: When it comes to scheduling the task, the system has to calculate the travel time of the new route. Thus, the accuracy of the estimated vehicle speed is very crucial and this value should be actually measured by the real-time road conditions.
