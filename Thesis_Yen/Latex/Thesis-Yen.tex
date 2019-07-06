@@ -229,21 +229,22 @@ Before communicating with the Android client, TraaS would create a thread, which
 \section{Manipulation of Vehicle Routing}
 When it comes to value retrieval in SUMO, there are fifteen data types in TraCI commands. The most important data type is vehicle value retrieval. For instance, when TraaS executes the command of getRoadID, the SUMO simulator would return the id of the edge which the named vehicle was at.
 
-\textbf{getRoadID (String vehID)- return String edgeID}
+\textbf{getRoadID (String vehID) $\rightarrow$ return String edgeID}
+
 
 Another example of vehicle value retrieval is setRoute, which could change the named vehicle’s route to given edges list.
 
-\textbf{setRoute(String vehID, list edgeList)- return None}
+\textbf{setRoute(String vehID, list edgeList)$\rightarrow$ return None}
 
 serRoute(“1”, [“2”, ”4”, ”6”]) this changes route for the vehicle ID 1 to edges 2-4-6
 
 Besides, TraaS manipulates the simulated objects like vehicles via state changing commands. For example, when TraaS executes setStop function, the simulator would add a stop at the given edge and lane, and the vehicle will stop for the given duration or end stopping at the given until attribute.
  
-\textbf{setStop (String vehID, String edgeID, double pos, byte laneIndex, double duration, SumoStopFlags sf, double startPos, double until) - return None}
+\textbf{setStop (String vehID, String edgeID, double pos, byte laneIndex, double duration, SumoStopFlags sf, double startPos, double until) $\rightarrow$ return None}
  
 The following two figures show how the SUMO simulator manipulates the vehicle’s behavior after executing the commands of changing route and setting stop.
-As illustrated in Figure 4.3, when the simulation time was 1472 seconds, the vehicle 2 occurred at the left lower corner, and the yellow path was the vehicle 2’s route. 
-The end edge id of the vehicle 2 was located at Chung Cheng Gym in National Cheng Kung University.
+As illustrated in Figure 4.3, when the simulation time is 1472 seconds, the vehicle 2 occurrs at the left lower corner, and the yellow path is the vehicle 2’s route. 
+The end edge id of the vehicle 2 is located at Chung Cheng Gym in National Cheng Kung University.
 
 \begin{figure}[t!]
 \centering
@@ -262,7 +263,7 @@ The end edge id of the vehicle 2 was located at Chung Cheng Gym in National Chen
 \end{figure}
 
 
-As illustrated in Figure 4.4, at the 1500 simulation seconds, the vehicle 2 cancels the previous route whose end edge id was \textbf{“-537706053”}, and the simulator replaces the original route of vehicle 2 in Figure 4.3 with a new route. The end edge id of this new route is \textbf{“72871329”}, which is at Tainan Train Station. Furthermore, the vehicle 2 would stop at the edge \textbf{“72871329”}, and would stay in the same position until 2400 simulation seconds.
+As illustrated in Figure 4.4, at the 1500 simulation seconds, the vehicle 2 cancels the previous route whose end edge id was \textbf{“-537706053\#0”}, and the simulator replaces the original route of vehicle 2 in Figure 4.3 with a new route. The end edge id of this new route is \textbf{“72871329\#0”}, which is at Tainan Train Station. Furthermore, the vehicle 2 would stop at the edge \textbf{“72871329\#0”}, and would stay in the same position until 2400 simulation seconds.
 
 
 
@@ -280,9 +281,9 @@ As illustrated in Figure 4.4, at the 1500 simulation seconds, the vehicle 2 canc
 When the user submits the delivery order request in the mobile application, the app would parse the sender address into the latitude and longitude of a point using Google Map API (Application Programming Interface).
 As illustrated in Figure 4.5, when the user inputs the address of Tainan Train Station, Google Map would show the red pinpoint of the address, and display the latitude and longitude (22.997154, 120.212272).
 
-Furthermore, TraaS converts the longitude and latitude to roadID, laneIndex, and pos. Pos describes at which position on this lane the detector is placed. Then, RoadID identifies a road segment (edge), and pos describes the position of the node in longitudinal direction (ranging from 0 to the road's length). Finally, laneIndex identifies the driving lane on the road segment.
+Furthermore, TraaS converts the longitude and latitude to roadID, laneIndex, and pos. RoadID identifies a road segment (edge), and pos describes the position of the node in longitudinal direction (ranging from 0 to the road's length). Finally, laneIndex identifies the driving lane on the road segment.
 As illustrated in Figure 4.6, TraaS converts the latitude and longitude of Tainan Train Station into the roadID (“72871329”), pos (5.6), and laneIndex (0).
-TraaS uses the sender’s edge of to arrange the vehicle’s route and sets stopping address in the SUMO simulator.
+TraaS uses the sender’s edge of to arrange the vehicle’s route and sets stopping address in the SUMO simulator according to the section 4.2.
 
 \begin{figure}[H]
 \centering
@@ -309,7 +310,7 @@ The chapter aims to illustrate the flow chart of parcel delivery process, contai
 \label{Fig:sender_process}
 \end{figure}
 
-Figure 5.1 evaluates the sender’s parcel delivery process
+Figure 5.1 evaluates the sender’s parcel delivery process.
 
 
 \begin{itemize}
@@ -317,26 +318,24 @@ Figure 5.1 evaluates the sender’s parcel delivery process
 The parcel delivery process starts at 09:00 AM.
 
 \item
-The user places a delivery order, which includes the sender’s address, the receiver’s id, the receiver’s address. Then the user picks the box size categorized into small size, medium and large size.
+The user places a delivery order, which includes the sender’s address, the receiver’s id, the receiver’s appointed address. Then,the user picks the box size categorized into small size, medium size, and large size.
+
 
 \item
-The user places a delivery order, which includes the sender’s address, the receiver’s id, the receiver’s address. Then the user picks the box size categorized into small size, medium and large size.
-
-\item
-The user selects the sender’s arrival time interval of the parcel and the selection of arrival time starts at 09:30 AM to 03:00 PM with the interval of thirty minutes. Then, the mobile application forwards the order request to the SUMO server.
+The user selects the sender’s arrival time interval of the parcel, and the selection of arrival time starts from 09:30 AM to 03:00 PM with the interval of thirty minutes. Then, the mobile application forwards the order request to the SUMO server.
 
 \item
 After receiving the order request, the SUMO server would use dispatching mechanism to judge whether the system have available vehicles to serve this request. If there is no vehicle meeting the demand, the user would receive the failure feedback of the request. Thus, the user would be asked to pick the arrival time again, or change the box size, and submit the edited request once more.
-In contrast, if there is an available vehicle to serve this delivery order, the order would be generated by the database successfully.
+In contrast, if there is an available vehicle which can serve this delivery order, the order would be generated by the database successfully.
 
 \item
 When the delivery order is established, the unique index number of the box would be generated for binding to this sender’s order.
 
 \item
-Therefore, the SUMO server dispatches the vehicle to the sender’s appointed address, and the vehicle would park at the destination.
+Therefore, the SUMO server dispatches the vehicle to the sender’s appointed address, and the vehicle would park at the address.
 
 \item
-When the vehicle arrives to the sender’s appointed address, the sender would get the notification on the mobile application and begin to load the delivery package into the truck.
+When the vehicle arrives to the sender’s appointed address, the sender would get the notification on the mobile application, and begin to load the delivery package into the truck.
 
 \item
 When the truck finishes the loading task, the system would end this sender’s delivery process.
