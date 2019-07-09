@@ -1,0 +1,32 @@
+\contentsline {heading}{Chapter}{ii}% 
+\contentsline {chapter}{\numberline {1}Introduction}{1}% 
+\contentsline {chapter}{\numberline {2}Related Work}{4}% 
+\contentsline {section}{\numberline {2.1}\ignorespaces Home Delivery}{4}% 
+\contentsline {section}{\numberline {2.2}\ignorespaces Traffic Simulation}{6}% 
+\contentsline {chapter}{\numberline {3}System Design}{7}% 
+\contentsline {section}{\numberline {3.1}\ignorespaces System Overview}{7}% 
+\contentsline {section}{\numberline {3.2}\ignorespaces Mobile Application}{8}% 
+\contentsline {subsection}{\numberline {3.2.1}\ignorespaces Registration and Login}{8}% 
+\contentsline {subsection}{\numberline {3.2.2}\ignorespaces Placing the Delivery Order}{8}% 
+\contentsline {subsection}{\numberline {3.2.3}\ignorespaces Tracking Established Orders}{9}% 
+\contentsline {section}{\numberline {3.3}\ignorespaces TraCI Server and SUMO Simulator}{9}% 
+\contentsline {section}{\numberline {3.4}\ignorespaces Back-End Server}{11}% 
+\contentsline {section}{\numberline {3.5}\ignorespaces Database}{12}% 
+\contentsline {chapter}{\numberline {4}System Implementation}{14}% 
+\contentsline {section}{\numberline {4.1}\ignorespaces Mobile Application}{14}% 
+\contentsline {section}{\numberline {4.2}\ignorespaces SUMO Server and Simulator}{16}% 
+\contentsline {subsection}{\numberline {4.2.1}\ignorespaces Simulation Environment Setup}{16}% 
+\contentsline {subsection}{\numberline {4.2.2}\ignorespaces Build the Socket Server}{17}% 
+\contentsline {section}{\numberline {4.3}\ignorespaces Back-end Sever}{18}% 
+\contentsline {section}{\numberline {4.4}\ignorespaces Database}{19}% 
+\contentsline {section}{\numberline {4.5}\ignorespaces Simulation Setting}{19}% 
+\contentsline {subsection}{\numberline {4.5.1}\ignorespaces Simulator}{19}% 
+\contentsline {subsection}{\numberline {4.5.2}\ignorespaces Road Network}{20}% 
+\contentsline {subsection}{\numberline {4.5.3}\ignorespaces Parameters}{22}% 
+\contentsline {subsection}{\numberline {4.5.4}\ignorespaces Average Vehicle Speed Estimation}{24}% 
+\contentsline {section}{\numberline {4.6}\ignorespaces Simulation Result}{25}% 
+\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{30}% 
+\contentsline {section}{\numberline {5.1}\ignorespaces Conclusion}{30}% 
+\contentsline {section}{\numberline {5.2}\ignorespaces Future Work}{31}% 
+\contentsline {chapter}{References}{32}% 
+\contentsline {chapter}{Vita}{34}% 
