@@ -105,7 +105,13 @@ Finally, I would like to thank my family and friends for their support.}
 
 \section{System Overview}
 
-
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{./figures/F3-1_SystemOverview.PNG}
+\caption{\large system Overview.}
+\vspace{0.5cm}
+\label{Fig:system_Overview}
+\end{figure}
 
 This thesis designs a self-driving delivery simulation system, as illustrated in Figure 3.1, the system consists of five components, including the mobile application, the TraCI server, the SUMO simulator, the back-end server, and the database. In this system, the mobile application is a platform which can let the user place a delivery order for shipping cargos and track the user’s orders. After a user issues a delivery request on the mobile application, it will be sent to TraCI server. The server will do the dispatching mechanism to assign a truck which meets the conditions to receive the cargo, and it will be displayed on SUMO simulator by TraCI commands. Moreover, the data about order’s information will be uploaded to the database if the assignment is successful, and the user can view the order’s status on the mobile application by connecting to the back-end server. When the truck arrives at the address of shippers or receivers on the simulator, the TraCI server will send a message to the mobile device to notify the user of this event through a cloud messaging service. Moreover, the server will also send a message to notify the receiver that the pickup time of the cargo can be selected already when the truck has arrived at the sender’s address. All the simulated process can be observed on the SUMO simulator. The features of each component will be described in detail in the following sections.
 
@@ -151,11 +157,40 @@ The last table is order table. As shown in Table 3.4, it retains information of 
 
 Compared to other mobile operating systems, Android OS holds 86.7\% market share according to the survey. It is the most widely-used operating system in the world. Given that the self-driving delivery will be popularized in all walks of life soon after, Android OS is the most suitable system for developing of the mobile application. The application is built by the Android Software Development Kit (Android SDK), and it is developed on Android Studio which is a Integrated Development Environment for Android. Android Studio provides a preview of the user interface and it has the built-in support of Google Cloud Platform. Consequently, it is a appropriate way to construct the mobile application of the system. Furthermore, Google Map SDK for Android and Google Geocoding API were added to the mobile application, the former enables the application to display the map of simulation and mark the address, the latter is able to transform the street address into latitude and longitude.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{./figures/F4-1_FCM.PNG}
+\caption{\large Firebase Cloud Messaging .}
+\vspace{0.5cm}
+\label{Fig:FCM}
+\end{figure}
+
 In order to send the messages to notify the users that the truck arrived, a cloud solution for messages and notifications is included in the self-driving delivery system. Firebase Cloud Messaging (FCM) is a service provided by Firebase, a subsidiary of Google, and it facilitates messaging between the mobile application and the server built by developers. As illustrated in Figure 4.1, there are three components involving in the process of message passing, including the mobile application, FCM and the server that intends to send notifications (i.e., TraCI server in this thesis). When the mobile application is installed on the mobile device and launched for the first time, it will send a registration request to FCM through FCM SDK. Then, the FCM server will generate a corresponding token for the device, and return it back. The token would be uploaded to the database if users log in. Conversely, when users log out, the token in the database will be removed to prevent the server from notifying the wrong users. According to the tokens stored in the FCM server, the messages sent from the TraCI server will be forwarded to the relevant device by FCM.
 
-The user interface of the mobile application is illustrated in Figure 4.2. As shown in Figure 4.2a, the homepage of the application is constituted by the buttons of the main functions. We developed a simple registration function of user account, which is shown in Figure 4.2b. Before the users log in, the FCM token is stored in the memory of the device. The user can be found on different mobile device by logging in. 
+The user interface of the mobile application is illustrated in Figure 4.2. As shown in Figure 4.2a, the homepage of the application is constituted by the buttons of the main functions. We developed a simple registration function of user account, which is shown in Figure 4.2b. Before the users log in, the FCM token is stored in the memory of the device. The user can be found on different mobile device by logging in.
+ 
+Figure 4.2c depicts the page of placing an order, the user must fill in all the fields of the order. The option of container size can be expanded based on the container type of the logistics companies. 
 
-The established order can be viewed on the page of tracking orders shown in Figure 4.2f. The user can slide the tabs which are above the page to switch between orders sent by himself and by others. The detailed information would be displayed while the user click an order, which is shown in Figure 4.2g. If the user is a receiver in an order, he can choose the pick-up time of the cargo according to the status of logistics activity. The page is the same as Figure 4.2e. Besides, if the user or system administrator want to examine the orders of different users, the last function in the application can be utilized. Figure 4.2h exhibits the order searching page, the order can be looked up by entering the order number. There are some features that have not yet been implemented, they are not necessary but can be used to improve user experience or analyze the  user behavior. These will be mentioned in Chapter 5.
+
+
+\begin{figure}[H]
+\centering  %图片全局居中
+\subfigure[AdministrativeDistrict]{
+\label{Fig.sub.1}
+\includegraphics[width=0.45\textwidth]{./figures/F4-2-d-AdministrativeDistrict.PNG}}
+\subfigure[Localization]{
+\label{Fig.sub.2}
+\includegraphics[width=0.45\textwidth]{./figures/F4-2-e-Localization.PNG}}
+\caption{Main name55}
+\label{Fig.main}
+\end{figure}
+
+The user can press the region selecting button to get the administrative district of the simulation range, which is shown in Figure 4.2d. This function make the user input data faster and reduce the typing errors. The simulation range in this thesis contains parts of Tainan City. For the sake of convenience, the application will record the data entered by the user last time, and the data will be filled in the order automatically when clicking the auto inputting button. After filling out the order information, the user can presses the next button, and the application would check whether the user name of receiver exist. 
+
+As illustrated in Figure 4.2e, the address that the user input will be transform into geographic location, and the shipper’s address will be displayed on the Google Map so that the user can confirm if the place is correct. Then, the user can use the dropdown list to select the arrival time of the truck. Finally, the order request will be sent to the SUMO server by socket program. If there are eligible trucks in the simulated environment, the server would return a success message. Otherwise, the page will not be closed, and the user can choose another time.  
+
+The established order can be viewed on the page of tracking orders shown in Figure 4.2f. The user can slide the tabs which are above the page to switch between orders sent by himself and by others. The detailed information would be displayed while the user click an order, which is shown in Figure 4.2g. If the user is a receiver in an order, he can choose the pick-up time of the cargo according to the status of logistics activity. The page is the same as Figure 4.2e. Besides, if the user or system administrator want to examine the orders of different users, the last function in the application can be utilized. Figure 4.2h exhibits the order searching page, the order can be looked up by entering the order number. There are some features that have not yet been implemented, they are not necessary but can be used to improve user experience or analyze the user behavior. These will be mentioned in Chapter 5.
+
 
 
 \section{SUMO Server and Simulator}
@@ -220,7 +255,6 @@ In order to make the self-driving technology development companies have a platfo
 %------------------------- Vita -------------------------%
 \Thesisspace \large{
 
-Kang Yen was born on December 3, 1993, in Yunlin, Taiwan.  He received the B.S. degree in Electrical Engineering from National Cheng Kung University, Taiwan, in 2017. In September 2017, he enrolled at the National Cheng Kung University as a master student in the Institute of Computer and Communication Engineering.
 
 }\end{vita}
 

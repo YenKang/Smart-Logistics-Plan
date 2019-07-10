@@ -4,20 +4,20 @@
 \contentsline {chapter}{\numberline {3}System Design}{3}% 
 \contentsline {section}{\numberline {3.1}\ignorespaces System Overview}{3}% 
 \contentsline {section}{\numberline {3.2}\ignorespaces Mobile Application}{4}% 
-\contentsline {subsection}{\numberline {3.2.1}\ignorespaces Registration and Login}{4}% 
-\contentsline {subsection}{\numberline {3.2.2}\ignorespaces Placing the Delivery Order}{4}% 
-\contentsline {subsection}{\numberline {3.2.3}\ignorespaces Tracking Established Orders}{5}% 
-\contentsline {section}{\numberline {3.3}\ignorespaces TraCI Server and SUMO Simulator}{5}% 
+\contentsline {subsection}{\numberline {3.2.1}\ignorespaces Registration and Login}{5}% 
+\contentsline {subsection}{\numberline {3.2.2}\ignorespaces Placing the Delivery Order}{5}% 
+\contentsline {subsection}{\numberline {3.2.3}\ignorespaces Tracking Established Orders}{6}% 
+\contentsline {section}{\numberline {3.3}\ignorespaces TraCI Server and SUMO Simulator}{6}% 
 \contentsline {section}{\numberline {3.4}\ignorespaces Back-End Server}{7}% 
 \contentsline {section}{\numberline {3.5}\ignorespaces Database}{8}% 
 \contentsline {chapter}{\numberline {4}System Implementation}{10}% 
 \contentsline {section}{\numberline {4.1}\ignorespaces Mobile Application}{10}% 
-\contentsline {section}{\numberline {4.2}\ignorespaces SUMO Server and Simulator}{12}% 
-\contentsline {subsection}{\numberline {4.2.1}\ignorespaces Simulation Environment Setup}{12}% 
-\contentsline {subsection}{\numberline {4.2.2}\ignorespaces Build the Socket Server}{13}% 
-\contentsline {section}{\numberline {4.3}\ignorespaces Back-end Sever}{14}% 
-\contentsline {section}{\numberline {4.4}\ignorespaces Database}{15}% 
-\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{16}% 
-\contentsline {section}{\numberline {5.1}\ignorespaces Conclusion}{16}% 
-\contentsline {section}{\numberline {5.2}\ignorespaces Future Work}{17}% 
-\contentsline {chapter}{Vita}{18}% 
+\contentsline {section}{\numberline {4.2}\ignorespaces SUMO Server and Simulator}{14}% 
+\contentsline {subsection}{\numberline {4.2.1}\ignorespaces Simulation Environment Setup}{14}% 
+\contentsline {subsection}{\numberline {4.2.2}\ignorespaces Build the Socket Server}{15}% 
+\contentsline {section}{\numberline {4.3}\ignorespaces Back-end Sever}{16}% 
+\contentsline {section}{\numberline {4.4}\ignorespaces Database}{17}% 
+\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{19}% 
+\contentsline {section}{\numberline {5.1}\ignorespaces Conclusion}{19}% 
+\contentsline {section}{\numberline {5.2}\ignorespaces Future Work}{20}% 
+\contentsline {chapter}{Vita}{21}% 
