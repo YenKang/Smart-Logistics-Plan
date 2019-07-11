@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  10 JUL 2019 17:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  11 JUL 2019 12:06
 entering extended mode
 **./Thesis-Po.tex
 (Thesis-Po.tex
@@ -228,7 +228,11 @@ Package: cite 2015/02/27  v 5.5
 \c@proposition=\count118
 \c@cor=\count119
 
-(Thesis-Po.aux)
+(Thesis-Po.aux
+
+LaTeX Warning: Label `Fig:system_Overview' multiply defined.
+
+)
 \openout1 = `Thesis-Po.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
@@ -368,57 +372,63 @@ Package pdftex.def Info: ./figures/F3-1_SystemOverview.PNG  used on input line
 (pdftex.def)             Requested size: 451.6875pt x 249.45143pt.
 [3
 
- <./figures/F3-1_SystemOverview.PNG>] [4] [5] [6] [7] [8] [9]
+ <./figures/F3-1_SystemOverview.PNG>] [4] [5]
+<./figures/F3-2_Flowchart.PNG, id=41, 617.30624pt x 741.52031pt>
+File: ./figures/F3-2_Flowchart.PNG Graphic file (type png)
+<use ./figures/F3-2_Flowchart.PNG>
+Package pdftex.def Info: ./figures/F3-2_Flowchart.PNG  used on input line 147.
+(pdftex.def)             Requested size: 451.6875pt x 542.5952pt.
+ [6] [7 <./figures/F3-2_Flowchart.PNG>] [8] [9] [10] [11]
 Chapter 4.
-<./figures/F4-1_FCM.PNG, id=54, 584.1825pt x 392.96812pt>
+<./figures/F4-1_FCM.PNG, id=61, 584.1825pt x 392.96812pt>
 File: ./figures/F4-1_FCM.PNG Graphic file (type png)
 <use ./figures/F4-1_FCM.PNG>
-Package pdftex.def Info: ./figures/F4-1_FCM.PNG  used on input line 162.
+Package pdftex.def Info: ./figures/F4-1_FCM.PNG  used on input line 192.
 (pdftex.def)             Requested size: 451.6875pt x 303.85158pt.
-[10
+[12
 
-] [11 <./figures/F4-1_FCM.PNG>]
-<./figures/F4-2-d-AdministrativeDistrict.PNG, id=62, 275.52937pt x 496.10344pt>
+] [13 <./figures/F4-1_FCM.PNG>]
+<./figures/F4-2-d-AdministrativeDistrict.PNG, id=69, 275.52937pt x 496.10344pt>
 
 File: ./figures/F4-2-d-AdministrativeDistrict.PNG Graphic file (type png)
 <use ./figures/F4-2-d-AdministrativeDistrict.PNG>
 Package pdftex.def Info: ./figures/F4-2-d-AdministrativeDistrict.PNG  used on i
-nput line 180.
+nput line 210.
 (pdftex.def)             Requested size: 203.258pt x 365.99045pt.
-<./figures/F4-2-e-Localization.PNG, id=63, 259.7203pt x 434.37282pt>
+<./figures/F4-2-e-Localization.PNG, id=70, 259.7203pt x 434.37282pt>
 File: ./figures/F4-2-e-Localization.PNG Graphic file (type png)
 <use ./figures/F4-2-e-Localization.PNG>
 Package pdftex.def Info: ./figures/F4-2-e-Localization.PNG  used on input line 
-183.
+213.
 (pdftex.def)             Requested size: 203.258pt x 339.94281pt.
- [12] [13 <./figures/F4-2-d-AdministrativeDistrict.PNG> <./figures/F4-2-e-Local
-ization.PNG>] [14] [15] [16]
-Overfull \hbox (1.20755pt too wide) in paragraph at lines 213--215
+ [14] [15 <./figures/F4-2-d-AdministrativeDistrict.PNG> <./figures/F4-2-e-Local
+ization.PNG>] [16] [17] [18]
+Overfull \hbox (1.20755pt too wide) in paragraph at lines 243--245
 \OT1/cmr/m/n/12 The database of the sys-tem is de-vel-oped with Mari-aDB 10.1.3
 2. Mari-aDB is a community-
  []
 
-[17] [18]
+[19] [20]
 Chapter 5.
-[19
-
-] [20]
-No file Thesis-Po.bbl.
 [21
+
+] [22]
+No file Thesis-Po.bbl.
+[23
 
 ] (Thesis-Po.aux)
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3393 strings out of 492895
- 46541 string characters out of 3124669
- 112811 words of memory out of 3000000
- 7213 multiletter control sequences out of 15000+200000
+ 3398 strings out of 492895
+ 46690 string characters out of 3124669
+ 112911 words of memory out of 3000000
+ 7217 multiletter control sequences out of 15000+200000
  11432 words of font info for 44 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,6n,27p,1494b,326s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,6n,27p,1494b,330s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmbx12.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmbxti10.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts
@@ -426,9 +436,9 @@ m/cmbx12.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
 X 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/yen/AppData/Local/Prog
 rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/yen/AppData/
 Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb>
-Output written on Thesis-Po.pdf (26 pages, 321942 bytes).
+Output written on Thesis-Po.pdf (28 pages, 362744 bytes).
 PDF statistics:
- 119 PDF objects out of 1000 (max. 8388607)
+ 126 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
