@@ -14,9 +14,9 @@
 \contentsline {section}{\numberline {4.1}\ignorespaces Mobile Application}{12}% 
 \contentsline {section}{\numberline {4.2}\ignorespaces SUMO Server and Simulator}{16}% 
 \contentsline {subsection}{\numberline {4.2.1}\ignorespaces Simulation Environment Setup}{16}% 
-\contentsline {subsection}{\numberline {4.2.2}\ignorespaces Build the Socket Server}{17}% 
-\contentsline {section}{\numberline {4.3}\ignorespaces Back-end Sever}{18}% 
-\contentsline {section}{\numberline {4.4}\ignorespaces Database}{19}% 
+\contentsline {subsection}{\numberline {4.2.2}\ignorespaces Build the Socket Server}{18}% 
+\contentsline {section}{\numberline {4.3}\ignorespaces Back-end Sever}{19}% 
+\contentsline {section}{\numberline {4.4}\ignorespaces Database}{20}% 
 \contentsline {chapter}{\numberline {5}Conclusion and Future Work}{21}% 
 \contentsline {section}{\numberline {5.1}\ignorespaces Conclusion}{21}% 
 \contentsline {section}{\numberline {5.2}\ignorespaces Future Work}{22}% 
