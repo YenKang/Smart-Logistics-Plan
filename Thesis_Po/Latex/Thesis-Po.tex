@@ -102,7 +102,7 @@ Nowadays the world’s online marketplaces are growing rapidly, it is because th
     (b)
 \end{minipage}
 \normalsize
-\caption{First two big United Parcel Service of America, Inc.'s revenue.}
+\caption{First two big United Parcel Service of America Inc.'s revenue.}
 \label{fig:UnitedParcelService}
 \end{figure*} 
 
@@ -201,7 +201,7 @@ As discussed above, the simulation-related data in the system are stored in the 
 
 \begin{figure}[H]
 \centering
-\captionof{table}{\large User Table.}
+\captionof{table}{\large User Table}
 \includegraphics[width=0.85\textwidth]{./figures/Table3-1-UserTable.PNG}
 
 \vspace{0.5cm}
@@ -213,7 +213,7 @@ The first table named user-table keeps the account information of registered use
 
 \begin{figure}[H]
 \centering
-\captionof{table}{\large County Table.}
+\captionof{table}{\large County Table}
 \includegraphics[width=0.85\textwidth]{./figures/Table3-2-CountyTable.PNG}
 \vspace{0.5cm}
 \label{Fig:CountyTable}
@@ -221,7 +221,7 @@ The first table named user-table keeps the account information of registered use
 
 \begin{figure}[H]
 \centering
-\captionof{table}{\large Township Table.}
+\captionof{table}{\large Township Table}
 \includegraphics[width=0.85\textwidth]{./figures/Table3-3-TownshipTable.PNG}
 \vspace{0.5cm}
 \label{Fig:TownshipTable}
@@ -232,6 +232,14 @@ The geocoding technology will be mentioned in Chapter 4. Furthermore, it provide
 
 The last table is order table. As shown in Table 3.4, it retains information of the user’s order, and part of order will be explained in this section. The attribute \textbf{"status"} represents the situation of logistic activity, such as "on the way to the receiver’s address". 
 In addition, it is the criteria whether if the receiver can designate the arrival time. The attribute \textbf{"sender\_name"} and \textbf{"receiver\_name"} are used by the SUMO server to determine users which the server will notify. The latitude and longitude transformed from senders’ address is stored as\textbf{ "sender\_lat"} and \textbf{“sender\_lng”}, and the same is true for the receiver’ address. The attribute \textbf{"sender\_time"} and\textbf{"receiver\_time"} are the expected arrival time that users select on the mobile application. The SUMO server will exploit the locational and time information to generate a dispatching schedule and arrange the route of each truck. 
+
+\begin{figure}[H]
+\centering
+\captionof{table}{\large Order Table}
+\includegraphics[width=0.85\textwidth]{./figures/Table3-4-OrderTable.PNG}
+\vspace{0.5cm}
+\label{Fig:OrderTable}
+\end{figure}
 
   
 
@@ -247,7 +255,7 @@ Among all mobile operating systems, Android OS holds 86.7\% market share accordi
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\textwidth]{./figures/F4-1_FCM.PNG}
-\caption{\large Firebase Cloud Messaging .}
+\caption{\large Firebase Cloud Messaging.}
 \vspace{0.5cm}
 \label{Fig:FCM}
 \end{figure}
@@ -259,7 +267,7 @@ FCM and the server that intends to send notifications (i.e., TraCI server in thi
 When the mobile application is installed on the mobile device and launched for the first time, the apps will send a registration request to FCM through FCM SDK. Then, the FCM server will generate a corresponding token for the device, and return the token back to the mobile application. The token would be uploaded to the database if users log in. Conversely, when users log out, the token in the database will be removed to prevent the server from notifying the wrong users. According to the tokens stored in the FCM server, the messages sent from the TraCI (Traffic Control Interface) server will be forwarded to the appointed device by FCM.
 
 
-The user interface of the mobile application is illustrated in Figure 4.2. As shown in Figure 4.2a, the homepage of the application is constituted by the buttons of the main functions. the study develops a simple registration function of a user account, which is shown in Figure 4.2b. 
+The initialization of user interface in the mobile application is illustrated in Figure 4.2. As shown in Figure 4.2a, the homepage of the application is constituted by the buttons of the main functions. the study develops a simple registration function of a user account, which is shown in Figure 4.2b. 
 Before a user logs in, the FCM token is stored in the memory of the device. The user can be distinguished in different mobile devices with the unique token after logging in.
  
 Figure 4.2c depicts the page of placing a package delivery order, the user must fill in all the fields of the order. The option of container size can be expanded based on the container type of the logistics companies.
@@ -268,14 +276,16 @@ Figure 4.2c depicts the page of placing a package delivery order, the user must 
 
 \begin{figure}[H]
 \centering  %图片全局居中
-\subfigure[AdministrativeDistrict]{
+\subfigure[Home Page.]{
 \label{Fig.sub.1}
-\includegraphics[width=0.45\textwidth]{./figures/F4-2-d-AdministrativeDistrict.PNG}}
-\subfigure[Localization]{
+\includegraphics[width=0.45\textwidth]{./figures/F4-2-a-HomePage.PNG}
+}
+\subfigure[Login.]{
 \label{Fig.sub.2}
-\includegraphics[width=0.45\textwidth]{./figures/F4-2-e-Localization.PNG}}
-\caption{Main name55}
-\label{Fig.main}
+\includegraphics[width=0.45\textwidth]{./figures/F4-2-b-Login.PNG}}
+
+\caption{Initialization of user interface.}
+\label{Initialization_of_UserInterface}
 \end{figure}
 
 The user can press the region selecting button to get the administrative district of the simulation range, which is shown in Figure 4.2d. This function make the user input data faster and reduce the typing errors. The simulation range in this thesis contains parts of Tainan City. 
