@@ -199,11 +199,17 @@ Among all mobile operating systems, Android OS holds 86.7\% market share accordi
 \label{Fig:FCM}
 \end{figure}
 
-In order to send the messages to notify the users that the truck arrived, a cloud solution for messages and notifications is included in the self-driving delivery system. Firebase Cloud Messaging (FCM) is a service provided by Firebase, a subsidiary of Google, and it facilitates messaging between the mobile application and the server built by developers. As illustrated in Figure 4.1, there are three components involving in the process of message passing, including the mobile application, FCM and the server that intends to send notifications (i.e., TraCI server in this thesis). When the mobile application is installed on the mobile device and launched for the first time, it will send a registration request to FCM through FCM SDK. Then, the FCM server will generate a corresponding token for the device, and return it back. The token would be uploaded to the database if users log in. Conversely, when users log out, the token in the database will be removed to prevent the server from notifying the wrong users. According to the tokens stored in the FCM server, the messages sent from the TraCI server will be forwarded to the relevant device by FCM.
+In order to send the messages to notify the users that the truck has arrived to the destination, a cloud solution for messages and notifications is included in the self-driving delivery system. Firebase Cloud Messaging (FCM) is a service provided by Firebase, which is a subsidiary of Google, and it facilitates messaging between the mobile application and the server built by developers. 
 
-The user interface of the mobile application is illustrated in Figure 4.2. As shown in Figure 4.2a, the homepage of the application is constituted by the buttons of the main functions. We developed a simple registration function of user account, which is shown in Figure 4.2b. Before the users log in, the FCM token is stored in the memory of the device. The user can be found on different mobile device by logging in.
+As illustrated in Figure 4.1, there are three components such as mobile application, FCM, and the server. The mobile application involves in the process of message passing.
+FCM and the server that intends to send notifications (i.e., TraCI server in this thesis). 
+When the mobile application is installed on the mobile device and launched for the first time, the apps will send a registration request to FCM through FCM SDK. Then, the FCM server will generate a corresponding token for the device, and return the token back to the mobile application. The token would be uploaded to the database if users log in. Conversely, when users log out, the token in the database will be removed to prevent the server from notifying the wrong users. According to the tokens stored in the FCM server, the messages sent from the TraCI (Traffic Control Interface) server will be forwarded to the appointed device by FCM.
+
+
+The user interface of the mobile application is illustrated in Figure 4.2. As shown in Figure 4.2a, the homepage of the application is constituted by the buttons of the main functions. the study develops a simple registration function of a user account, which is shown in Figure 4.2b. 
+Before a user logs in, the FCM token is stored in the memory of the device. The user can be distinguished in different mobile devices with the unique token after logging in.
  
-Figure 4.2c depicts the page of placing an order, the user must fill in all the fields of the order. The option of container size can be expanded based on the container type of the logistics companies. 
+Figure 4.2c depicts the page of placing a package delivery order, the user must fill in all the fields of the order. The option of container size can be expanded based on the container type of the logistics companies.
 
 
 
