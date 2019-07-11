@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  12 JUL 2019 04:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  12 JUL 2019 06:02
 entering extended mode
 **./Thesis-Po.tex
 (Thesis-Po.tex
@@ -405,70 +405,95 @@ File: ./figures/F3-2_Flowchart.PNG Graphic file (type png)
 <use ./figures/F3-2_Flowchart.PNG>
 Package pdftex.def Info: ./figures/F3-2_Flowchart.PNG  used on input line 174.
 (pdftex.def)             Requested size: 451.6875pt x 542.5952pt.
- [8] [9 <./figures/F3-2_Flowchart.PNG>] [10] [11] [12] [13]
+ [8] [9 <./figures/F3-2_Flowchart.PNG>] [10]
+<./figures/Table3-1-UserTable.PNG, id=64, 490.08093pt x 234.1247pt>
+File: ./figures/Table3-1-UserTable.PNG Graphic file (type png)
+<use ./figures/Table3-1-UserTable.PNG>
+Package pdftex.def Info: ./figures/Table3-1-UserTable.PNG  used on input line 2
+05.
+(pdftex.def)             Requested size: 383.93712pt x 183.42032pt.
+ [11]
+<./figures/Table3-2-CountyTable.PNG, id=68, 493.845pt x 87.32625pt>
+File: ./figures/Table3-2-CountyTable.PNG Graphic file (type png)
+<use ./figures/Table3-2-CountyTable.PNG>
+Package pdftex.def Info: ./figures/Table3-2-CountyTable.PNG  used on input line
+ 217.
+(pdftex.def)             Requested size: 383.93712pt x 67.89034pt.
+ [12 <./figures/Table3-1-UserTable.PNG>]
+<./figures/Table3-3-TownshipTable.PNG, id=72, 493.845pt x 97.11281pt>
+File: ./figures/Table3-3-TownshipTable.PNG Graphic file (type png)
+<use ./figures/Table3-3-TownshipTable.PNG>
+Package pdftex.def Info: ./figures/Table3-3-TownshipTable.PNG  used on input li
+ne 225.
+(pdftex.def)             Requested size: 383.93712pt x 75.49873pt.
+ [13 <./figures/Table3-2-CountyTable.PNG> <./figures/Table3-3-TownshipTable.PNG
+>] [14]
 Chapter 4.
-<./figures/F4-1_FCM.PNG, id=73, 584.1825pt x 392.96812pt>
+<./figures/F4-1_FCM.PNG, id=79, 584.1825pt x 392.96812pt>
 File: ./figures/F4-1_FCM.PNG Graphic file (type png)
 <use ./figures/F4-1_FCM.PNG>
-Package pdftex.def Info: ./figures/F4-1_FCM.PNG  used on input line 223.
+Package pdftex.def Info: ./figures/F4-1_FCM.PNG  used on input line 249.
 (pdftex.def)             Requested size: 451.6875pt x 303.85158pt.
-[14
+[15
 
-] [15 <./figures/F4-1_FCM.PNG>]
-<./figures/F4-2-d-AdministrativeDistrict.PNG, id=82, 275.52937pt x 496.10344pt>
+] [16 <./figures/F4-1_FCM.PNG>]
+<./figures/F4-2-d-AdministrativeDistrict.PNG, id=88, 275.52937pt x 496.10344pt>
 
 File: ./figures/F4-2-d-AdministrativeDistrict.PNG Graphic file (type png)
 <use ./figures/F4-2-d-AdministrativeDistrict.PNG>
 Package pdftex.def Info: ./figures/F4-2-d-AdministrativeDistrict.PNG  used on i
-nput line 247.
+nput line 273.
 (pdftex.def)             Requested size: 203.258pt x 365.99045pt.
-<./figures/F4-2-e-Localization.PNG, id=83, 259.7203pt x 434.37282pt>
+<./figures/F4-2-e-Localization.PNG, id=89, 259.7203pt x 434.37282pt>
 File: ./figures/F4-2-e-Localization.PNG Graphic file (type png)
 <use ./figures/F4-2-e-Localization.PNG>
 Package pdftex.def Info: ./figures/F4-2-e-Localization.PNG  used on input line 
-250.
+276.
 (pdftex.def)             Requested size: 203.258pt x 339.94281pt.
- [16] [17 <./figures/F4-2-d-AdministrativeDistrict.PNG> <./figures/F4-2-e-Local
-ization.PNG>] [18]
-<./figures/F4-3-SUMOMap.PNG, id=95, 577.40718pt x 420.82219pt>
+ [17] [18 <./figures/F4-2-d-AdministrativeDistrict.PNG> <./figures/F4-2-e-Local
+ization.PNG>] [19]
+<./figures/F4-3-SUMOMap.PNG, id=101, 577.40718pt x 420.82219pt>
 File: ./figures/F4-3-SUMOMap.PNG Graphic file (type png)
 <use ./figures/F4-3-SUMOMap.PNG>
-Package pdftex.def Info: ./figures/F4-3-SUMOMap.PNG  used on input line 278.
+Package pdftex.def Info: ./figures/F4-3-SUMOMap.PNG  used on input line 304.
 (pdftex.def)             Requested size: 451.6875pt x 329.20958pt.
- [19 <./figures/F4-3-SUMOMap.PNG>] [20] [21]
-Overfull \hbox (1.20755pt too wide) in paragraph at lines 303--304
+ [20 <./figures/F4-3-SUMOMap.PNG>] [21] [22]
+Overfull \hbox (1.20755pt too wide) in paragraph at lines 329--330
 \OT1/cmr/m/n/12 The database of the sys-tem is de-vel-oped with Mari-aDB 10.1.3
 2. Mari-aDB is a community-
  []
 
-[22]
+[23]
 Chapter 5.
-[23
+[24
 
-] [24]
+] [25]
 No file Thesis-Po.bbl.
-[25
+[26
 
-] (Thesis-Po.aux) ) 
+] (Thesis-Po.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4500 strings out of 492895
- 66838 string characters out of 3124669
- 132308 words of memory out of 3000000
- 8310 multiletter control sequences out of 15000+200000
+ 4519 strings out of 492895
+ 67443 string characters out of 3124669
+ 132330 words of memory out of 3000000
+ 8326 multiletter control sequences out of 15000+200000
  11432 words of font info for 44 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,7n,39p,1098b,368s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmbx12.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/yen/AppData/Local/Programs
-/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/yen/AppData/Loc
-al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/yen/A
-ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/U
-sers/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.
-pfb>
-Output written on Thesis-Po.pdf (29 pages, 660970 bytes).
+<C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmbx12.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmbxti10.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/yen/AppData/Local/Programs/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/yen/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/yen/AppData/
+Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb>
+Output written on Thesis-Po.pdf (30 pages, 703761 bytes).
 PDF statistics:
- 139 PDF objects out of 1000 (max. 8388607)
+ 145 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 53 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 68 words of extra memory for PDF output out of 10000 (max. 10000000)
 
