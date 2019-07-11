@@ -16,6 +16,7 @@
 \usepackage{algorithmic}
 \usepackage{multirow}
 \usepackage{cite}
+\usepackage{caption}
 
 \newtheorem{thm}{Theorem}
 \newtheorem{lemma}{Lemma}
@@ -53,18 +54,14 @@
 
 \begin{center}
 
-{\large Kang Yen\vspace{0.2cm} \\ Institute of Computer and
+{\large  Po\vspace{0.2cm} \\ Institute of Computer and
 Communication Engineering \vspace{0.2cm}\\ National Cheng Kung
 University \\ }
 
 \end{center}
 
 \Thesisspace {\large 
-Freight transportation plays an important role in daily life. As the e-commence and traffic technology developed, customers have high expectations for the more rapid and more flexible parcel delivery service. However, due to rising labor costs, the delivery mode of autonomous cars is one of alternatives. By reviewing the self-driving technology, the maturity of technology and profitable business model are the concerns. Moreover, so far there is no complete self-driving delivery system in Asia.
- 
-As a result, the paper integrated traffic simulation software SUMO and mobile application to simulate the package delivery service. Moreover, this study proposed a vehicle dispatching and monitoring system, which can cope with delivery orders, arrange routes, monitor vehicle’s movements, and demonstrate loading and unloading details of trucks. At the same time, this paper proposed dynamic dispatching mechanism consisting of box filtering stage and simple time scheduling stage. The mechanism can judge whether the delivery order could be established. Finally, the paper ran the parcel delivery simulation in the downtown area of Tainan, which showed clear visualization of logistic condition in the simulation results.
 
-Using this proposed system has three advantages. One is that the user can experience more immediate and more flexible delivery service. Second is that administrator can monitor the vehicle’s route and the vehicle’s real-time behavior. Third is that the developer can extend more complex routing algorithm, and add new application on the simulation platform.
 }
 
 \emph{\textbf{Keywords}}---self-driving delivery, traffic simulation, dynamic dispatching mechanism, package delivery service.
@@ -73,11 +70,7 @@ Using this proposed system has three advantages. One is that the user can experi
 
 \begin{acknowledgements}
 %------------------------- Acknowledgement -------------------------%
-\Thesisspace {\large First of all, I would like to express my gratitude to my advisor, Professor Kuo-Feng Ssu, for his valuable advices in my research and encouragement during my time at National Cheng Kung University. I am exceptionally thankful for his endless effort to provide guidance of paper reading and thesis writing.
-
-Besides, I am really grateful to Professors Hewijin Christine Jiau for not only her contributions to the research but also serving on my dissertation committee.
-I am obliged to the members of Dependable Computing Laboratory, including Yu-Jung Change, Che-Ming Lee, Wei-Lun Hung, Wen-Chin Lai, and Chun-Ting Po. They helped me a lot and gave me many opinions in my research.
-Finally, I would like to thank my family and friends for their support.}
+\Thesisspace {\large }
 
 \end{acknowledgements}
 
@@ -88,6 +81,40 @@ Finally, I would like to thank my family and friends for their support.}
 \begin{thesis}\large {
 %------------------------- Introduction -------------------------%
 \chapter{Introduction} \label{Chap:Introduction}
+
+Nowadays the world’s online marketplaces are growing rapidly, it is because the online shopping has the advantages of lower price and rapid delivery service. The total ecommerce sales increased last year by 20\% to \$1.66 trillion according to Internet Retailer’s released 2019 Online Marketplaces Report. [1] However, as the rapid development of e-commerce such as Amazon, Alibaba and eBay, it brings the novel problems and concerns. Compared to the tradition retailing, online shopping encounters lots of challenges. For consumers’ part, they must wait for the goods to arrive home instead of getting them immediately. Hence, the delivery time is a crucial factor for the consumer experience, and the parcel distribution becomes more and more important. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure*}
+\footnotesize
+\begin{minipage}[t]{0.48\linewidth}
+    \centering
+    \includegraphics*[width=\linewidth]{./figures/F1-a.PNG}
+    (a)
+\end{minipage}
+\begin{minipage}[t]{0.48\linewidth}
+    \centering
+    \includegraphics*[width=\linewidth]{./figures/F1-b.PNG}
+    (b)
+\end{minipage}
+\normalsize
+\caption{First two big United Parcel Service of America, Inc.'s revenue.}
+\label{fig:UnitedParcelService}
+\end{figure*} 
+
+Figure 1.1 shows the revenue of two freight delivery companies, which have the highest market shares of couriers and local delivery service in the United States [2]. The trend chart represent that the demands of the express delivery service are growing year by year. In the domain of the express delivery, the same-day delivery is a significant service. It aims to shorten delivery time as much as possible to improve the customer satisfaction. In the future, performing parcel delivery by self-driving vehicles is a promising way to improve the efficient of route arrangement and reduce labor cost, thereby it can make it easier to achieve the same day delivery.
+
+A self-driving vehicle, also known as a robotic vehicle, autonomous vehicle, or driverless vehicle, is a vehicle which is able to sense the surrounding environment by sensors and drive on the road without a human driver. In Intelligent Transport System (ITS), the self-driving vehicle usually has one of many different communication technologies to communicate with other vehicles and the control center in the same system. With the self-driving technology becoming mature gradually, more and more companies invested in the development of self-driving vehicles, such as Google, Tesla, Waymo, Baidu, and so on. 
+
+However, in many country, it is difficult and challenging to test the vehicles on public roads due to the complex road environment or policy restrictions. Therefore, this thesis proposes a self-driving delivery system which combines the mobile applications with the traffic simulation software. The system aims to simulate the process of the same-day delivery in urban areas. By this system, the self-driving technology development companies can test and adjust their path planning algorithm, vehicle deployments and the different system function before the self-driving product is official online. The mobile application is exploited to simulate the real usage situation and improve the user experience. In contrast with traditional home delivery service [3] which does not allow the parcel receiver to select the expected delivery time, the proposed application provides the real-time vehicle dispatching. This means the user, including sender and receiver can select the arrival time of trucks at any time so that the failure rate of parcel delivery can be declined. 
+
+The simulation system contains real-world road information, such as the longitude and latitude of the vehicle, the cycle time of traffic light, the different road types, and so on. The self-driving development companies can accomplish their expected function by these data. Besides, this thesis designs an interface and the data format of the data transmission. Thus, the mobile application can be easily integrated into the actual autonomous vehicles. By these advantages of this system, the self-driving vehicles can move seamlessly from the simulation to the real world. 
+
+The remainder of this thesis is organized as follows. Related work is discussed in Chapter 2. The system design, system functions and the usage scenarios are described in Chapter 3. Chapter 4 illustrated the implementation of this system and the simulation environment. Finally, Chapter 5 concludes the thesis and discusses the future work.
 
 
 
@@ -145,9 +172,9 @@ In this system, the SUMO server is response for receiving the user’s requests 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\textwidth]{./figures/F3-2_Flowchart.PNG}
-\caption{\large system Overview.}
+\caption{\large Flow chart of the delivery process.}
 \vspace{0.5cm}
-\label{Fig:system_Overview}
+\label{Fig:flow_chart}
 \end{figure}
 
 

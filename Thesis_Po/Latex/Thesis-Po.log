@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  11 JUL 2019 22:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  12 JUL 2019 04:50
 entering extended mode
 **./Thesis-Po.tex
 (Thesis-Po.tex
@@ -222,45 +222,59 @@ LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
 )
-\c@thm=\count115
-\c@lemma=\count116
-\c@defi=\count117
-\c@proposition=\count118
-\c@cor=\count119
-
-(Thesis-Po.aux
-
-LaTeX Warning: Label `Fig:system_Overview' multiply defined.
-
+("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption.sty"
+Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
+("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption3.sty
+"
+Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 64.
+\captionmargin=\dimen124
+\captionmargin@=\dimen125
+\captionwidth=\dimen126
+\caption@tempdima=\dimen127
+\caption@indent=\dimen128
+\caption@parindent=\dimen129
+\caption@hangindent=\dimen130
 )
+\c@caption@flags=\count115
+\c@ContinuedFloat=\count116
+Package caption Info: float package is loaded.
+Package caption Info: subfigure package is loaded.
+)
+\c@thm=\count117
+\c@lemma=\count118
+\c@defi=\count119
+\c@proposition=\count120
+\c@cor=\count121
+ (Thesis-Po.aux)
 \openout1 = `Thesis-Po.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
 
 ("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-pdf
 .mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count120
-\scratchdimen=\dimen124
+\scratchcounter=\count122
+\scratchdimen=\dimen131
 \scratchbox=\box31
-\nofMPsegments=\count121
-\nofMParguments=\count122
+\nofMPsegments=\count123
+\nofMParguments=\count124
 \everyMPshowfont=\toks29
-\MPscratchCnt=\count123
-\MPscratchDim=\dimen125
-\MPnumerator=\count124
-\makeMPintoPDFobject=\count125
+\MPscratchCnt=\count125
+\MPscratchDim=\dimen132
+\MPnumerator=\count126
+\makeMPintoPDFobject=\count127
 \everyMPtoPDFconversion=\toks30
 )
 ("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\epstopdf-ba
@@ -319,10 +333,13 @@ Package grfext Info: Graphics extension search list:
 (grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
-) [2
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+ [2
 
 {C:/Users/yen/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-[3] [4
+[3
 
 ] (Thesis-Po.toc
 LaTeX Font Info:    Try loading font information for U+lasy on input line 2.
@@ -344,107 +361,114 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout4 = `Thesis-Po.toc'.
 
 
-[5
+[4
 
 ] (Thesis-Po.lof)
 \tf@lof=\write5
 \openout5 = `Thesis-Po.lof'.
 
- [6
+ [5
 
 ]
 Chapter 1.
+<./figures/F1-a.PNG, id=19, 752.8125pt x 559.33969pt>
+File: ./figures/F1-a.PNG Graphic file (type png)
+<use ./figures/F1-a.PNG>
+Package pdftex.def Info: ./figures/F1-a.PNG  used on input line 96.
+(pdftex.def)             Requested size: 216.80806pt x 161.08629pt.
+<./figures/F1-b.PNG, id=22, 752.8125pt x 559.33969pt>
+File: ./figures/F1-b.PNG Graphic file (type png)
+<use ./figures/F1-b.PNG>
+Package pdftex.def Info: ./figures/F1-b.PNG  used on input line 101.
+(pdftex.def)             Requested size: 216.80806pt x 161.08629pt.
 [1
 
 
 
-]
+] [2 <./figures/F1-a.PNG> <./figures/F1-b.PNG>] [3]
 Chapter 2.
-[2
+[4
 
 ]
 Chapter 3.
-<./figures/F3-1_SystemOverview.PNG, id=29, 684.30656pt x 377.91188pt>
+<./figures/F3-1_SystemOverview.PNG, id=42, 684.30656pt x 377.91188pt>
 File: ./figures/F3-1_SystemOverview.PNG Graphic file (type png)
 <use ./figures/F3-1_SystemOverview.PNG>
 Package pdftex.def Info: ./figures/F3-1_SystemOverview.PNG  used on input line 
-110.
+137.
 (pdftex.def)             Requested size: 451.6875pt x 249.45143pt.
-[3
+[5
 
- <./figures/F3-1_SystemOverview.PNG>] [4] [5]
-<./figures/F3-2_Flowchart.PNG, id=41, 617.30624pt x 741.52031pt>
+ <./figures/F3-1_SystemOverview.PNG>] [6] [7]
+<./figures/F3-2_Flowchart.PNG, id=53, 617.30624pt x 741.52031pt>
 File: ./figures/F3-2_Flowchart.PNG Graphic file (type png)
 <use ./figures/F3-2_Flowchart.PNG>
-Package pdftex.def Info: ./figures/F3-2_Flowchart.PNG  used on input line 147.
+Package pdftex.def Info: ./figures/F3-2_Flowchart.PNG  used on input line 174.
 (pdftex.def)             Requested size: 451.6875pt x 542.5952pt.
- [6] [7 <./figures/F3-2_Flowchart.PNG>] [8] [9] [10] [11]
+ [8] [9 <./figures/F3-2_Flowchart.PNG>] [10] [11] [12] [13]
 Chapter 4.
-<./figures/F4-1_FCM.PNG, id=61, 584.1825pt x 392.96812pt>
+<./figures/F4-1_FCM.PNG, id=73, 584.1825pt x 392.96812pt>
 File: ./figures/F4-1_FCM.PNG Graphic file (type png)
 <use ./figures/F4-1_FCM.PNG>
-Package pdftex.def Info: ./figures/F4-1_FCM.PNG  used on input line 196.
+Package pdftex.def Info: ./figures/F4-1_FCM.PNG  used on input line 223.
 (pdftex.def)             Requested size: 451.6875pt x 303.85158pt.
-[12
+[14
 
-] [13 <./figures/F4-1_FCM.PNG>]
-<./figures/F4-2-d-AdministrativeDistrict.PNG, id=69, 275.52937pt x 496.10344pt>
+] [15 <./figures/F4-1_FCM.PNG>]
+<./figures/F4-2-d-AdministrativeDistrict.PNG, id=82, 275.52937pt x 496.10344pt>
 
 File: ./figures/F4-2-d-AdministrativeDistrict.PNG Graphic file (type png)
 <use ./figures/F4-2-d-AdministrativeDistrict.PNG>
 Package pdftex.def Info: ./figures/F4-2-d-AdministrativeDistrict.PNG  used on i
-nput line 220.
+nput line 247.
 (pdftex.def)             Requested size: 203.258pt x 365.99045pt.
-<./figures/F4-2-e-Localization.PNG, id=70, 259.7203pt x 434.37282pt>
+<./figures/F4-2-e-Localization.PNG, id=83, 259.7203pt x 434.37282pt>
 File: ./figures/F4-2-e-Localization.PNG Graphic file (type png)
 <use ./figures/F4-2-e-Localization.PNG>
 Package pdftex.def Info: ./figures/F4-2-e-Localization.PNG  used on input line 
-223.
+250.
 (pdftex.def)             Requested size: 203.258pt x 339.94281pt.
- [14] [15 <./figures/F4-2-d-AdministrativeDistrict.PNG> <./figures/F4-2-e-Local
-ization.PNG>] [16]
-<./figures/F4-3-SUMOMap.PNG, id=84, 577.40718pt x 420.82219pt>
+ [16] [17 <./figures/F4-2-d-AdministrativeDistrict.PNG> <./figures/F4-2-e-Local
+ization.PNG>] [18]
+<./figures/F4-3-SUMOMap.PNG, id=95, 577.40718pt x 420.82219pt>
 File: ./figures/F4-3-SUMOMap.PNG Graphic file (type png)
 <use ./figures/F4-3-SUMOMap.PNG>
-Package pdftex.def Info: ./figures/F4-3-SUMOMap.PNG  used on input line 251.
+Package pdftex.def Info: ./figures/F4-3-SUMOMap.PNG  used on input line 278.
 (pdftex.def)             Requested size: 451.6875pt x 329.20958pt.
- [17 <./figures/F4-3-SUMOMap.PNG>] [18] [19]
-Overfull \hbox (1.20755pt too wide) in paragraph at lines 276--277
+ [19 <./figures/F4-3-SUMOMap.PNG>] [20] [21]
+Overfull \hbox (1.20755pt too wide) in paragraph at lines 303--304
 \OT1/cmr/m/n/12 The database of the sys-tem is de-vel-oped with Mari-aDB 10.1.3
 2. Mari-aDB is a community-
  []
 
-[20]
+[22]
 Chapter 5.
-[21
-
-] [22]
-No file Thesis-Po.bbl.
 [23
 
-] (Thesis-Po.aux)
+] [24]
+No file Thesis-Po.bbl.
+[25
 
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+] (Thesis-Po.aux) ) 
 Here is how much of TeX's memory you used:
- 3404 strings out of 492895
- 46842 string characters out of 3124669
- 111922 words of memory out of 3000000
- 7222 multiletter control sequences out of 15000+200000
+ 4500 strings out of 492895
+ 66838 string characters out of 3124669
+ 132308 words of memory out of 3000000
+ 8310 multiletter control sequences out of 15000+200000
  11432 words of font info for 44 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,6n,27p,1098b,329s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmbx12.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmbxti10.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/yen/AppData/Local/Programs/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/yen/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/yen/AppData/
-Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb>
-Output written on Thesis-Po.pdf (28 pages, 530392 bytes).
+ 41i,7n,39p,1098b,368s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmbx12.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/yen/AppData/Local/Programs
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/yen/AppData/Loc
+al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/yen/A
+ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/U
+sers/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.
+pfb>
+Output written on Thesis-Po.pdf (29 pages, 660970 bytes).
 PDF statistics:
- 128 PDF objects out of 1000 (max. 8388607)
+ 139 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 53 words of extra memory for PDF output out of 10000 (max. 10000000)
 
