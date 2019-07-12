@@ -91,6 +91,14 @@ A.~Buchegger, K.~Lassnig, S.~Loigge, C.~M{\"{u}}hlbacher, and G.~Steinbauer,
   Conference on Intelligent Transportation Systems, Proceedings, ITSC}, vol.
   2018-November, pp. 2961--2967, 2018.
 
+\bibitem{Ulmer2019}
+\BIBentryALTinterwordspacing
+M.~W. Ulmer and S.~Streng, ``{Same-Day delivery with pickup stations and
+  autonomous vehicles},'' \emph{Computers and Operations Research}, vol. 108,
+  pp. 1--19, 2019. [Online]. Available:
+  \url{https://doi.org/10.1016/j.cor.2019.03.017}
+\BIBentrySTDinterwordspacing
+
 \bibitem{Kocsis2018}
 M.~Kocsis, J.~Buyer, N.~Submann, R.~Zollner, and G.~Mogan, ``{Autonomous
   Grocery Delivery Service in Urban Areas},'' \emph{Proceedings - 2017 IEEE
