@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  12 JUL 2019 13:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  12 JUL 2019 15:09
 entering extended mode
 **./Thesis-Po.tex
 (Thesis-Po.tex
@@ -414,7 +414,7 @@ Chapter 3.
 File: ./figures/F3-1_SystemOverview.PNG Graphic file (type png)
 <use ./figures/F3-1_SystemOverview.PNG>
 Package pdftex.def Info: ./figures/F3-1_SystemOverview.PNG  used on input line 
-148.
+149.
 (pdftex.def)             Requested size: 451.6875pt x 249.45143pt.
 [6
 
@@ -422,28 +422,28 @@ Package pdftex.def Info: ./figures/F3-1_SystemOverview.PNG  used on input line
 <./figures/F3-2_Flowchart.PNG, id=60, 617.30624pt x 741.52031pt>
 File: ./figures/F3-2_Flowchart.PNG Graphic file (type png)
 <use ./figures/F3-2_Flowchart.PNG>
-Package pdftex.def Info: ./figures/F3-2_Flowchart.PNG  used on input line 185.
+Package pdftex.def Info: ./figures/F3-2_Flowchart.PNG  used on input line 186.
 (pdftex.def)             Requested size: 451.6875pt x 542.5952pt.
  [9] [10 <./figures/F3-2_Flowchart.PNG>] [11]
 <./figures/Table3-1-UserTable.PNG, id=70, 490.08093pt x 234.1247pt>
 File: ./figures/Table3-1-UserTable.PNG Graphic file (type png)
 <use ./figures/Table3-1-UserTable.PNG>
 Package pdftex.def Info: ./figures/Table3-1-UserTable.PNG  used on input line 2
-16.
+17.
 (pdftex.def)             Requested size: 383.93712pt x 183.42032pt.
  [12]
 <./figures/Table3-2-CountyTable.PNG, id=74, 493.845pt x 87.32625pt>
 File: ./figures/Table3-2-CountyTable.PNG Graphic file (type png)
 <use ./figures/Table3-2-CountyTable.PNG>
 Package pdftex.def Info: ./figures/Table3-2-CountyTable.PNG  used on input line
- 228.
+ 229.
 (pdftex.def)             Requested size: 383.93712pt x 67.89034pt.
  [13 <./figures/Table3-1-UserTable.PNG>]
 <./figures/Table3-3-TownshipTable.PNG, id=78, 493.845pt x 97.11281pt>
 File: ./figures/Table3-3-TownshipTable.PNG Graphic file (type png)
 <use ./figures/Table3-3-TownshipTable.PNG>
 Package pdftex.def Info: ./figures/Table3-3-TownshipTable.PNG  used on input li
-ne 236.
+ne 237.
 (pdftex.def)             Requested size: 383.93712pt x 75.49873pt.
  [14 <./figures/Table3-2-CountyTable.PNG> <./figures/Table3-3-TownshipTable.PNG
 >]
@@ -451,14 +451,14 @@ ne 236.
 File: ./figures/Table3-4-OrderTable.PNG Graphic file (type png)
 <use ./figures/Table3-4-OrderTable.PNG>
 Package pdftex.def Info: ./figures/Table3-4-OrderTable.PNG  used on input line 
-250.
+251.
 (pdftex.def)             Requested size: 383.93712pt x 397.3926pt.
  [15 <./figures/Table3-4-OrderTable.PNG>]
 Chapter 4.
 <./figures/F4-1_FCM.PNG, id=87, 584.1825pt x 392.96812pt>
 File: ./figures/F4-1_FCM.PNG Graphic file (type png)
 <use ./figures/F4-1_FCM.PNG>
-Package pdftex.def Info: ./figures/F4-1_FCM.PNG  used on input line 268.
+Package pdftex.def Info: ./figures/F4-1_FCM.PNG  used on input line 269.
 (pdftex.def)             Requested size: 451.6875pt x 303.85158pt.
 [16
 
@@ -466,40 +466,40 @@ Package pdftex.def Info: ./figures/F4-1_FCM.PNG  used on input line 268.
 <./figures/F4-2-a-HomePage.PNG, id=95, 1445.4pt x 2890.8pt>
 File: ./figures/F4-2-a-HomePage.PNG Graphic file (type png)
 <use ./figures/F4-2-a-HomePage.PNG>
-Package pdftex.def Info: ./figures/F4-2-a-HomePage.PNG  used on input line 293.
+Package pdftex.def Info: ./figures/F4-2-a-HomePage.PNG  used on input line 294.
 
 (pdftex.def)             Requested size: 203.258pt x 406.47365pt.
 <./figures/F4-2-b-Login.PNG, id=96, 1445.4pt x 2890.8pt>
 File: ./figures/F4-2-b-Login.PNG Graphic file (type png)
 <use ./figures/F4-2-b-Login.PNG>
-Package pdftex.def Info: ./figures/F4-2-b-Login.PNG  used on input line 296.
+Package pdftex.def Info: ./figures/F4-2-b-Login.PNG  used on input line 297.
 (pdftex.def)             Requested size: 203.258pt x 406.47365pt.
  [18]
 <./figures/F4-3-Place_an_order.PNG, id=100, 1445.4pt x 2890.8pt>
 File: ./figures/F4-3-Place_an_order.PNG Graphic file (type png)
 <use ./figures/F4-3-Place_an_order.PNG>
 Package pdftex.def Info: ./figures/F4-3-Place_an_order.PNG  used on input line 
-306.
+307.
 (pdftex.def)             Requested size: 180.67456pt x 361.34912pt.
  [19 <./figures/F4-2-a-HomePage.PNG> <./figures/F4-2-b-Login.PNG>]
 <./figures/F4-4-a-CitySelection.PNG, id=104, 1445.4pt x 2890.8pt>
 File: ./figures/F4-4-a-CitySelection.PNG Graphic file (type png)
 <use ./figures/F4-4-a-CitySelection.PNG>
 Package pdftex.def Info: ./figures/F4-4-a-CitySelection.PNG  used on input line
- 321.
+ 322.
 (pdftex.def)             Requested size: 203.258pt x 406.47365pt.
 <./figures/F4-4-b-DistrictSelection.PNG, id=105, 1445.4pt x 2890.8pt>
 File: ./figures/F4-4-b-DistrictSelection.PNG Graphic file (type png)
 <use ./figures/F4-4-b-DistrictSelection.PNG>
 Package pdftex.def Info: ./figures/F4-4-b-DistrictSelection.PNG  used on input 
-line 324.
+line 325.
 (pdftex.def)             Requested size: 203.258pt x 406.47365pt.
  [20 <./figures/F4-3-Place_an_order.PNG>]
 <./figures/F4-5-Localization.PNG, id=110, 1445.4pt x 2890.8pt>
 File: ./figures/F4-5-Localization.PNG Graphic file (type png)
 <use ./figures/F4-5-Localization.PNG>
 Package pdftex.def Info: ./figures/F4-5-Localization.PNG  used on input line 33
-5.
+6.
 (pdftex.def)             Requested size: 180.67456pt x 361.34912pt.
  [21 <./figures/F4-4-a-CitySelection.PNG> <./figures/F4-4-b-DistrictSelection.P
 NG>]
@@ -507,13 +507,13 @@ NG>]
 File: ./figures/F4-6-a-Package_I_sent.PNG Graphic file (type png)
 <use ./figures/F4-6-a-Package_I_sent.PNG>
 Package pdftex.def Info: ./figures/F4-6-a-Package_I_sent.PNG  used on input lin
-e 349.
+e 350.
 (pdftex.def)             Requested size: 203.258pt x 406.48468pt.
 <./figures/F4-6-b-Package-I-received.PNG, id=115, 1084.05pt x 2168.1pt>
 File: ./figures/F4-6-b-Package-I-received.PNG Graphic file (type png)
 <use ./figures/F4-6-b-Package-I-received.PNG>
 Package pdftex.def Info: ./figures/F4-6-b-Package-I-received.PNG  used on input
- line 352.
+ line 353.
 (pdftex.def)             Requested size: 203.258pt x 406.48468pt.
 
 [22 <./figures/F4-5-Localization.PNG>]
@@ -521,7 +521,7 @@ Package pdftex.def Info: ./figures/F4-6-b-Package-I-received.PNG  used on input
 File: ./figures/F4-7-Details_package.PNG Graphic file (type png)
 <use ./figures/F4-7-Details_package.PNG>
 Package pdftex.def Info: ./figures/F4-7-Details_package.PNG  used on input line
- 362.
+ 363.
 (pdftex.def)             Requested size: 180.67456pt x 361.34912pt.
  [23 <./figures/F4-6-a-Package_I_sent.PNG> <./figures/F4-6-b-Package-I-received
 .PNG>]
@@ -529,81 +529,74 @@ Package pdftex.def Info: ./figures/F4-7-Details_package.PNG  used on input line
 File: ./figures/F4-8-ExamineOrders.PNG Graphic file (type png)
 <use ./figures/F4-8-ExamineOrders.PNG>
 Package pdftex.def Info: ./figures/F4-8-ExamineOrders.PNG  used on input line 3
-75.
+76.
 (pdftex.def)             Requested size: 180.67456pt x 361.34912pt.
  [24 <./figures/F4-7-Details_package.PNG>] [25 <./figures/F4-8-ExamineOrders.PN
 G>]
 <./figures/F4-9-SUMOMap.PNG, id=130, 577.40718pt x 420.82219pt>
 File: ./figures/F4-9-SUMOMap.PNG Graphic file (type png)
 <use ./figures/F4-9-SUMOMap.PNG>
-Package pdftex.def Info: ./figures/F4-9-SUMOMap.PNG  used on input line 395.
+Package pdftex.def Info: ./figures/F4-9-SUMOMap.PNG  used on input line 396.
 (pdftex.def)             Requested size: 451.6875pt x 329.20958pt.
  [26] [27 <./figures/F4-9-SUMOMap.PNG>]
 <./figures/F4-10-ChangeRoutes.PNG, id=139, 1043.39813pt x 371.13657pt>
 File: ./figures/F4-10-ChangeRoutes.PNG Graphic file (type png)
 <use ./figures/F4-10-ChangeRoutes.PNG>
 Package pdftex.def Info: ./figures/F4-10-ChangeRoutes.PNG  used on input line 4
-15.
+16.
 (pdftex.def)             Requested size: 451.6875pt x 160.66725pt.
  [28]
 <./figures/F4-11-Notification.PNG, id=143, 1445.4pt x 2890.8pt>
 File: ./figures/F4-11-Notification.PNG Graphic file (type png)
 <use ./figures/F4-11-Notification.PNG>
 Package pdftex.def Info: ./figures/F4-11-Notification.PNG  used on input line 4
-28.
+29.
 (pdftex.def)             Requested size: 180.67456pt x 361.34912pt.
  [29 <./figures/F4-10-ChangeRoutes.PNG>] [30 <./figures/F4-11-Notification.PNG>
 ]
-Overfull \hbox (1.20755pt too wide) in paragraph at lines 446--447
+Overfull \hbox (1.20755pt too wide) in paragraph at lines 447--448
 \OT1/cmr/m/n/12 The database of the sys-tem is de-vel-oped with Mari-aDB 10.1.3
 2. Mari-aDB is a community-
  []
 
 [31] [32]
 Chapter 5.
-
-LaTeX Warning: Citation `Savelsbergh2016' on page 33 undefined on input line 47
-7.
-
 [33
 
-]
+] [34] (Thesis-Po.bbl
+Underfull \hbox (badness 1038) in paragraph at lines 34--38
+[]\OT1/cmr/m/n/12 ``U.S. courier, ex-press and parcels mar-ket.'' [On-line]. Av
+ail-
+ []
 
-LaTeX Warning: Citation `Crainic2015' on page 34 undefined on input line 479.
+) [35
 
-
-LaTeX Warning: Citation `Habault2019' on page 34 undefined on input line 481.
-
-[34]
-No file Thesis-Po.bbl.
-[35
+] [36
 
 ] (Thesis-Po.aux)
-
-LaTeX Warning: There were undefined references.
-
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4588 strings out of 492895
- 69601 string characters out of 3124669
- 132507 words of memory out of 3000000
- 8384 multiletter control sequences out of 15000+200000
- 11432 words of font info for 44 fonts, out of 3000000 for 9000
+ 4607 strings out of 492895
+ 69951 string characters out of 3124669
+ 133538 words of memory out of 3000000
+ 8400 multiletter control sequences out of 15000+200000
+ 11779 words of font info for 45 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,7n,39p,1100b,368s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,7n,39p,1112b,370s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmbx12.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmbxti10.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts
 /type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/yen/AppData/Local/Programs/MiKTe
 X 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/yen/AppData/Local/Prog
 rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/yen/AppData/
-Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb>
-Output written on Thesis-Po.pdf (40 pages, 3741099 bytes).
+Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/yen
+/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on Thesis-Po.pdf (41 pages, 3759645 bytes).
 PDF statistics:
- 189 PDF objects out of 1000 (max. 8388607)
+ 196 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  123 words of extra memory for PDF output out of 10000 (max. 10000000)
 
