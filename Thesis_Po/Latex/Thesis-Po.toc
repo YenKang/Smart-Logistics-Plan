@@ -1,23 +1,23 @@
 \contentsline {heading}{Chapter}{ii}% 
 \contentsline {chapter}{\numberline {1}Introduction}{1}% 
 \contentsline {chapter}{\numberline {2}Related Work}{4}% 
-\contentsline {chapter}{\numberline {3}System Design}{5}% 
-\contentsline {section}{\numberline {3.1}\ignorespaces System Overview}{5}% 
-\contentsline {section}{\numberline {3.2}\ignorespaces Mobile Application}{6}% 
-\contentsline {subsection}{\numberline {3.2.1}\ignorespaces Registration and Login}{7}% 
-\contentsline {subsection}{\numberline {3.2.2}\ignorespaces Placing a Delivery Order}{7}% 
-\contentsline {subsection}{\numberline {3.2.3}\ignorespaces Tracking Established Orders}{8}% 
-\contentsline {section}{\numberline {3.3}\ignorespaces SUMO Server and SUMO Simulator}{8}% 
-\contentsline {section}{\numberline {3.4}\ignorespaces Back-End Server}{11}% 
-\contentsline {section}{\numberline {3.5}\ignorespaces Database}{12}% 
-\contentsline {chapter}{\numberline {4}System Implementation}{15}% 
-\contentsline {section}{\numberline {4.1}\ignorespaces Mobile Application}{15}% 
-\contentsline {section}{\numberline {4.2}\ignorespaces SUMO Server and Simulator}{25}% 
-\contentsline {subsection}{\numberline {4.2.1}\ignorespaces Simulation Environment Setup}{25}% 
-\contentsline {subsection}{\numberline {4.2.2}\ignorespaces Build the Socket Server}{27}% 
-\contentsline {section}{\numberline {4.3}\ignorespaces Back-end Sever}{30}% 
-\contentsline {section}{\numberline {4.4}\ignorespaces Database}{30}% 
-\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{32}% 
-\contentsline {section}{\numberline {5.1}\ignorespaces Conclusion}{32}% 
-\contentsline {section}{\numberline {5.2}\ignorespaces Future Work}{33}% 
-\contentsline {chapter}{Vita}{34}% 
+\contentsline {chapter}{\numberline {3}System Design}{6}% 
+\contentsline {section}{\numberline {3.1}\ignorespaces System Overview}{6}% 
+\contentsline {section}{\numberline {3.2}\ignorespaces Mobile Application}{7}% 
+\contentsline {subsection}{\numberline {3.2.1}\ignorespaces Registration and Login}{8}% 
+\contentsline {subsection}{\numberline {3.2.2}\ignorespaces Placing a Delivery Order}{8}% 
+\contentsline {subsection}{\numberline {3.2.3}\ignorespaces Tracking Established Orders}{9}% 
+\contentsline {section}{\numberline {3.3}\ignorespaces SUMO Server and SUMO Simulator}{9}% 
+\contentsline {section}{\numberline {3.4}\ignorespaces Back-End Server}{12}% 
+\contentsline {section}{\numberline {3.5}\ignorespaces Database}{13}% 
+\contentsline {chapter}{\numberline {4}System Implementation}{16}% 
+\contentsline {section}{\numberline {4.1}\ignorespaces Mobile Application}{16}% 
+\contentsline {section}{\numberline {4.2}\ignorespaces SUMO Server and Simulator}{26}% 
+\contentsline {subsection}{\numberline {4.2.1}\ignorespaces Simulation Environment Setup}{26}% 
+\contentsline {subsection}{\numberline {4.2.2}\ignorespaces Build the Socket Server}{28}% 
+\contentsline {section}{\numberline {4.3}\ignorespaces Back-end Sever}{31}% 
+\contentsline {section}{\numberline {4.4}\ignorespaces Database}{31}% 
+\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{33}% 
+\contentsline {section}{\numberline {5.1}\ignorespaces Conclusion}{33}% 
+\contentsline {section}{\numberline {5.2}\ignorespaces Future Work}{34}% 
+\contentsline {chapter}{Vita}{35}% 

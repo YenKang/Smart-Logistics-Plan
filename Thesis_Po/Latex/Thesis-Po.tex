@@ -54,7 +54,7 @@
 
 \begin{center}
 
-{\large  Po\vspace{0.2cm} \\ Institute of Computer and
+{\large Jyun-Ting Po\vspace{0.2cm} \\ Institute of Computer and
 Communication Engineering \vspace{0.2cm}\\ National Cheng Kung
 University \\ }
 
@@ -66,7 +66,7 @@ With the development of self-driving technology in the recent years, a lot of re
 The thesis simulated a real-time parcel delivery service in urban-scale areas, built a database, and establish the socket interface between the simulator and the mobile application. Besides, the service contains the whole delivery process, which includes the pick-up of the cargo and the unloading task of parcels. Finally, the simulation result showed the compatibility for the ordinary delivery applications and offered the flexibility to adjust different logistics planning algorithms.  
 }
 
-\emph{\textbf{Keywords}}---self-driving delivery, real-time, mobile application, parcel delivery service, traffic simulators
+\emph{\textbf{Keywords}}---self-driving, real-time, mobile application, parcel delivery service, traffic simulators
 
 \end{abstract}
 
@@ -126,11 +126,20 @@ The remainder of this thesis is organized as follows. Related work is discussed 
 \chapter{Related Work} \label{Chap:Related}
 %------------------------- Related Works -------------------------%
 
+According to Data Booklet of United Nations [4], the number of cities with at least 1 million citizens is 548 in 2018, and it will grow to 706 in 2030. As a result, city logistics are getting more attention. The goal of City logistic issues is to find efficient and effective ways to transport goods in urban areas. There are some studies discussing the current opportunities and challenges of city logistics. [5][6]
+ 
+Last mile is the delivery process that transport goods to the final destination within the city. Habault et al. presented a delivery management system architecture. [7] The system uses the data generated from the machine-learning mechanism to reduce the delivery travel time. Ewedairo et al. used a scenario thinking approach to identify the potential planning and transport systems attributes that would obstruct the last mile delivery. [8] It mentioned that the modes of transportation have great impact on delivery costs. Hochstenbach et al. introduced the design of an unmanned aerial vehicle (UAV) for autonomous parcel delivery. [9] Niels et al. presented a project in Munich, Germany, where the last mile package delivery is carried out by cargo bikes and eBikes. [10] GUO et al. presented a framework which exploits the underutilized capacity of crowdsourced public transportation systems (CPTS) such as the bus or the subway to perform the same-day parcel delivery. [11]
+
+Utilizing the self-driving vehicles to perform the parcel delivery is a novel and attractive research direction. Buchegger et al. proposed an autonomous transport vehicle which is capable of navigating in large-scale urban environments. [12] The vehicle in this study is based on a commercially available electric vehicle, and it had been adapted for autonomous operation. A new delivery framework for same-day delivery was proposed in [13]. The goods are delivered to a nearby pickup station so that it can alleviate many of the shortcomings that autonomous vehicles have. Kocsis et al. presented a service in smart cities for delivering grocery using autonomous vehicles in urban areas. [14] The autonomous vehicles in this study was developed using an electric golf cart by the same authors.
+
+
+Seth et al. presented a system named Similitude comprised of the SimMobility traffic simulator coupled with Android emulators and an optional network simulator (ns-3). [15] Compared to our system, Similitude focuses on the general transportation and it does not support the user interaction interface.
 
 
 
-\chapter{System Design}\label{Chap:Architecture}
-%-------- System Architecture--------%
+
+\chapter{System Design}\label{Chap:System_design}
+
 
 \section{System Overview}
 
