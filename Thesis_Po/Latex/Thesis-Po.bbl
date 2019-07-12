@@ -54,8 +54,7 @@ M.~Savelsbergh and T.~{Van Woensel}, ``{City Logistics: Challenges and
 
 \bibitem{Crainic2015}
 T.~G. Crainic, T.~Bekt, T.~G. Crainic, and T.~V. Woensel, ``{From Managing
-  Urban Freight to Smart City Logistics Networks From Managing Urban Freight to
-  Smart City Logistics Networks},'' no. May, 2015.
+  Urban Freight to Smart City Logistics Networks},'' no. May, 2015.
 
 \bibitem{Habault2019}
 G.~Habault, Y.~Taniguchi, and N.~Yamanaka, ``{Delivery Management System Based
@@ -80,5 +79,52 @@ T.~Niels, M.~T. Hof, and K.~Bogenberger, ``{Design and Operation of an Urban
   Electric Courier Cargo Bike System},'' \emph{IEEE Conference on Intelligent
   Transportation Systems, Proceedings, ITSC}, vol. 2018-November, no. November,
   pp. 2531--2537, 2018.
+
+\bibitem{Cheng2019}
+G.~Cheng, D.~Guo, J.~Shi, and Y.~Qin, ``{Planning City-Wide Package
+  Distribution Schemes Using Crowdsourced Public Transportation Systems},''
+  \emph{IEEE Access}, vol.~7, pp. 1234--1246, 2019.
+
+\bibitem{Buchegger2018}
+A.~Buchegger, K.~Lassnig, S.~Loigge, C.~M{\"{u}}hlbacher, and G.~Steinbauer,
+  ``{An Autonomous Vehicle for Parcel Delivery in Urban Areas},'' \emph{IEEE
+  Conference on Intelligent Transportation Systems, Proceedings, ITSC}, vol.
+  2018-November, pp. 2961--2967, 2018.
+
+\bibitem{Kocsis2018}
+M.~Kocsis, J.~Buyer, N.~Submann, R.~Zollner, and G.~Mogan, ``{Autonomous
+  Grocery Delivery Service in Urban Areas},'' \emph{Proceedings - 2017 IEEE
+  19th Intl Conference on High Performance Computing and Communications, HPCC
+  2017, 2017 IEEE 15th Intl Conference on Smart City, SmartCity 2017 and 2017
+  IEEE 3rd Intl Conference on Data Science and Systems, DSS 2017}, vol.
+  2018-January, pp. 186--191, 2018.
+
+\bibitem{Hetu2014}
+S.~N. Hetu, V.~S. Hamishagi, and L.~S. Peh, ``{Similitude: Interfacing a
+  traffic simulator and network simulator with emulated android clients},''
+  \emph{IEEE Vehicular Technology Conference}, pp. 1--7, 2014.
+
+\bibitem{SmartphoneOS}
+\BIBentryALTinterwordspacing
+``{Worldwide Smartphone Shipment OS Market Share Forecase}.'' [Online].
+  Available:
+  \url{https://www.statista.com/topics/4063/courier-express-and-parcels-cep-market-in-the-united-states/,
+  2019.}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Krajzewicz2007}
+D.~Krajzewicz and C.~Rossel, ``{Simulation of urban mobility (SUMO)},''
+  \emph{Centre for Applied Informatics (ZAIK) and the Institute of {\ldots}},
+  pp. 1--35, 2007.
+
+\bibitem{Fischer}
+S.~Fischer, J.-p. Hubaux, A.~Wegener, M.~Pi, M.~Raya, and H.~Hellbr, ``{TraCI:
+  An Interface for Coupling Road Traffic and Network Simulators},''
+  \emph{Proceedings of the 11th Communications and Networking Simulation
+  Symposium}, pp. 155--163, 2008.
+
+\bibitem{Haklay2008}
+M.~Haklay and P.~Weber, ``{OpenStreet map: User-generated street maps},''
+  \emph{IEEE Pervasive Computing}, vol.~7, no.~4, pp. 12--18, 2008.
 
 \end{thebibliography}
