@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  12 JUL 2019 11:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  12 JUL 2019 13:38
 entering extended mode
 **./Thesis-Po.tex
 (Thesis-Po.tex
@@ -561,22 +561,36 @@ Overfull \hbox (1.20755pt too wide) in paragraph at lines 446--447
 
 [31] [32]
 Chapter 5.
+
+LaTeX Warning: Citation `Savelsbergh2016' on page 33 undefined on input line 47
+7.
+
 [33
 
-] [34]
+]
+
+LaTeX Warning: Citation `Crainic2015' on page 34 undefined on input line 479.
+
+
+LaTeX Warning: Citation `Habault2019' on page 34 undefined on input line 481.
+
+[34]
 No file Thesis-Po.bbl.
 [35
 
 ] (Thesis-Po.aux)
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4585 strings out of 492895
- 69558 string characters out of 3124669
+ 4588 strings out of 492895
+ 69601 string characters out of 3124669
  132507 words of memory out of 3000000
- 8381 multiletter control sequences out of 15000+200000
+ 8384 multiletter control sequences out of 15000+200000
  11432 words of font info for 44 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,7n,39p,1100b,368s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -587,7 +601,7 @@ m/cmbx12.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
 X 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/yen/AppData/Local/Prog
 rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/yen/AppData/
 Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb>
-Output written on Thesis-Po.pdf (40 pages, 3740796 bytes).
+Output written on Thesis-Po.pdf (40 pages, 3741099 bytes).
 PDF statistics:
  189 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
