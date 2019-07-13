@@ -31,11 +31,11 @@
 \contentsline {section}{\numberline {7.1}\ignorespaces Simulation Setting}{33}% 
 \contentsline {subsection}{\numberline {7.1.1}\ignorespaces Simulator}{33}% 
 \contentsline {subsection}{\numberline {7.1.2}\ignorespaces Road Network}{33}% 
-\contentsline {subsection}{\numberline {7.1.3}\ignorespaces Parameters}{36}% 
-\contentsline {subsection}{\numberline {7.1.4}\ignorespaces Average Vehicle Speed Estimation}{38}% 
-\contentsline {section}{\numberline {7.2}\ignorespaces Simulation Result}{39}% 
-\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{44}% 
-\contentsline {section}{\numberline {8.1}\ignorespaces Conclusion}{44}% 
-\contentsline {section}{\numberline {8.2}\ignorespaces Future Work}{45}% 
-\contentsline {chapter}{References}{47}% 
-\contentsline {chapter}{Vita}{49}% 
+\contentsline {subsection}{\numberline {7.1.3}\ignorespaces Parameters}{35}% 
+\contentsline {subsection}{\numberline {7.1.4}\ignorespaces Average Vehicle Speed Estimation}{36}% 
+\contentsline {section}{\numberline {7.2}\ignorespaces Simulation Result}{37}% 
+\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{42}% 
+\contentsline {section}{\numberline {8.1}\ignorespaces Conclusion}{42}% 
+\contentsline {section}{\numberline {8.2}\ignorespaces Future Work}{43}% 
+\contentsline {chapter}{References}{45}% 
+\contentsline {chapter}{Vita}{47}% 

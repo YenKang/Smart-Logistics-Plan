@@ -552,67 +552,79 @@ The SUMO simulator is used for running the parcel delivery simulation [12]. “S
 
 \subsection{Road Network}
 
-The dataset, which was acquired from OpenStreetMap \cite{Haklay2008} , uses the road network of part of Tainan, which is the south of Taiwan. The region of the selected road contains the partial Tainan East District, Tainan West Central District, partial Tainan North District, partial Tainan South District, and partial Tainan Anping District.
+Figure 7.1 shows the road network on OpenStreetMap.
+The road dataset, which was acquired from OpenStreetMap \cite{Haklay2008}, uses the road network of part of Tainan, which is the south of Taiwan. The region of the selected road contains the partial Tainan East District, Tainan West Central District, partial Tainan North District, partial Tainan South District, Yongkang District, and partial Tainan Anping District.
 
-The road network, which is pruned by estimating unreachable streets and roads for a truck, contains 25069 roads segments, and 6785 junctions with approximately $50km^{2}$ in the downtown of Tainan.
+
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.0\textwidth]{./Thesis_figures/F7-1_Openstreetmap.PNG}
+\includegraphics[width=0.9\textwidth]{./Thesis_figures/F7-1_Openstreetmap.PNG}
 \caption{\large Downtown area of Tainan in OpenStreetMap.}
 \vspace{0.5cm}
 \label{Fig:DowntownArea_in_OpenStreetMap.}
 \end{figure}
 
-
-\begin{itemize}
-\item
-Figure 7.1 shows the road network on OpenStreetMap.
-
-\item
-Figure 7.2 illustrates the road network of truck passable segments on SUMO Map.
-
-\item
-Figure 7.3 shows the selected road network on Google Map.
-
-\end{itemize}
-
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.0\textwidth]{./Thesis_figures/F7-2_SUMOMap.PNG}
+\includegraphics[width=0.7\textwidth]{./Thesis_figures/F7-2_SUMOMap.PNG}
 \caption{\large  Service region of the experiment on SUMO.}
 \vspace{0.5cm}
 \label{Fig:SUMOMap}
 \end{figure}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=1.0\textwidth]{./Thesis_figures/F7-3_GoogleMap.PNG}
-\caption{\large Service region of the experiment on Google Map.}
-\vspace{0.5cm}
-\label{Fig:GoogleMap}
-\end{figure}
+After cleaning the road network on OpenStreetMap, the SUMO generates the SUMO map, which is the the road network of truck passable segments in Figure 7.2.
+
+The road network, which is pruned by estimating unreachable streets and roads for a truck, contains 25069 roads segments, and 6785 junctions with approximately \textbf{$50km^{2}$   }in the downtown of Tainan.
+
+
+
 
 \subsection{Parameters}
 Parameters of the simulation are showed in Table 7.1. Note that the number of trucks is three from the simulation time $T_{start}$ to $T_{end}$. 
-Then, the maximum speed of truck is 18 km/hr, and the range of speed limit on each lane is 10-100 km/hr. It is noteworthy that trucks will not exceed the speed limit on each lane even the truck has a higher maximum speed. Besides, a truck has nine boxes which are grouped by small size, medium size, and large size. The capacity of each box size is three. Then, the loading process time is five minutes, and the unloading process time is five minutes as well. Finally, when the SUMO server counts the travel time of the vehicle, which is equal to the driving distance divided by the estimated average vehicle speed. Thus, the estimated average vehicle speed is 14.4 km/hr.
+Then, the maximum speed of truck is 18 km/hr, and the range of speed limit on each lane is 10-100 km/hr. It is noteworthy that trucks will not exceed the speed limit on each lane even the truck has a higher maximum speed. Besides, a truck has \textbf{nine boxes} which are grouped by small size, medium size, and large size. \textbf{The capacity of each box size is three}. 
+Then, the loading process period is five minutes, and \textbf{the unloading process period is five minutes} as well. 
 
-\begin{figure}[H]
+Finally, when the SUMO server counts the travel time of the vehicle, which is equal to the driving distance divided by the estimated average vehicle speed. Thus, the estimated average vehicle speed is \textbf{13.68} km/hr.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}
+\large
 \centering
-\includegraphics[width=1.0\textwidth]{./Thesis_figures/F7-4_parameters.PNG}
-\caption{\large Parameters of simulation.}
-\vspace{0.5cm}
-\label{Fig:Parameters_of_Simulation}
-\end{figure}
+\caption{Parameters of Simulation}
+\begin{tabular}{|c|l|r|} %l(left)居左显示 r(right)居右显示 c居中显示
+\hline 
+\textbf{Parameters}&\textbf{Value}\\ 
+\hline  
+Simulation area & 50.07 $km^{2}$ \\
+\hline
+The number of junctions & 6785\\
+\hline 
+The number of roads & 25069\\
+\hline 
+$V_{max}$& 5.0 m/s (18 km/hr) \\
+\hline 
+Average speed of truck & 3.8 m/s (13.68 km/hr)\\
+\hline 
+Simulation period & 09:00~15:00 (6 hours)\\
+
+\hline
+ 
+\end{tabular}
+
+\end{table}
 
 \subsection{Average Vehicle Speed Estimation}
 
 As illustrated in Figure 7.5, the horizontal axis represents the different routes in Tainan downtown, and the vertical axis shows the vehicle's speed. Take the route 1 as an example, the route1 starts from Anping Fort to the Taiwan Tainan District Court, and the driving distance is 2.9 kilometers. In this case, the blue line represents the maximum speed of truck in SUMO, and the green line indicates the average vehicle speed in Google Map, and the orange line is real average vehicle speed in SUMO. Thus, according to the seven cases in this figure, to avoid the delay in delivery, the study sets estimated average vehicle speed to \textbf{"3.80"} m/s (13.68 km/hr).
 
 
-\begin{figure}[H]
+\begin{figure}[t]
 \centering
-\includegraphics[width=1.14\textwidth]{./Thesis_figures/F7-5_speedEstimation.PNG}
+\includegraphics[width=1.0\textwidth]{./Thesis_figures/F7-5_speedEstimation.PNG}
 \caption{\large Average vehicle speed estimation.}
 \vspace{0.5cm}
 \label{Fig:Average_vehicleSpeedEstimation}

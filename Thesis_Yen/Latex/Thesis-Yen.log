@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  13 JUL 2019 21:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  13 JUL 2019 22:28
 entering extended mode
 **./Thesis-Yen.tex
 (Thesis-Yen.tex
@@ -546,8 +546,8 @@ Chapter 7.
 File: ./Thesis_figures/F7-1_Openstreetmap.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-1_Openstreetmap.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-1_Openstreetmap.PNG  used on input
- line 561.
-(pdftex.def)             Requested size: 451.6875pt x 229.04117pt.
+ line 562.
+(pdftex.def)             Requested size: 406.51599pt x 206.13705pt.
 [33
 
 ]
@@ -555,103 +555,84 @@ Package pdftex.def Info: ./Thesis_figures/F7-1_Openstreetmap.PNG  used on input
 File: ./Thesis_figures/F7-2_SUMOMap.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-2_SUMOMap.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-2_SUMOMap.PNG  used on input line 
-582.
-(pdftex.def)             Requested size: 451.6875pt x 359.81773pt.
- [34 <./Thesis_figures/F7-1_Openstreetmap.PNG>]
-<./Thesis_figures/F7-3_GoogleMap.PNG, id=175, 391.13696pt x 372.09283pt>
-File: ./Thesis_figures/F7-3_GoogleMap.PNG Graphic file (type png)
-<use ./Thesis_figures/F7-3_GoogleMap.PNG>
-Package pdftex.def Info: ./Thesis_figures/F7-3_GoogleMap.PNG  used on input lin
-e 590.
-(pdftex.def)             Requested size: 451.6875pt x 429.70325pt.
- [35 <./Thesis_figures/F7-2_SUMOMap.PNG>] [36 <./Thesis_figures/F7-3_GoogleMap.
-PNG>]
-<./Thesis_figures/F7-4_parameters.PNG, id=185, 708.39656pt x 476.53032pt>
-File: ./Thesis_figures/F7-4_parameters.PNG Graphic file (type png)
-<use ./Thesis_figures/F7-4_parameters.PNG>
-Package pdftex.def Info: ./Thesis_figures/F7-4_parameters.PNG  used on input li
-ne 602.
-(pdftex.def)             Requested size: 451.6875pt x 303.85132pt.
- [37 <./Thesis_figures/F7-4_parameters.PNG>]
-<./Thesis_figures/F7-5_speedEstimation.PNG, id=191, 894.7026pt x 456.2646pt>
+570.
+(pdftex.def)             Requested size: 316.17987pt x 251.86955pt.
+ [34 <./Thesis_figures/F7-1_Openstreetmap.PNG> <./Thesis_figures/F7-2_SUMOMap.P
+NG>] [35]
+<./Thesis_figures/F7-5_speedEstimation.PNG, id=180, 741.52031pt x 383.93437pt>
 File: ./Thesis_figures/F7-5_speedEstimation.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-5_speedEstimation.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-5_speedEstimation.PNG  used on inp
-ut line 615.
-(pdftex.def)             Requested size: 514.92346pt x 262.59378pt.
-
-Overfull \hbox (63.23596pt too wide) in paragraph at lines 615--616
- [][] 
- []
-
-[38 <./Thesis_figures/F7-5_speedEstimation.PNG>]
-<./Thesis_figures/F7-6_initialization.PNG, id=196, 1018.55531pt x 447.17062pt>
+ut line 627.
+(pdftex.def)             Requested size: 451.6875pt x 233.87155pt.
+ [36 <./Thesis_figures/F7-5_speedEstimation.PNG>]
+<./Thesis_figures/F7-6_initialization.PNG, id=185, 1018.55531pt x 447.17062pt>
 File: ./Thesis_figures/F7-6_initialization.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-6_initialization.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-6_initialization.PNG  used on inpu
-t line 628.
+t line 640.
 (pdftex.def)             Requested size: 505.88779pt x 222.09729pt.
 
-Overfull \hbox (54.20029pt too wide) in paragraph at lines 628--629
+Overfull \hbox (54.20029pt too wide) in paragraph at lines 640--641
  [][] 
  []
 
-[39 <./Thesis_figures/F7-6_initialization.PNG>]
-<./Thesis_figures/F7-7_senderRequest.PNG, id=201, 1043.39813pt x 371.13657pt>
+[37 <./Thesis_figures/F7-6_initialization.PNG>]
+<./Thesis_figures/F7-7_senderRequest.PNG, id=191, 1043.39813pt x 371.13657pt>
 File: ./Thesis_figures/F7-7_senderRequest.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-7_senderRequest.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-7_senderRequest.PNG  used on input
- line 639.
+ line 651.
 (pdftex.def)             Requested size: 505.88779pt x 179.94438pt.
 
-Overfull \hbox (54.20029pt too wide) in paragraph at lines 639--640
+Overfull \hbox (54.20029pt too wide) in paragraph at lines 651--652
  [][] 
  []
 
-<./Thesis_figures/F7-8_loadingProcess.PNG, id=202, 928.97063pt x 572.89032pt>
+<./Thesis_figures/F7-8_loadingProcess.PNG, id=192, 928.97063pt x 572.89032pt>
 File: ./Thesis_figures/F7-8_loadingProcess.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-8_loadingProcess.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-8_loadingProcess.PNG  used on inpu
-t line 650.
+t line 662.
 (pdftex.def)             Requested size: 505.88779pt x 311.98738pt.
-
-Overfull \hbox (54.20029pt too wide) in paragraph at lines 650--651
- [][] 
- []
-
-[40 <./Thesis_figures/F7-7_senderRequest.PNG>]
-<./Thesis_figures/F7-9_receiverRequest.PNG, id=207, 995.21812pt x 457.71pt>
-File: ./Thesis_figures/F7-9_receiverRequest.PNG Graphic file (type png)
-<use ./Thesis_figures/F7-9_receiverRequest.PNG>
-Package pdftex.def Info: ./Thesis_figures/F7-9_receiverRequest.PNG  used on inp
-ut line 662.
-(pdftex.def)             Requested size: 505.88779pt x 232.66776pt.
 
 Overfull \hbox (54.20029pt too wide) in paragraph at lines 662--663
  [][] 
  []
 
-[41 <./Thesis_figures/F7-8_loadingProcess.PNG>]
-<./Thesis_figures/F7-10_unloadingProcess.PNG, id=212, 1254.93843pt x 715.17188p
+[38 <./Thesis_figures/F7-7_senderRequest.PNG>]
+<./Thesis_figures/F7-9_receiverRequest.PNG, id=197, 995.21812pt x 457.71pt>
+File: ./Thesis_figures/F7-9_receiverRequest.PNG Graphic file (type png)
+<use ./Thesis_figures/F7-9_receiverRequest.PNG>
+Package pdftex.def Info: ./Thesis_figures/F7-9_receiverRequest.PNG  used on inp
+ut line 674.
+(pdftex.def)             Requested size: 505.88779pt x 232.66776pt.
+
+Overfull \hbox (54.20029pt too wide) in paragraph at lines 674--675
+ [][] 
+ []
+
+[39 <./Thesis_figures/F7-8_loadingProcess.PNG>]
+<./Thesis_figures/F7-10_unloadingProcess.PNG, id=202, 1254.93843pt x 715.17188p
 t>
 File: ./Thesis_figures/F7-10_unloadingProcess.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-10_unloadingProcess.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-10_unloadingProcess.PNG  used on i
-nput line 673.
+nput line 685.
 (pdftex.def)             Requested size: 505.88779pt x 288.30077pt.
 
-Overfull \hbox (54.20029pt too wide) in paragraph at lines 673--674
+Overfull \hbox (54.20029pt too wide) in paragraph at lines 685--686
  [][] 
  []
 
-[42 <./Thesis_figures/F7-9_receiverRequest.PNG>] [43 <./Thesis_figures/F7-10_un
+[40 <./Thesis_figures/F7-9_receiverRequest.PNG>] [41 <./Thesis_figures/F7-10_un
 loadingProcess.PNG>]
 Chapter 8.
-[44
+[42
 
-] [45] [46] (Thesis-Yen.bbl [47
+] [43] [44] (Thesis-Yen.bbl [45
 
-]) [48] [49
+]) [46] [47
 
 ] (Thesis-Yen.aux)
 
@@ -659,13 +640,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3588 strings out of 492895
- 53601 string characters out of 3124669
- 114225 words of memory out of 3000000
- 7377 multiletter control sequences out of 15000+200000
+ 3577 strings out of 492895
+ 53211 string characters out of 3124669
+ 114202 words of memory out of 3000000
+ 7368 multiletter control sequences out of 15000+200000
  11779 words of font info for 45 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,6n,27p,874b,296s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,9n,27p,874b,298s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmbx12.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmbxti10.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts
@@ -677,9 +658,9 @@ n/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:
 /Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
 y10.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmti12.pfb>
-Output written on Thesis-Yen.pdf (55 pages, 5939567 bytes).
+Output written on Thesis-Yen.pdf (53 pages, 5334680 bytes).
 PDF statistics:
- 272 PDF objects out of 1000 (max. 8388607)
+ 261 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 146 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 136 words of extra memory for PDF output out of 10000 (max. 10000000)
 
