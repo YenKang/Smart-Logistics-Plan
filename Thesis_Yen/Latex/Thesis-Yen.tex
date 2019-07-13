@@ -619,12 +619,12 @@ Simulation period & 09:00~15:00 (6 hours)\\
 
 \subsection{Average Vehicle Speed Estimation}
 
-As illustrated in Figure 7.5, the horizontal axis represents the different routes in Tainan downtown, and the vertical axis shows the vehicle's speed. Take the route 1 as an example, the route1 starts from Anping Fort to the Taiwan Tainan District Court, and the driving distance is 2.9 kilometers. In this case, the blue line represents the maximum speed of truck in SUMO, and the green line indicates the average vehicle speed in Google Map, and the orange line is real average vehicle speed in SUMO. Thus, according to the seven cases in this figure, to avoid the delay in delivery, the study sets estimated average vehicle speed to \textbf{"3.80"} m/s (13.68 km/hr).
+As illustrated in Figure 7.3, the horizontal axis represents the different routes in Tainan downtown, and the vertical axis shows the vehicle's speed. Take the route 1 as an example, the route1 starts from Anping Fort to the Taiwan Tainan District Court, and the driving distance is 2.9 kilometers. In this case, the blue line represents the maximum speed of truck in SUMO, and the green line indicates the average vehicle speed in Google Map, and the orange line is real average vehicle speed in SUMO. Thus, according to the seven cases in this figure, to avoid the delay in delivery, the study sets estimated average vehicle speed to \textbf{"3.80"} m/s (13.68 km/hr).
 
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=1.0\textwidth]{./Thesis_figures/F7-5_speedEstimation.PNG}
+\includegraphics[width=1.0\textwidth]{./Thesis_figures/F7-3_speedEstimation.PNG}
 \caption{\large Average vehicle speed estimation.}
 \vspace{0.5cm}
 \label{Fig:Average_vehicleSpeedEstimation}
@@ -633,60 +633,69 @@ As illustrated in Figure 7.5, the horizontal axis represents the different route
 \section{Simulation Result}
 It this section, there are five stages of simulation results, which includes simulation initialization, the sender’s request insertion, the loading process, the receiver’s request, and the unloading process.
 
-As illustrated in Figure 7.6, the picture shows the simulation initialization without any request insertion. According to the time schedule in the left side of the Figure, each vehicle has different column color, which indicates the distinct routes. Take the vehicle 2 as an example, the system arranges blue route with one task in the right side of the Figure. Thus, the vehicle 2 would arrive to the Durban Department Store before 11:00 AM, and stay in the destination until 11:10 AM.
-
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.12\textwidth]{./Thesis_figures/F7-6_initialization.PNG}
+\includegraphics[width=1.0\textwidth]{./Thesis_figures/F7-4_initialization.PNG}
 \caption{\large Initialization of Simulation.}
 \vspace{0.5cm}
 \label{Fig:Initialization_of_Simulation}
 \end{figure}
 
-As illustrated in Figure 7.7, the figure shows how the original route changes after receiving the sender’s request.
-The left side of graph shows that when the simulation time is 1203 seconds, which means 09:20:03, and the user wants to pick 09:30 as the expected sender’s arrival time. Then, the vehicle 2 follows the yellow route. However, at the time of 1218 seconds, which means 09:20:18, the vehicle 2 replaces original blue route with yellow route and would stop at Hayashi Department Store until 09:40 AM.
+Figure 7.4 shows the simulation initialization without any request insertion. According to the time schedule in the left side of the Figure, each vehicle has different column color, which indicates the distinct routes. Take the vehicle 2 as an example, the system arranges the blue route with one task in the right side of the Figure. Thus, the vehicle 2 would arrive to the \textbf{Durban Department Store} before 11:00 AM, and stay in the destination until 11:10 AM.
+
+
+
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.12\textwidth]{./Thesis_figures/F7-7_senderRequest.PNG}
+\includegraphics[width=1.0\textwidth]{./Thesis_figures/F7-5_senderRequest.PNG}
 \caption{\large The Sender’s Request Insertion in simulation.}
 \vspace{0.5cm}
 \label{Fig:sender_request}
 \end{figure}
 
+Figure 7.5 illustrates how the original route changes after receiving the sender’s request.
+The left side of graph shows that when the simulation time is 1203 seconds, which means 09:20:03, and the user wants to pick 09:30 as the expected sender’s arrival time. Then, the vehicle 2 follows the yellow route. 
+However, at the time of 1218 seconds, which means 09:20:18, the vehicle 2 replaces original blue route with yellow route and would stop at Hayashi Department Store until 09:40 AM.
 
-As illustrated in Figure 7.8, the receiver’s phone in the left side of the figure gets the notification of finishing loading process at sender’s address in 09:35. The box index number “211” has the value of one, which means that the parcel exists in the vehicle 2. Thus, the receiver can start to select the expected arrival time of the parcel.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.12\textwidth]{./Thesis_figures/F7-8_loadingProcess.PNG}
+\includegraphics[width=1.0\textwidth]{./Thesis_figures/F7-6_loadingProcess.PNG}
 \caption{\large The loading process at the sender’s sddress in simulation.}
 \vspace{0.5cm}
 \label{Fig:LoadingProcess}
 \end{figure}
 
+The receiver’s phone in the left side of Figure 7.6 gets \textbf{the notification of finishing loading process at sender’s address at 09:35.} The box index number “211” has the value of one, which means that the parcel exists in the vehicle 2. 
+Thus, the receiver can start to select the expected arrival time of the parcel.
 
-As illustrated in Figure 7.9, the left side of the figure shows that at the simulation time of 2104 seconds, which means 09:35:04, the receiver selects 10:00 AM as the arrival time. 
-Moreover, at 09:36:16, the vehicle 2 replaces the original blue route with the yellow route after inserting the receiver’s request. This route in right side of the figure shows that the vehicle 2 would stop at the entrance of Kuang-Fu campus in National Cheng Kung University in 10:00.
+
+
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.12\textwidth]{./Thesis_figures/F7-9_receiverRequest.PNG}
+\includegraphics[width=1.0\textwidth]{./Thesis_figures/F7-7_receiverRequest.PNG}
 \caption{\large The receiver’s request insertion in simulation.}
 \vspace{0.5cm}
 
 \label{Fig:Receiver_request}
 \end{figure}
 
-As illustrated in Figure 7.10, the receiver receives the arriving notification of the parcel at 10:00 AM. Then, at 10:07:29, the vehicle 2 finishes the unloading process and the parameters of box also changes. Besides, the vehicle 2 still has to stay in receiver’s address until 10:10 AM.
+The left side of Figure 7.7 illustrates that at the simulation time of 2104 seconds, which means 09:35:04. At the same time, the receiver selects 10:00 AM as the expected arrival time of the parcel. Moreover, at 09:36:16, the vehicle 2 replaces the original blue route with the yellow route after inserting the receiver’s request. This route in right side of the figure demonstrates that the vehicle 2 would stop at the entrance of Kuang-Fu campus in National Cheng Kung University at 10:00.
+
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.12\textwidth]{./Thesis_figures/F7-10_unloadingProcess.PNG}
+\includegraphics[width=1.0\textwidth]{./Thesis_figures/F7-8_unloadingProcess.PNG}
 \caption{\large The unloading process at the receiver’s address in simulation.}
 \vspace{0.5cm}
 \label{Fig:unloading_request}
 \end{figure}
+
+
+As displayed in Figure 7.8, the receiver receives the arriving notification of the parcel at 10:00 AM. Then, at 10:07:29, the vehicle 2 finishes the unloading process and the parameters of box also changes. Besides, the vehicle 2 still has to stay in receiver’s address until 10:10 AM.
+
 
 
 
@@ -705,9 +714,9 @@ As illustrated in Figure 7.10, the receiver receives the arriving notification o
 %------------------------- Conclusion -------------------------%
 
 \section{Conclusion}
-The thesis implemented a vehicle dispatching and monitoring system to simulate the parcel delivery process. In this system, the thesis used the commands of Traffic Control Interface (TraCI) to manipulate vehicle’s behavior, and retrieve the vehicle’s values in SUMO simulator. As the system received the delivery order request from Android client, the system would use dispatching mechanism to judge whether this order can be established successfully or not. If there is no vehicle that can serve this request, the user would pick their box size or select the other arrival time of the package, and submit the order again. In contrast, as the order is established, the system would arrange the routes via the time schedule and change the container’s value. With this schedule, the system can deal with the delivery order request more orderly. 
+The thesis implemented a vehicle dispatching and monitoring system to simulate the parcel delivery process. The system uses the commands of Traffic Control Interface (TraCI) to manipulate vehicle’s behavior, and retrieve the vehicle’s values in SUMO simulator. As the system receives the delivery order request from Android client, the system will use dispatching mechanism to judge whether this order can be established successfully or not. If there is no vehicle that can serve the request, the user will pick their box size or select the other arrival time of the package, and submit the order again. In contrast, as the order is established, the system will arrange the routes via the time schedule and change the container’s value. With this schedule, the system can deal with the delivery order request more orderly. 
 
-Besides, the system would set the parking duration to simulate the loading and unloading process when the vehicle arrives to the destination. As a result, the users can have enough time to interact with the truck in simulator. 
+Besides, the system can adjust the parking duration to simulate the loading and unloading process when the vehicle arrives to the destination. As a result, the users can have enough time to interact with the truck. 
 
 Finally, the thesis used three trucks and nine containers to simulate the delivery process including sender’s scenario and receiver’s scenario in the downtown area of Tainan. By using the vehicle dispatching and monitoring system, the administrator can arrange the route dynamically and track the vehicle’s movement immediately, and monitor the simulation of the parcel delivery process.
 
@@ -722,18 +731,15 @@ There are some issues that should be discussed to complete the vehicle dispatchi
 
 
 \item
-\textbf{Scalability}: So far the system only contains three trucks in the downtown area of Tainan, whose area is $50km^{2}$. Thus, in the future the system would be used in larger map and distribute more trucks into different areas according to the quantity of parcels. Besides, In the dispatch mechanism, the system current empirical time scheduling method to filter the suitable order. However, in the future the system should have the ability to implement different routing algorithms to schedule tasks on the same simulation platform.
+\textbf{Scalability}: The system currently contains three trucks in the downtown area of Tainan, whose area is $50km^{2}$. Thus, in the future the system would be used in larger map and distribute more trucks into different areas according to the quantity of parcels. Besides, in the dispatch mechanism, the system current empirical time scheduling method to filter the suitable order. However, in the future the system should have the ability to implement different routing algorithms to schedule tasks on the same simulation platform.
 
 \item
-\textbf{Quantity}: Now the system runs the delivery simulation with a small amount of order requests. However, the system has to deal with a batch of orders in a brief period of time in the future.
+\textbf{Quantity}: The system runs the delivery simulation with a small amount of order requests. However, the system has to deal with a batch of orders in a brief period of time in the future.
 
 \item
 \textbf{Accuracy}: When it comes to scheduling the task, the system has to calculate the travel time of the new route. Thus, the accuracy of the estimated vehicle speed is very crucial and this value should be actually measured by the real-time road conditions.
 
 \end{itemize}
-
-\cite{Fischer}
-\cite{Jiang2018}
 
 
 } \end{thesis}
