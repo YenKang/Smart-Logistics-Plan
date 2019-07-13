@@ -81,7 +81,7 @@ Finally, I would like to thank my family and friends for their support.}
 
 \end{acknowledgements}
 
-\tableofcontents \listoffigures\clearpage
+\tableofcontents \listoffigures \listoftables \clearpage
 
 \end{preliminary}
 %---------- Preliminary ----------%
@@ -89,7 +89,7 @@ Finally, I would like to thank my family and friends for their support.}
 %------------------------- Introduction -------------------------%
 \chapter{Introduction} \label{Chap:Introduction}
 
-The freight transportation problem is an important issue in our daily lives \cite{Anand2012} . With the development of transportation technology, the customers have the higher expectation on more efficient and more rapid delivery service. Besides, as the self-driving car technology grows \cite{Lutin2013}, the self-driving vehicle delivery becomes a crucial research topic. After reviewing the self-driving car delivery market, there is no complete self-driving delivery system. 
+The freight transportation problem is an important issue in our daily lives \cite{Anand2012}. With the development of transportation technology, the customers have the higher expectation on more efficient and more rapid delivery service. Besides, as the self-driving car technology grows \cite{Lutin2013}, the self-driving vehicle delivery becomes a crucial research topic. After reviewing the self-driving car delivery market, there is no complete self-driving delivery system. 
 Before introducing the autonomous cars to the real road network, so far the thesis would like to focus on building the software part of the whole system, which can run package delivery simulation. As the software part of the system can be established, the administrator can get the car’s real-time information including vehicle’s location, the container’s values, and the vehicle’s speed. As a result, in the future the user can apply the above functions into the actual self-driving cars for achieving the goal of system integration directly.
 
 As illustrated in the red frame of Figure 1.1, this thesis describes a vehicle a dispatching and monitoring system. This system includes two main components, Simulation of Urban Mobility (SUMO) simulator and a SUMO server. The SUMO server is implemented by Traffic Control Interface, which have the access to retrieve the vehicle’s values or manipulate the vehicle’s behaviors on a running road traffic simulation.
@@ -295,9 +295,9 @@ As illustrated in Figure 4.5, when the user inputs the address of Tainan Train S
 
 Furthermore, TraaS converts the longitude and latitude to roadID, laneIndex, and pos. RoadID identifies a road segment (edge), and pos describes the position of the node in longitudinal direction (ranging from 0 to the road's length). Finally, laneIndex identifies the driving lane on the road segment.
 As illustrated in Figure 4.6, TraaS converts the latitude and longitude of Tainan Train Station into the roadID (\textbf{“72871329\#0”}), pos (5.6), and laneIndex (0).
-TraaS uses the sender’s edge of to arrange the vehicle’s route and sets stopping address in the SUMO simulator according to the section 4.2.
+TraaS uses the sender’s edge of to arrange the vehicle’s route and sets stopping address in the SUMO simulator.
 
-\begin{figure}[H]
+\begin{figure}[t]
 \centering
 \includegraphics[scale=1.0]{./Thesis_figures/F4-6_GPS_SUMOMap.PNG}
 \caption{\large Convert the latitude and longitude into a road segment and pos.}
@@ -392,7 +392,7 @@ After the vehicle unloads the parcel successfully, the receiver’s delivery pro
 The chapter aims to how the system uses dispatch mechanism to judge whether the sender’s delivery order can be established.
 As illustrated in Figure 6.1, the dispatching mechanism consists of two filtering stages. One is box filtering stage, and the second is simple time scheduling stage. After the user places the delivery order, picks the box size, and selects the arrival time of the parcel, the order request will enter into the box filtering stage.
 If all vehicles do not have any space for this picked box size, the user will select the other choice of box size. In contrast, if the vehicle’s box capacity is lower than three, this vehicle is qualified to enter into second filtering stage (simple time scheduling stage) 
-Furthermore, if there are no available vehicles that can serve this order in the simple time scheduling stage, the user should pick the other appropriate arrival time.
+Furthermore, if there are no available vehicles that can serve this order in the simple time scheduling stage, the user should pick the other appropriate arrival time of the parcel.
 
 \begin{figure}[H]
 \centering
@@ -429,7 +429,7 @@ To sum up, in this case of box index number \textbf{“221”}, the number shows
 \label{Fig:CaseOne_carBox_Map}
 \end{figure}
 
-As illustrated in Figure 6.2, the top row means different vehicles id, and the far left column means three kinds of box size. Then, the vehicle 1 has two box index number belonging to the \textbf{small box size}, the vehicle 2 has one box number belonging the medium box size, and the vehicle 3’s all boxes are empty.
+In Figure 6.2, the top row means different vehicles id, and the far left column means three kinds of box size. Then, the vehicle 1 has two box index number belonging to the \textbf{small box size}, the vehicle 2 has one box number belonging the medium box size, and the vehicle 3’s all boxes are empty.
 As the delivery order with small box size is inserted to the system, the system will filter the suitable vehicles to the next stage according the form. Because the number of small box in vehicle 1 is two, the number of vehicle 2’s small boxes is zero, and the number of vehicle 3’s small box is zero as well. Each number of small box in each vehicle is lower than three. As a result, all three vehicles are the candidates which can enter the next stage.
 
 \begin{figure}[t]
@@ -440,7 +440,7 @@ As the delivery order with small box size is inserted to the system, the system 
 \label{Fig:CaseTwo_carBox_Map}
 \end{figure}
 
-As illustrated in Figure 6.3, the form is the second case of the car-box map. As the system receives the delivery order with the medium box size, the box filtering execution starts. Therefore, vehicle 2, vehicle 4, and vehicle 5 are the candidates because all their occupancy of medium box are lower than three.
+As displayed in Figure 6.3, the form is the second case of the car-box map. As the system receives the delivery order with the medium box size, the box filtering execution starts. Therefore, vehicle 2, vehicle 4, and vehicle 5 are the candidates because all their occupancy of medium box are lower than three.
 
 \section{Simple Time Scheduling Stage}
 
@@ -448,27 +448,25 @@ After passing the previous filtering stage, there are some vehicles entering int
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.54]{./Thesis_figures/F6-4_caseOne_SchedulingStage.PNG}
+\includegraphics[width=1.0\textwidth]{./Thesis_figures/F6-4_caseOne_SchedulingStage.PNG}
 \caption{\large Case one of simple time filtering stage.}
 \vspace{0.5cm}
 \label{Fig:CaseOne_TimeFiltering}
 \end{figure}
 
 In the first case of the simple time scheduling stage, 
-the time schedule includes three vehicles with previous tasks, and the schedule starts from 09:30 AM to 11:30 AM in left side of the Figure 6.4. 
+the time schedule includes three vehicles with previous tasks, and the schedule starts from 09:30 AM to 11:30 AM in left side of Figure 6.4. To be more specific, vehicle 1 has the delivery task of the sender 4 with the box index number \textbf{"111"}, which indicates the vehicle 1 has to arrive to the Taiwan Tainan District Court before 09:30 AM, and this task is located at the small box in the vehicle 1.
 
-To be more specific, vehicle 1 has the delivery task of the sender 4 with the box index number \textbf{"111"}, which indicates the vehicle 1 has to arrive to the Taiwan Tainan District Court before 09:30 AM, and this task is located at the small box in the vehicle 1.
-When the simulation time is 09:05 AM, the sender4 submits the delivery order request with the small box size and the expected arrival time to Hayashi Department Store is 09:30 AM.
-
-Because the vehicle 1 has already the task of 09:30 AM, the system would turn to the next vehicle to deal with the request.
+When the simulation time is 09:05 AM, the sender 4 submits the delivery order request with the small box size and the expected arrival time to Hayashi Department Store is 09:30 AM. Because the vehicle 1 has already the task of 09:30 AM, the system would turn to the next vehicle to deal with the request.
 The right side of the figure shows the map with the vehicle 2’s routes which contains the new destination with the expected arrival time.
-According to the map, the vehicle 2 has to meet two conditions. First condition is that after passing through the blue route, the vehicle 2 should arrive to Hayashi Department Store before 09:30 AM. 
-When the vehicle 2 starts at 09:40 in Hayashi Department Store, and forwards to the Durban Department Store. Then, the second condition is that the vehicle 2 should arrive before 11:00 AM.
+
+According to the map, the vehicle 2 has to meet two conditions. \textbf{First condition} is that after passing through the blue route, the vehicle 2 should arrive to Hayashi Department Store before 09:30 AM. 
+When the vehicle 2 starts at 09:40 in Hayashi Department Store, and forwards to the Durban Department Store. Then, the \textbf{second condition} is that the vehicle 2 should arrive before 11:00 AM.
 After satisfying the two above conditions, the sender 4’s delivery task would be inserted into the time schedule and come with the box index number. 
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.57]{./Thesis_figures/F6-5_caseTwo_SchedulingStage.PNG}
+\includegraphics[width=1.0\textwidth]{./Thesis_figures/F6-5_caseTwo_SchedulingStage.PNG}
 \caption{\large Case two of simple time filtering stage.}
 \vspace{0.5cm}
 \label{Fig:CaseTwo_TimeFiltering}
@@ -483,7 +481,7 @@ As the vehicle 1 can fulfill the two conditions, the delivery request of the sen
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.55]{./Thesis_figures/F6-6_caseThree_SchedulingStage.PNG}
+\includegraphics[width=1.0\textwidth]{./Thesis_figures/F6-6_caseThree_SchedulingStage.PNG}
 \caption{\large Case three of simple time filtering stage.}
 \vspace{0.5cm}
 \label{Fig:CaseThree_TimeFiltering}
@@ -744,7 +742,7 @@ There are some issues that should be discussed to complete the vehicle dispatchi
 
 } \end{thesis}
 
-%------------------------- References -------------------------%
+%------------ References ---------------%
 \singlespace {\large
 
 \bibliography{Reference-Yen}
