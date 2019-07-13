@@ -5,15 +5,15 @@
 \contentsline {figure}{\numberline {3.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont System overview.\relax }}{6}% 
 \contentsline {figure}{\numberline {3.2}{\ignorespaces \relax \fontsize {12}{14}\selectfont Flow chart of the delivery process.\relax }}{10}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont Firebase Cloud Messaging.\relax }}{17}% 
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Initialization of the user interface.\relax }}{19}% 
-\contentsline {figure}{\numberline {4.3}{\ignorespaces \relax \fontsize {12}{14}\selectfont Place an order.\relax }}{20}% 
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Region selection.\relax }}{21}% 
-\contentsline {figure}{\numberline {4.5}{\ignorespaces \relax \fontsize {12}{14}\selectfont Localization of the destination.\relax }}{22}% 
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Tracking history orders.\relax }}{23}% 
-\contentsline {figure}{\numberline {4.7}{\ignorespaces \relax \fontsize {12}{14}\selectfont The details of the package.\relax }}{24}% 
-\contentsline {figure}{\numberline {4.8}{\ignorespaces \relax \fontsize {12}{14}\selectfont Entering the order number to track the package.\relax }}{25}% 
-\contentsline {figure}{\numberline {4.9}{\ignorespaces \relax \fontsize {12}{14}\selectfont The service region on SUMO Map .\relax }}{27}% 
-\contentsline {figure}{\numberline {4.10}{\ignorespaces \relax \fontsize {12}{14}\selectfont The changes of the route.\relax }}{29}% 
-\contentsline {figure}{\numberline {4.11}{\ignorespaces \relax \fontsize {12}{14}\selectfont The notification from FCM service.\relax }}{30}% 
+\contentsline {figure}{\numberline {4.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont Firebase Cloud Messaging.\relax }}{18}% 
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Initialization of the user interface.\relax }}{20}% 
+\contentsline {figure}{\numberline {4.3}{\ignorespaces \relax \fontsize {12}{14}\selectfont Place an order.\relax }}{21}% 
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Region selection.\relax }}{22}% 
+\contentsline {figure}{\numberline {4.5}{\ignorespaces \relax \fontsize {12}{14}\selectfont Localization of the destination.\relax }}{23}% 
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Tracking history orders.\relax }}{24}% 
+\contentsline {figure}{\numberline {4.7}{\ignorespaces \relax \fontsize {12}{14}\selectfont The details of the package.\relax }}{25}% 
+\contentsline {figure}{\numberline {4.8}{\ignorespaces \relax \fontsize {12}{14}\selectfont Entering the order number to track the package.\relax }}{26}% 
+\contentsline {figure}{\numberline {4.9}{\ignorespaces \relax \fontsize {12}{14}\selectfont The service region on SUMO Map .\relax }}{28}% 
+\contentsline {figure}{\numberline {4.10}{\ignorespaces \relax \fontsize {12}{14}\selectfont The changes of the route.\relax }}{30}% 
+\contentsline {figure}{\numberline {4.11}{\ignorespaces \relax \fontsize {12}{14}\selectfont The notification from FCM service.\relax }}{31}% 
 \addvspace {10\p@ }
