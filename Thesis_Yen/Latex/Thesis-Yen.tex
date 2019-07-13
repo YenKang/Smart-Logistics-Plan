@@ -489,7 +489,7 @@ As the vehicle 1 can fulfill the two conditions, the delivery request of the sen
 \label{Fig:CaseThree_TimeFiltering}
 \end{figure}
 
-Figure 6.6 demonstrates the third case of simple time filtering stage. At simulation time of 09:20, the system receives the sender 6’s delivery request with the expected arrival time of 09:30 AM. Because the vehicle 1 and vehicle 2 already have the task of 09:30 AM, and the vehicle3 has to deal with this request. In right side of the figure, the vehicle 1 just has to match one condition because there is no task before this request. Thus, when the vehicle3 starts from current position at 09:20, the travel time of blue route to T.S. Mall has to be less than ten minutes.
+Figure 6.6 demonstrates the third case of simple time filtering stage. When the simulation time is 09:20, the system receives the sender 6’s delivery request with the expected arrival time of 09:30 AM. Because the vehicle 1 and vehicle 2 already have the task of 09:30 AM, and the vehicle 3 has to deal with this request. In right side of the figure, the vehicle 1 just has to match one condition because there is no task before this request. Thus, when the vehicle 3 starts from current position at 09:20, the travel time of blue route to T.S. Mall has to be less than ten minutes.
 Moreover, the vehicle will execute the tasks according to the time schedule, and follow the flow chart of delivery process mentioned in Figure 5.1 and 5.2.
 
 
@@ -507,7 +507,7 @@ This section shows the user scenarios when the vehicle arrives to the destinatio
 \label{Fig:senderScenario_DeliveryPorcess}
 \end{figure}
 
-As illustrated in Figure 6.7, the vehicle 2 would demonstrate how to react in the task of 09:30 AM in the sender scenario of delivery process. As the simulation time is 09:25, the vehicle 2 would be at the black point of position, and the SUMO server would use FCM to send coming notification to the sender4. Then, when the simulation time is 09:30 AM, the vehicle 2 would be at Hayashi department store, start to park for ten minutes, and the sender4 would get the arriving notification.
+In Figure 6.7, the vehicle 2 would demonstrate how to react in the task of 09:30 AM in the sender scenario of delivery process. As the simulation time is 09:25, the vehicle 2 would be at the black point of position, and the SUMO server would use FCM to send coming notification to the sender4. Then, when the simulation time is 09:30 AM, the vehicle 2 would be at Hayashi department store, start to park for ten minutes, and the sender4 would get the arriving notification.
 As the simulation time is 09:35, the vehicle 2 will finish the loading process of the parcel. Finally, at the simulation of 09:40, the vehicle 2 would end parking in the Hayashi department store, and would forward to the next station.
 
 \subsection{Receiver Scenario}
@@ -520,19 +520,19 @@ As the simulation time is 09:35, the vehicle 2 will finish the loading process o
 \label{Fig:FirsrtReceiverScenario_deliveryProcess}
 \end{figure}
 
-As illustrated in Figure 6.8, the vehicle 2 would demonstrate how the receiver 4 participates in the delivery process. Firstly, the vehicle 2 follows the sender scenario in figure 6.6, and the vehicle2 has already finished the loading process.
-However, the current simulation time is 09:37 AM, and the vehicle 2 starts to deal with the receiver 4’s task of National Cheng Kung University Hospital (NCKUH). When the simulation time is 09:40, the vehicle 2 leaves Hayashi department store, and forwards to NCKUH. Besides, As the time is 09:55 AM, the vehicle 2 would be close to the NCKUH, and the receiver 4 would get the coming notification.
+In Figure 6.8, the vehicle 2 would demonstrate how the receiver 4 participates in the delivery process. Firstly, the vehicle 2 follows the sender scenario in figure 6.6, and the vehicle 2 has already finished the loading process.
+However, the current simulation time is 09:37 AM, and the vehicle 2 starts to deal with the receiver 4’s task of National Cheng Kung University Hospital (NCKUH). At 09:40 AM, the vehicle 2 leaves Hayashi department store, and forwards to NCKUH. Besides, the vehicle 2 would be close to the NCKUH, and the receiver 4 would get the coming notification at 09:55 AM.
 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.14\textwidth]{./Thesis_figures/F6-9_receiverScenario2.PNG}
+\includegraphics[scale=0.54]{./Thesis_figures/F6-9_receiverScenario2.PNG}
 \caption{\large The receiver's second scenario of parcel delivery process.}
 \vspace{0.5cm}
 \label{Fig:Second_ReceiverScenario_DeliveryProcess}
 \end{figure}
 
-As illustrated in Figure 6.9, the vehicle 2 will show the receiver’s scenario of delivery process. As the simulation is 10:00 AM, the receiver 4 would get the arriving notification, and prepare to pick up the parcel. At the time of 10:05 AM, the vehicle 2 would finish the unloading process. Finally, the vehicle 2 would end parking in National Cheng Kung University Hospital (NCKUH), and forward to the next station.
+In Figure 6.9, the vehicle 2 will show the receiver’s scenario of delivery process. As the simulation is 10:00 AM, the receiver 4 would get the arriving notification, and prepare to pick up the parcel. At the time of 10:05 AM, the vehicle 2 would finish the unloading process. Finally, the vehicle 2 would end parking in National Cheng Kung University Hospital (NCKUH), and forward to the next station.
 
 
 
@@ -548,7 +548,7 @@ As illustrated in Figure 6.9, the vehicle 2 will show the receiver’s scenario 
 \section{Simulation Setting}
 
 \subsection{Simulator}
-SUMO is used to be the simulator for running the parcel delivery simulation [12]. “Simulation of Urban Mobility”, or “SUMO” for short, is an open source, multi-modal traffic, highly portable, microscopic and continuous road traffic simulator. The method to control the SUMO simulator is to use the TraCI client Python Application Program Interface (API), which is available in SUMO packages.
+The SUMO simulator is used for running the parcel delivery simulation [12]. “Simulation of Urban Mobility”, or “SUMO” for short, is an open source, multi-modal traffic, highly portable, microscopic and continuous road traffic simulator. The method to control the SUMO simulator is to use the TraCI client Python Application Program Interface (API), which is available in SUMO packages.
 
 \subsection{Road Network}
 
