@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  13 JUL 2019 18:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  13 JUL 2019 21:01
 entering extended mode
 **./Thesis-Yen.tex
 (Thesis-Yen.tex
@@ -394,7 +394,7 @@ File: ./Thesis_figures/F4-1_webService_arcitecture.PNG Graphic file (type png)
 <use ./Thesis_figures/F4-1_webService_arcitecture.PNG>
 Package pdftex.def Info: ./Thesis_figures/F4-1_webService_arcitecture.PNG  used
  on input line 210.
-(pdftex.def)             Requested size: 262.43245pt x 263.33585pt.
+(pdftex.def)             Requested size: 240.56197pt x 241.39008pt.
 [10
 
 ]
@@ -471,7 +471,7 @@ File: ./Thesis_figures/F6-1_dispatching_mechanism.PNG Graphic file (type png)
 <use ./Thesis_figures/F6-1_dispatching_mechanism.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-1_dispatching_mechanism.PNG  used 
 on input line 399.
-(pdftex.def)             Requested size: 419.38795pt x 376.70387pt.
+(pdftex.def)             Requested size: 326.19142pt x 292.99261pt.
 [23
 
 ] [24 <./Thesis_figures/F6-1_dispatching_mechanism.PNG>]
@@ -481,15 +481,15 @@ File: ./Thesis_figures/F6-2_caseOne_boxFiltering.PNG Graphic file (type png)
 <use ./Thesis_figures/F6-2_caseOne_boxFiltering.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-2_caseOne_boxFiltering.PNG  used o
 n input line 426.
-(pdftex.def)             Requested size: 383.93712pt x 150.89763pt.
- [25 <./Thesis_figures/F6-2_caseOne_boxFiltering.PNG>]
-<./Thesis_figures/F6-3_caseTwo_boxFiltering.PNG, id=130, 363.60844pt x 164.1131
+(pdftex.def)             Requested size: 271.01524pt x 106.51494pt.
+<./Thesis_figures/F6-3_caseTwo_boxFiltering.PNG, id=125, 363.60844pt x 164.1131
 3pt>
 File: ./Thesis_figures/F6-3_caseTwo_boxFiltering.PNG Graphic file (type png)
 <use ./Thesis_figures/F6-3_caseTwo_boxFiltering.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-3_caseTwo_boxFiltering.PNG  used o
 n input line 437.
-(pdftex.def)             Requested size: 383.93712pt x 173.29297pt.
+(pdftex.def)             Requested size: 271.01524pt x 122.32578pt.
+ [25 <./Thesis_figures/F6-2_caseOne_boxFiltering.PNG>]
 <./Thesis_figures/F6-4_caseOne_SchedulingStage.PNG, id=131, 819.06pt x 459.2156
 2pt>
 File: ./Thesis_figures/F6-4_caseOne_SchedulingStage.PNG Graphic file (type png)
@@ -500,14 +500,14 @@ d on input line 451.
 (pdftex.def)             Requested size: 442.28581pt x 247.97273pt.
  [26 <./Thesis_figures/F6-3_caseTwo_boxFiltering.PNG>] [27 <./Thesis_figures/F6
 -4_caseOne_SchedulingStage.PNG>]
-<./Thesis_figures/F6-5_caseTwo_SchedulingStage.PNG, id=140, 790.45313pt x 441.9
-0094pt>
+<./Thesis_figures/F6-5_caseTwo_SchedulingStage.PNG, id=140, 723.45282pt x 394.4
+7375pt>
 File: ./Thesis_figures/F6-5_caseTwo_SchedulingStage.PNG Graphic file (type png)
 
 <use ./Thesis_figures/F6-5_caseTwo_SchedulingStage.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-5_caseTwo_SchedulingStage.PNG  use
 d on input line 471.
-(pdftex.def)             Requested size: 450.56296pt x 251.88615pt.
+(pdftex.def)             Requested size: 412.37239pt x 224.85237pt.
  [28 <./Thesis_figures/F6-5_caseTwo_SchedulingStage.PNG>]
 <./Thesis_figures/F6-6_caseThree_SchedulingStage.PNG, id=145, 812.28468pt x 428
 .35031pt>
@@ -678,7 +678,7 @@ n/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:
 /Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
 y10.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmti12.pfb>
-Output written on Thesis-Yen.pdf (55 pages, 6428530 bytes).
+Output written on Thesis-Yen.pdf (55 pages, 6407009 bytes).
 PDF statistics:
  272 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
