@@ -203,9 +203,11 @@ A SUMO server has three main jobs. One is to communicate with the Android client
 To build a vehicle dispatching and monitoring system, the thesis implements two components, which includes SUMO simulator and SUMO server. According to the concept of web service in [13], the thesis improved the architecture of web service to meet the demands of Android client.
 As illustrated in Figure 4.1, this architecture involves three parts, including SUMO simulator, Real-time I/O data Interface and Android Client.
 
+
+
 \begin{figure}[t!]
 \centering
-\includegraphics[width=0.85\textwidth]{./Thesis_figures/F4-1_webService_arcitecture.PNG}
+\includegraphics[scale=0.6]{./Thesis_figures/F4-1_webService_arcitecture.PNG}
 \caption{\large Improved architecture of web service.}
 \vspace{0.5cm}
 \label{Fig:Improved_architecture_of_web_service}
@@ -223,7 +225,7 @@ Before communicating with the SUMO simulator, TraCI would establish a connection
 
 \begin{figure}[t!]
 \centering
-\includegraphics[width=0.85\textwidth]{./Thesis_figures/F4-2_TraCI_connection.PNG}
+\includegraphics[scale=1]{./Thesis_figures/F4-2_TraCI_connection.PNG}
 \caption{\large The connection of Traffic Control Interface.}
 \vspace{0.5cm}
 \label{Fig:TraCI_connection}
@@ -250,27 +252,29 @@ Besides, TraaS manipulates the simulated objects like vehicles via state changin
 \textbf{setStop (String vehID, String edgeID, double pos, byte laneIndex, double duration, SumoStopFlags sf, double startPos, double until) $\rightarrow$ return None}
  
 The following two figures show how the SUMO simulator manipulates the vehicle’s behavior after executing the commands of changing route and setting stop.
-As illustrated in Figure 4.3, when the simulation time is 1472 seconds, the vehicle 2 occurrs at the left lower corner, and the yellow path is the vehicle 2’s route. 
-The end edge id of the vehicle 2 is located at Chung Cheng Gym in National Cheng Kung University.
 
-\begin{figure}[t!]
+
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{./Thesis_figures/F4-3_Change_endEdge.PNG}
+\includegraphics[scale=0.6]{./Thesis_figures/F4-3_Change_endEdge.PNG}
 \caption{\large Change the end edge of the destination.}
-\vspace{0.5cm}
+\vspace{0.2cm}
 \label{Fig:Change_endEdge}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{./Thesis_figures/F4-4_setStop.PNG}
-\caption{\large Set stop at the destination.}
-\vspace{0.5cm}
+\includegraphics[scale=0.6]{./Thesis_figures/F4-4_setStop.PNG}
+\caption{\large Set the stop at the destination.}
+\vspace{0.2cm}
 \label{Fig:Set_stop}
 \end{figure}
 
+As illustrated in Figure 4.3, when the simulation time is \textbf{1472} seconds, the vehicle 2 occurrs at the left lower corner, and the yellow path is the vehicle 2’s route. 
+The end edge id of the vehicle 2 is located at Chung Cheng Gym in National Cheng Kung University.
 
-As illustrated in Figure 4.4, at the 1500 simulation seconds, the vehicle 2 cancels the previous route whose end edge id was \textbf{“-537706053\#0”}, and the simulator replaces the original route of vehicle 2 in Figure 4.3 with a new route. The end edge id of this new route is \textbf{“72871329\#0”}, which is at Tainan Train Station. Furthermore, the vehicle 2 would stop at the edge \textbf{“72871329\#0”}, and would stay in the same position until 2400 simulation seconds.
+
+As illustrated in Figure 4.4, at the \textbf{1500} simulation seconds, the vehicle 2 cancels the previous route whose end edge id was “-537706053\#0”, and the simulator replaces the original route of vehicle 2 in Figure 4.3 with a new route. The end edge id of this new route is “72871329\#0”, which is at Tainan Train Station. Furthermore, the vehicle 2 would stop at the edge “72871329\#0”, and would stay in the same position until 2400 simulation seconds.
 
 
 
@@ -278,7 +282,8 @@ As illustrated in Figure 4.4, at the 1500 simulation seconds, the vehicle 2 canc
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{./Thesis_figures/F4-5_GPS_googleMap.PNG}
+
+\includegraphics[scale=1.0]{./Thesis_figures/F4-5_GPS_googleMap.PNG}
 \caption{\large The latitude and longitude in Google Map.}
 \vspace{0.5cm}
 \label{Fig:GPS_in_GoggleMap}
@@ -286,15 +291,15 @@ As illustrated in Figure 4.4, at the 1500 simulation seconds, the vehicle 2 canc
 
 
 When the user submits the delivery order request in the mobile application, the app would parse the sender address into the latitude and longitude of a point using Google Map API (Application Programming Interface).
-As illustrated in Figure 4.5, when the user inputs the address of Tainan Train Station, Google Map would show the red pinpoint of the address, and display the latitude and longitude (22.997154, 120.212272).
+As illustrated in Figure 4.5, when the user inputs the address of Tainan Train Station, Google Map would show the red pinpoint of the address, and display the latitude and longitude \textbf{(22.997154, 120.212272)}.
 
 Furthermore, TraaS converts the longitude and latitude to roadID, laneIndex, and pos. RoadID identifies a road segment (edge), and pos describes the position of the node in longitudinal direction (ranging from 0 to the road's length). Finally, laneIndex identifies the driving lane on the road segment.
-As illustrated in Figure 4.6, TraaS converts the latitude and longitude of Tainan Train Station into the roadID (“72871329”), pos (5.6), and laneIndex (0).
+As illustrated in Figure 4.6, TraaS converts the latitude and longitude of Tainan Train Station into the roadID (\textbf{“72871329\#0”}), pos (5.6), and laneIndex (0).
 TraaS uses the sender’s edge of to arrange the vehicle’s route and sets stopping address in the SUMO simulator according to the section 4.2.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{./Thesis_figures/F4-6_GPS_SUMOMap.PNG}
+\includegraphics[scale=1.0]{./Thesis_figures/F4-6_GPS_SUMOMap.PNG}
 \caption{\large Convert the latitude and longitude into a road segment and pos.}
 \vspace{0.5cm}
 \label{Fig:Convert_To_Road}
@@ -311,13 +316,13 @@ The chapter aims to illustrate the flow chart of parcel delivery process, contai
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.14\textwidth]{./Thesis_figures/F5-1_sender_delivery_process.PNG}
+\includegraphics[scale=0.55]{./Thesis_figures/F5-1_sender_delivery_process.PNG}
 \caption{\large The sender’s parcel delivery process.}
 \vspace{0.5cm}
 \label{Fig:sender_process}
 \end{figure}
 
-Figure 5.1 evaluates the sender’s parcel delivery process.
+Figure 5.1 shows the sender’s parcel delivery process.
 
 
 \begin{itemize}
@@ -353,7 +358,7 @@ When the truck finishes the loading task, the system would end this sender’s d
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.14\textwidth]{./Thesis_figures/F5-2_receiver_delivery_process.PNG}
+\includegraphics[scale=0.45]{./Thesis_figures/F5-2_receiver_delivery_process.PNG}
 \caption{\large The receiver's parcel delivery process.}
 \vspace{0.5cm}
 \label{Fig:receiver_process}

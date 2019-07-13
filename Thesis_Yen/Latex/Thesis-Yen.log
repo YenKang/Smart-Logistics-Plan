@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  13 JUL 2019 11:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  13 JUL 2019 15:34
 entering extended mode
 **./Thesis-Yen.tex
 (Thesis-Yen.tex
@@ -388,51 +388,52 @@ t line 168.
 
 ] [8 <./Thesis_figures/F3-1_a_whole_system.PNG>] [9]
 Chapter 4.
-<./Thesis_figures/F4-1_webService_arcitecture.PNG, id=59, 456.20438pt x 465.990
-94pt>
+<./Thesis_figures/F4-1_webService_arcitecture.PNG, id=59, 437.38406pt x 438.889
+7pt>
 File: ./Thesis_figures/F4-1_webService_arcitecture.PNG Graphic file (type png)
 <use ./Thesis_figures/F4-1_webService_arcitecture.PNG>
 Package pdftex.def Info: ./Thesis_figures/F4-1_webService_arcitecture.PNG  used
- on input line 208.
-(pdftex.def)             Requested size: 383.93712pt x 392.18341pt.
+ on input line 210.
+(pdftex.def)             Requested size: 262.43245pt x 263.33585pt.
 [10
 
-] [11 <./Thesis_figures/F4-1_webService_arcitecture.PNG>]
-<./Thesis_figures/F4-2_TraCI_connection.PNG, id=67, 293.59688pt x 225.84375pt>
+]
+<./Thesis_figures/F4-2_TraCI_connection.PNG, id=63, 293.59688pt x 225.84375pt>
 File: ./Thesis_figures/F4-2_TraCI_connection.PNG Graphic file (type png)
 <use ./Thesis_figures/F4-2_TraCI_connection.PNG>
 Package pdftex.def Info: ./Thesis_figures/F4-2_TraCI_connection.PNG  used on in
-put line 226.
-(pdftex.def)             Requested size: 383.93712pt x 295.3371pt.
- [12 <./Thesis_figures/F4-2_TraCI_connection.PNG>]
+put line 228.
+(pdftex.def)             Requested size: 293.59615pt x 225.84319pt.
+ [11 <./Thesis_figures/F4-1_webService_arcitecture.PNG>] [12 <./Thesis_figures/
+F4-2_TraCI_connection.PNG>]
 <./Thesis_figures/F4-3_Change_endEdge.PNG, id=71, 421.0932pt x 439.4016pt>
 File: ./Thesis_figures/F4-3_Change_endEdge.PNG Graphic file (type png)
 <use ./Thesis_figures/F4-3_Change_endEdge.PNG>
 Package pdftex.def Info: ./Thesis_figures/F4-3_Change_endEdge.PNG  used on inpu
-t line 258.
-(pdftex.def)             Requested size: 383.93712pt x 400.65393pt.
+t line 259.
+(pdftex.def)             Requested size: 252.65787pt x 263.64297pt.
  [13]
 <./Thesis_figures/F4-4_setStop.PNG, id=77, 420.1296pt x 440.3652pt>
 File: ./Thesis_figures/F4-4_setStop.PNG Graphic file (type png)
 <use ./Thesis_figures/F4-4_setStop.PNG>
 Package pdftex.def Info: ./Thesis_figures/F4-4_setStop.PNG  used on input line 
-266.
-(pdftex.def)             Requested size: 383.93712pt x 402.42625pt.
- [14 <./Thesis_figures/F4-3_Change_endEdge.PNG>]
-<./Thesis_figures/F4-5_GPS_googleMap.PNG, id=82, 428.01767pt x 397.20488pt>
+267.
+(pdftex.def)             Requested size: 252.0797pt x 264.22115pt.
+ [14 <./Thesis_figures/F4-3_Change_endEdge.PNG> <./Thesis_figures/F4-4_setStop.
+PNG>]
+<./Thesis_figures/F4-5_GPS_googleMap.PNG, id=83, 428.01767pt x 397.20488pt>
 File: ./Thesis_figures/F4-5_GPS_googleMap.PNG Graphic file (type png)
 <use ./Thesis_figures/F4-5_GPS_googleMap.PNG>
 Package pdftex.def Info: ./Thesis_figures/F4-5_GPS_googleMap.PNG  used on input
- line 281.
-(pdftex.def)             Requested size: 383.93712pt x 356.31134pt.
- [15 <./Thesis_figures/F4-4_setStop.PNG>] [16 <./Thesis_figures/F4-5_GPS_google
-Map.PNG>]
+ line 286.
+(pdftex.def)             Requested size: 428.01662pt x 397.2039pt.
+ [15] [16 <./Thesis_figures/F4-5_GPS_googleMap.PNG>]
 <./Thesis_figures/F4-6_GPS_SUMOMap.PNG, id=91, 422.63496pt x 394.54066pt>
 File: ./Thesis_figures/F4-6_GPS_SUMOMap.PNG Graphic file (type png)
 <use ./Thesis_figures/F4-6_GPS_SUMOMap.PNG>
 Package pdftex.def Info: ./Thesis_figures/F4-6_GPS_SUMOMap.PNG  used on input l
-ine 297.
-(pdftex.def)             Requested size: 383.93712pt x 358.41849pt.
+ine 302.
+(pdftex.def)             Requested size: 422.63393pt x 394.53969pt.
  [17 <./Thesis_figures/F4-6_GPS_SUMOMap.PNG>]
 Chapter 5.
 <./Thesis_figures/F5-1_sender_delivery_process.PNG, id=96, 791.20593pt x 439.64
@@ -441,23 +442,18 @@ File: ./Thesis_figures/F5-1_sender_delivery_process.PNG Graphic file (type png)
 
 <use ./Thesis_figures/F5-1_sender_delivery_process.PNG>
 Package pdftex.def Info: ./Thesis_figures/F5-1_sender_delivery_process.PNG  use
-d on input line 314.
-(pdftex.def)             Requested size: 514.92346pt x 286.12648pt.
-
-Overfull \hbox (63.23596pt too wide) in paragraph at lines 314--315
- [][] 
- []
-
+d on input line 319.
+(pdftex.def)             Requested size: 435.1646pt x 241.80411pt.
 [18
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 325.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 330.
 
  ("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 325.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 330.
  [19 <./Thesis_figures/F5-1_sender_delivery_process.PNG>]
 <./Thesis_figures/F5-2_receiver_delivery_process.PNG, id=105, 980.91469pt x 548
 .80031pt>
@@ -465,21 +461,16 @@ File: ./Thesis_figures/F5-2_receiver_delivery_process.PNG Graphic file (type pn
 g)
 <use ./Thesis_figures/F5-2_receiver_delivery_process.PNG>
 Package pdftex.def Info: ./Thesis_figures/F5-2_receiver_delivery_process.PNG  u
-sed on input line 356.
-(pdftex.def)             Requested size: 514.92346pt x 288.09935pt.
-
-Overfull \hbox (63.23596pt too wide) in paragraph at lines 356--357
- [][] 
- []
-
-[20] [21 <./Thesis_figures/F5-2_receiver_delivery_process.PNG>] [22]
+sed on input line 361.
+(pdftex.def)             Requested size: 441.40753pt x 246.95784pt.
+ [20] [21 <./Thesis_figures/F5-2_receiver_delivery_process.PNG>] [22]
 Chapter 6.
 <./Thesis_figures/F6-1_dispatching_mechanism.PNG, id=116, 562.35094pt x 456.204
 38pt>
 File: ./Thesis_figures/F6-1_dispatching_mechanism.PNG Graphic file (type png)
 <use ./Thesis_figures/F6-1_dispatching_mechanism.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-1_dispatching_mechanism.PNG  used 
-on input line 394.
+on input line 399.
 (pdftex.def)             Requested size: 451.6875pt x 366.43277pt.
 [23
 
@@ -489,14 +480,14 @@ on input line 394.
 File: ./Thesis_figures/F6-2_caseOne_boxFiltering.PNG Graphic file (type png)
 <use ./Thesis_figures/F6-2_caseOne_boxFiltering.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-2_caseOne_boxFiltering.PNG  used o
-n input line 406.
+n input line 411.
 (pdftex.def)             Requested size: 383.93712pt x 128.23279pt.
 <./Thesis_figures/F6-3_caseTwo_boxFiltering.PNG, id=125, 533.995pt x 179.67125p
 t>
 File: ./Thesis_figures/F6-3_caseTwo_boxFiltering.PNG Graphic file (type png)
 <use ./Thesis_figures/F6-3_caseTwo_boxFiltering.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-3_caseTwo_boxFiltering.PNG  used o
-n input line 417.
+n input line 422.
 (pdftex.def)             Requested size: 383.93712pt x 129.18773pt.
  [25 <./Thesis_figures/F6-2_caseOne_boxFiltering.PNG>]
 <./Thesis_figures/F6-4_caseOne_SchedulingStage.PNG, id=131, 971.12813pt x 533.7
@@ -505,10 +496,10 @@ File: ./Thesis_figures/F6-4_caseOne_SchedulingStage.PNG Graphic file (type png)
 
 <use ./Thesis_figures/F6-4_caseOne_SchedulingStage.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-4_caseOne_SchedulingStage.PNG  use
-d on input line 431.
+d on input line 436.
 (pdftex.def)             Requested size: 514.92346pt x 283.00516pt.
 
-Overfull \hbox (63.23596pt too wide) in paragraph at lines 431--432
+Overfull \hbox (63.23596pt too wide) in paragraph at lines 436--437
  [][] 
  []
 
@@ -520,10 +511,10 @@ File: ./Thesis_figures/F6-5_caseTwo_SchedulingStage.PNG Graphic file (type png)
 
 <use ./Thesis_figures/F6-5_caseTwo_SchedulingStage.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-5_caseTwo_SchedulingStage.PNG  use
-d on input line 449.
+d on input line 454.
 (pdftex.def)             Requested size: 514.92346pt x 283.07024pt.
 
-Overfull \hbox (63.23596pt too wide) in paragraph at lines 449--450
+Overfull \hbox (63.23596pt too wide) in paragraph at lines 454--455
  [][] 
  []
 
@@ -534,10 +525,10 @@ File: ./Thesis_figures/F6-6_caseThree_SchedulingStage.PNG Graphic file (type pn
 g)
 <use ./Thesis_figures/F6-6_caseThree_SchedulingStage.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-6_caseThree_SchedulingStage.PNG  u
-sed on input line 464.
+sed on input line 469.
 (pdftex.def)             Requested size: 514.92346pt x 259.25307pt.
 
-Overfull \hbox (63.23596pt too wide) in paragraph at lines 464--465
+Overfull \hbox (63.23596pt too wide) in paragraph at lines 469--470
  [][] 
  []
 
@@ -547,10 +538,10 @@ Overfull \hbox (63.23596pt too wide) in paragraph at lines 464--465
 File: ./Thesis_figures/F6-7_senderScenario.PNG Graphic file (type png)
 <use ./Thesis_figures/F6-7_senderScenario.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-7_senderScenario.PNG  used on inpu
-t line 482.
+t line 487.
 (pdftex.def)             Requested size: 514.92346pt x 259.49394pt.
 
-Overfull \hbox (63.23596pt too wide) in paragraph at lines 482--483
+Overfull \hbox (63.23596pt too wide) in paragraph at lines 487--488
  [][] 
  []
 
@@ -560,10 +551,10 @@ t>
 File: ./Thesis_figures/F6-8_receiverScenario1.PNG Graphic file (type png)
 <use ./Thesis_figures/F6-8_receiverScenario1.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-8_receiverScenario1.PNG  used on i
-nput line 495.
+nput line 500.
 (pdftex.def)             Requested size: 514.92346pt x 241.04077pt.
 
-Overfull \hbox (63.23596pt too wide) in paragraph at lines 495--496
+Overfull \hbox (63.23596pt too wide) in paragraph at lines 500--501
  [][] 
  []
 
@@ -573,10 +564,10 @@ t>
 File: ./Thesis_figures/F6-9_receiverScenario2.PNG Graphic file (type png)
 <use ./Thesis_figures/F6-9_receiverScenario2.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-9_receiverScenario2.PNG  used on i
-nput line 507.
+nput line 512.
 (pdftex.def)             Requested size: 514.92346pt x 227.32367pt.
 
-Overfull \hbox (63.23596pt too wide) in paragraph at lines 507--508
+Overfull \hbox (63.23596pt too wide) in paragraph at lines 512--513
  [][] 
  []
 
@@ -587,7 +578,7 @@ Chapter 7.
 File: ./Thesis_figures/F7-1_Openstreetmap.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-1_Openstreetmap.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-1_Openstreetmap.PNG  used on input
- line 539.
+ line 544.
 (pdftex.def)             Requested size: 451.6875pt x 229.04117pt.
 [34
 
@@ -596,14 +587,14 @@ Package pdftex.def Info: ./Thesis_figures/F7-1_Openstreetmap.PNG  used on input
 File: ./Thesis_figures/F7-2_SUMOMap.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-2_SUMOMap.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-2_SUMOMap.PNG  used on input line 
-560.
+565.
 (pdftex.def)             Requested size: 451.6875pt x 359.81773pt.
  [35 <./Thesis_figures/F7-1_Openstreetmap.PNG>]
 <./Thesis_figures/F7-3_GoogleMap.PNG, id=175, 391.13696pt x 372.09283pt>
 File: ./Thesis_figures/F7-3_GoogleMap.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-3_GoogleMap.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-3_GoogleMap.PNG  used on input lin
-e 568.
+e 573.
 (pdftex.def)             Requested size: 451.6875pt x 429.70325pt.
  [36 <./Thesis_figures/F7-2_SUMOMap.PNG>] [37 <./Thesis_figures/F7-3_GoogleMap.
 PNG>]
@@ -611,17 +602,17 @@ PNG>]
 File: ./Thesis_figures/F7-4_parameters.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-4_parameters.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-4_parameters.PNG  used on input li
-ne 580.
+ne 585.
 (pdftex.def)             Requested size: 451.6875pt x 303.85132pt.
  [38 <./Thesis_figures/F7-4_parameters.PNG>]
 <./Thesis_figures/F7-5_speedEstimation.PNG, id=191, 894.7026pt x 456.2646pt>
 File: ./Thesis_figures/F7-5_speedEstimation.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-5_speedEstimation.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-5_speedEstimation.PNG  used on inp
-ut line 593.
+ut line 598.
 (pdftex.def)             Requested size: 514.92346pt x 262.59378pt.
 
-Overfull \hbox (63.23596pt too wide) in paragraph at lines 593--594
+Overfull \hbox (63.23596pt too wide) in paragraph at lines 598--599
  [][] 
  []
 
@@ -630,10 +621,10 @@ Overfull \hbox (63.23596pt too wide) in paragraph at lines 593--594
 File: ./Thesis_figures/F7-6_initialization.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-6_initialization.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-6_initialization.PNG  used on inpu
-t line 606.
+t line 611.
 (pdftex.def)             Requested size: 505.88779pt x 222.09729pt.
 
-Overfull \hbox (54.20029pt too wide) in paragraph at lines 606--607
+Overfull \hbox (54.20029pt too wide) in paragraph at lines 611--612
  [][] 
  []
 
@@ -642,10 +633,10 @@ Overfull \hbox (54.20029pt too wide) in paragraph at lines 606--607
 File: ./Thesis_figures/F7-7_senderRequest.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-7_senderRequest.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-7_senderRequest.PNG  used on input
- line 617.
+ line 622.
 (pdftex.def)             Requested size: 505.88779pt x 179.94438pt.
 
-Overfull \hbox (54.20029pt too wide) in paragraph at lines 617--618
+Overfull \hbox (54.20029pt too wide) in paragraph at lines 622--623
  [][] 
  []
 
@@ -653,10 +644,10 @@ Overfull \hbox (54.20029pt too wide) in paragraph at lines 617--618
 File: ./Thesis_figures/F7-8_loadingProcess.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-8_loadingProcess.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-8_loadingProcess.PNG  used on inpu
-t line 628.
+t line 633.
 (pdftex.def)             Requested size: 505.88779pt x 311.98738pt.
 
-Overfull \hbox (54.20029pt too wide) in paragraph at lines 628--629
+Overfull \hbox (54.20029pt too wide) in paragraph at lines 633--634
  [][] 
  []
 
@@ -665,10 +656,10 @@ Overfull \hbox (54.20029pt too wide) in paragraph at lines 628--629
 File: ./Thesis_figures/F7-9_receiverRequest.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-9_receiverRequest.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-9_receiverRequest.PNG  used on inp
-ut line 640.
+ut line 645.
 (pdftex.def)             Requested size: 505.88779pt x 232.66776pt.
 
-Overfull \hbox (54.20029pt too wide) in paragraph at lines 640--641
+Overfull \hbox (54.20029pt too wide) in paragraph at lines 645--646
  [][] 
  []
 
@@ -678,10 +669,10 @@ t>
 File: ./Thesis_figures/F7-10_unloadingProcess.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-10_unloadingProcess.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-10_unloadingProcess.PNG  used on i
-nput line 651.
+nput line 656.
 (pdftex.def)             Requested size: 505.88779pt x 288.30077pt.
 
-Overfull \hbox (54.20029pt too wide) in paragraph at lines 651--652
+Overfull \hbox (54.20029pt too wide) in paragraph at lines 656--657
  [][] 
  []
 
@@ -706,7 +697,7 @@ Here is how much of TeX's memory you used:
  7377 multiletter control sequences out of 15000+200000
  11779 words of font info for 45 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,5n,27p,874b,298s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,6n,27p,874b,298s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmbx12.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmbxti10.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts
@@ -718,7 +709,7 @@ n/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:
 /Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
 y10.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmti12.pfb>
-Output written on Thesis-Yen.pdf (56 pages, 6732664 bytes).
+Output written on Thesis-Yen.pdf (56 pages, 6728724 bytes).
 PDF statistics:
  272 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
