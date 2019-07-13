@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  13 JUL 2019 21:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  13 JUL 2019 21:17
 entering extended mode
 **./Thesis-Yen.tex
 (Thesis-Yen.tex
@@ -518,30 +518,29 @@ Package pdftex.def Info: ./Thesis_figures/F6-6_caseThree_SchedulingStage.PNG  u
 sed on input line 486.
 (pdftex.def)             Requested size: 446.75795pt x 235.5934pt.
  [29 <./Thesis_figures/F6-6_caseThree_SchedulingStage.PNG>]
-<./Thesis_figures/F6-7_senderScenario.PNG, id=150, 831.105pt x 424.58624pt>
+<./Thesis_figures/F6-7_senderScenario.PNG, id=150, 687.31781pt x 349.305pt>
 File: ./Thesis_figures/F6-7_senderScenario.PNG Graphic file (type png)
 <use ./Thesis_figures/F6-7_senderScenario.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-7_senderScenario.PNG  used on inpu
 t line 504.
-(pdftex.def)             Requested size: 440.48355pt x 225.02963pt.
+(pdftex.def)             Requested size: 446.75128pt x 227.04555pt.
  [30 <./Thesis_figures/F6-7_senderScenario.PNG>]
-<./Thesis_figures/F6-8_receiverScenario1.PNG, id=155, 834.86906pt x 402.75468pt
+<./Thesis_figures/F6-8_receiverScenario1.PNG, id=155, 761.09344pt x 322.20375pt
 >
 File: ./Thesis_figures/F6-8_receiverScenario1.PNG Graphic file (type png)
 <use ./Thesis_figures/F6-8_receiverScenario1.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-8_receiverScenario1.PNG  used on i
 nput line 517.
-(pdftex.def)             Requested size: 442.4785pt x 213.45895pt.
-
-[31 <./Thesis_figures/F6-8_receiverScenario1.PNG>]
-<./Thesis_figures/F6-9_receiverScenario2.PNG, id=161, 826.58812pt x 354.57469pt
->
+(pdftex.def)             Requested size: 433.82777pt x 183.65804pt.
+<./Thesis_figures/F6-9_receiverScenario2.PNG, id=156, 656.4525pt x 288.3272pt>
 File: ./Thesis_figures/F6-9_receiverScenario2.PNG Graphic file (type png)
 <use ./Thesis_figures/F6-9_receiverScenario2.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-9_receiverScenario2.PNG  used on i
 nput line 529.
-(pdftex.def)             Requested size: 446.35094pt x 191.46747pt.
- [32 <./Thesis_figures/F6-9_receiverScenario2.PNG>]
+(pdftex.def)             Requested size: 426.68907pt x 187.41045pt.
+
+[31 <./Thesis_figures/F6-8_receiverScenario1.PNG>] [32 <./Thesis_figures/F6-9_r
+eceiverScenario2.PNG>]
 Chapter 7.
 <./Thesis_figures/F7-1_Openstreetmap.PNG, id=166, 1380.65813pt x 700.11563pt>
 File: ./Thesis_figures/F7-1_Openstreetmap.PNG Graphic file (type png)
@@ -678,7 +677,7 @@ n/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:
 /Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
 y10.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmti12.pfb>
-Output written on Thesis-Yen.pdf (55 pages, 6407009 bytes).
+Output written on Thesis-Yen.pdf (55 pages, 5939567 bytes).
 PDF statistics:
  272 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
