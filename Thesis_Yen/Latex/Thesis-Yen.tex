@@ -62,9 +62,9 @@ University \\ }
 \Thesisspace {\large 
 Freight transportation plays an important role in daily life. As the e-commence and traffic technology developed, customers have high expectations for the more rapid and more flexible parcel delivery service. However, due to rising labor costs, the delivery mode of autonomous cars is one of alternatives. By reviewing the self-driving technology, the maturity of technology and profitable business model are the concerns. Moreover, so far there is no complete self-driving delivery system in Asia.
  
-As a result, the paper integrated traffic simulation software SUMO and mobile application to simulate the package delivery service. Moreover, this study proposed a vehicle dispatching and monitoring system, which can cope with delivery orders, arrange routes, monitor vehicle’s movements, and demonstrate loading and unloading details of trucks. At the same time, this paper proposed dynamic dispatching mechanism consisting of box filtering stage and simple time scheduling stage. The mechanism can judge whether the delivery order could be established. Finally, the paper ran the parcel delivery simulation in the downtown area of Tainan, which showed clear visualization of logistic condition in the simulation results.
+As a result, the paper integrates traffic simulation software SUMO and mobile application to simulate the package delivery service. Moreover, this study proposes a vehicle dispatching and monitoring system, which can cope with delivery orders, arrange routes, monitor vehicle’s movements, and demonstrate loading and unloading details of trucks. At the same time, this paper develops a dynamic dispatching mechanism consisting of box filtering stage and simple time scheduling stage. The mechanism can judge whether the delivery order could be established. Finally, the paper conducts the parcel delivery simulation in the downtown area of Tainan, which showed clear visualization of logistic condition in the simulation results.
 
-Using this proposed system has three advantages. One is that the user can experience more immediate and more flexible delivery service. Second is that administrator can monitor the vehicle’s route and the vehicle’s real-time behavior. Third is that the developer can extend more complex routing algorithm, and add new application on the simulation platform.
+\textbf{Using the self-driving delivery emulation system has three advantages}. One is that the user can experience more immediate and more flexible delivery service. Second is that administrator can monitor the vehicle’s route and the vehicle’s real-time behavior. Third is that the developer can extend more complex routing algorithms, and add new applications on the simulation platform.
 }
 
 \emph{\textbf{Keywords}}---self-driving delivery, traffic simulation, dynamic dispatching mechanism, package delivery service.
@@ -89,10 +89,10 @@ Finally, I would like to thank my family and friends for their support.}
 %------------------------- Introduction -------------------------%
 \chapter{Introduction} \label{Chap:Introduction}
 
-Freight transportation problem is an important issue in our daily lives \cite{Anand2012} . With the development of transportation technology, the customers have the higher expectation on more efficient and more rapid delivery service. Besides, as the self-driving car technology grows \cite{Lutin2013}, the self-driving vehicle delivery begins to be a crucial research topic. After reviewing the self-driving car delivery market, there is no complete self-driving delivery system. 
-Before introducing the autonomous cars to the real road network, so far the thesis wants to focus on building the software part of the whole system, which can run package delivery simulation. As the software part of the system can be established, the administrator can get the car’s real-time information including vehicle’s location, the container’s values, and the vehicle’s speed. As a result, in the future the user can apply the above functions into the actual self-driving cars for achieving the goal of system integration directly.
+The freight transportation problem is an important issue in our daily lives \cite{Anand2012} . With the development of transportation technology, the customers have the higher expectation on more efficient and more rapid delivery service. Besides, as the self-driving car technology grows \cite{Lutin2013}, the self-driving vehicle delivery becomes a crucial research topic. After reviewing the self-driving car delivery market, there is no complete self-driving delivery system. 
+Before introducing the autonomous cars to the real road network, so far the thesis would like to focus on building the software part of the whole system, which can run package delivery simulation. As the software part of the system can be established, the administrator can get the car’s real-time information including vehicle’s location, the container’s values, and the vehicle’s speed. As a result, in the future the user can apply the above functions into the actual self-driving cars for achieving the goal of system integration directly.
 
-As illustrated in Figure 1.1, this thesis implemented a vehicle dispatching and monitoring system in the red frame. This system includes two main components such as Simulation of Urban Mobility (SUMO) simulator and a SUMO server. The SUMO server was implemented by Traffic Control Interface, which have the access to retrieve the vehicle’s values or manipulate the vehicle’s behaviors on a running road traffic simulation.
+As illustrated in the red frame of Figure 1.1, this thesis describes a vehicle a dispatching and monitoring system. This system includes two main components, Simulation of Urban Mobility (SUMO) simulator and a SUMO server. The SUMO server is implemented by Traffic Control Interface, which have the access to retrieve the vehicle’s values or manipulate the vehicle’s behaviors on a running road traffic simulation.
 
 \begin{figure}[t!]
 \centering
@@ -103,11 +103,15 @@ As illustrated in Figure 1.1, this thesis implemented a vehicle dispatching and 
 \label{Fig:System_Overview}
 \end{figure}
 
-In the previous scheme \cite{Jiang2018}, senders can select their delivery time, but receivers only can wait for the coming parcels passively. This delivery service has the problem that the arrival time of parcels does not match receivers’ available time, which leads to the loss of taking delivery of goods. Hence, the thesis offers a new delivery service where receivers have the chances to select their expected arrival time of the package, which can improve the delivery loss problem. This thesis illustrates the flow chart of the new delivery process including the sender’s part and the receiver’s part.
+In the previous scheme \cite{Jiang2018}, senders can select their delivery time, but receivers only can wait for the coming parcels passively. This delivery service has the problem that the arrival time of parcels does not match receivers’ available time. Hence, the thesis offers a new delivery service where receivers have the chances to select their expected arrival time of the package, which can improve the delivery problem. This thesis illustrates the flow chart of the new delivery process including the sender’s part and the receiver’s part.
 
-Besides, the SUMO server develops a dispatching mechanism to deal with the order requests, and arranges the routes dynamically and immediately. In this mechanism, vehicles have to pass through the two stages. First is box filtering stage, which filters out the vehicle without the available space of the appointed box size, and the other vehicles can enter into the second stage named as simple time scheduling stage. This stage would judge whether the order can be inserted into the original time schedule or nor. Moreover, the thesis would demonstrate that the dispatching mechanism would be applied to the scenario of the sender and the receiver in the different ways.
+Besides, the SUMO server develops a dispatching mechanism to deal with the order requests, and arranges the routes dynamically and immediately. In this mechanism, vehicles have to pass through the two stages. 
 
-Finally, the thesis installs the SUMO simulator, cleans up the map of the downtown area of Tainan, sets up the parameters, and ran the simulation with five scenarios of the delivery service.
+First is box filtering stage, which filters out the vehicle without the available space of the appointed box size, and the other vehicles can enter into the second stage named as simple time scheduling stage. 
+
+First stage is a box filtering stage. Then, in this stage, the vehicle with more than one available container is qualified to enter into the second stage named as a simple time scheduling stage. Next, the second stage would judge whether the order can be inserted into the original time schedule or nor. Moreover, the thesis would demonstrate that the dispatching mechanism would be applied to the scenario of the sender and the receiver in the different ways.
+
+Finally, the thesis utilizes a SUMO simulator, cleans up the map of the downtown area of Tainan, sets up the parameters, and performs the simulation with five scenarios of the delivery service.
 
 To sum up, the thesis is organized as follows. Chapter 1 describes the motivation of research and the background of self-driving delivery and the purpose of building the system. Chapter 2 presents the related work. The whole system design overview is proposed in Chapter 3. The implementation of a vehicle dispatching and monitoring system is described in Chapter 4. Chapter 5 shows flow charts of the delivery process.  Chapter 6 illustrates how the dispatching mechanism works. The simulation result is presented in Chapter7. Finally, conclusion and future work are discussed in Chapter 8.
 
@@ -162,7 +166,7 @@ SUMO is an open source traffic simulation package including net import and deman
 \begin{figure}[t!]
 \centering
 \includegraphics[width=0.85\textwidth]{./Thesis_figures/F3-1_a_whole_system.PNG}
-\caption{\large A Whole System.}
+\caption{\large A whole system.}
 \vspace{0.5cm}
 \label{Fig:A_Whole_System}
 \end{figure}
@@ -171,7 +175,7 @@ The chapter aims to design a vehicle dispatching and monitoring system that can 
 As illustrated in Figure 3.1, the whole system consists of four main components, including a SUMO server, a SUMO simulator, the mobile application, and a web server with database.
 
 \subsection{SUMO Server}
-A SUMO server initializes the road traffic condition including the map, traffic lights, and the moving vehicles with package delivery missions. Besides, the SUMO server communicates with a SUMO simulator via a specific port address.
+A SUMO server initializes the road traffic condition including the map, traffic lights, and the moving vehicles with package delivery missions. The SUMO server communicates with a SUMO simulator via a specific port address.
 
 \subsection{SUMO Simulator}
 After receiving the commands from the SUMO server, a SUMO simulator would execute the action of commands in SUMO-GUI,  or change the state of the simulated objects.
@@ -188,15 +192,15 @@ As illustrated in Figure 1.1, a vehicle dispatching and monitoring system has tw
 
 
 \subsection{SUMO Simulator}
-A SUMO simulator has two jobs. One is to receive the commands from SUMO server. The commands include retrieving the values of simulated objects and manipulating online behavior in SUMO-GUI. Second is to return the retrieval messages such as the current road id of the specific vehicle. Besides, the simulator could display the visualization of the vehicle’s movement, and show the change of the vehicle’s state in SUMO-GUI.
+A SUMO simulator has two jobs. One is to receive the commands from SUMO server. The commands include retrieving the values of simulated objects and manipulating online behavior in SUMO-GUI. The other is to return the retrieval messages such as the current road id of the specific vehicle. Besides, the simulator could display the visualization of the vehicle’s movement, and show the change of the vehicle’s state in SUMO-GUI.
 
 \subsection{SUMO Server}
-A SUMO server has three main jobs. One is to communicate with the Android client and the database. Second job is to compute the routing arrangement. Third job is to send commands to control the behavior of the simulated objects in the running simulation.
+A SUMO server has three main jobs. One is to communicate with the Android client and the database. The second job is to compute the routing arrangement. The third job is to send commands to control the behavior of the simulated objects in the running simulation.
 
 \chapter{Implementation of Vehicle Dispatching and Monitoring System }\label{Chap:Architecture}
 %---------- Implementation -------------------%
 
-To build a vehicle dispatching and monitoring system, the thesis has to implement two components, which includes SUMO simulator and SUMO server. According to the concept of web service in [13], the thesis improved the architecture of web service to meet the demands of Android client.
+To build a vehicle dispatching and monitoring system, the thesis implements two components, which includes SUMO simulator and SUMO server. According to the concept of web service in [13], the thesis improved the architecture of web service to meet the demands of Android client.
 As illustrated in Figure 4.1, this architecture involves three parts, including SUMO simulator, Real-time I/O data Interface and Android Client.
 
 \begin{figure}[t!]
@@ -210,8 +214,8 @@ As illustrated in Figure 4.1, this architecture involves three parts, including 
 
 
 \section{Traffic Control Interface}
-To interact with a simulation, Real-time I/O data Interface offers a possibility to communicate between the simulation and the user application bi-directionally \cite{Fischer}. Besides, Traffic Control Interface, which is called “TraCI”, is a kind of Real-time I/O data Interface in SUMO suite.
-TraCI can implement online interaction with the simulation ,and have the access to a running road traffic simulation. This access allows TraCI to retrieve values of simulated objects, and to manipulate their online behavior.
+To interact with a simulation, the real-time I/O data Interface offers a possibility to communicate between the simulation and the user application bi-directionally \cite{Fischer}. Traffic Control Interface, which is called “TraCI”, is a kind of Real-time I/O data Interface in SUMO suite.
+TraCI can implement online interaction with the simulation, and have the access to a running road traffic simulation. This access allows TraCI to retrieve values of simulated objects, and to manipulate their online behavior.
 To consider the portability of system implementation and the popularity in web service, this study selects TraaS as the traffic control interface. TraaS is a java library for working with TraCI, which is viewed as a java traci client. The client can be used to write TraCI scripts directly, and TraaS stands for TraCI as a Service.
 
 \subsection{TraCI to SUMO Simulator}
