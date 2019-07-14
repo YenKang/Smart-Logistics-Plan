@@ -123,38 +123,34 @@ To sum up, the thesis is organized as follows. Chapter 1 describes the motivatio
 %------------------------- Related Works -------------------------%
 
 \section{Home Delivery}
-As the e-commence and the technology of logistics has developed for several years, this bought about the general tendency in logistics toward higher delivery frequency, single orders, and smaller freight \cite{Visser2014}.
+As the e-commence and the technology of logistics has developed for several years, this bought about the general tendency in logistics toward higher delivery frequency, single orders, and smaller freight \cite{Visser2014}. In the freight transportation industry, logistics models can be divided into several types of logistic channel including post, shelf picking, dedicated warehouse, workspace, and home delivery.
 
-
-In the freight transportation industry, logistics models can be divided into several types of logistic channel including post, shelf picking, dedicated warehouse, workspace, and home delivery.
-
-Gevaers et al. developed a cost simulation tool, which showed that the Last Mile delivery is one of the most expensive stages of the entire e-logistics chain \cite{Gevaers2014}. Besides, in the Last Mile delivery, the most widespread delivery mode is home delivery.
-
-As the result, home delivery (HD) is a crucial topic to discuss, retailers delivered a large amount of the daily consignment to the customer’s home. So far home delivery can be a delivery point to one’s home address, to another address, or to a pickup point  \cite{Zhou2016}. 
-
-However, there are some issues about home delivery, including delay of delivery service, the customer’s absence at home, and too long delivery time. Thus, to meet the increasing demand of more rapid parcel delivery service, a small aerial vehicle is proposed by the professors in George Mason University \cite{Ali2015}.
+Gevaers et al. developed a cost simulation tool, which showed that the Last Mile delivery is one of the most expensive stages of the entire e-logistics chain \cite{Gevaers2014}. Besides, in the Last Mile delivery, the most widespread delivery mode is home delivery. As the result, home delivery (HD) is a crucial topic to discuss, retailers delivered a large amount of the daily consignment to the customer’s home. So far home delivery can be a delivery point to one’s home address, to another address, or to a pickup point  \cite{Zhou2016}. However, there are some issues about home delivery, including delay of delivery service, the customer’s absence at home, and too long delivery time. Thus, to meet the increasing demand of more rapid parcel delivery service, a small aerial vehicle is proposed by George Mason University \cite{Ali2015}.
 
 A multi-rotor aerial vehicle can provide the fast and urgent parcel delivery service such as rapid food delivery and remote medical supply delivery. However, this application has some design technical difficulties, which includes extending battery life, handling the increasing weight of the parcel, and dealing with the sudden climate change \cite{Ali2015}. In one word, an aerial vehicle has lower reliability, scalability and capacity than a delivery truck.
 
-Moreover, \cite{Sawadsitang2018} introduced a joint ground and aerial delivery service framework. The framework consists of two delivery modes, which can complement each other due to their unique features and benefits. With this integration of ground-based delivery and drone delivery, the approach not only can cope with sudden service interruption like accident, but also can maximize service quality and minimize cost. However, this approach has the problem of the uncertainty in customer’s demand and computation time of routing the delivery path. 
+Singapore Institute of Manufacturing Technology
+
+Moreover, Singapore Institute of Manufacturing Technology proposed \textbf{a joint ground and aerial delivery service framework} \cite{Sawadsitang2018} . The framework consists of two delivery modes, which can complement each other due to their unique features and benefits. With this integration of ground-based delivery and drone delivery, the approach not only can cope with sudden service interruption like accident, but also can maximize service quality and minimize cost. However, this approach has the problem of the uncertainty in customer’s demand and computation time of routing the delivery path. 
 
 %% [9], [10]
-In some metropolitan areas in the U.S. like Seattle, \cite{Sheth2019} deployed alternative delivery mode such as cargo bikes. Due to the increasing freight volumes on the road and scarce road space, cargo bicycles are being utilized for the last mile deliveries in several urban cities \cite{Melo2017}. The advantage of using delivery bikes is that cargo bicycles are not encumbered by the same parking and congestion constraints as trucks. However, the disadvantage is that cargo bikes are less cost effective for greater distances than delivery trucks.
+In some metropolitan areas in the U.S. like Seattle, European Transport Research Review deployed alternative delivery mode such as \textbf{cargo bikes}\cite{Sheth2019}. Due to the increasing freight volumes on the road and scarce road space, cargo bicycles are being utilized for the last mile deliveries in several urban cities \cite{Melo2017}. The advantage of using delivery bikes is that cargo bicycles are not encumbered by the same parking and congestion constraints as trucks. However, the disadvantage is that cargo bikes are less cost effective for greater distances than delivery trucks.
 
 %% [11]
-In China, \cite{Delivery2017} showed that JD.com, which is the largest e-commence platform by revenue, used autonomous driving vehicles to hit the open road in Beijing. The vehicle can store up to thirty containers, and can travel 15 km/hr. The current concerns of this approach are the autonomous driving technology and government regulations.
+JD.com, which is the largest e-commence platform by revenue, used autonomous driving vehicles to hit the open road in Beijing \cite{Delivery2017}. The vehicle can store up to thirty containers, and travel 15 km/hr. The current concerns of the approach are the autonomous driving technology and government regulations.
 
 \section{Traffic Simulation}
 SUMO is an open source traffic simulation package including net import and demand modeling components. Besides, SUMO helps to investigate several research topics, which includes route choice and simulating vehicular communication  \cite{Krajzewicz2007}.
 
 %% [13]
-\cite{10.1007/978-3-662-45079-6_5} introduced the real-time I/O data interface and proposed an approach to building up a Web service. Beside, by knowing the commands of traffic control interface (TraCI), the user can handle the communication with SUMO Traffic Simulation Suite. Finally, \cite{10.1007/978-3-662-45079-6_5} demonstrated an example of the code, which provides the base for a new Web service called TraaS (TraCI as a service).
+Dresden University of Technology introduced the real-time I/O data interface and proposed an approach to \textbf{building up a Web service} \cite{10.1007/978-3-662-45079-6_5}. 
+Beside, by knowing the commands of traffic control interface (TraCI), the user can handle the communication with SUMO Traffic Simulation Suite. Finally, Mario Krumnow displayed an example of the code, which provides the base for a new Web service called TraaS (TraCI as a service).
 
 %% [14]
-\cite{Tunku2016} showed the transportation simulation for food distribution. The author used TraaS to assign trucks backup when the original tricks unable to cover the destination shops at certain time threshold, and re-route the path for the backup vehicles.
+Heng Tat Hong showed the \textbf{transportation simulation for food distribution} \cite{Tunku2016}. The author used TraaS to assign trucks backup when the original tricks unable to cover the destination shops at certain time threshold, and re-route the path for the backup vehicles.
 
 %% [15]
-\cite{Kendziorra2015} aims to achieve simulation scenarios in which incidents occur, and introduced the implementation of logistic transport. The concept of freight and goods was implemented to enable the simulation of good traffic, which consists of the containers and stop.
+German Aerospace Center achieved simulation scenarios where accidents occur, and introduced \textbf{the implementation of logistic transport} \cite{Kendziorra2015}. The concept of freight and goods was implemented to enable the simulation of good traffic, which consists of the containers and stops.
 
 
 
@@ -200,8 +196,8 @@ A SUMO server has three main jobs. One is to communicate with the Android client
 \chapter{Implementation of Vehicle Dispatching and Monitoring System }\label{Chap:Architecture}
 %---------- Implementation -------------------%
 
-To build a vehicle dispatching and monitoring system, the thesis implements two components, which includes SUMO simulator and SUMO server. According to the concept of web service in [13], the thesis improved the architecture of web service to meet the demands of Android client.
-As illustrated in Figure 4.1, this architecture involves three parts, including SUMO simulator, Real-time I/O data Interface and Android Client.
+To build a vehicle dispatching and monitoring system, the thesis implements two components, which includes SUMO simulator and SUMO server. According to the concept of web service from Dresden University of Technology \cite{10.1007/978-3-662-45079-6_5}, the thesis improved the architecture of web service to meet the demands of Android client.
+As illustrated in Figure 4.1, the architecture involves three parts, including SUMO simulator, Real-time I/O data Interface and Android Client.
 
 
 
@@ -316,7 +312,7 @@ The chapter aims to illustrate the flow chart of parcel delivery process, contai
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.65]{./Thesis_figures/F5-1_sender_delivery_process.PNG}
+\includegraphics[width=1.0\textwidth]{./Thesis_figures/F5-1_sender_delivery_process.PNG}
 \caption{\large The sender’s parcel delivery process.}
 \vspace{0.5cm}
 \label{Fig:sender_process}
@@ -358,7 +354,7 @@ When the truck finishes the loading task, the system would end this sender’s d
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.45]{./Thesis_figures/F5-2_receiver_delivery_process.PNG}
+\includegraphics[width=1.0\textwidth]{./Thesis_figures/F5-2_receiver_delivery_process.PNG}
 \caption{\large The receiver's parcel delivery process.}
 \vspace{0.5cm}
 \label{Fig:receiver_process}
