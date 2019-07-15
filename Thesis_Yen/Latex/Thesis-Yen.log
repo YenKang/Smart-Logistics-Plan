@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  14 JUL 2019 22:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  15 JUL 2019 11:01
 entering extended mode
 **./Thesis-Yen.tex
 (Thesis-Yen.tex
@@ -377,7 +377,7 @@ File: ./Thesis_figures/F1-1_System_Design_Overview.PNG Graphic file (type png)
 <use ./Thesis_figures/F1-1_System_Design_Overview.PNG>
 Package pdftex.def Info: ./Thesis_figures/F1-1_System_Design_Overview.PNG  used
  on input line 99.
-(pdftex.def)             Requested size: 383.93712pt x 229.36221pt.
+(pdftex.def)             Requested size: 406.51599pt x 242.85152pt.
  [2 <./Thesis_figures/F1-1_System_Design_Overview.PNG>] [3]
 Chapter 2.
 [4
@@ -442,179 +442,179 @@ ine 298.
 (pdftex.def)             Requested size: 422.63393pt x 394.53969pt.
  [17 <./Thesis_figures/F4-6_GPS_SUMOMap.PNG>]
 Chapter 5.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 316.
+
+("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 316.
 <./Thesis_figures/F5-1_sender_delivery_process.PNG, id=99, 663.98062pt x 367.37
 25pt>
 File: ./Thesis_figures/F5-1_sender_delivery_process.PNG Graphic file (type png)
 
 <use ./Thesis_figures/F5-1_sender_delivery_process.PNG>
 Package pdftex.def Info: ./Thesis_figures/F5-1_sender_delivery_process.PNG  use
-d on input line 315.
+d on input line 324.
 (pdftex.def)             Requested size: 451.6875pt x 249.91649pt.
+
 [18
 
-]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 326.
-
- ("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 326.
- [19 <./Thesis_figures/F5-1_sender_delivery_process.PNG>]
+] [19 <./Thesis_figures/F5-1_sender_delivery_process.PNG>]
 <./Thesis_figures/F5-2_receiver_delivery_process.PNG, id=108, 980.91469pt x 548
 .80031pt>
 File: ./Thesis_figures/F5-2_receiver_delivery_process.PNG Graphic file (type pn
 g)
 <use ./Thesis_figures/F5-2_receiver_delivery_process.PNG>
 Package pdftex.def Info: ./Thesis_figures/F5-2_receiver_delivery_process.PNG  u
-sed on input line 357.
-(pdftex.def)             Requested size: 451.6875pt x 252.71078pt.
- [20] [21 <./Thesis_figures/F5-2_receiver_delivery_process.PNG>] [22]
+sed on input line 372.
+(pdftex.def)             Requested size: 441.40753pt x 246.95784pt.
+ [20] [21 <./Thesis_figures/F5-2_receiver_delivery_process.PNG>]
 Chapter 6.
-<./Thesis_figures/F6-1_dispatching_mechanism.PNG, id=119, 465.99094pt x 418.563
+<./Thesis_figures/F6-1_dispatching_mechanism.PNG, id=116, 465.99094pt x 418.563
 75pt>
 File: ./Thesis_figures/F6-1_dispatching_mechanism.PNG Graphic file (type png)
 <use ./Thesis_figures/F6-1_dispatching_mechanism.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-1_dispatching_mechanism.PNG  used 
-on input line 395.
+on input line 402.
 (pdftex.def)             Requested size: 326.19142pt x 292.99261pt.
-[23
+[22
 
-] [24 <./Thesis_figures/F6-1_dispatching_mechanism.PNG>]
-<./Thesis_figures/F6-2_caseOne_boxFiltering.PNG, id=128, 365.86688pt x 143.7871
+] [23 <./Thesis_figures/F6-1_dispatching_mechanism.PNG>]
+<./Thesis_figures/F6-2_caseOne_boxFiltering.PNG, id=124, 365.86688pt x 143.7871
 9pt>
 File: ./Thesis_figures/F6-2_caseOne_boxFiltering.PNG Graphic file (type png)
 <use ./Thesis_figures/F6-2_caseOne_boxFiltering.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-2_caseOne_boxFiltering.PNG  used o
-n input line 422.
+n input line 429.
 (pdftex.def)             Requested size: 271.01524pt x 106.51494pt.
-<./Thesis_figures/F6-3_caseTwo_boxFiltering.PNG, id=129, 363.60844pt x 164.1131
+<./Thesis_figures/F6-3_caseTwo_boxFiltering.PNG, id=125, 363.60844pt x 164.1131
 3pt>
 File: ./Thesis_figures/F6-3_caseTwo_boxFiltering.PNG Graphic file (type png)
 <use ./Thesis_figures/F6-3_caseTwo_boxFiltering.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-3_caseTwo_boxFiltering.PNG  used o
-n input line 433.
+n input line 440.
 (pdftex.def)             Requested size: 271.01524pt x 122.32578pt.
- [25 <./Thesis_figures/F6-2_caseOne_boxFiltering.PNG>]
-<./Thesis_figures/F6-4_caseOne_SchedulingStage.PNG, id=134, 819.06pt x 459.2156
+ [24 <./Thesis_figures/F6-2_caseOne_boxFiltering.PNG>]
+<./Thesis_figures/F6-4_caseOne_SchedulingStage.PNG, id=131, 819.06pt x 459.2156
 2pt>
 File: ./Thesis_figures/F6-4_caseOne_SchedulingStage.PNG Graphic file (type png)
 
 <use ./Thesis_figures/F6-4_caseOne_SchedulingStage.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-4_caseOne_SchedulingStage.PNG  use
-d on input line 447.
+d on input line 454.
 (pdftex.def)             Requested size: 451.6875pt x 253.24905pt.
- [26 <./Thesis_figures/F6-3_caseTwo_boxFiltering.PNG>] [27 <./Thesis_figures/F6
+ [25 <./Thesis_figures/F6-3_caseTwo_boxFiltering.PNG>] [26 <./Thesis_figures/F6
 -4_caseOne_SchedulingStage.PNG>]
-<./Thesis_figures/F6-5_caseTwo_SchedulingStage.PNG, id=143, 637.63219pt x 337.2
+<./Thesis_figures/F6-5_caseTwo_SchedulingStage.PNG, id=140, 637.63219pt x 337.2
 6pt>
 File: ./Thesis_figures/F6-5_caseTwo_SchedulingStage.PNG Graphic file (type png)
 
 <use ./Thesis_figures/F6-5_caseTwo_SchedulingStage.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-5_caseTwo_SchedulingStage.PNG  use
-d on input line 465.
+d on input line 472.
 (pdftex.def)             Requested size: 451.6875pt x 238.91077pt.
- [28 <./Thesis_figures/F6-5_caseTwo_SchedulingStage.PNG>]
-<./Thesis_figures/F6-6_caseThree_SchedulingStage.PNG, id=148, 812.28468pt x 428
+ [27 <./Thesis_figures/F6-5_caseTwo_SchedulingStage.PNG>]
+<./Thesis_figures/F6-6_caseThree_SchedulingStage.PNG, id=145, 812.28468pt x 428
 .35031pt>
 File: ./Thesis_figures/F6-6_caseThree_SchedulingStage.PNG Graphic file (type pn
 g)
 <use ./Thesis_figures/F6-6_caseThree_SchedulingStage.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-6_caseThree_SchedulingStage.PNG  u
-sed on input line 480.
+sed on input line 487.
 (pdftex.def)             Requested size: 451.6875pt x 238.18822pt.
- [29 <./Thesis_figures/F6-6_caseThree_SchedulingStage.PNG>]
-<./Thesis_figures/F6-7_senderScenario.PNG, id=153, 687.31781pt x 349.305pt>
+ [28 <./Thesis_figures/F6-6_caseThree_SchedulingStage.PNG>]
+<./Thesis_figures/F6-7_senderScenario.PNG, id=150, 687.31781pt x 349.305pt>
 File: ./Thesis_figures/F6-7_senderScenario.PNG Graphic file (type png)
 <use ./Thesis_figures/F6-7_senderScenario.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-7_senderScenario.PNG  used on inpu
-t line 498.
-(pdftex.def)             Requested size: 446.75128pt x 227.04555pt.
- [30 <./Thesis_figures/F6-7_senderScenario.PNG>]
-<./Thesis_figures/F6-8_receiverScenario1.PNG, id=159, 761.09344pt x 322.20375pt
+t line 505.
+(pdftex.def)             Requested size: 451.6875pt x 229.55063pt.
+ [29 <./Thesis_figures/F6-7_senderScenario.PNG>]
+<./Thesis_figures/F6-8_receiverScenario1.PNG, id=155, 761.09344pt x 322.20375pt
 >
 File: ./Thesis_figures/F6-8_receiverScenario1.PNG Graphic file (type png)
 <use ./Thesis_figures/F6-8_receiverScenario1.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-8_receiverScenario1.PNG  used on i
-nput line 511.
-(pdftex.def)             Requested size: 433.82777pt x 183.65804pt.
+nput line 518.
+(pdftex.def)             Requested size: 451.6875pt x 191.22443pt.
 
-[31 <./Thesis_figures/F6-8_receiverScenario1.PNG>]
-<./Thesis_figures/F6-9_receiverScenario2.PNG, id=164, 656.4525pt x 288.3272pt>
+[30 <./Thesis_figures/F6-8_receiverScenario1.PNG>]
+<./Thesis_figures/F6-9_receiverScenario2.PNG, id=161, 656.4525pt x 288.3272pt>
 File: ./Thesis_figures/F6-9_receiverScenario2.PNG Graphic file (type png)
 <use ./Thesis_figures/F6-9_receiverScenario2.PNG>
 Package pdftex.def Info: ./Thesis_figures/F6-9_receiverScenario2.PNG  used on i
-nput line 523.
-(pdftex.def)             Requested size: 426.68907pt x 187.41045pt.
- [32 <./Thesis_figures/F6-9_receiverScenario2.PNG>]
+nput line 530.
+(pdftex.def)             Requested size: 451.6875pt x 198.39163pt.
+ [31 <./Thesis_figures/F6-9_receiverScenario2.PNG>]
 Chapter 7.
-<./Thesis_figures/F7-1_Openstreetmap.PNG, id=169, 1380.65813pt x 700.11563pt>
+<./Thesis_figures/F7-1_Openstreetmap.PNG, id=166, 1380.65813pt x 700.11563pt>
 File: ./Thesis_figures/F7-1_Openstreetmap.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-1_Openstreetmap.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-1_Openstreetmap.PNG  used on input
- line 556.
+ line 563.
 (pdftex.def)             Requested size: 406.51599pt x 206.13705pt.
-[33
+[32
 
 ]
-<./Thesis_figures/F7-2_SUMOMap.PNG, id=173, 393.1283pt x 313.17pt>
+<./Thesis_figures/F7-2_SUMOMap.PNG, id=170, 393.1283pt x 313.17pt>
 File: ./Thesis_figures/F7-2_SUMOMap.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-2_SUMOMap.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-2_SUMOMap.PNG  used on input line 
-564.
+571.
 (pdftex.def)             Requested size: 316.17987pt x 251.86955pt.
- [34 <./Thesis_figures/F7-1_Openstreetmap.PNG> <./Thesis_figures/F7-2_SUMOMap.P
-NG>] [35]
-<./Thesis_figures/F7-3_speedEstimation.PNG, id=183, 741.52031pt x 383.93437pt>
+ [33 <./Thesis_figures/F7-1_Openstreetmap.PNG> <./Thesis_figures/F7-2_SUMOMap.P
+NG>] [34]
+<./Thesis_figures/F7-3_speedEstimation.PNG, id=180, 741.52031pt x 383.93437pt>
 File: ./Thesis_figures/F7-3_speedEstimation.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-3_speedEstimation.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-3_speedEstimation.PNG  used on inp
-ut line 621.
+ut line 628.
 (pdftex.def)             Requested size: 451.6875pt x 233.87155pt.
-<./Thesis_figures/F7-4_initialization.PNG, id=184, 1018.55531pt x 447.17062pt>
+<./Thesis_figures/F7-4_initialization.PNG, id=181, 1018.55531pt x 447.17062pt>
 File: ./Thesis_figures/F7-4_initialization.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-4_initialization.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-4_initialization.PNG  used on inpu
-t line 632.
+t line 639.
 (pdftex.def)             Requested size: 451.6875pt x 198.30455pt.
- [36 <./Thesis_figures/F7-3_speedEstimation.PNG>]
-<./Thesis_figures/F7-5_senderRequest.PNG, id=190, 768.62157pt x 285.31593pt>
+ [35 <./Thesis_figures/F7-3_speedEstimation.PNG>]
+<./Thesis_figures/F7-5_senderRequest.PNG, id=186, 768.62157pt x 285.31593pt>
 File: ./Thesis_figures/F7-5_senderRequest.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-5_senderRequest.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-5_senderRequest.PNG  used on input
- line 645.
+ line 652.
 (pdftex.def)             Requested size: 451.6875pt x 167.67319pt.
- [37 <./Thesis_figures/F7-4_initialization.PNG>]
-<./Thesis_figures/F7-6_loadingProcess.PNG, id=195, 928.97063pt x 572.89032pt>
+ [36 <./Thesis_figures/F7-4_initialization.PNG>]
+<./Thesis_figures/F7-6_loadingProcess.PNG, id=192, 928.97063pt x 572.89032pt>
 File: ./Thesis_figures/F7-6_loadingProcess.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-6_loadingProcess.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-6_loadingProcess.PNG  used on inpu
-t line 658.
+t line 665.
 (pdftex.def)             Requested size: 451.6875pt x 278.55954pt.
- [38 <./Thesis_figures/F7-5_senderRequest.PNG>]
-<./Thesis_figures/F7-7_receiverRequest.PNG, id=200, 995.21812pt x 457.71pt>
+ [37 <./Thesis_figures/F7-5_senderRequest.PNG>]
+<./Thesis_figures/F7-7_receiverRequest.PNG, id=197, 995.21812pt x 457.71pt>
 File: ./Thesis_figures/F7-7_receiverRequest.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-7_receiverRequest.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-7_receiverRequest.PNG  used on inp
-ut line 672.
+ut line 679.
 (pdftex.def)             Requested size: 451.6875pt x 207.73457pt.
 
-[39 <./Thesis_figures/F7-6_loadingProcess.PNG>]
-<./Thesis_figures/F7-8_unloadingProcess.PNG, id=205, 1254.93843pt x 715.17188pt
+[38 <./Thesis_figures/F7-6_loadingProcess.PNG>]
+<./Thesis_figures/F7-8_unloadingProcess.PNG, id=202, 1254.93843pt x 715.17188pt
 >
 File: ./Thesis_figures/F7-8_unloadingProcess.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-8_unloadingProcess.PNG>
 Package pdftex.def Info: ./Thesis_figures/F7-8_unloadingProcess.PNG  used on in
-put line 684.
+put line 691.
 (pdftex.def)             Requested size: 451.6875pt x 257.4071pt.
- [40 <./Thesis_figures/F7-7_receiverRequest.PNG>] [41 <./Thesis_figures/F7-8_un
+ [39 <./Thesis_figures/F7-7_receiverRequest.PNG>] [40 <./Thesis_figures/F7-8_un
 loadingProcess.PNG>]
 Chapter 8.
-[42
+[41
 
-] [43] [44] (Thesis-Yen.bbl [45
+] [42] [43] (Thesis-Yen.bbl [44
 
-]) [46] [47
+]) [45] [46
 
 ] (Thesis-Yen.aux)
 
@@ -628,7 +628,7 @@ Here is how much of TeX's memory you used:
  7369 multiletter control sequences out of 15000+200000
  11779 words of font info for 45 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,9n,27p,882b,298s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,9n,27p,882b,356s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmbx12.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmbxti10.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts
@@ -640,9 +640,9 @@ n/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:
 /Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
 y10.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmti12.pfb>
-Output written on Thesis-Yen.pdf (54 pages, 5214637 bytes).
+Output written on Thesis-Yen.pdf (53 pages, 5213957 bytes).
 PDF statistics:
- 264 PDF objects out of 1000 (max. 8388607)
+ 261 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  136 words of extra memory for PDF output out of 10000 (max. 10000000)
 

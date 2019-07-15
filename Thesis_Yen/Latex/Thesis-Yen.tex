@@ -94,9 +94,9 @@ Before introducing the autonomous cars to the real road network, so far the thes
 
 As illustrated in the red frame of Figure 1.1, this thesis describes a vehicle a dispatching and monitoring system. This system includes two main components, Simulation of Urban Mobility (SUMO) simulator and a SUMO server. The SUMO server is implemented by Traffic Control Interface, which have the access to retrieve the vehicle’s values or manipulate the vehicle’s behaviors on a running road traffic simulation.
 
-\begin{figure}[t!]
+\begin{figure}[t]
 \centering
-\includegraphics[width=0.85\textwidth]{./Thesis_figures/F1-1_System_Design_Overview.PNG}
+\includegraphics[width=0.9\textwidth]{./Thesis_figures/F1-1_System_Design_Overview.PNG}
 
 \caption{\large A Vehicle dispatching and monitoring system.}
 \vspace{0.5cm}
@@ -137,13 +137,13 @@ Moreover, Singapore Institute of Manufacturing Technology proposed \textbf{a joi
 In some metropolitan areas in the U.S. like Seattle, European Transport Research Review deployed alternative delivery mode such as \textbf{cargo bikes}\cite{Sheth2019}. Due to the increasing freight volumes on the road and scarce road space, cargo bicycles are being utilized for the last mile deliveries in several urban cities \cite{Melo2017}. The advantage of using delivery bikes is that cargo bicycles are not encumbered by the same parking and congestion constraints as trucks. However, the disadvantage is that cargo bikes are less cost effective for greater distances than delivery trucks.
 
 %% [11]
-JD.com, which is the largest e-commence platform by revenue, used autonomous driving vehicles to hit the open road in Beijing \cite{Delivery2017}. The vehicle can store up to thirty containers, and travel 15 km/hr. The current concerns of the approach are the autonomous driving technology and government regulations.
+JD.com, which is the largest e-commence platform by revenue, used \textbf{autonomous driving vehicles} to hit the open road in Beijing \cite{Delivery2017}. The vehicle can store up to thirty containers, and travel 15 km/hr. The current concerns of the approach are the autonomous driving technology and government regulations.
 
 \section{Traffic Simulation}
 SUMO is an open source traffic simulation package including net import and demand modeling components. Besides, SUMO helps to investigate several research topics, which includes route choice and simulating vehicular communication  \cite{Krajzewicz2007}.
 
 %% [13]
-Dresden University of Technology introduced the real-time I/O data interface and proposed an approach to \textbf{building up a Web service} \cite{10.1007/978-3-662-45079-6_5}. 
+Dresden University of Technology introduced the real-time I/O data interface and proposed an approach to building up a Web service \cite{10.1007/978-3-662-45079-6_5}. 
 Beside, by knowing the commands of traffic control interface (TraCI), the user can handle the communication with SUMO Traffic Simulation Suite. Finally, Mario Krumnow displayed an example of the code, which provides the base for a new Web service called TraaS (TraCI as a service).
 
 %% [14]
@@ -310,6 +310,15 @@ The chapter aims to illustrate the flow chart of parcel delivery process, contai
 
 \section{Sender Part}
 
+Figure 5.1 shows the sender’s parcel delivery process.
+\begin{itemize}
+\item
+The parcel delivery process starts at 09:00 AM.
+
+\item
+The user places a delivery order, which includes the sender’s address, the receiver’s id, the receiver’s appointed address. Then,the user picks the box size categorized into small size, medium size, and large size.
+
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\textwidth]{./Thesis_figures/F5-1_sender_delivery_process.PNG}
@@ -317,16 +326,6 @@ The chapter aims to illustrate the flow chart of parcel delivery process, contai
 \vspace{0.5cm}
 \label{Fig:sender_process}
 \end{figure}
-
-Figure 5.1 shows the sender’s parcel delivery process.
-
-
-\begin{itemize}
-\item
-The parcel delivery process starts at 09:00 AM.
-
-\item
-The user places a delivery order, which includes the sender’s address, the receiver’s id, the receiver’s appointed address. Then,the user picks the box size categorized into small size, medium size, and large size.
 
 
 \item
@@ -350,15 +349,14 @@ When the truck finishes the loading task, the system would end this sender’s d
 
 \end{itemize}
 
+
+
+
+
+
+
 \section{Receiver Part}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=1.0\textwidth]{./Thesis_figures/F5-2_receiver_delivery_process.PNG}
-\caption{\large The receiver's parcel delivery process.}
-\vspace{0.5cm}
-\label{Fig:receiver_process}
-\end{figure}
 
 Figure 5.2 illustrates the receiver’s parcel delivery process
 
@@ -369,8 +367,17 @@ As the vehicle finishes the loading task at the sender’s appointed address, th
 \item
 After getting the notification of completing loading task, the logistic status would change. As a result, the receiver can go to “my received parcel” page and select the receiver’s arrival time of the parcel. This parcel consists of many details such as the vehicle id, the box index number, sender’s id, the content of parcel, and the order number. Besides, the selection of arrival time begins at 09:30 AM to 03:00 PM with the interval of half an hour.
 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.45]{./Thesis_figures/F5-2_receiver_delivery_process.PNG}
+\caption{\large The receiver's parcel delivery process.}
+\vspace{0.5cm}
+\label{Fig:receiver_process}
+\end{figure}
+
 \item
 Then, the SUMO server would check whether the receiver’s delivery order can be established or not. If this request of the order fails, the receiver can select another suitable arrival time again. On the other hand, if the request of the receiver’s order can be accepted by the parcel delivery schedule, the receiver will be informed the order is established successfully.
+
 
 \item
 When the delivery schedule changes due to the new order insertion, the SUMO server will set new routes on the dispatched vehicle.
@@ -399,7 +406,7 @@ Furthermore, if there are no available vehicles that can serve this order in the
 \end{figure}
 
 \section{Box Filtering Stage }
-When the sender’s delivery order is established, the system would generate a unique box index number of the order. Then, each digit of the box index has the different meaning. Take \textbf{“221”} as an example,
+When the sender’s delivery order is established, the system would generate a unique box index number of the order. Then, each digit of the box index has the different meaning. Take “221” as an example,
 
 \begin{itemize}
 
@@ -415,9 +422,9 @@ The \textbf{units digit} of the number means the box location number, which rang
 
 \end{itemize}
 
-To sum up, in this case of box index number \textbf{“221”}, the number shows that the parcel is in the vehicle 2, which is placed in the medium box size, and the parcel is put into the first medium box.
+To sum up, in this case of box index number “221”, the number shows that the parcel is in the vehicle 2, which is placed in the medium box size, and the parcel is put into the first medium box.
 
-\begin{figure}[H]
+\begin{figure}[t]
 \centering
 \includegraphics[width=0.6\textwidth]{./Thesis_figures/F6-2_caseOne_boxFiltering.PNG}
 \caption{\large Case one of the car-box map.}
@@ -425,7 +432,7 @@ To sum up, in this case of box index number \textbf{“221”}, the number shows
 \label{Fig:CaseOne_carBox_Map}
 \end{figure}
 
-In Figure 6.2, the top row means different vehicles id, and the far left column means three kinds of box size. Then, the vehicle 1 has two box index number belonging to the \textbf{small box size}, the vehicle 2 has one box number belonging the medium box size, and the vehicle 3’s all boxes are empty.
+In Figure 6.2, the top row means different vehicles id, and the far left column means three kinds of box size. Then, the vehicle 1 has two box index number belonging to the small box size, the vehicle 2 has one box number belonging the medium box size, and the vehicle 3’s all boxes are empty.
 As the delivery order with small box size is inserted to the system, the system will filter the suitable vehicles to the next stage according the form. Because the number of small box in vehicle 1 is two, the number of vehicle 2’s small boxes is zero, and the number of vehicle 3’s small box is zero as well. Each number of small box in each vehicle is lower than three. As a result, all three vehicles are the candidates which can enter the next stage.
 
 \begin{figure}[t]
@@ -456,11 +463,11 @@ the time schedule includes three vehicles with previous tasks, and the schedule 
 When the simulation time is 09:05 AM, the sender 4 submits the delivery order request with the small box size and the expected arrival time to Hayashi Department Store is 09:30 AM. Because the vehicle 1 has already the task of 09:30 AM, the system would turn to the next vehicle to deal with the request.
 The right side of the figure shows the map with the vehicle 2’s routes which contains the new destination with the expected arrival time.
 
-According to the map, the vehicle 2 has to meet two conditions. \textbf{First condition} is that after passing through the blue route, the vehicle 2 should arrive to Hayashi Department Store before 09:30 AM. 
-When the vehicle 2 starts at 09:40 in Hayashi Department Store, and forwards to the Durban Department Store. Then, the \textbf{second condition} is that the vehicle 2 should arrive before 11:00 AM.
+According to the map, the vehicle 2 has to meet two conditions. First condition is that after passing through the blue route, the vehicle 2 should arrive to Hayashi Department Store before 09:30 AM. 
+When the vehicle 2 starts at 09:40 in Hayashi Department Store, and forwards to the Durban Department Store. Then, the second condition is that the vehicle 2 should arrive before 11:00 AM.
 After satisfying the two above conditions, the sender 4’s delivery task would be inserted into the time schedule and come with the box index number. 
 
-\begin{figure}[H]
+\begin{figure}[t]
 \centering
 \includegraphics[width=1.0\textwidth]{./Thesis_figures/F6-5_caseTwo_SchedulingStage.PNG}
 \caption{\large Case two of simple time filtering stage.}
@@ -475,7 +482,7 @@ As the vehicle 1 can fulfill the two conditions, the delivery request of the sen
 
 
 
-\begin{figure}[H]
+\begin{figure}[t]
 \centering
 \includegraphics[width=1.0\textwidth]{./Thesis_figures/F6-6_caseThree_SchedulingStage.PNG}
 \caption{\large Case three of simple time filtering stage.}
@@ -495,7 +502,7 @@ This section shows the user scenarios when the vehicle arrives to the destinatio
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.65]{./Thesis_figures/F6-7_senderScenario.PNG}
+\includegraphics[width=1.0\textwidth]{./Thesis_figures/F6-7_senderScenario.PNG}
 \caption{\large The sender's scenario of parcel delivery process.}
 \vspace{0.5cm}
 \label{Fig:senderScenario_DeliveryPorcess}
@@ -506,9 +513,9 @@ As 09:35 AM, the vehicle 2 will finish the loading process of the parcel. Finall
 
 \subsection{Receiver Scenario}
 
-\begin{figure}[H]
+\begin{figure}[t]
 \centering
-\includegraphics[scale=0.57]{./Thesis_figures/F6-8_receiverScenario1.PNG}
+\includegraphics[width=1.0\textwidth]{./Thesis_figures/F6-8_receiverScenario1.PNG}
 \caption{\large The receiver's first scenario of parcel delivery process.}
 \vspace{0.5cm}
 \label{Fig:FirsrtReceiverScenario_deliveryProcess}
@@ -518,9 +525,9 @@ In Figure 6.8, the vehicle 2 would demonstrate how the receiver 4 participates i
 However, the current simulation time is 09:37 AM, and the vehicle 2 starts to deal with the receiver 4’s task of National Cheng Kung University Hospital (NCKUH). At 09:40 AM, the vehicle 2 leaves Hayashi department store, and forwards to NCKUH. Besides, the vehicle 2 would be close to the NCKUH, and the receiver 4 would get the coming notification at 09:55 AM.
 
 
-\begin{figure}[H]
+\begin{figure}[t]
 \centering
-\includegraphics[scale=0.65]{./Thesis_figures/F6-9_receiverScenario2.PNG}
+\includegraphics[width=1.0\textwidth]{./Thesis_figures/F6-9_receiverScenario2.PNG}
 \caption{\large The receiver's second scenario of parcel delivery process.}
 \vspace{0.5cm}
 \label{Fig:Second_ReceiverScenario_DeliveryProcess}

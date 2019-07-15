@@ -14,22 +14,22 @@
 \contentsline {figure}{\numberline {5.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont The sender\IeC {\textquoteright }s parcel delivery process.}}{19}% 
 \contentsline {figure}{\numberline {5.2}{\ignorespaces \relax \fontsize {12}{14}\selectfont The receiver's parcel delivery process.}}{21}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont Dispatch mechanism consists of box filtering stage and simple time scheduling stage.}}{24}% 
-\contentsline {figure}{\numberline {6.2}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case one of the car-box map.}}{25}% 
-\contentsline {figure}{\numberline {6.3}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case two of the car-box map.}}{26}% 
-\contentsline {figure}{\numberline {6.4}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case one of simple time filtering stage.}}{27}% 
-\contentsline {figure}{\numberline {6.5}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case two of simple time filtering stage.}}{28}% 
-\contentsline {figure}{\numberline {6.6}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case three of simple time filtering stage.}}{29}% 
-\contentsline {figure}{\numberline {6.7}{\ignorespaces \relax \fontsize {12}{14}\selectfont The sender's scenario of parcel delivery process.}}{30}% 
-\contentsline {figure}{\numberline {6.8}{\ignorespaces \relax \fontsize {12}{14}\selectfont The receiver's first scenario of parcel delivery process.}}{31}% 
-\contentsline {figure}{\numberline {6.9}{\ignorespaces \relax \fontsize {12}{14}\selectfont The receiver's second scenario of parcel delivery process.}}{32}% 
+\contentsline {figure}{\numberline {6.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont Dispatch mechanism consists of box filtering stage and simple time scheduling stage.}}{23}% 
+\contentsline {figure}{\numberline {6.2}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case one of the car-box map.}}{24}% 
+\contentsline {figure}{\numberline {6.3}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case two of the car-box map.}}{25}% 
+\contentsline {figure}{\numberline {6.4}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case one of simple time filtering stage.}}{26}% 
+\contentsline {figure}{\numberline {6.5}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case two of simple time filtering stage.}}{27}% 
+\contentsline {figure}{\numberline {6.6}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case three of simple time filtering stage.}}{28}% 
+\contentsline {figure}{\numberline {6.7}{\ignorespaces \relax \fontsize {12}{14}\selectfont The sender's scenario of parcel delivery process.}}{29}% 
+\contentsline {figure}{\numberline {6.8}{\ignorespaces \relax \fontsize {12}{14}\selectfont The receiver's first scenario of parcel delivery process.}}{30}% 
+\contentsline {figure}{\numberline {6.9}{\ignorespaces \relax \fontsize {12}{14}\selectfont The receiver's second scenario of parcel delivery process.}}{31}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont Downtown area of Tainan in OpenStreetMap.}}{34}% 
-\contentsline {figure}{\numberline {7.2}{\ignorespaces \relax \fontsize {12}{14}\selectfont Service region of the experiment on SUMO.}}{34}% 
-\contentsline {figure}{\numberline {7.3}{\ignorespaces \relax \fontsize {12}{14}\selectfont Average vehicle speed estimation.}}{36}% 
-\contentsline {figure}{\numberline {7.4}{\ignorespaces \relax \fontsize {12}{14}\selectfont Initialization of Simulation.}}{37}% 
-\contentsline {figure}{\numberline {7.5}{\ignorespaces \relax \fontsize {12}{14}\selectfont The Sender\IeC {\textquoteright }s Request Insertion in simulation.}}{38}% 
-\contentsline {figure}{\numberline {7.6}{\ignorespaces \relax \fontsize {12}{14}\selectfont The loading process at the sender\IeC {\textquoteright }s sddress in simulation.}}{39}% 
-\contentsline {figure}{\numberline {7.7}{\ignorespaces \relax \fontsize {12}{14}\selectfont The receiver\IeC {\textquoteright }s request insertion in simulation.}}{40}% 
-\contentsline {figure}{\numberline {7.8}{\ignorespaces \relax \fontsize {12}{14}\selectfont The unloading process at the receiver\IeC {\textquoteright }s address in simulation.}}{41}% 
+\contentsline {figure}{\numberline {7.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont Downtown area of Tainan in OpenStreetMap.}}{33}% 
+\contentsline {figure}{\numberline {7.2}{\ignorespaces \relax \fontsize {12}{14}\selectfont Service region of the experiment on SUMO.}}{33}% 
+\contentsline {figure}{\numberline {7.3}{\ignorespaces \relax \fontsize {12}{14}\selectfont Average vehicle speed estimation.}}{35}% 
+\contentsline {figure}{\numberline {7.4}{\ignorespaces \relax \fontsize {12}{14}\selectfont Initialization of Simulation.}}{36}% 
+\contentsline {figure}{\numberline {7.5}{\ignorespaces \relax \fontsize {12}{14}\selectfont The Sender\IeC {\textquoteright }s Request Insertion in simulation.}}{37}% 
+\contentsline {figure}{\numberline {7.6}{\ignorespaces \relax \fontsize {12}{14}\selectfont The loading process at the sender\IeC {\textquoteright }s sddress in simulation.}}{38}% 
+\contentsline {figure}{\numberline {7.7}{\ignorespaces \relax \fontsize {12}{14}\selectfont The receiver\IeC {\textquoteright }s request insertion in simulation.}}{39}% 
+\contentsline {figure}{\numberline {7.8}{\ignorespaces \relax \fontsize {12}{14}\selectfont The unloading process at the receiver\IeC {\textquoteright }s address in simulation.}}{40}% 
 \addvspace {10\p@ }
