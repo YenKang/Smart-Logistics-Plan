@@ -61,9 +61,7 @@ University \\ }
 
 \Thesisspace {\large 
 Freight transportation plays an important role in daily life. As the e-commence and traffic technology developed, customers have high expectations for the more rapid and more flexible parcel delivery service. However, due to rising labor costs, the delivery mode of autonomous cars is one of alternatives. By reviewing the self-driving technology, the maturity of technology and profitable business model are the concerns. Moreover, so far there is no complete self-driving delivery system in Asia.
- 
 As a result, the paper integrates traffic simulation software SUMO and mobile application to simulate the package delivery service. Moreover, this study proposes a vehicle dispatching and monitoring system, which can cope with delivery orders, arrange routes, monitor vehicle’s movements, and demonstrate loading and unloading details of trucks. At the same time, this paper develops a dynamic dispatching mechanism consisting of box filtering stage and simple time scheduling stage. The mechanism can judge whether the delivery order could be established. Finally, the paper conducts the parcel delivery simulation in the downtown area of Tainan, which showed clear visualization of logistic condition in the simulation results.
-
 \textbf{Using the self-driving delivery emulation system has three advantages}. One is that the user can experience more immediate and more flexible delivery service. Second is that administrator can monitor the vehicle’s route and the vehicle’s real-time behavior. Third is that the developer can extend more complex routing algorithms, and add new applications on the simulation platform.
 }
 
@@ -137,17 +135,17 @@ Moreover, Singapore Institute of Manufacturing Technology proposed \textbf{a joi
 In some metropolitan areas in the U.S. like Seattle, European Transport Research Review deployed alternative delivery mode such as \textbf{cargo bikes}\cite{Sheth2019}. Due to the increasing freight volumes on the road and scarce road space, cargo bicycles are being utilized for the last mile deliveries in several urban cities \cite{Melo2017}. The advantage of using delivery bikes is that cargo bicycles are not encumbered by the same parking and congestion constraints as trucks. However, the disadvantage is that cargo bikes are less cost effective for greater distances than delivery trucks.
 
 %% [11]
-JD.com, which is the largest e-commence platform by revenue, used \textbf{autonomous driving vehicles} to hit the open road in Beijing \cite{Delivery2017}. The vehicle can store up to thirty containers, and travel 15 km/hr. The current concerns of the approach are the autonomous driving technology and government regulations.
+JD.com, which is the largest e-commence platform by revenue, used \textbf{autonomous driving vehicles} to hit the open road in Beijing \cite{xia2018last}. The vehicle can store up to thirty containers, and travel 15 km/hr. The current concerns of the approach are the autonomous driving technology and government regulations.
 
 \section{Traffic Simulation}
-SUMO is an open source traffic simulation package including net import and demand modeling components. Besides, SUMO helps to investigate several research topics, which includes route choice and simulating vehicular communication  \cite{Krajzewicz2007}.
+SUMO is an open source traffic simulation package including net import and demand modeling components. Besides, SUMO helps to investigate several research topics, which includes route choice and simulating vehicular communication  \cite{behrisch2011sumo}.
 
 %% [13]
 Dresden University of Technology introduced the real-time I/O data interface and proposed an approach to building up a Web service \cite{10.1007/978-3-662-45079-6_5}. 
 Beside, by knowing the commands of traffic control interface (TraCI), the user can handle the communication with SUMO Traffic Simulation Suite. Finally, Mario Krumnow displayed an example of the code, which provides the base for a new Web service called TraaS (TraCI as a service).
 
 %% [14]
-Heng Tat Hong showed the \textbf{transportation simulation for food distribution} \cite{Tunku2016}. The author used TraaS to assign trucks backup when the original tricks unable to cover the destination shops at certain time threshold, and re-route the path for the backup vehicles.
+Heng Tat Hong showed the \textbf{transportation simulation for food distribution} \cite{hong2016intelligent}. The author used TraaS to assign trucks backup when the original tricks unable to cover the destination shops at certain time threshold, and re-route the path for the backup vehicles.
 
 %% [15]
 German Aerospace Center achieved simulation scenarios where accidents occur, and introduced \textbf{the implementation of logistic transport} \cite{Kendziorra2015}. The concept of freight and goods was implemented to enable the simulation of good traffic, which consists of the containers and stops.
@@ -212,7 +210,7 @@ As illustrated in Figure 4.1, the architecture involves three parts, including S
 
 
 \section{Traffic Control Interface}
-To interact with a simulation, the real-time I/O data Interface offers a possibility to communicate between the simulation and the user application bi-directionally \cite{Fischer}. Traffic Control Interface, which is called “TraCI”, is a kind of Real-time I/O data Interface in SUMO suite.
+To interact with a simulation, the real-time I/O data Interface offers a possibility to communicate between the simulation and the user application bi-directionally \cite{wegener2008traci}. Traffic Control Interface, which is called “TraCI”, is a kind of Real-time I/O data Interface in SUMO suite.
 TraCI can implement online interaction with the simulation, and have the access to a running road traffic simulation. This access allows TraCI to retrieve values of simulated objects, and to manipulate their online behavior.
 To consider the portability of system implementation and the popularity in web service, this study selects TraaS as the traffic control interface. TraaS is a java library for working with TraCI, which is viewed as a java traci client. The client can be used to write TraCI scripts directly, and TraaS stands for TraCI as a Service.
 
@@ -583,21 +581,21 @@ The road network, which is pruned by estimating unreachable streets and roads fo
 
 \subsection{Parameters}
 Parameters of the simulation are showed in Table 7.1. Note that the number of trucks is three from the simulation time $T_{start}$ to $T_{end}$. 
-Then, the maximum speed of truck is 18 km/hr, and the range of speed limit on each lane is 10-100 km/hr. It is noteworthy that trucks will not exceed the speed limit on each lane even the truck has a higher maximum speed. Besides, a truck has \textbf{nine boxes} which are grouped by small size, medium size, and large size. \textbf{The capacity of each box size is three}. 
-Then, the loading process period is five minutes, and \textbf{the unloading process period is five minutes} as well. 
+Then, the maximum speed of truck is 18 km/hr, and the range of speed limit on each lane is 10-100 km/hr. It is noteworthy that trucks will not exceed the speed limit on each lane even the truck has a higher maximum speed. Besides, a truck has nine boxes which are grouped by small size, medium size, and large size. The capacity of each box size is three. 
+Then, the loading process period is five minutes, and the unloading process period is five minutes as well. 
 
-Finally, when the SUMO server counts the travel time of the vehicle, which is equal to the driving distance divided by the estimated average vehicle speed. Thus, the estimated average vehicle speed is \textbf{13.68} km/hr.
+Finally, when the SUMO server counts the travel time of the vehicle, which is equal to the driving distance divided by the estimated average vehicle speed. Thus, the estimated average vehicle speed is 13.68 km/hr.
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{table}
-\large
+\vspace{0.5cm}
+\normalsize
 \centering
-\caption{Parameters of Simulation}
-\begin{tabular}{|c|l|r|} %l(left)居左显示 r(right)居右显示 c居中显示
-\hline 
+\caption{\large Parameters of Simulation}
+\begin{tabular}{|c|c|} \hline\hline 
 \textbf{Parameters}&\textbf{Value}\\ 
 \hline  
 Simulation area & 50.07 $km^{2}$ \\
@@ -606,11 +604,13 @@ The number of junctions & 6785\\
 \hline 
 The number of roads & 25069\\
 \hline 
+Speed limit on each lane & [10, 100] km/hr\\
+\hline 
 $V_{max}$& 5.0 m/s (18 km/hr) \\
 \hline 
 Average speed of truck & 3.8 m/s (13.68 km/hr)\\
 \hline 
-Simulation period & 09:00~15:00 (6 hours)\\
+Simulation period & 09:00-15:00 (6 hours)\\
 
 \hline
  
@@ -620,7 +620,7 @@ Simulation period & 09:00~15:00 (6 hours)\\
 
 \subsection{Average Vehicle Speed Estimation}
 
-As illustrated in Figure 7.3, the horizontal axis represents the different routes in Tainan downtown, and the vertical axis shows the vehicle's speed. Take the route 1 as an example, the route1 starts from Anping Fort to the Taiwan Tainan District Court, and the driving distance is 2.9 kilometers. In this case, the blue line represents the maximum speed of truck in SUMO, and the green line indicates the average vehicle speed in Google Map, and the orange line is real average vehicle speed in SUMO. Thus, according to the seven cases in this figure, to avoid the delay in delivery, the study sets estimated average vehicle speed to \textbf{"3.80"} m/s (13.68 km/hr).
+As illustrated in Figure 7.3, the horizontal axis represents the different routes in Tainan downtown, and the vertical axis shows the vehicle's speed. Take the route 1 as an example, the route1 starts from Anping Fort to the Taiwan Tainan District Court, and the driving distance is 2.9 kilometers. In this case, the blue line represents the maximum speed of truck in SUMO, and the green line indicates the average vehicle speed in Google Map, and the orange line is real average vehicle speed in SUMO. Thus, according to the seven cases in this figure, to avoid the delay in delivery, the study sets estimated average vehicle speed to 3.80 m/s (13.68 km/hr).
 
 
 \begin{figure}[t]
@@ -634,7 +634,7 @@ As illustrated in Figure 7.3, the horizontal axis represents the different route
 \section{Simulation Result}
 It this section, there are five stages of simulation results, which includes simulation initialization, the sender’s request insertion, the loading process, the receiver’s request, and the unloading process.
 
-\begin{figure}[H]
+\begin{figure}[t]
 \centering
 \includegraphics[width=1.0\textwidth]{./Thesis_figures/F7-4_initialization.PNG}
 \caption{\large Initialization of Simulation.}
@@ -642,7 +642,7 @@ It this section, there are five stages of simulation results, which includes sim
 \label{Fig:Initialization_of_Simulation}
 \end{figure}
 
-Figure 7.4 shows the simulation initialization without any request insertion. According to the time schedule in the left side of the Figure, each vehicle has different column color, which indicates the distinct routes. Take the vehicle 2 as an example, the system arranges the blue route with one task in the right side of the Figure. Thus, the vehicle 2 would arrive to the \textbf{Durban Department Store} before 11:00 AM, and stay in the destination until 11:10 AM.
+Figure 7.4 shows the simulation initialization without any request insertion. According to the time schedule in the left side of the Figure, each vehicle has different column color, which indicates the distinct routes. Take the vehicle 2 as an example, the system arranges the blue route with one task in the right side of the Figure. Thus, the vehicle 2 would arrive to the Durban Department Store before 11:00 AM, and stay in the destination until 11:10 AM.
 
 
 
@@ -668,7 +668,7 @@ However, at the time of 1218 seconds, which means 09:20:18, the vehicle 2 replac
 \label{Fig:LoadingProcess}
 \end{figure}
 
-The receiver’s phone in the left side of Figure 7.6 gets \textbf{the notification of finishing loading process at sender’s address at 09:35.} The box index number “211” has the value of one, which means that the parcel exists in the vehicle 2. 
+The receiver’s phone in the left side of Figure 7.6 gets the notification of finishing loading process at sender’s address at 09:35. The box index number “211” has the value of one, which means that the parcel exists in the vehicle 2. 
 Thus, the receiver can start to select the expected arrival time of the parcel.
 
 
@@ -719,7 +719,7 @@ The thesis implemented a vehicle dispatching and monitoring system to simulate t
 
 Besides, the system can adjust the parking duration to simulate the loading and unloading process when the vehicle arrives to the destination. As a result, the users can have enough time to interact with the truck. 
 
-Finally, the thesis used three trucks and nine containers to simulate the delivery process including sender’s scenario and receiver’s scenario in the downtown area of Tainan. By using the vehicle dispatching and monitoring system, the administrator can arrange the route dynamically and track the vehicle’s movement immediately, and monitor the simulation of the parcel delivery process.
+Finally, the thesis used three trucks and nine containers to simulate the delivery process including sender’s scenario and receiver’s scenario in the downtown area of Tainan. By using the system, the administrator can arrange the route dynamically and track the vehicle’s movement immediately, and monitor the simulation of the parcel delivery process.
 
 
 
@@ -732,10 +732,10 @@ There are some issues that should be discussed to complete the vehicle dispatchi
 
 
 \item
-\textbf{Scalability}: The system currently contains three trucks in the downtown area of Tainan, whose area is $50km^{2}$. Thus, in the future the system would be used in larger map and distribute more trucks into different areas according to the quantity of parcels. Besides, in the dispatch mechanism, the system current empirical time scheduling method to filter the suitable order. However, in the future the system should have the ability to implement different routing algorithms to schedule tasks on the same simulation platform.
+\textbf{Scalability}: The system currently contains three trucks in the downtown area of Tainan, whose area is $50km^{2}$. Thus, in the future the system will be used in larger map and distribute more trucks into different areas according to the quantity of parcels. Besides, in the dispatch mechanism, the system uses empirical time scheduling method to filter the suitable order. However, in the future the system should implement different routing algorithms to schedule delivery tasks.
 
 \item
-\textbf{Quantity}: The system runs the delivery simulation with a small amount of order requests. However, the system has to deal with a batch of orders in a brief period of time in the future.
+\textbf{Quantity}: The system performs the delivery simulation with a small amount of order requests. However, the system has to deal with a batch of orders in a brief period of time in the future.
 
 \item
 \textbf{Accuracy}: When it comes to scheduling the task, the system has to calculate the travel time of the new route. Thus, the accuracy of the estimated vehicle speed is very crucial and this value should be actually measured by the real-time road conditions.

@@ -37,5 +37,5 @@
 \contentsline {chapter}{\numberline {8}Conclusion and Future Work}{41}% 
 \contentsline {section}{\numberline {8.1}\ignorespaces Conclusion}{41}% 
 \contentsline {section}{\numberline {8.2}\ignorespaces Future Work}{42}% 
-\contentsline {chapter}{References}{44}% 
-\contentsline {chapter}{Vita}{46}% 
+\contentsline {chapter}{References}{43}% 
+\contentsline {chapter}{Vita}{45}% 

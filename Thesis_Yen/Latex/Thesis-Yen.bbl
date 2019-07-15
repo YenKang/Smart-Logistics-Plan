@@ -78,14 +78,16 @@ S.~Melo and P.~Baptista, ``{Evaluating the impacts of using cargo cycles on
   boundaries},'' \emph{European Transport Research Review}, vol.~9, no.~2,
   2017.
 
-\bibitem{Delivery2017}
-L.-m. Delivery, ``{china region Is Last-Mile Delivery a ‘ Killer App ' for
-  Self-Driving Vehicles ?}'' \emph{Communications of the ACM}, 2017.
+\bibitem{xia2018last}
+H.~Xia and H.~Yang, ``Is last-mile delivery a'killer app'for self-driving
+  vehicles?'' \emph{Communications of the ACM}, vol.~61, no.~11, pp. 70--75,
+  2018.
 
-\bibitem{Krajzewicz2007}
-D.~Krajzewicz and C.~Rossel, ``{Simulation of urban mobility (SUMO)},''
-  \emph{Centre for Applied Informatics (ZAIK) and the Institute of {\ldots}},
-  pp. 1--35, 2007.
+\bibitem{behrisch2011sumo}
+M.~Behrisch, L.~Bieker, J.~Erdmann, and D.~Krajzewicz, ``Sumo--simulation of
+  urban mobility: an overview,'' in \emph{Proceedings of SIMUL 2011, The Third
+  International Conference on Advances in System Simulation}.\hskip 1em plus
+  0.5em minus 0.4em\relax ThinkMind, 2011.
 
 \bibitem{10.1007/978-3-662-45079-6_5}
 M.~Krumnow, ``{Sumo as a Service -- Building up a Web Service to Interact with
@@ -93,20 +95,21 @@ M.~Krumnow, ``{Sumo as a Service -- Building up a Web Service to Interact with
   and M.~Weber, Eds.\hskip 1em plus 0.5em minus 0.4em\relax Berlin, Heidelberg:
   Springer Berlin Heidelberg, 2014, pp. 62--70.
 
-\bibitem{Tunku2016}
-U.~Tunku and A.~Rahman, ``{INTELLIGENT TRANSPORTATION SIMULATION FOR SUPPORTING
-  SMART CITY FOOD DISTRIBUTION},'' no. May, 2016.
+\bibitem{hong2016intelligent}
+T.~H. Hong, ``Intelligent transportation simulation for supporting smart city
+  food distribution,'' Ph.D. dissertation, UTAR, 2016.
 
 \bibitem{Kendziorra2015}
 A.~Kendziorra and M.~Weber, ``{Extensions for logistic and public transport in
   SUMO},'' \emph{SUMO 2015–Intermodal Simulation for Intermodal Transport},
   p.~83, 2015.
 
-\bibitem{Fischer}
-S.~Fischer, J.-p. Hubaux, A.~Wegener, M.~Pi, M.~Raya, and H.~Hellbr, ``{TraCI:
-  An Interface for Coupling Road Traffic and Network Simulators},''
-  \emph{Proceedings of the 11th Communications and Networking Simulation
-  Symposium}, pp. 155--163, 2008.
+\bibitem{wegener2008traci}
+A.~Wegener, M.~Pi{\'o}rkowski, M.~Raya, H.~Hellbr{\"u}ck, S.~Fischer, and J.-P.
+  Hubaux, ``Traci: an interface for coupling road traffic and network
+  simulators,'' in \emph{Proceedings of the 11th communications and networking
+  simulation symposium}.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 2008, pp.
+  155--163.
 
 \bibitem{Haklay2008}
 M.~Haklay and P.~Weber, ``{OpenStreet map: User-generated street maps},''
