@@ -63,9 +63,9 @@ University \\ }
 \end{center}
 
 \Thesisspace {\large 
-With the development of self-driving technology in the recent years, a lot of related industries and the applications gradually popped up. Among the applications, the freight transport and the sale of driverless trucks became a crucial research topic. However, due to the complexity of the road network and the constraint of traffic regulation, self-driving technology development companies have the difficulties with the complete system integration. Therefore, the thesis proposed a mobile application in a self-driving delivery emulation system. By using the dispatch mechanism, the application simulates the real user scenario of the parcel delivery service. As a result, the application can be view as a test platform before the application is officially launched. In the system, self-driving technology development companies can implement their own path planning algorithm and evaluate the effectiveness of the delivery process. Moreover, the user can interact with the system by the parcel delivery order from the mobile device, which leads to a more real delivery situation.
+With the development of self-driving technology in the recent years, a lot of related industries and the applications gradually popped up. Among the applications, the freight transport and the sale of driverless trucks became a crucial research topic. However, due to the complexity of the road network and the constraint of traffic regulation, self-driving technology development companies have the difficulties with the complete system integration. Therefore, the thesis proposes a mobile application in a self-driving delivery emulation system. By using the dispatch mechanism, the application simulates the real user scenario of the parcel delivery service. As a result, the application can be view as a test platform before the application is officially launched. In the system, self-driving technology development companies can implement their own path planning algorithm and evaluate the effectiveness of the delivery process. Moreover, the user can interact with the system by the parcel delivery order from the mobile device, which leads to a more real delivery situation.
 
-The thesis simulated a real-time parcel delivery service in urban-scale areas, built a database, and establish the socket interface between the simulator and the mobile application. Besides, the service contains the whole delivery process, which includes the pick-up of the cargo and the unloading task of parcels. Finally, the simulation result showed the compatibility for the ordinary delivery applications and offered the flexibility to adjust different logistics planning algorithms.  
+The thesis implements a real-time parcel delivery service in urban-scale areas, builds a database, and establishes the socket interface between the simulator and the mobile application. Besides, the service contains the whole delivery process, which includes the pick-up of the cargo and the unloading task of parcels. Finally, the simulation result shows the compatibility for the ordinary delivery applications and offered the flexibility to adjust different logistics planning algorithms.  
 }
 
 \emph{\textbf{Keywords}}---self-driving, real-time, mobile application, parcel delivery service, traffic simulators
@@ -85,7 +85,7 @@ The thesis simulated a real-time parcel delivery service in urban-scale areas, b
 %------------------------- Introduction -------------------------%
 \chapter{Introduction} \label{Chap:Introduction}
 
-Nowadays the world’s online marketplaces are growing rapidly, it is because the online shopping has the advantages of lower price and rapid delivery service. The total ecommerce sales increased last year by 20\% to \$1.66 trillion according to Internet Retailer’s released 2019 Online Marketplaces Report. \cite{KeyFindings} However, as the rapid development of e-commerce such as Amazon, Alibaba and eBay, it brings the novel problems and concerns. Compared to the tradition retailing, online shopping encounters lots of challenges. For consumers’ part, they must wait for the goods to arrive home instead of getting them immediately. Hence, the delivery time is a crucial factor for the consumer experience, and the parcel distribution becomes more and more important. 
+Nowadays the world’s online marketplaces are growing rapidly because the online shopping has the advantages of lower price and rapid delivery service. The total ecommerce sales increased last year by 20\% to \$1.66 trillion according to Internet Retailer’s released 2019 Online Marketplaces Report \cite{KeyFindings}. However, as the rapid development of e-commerce such as Amazon, Alibaba and eBay, the novel problems and concerns occur. Compared to the tradition retailing, online shopping encounters lots of challenges. For consumers’ part, they must wait for the goods to arrive home instead of getting them immediately. Hence, the delivery time is a crucial factor for the consumer experience, and the parcel distribution becomes more and more important. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -105,7 +105,7 @@ Nowadays the world’s online marketplaces are growing rapidly, it is because th
     (b)
 \end{minipage}
 \normalsize
-\caption{First two big United Parcel Service of America Inc.'s revenue.}
+\caption{\large First two big United Parcel Service of America Inc.'s revenue.}
 \label{fig:UnitedParcelService}
 \end{figure*} 
 
@@ -113,11 +113,11 @@ Figure 1.1 shows the revenue of two freight delivery companies, which have the h
 
 A self-driving vehicle, also known as a robotic vehicle, autonomous vehicle, or driverless vehicle, is a vehicle which is able to sense the surrounding environment by sensors and drive on the road without a human driver. In Intelligent Transport System (ITS), the self-driving vehicle usually has one of many different communication technologies to communicate with other vehicles and the control center in the same system. With the self-driving technology becoming mature gradually, more and more companies invested in the development of self-driving vehicles, such as Google, Tesla, Waymo, Baidu, and so on. 
 
-However, in many country, it is difficult and challenging to test the vehicles on public roads due to the complex road environment or policy restrictions. Therefore, this thesis proposes a self-driving delivery system which combines the mobile applications with the traffic simulation software. The system aims to simulate the process of the same-day delivery in urban areas. By this system, the self-driving technology development companies can test and adjust their path planning algorithm, vehicle deployments and the different system function before the self-driving product is official online. The mobile application is exploited to simulate the real usage situation and improve the user experience. In contrast with traditional home delivery service \cite{Jiang2018} which does not allow the parcel receiver to select the expected delivery time, the proposed application provides the real-time vehicle dispatching. This means the user, including sender and receiver can select the arrival time of trucks at any time so that the failure rate of parcel delivery can be declined. 
+However, in many country, it is difficult and challenging to test the vehicles on public roads due to the complex road environment or policy restrictions. Therefore, this thesis proposes a self-driving delivery system which combines the mobile applications with the traffic simulation software. The system aims to simulate the process of the same-day delivery in urban areas. By this system, the self-driving technology development companies can test and adjust their path planning algorithm, vehicle deployments and the different system function before the self-driving product is official online. The mobile application is exploited to simulate the real usage situation and improve the user experience. In contrast with traditional home delivery service \cite{Jiang2018} which does not allow the parcel receiver to select the expected delivery time, the proposed application provides the real-time vehicle dispatching. The user including sender and receiver can select the arrival time of trucks at any time so that the failure rate of parcel delivery can be declined. 
 
 The simulation system contains real-world road information, such as the longitude and latitude of the vehicle, the cycle time of traffic light, the different road types, and so on. The self-driving development companies can accomplish their expected function by these data. Besides, this thesis designs an interface and the data format of the data transmission. Thus, the mobile application can be easily integrated into the actual autonomous vehicles. By these advantages of this system, the self-driving vehicles can move seamlessly from the simulation to the real world. 
 
-The remainder of this thesis is organized as follows. Related work is discussed in Chapter 2. The system design, system functions and the usage scenarios are described in Chapter 3. Chapter 4 illustrated the implementation of this system and the simulation environment. Finally, Chapter 5 concludes the thesis and discusses the future work.
+The remainder of this thesis is organized as follows. Related work is discussed in Chapter 2. The system design, system functions and the usage scenarios are presented in Chapter 3. Chapter 4 describes the implementation of this system and the simulation environment. Finally, Chapter 5 concludes the thesis and discusses the future work.
 
 
 
@@ -128,14 +128,14 @@ The remainder of this thesis is organized as follows. Related work is discussed 
 %------------------------- Related Works -------------------------%
 
 
-According to Data Booklet of United Nations\cite{UnitedNations2018}, the number of cities with at least 1 million citizens is 548 in 2018, and it will grow to 706 in 2030. As a result, city logistics are getting more attention. The goal of City logistic issues is to find efficient and effective ways to transport goods in urban areas. There are some studies discussing the current opportunities and challenges of city logistics. \cite{Savelsbergh2016}\cite{Crainic2015}
+According to Data Booklet of United Nations\cite{UnitedNations2018}, the number of cities with at least one million citizens is 548 in 2018, and it will grow to 706 in 2030. As a result, city logistics are getting more attention. The goal of City logistic issues is to find efficient and effective ways to transport goods in urban areas. There are some studies discussing the current opportunities and challenges of city logistics \cite{Savelsbergh2016}\cite{Crainic2015}.
  
-Last mile is the delivery process that transport goods to the final destination within the city. Habault et al. presented a delivery management system architecture. \cite{Habault2019} The system uses the data generated from the machine-learning mechanism to reduce the delivery travel time. Ewedairo et al. used a scenario thinking approach to identify the potential planning and transport systems attributes that would obstruct the last mile delivery. \cite{Ewedairo2019} It mentioned that the modes of transportation have great impact on delivery costs. Hochstenbach et al. introduced the design of an unmanned aerial vehicle (UAV) for autonomous parcel delivery. \cite{Hochstenbach2016} Niels et al. presented a project in Munich, Germany, where the last mile package delivery is carried out by cargo bikes and eBikes. \cite{Niels2018} GUO et al. presented a framework which exploits the underutilized capacity of crowdsourced public transportation systems (CPTS) such as the bus or the subway to perform the same-day parcel delivery. \cite{Cheng2019}
+Last mile is the delivery process that transport goods to the final destination within the city. Habault et al. presented a delivery management system architecture \cite{Habault2019}. The system uses the data generated from the machine-learning mechanism to reduce the delivery travel time. Ewedairo et al. used a scenario thinking approach to identify the potential planning and transport systems attributes that would obstruct the last mile delivery \cite{Ewedairo2019}. It mentioned that the modes of transportation have great impact on delivery costs. Hochstenbach et al. introduced the design of an unmanned aerial vehicle (UAV) for autonomous parcel delivery \cite{Hochstenbach2016}. Niels et al. presented a project in Munich, Germany, where the last mile package delivery is carried out by cargo bikes and eBikes \cite{Niels2018}. GUO et al. presented a framework which exploits the underutilized capacity of crowdsourced public transportation systems (CPTS) such as the bus or the subway to perform the same-day parcel delivery \cite{Cheng2019}.
 
-Utilizing the self-driving vehicles to perform the parcel delivery is a novel and attractive research direction. Buchegger et al. proposed an autonomous transport vehicle which is capable of navigating in large-scale urban environments. \cite{Buchegger2018} The vehicle in this study is based on a commercially available electric vehicle, and it had been adapted for autonomous operation. A new delivery framework for same-day delivery was proposed in \cite{Ulmer2019} The goods are delivered to a nearby pickup station so that it can alleviate many of the shortcomings that autonomous vehicles have. Kocsis et al. presented a service in smart cities for delivering grocery using autonomous vehicles in urban areas. \cite{Kocsis2018} The autonomous vehicles in this study was developed using an electric golf cart by the same authors.
+Utilizing the self-driving vehicles to perform the parcel delivery is a novel and attractive research direction. Buchegger et al. proposed an autonomous transport vehicle which is capable of navigating in large-scale urban environments \cite{Buchegger2018}. The vehicle in this study is based on a commercially available electric vehicle, and it had been adapted for autonomous operation. A new delivery framework for same-day delivery was proposed \cite{Ulmer2019}. The goods are delivered to a nearby pickup station so that it can alleviate many of the shortcomings that autonomous vehicles have. Kocsis et al. presented a service in smart cities for delivering grocery using autonomous vehicles in urban areas \cite{Kocsis2018}. The autonomous vehicles in this study was developed using an electric golf cart by the same authors.
 
 
-Seth et al. presented a system named Similitude comprised of the SimMobility traffic simulator coupled with Android emulators and an optional network simulator (ns-3). \cite{Hetu2014} Compared to our system, Similitude focuses on the general transportation and it does not support the user interaction interface.
+Seth et al. presented a system, named Similitude, comprised of the SimMobility traffic simulator with Android emulators and an optional network simulator (ns-3) \cite{Hetu2014}. Compared to our system, Similitude focuses on the general transportation and it does not support the user interaction interface.
 
 
 
@@ -173,7 +173,7 @@ In order to simulate the real user scenario, the thesis implements a function th
 Then, the address will be displayed by Google Map service so that the user can confirm the correction of localization. After that, the user can choose the arrival time of the truck, and send the delivery request to the SUMO server. The request contains user-related data and the details of the order, and the server will run the dispatching mechanism by the information and the road condition of the SUMO simulator. The order will be uploaded to the database if the request is accepted. Otherwise, the SUMO server will return a error message to the application to notify the user that there is no truck which can arrive the destination at the appointed time.
 
 \subsection{Tracking Established Orders}
-After the order is established successfully, the user can track the orders’ status by using the function of tracking orders. In this function, \textbf{the user is divided into two categories including a receiver and a sender}.
+After the order is established successfully, the user can track the orders’ status by using the function of tracking orders. In this function, users are divided into two categories such as a receiver and a sender.
 
 Besides, if the user is a receiver, he can choose the pickup time of the cargo after the truck arrives at the sender’s address.  
 Moreover, the receiver only can select the pickup time after the cargo is load into the truck because the system must ensure the cargo is ready to be delivered. 
@@ -212,7 +212,7 @@ The mobile application accesses to the database through the SUMO server only if 
 \section{Database}
 As discussed above, the simulation-related data in the system are stored in the database. The database is composed of four tables, they will be described and discussed in this section.
 
-\begin{figure}[H]
+\begin{figure}[t]
 \centering
 \captionof{table}{\large User Table}
 \includegraphics[width=0.85\textwidth]{./figures/Table3-1-UserTable.PNG}
@@ -222,7 +222,7 @@ As discussed above, the simulation-related data in the system are stored in the 
 \end{figure}
 
  
-The first table named user-table keeps the account information of registered users. Table 3.1 shows the data format of user-table. As mentioned in chapter 3.2.1, the attribute \textbf{"device\_key"} is the token generated by the application. The token is assigned to the mobile device rather than the user, and it will be updated when the user logins on different devices. Therefore, the SUMO server can know which device is bind to the user by the unique token. The attribute \textbf{"username"} is applied to identify the user who places the order.
+The first table named user-table keeps the account information of registered users. Table 3.1 shows the data format of user-table. As mentioned in Chapter 3.2.1, the attribute \textbf{device\_key} is the token generated by the application. The token is assigned to the mobile device rather than the user, and it will be updated when the user logins on different devices. Therefore, the SUMO server can know which device is bind to the user by the unique token. The attribute username is applied to identify the user who places the order.
 
 
 
@@ -247,8 +247,8 @@ The first table named user-table keeps the account information of registered use
 The second table and the third table are county table and township table. The data format of the two tables is presented in Table 3.2, Table 3.3. The administrative district data of Taiwan is stored in the both tables. the data will be shown on the mobile application when the user wants to select the address of the shipper or receiver. Therefore, the typo can be reduced so that the process of geocoding can be performed better. 
 The geocoding technology will be mentioned in Chapter 4. Furthermore, it provides scalability of service region, if the range of the simulation becomes larger, the administrator can easily expand regional options by adding additional data to the database. 
 
-The last table is order table. As shown in Table 3.4, it retains information of the user’s order, and part of order will be explained in this section. The attribute \textbf{"status"} represents the situation of logistic activity, such as "on the way to the receiver’s address". 
-In addition, it is the criteria whether if the receiver can designate the arrival time. The attribute \textbf{"sender\_name"} and \textbf{"receiver\_name"} are used by the SUMO server to determine users which the server will notify. The latitude and longitude transformed from senders’ address is stored as\textbf{ "sender\_lat"} and \textbf{“sender\_lng”}, and the same is true for the receiver’ address. The attribute \textbf{"sender\_time"} and\textbf{"receiver\_time"} are the expected arrival time that users select on the mobile application. The SUMO server will exploit the locational and time information to generate a dispatching schedule and arrange the route of each truck. 
+The last table is order table. As shown in Table 3.4, it retains information of the user’s order, and part of order will be explained in this section. The attribute \textbf{status} represents the situation of logistic activity, such as "on the way to the receiver’s address". 
+In addition, it is the criteria whether if the receiver can designate the arrival time. The attribute \textbf{sender\_name} and \textbf{receiver\_name} are used by the SUMO server to determine users which the server will notify. The latitude and longitude transformed from senders’ address is stored as\textbf{sender\_lat} and \textbf{sender\_lng}, and the same is true for the receiver’ address. The attribute \textbf{sender\_time} and \textbf{receiver\_time} are the expected arrival time that users select on the mobile application. The SUMO server will exploit the locational and time information to generate a dispatching schedule and arrange the route of each truck. 
 
 \begin{figure}[H]
 \centering
@@ -267,7 +267,7 @@ In addition, it is the criteria whether if the receiver can designate the arriva
 \section{Mobile Application}
 
 
-Among all mobile operating systems, Android OS holds 86.7\% market share according to the survey.\cite{SmartphoneOS} It is the most widely-used operating system in the world. Given that the self-driving delivery will be popularized in all walks of life soon after, Android OS is the most suitable system for developmentthe mobile application. The application is built by the Android Software Development Kit (Android SDK), and it is developed on Android Studio which is Integrated Development Environment for Android. Android Studio provides a preview of the user interface and it has the built-in support of Google Cloud Platform. Consequently, it is an appropriate way to construct the mobile application of the system. Furthermore, Google Map SDK for Android and Google Geocoding API were added to the mobile application, the former enables the application to display the map of simulation and mark the address, the latter is able to transform the street address into latitude and longitude.
+Among all mobile operating systems, Android OS holds 86.7\% market share according to the survey \cite{SmartphoneOS}. It is the most widely-used operating system in the world. Given that the self-driving delivery will be popularized in all walks of life soon after, Android OS is the most suitable system for developmentthe mobile application. The application is built by the Android Software Development Kit (Android SDK), and it is developed on Android Studio which is Integrated Development Environment for Android. Android Studio provides a preview of the user interface and it has the built-in support of Google Cloud Platform. Consequently, it is an appropriate way to construct the mobile application of the system. Furthermore, Google Map SDK for Android and Google Geocoding API were added to the mobile application, the former enables the application to display the map of simulation and mark the address, the latter is able to transform the street address into latitude and longitude.
 
 \begin{figure}[H]
 \centering
@@ -281,10 +281,10 @@ In order to send the messages to notify the users that the truck has arrived to 
 
 As illustrated in Figure 4.1, there are three components such as mobile application, FCM, and the server. The mobile application involves in the process of message passing.
 FCM and the server that intends to send notifications (i.e., TraCI server in this thesis). 
-When the mobile application is installed on the mobile device and launched for the first time, the apps will send a registration request to FCM through FCM SDK. Then, the FCM server will generate a corresponding token for the device, and return the token back to the mobile application. The token would be uploaded to the database if users log in. Conversely, when users log out, the token in the database will be removed to prevent the server from notifying the wrong users. According to the tokens stored in the FCM server, the messages sent from the TraCI (Traffic Control Interface) server will be forwarded to the appointed device by FCM.
+When the mobile application is installed on the mobile device and launched for the first time, the apps will send a registration request to FCM through FCM SDK. Then, the FCM server will generate a corresponding token for the device, and return the token back to the mobile application. The token will be uploaded to the database if users log in. Conversely, when users log out, the token in the database will be removed to prevent the server from notifying the wrong users. According to the tokens stored in the FCM server, the messages sent from the TraCI (Traffic Control Interface) server will be forwarded to the appointed device by FCM.
 
 
-The initialization of user interface in the mobile application is illustrated in Figure 4.2. As shown in Figure 4.2a, the homepage of the application is constituted by the buttons of the main functions. the study develops a simple registration function of a user account, which is shown in Figure 4.2b. 
+Figure 4.2 shows the initialization of user interface in the mobile application. As displayed in Figure 4.2a, the homepage of the application is constituted by the buttons of the main functions. the study develops a simple registration function of a user account, which is shown in Figure 4.2b. 
 Before a user logs in, the FCM token is stored in the memory of the device. The user can be distinguished in different mobile devices with the unique token after logging in.
  
 
@@ -361,7 +361,7 @@ Finally, the order request will be sent to the SUMO server by socket program. If
 \label{Tracking_history_orders}
 \end{figure}
 
-The established order can be viewed on the page of tracking orders shown in Figure 4.6.  This page has two cases. First case is to check the parcels the user sent. After sliding the tab above the page, the user switches into the second case. The second case is to examine the history packages which the user received.
+Figure 4.6 shows that the established order can be viewed on the page of tracking orders. This page has two cases. First case is to check the parcels the user sent. After sliding the tab above the page, the user switches into the second case. The second case is to examine the history packages which the user received.
 
 \begin{figure}[H]
 \centering
@@ -374,7 +374,7 @@ The established order can be viewed on the page of tracking orders shown in Figu
 
 Then, the details of the appointed package would be displayed while the user clicks the order button, which is shown in Figure 4.7. 
 
-If the user is a \textbf{receiver} in an order, he or she can choose the pick-up time of the cargo according to the \textbf{status of logistic activity}, which means the shipping situation of the cargo. Then, the \textbf{pick-up-time} page would pop up, which is same as the page in Figure 4.5. 
+If the user is a \textbf{receiver} in an order, he or she can choose the pick-up time of the cargo according to the \textbf{status of logistic activity}, which means the shipping situation of the cargo. Then, the \textbf{pick-up-time} page would pop up, which is the same as the page in Figure 4.5. 
 
 \begin{figure}[H]
 \centering
@@ -385,7 +385,7 @@ If the user is a \textbf{receiver} in an order, he or she can choose the pick-up
 \end{figure} 
 
 
-Besides, if a system administrator wants to examine the history orders without logging in. Thus, Figure 4.8 exhibits the searching page of the order, and the order can be looked up by entering the unique order number. 
+Besides, a system administrator could examine the history orders without logging in. Figure 4.8 shows the searching page of the order. The order can be looked up by entering the unique order number. 
 
 
 
@@ -406,7 +406,7 @@ The simulation of the delivery process is implemented on SUMO \cite{behrisch2011
 
 
 
-The self-driving delivery system is designed to supply a small-scale package delivery service in cities. As illustrated in Figure 4.3, the road network environment of simulation is an approximate 50 $km^{2}$  area, which is a partial region of Tainan, a south city of Taiwan. The resource of the map data is gained from OpenStreetMap \cite{Haklay2008}, which is a is a collaborative project to create a free editable map of the world. There are 25069 road segments and 6785 junctions in the simulation, and the traffic lights are deployed on the junctions using the real world data. In the beginning of the simulation, three trucks are generated on the roads randomly, and they drive along random routes until the end of the simulation. The maximum speed of trucks is set to 5 m/s according to the average speed estimated by Google Map. The delivery task can be assigned in any time.
+The self-driving delivery system is designed to supply a small-scale package delivery service in cities. As illustrated in Figure 4.9, the road network environment of simulation is an approximate 50 $km^{2}$  area, which is a partial region of Tainan, a south city of Taiwan. The resource of the map data is gained from OpenStreetMap \cite{Haklay2008}, which is a collaborative project to create a free editable map of the world. There are 25069 road segments and 6785 junctions in the simulation. The traffic lights are deployed on the junctions using the real world data. In the beginning of the simulation, three trucks are generated on the roads randomly, and they drive along random routes until the end of the simulation. The maximum speed of trucks is set to 5 m/s according to the average speed estimated by Google Map. The delivery task can be assigned in any time.
 
 
 \subsection{Build the Socket Server}
@@ -438,7 +438,7 @@ Thus, the simulation process will display on the GUI of the simulator so that th
 \end{figure} 
 
 
-Figure 4.11 shows the mobile phone receives the notification from the FCM service. Moreover, the FCM service is also implemented in the SUMO server. 
+Figure 4.11 shows that the mobile phone receives the notification from the FCM service. Moreover, the FCM service is also implemented in the SUMO server. 
 When the truck is close to the destination, the system would notify the user of the coming message. Then, as the truck arrives to the destination, the system would inform the user of the arrival of the truck via FCM server.
 
 
