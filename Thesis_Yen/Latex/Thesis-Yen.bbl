@@ -22,9 +22,9 @@
 \BIBdecl
 
 \bibitem{Anand2012}
-N.~Anand, H.~Quak, R.~van Duin, and L.~Tavasszy, ``City logistics modeling
-  efforts: Trends and gaps-a review,'' \emph{Procedia-Social and Behavioral
-  Sciences}, vol.~39, pp. 101--115, Mar. 2012.
+N.~Anand, H.~Quak, R.~van Duin, and L.~Tavasszy, ``City {L}ogistics {M}odeling
+  {E}fforts: {T}rends and {G}aps-a {R}eview,'' \emph{Procedia-Social and
+  Behavioral Sciences}, vol.~39, pp. 101--115, Mar. 2012.
 
 \bibitem{Lutin2013}
 J.~M. Lutin, A.~L. Kornhauser, and E.~Lerner-Lam, ``{The Revolutionary
@@ -33,10 +33,10 @@ J.~M. Lutin, A.~L. Kornhauser, and E.~Lerner-Lam, ``{The Revolutionary
   July 2013.
 
 \bibitem{Jiang2018}
-L.~Jiang, C.~Liang, J.~Dong, W.~Lu, and M.~Mladenovic, ``{A Disruption Recovery
-  Problem with Time Windows Change in the Last Mile Delivery of Online
-  Shopping},'' \emph{Mathematical Problems in Engineering}, vol. 2018, pp.
-  1--10, Dec. 2018.
+L.~Jiang, C.~Liang, J.~Dong, W.~Lu, and M.~Mladenovic, ``A {D}isruption
+  {R}ecovery {P}roblem with {T}ime {W}indows {C}hange in the {L}ast {M}ile
+  {D}elivery of {O}nline {S}hopping,'' \emph{Mathematical Problems in
+  Engineering}, vol. 2018, pp. 1--10, Dec. 2018.
 
 \bibitem{Visser2014}
 J.~Visser, T.~Nemoto, and M.~Browne, ``{Home Delivery and the Impacts on Urban
@@ -44,22 +44,23 @@ J.~Visser, T.~Nemoto, and M.~Browne, ``{Home Delivery and the Impacts on Urban
   Sciences}, vol. 125, pp. 15--27, Mar. 2014.
 
 \bibitem{Gevaers2014}
-R.~Gevaers, E.~{Van de Voorde}, and T.~Vanelslander, ``{Cost Modelling and
-  Simulation of Last-mile Characteristics in an Innovative B2C Supply Chain
-  Environment with Implications on Urban Areas and Cities},''
-  \emph{Procedia-Social and Behavioral Sciences}, vol. 125, pp. 398--411, Mar.
-  2014.
+R.~Gevaers, E.~{Van de Voorde}, and T.~Vanelslander, ``Cost {M}odelling and
+  {S}imulation of {L}ast-mile {C}haracteristics in an {I}nnovative {B2C}
+  {S}upply {C}hain {E}nvironment with {I}mplications on {U}rban {A}reas and
+  {C}ities,'' \emph{Procedia-Social and Behavioral Sciences}, vol. 125, pp.
+  398--411, Mar. 2014.
 
 \bibitem{Zhou2016}
-L.~Zhou, X.~Wang, L.~Ni, and Y.~Lin, ``{Location-routing Problem with
-  Simultaneous Home Delivery and Customer's Pickup for City Distribution of
-  Online Shopping Purchases},'' \emph{Sustainability}, vol.~8, Aug. 2016.
+L.~Zhou, X.~Wang, L.~Ni, and Y.~Lin, ``Location-routing {P}roblem with
+  {S}imultaneous {H}ome {D}elivery and {C}ustomer's {P}ickup for {C}ity
+  {D}istribution of {O}nline {S}hopping {P}urchases,'' \emph{Sustainability},
+  vol.~8, pp. 45--50, Aug. 2016.
 
 \bibitem{Ali2015}
-A.~Ali, N.~Ballou, B.~McDougall, and J.~L.~V. Ramos, ``Decision-support tool
-  for designing small package delivery aerial vehicles,'' in \emph{Proceedings
-  of IEEE Systems and Information Engineering Design Symposium}, June 2015, pp.
-  45--50.
+A.~Ali, N.~Ballou, B.~McDougall, and J.~L.~V. Ramos, ``Decision-support {T}ool
+  for {D}esigning {S}mall {P}ackage {D}elivery {A}erial {V}ehicles,'' in
+  \emph{Proceedings of IEEE Systems and Information Engineering Design
+  Symposium}, June 2015, pp. 45--50.
 
 \bibitem{Sawadsitang2018}
 S.~Sawadsitang, D.~Niyato, P.~S. Tan, and P.~Wang, ``{Joint Ground and Aerial
@@ -68,25 +69,25 @@ S.~Sawadsitang, D.~Niyato, P.~S. Tan, and P.~Wang, ``{Joint Ground and Aerial
   2241--2254, June 2018.
 
 \bibitem{Sheth2019}
-M.~Sheth, P.~Butrina, A.~Goodchild, and E.~McCormack, ``Measuring delivery
-  route cost trade-offs between electric-assist cargo bicycles and delivery
-  trucks in dense urban areas,'' \emph{European Transport Research Review},
-  vol.~11, no.~1, p.~11, Feb. 2019.
+M.~Sheth, P.~Butrina, A.~Goodchild, and E.~McCormack, ``Measuring {D}elivery
+  {R}oute {C}ost {T}rade-offs between {E}lectric-assist {C}argo {B}icycles and
+  {D}elivery {T}rucks in {D}ense {U}rban {A}reas,'' \emph{European Transport
+  Research Review}, vol.~11, no.~1, pp. 1--12, Feb. 2019.
 
 \bibitem{Melo2017}
-S.~Melo and P.~Baptista, ``{Evaluating the Impacts of Using Cargo Cycles on
-  Urban Logistics: Integrating Traffic, Environmental and Operational
-  Boundaries},'' \emph{European Transport Research Review}, vol.~9, no.~2, Nov.
-  2017.
+S.~Melo and P.~Baptista, ``Evaluating the {I}mpacts of {U}sing {C}argo {C}ycles
+  on {U}rban {L}ogistics: {I}ntegrating {T}raffic, {E}nvironmental and
+  {O}perational {B}oundaries,'' \emph{European Transport Research Review},
+  vol.~9, no.~2, pp. 1--10, Nov. 2017.
 
 \bibitem{xia2018last}
-H.~Xia and H.~Yang, ``Is last-mile delivery a 'killer app' for self-driving
-  vehicles?'' \emph{in Proceedings of Communications of the ACM}, vol.~61,
-  no.~11, pp. 70--75, Nov. 2018.
+H.~Xia and H.~Yang, ``Is {L}ast-mile {D}elivery a '{K}iller {A}pp' for
+  {S}elf-{D}riving {V}ehicles?'' \emph{in Proceedings of Communications of the
+  ACM}, vol.~61, no.~11, pp. 70--75, Nov. 2018.
 
 \bibitem{behrisch2011sumo}
-M.~Behrisch, L.~Bieker, J.~Erdmann, and D.~Krajzewicz, ``Sumo--simulation of
-  urban mobility: an overview,'' in \emph{Proceedings of International
+M.~Behrisch, L.~Bieker, J.~Erdmann, and D.~Krajzewicz, ``Sumo--{S}imulation of
+  {U}rban {M}obility: an {O}verview,'' in \emph{Proceedings of International
   Conference on Advances in System Simulation}, 2011.
 
 \bibitem{10.1007/978-3-662-45079-6_5}
@@ -96,8 +97,9 @@ M.~Krumnow, ``{Sumo as a Service - Building up a Web Service to Interact with
   Springer Berlin Heidelberg, May 2014, pp. 62--70.
 
 \bibitem{hong2016intelligent}
-T.~H. Hong, \emph{Intelligent Transportation Simulation for Supporting Smart
-  City Food Distribution}, 2016.
+T.~H. Hong, ``Intelligent {T}ransportation {S}imulation for {S}upporting
+  {S}mart {C}ity {F}ood {D}istribution,'' University Tunku Abdul Rahman, Tech.
+  Rep., May 2016.
 
 \bibitem{Kendziorra2015}
 A.~Kendziorra and M.~Weber, ``{Extensions for Logistic and Public Transport in
@@ -106,13 +108,13 @@ A.~Kendziorra and M.~Weber, ``{Extensions for Logistic and Public Transport in
 
 \bibitem{wegener2008traci}
 A.~Wegener, M.~Pi{\'o}rkowski, M.~Raya, H.~Hellbr{\"u}ck, S.~Fischer, and J.-P.
-  Hubaux, ``Traci: an interface for coupling road traffic and network
-  simulators,'' in \emph{Proceedings of the 11th communications and networking
-  simulation symposium}.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 2008, pp.
-  155--163.
+  Hubaux, ``Traci: an {I}nterface for {C}oupling {R}oad {T}raffic and {N}etwork
+  {S}imulators,'' in \emph{Proceedings of the 11th communications and
+  networking simulation symposium}.\hskip 1em plus 0.5em minus 0.4em\relax ACM,
+  2008, pp. 155--163.
 
 \bibitem{Haklay2008}
-M.~Haklay and P.~Weber, ``{OpenStreet map: User-generated Street Maps},''
+M.~Haklay and P.~Weber, ``{OpenStreet Map: User-generated Street Maps},''
   \emph{IEEE Pervasive Computing}, vol.~7, no.~4, pp. 12--18, 2008.
 
 \end{thebibliography}
