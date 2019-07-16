@@ -123,11 +123,7 @@ To sum up, the thesis is organized as follows. Chapter 1 describes the motivatio
 \section{Home Delivery}
 As the e-commence and the technology of logistics has developed for several years, this bought about the general tendency in logistics toward higher delivery frequency, single orders, and smaller freight \cite{Visser2014}. In the freight transportation industry, logistics models can be divided into several types of logistic channel including post, shelf picking, dedicated warehouse, workspace, and home delivery.
 
-Gevaers et al. developed a cost simulation tool, which showed that the Last Mile delivery is one of the most expensive stages of the entire e-logistics chain \cite{Gevaers2014}. Besides, in the Last Mile delivery, the most widespread delivery mode is home delivery. As the result, home delivery (HD) is a crucial topic to discuss, retailers delivered a large amount of the daily consignment to the customer’s home. So far home delivery can be a delivery point to one’s home address, to another address, or to a pickup point  \cite{Zhou2016}. However, there are some issues about home delivery, including delay of delivery service, the customer’s absence at home, and too long delivery time. Thus, to meet the increasing demand of more rapid parcel delivery service, a small aerial vehicle is proposed by George Mason University \cite{Ali2015}.
-
-A multi-rotor aerial vehicle can provide the fast and urgent parcel delivery service such as rapid food delivery and remote medical supply delivery. However, this application has some design technical difficulties, which includes extending battery life, handling the increasing weight of the parcel, and dealing with the sudden climate change \cite{Ali2015}. In one word, an aerial vehicle has lower reliability, scalability and capacity than a delivery truck.
-
-Singapore Institute of Manufacturing Technology
+Gevaers et al. developed a cost simulation tool, which showed that the Last Mile delivery is one of the most expensive stages of the entire e-logistics chain \cite{Gevaers2014}. Besides, in the Last Mile delivery, the most widespread delivery mode is home delivery. As the result, home delivery (HD) is a crucial topic to discuss, retailers delivered a large amount of the daily consignment to the customer’s home. So far home delivery can be a delivery point to one’s home address, to another address, or to a pickup point  \cite{Zhou2016}. However, there are some issues about home delivery, including delay of delivery service, the customer’s absence at home, and too long delivery time. Thus, to meet the increasing demand of more rapid parcel delivery service, \textbf{a small aerial vehicle} is proposed by George Mason University \cite{Ali2015}. A multi-rotor aerial vehicle can provide the fast and urgent parcel delivery service such as rapid food delivery and remote medical supply delivery. However, this application has some design technical difficulties, which includes extending battery life, handling the increasing weight of the parcel, and dealing with the sudden climate change \cite{Ali2015}. In one word, an aerial vehicle has lower reliability, scalability and capacity than a delivery truck.
 
 Moreover, Singapore Institute of Manufacturing Technology proposed \textbf{a joint ground and aerial delivery service framework} \cite{Sawadsitang2018} . The framework consists of two delivery modes, which can complement each other due to their unique features and benefits. With this integration of ground-based delivery and drone delivery, the approach not only can cope with sudden service interruption like accident, but also can maximize service quality and minimize cost. However, this approach has the problem of the uncertainty in customer’s demand and computation time of routing the delivery path. 
 
@@ -181,7 +177,7 @@ The mobile application is responsible for shipping a delivery order request to S
 If the delivery order is generated successfully after dispatching computation of SUMO server, the data of the delivery order from the server side would be inserted into the database. Furthermore, the mobile application can trace the logistic information when retrieving the information of delivery order from the web server.
 
 \section{A Vehicle Dispatching and Monitoring System}
-As illustrated in Figure 1.1, a vehicle dispatching and monitoring system has two components, including a SUMO simulator and a SUMO server.
+A vehicle dispatching and monitoring system has two components, including a SUMO simulator and a SUMO server.
 
 
 
@@ -194,7 +190,7 @@ A SUMO server has three main jobs. One is to communicate with the Android client
 \chapter{Implementation of Vehicle Dispatching and Monitoring System }\label{Chap:Architecture}
 %---------- Implementation -------------------%
 
-To build a vehicle dispatching and monitoring system, the thesis implements two components, which includes SUMO simulator and SUMO server. According to the concept of web service from Dresden University of Technology \cite{10.1007/978-3-662-45079-6_5}, the thesis improved the architecture of web service to meet the demands of Android client.
+To build a vehicle dispatching and monitoring system, the thesis implements two components, which includes SUMO simulator and SUMO server. The thesis improves the architecture of web service to meet the demands of Android client.
 As illustrated in Figure 4.1, the architecture involves three parts, including SUMO simulator, Real-time I/O data Interface and Android Client.
 
 
@@ -506,7 +502,7 @@ This section shows the user scenarios when the vehicle arrives to the destinatio
 \label{Fig:senderScenario_DeliveryPorcess}
 \end{figure}
 
-In Figure 6.7, the vehicle 2 would demonstrate how to react in the task of 09:30 AM in the sender scenario of delivery process. As the simulation time is 09:25, the vehicle 2 would be at the black point of position, and the SUMO server would use FCM to send coming notification to the sender4. Then, when the simulation time is 09:30 AM, the vehicle 2 would be at Hayashi department store, start to park for ten minutes, and the sender4 would get the arriving notification.
+In Figure 6.7, the vehicle 2 would demonstrate how to react in the task of 09:30 AM in the sender scenario of delivery process. As the simulation time is 09:25, the vehicle 2 would be at the black point of position, and the SUMO server would use FCM to send coming notification to the sender 4. Then, when the simulation time is 09:30 AM, the vehicle 2 would be at Hayashi department store, start to park for ten minutes, and the sender4 would get the arriving notification.
 As 09:35 AM, the vehicle 2 will finish the loading process of the parcel. Finally, at the simulation of 09:40, the vehicle 2 would end parking in the Hayashi department store, and would forward to the next station.
 
 \subsection{Receiver Scenario}
@@ -552,7 +548,7 @@ The SUMO simulator is used for running the parcel delivery simulation [12]. “S
 \subsection{Road Network}
 
 Figure 7.1 shows the road network on OpenStreetMap.
-The road dataset, which was acquired from OpenStreetMap \cite{Haklay2008}, uses the road network of part of Tainan, which is the south of Taiwan. The region of the selected road contains the partial Tainan East District, Tainan West Central District, partial Tainan North District, partial Tainan South District, Yongkang District, and partial Tainan Anping District.
+The road dataset, which was acquired from OpenStreetMap, uses the road network of part of Tainan \cite{Haklay2008}. The region of the selected road contains the partial Tainan East District, Tainan West Central District, partial Tainan North District, partial Tainan South District, Yongkang District, and partial Tainan Anping District.
 
 
 
@@ -592,10 +588,12 @@ Finally, when the SUMO server counts the travel time of the vehicle, which is eq
 
 \begin{table}
 \vspace{0.5cm}
-\normalsize
+\large
 \centering
 \caption{\large Parameters of Simulation}
+
 \begin{tabular}{|c|c|} \hline\hline 
+
 \textbf{Parameters}&\textbf{Value}\\ 
 \hline  
 Simulation area & 50.07 $km^{2}$ \\
@@ -668,7 +666,7 @@ However, at the time of 1218 seconds, which means 09:20:18, the vehicle 2 replac
 \label{Fig:LoadingProcess}
 \end{figure}
 
-The receiver’s phone in the left side of Figure 7.6 gets the notification of finishing loading process at sender’s address at 09:35. The box index number “211” has the value of one, which means that the parcel exists in the vehicle 2. 
+The receiver’s phone in the left side of Figure 7.6 gets the notification of finishing loading process at sender’s address at 09:35. The box index number 211 has the value of one, which means that the parcel exists in the vehicle 2. 
 Thus, the receiver can start to select the expected arrival time of the parcel.
 
 
@@ -715,7 +713,7 @@ As displayed in Figure 7.8, the receiver receives the arriving notification of t
 %------------------------- Conclusion -------------------------%
 
 \section{Conclusion}
-The thesis implemented a vehicle dispatching and monitoring system to simulate the parcel delivery process. The system uses the commands of Traffic Control Interface (TraCI) to manipulate vehicle’s behavior, and retrieve the vehicle’s values in SUMO simulator. As the system receives the delivery order request from Android client, the system will use dispatching mechanism to judge whether this order can be established successfully or not. If there is no vehicle that can serve the request, the user will pick their box size or select the other arrival time of the package, and submit the order again. In contrast, as the order is established, the system will arrange the routes via the time schedule and change the container’s value. With this schedule, the system can deal with the delivery order request more orderly. 
+The thesis implemented a vehicle dispatching and monitoring system to simulate the parcel delivery process. The system uses the commands of Traffic Control Interface (TraCI) to manipulate vehicle’s behavior, and retrieve the vehicle’s values in SUMO simulator. As the system receives the delivery order request from Android client, the system will use dispatching mechanism to judge whether this order can be established successfully or not. If there is no vehicle that can serve the request, the user will pick their box size or select the other arrival time of the package, and submit the order again. In contrast, as the order is established, the system will arrange the routes via the time schedule and change the container’s value. With the schedule, the system can deal with the delivery order request more orderly. 
 
 Besides, the system can adjust the parking duration to simulate the loading and unloading process when the vehicle arrives to the destination. As a result, the users can have enough time to interact with the truck. 
 
@@ -732,7 +730,7 @@ There are some issues that should be discussed to complete the vehicle dispatchi
 
 
 \item
-\textbf{Scalability}: The system currently contains three trucks in the downtown area of Tainan, whose area is $50km^{2}$. Thus, in the future the system will be used in larger map and distribute more trucks into different areas according to the quantity of parcels. Besides, in the dispatch mechanism, the system uses empirical time scheduling method to filter the suitable order. However, in the future the system should implement different routing algorithms to schedule delivery tasks.
+\textbf{Scalability}: The system currently contains three trucks in the downtown area of Tainan, whose area is 50 $km^{2}$. Thus, in the future the system will be used in larger map and distribute more trucks into different areas according to the quantity of parcels. Besides, in the dispatch mechanism, the system uses empirical time scheduling method to filter the suitable order. However, in the future the system should implement different routing algorithms to schedule delivery tasks.
 
 \item
 \textbf{Quantity}: The system performs the delivery simulation with a small amount of order requests. However, the system has to deal with a batch of orders in a brief period of time in the future.
@@ -760,7 +758,7 @@ There are some issues that should be discussed to complete the vehicle dispatchi
 %------------------------- Vita -------------------------%
 \Thesisspace \large{
 
-Kang Yen was born on December 3, 1993, in Yunlin, Taiwan.  He received the B.S. degree in Electrical Engineering from National Cheng Kung University, Taiwan, in 2017. In September 2017, he enrolled at the National Cheng Kung University as a master student in the Institute of Computer and Communication Engineering.
+Kang Yen was born on December 3, 1993, in Yunlin, Taiwan. He received the B.S. degree in Electrical Engineering from National Cheng Kung University, Taiwan, in 2017. In September 2017, he enrolled at the National Cheng Kung University as a master student in the Institute of Computer and Communication Engineering.
 
 }\end{vita}
 
