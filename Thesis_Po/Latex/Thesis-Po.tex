@@ -252,7 +252,7 @@ The geocoding technology will be mentioned in Chapter 4. Furthermore, it provide
 The last table is order table. As shown in Table 3.4, it retains information of the user’s order, and part of order will be explained in this section. The attribute \textbf{status} represents the situation of logistic activity, such as "on the way to the receiver’s address". 
 In addition, it is the criteria whether if the receiver can designate the arrival time. The attribute \textbf{sender\_name} and \textbf{receiver\_name} are used by the SUMO server to determine users which the server will notify. The latitude and longitude transformed from senders’ address is stored as \textbf{sender\_lat} and \textbf{sender\_lng}, and the same is true for the receiver’ address. The attribute \textbf{sender\_time} and \textbf{receiver\_time} are the expected arrival time that users select on the mobile application. The SUMO server will exploit the locational and time information to generate a dispatching schedule and arrange the route of each truck. 
 
-\begin{figure}[H]
+\begin{figure}[t]
 \centering
 \captionof{table}{\large Order Table}
 \includegraphics[width=0.85\textwidth]{./figures/Table3-4-OrderTable.PNG}
