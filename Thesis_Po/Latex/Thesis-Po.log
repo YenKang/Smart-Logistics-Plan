@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  16 JUL 2019 13:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.7.13)  17 JUL 2019 11:18
 entering extended mode
 **./Thesis-Po.tex
 (Thesis-Po.tex
@@ -6,13 +6,13 @@ LaTeX2e <2018-12-01>
 (ksthesis.cls
 Document Style `UIUC-Thesis'
 Based on : Document Style `report' <16 Mar 88>.
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\report.sty"
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\report.sty"
 
 LaTeX Warning: inputting `report.cls' instead of obsolete `report.sty'.
 
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\report.cls"
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\report.cls"
 Document Class: report 2018/09/03 v1.4i Standard LaTeX document class
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\size10.clo"
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\size10.clo"
 File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 )
 \c@part=\count80
@@ -29,21 +29,21 @@ File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 \bibindent=\dimen102
 ))
 (doublespace.sty))
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsmath.sty"
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsmath.sty"
 Package: amsmath 2018/12/01 v2.17b AMS math features
 \@mathmargin=\skip43
 For additional information on amsmath, use the `?' option.
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amstext.sty"
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amstext.sty"
 Package: amstext 2000/06/29 v2.01 AMS text
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsgen.sty"
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks14
 \ex@=\dimen103
-)) ("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsbsy.st
+)) ("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsbsy.st
 y"
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen104
-) ("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsopn.sty
+) ("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsopn.sty
 "
 Package: amsopn 2016/03/08 v2.02 operator names
 )
@@ -85,7 +85,7 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
 LaTeX Info: Redefining \[ on input line 2844.
 LaTeX Info: Redefining \] on input line 2845.
 )
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amscls\amsthm.sty"
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amscls\amsthm.sty"
 Package: amsthm 2017/10/31 v2.20.4
 \thm@style=\toks19
 \thm@bodyfont=\toks20
@@ -97,7 +97,7 @@ Package: amsthm 2017/10/31 v2.20.4
 \thm@headsep=\skip48
 \dth@everypar=\toks24
 )
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\latexsym.sty"
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\latexsym.sty"
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
@@ -121,34 +121,34 @@ psfig/tex 1.10-dvips
 \@min=\count102
 \@cite@temp=\count103
 )
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphicx.st
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphicx.st
 y"
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\keyval.sty"
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\keyval.sty"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks25
 )
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphics.st
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphics.st
 y"
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
- ("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\trig.sty"
+ ("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\trig.sty"
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\graphic
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\graphic
 s.cfg"
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-def\pdftex.
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-def\pdftex.
 def"
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen119
 \Gin@req@width=\dimen120
 )
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/subfigure\subfigure.
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/subfigure\subfigure.
 sty"
 Package: subfigure 2002/07/30 v2.1.4 subfigure package
 \subfigtopskip=\skip49
@@ -166,16 +166,16 @@ Package: subfigure 2002/07/30 v2.1.4 subfigure package
 * Local config file subfigure.cfg used *
 ****************************************
 
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/subfigure\subfigure.
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/subfigure\subfigure.
 cfg")
 \subfig@top=\skip53
 \subfig@bottom=\skip54
 )
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amssymb.sty
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amssymb.sty
 "
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amsfonts.st
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amsfonts.st
 y"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup5
@@ -183,24 +183,24 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/algorithms\algorithm
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/algorithms\algorithm
 .sty"
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
- ("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/float\float.sty"
+ ("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/float\float.sty"
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count108
 \float@exts=\toks26
 \float@box=\box29
 \@float@everytoks=\toks27
 \@floatcapt=\box30
-) ("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ifthen.sty"
+) ("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ifthen.sty"
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks28
 \c@algorithm=\count109
 )
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/algorithms\algorithm
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/algorithms\algorithm
 ic.sty"
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 \c@ALC@unique=\count110
@@ -210,21 +210,21 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 \ALC@tlm=\skip55
 \algorithmicindent=\skip56
 )
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/multirow\multirow.st
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/multirow\multirow.st
 y"
 Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
 \multirow@colwidth=\skip57
 \multirow@cntb=\count114
 \multirow@dima=\skip58
 \bigstrutjot=\dimen123
-) ("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/cite\cite.sty"
+) ("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/cite\cite.sty"
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
 )
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption.sty"
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption.sty"
 Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption3.sty
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption3.sty
 "
 Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 64.
@@ -281,7 +281,7 @@ LaTeX Font Info:    ... okay on input line 42.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
 LaTeX Font Info:    ... okay on input line 42.
 
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-pdf
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-pdf
 .mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count122
@@ -296,48 +296,48 @@ LaTeX Font Info:    ... okay on input line 42.
 \makeMPintoPDFobject=\count127
 \everyMPtoPDFconversion=\toks30
 )
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\epstopdf-ba
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\epstopdf-ba
 se.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\infwarerr
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\infwarerr
 .sty"
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 )
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\grfext.sty"
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\grfext.sty"
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\kvdefinek
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\kvdefinek
 eys.sty"
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
 
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ltxcmds.s
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ltxcmds.s
 ty"
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )))
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\kvoptions.s
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\kvoptions.s
 ty"
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\kvsetkeys
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\kvsetkeys
 .sty"
 Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\etexcmds.
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\etexcmds.
 sty"
 Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ifluatex.
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ifluatex.
 sty"
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 ))))
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\pdftexcmd
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\pdftexcmd
 s.sty"
 Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
 )
 
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ifpdf.sty
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ifpdf.sty
 "
 Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
 )
@@ -357,23 +357,23 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  [2
 
-{C:/Users/yen/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+{C:/Users/BJT/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 [3] [4
 
 ] (Thesis-Po.toc
 LaTeX Font Info:    Try loading font information for U+lasy on input line 2.
 
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ulasy.fd"
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ulasy.fd"
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 LaTeX Font Info:    Try loading font information for U+msa on input line 2.
 
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 2.
 
-("C:\Users\yen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
+("C:\Users\BJT\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ))
 \tf@toc=\write4
@@ -399,12 +399,12 @@ Chapter 1.
 <./figures/F1-a.PNG, id=25, 752.8125pt x 559.33969pt>
 File: ./figures/F1-a.PNG Graphic file (type png)
 <use ./figures/F1-a.PNG>
-Package pdftex.def Info: ./figures/F1-a.PNG  used on input line 99.
+Package pdftex.def Info: ./figures/F1-a.PNG  used on input line 103.
 (pdftex.def)             Requested size: 216.80806pt x 161.08629pt.
 <./figures/F1-b.PNG, id=28, 752.8125pt x 559.33969pt>
 File: ./figures/F1-b.PNG Graphic file (type png)
 <use ./figures/F1-b.PNG>
-Package pdftex.def Info: ./figures/F1-b.PNG  used on input line 104.
+Package pdftex.def Info: ./figures/F1-b.PNG  used on input line 108.
 (pdftex.def)             Requested size: 216.80806pt x 161.08629pt.
 [1
 
@@ -420,7 +420,7 @@ Chapter 3.
 File: ./figures/F3-1_SystemOverview.PNG Graphic file (type png)
 <use ./figures/F3-1_SystemOverview.PNG>
 Package pdftex.def Info: ./figures/F3-1_SystemOverview.PNG  used on input line 
-150.
+154.
 (pdftex.def)             Requested size: 451.6875pt x 263.62865pt.
 [6
 
@@ -428,28 +428,28 @@ Package pdftex.def Info: ./figures/F3-1_SystemOverview.PNG  used on input line
 <./figures/F3-2_Flowchart.PNG, id=63, 693.34032pt x 828.84656pt>
 File: ./figures/F3-2_Flowchart.PNG Graphic file (type png)
 <use ./figures/F3-2_Flowchart.PNG>
-Package pdftex.def Info: ./figures/F3-2_Flowchart.PNG  used on input line 187.
+Package pdftex.def Info: ./figures/F3-2_Flowchart.PNG  used on input line 191.
 (pdftex.def)             Requested size: 451.6875pt x 539.98329pt.
  [9] [10 <./figures/F3-2_Flowchart.PNG>] [11]
 <./figures/Table3-1-UserTable.PNG, id=73, 490.08093pt x 234.1247pt>
 File: ./figures/Table3-1-UserTable.PNG Graphic file (type png)
 <use ./figures/Table3-1-UserTable.PNG>
 Package pdftex.def Info: ./figures/Table3-1-UserTable.PNG  used on input line 2
-18.
+20.
 (pdftex.def)             Requested size: 383.93712pt x 183.42032pt.
  [12]
 <./figures/Table3-2-CountyTable.PNG, id=77, 493.845pt x 87.32625pt>
 File: ./figures/Table3-2-CountyTable.PNG Graphic file (type png)
 <use ./figures/Table3-2-CountyTable.PNG>
 Package pdftex.def Info: ./figures/Table3-2-CountyTable.PNG  used on input line
- 234.
+ 236.
 (pdftex.def)             Requested size: 383.93712pt x 67.89034pt.
  [13 <./figures/Table3-1-UserTable.PNG>]
 <./figures/Table3-3-TownshipTable.PNG, id=82, 493.845pt x 97.11281pt>
 File: ./figures/Table3-3-TownshipTable.PNG Graphic file (type png)
 <use ./figures/Table3-3-TownshipTable.PNG>
 Package pdftex.def Info: ./figures/Table3-3-TownshipTable.PNG  used on input li
-ne 242.
+ne 244.
 (pdftex.def)             Requested size: 383.93712pt x 75.49873pt.
  [14 <./figures/Table3-2-CountyTable.PNG> <./figures/Table3-3-TownshipTable.PNG
 >]
@@ -457,14 +457,14 @@ ne 242.
 File: ./figures/Table3-4-OrderTable.PNG Graphic file (type png)
 <use ./figures/Table3-4-OrderTable.PNG>
 Package pdftex.def Info: ./figures/Table3-4-OrderTable.PNG  used on input line 
-256.
+258.
 (pdftex.def)             Requested size: 383.93712pt x 397.3926pt.
  [15 <./figures/Table3-4-OrderTable.PNG>]
 Chapter 4.
 <./figures/F4-1_FCM.PNG, id=90, 584.1825pt x 392.96812pt>
 File: ./figures/F4-1_FCM.PNG Graphic file (type png)
 <use ./figures/F4-1_FCM.PNG>
-Package pdftex.def Info: ./figures/F4-1_FCM.PNG  used on input line 274.
+Package pdftex.def Info: ./figures/F4-1_FCM.PNG  used on input line 276.
 (pdftex.def)             Requested size: 451.6875pt x 303.85158pt.
 [16
 
@@ -472,40 +472,40 @@ Package pdftex.def Info: ./figures/F4-1_FCM.PNG  used on input line 274.
 <./figures/F4-2-a-HomePage.PNG, id=98, 1445.4pt x 2890.8pt>
 File: ./figures/F4-2-a-HomePage.PNG Graphic file (type png)
 <use ./figures/F4-2-a-HomePage.PNG>
-Package pdftex.def Info: ./figures/F4-2-a-HomePage.PNG  used on input line 299.
+Package pdftex.def Info: ./figures/F4-2-a-HomePage.PNG  used on input line 301.
 
 (pdftex.def)             Requested size: 203.258pt x 406.47365pt.
 <./figures/F4-2-b-Login.PNG, id=99, 1445.4pt x 2890.8pt>
 File: ./figures/F4-2-b-Login.PNG Graphic file (type png)
 <use ./figures/F4-2-b-Login.PNG>
-Package pdftex.def Info: ./figures/F4-2-b-Login.PNG  used on input line 302.
+Package pdftex.def Info: ./figures/F4-2-b-Login.PNG  used on input line 304.
 (pdftex.def)             Requested size: 203.258pt x 406.47365pt.
  [18]
 <./figures/F4-3-Place_an_order.PNG, id=103, 1445.4pt x 2890.8pt>
 File: ./figures/F4-3-Place_an_order.PNG Graphic file (type png)
 <use ./figures/F4-3-Place_an_order.PNG>
 Package pdftex.def Info: ./figures/F4-3-Place_an_order.PNG  used on input line 
-312.
+314.
 (pdftex.def)             Requested size: 180.67456pt x 361.34912pt.
  [19 <./figures/F4-2-a-HomePage.PNG> <./figures/F4-2-b-Login.PNG>]
 <./figures/F4-4-a-CitySelection.PNG, id=108, 1445.4pt x 2890.8pt>
 File: ./figures/F4-4-a-CitySelection.PNG Graphic file (type png)
 <use ./figures/F4-4-a-CitySelection.PNG>
 Package pdftex.def Info: ./figures/F4-4-a-CitySelection.PNG  used on input line
- 327.
+ 329.
 (pdftex.def)             Requested size: 203.258pt x 406.47365pt.
 <./figures/F4-4-b-DistrictSelection.PNG, id=109, 1445.4pt x 2890.8pt>
 File: ./figures/F4-4-b-DistrictSelection.PNG Graphic file (type png)
 <use ./figures/F4-4-b-DistrictSelection.PNG>
 Package pdftex.def Info: ./figures/F4-4-b-DistrictSelection.PNG  used on input 
-line 330.
+line 332.
 (pdftex.def)             Requested size: 203.258pt x 406.47365pt.
  [20 <./figures/F4-3-Place_an_order.PNG>]
 <./figures/F4-5-Localization.PNG, id=113, 1445.4pt x 2890.8pt>
 File: ./figures/F4-5-Localization.PNG Graphic file (type png)
 <use ./figures/F4-5-Localization.PNG>
 Package pdftex.def Info: ./figures/F4-5-Localization.PNG  used on input line 34
-1.
+3.
 (pdftex.def)             Requested size: 180.67456pt x 361.34912pt.
  [21 <./figures/F4-4-a-CitySelection.PNG> <./figures/F4-4-b-DistrictSelection.P
 NG>]
@@ -513,13 +513,13 @@ NG>]
 File: ./figures/F4-6-a-Package_I_sent.PNG Graphic file (type png)
 <use ./figures/F4-6-a-Package_I_sent.PNG>
 Package pdftex.def Info: ./figures/F4-6-a-Package_I_sent.PNG  used on input lin
-e 355.
+e 357.
 (pdftex.def)             Requested size: 203.258pt x 406.48468pt.
 <./figures/F4-6-b-Package-I-received.PNG, id=118, 1084.05pt x 2168.1pt>
 File: ./figures/F4-6-b-Package-I-received.PNG Graphic file (type png)
 <use ./figures/F4-6-b-Package-I-received.PNG>
 Package pdftex.def Info: ./figures/F4-6-b-Package-I-received.PNG  used on input
- line 358.
+ line 360.
 (pdftex.def)             Requested size: 203.258pt x 406.48468pt.
 
 [22 <./figures/F4-5-Localization.PNG>]
@@ -527,7 +527,7 @@ Package pdftex.def Info: ./figures/F4-6-b-Package-I-received.PNG  used on input
 File: ./figures/F4-7-Details_package.PNG Graphic file (type png)
 <use ./figures/F4-7-Details_package.PNG>
 Package pdftex.def Info: ./figures/F4-7-Details_package.PNG  used on input line
- 368.
+ 370.
 (pdftex.def)             Requested size: 180.67456pt x 361.34912pt.
  [23 <./figures/F4-6-a-Package_I_sent.PNG> <./figures/F4-6-b-Package-I-received
 .PNG>]
@@ -535,32 +535,32 @@ Package pdftex.def Info: ./figures/F4-7-Details_package.PNG  used on input line
 File: ./figures/F4-8-ExamineOrders.PNG Graphic file (type png)
 <use ./figures/F4-8-ExamineOrders.PNG>
 Package pdftex.def Info: ./figures/F4-8-ExamineOrders.PNG  used on input line 3
-81.
+83.
 (pdftex.def)             Requested size: 180.67456pt x 361.34912pt.
  [24 <./figures/F4-7-Details_package.PNG>] [25 <./figures/F4-8-ExamineOrders.PN
 G>]
 <./figures/F4-9-SUMOMap.PNG, id=134, 577.40718pt x 420.82219pt>
 File: ./figures/F4-9-SUMOMap.PNG Graphic file (type png)
 <use ./figures/F4-9-SUMOMap.PNG>
-Package pdftex.def Info: ./figures/F4-9-SUMOMap.PNG  used on input line 401.
+Package pdftex.def Info: ./figures/F4-9-SUMOMap.PNG  used on input line 403.
 (pdftex.def)             Requested size: 451.6875pt x 329.20958pt.
  [26] [27 <./figures/F4-9-SUMOMap.PNG>]
 <./figures/F4-10-ChangeRoutes.PNG, id=142, 1043.39813pt x 371.13657pt>
 File: ./figures/F4-10-ChangeRoutes.PNG Graphic file (type png)
 <use ./figures/F4-10-ChangeRoutes.PNG>
 Package pdftex.def Info: ./figures/F4-10-ChangeRoutes.PNG  used on input line 4
-21.
+23.
 (pdftex.def)             Requested size: 451.6875pt x 160.66725pt.
  [28]
 <./figures/F4-11-Notification.PNG, id=146, 1445.4pt x 2890.8pt>
 File: ./figures/F4-11-Notification.PNG Graphic file (type png)
 <use ./figures/F4-11-Notification.PNG>
 Package pdftex.def Info: ./figures/F4-11-Notification.PNG  used on input line 4
-34.
+36.
 (pdftex.def)             Requested size: 180.67456pt x 361.34912pt.
  [29 <./figures/F4-10-ChangeRoutes.PNG>] [30 <./figures/F4-11-Notification.PNG>
 ]
-Overfull \hbox (1.20755pt too wide) in paragraph at lines 452--453
+Overfull \hbox (1.20755pt too wide) in paragraph at lines 454--455
 \OT1/cmr/m/n/12 The database of the sys-tem is de-vel-oped with Mari-aDB 10.1.3
 2. Mari-aDB is a community-
  []
@@ -570,14 +570,43 @@ Chapter 5.
 [33
 
 ] [34] (Thesis-Po.bbl
-Underfull \hbox (badness 1038) in paragraph at lines 34--38
-[]\OT1/cmr/m/n/12 ``U.S. courier, ex-press and parcels mar-ket.'' [On-line]. Av
-ail-
+Underfull \hbox (badness 2951) in paragraph at lines 25--28
+[]\OT1/cmr/m/n/12 ``Key Find-ings from the 2019 On-line Mar-ket-places Re-port,
+'' 2019, URL:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--28
+\OT1/cmr/m/n/12 https://www.digitalcommerce360.com/industry-resource/key-findin
+gs-from-the-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--33
+[]\OT1/cmr/m/n/12 ``U.S. Courier, Ex-press and Parcels Mar-ket,'' 2019, URL:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--33
+\OT1/cmr/m/n/12 https://www.statista.com/topics/4063/courier-express-and-parcel
+s-cep-market-
  []
 
 [35
 
-]) [36] [37
+]
+Underfull \hbox (badness 10000) in paragraph at lines 114--117
+[]\OT1/cmr/m/n/12 ``Worldwide Smart-phone Ship-ment OS Mar-ket Share Fore-case,
+'' URL:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--117
+\OT1/cmr/m/n/12 https://www.statista.com/topics/4063/courier-express-and-parcel
+s-cep-market-
+ []
+
+) [36] [37
 
 ] (Thesis-Po.aux)
 
@@ -585,22 +614,22 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4622 strings out of 492895
- 70191 string characters out of 3124669
+ 4623 strings out of 492895
+ 70199 string characters out of 3124669
  133574 words of memory out of 3000000
- 8412 multiletter control sequences out of 15000+200000
+ 8413 multiletter control sequences out of 15000+200000
  11779 words of font info for 45 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,7n,39p,1100b,370s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmbx12.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmbxti10.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/yen/AppData/Local/Programs/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/yen/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/yen/AppData/
-Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/yen
+ 41i,7n,39p,1101b,370s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/BJT/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmbx12.pfb><C:/Users/BJT/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmbxti10.pfb><C:/Users/BJT/AppData/Local/Programs/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/BJT/AppData/Local/Programs/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/BJT/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/BJT/AppData/
+Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/BJT
 /AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Thesis-Po.pdf (43 pages, 3907139 bytes).
+Output written on Thesis-Po.pdf (43 pages, 3913084 bytes).
 PDF statistics:
  203 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
