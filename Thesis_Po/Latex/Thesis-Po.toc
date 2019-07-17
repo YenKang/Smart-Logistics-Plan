@@ -8,8 +8,8 @@
 \contentsline {subsection}{\numberline {3.2.2}\ignorespaces Placing a Delivery Order}{8}% 
 \contentsline {subsection}{\numberline {3.2.3}\ignorespaces Tracking Established Orders}{9}% 
 \contentsline {section}{\numberline {3.3}\ignorespaces SUMO Server and SUMO Simulator}{9}% 
-\contentsline {section}{\numberline {3.4}\ignorespaces Back-End Server}{12}% 
-\contentsline {section}{\numberline {3.5}\ignorespaces Database}{13}% 
+\contentsline {section}{\numberline {3.4}\ignorespaces Back-End Server}{11}% 
+\contentsline {section}{\numberline {3.5}\ignorespaces Database}{12}% 
 \contentsline {chapter}{\numberline {4}System Implementation}{16}% 
 \contentsline {section}{\numberline {4.1}\ignorespaces Mobile Application}{16}% 
 \contentsline {section}{\numberline {4.2}\ignorespaces SUMO Server and Simulator}{26}% 
