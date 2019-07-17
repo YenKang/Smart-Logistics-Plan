@@ -6,26 +6,4 @@
 /Server.class
 /ClientInfo.class
 /Server$RequestThread.class
-<<<<<<< HEAD
-/JdbcCon.class
-/FireBaseTest.class
-/PushNotifictionHelper.class
-/test1231.class
-/FcmNotif.class
-/Main0506.class
-=======
 /MainCopy.class
->>>>>>> 9e2fcde8bdc443fd192285d475f644477153a5a4
-/pickCarWithMinDistance.class
-/JDBC_AVD.class
-/MainCopy2.class
-/MainCopy3withBigMap.class
-/MainCopy3withBigMapandOneCar.class
-/MainCopy4_MultipleCars.class
-/AssignResult.class
-/MainCopy5_receiver_request.class
-/MainCopy3.class
-/FcmNotify.class
-/newest.class
-/MainCopy6.class
-/StopFlagsTest.class

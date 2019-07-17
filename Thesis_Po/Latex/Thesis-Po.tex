@@ -76,6 +76,10 @@ The thesis implements a real-time parcel delivery service in urban-scale areas, 
 %------------------------- Acknowledgement -------------------------%
 \Thesisspace {\large }
 
+First of all,I would like to express my gratitude to my advisor, Professor Kuo-Feng Ssu, for his valuable advices in my research and encouragement during my time at National Cheng Kung University. I am exceptionally thankful for his endless effort to provide guidance of paper reading and thesis writing. 
+
+Besides, I am really grateful to Professors Hewijin Christine Jiau, Ye-Qi Wu and Wei-Zhong Hu for not only their contributions to the research but also serving on my dissertation committee. I am obliged to the members of Dependable Computing Laboratory, including Yu-Jung Change, Che-Ming Lee, Wei-Lun Hung, Wen-Chin Lai, and Chun-Ting Po. They helped me a lot and gave me many opinions in my research. Finally, I would like to thank my family and friends for their support. 
+
 \end{acknowledgements}
 \tableofcontents \listoffigures \listoftables \clearpage
 
@@ -105,15 +109,15 @@ Nowadays the world’s online marketplaces are growing rapidly because the onlin
     (b)
 \end{minipage}
 \normalsize
-\caption{\large First two big United Parcel Service of America Inc.'s revenue.}
+\caption{\large The revenue of top two couriers and local delivery service Inc. of America.}
 \label{fig:UnitedParcelService}
 \end{figure*} 
 
-Figure 1.1 shows the revenue of two freight delivery companies, which have the highest market shares of couriers and local delivery service in the United States \cite{CourierMarket}. The trend chart represent that the demands of the express delivery service are growing year by year. In the domain of the express delivery, the same-day delivery is a significant service. It aims to shorten delivery time as much as possible to improve the customer satisfaction. In the future, performing parcel delivery by self-driving vehicles is a promising way to improve the efficient of route arrangement and reduce labor cost, thereby it can make it easier to achieve the same day delivery.
+Figure 1.1 shows the revenue of two freight delivery companies, which have the highest market shares of couriers and local delivery service in the United States \cite{CourierMarket}. The trend chart represent that the demands of the express delivery service are growing year by year. In the domain of the express delivery, the same-day delivery is a significant service which aims to shorten delivery time as much as possible to improve the customer satisfaction. In the future, performing parcel delivery by self-driving vehicles is a promising way to improve the efficient of route arrangement and reduce labor cost, thereby it can make it easier to achieve the same day delivery.
 
 A self-driving vehicle, also known as a robotic vehicle, autonomous vehicle, or driverless vehicle, is a vehicle which is able to sense the surrounding environment by sensors and drive on the road without a human driver. In Intelligent Transport System (ITS), the self-driving vehicle usually has one of many different communication technologies to communicate with other vehicles and the control center in the same system. With the self-driving technology becoming mature gradually, more and more companies invested in the development of self-driving vehicles, such as Google, Tesla, Waymo, Baidu, and so on. 
 
-However, in many country, it is difficult and challenging to test the vehicles on public roads due to the complex road environment or policy restrictions. Therefore, this thesis proposes a self-driving delivery system which combines the mobile applications with the traffic simulation software. The system aims to simulate the process of the same-day delivery in urban areas. By this system, the self-driving technology development companies can test and adjust their path planning algorithm, vehicle deployments and the different system function before the self-driving product is official online. The mobile application is exploited to simulate the real usage situation and improve the user experience. In contrast with traditional home delivery service \cite{Jiang2018} which does not allow the parcel receiver to select the expected delivery time, the proposed application provides the real-time vehicle dispatching. The user including sender and receiver can select the arrival time of trucks at any time so that the failure rate of parcel delivery can be declined. 
+However, in many country, it is difficult and challenging to test the vehicles on public roads due to the complex road environment or policy restrictions. Therefore, this thesis proposes a self-driving delivery system which combines the mobile applications with the traffic simulation software. The system aims to simulate the process of the same-day delivery in urban areas. By this system, the self-driving technology development companies can test and adjust their path planning algorithm, vehicle deployments and the different system function before the self-driving product is official online. The mobile application is exploited to simulate the real usage situation and improve the user experience. In contrast with traditional home delivery service \cite{Jiang2018} which does not allow the parcel receiver to select the expected delivery time, the proposed application provides the real-time vehicle dispatching. The users including sender and receiver can select the arrival time of trucks at any time so that the failure rate of parcel delivery can be declined. 
 
 The simulation system contains real-world road information, such as the longitude and latitude of the vehicle, the cycle time of traffic light, the different road types, and so on. The self-driving development companies can accomplish their expected function by these data. Besides, this thesis designs an interface and the data format of the data transmission. Thus, the mobile application can be easily integrated into the actual autonomous vehicles. By these advantages of this system, the self-driving vehicles can move seamlessly from the simulation to the real world. 
 
@@ -153,13 +157,13 @@ Seth et al. presented a system, named Similitude, comprised of the SimMobility t
 \label{Fig:system_Overview}
 \end{figure}
 
-This thesis designs a self-driving delivery simulation system, as illustrated in Figure 3.1, the system consists of five components, including the mobile application, the SUMO server, the SUMO simulator, the back-end server, and the database. 
+This thesis designs a self-driving delivery simulation system, as illustrated in Figure 3.1. The system consists of five components, including the mobile application, the SUMO server, the SUMO simulator, the back-end server, and the database. 
 
-In this system, the mobile application is a platform which can let the user place a delivery order for shipping cargos and track the user’s orders. After a user issues a delivery request on the mobile application, the request will be sent to SUMO server. The server will execute the dispatching mechanism to assign a truck which meets the conditions to receive the cargo, and the movement of the truck will be displayed on SUMO simulator by commands of SUMO server. 
+In this system, the mobile application is a platform in which the user can place a delivery order for shipping cargos and track the user’s orders. After the user issues a delivery request on the mobile application, the request will be sent to SUMO server. The server will execute the dispatching mechanism to assign a truck which meets the conditions to receive the cargo, and the movement of the truck will be displayed on SUMO simulator by commands of SUMO server. 
 
-Moreover, the information of orders will be uploaded to the database if the assignment is successful, and the user can check the order’s status on the mobile application by connecting to the back-end server. When the truck arrives at the address of shippers or receivers on the simulator, the SUMO server will send a message to the mobile device for notifying the user of this arriving event through a cloud messaging service. 
+Moreover, the information of orders will be uploaded to the database if the assignment is successful. The user then can check the order’s status on the mobile application by connecting to the back-end server. When the truck arrives at the address of shippers or receivers on the simulator, the SUMO server will send a message to the mobile device for notifying the user of this arriving event through a cloud messaging service. 
 
-Besides, the server will also send a message to notify the receiver that the pickup time of the cargo can be selected already when the truck has arrived at the sender’s address. All the simulated process can be observed on the SUMO simulator. The features of each component will be described in detail in the following sections.
+All the simulated process can be observed on the SUMO simulator. The features of each component will be described in detail in the following sections.
 
 \section{Mobile Application}
 In this system, the main object to develop the mobile application is to simulate the real user scenario. The features of the mobile application include registration and login of the user accounts, placing the delivery order, and tracking established orders. The function of each part is depicted as follows.
@@ -170,7 +174,7 @@ When the mobile application is launched for the first time, a token will be gene
 \subsection{Placing a Delivery Order}
 In order to simulate the real user scenario, the thesis implements a function that the user can place an delivery order. First, the user needs to fill out the order’s information which includes container size, receiver’s username, sender’s address, receiver’s address, and so on. 
 
-Then, the address will be displayed by Google Map service so that the user can confirm the correction of localization. After that, the user can choose the arrival time of the truck, and send the delivery request to the SUMO server. The request contains user-related data and the details of the order, and the server will run the dispatching mechanism by the information and the road condition of the SUMO simulator. The order will be uploaded to the database if the request is accepted. Otherwise, the SUMO server will return a error message to the application to notify the user that there is no truck which can arrive the destination at the appointed time.
+Then, the address will be displayed by Google Map service so that the user can confirm the correction of localization. After that, the user can choose the arrival time of the truck, and send the delivery request to the SUMO server. The request contains user-related data and the details of the order, and the server will perform the dispatching mechanism by the information and the road condition of the SUMO simulator. The order will be uploaded to the database if the request is accepted. Otherwise, the SUMO server will return a error message to the application to notify the user that there is no truck which can arrive the destination at the appointed time.
 
 \subsection{Tracking Established Orders}
 After the order is established successfully, the user can track the orders’ status by using the function of tracking orders. In this function, users are divided into two categories such as a receiver and a sender.
@@ -193,14 +197,11 @@ In this system, the SUMO server is response for receiving the user’s requests 
 
 
 
-As illustrated in Figure 3.2, after the user places an order with the SUMO server, the order will be stored in a queue of the dispatching requests. The socket program can detect the request whether it is sent by a sender or a receiver according to the data, and the server will store extra information like the truck number and the container number if the request is sent by a receiver. 
-It is because that the server needs to know which trucks to be dispatched. The server will check the queue continuously, and do the dispatching mechanism if there are any requests in the queue. If the dispatching is successful, the server would insert or update the order to the database with the database API and send a message to the mobile application through the socket. Otherwise, the server will notify the user that this arrival-time is unavailable with error message. 
+As illustrated in Figure 3.2, after the user places an order with the SUMO server, the order will be stored in a queue of the dispatching requests. The SUMO server will distinguish between the sender request and the receiver request. If the request is sent by the receiver, the truck number and the container number would be stored because the server needs to know which trucks to be dispatched. The server will check the queue continuously, and do the dispatching mechanism if there are any requests in the queue. If the dispatching is successful, the server would insert or update the order to the database with the database API and send a message to the mobile application through the socket. Otherwise, the server will notify the user that this arrival-time is unavailable with error message. 
 
-Moreover, the SUMO server will change the dispatching schedule table on the basis of the above result, and it will execute the corresponding commands to the SUMO simulator so as to change the selected the truck’s route.
-After the delivery tasks are assigned to the trucks, they will drive along the designated routes, and the system administrator can observe the trip and the parking place of each truck in the simulator. When a truck arrives at the destination, the SUMO server will send a notification to the mobile device through the cloud messaging service. 
-When the truck arrives to the destination and then five minutes passes, the server will simulate the uploading and unloading task, and the server will also notify the receiver that the arrival time can be selected if the truck is at a sender’s address. 
+Moreover, the SUMO server updates the table of the dispatching schedule based on the above result. According to the table, the SUMO server will issue commands to change the routes of specific trucks in the simulator. After the delivery tasks are assigned to the trucks, they will drive along the designated routes. The system administrator can observe the trip and the parking place of each truck in the simulator. When a truck arrives at the destination, the SUMO server will send a notification to the mobile device through the cloud messaging service. The SUMO server will simulate the task of uploading and unloading. The status of the order will be updated to the database, and the server will notify the receiver to choose the preferred arrival time of the truck. 
 
-All of the above event will change the order, and the server will update it to the database in each time. These changes can be observed on the mobile application by using the feature of tracking orders. Finally, the status of the order will be set to “received” by the server instead of being deleted when the delivery is over. Hence, the records of users’ order can be viewed on the database or the mobile application. The implementation of the cloud messaging service will be described  in Chapter 4.
+All of the above events will change the order, and the server will update them to the database each time. These changes can be observed on the mobile application by using the feature of tracking orders. Finally, the status of the order will be set to “received” by the server instead of being deleted when the delivery is over. Hence, the records of users’ order can be viewed on the database or the mobile application. The implementation of the cloud messaging service will be described  in Chapter 4.
 
 \section{Back-End Server}
 The SUMO server would spend much time executing the dispatching mechanism and simulating the package delivery process, and it will cause the computing delay. To keep the simulation precise, the gap between simulation time and actual time has to be shorten. Hence, the thesis builds back-end server in order to reduce the workload of the SUMO server. In system, the back-end server is in charge of communicating between the mobile application and the database. It provides a interface by which the user can query or insert data to the database. The works of the back-end server include handling login and registration of user accounts, querying the order's data when the users track their orders, and showing the data of cities, counties and townships when the users are filling in an order form. 
@@ -222,7 +223,7 @@ As discussed above, the simulation-related data in the system are stored in the 
 \end{figure}
 
  
-The first table named user-table keeps the account information of registered users. Table 3.1 shows the data format of user-table. As mentioned in Chapter 3.2.1, the attribute \textbf{device\_key} is the token generated by the application. The token is assigned to the mobile device rather than the user, and it will be updated when the user logins on different devices. Therefore, the SUMO server can know which device is bind to the user by the unique token. The attribute username is applied to identify the user who places the order.
+The first table named user-table keeps the account information of registered users. Table 3.1 shows the data format of user-table. As mentioned in Chapter 3.2.1, the attribute \textbf{device\_key} is the token generated by the application. The token is assigned to the mobile device rather than the user, and it will be updated when the user logins on different devices. Therefore, the SUMO server can know which device is bind to the user by the unique token. The attribute \textbf{username} is applied to identify the user who places the order.
 
 
 
@@ -248,9 +249,9 @@ The second table and the third table are county table and township table. The da
 The geocoding technology will be mentioned in Chapter 4. Furthermore, it provides scalability of service region, if the range of the simulation becomes larger, the administrator can easily expand regional options by adding additional data to the database. 
 
 The last table is order table. As shown in Table 3.4, it retains information of the user’s order, and part of order will be explained in this section. The attribute \textbf{status} represents the situation of logistic activity, such as "on the way to the receiver’s address". 
-In addition, it is the criteria whether if the receiver can designate the arrival time. The attribute \textbf{sender\_name} and \textbf{receiver\_name} are used by the SUMO server to determine users which the server will notify. The latitude and longitude transformed from senders’ address is stored as\textbf{sender\_lat} and \textbf{sender\_lng}, and the same is true for the receiver’ address. The attribute \textbf{sender\_time} and \textbf{receiver\_time} are the expected arrival time that users select on the mobile application. The SUMO server will exploit the locational and time information to generate a dispatching schedule and arrange the route of each truck. 
+In addition, it is the criteria whether if the receiver can designate the arrival time. The attribute \textbf{sender\_name} and \textbf{receiver\_name} are used by the SUMO server to determine users which the server will notify. The latitude and longitude transformed from senders’ address is stored as \textbf{sender\_lat} and \textbf{sender\_lng}, and the same is true for the receiver’ address. The attribute \textbf{sender\_time} and \textbf{receiver\_time} are the expected arrival time that users select on the mobile application. The SUMO server will exploit the locational and time information to generate a dispatching schedule and arrange the route of each truck. 
 
-\begin{figure}[t]
+\begin{figure}[H]
 \centering
 \captionof{table}{\large Order Table}
 \includegraphics[width=0.85\textwidth]{./figures/Table3-4-OrderTable.PNG}
@@ -334,7 +335,7 @@ The user can press the \textbf{region selecting button} to get the administrativ
 \end{figure}
 
 
-For the sake of convenience, the application will record the data entered by the user last time, and the data will be filled in the order automatically when clicking the auto inputting button. After filling out the order information, the user can press the next button, and the application would check whether the user name of receiver exist.
+For the sake of convenience, the application will record the data entered by the user last time, and the data will be filled in the order automatically when the auto button is clicked. After filling out the order information, the user can press the next button, and the application would check whether the user name of the receiver exists or not.
 
 \begin{figure}[H]
 \centering
@@ -344,7 +345,7 @@ For the sake of convenience, the application will record the data entered by the
 \label{Fig:localization_of_destination}
 \end{figure} 
 
-As illustrated in Figure 4.5, the address that the user input will be transform into geographic location, and the shipper’s address will be displayed on the Google Map so that the user can confirm if the localization is correct. Then, the user can use the dropdown list to select the arrival time of the truck. 
+As illustrated in Figure 4.5, the address that the user inputs will be transformed into geographic location, and the shipper’s address will be displayed on the Google Map. Then, the user can use the dropdown list to select the preferred arrival time of the truck. 
 Finally, the order request will be sent to the SUMO server by socket program. If there are eligible trucks in the simulated environment, the server would return a success message. Otherwise, the page will not be closed, and the user can choose other expected arrival time.  
 
 \begin{figure}[H]
@@ -374,7 +375,7 @@ Figure 4.6 shows that the established order can be viewed on the page of trackin
 
 Then, the details of the appointed package would be displayed while the user clicks the order button, which is shown in Figure 4.7. 
 
-If the user is a \textbf{receiver} in an order, he or she can choose the pick-up time of the cargo according to the \textbf{status of logistic activity}, which means the shipping situation of the cargo. Then, the \textbf{pick-up-time} page would pop up, which is the same as the page in Figure 4.5. 
+If the user is a receiver in an order, he or she can choose the pick-up time of the cargo according to the status of logistic activity, which means the shipping situation of the cargo. Then, the pick-up-time page would pop up, which is the same as the page in Figure 4.5. 
 
 \begin{figure}[H]
 \centering
@@ -385,7 +386,7 @@ If the user is a \textbf{receiver} in an order, he or she can choose the pick-up
 \end{figure} 
 
 
-Besides, a system administrator could examine the history orders without logging in. Figure 4.8 shows the searching page of the order. The order can be looked up by entering the unique order number. 
+A system administrator could examine the history orders without logging in. Figure 4.8 shows the searching page of the order. The order can be looked up by entering the unique order number. 
 
 
 
@@ -394,7 +395,7 @@ Besides, a system administrator could examine the history orders without logging
 
 \subsection{Simulation Environment Setup}
 
-The simulation of the delivery process is implemented on SUMO \cite{behrisch2011sumo}, "Simulation of Urban Mobility", which is an open source, highly portable, microscopic and continuous traffic simulation package. The example of roads, vehicles, junctions and other road information are included in the package, and there is the graphical simulator certainly. TraCI is an interface that provides the access to SUMO simulator by using a TCP based client/server architecture \cite{wegener2008traci}. It was implemented in various programming language, such as Python, C++, Java, and so on. In this thesis, TraaS is employed to be the control interface of the simulator. It is a java library for working with TraCI , and it provides plenty of commands to manipulate the simulated objects. For instance, the developer can change the route of a vehicle by certain commands.
+The simulation of the delivery process is implemented on SUMO \cite{behrisch2011sumo}, Simulation of Urban Mobility, which is an open source, highly portable, microscopic, and continuous traffic simulation package. The example of roads, vehicles, junctions, and other road information are included in the package. TraCI is an interface that provides the access to SUMO simulator by using a TCP based client/server architecture \cite{wegener2008traci}. TraCI is implemented in various programming language, such as Python, C++, Java, and so on. In this thesis, TraaS is employed to be the control interface of the simulator. TraaS is a java library for working with TraCI , and it provides plenty of commands to manipulate the simulated objects. For instance, the developer can change the route of a vehicle by certain commands.
 
 \begin{figure}[H]
 \centering
@@ -445,7 +446,7 @@ When the truck is close to the destination, the system would notify the user of 
 
 \section{Back-end Sever}
 To avoid the leakage of sensitive information of the database, users can not connect to the database directly. Thus, the system takes the back-end server as an interface to access to the database. The back-end server is a web server, which is built using Apache HTTP Server. The service which receives query requests from users, and the service is implemented with PHP program. 
-The mobile applications connect to the back-end server by HttpUrlConnection. It is Android function which makes the application communicate with the web server by HTTP protocol. According to the HTTP URL, the web server would run the PHP program to execute the SQL commands of the database. The result returned from the database will be forwarded to the mobile application by the web server. 
+The mobile applications connect to the back-end server by HttpUrlConnection. It is Android function which makes the application communicate with the web server by HTTP protocol. According to the HTTP URL, the web server would execute the PHP program to execute the SQL commands of the database. The result returned from the database will be forwarded to the mobile application by the web server. 
 
 
 \section{Database}
@@ -478,9 +479,9 @@ In order to make the self-driving technology development companies have a platfo
 
 \section{Future Work}
 
-There are some features that have not yet been implemented in this thesis, they are not necessary for the delivery process, but the features can be used to improve user experience or manage the user data. 
+There are some features that have not yet been implemented in this thesis. The features are not necessary for the delivery process, but they can be used to improve user experience or to manage the user data. 
 
-We expect to implement the real-time location inquiry and the arrival time prediction of the trucks. The information will be shown on the page of tracking orders. In addition, a management system will be established in the future, and it may be implemented on a web site. The management system allows the system administrator of the self-driving delivery system to view the data of the entire simulation environment. Furthermore, the administrator can change the truck's location, speed and even current routes. This function let the user change the simulation deployment at any time during the runtime so that the simulation can be more flexible.
+The functions of the real-time location inquiry and the arrival time prediction of the trucks are expected to be implemented. The information will be shown on the page of tracking orders. In addition, a management system will be established in the future, and it may be implemented on a web site. The management system allows the system administrator of the self-driving delivery system to view the data of the entire simulation environment. Furthermore, the administrator can change the truck's location, speed and even current routes. This function can allow the user to change the simulation deployment at any time during the runtime so that the simulation can be more flexible.
 
 
 

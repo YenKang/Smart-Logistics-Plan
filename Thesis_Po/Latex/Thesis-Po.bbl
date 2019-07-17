@@ -22,19 +22,14 @@
 \BIBdecl
 
 \bibitem{KeyFindings}
-\BIBentryALTinterwordspacing
-``{Key Findings from the 2019 Online Marketplaces Report}.'' [Online].
-  Available:
-  \url{https://www.digitalcommerce360.com/industry-resource/key-findings-from-the-2019-online-marketplaces-report/,
-  2019.}
-\BIBentrySTDinterwordspacing
+``{Key Findings from the 2019 Online Marketplaces Report},'' 2019, {URL:}
+  \url{https://www.digitalcommerce360.com/industry-resource/key-findings-from-the-2019-online-marketplaces-report/}
+  [accessed: July 10, 2019].
 
 \bibitem{CourierMarket}
-\BIBentryALTinterwordspacing
-``{U.S. courier, express and parcels market}.'' [Online]. Available:
-  \url{https://www.statista.com/topics/4063/courier-express-and-parcels-cep-market-in-the-united-states/,
-  2019.}
-\BIBentrySTDinterwordspacing
+``{U.S. Courier, Express and Parcels Market},'' 2019, {URL:}
+  \url{https://www.statista.com/topics/4063/courier-express-and-parcels-cep-market-in-the-united-states/}
+  [accessed: July 10, 2019].
 
 \bibitem{Jiang2018}
 L.~Jiang, C.~Liang, J.~Dong, W.~Lu, and M.~Mladenovic, ``{A Disruption Recovery
@@ -50,91 +45,91 @@ L.~Jiang, C.~Liang, J.~Dong, W.~Lu, and M.~Mladenovic, ``{A Disruption Recovery
 \bibitem{Savelsbergh2016}
 M.~Savelsbergh and T.~{Van Woensel}, ``{City Logistics: Challenges and
   Opportunities},'' \emph{Transportation Science}, vol.~50, no.~2, pp.
-  579--590, 2016.
+  579--590, Feb. 2016.
 
 \bibitem{Crainic2015}
 T.~G. Crainic, T.~Bekt, T.~G. Crainic, and T.~V. Woensel, ``{From Managing
-  Urban Freight to Smart City Logistics Networks},'' no. May, 2015.
+  Urban Freight to Smart City Logistics Networks},'' May 2015.
 
 \bibitem{Habault2019}
-G.~Habault, Y.~Taniguchi, and N.~Yamanaka, ``{Delivery Management System Based
-  on Vehicles Monitoring and a Machine-Learning Mechanism},'' \emph{IEEE
-  Vehicular Technology Conference}, vol. 2018-August, pp. 1--5, 2019.
+G.~Habault, Y.~Taniguchi, and N.~Yamanaka, ``Delivery {M}anagement {S}ystem
+  {B}ased on {V}ehicles {M}onitoring and a {M}achine-{L}earning {M}echanism,''
+  in \emph{Proceedings of 2018 IEEE 88th Vehicular Technology Conference
+  (VTC-Fall)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, Aug. 2018, pp.
+  1--5.
 
 \bibitem{Ewedairo2019}
-K.~Ewedairo, P.~Chhetri, J.~Dodson, and S.~Rahman, ``{Building Last Mile
-  Delivery Scenarios: A Case Study of Melbourne},'' \emph{IEEE International
-  Conference on Industrial Engineering and Engineering Management}, vol.
-  2019-December, no.~Lm, pp. 32--35, 2019.
+K.~Ewedairo, P.~Chhetri, J.~Dodson, and S.~Rahman, ``Building {L}ast {M}ile
+  {D}elivery {S}cenarios: A {C}ase {S}tudy of {M}elbourne,'' in
+  \emph{Proceedings of 2018 IEEE International Conference on Industrial
+  Engineering and Engineering Management (IEEM)}.\hskip 1em plus 0.5em minus
+  0.4em\relax IEEE, Dec. 2018, pp. 32--35.
 
 \bibitem{Hochstenbach2016}
 M.~Hochstenbach, C.~Notteboom, B.~Theys, and J.~{De Schutter}, ``{Design and
   Control of an Unmanned Aerial Vehicle for Autonomous Parcel Delivery with
   Transition from Vertical Take-off to Forward Flight – VertiKUL, a
   Quadcopter Tailsitter},'' \emph{International Journal of Micro Air Vehicles},
-  vol.~7, no.~4, pp. 395--405, 2016.
+  vol.~7, no.~4, pp. 395--405, Dec. 2015.
 
 \bibitem{Niels2018}
-T.~Niels, M.~T. Hof, and K.~Bogenberger, ``{Design and Operation of an Urban
-  Electric Courier Cargo Bike System},'' \emph{IEEE Conference on Intelligent
-  Transportation Systems, Proceedings, ITSC}, vol. 2018-November, no. November,
-  pp. 2531--2537, 2018.
+T.~Niels, M.~T. Hof, and K.~Bogenberger, ``Design and {O}peration of an {U}rban
+  {E}lectric {C}ourier {C}argo {B}ike {S}ystem,'' in \emph{Proceedings of 2018
+  21st International Conference on Intelligent Transportation Systems
+  (ITSC)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, Nov. 2018, pp.
+  2531--2537.
 
 \bibitem{Cheng2019}
 G.~Cheng, D.~Guo, J.~Shi, and Y.~Qin, ``{Planning City-Wide Package
   Distribution Schemes Using Crowdsourced Public Transportation Systems},''
-  \emph{IEEE Access}, vol.~7, pp. 1234--1246, 2019.
+  \emph{IEEE Access}, vol.~7, pp. 1234--1246, Dec. 2019.
 
 \bibitem{Buchegger2018}
-A.~Buchegger, K.~Lassnig, S.~Loigge, C.~M{\"{u}}hlbacher, and G.~Steinbauer,
-  ``{An Autonomous Vehicle for Parcel Delivery in Urban Areas},'' \emph{IEEE
-  Conference on Intelligent Transportation Systems, Proceedings, ITSC}, vol.
-  2018-November, pp. 2961--2967, 2018.
+A.~Buchegger, K.~Lassnig, S.~Loigge, C.~M{\"u}hlbacher, and G.~Steinbauer, ``An
+  {A}utonomous {V}ehicle for {P}arcel {D}elivery in {U}rban {A}reas,'' in
+  \emph{Proceedings of 2018 21st International Conference on Intelligent
+  Transportation Systems (ITSC)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE,
+  Nov. 2018, pp. 2961--2967.
 
 \bibitem{Ulmer2019}
-\BIBentryALTinterwordspacing
-M.~W. Ulmer and S.~Streng, ``{Same-Day delivery with pickup stations and
-  autonomous vehicles},'' \emph{Computers and Operations Research}, vol. 108,
-  pp. 1--19, 2019. [Online]. Available:
-  \url{https://doi.org/10.1016/j.cor.2019.03.017}
-\BIBentrySTDinterwordspacing
+M.~W. Ulmer and S.~Streng, ``{Same-Day Delivery with Pickup Stations and
+  Autonomous Vehicles},'' \emph{Computers and Operations Research}, vol. 108,
+  pp. 1--19, Aug. 2019.
 
 \bibitem{Kocsis2018}
-M.~Kocsis, J.~Buyer, N.~Submann, R.~Zollner, and G.~Mogan, ``{Autonomous
-  Grocery Delivery Service in Urban Areas},'' \emph{Proceedings - 2017 IEEE
-  19th Intl Conference on High Performance Computing and Communications, HPCC
-  2017, 2017 IEEE 15th Intl Conference on Smart City, SmartCity 2017 and 2017
-  IEEE 3rd Intl Conference on Data Science and Systems, DSS 2017}, vol.
-  2018-January, pp. 186--191, 2018.
+M.~Kocsis, J.~Buyer, N.~Su{\ss}mann, R.~Z{\"o}llner, and G.~Mogan, ``Autonomous
+  {G}rocery {D}elivery {S}ervice in {U}rban {A}reas,'' in \emph{Proceedings of
+  2017 IEEE 19th International Conference on High Performance Computing and
+  Communications}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, Dec. 2017, pp.
+  186--191.
 
 \bibitem{Hetu2014}
-S.~N. Hetu, V.~S. Hamishagi, and L.~S. Peh, ``{Similitude: Interfacing a
-  traffic simulator and network simulator with emulated android clients},''
-  \emph{IEEE Vehicular Technology Conference}, pp. 1--7, 2014.
+S.~N. Hetu, V.~S. Hamishagi, and L.-S. Peh, ``Similitude: {I}nterfacing a
+  {T}raffic {S}imulator and {N}etwork {S}imulator with {E}mulated {A}ndroid
+  {C}lients,'' in \emph{Proceedings of 2014 IEEE 80th Vehicular Technology
+  Conference (VTC2014-Fall)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE,
+  Sept. 2014, pp. 1--7.
 
 \bibitem{SmartphoneOS}
-\BIBentryALTinterwordspacing
-``{Worldwide Smartphone Shipment OS Market Share Forecase}.'' [Online].
-  Available:
-  \url{https://www.statista.com/topics/4063/courier-express-and-parcels-cep-market-in-the-united-states/,
-  2019.}
-\BIBentrySTDinterwordspacing
+``{Worldwide Smartphone Shipment OS Market Share Forecase},'' {URL:}
+  \url{https://www.statista.com/topics/4063/courier-express-and-parcels-cep-market-in-the-united-states/}
+  [accessed: July 10, 2019].
 
 \bibitem{behrisch2011sumo}
-M.~Behrisch, L.~Bieker, J.~Erdmann, and D.~Krajzewicz, ``Sumo--simulation of
-  urban mobility: an overview,'' in \emph{Proceedings of SIMUL 2011, The Third
-  International Conference on Advances in System Simulation}.\hskip 1em plus
-  0.5em minus 0.4em\relax ThinkMind, 2011.
+M.~Behrisch, L.~Bieker, J.~Erdmann, and D.~Krajzewicz, ``Sumo--{S}imulation of
+  {U}rban {M}obility: an {O}verview,'' in \emph{Proceedings of SIMUL 2011, The
+  Third International Conference on Advances in System Simulation}.\hskip 1em
+  plus 0.5em minus 0.4em\relax ThinkMind, Oct. 2011.
 
 \bibitem{wegener2008traci}
 A.~Wegener, M.~Pi{\'o}rkowski, M.~Raya, H.~Hellbr{\"u}ck, S.~Fischer, and J.-P.
-  Hubaux, ``Traci: an interface for coupling road traffic and network
-  simulators,'' in \emph{Proceedings of the 11th communications and networking
-  simulation symposium}.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 2008, pp.
-  155--163.
+  Hubaux, ``Traci: an {I}nterface for {C}oupling {R}oad {T}raffic and {N}etwork
+  {S}imulators,'' in \emph{Proceedings of the 11th communications and
+  networking simulation symposium}.\hskip 1em plus 0.5em minus 0.4em\relax ACM,
+  Apr. 2008, pp. 155--163.
 
 \bibitem{Haklay2008}
-M.~Haklay and P.~Weber, ``{OpenStreet map: User-generated street maps},''
-  \emph{IEEE Pervasive Computing}, vol.~7, no.~4, pp. 12--18, 2008.
+M.~Haklay and P.~Weber, ``{OpenStreet Map: User-generated Street Maps},''
+  \emph{IEEE Pervasive Computing}, vol.~7, no.~4, pp. 12--18, Oct. 2008.
 
 \end{thebibliography}
