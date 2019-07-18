@@ -227,7 +227,7 @@ public class MainCopy5_receiver_request {
 			Map  CarsMapWithSchedule = new HashMap();
 			//ArrayList v1_sender_TimeSchedule = new ArrayList();
 			
-			double vehicle_speed = 3.8; //4 [m/s] , estimated average vehicle speed
+			double vehicle_speed = 3.8; //3.8 [m/s] , estimated average vehicle speed
 			
 			SumoColor veh1_color = new SumoColor(255 ,204, 239,255);
 			conn.do_job_set(Vehicle.setColor("1", veh1_color));
@@ -237,8 +237,7 @@ public class MainCopy5_receiver_request {
 			//////////////////////////////////////////////////////////////////////////////////////////////////	
 			//////////////////////////////////////////////////////////////////////////////////////////////////
 			//////////////////////////////////////////////////////////////////////////////////////////////////
-			//////////////////////////////////////////////////////////////////////////////////////////////////
-			//////////////////////////////////////////////////////////////////////////////////////////////////
+
 			for (int i = 0; i < 360000000; i++) {			
 				conn.do_timestep();
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
@@ -482,7 +481,7 @@ public class MainCopy5_receiver_request {
 								request_array.add(receiver_DID); // 7
 								request_array.add(order_No); // 8
 								
-								System.out.println("request_array:"+ request_array);
+								//System.out.println("request_array:"+ request_array);
 								System.out.println("insertTime:"+ insertTime);
 
 								// 插入時間在此刻時間點之前
@@ -1623,8 +1622,8 @@ public class MainCopy5_receiver_request {
 									JDBC_AVD arrive_at_sender = new JDBC_AVD();
 									arrive_at_sender.UpdateOrderStatus(order_No, "1");
 
-									conn.do_job_set(Gui.trackVehicle("View #0", "2"));
-									conn.do_job_set(Gui.setZoom("View #0", 6000.0));
+									//conn.do_job_set(Gui.trackVehicle("View #0", "2"));
+									//conn.do_job_set(Gui.setZoom("View #0", 6000.0));
 
 								}
 								// case2:receiver destination
