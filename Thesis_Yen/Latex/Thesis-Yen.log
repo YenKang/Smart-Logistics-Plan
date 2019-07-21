@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  17 JUL 2019 20:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  21 JUL 2019 22:45
 entering extended mode
 **./Thesis-Yen.tex
 (Thesis-Yen.tex
@@ -228,11 +228,7 @@ Package: cite 2015/02/27  v 5.5
 \c@proposition=\count118
 \c@cor=\count119
 
-(Thesis-Yen.aux
-
-LaTeX Warning: Label `Chap:Architecture' multiply defined.
-
-)
+(Thesis-Yen.aux)
 \openout1 = `Thesis-Yen.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
@@ -366,23 +362,79 @@ Overfull \hbox (0.25648pt too wide) in paragraph at lines 17--17
 
 ]
 Chapter 1.
+
+LaTeX Warning: Citation `Anand2012' on page 1 undefined on input line 90.
+
+
+LaTeX Warning: Citation `Lutin2013' on page 1 undefined on input line 90.
+
 [1
 
 
 
 ]
-<./Thesis_figures/F1-1_System_Design_Overview.PNG, id=29, 807.7678pt x 482.5528
-1pt>
+<./Thesis_figures/F1-1_System_Design_Overview.PNG, id=29, 793.46437pt x 462.979
+69pt>
 File: ./Thesis_figures/F1-1_System_Design_Overview.PNG Graphic file (type png)
 <use ./Thesis_figures/F1-1_System_Design_Overview.PNG>
 Package pdftex.def Info: ./Thesis_figures/F1-1_System_Design_Overview.PNG  used
  on input line 97.
-(pdftex.def)             Requested size: 406.51599pt x 242.85152pt.
- [2 <./Thesis_figures/F1-1_System_Design_Overview.PNG>] [3]
+(pdftex.def)             Requested size: 406.51599pt x 237.20444pt.
+
+
+LaTeX Warning: Citation `Jiang2018' on page 2 undefined on input line 104.
+
+[2 <./Thesis_figures/F1-1_System_Design_Overview.PNG>] [3]
 Chapter 2.
+
+LaTeX Warning: Citation `Visser2014' on page 4 undefined on input line 124.
+
+
+LaTeX Warning: Citation `Gevaers2014' on page 4 undefined on input line 126.
+
+
+LaTeX Warning: Citation `Zhou2016' on page 4 undefined on input line 126.
+
+
+LaTeX Warning: Citation `Ali2015' on page 4 undefined on input line 126.
+
+
+LaTeX Warning: Citation `Ali2015' on page 4 undefined on input line 126.
+
 [4
 
-] [5] [6]
+]
+
+LaTeX Warning: Citation `Sawadsitang2018' on page 5 undefined on input line 128
+.
+
+
+LaTeX Warning: Citation `Sheth2019' on page 5 undefined on input line 131.
+
+
+LaTeX Warning: Citation `Melo2017' on page 5 undefined on input line 131.
+
+
+LaTeX Warning: Citation `xia2018last' on page 5 undefined on input line 134.
+
+[5]
+
+LaTeX Warning: Citation `behrisch2011sumo' on page 6 undefined on input line 13
+7.
+
+
+LaTeX Warning: Citation `10.1007/978-3-662-45079-6_5' on page 6 undefined on in
+put line 140.
+
+
+LaTeX Warning: Citation `hong2016intelligent' on page 6 undefined on input line
+ 144.
+
+
+LaTeX Warning: Citation `Kendziorra2015' on page 6 undefined on input line 147.
+
+
+[6]
 Chapter 3.
 <./Thesis_figures/F3-1_a_whole_system.PNG, id=47, 832.61063pt x 459.21562pt>
 File: ./Thesis_figures/F3-1_a_whole_system.PNG Graphic file (type png)
@@ -401,6 +453,10 @@ File: ./Thesis_figures/F4-1_webService_arcitecture.PNG Graphic file (type png)
 Package pdftex.def Info: ./Thesis_figures/F4-1_webService_arcitecture.PNG  used
  on input line 200.
 (pdftex.def)             Requested size: 240.56197pt x 241.39008pt.
+
+LaTeX Warning: Citation `wegener2008traci' on page 10 undefined on input line 2
+09.
+
 [10
 
 ]
@@ -548,6 +604,9 @@ nput line 524.
 (pdftex.def)             Requested size: 451.6875pt x 198.39163pt.
  [31 <./Thesis_figures/F6-9_receiverScenario2.PNG>]
 Chapter 7.
+
+LaTeX Warning: Citation `Haklay2008' on page 32 undefined on input line 551.
+
 <./Thesis_figures/F7-1_Openstreetmap.PNG, id=163, 1380.65813pt x 700.11563pt>
 File: ./Thesis_figures/F7-1_Openstreetmap.PNG Graphic file (type png)
 <use ./Thesis_figures/F7-1_Openstreetmap.PNG>
@@ -618,13 +677,16 @@ Chapter 8.
 
 ] (Thesis-Yen.aux)
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
  3582 strings out of 492895
  53332 string characters out of 3124669
- 114202 words of memory out of 3000000
+ 113748 words of memory out of 3000000
  7370 multiletter control sequences out of 15000+200000
  11779 words of font info for 45 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -640,7 +702,7 @@ n/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:
 /Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
 y10.pfb><C:/Users/yen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmti12.pfb>
-Output written on Thesis-Yen.pdf (51 pages, 5210685 bytes).
+Output written on Thesis-Yen.pdf (51 pages, 5212168 bytes).
 PDF statistics:
  255 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

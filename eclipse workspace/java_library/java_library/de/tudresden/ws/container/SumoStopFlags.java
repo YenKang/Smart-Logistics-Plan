@@ -33,6 +33,7 @@ public class SumoStopFlags implements SumoObject {
 	 public boolean containerTriggered = false;
 	 public boolean isBusStop = false;
 	 public boolean isContainerStop = false;
+	 
 	
 	 public SumoStopFlags(boolean parking, boolean triggered, boolean containerTriggered, boolean isBusStop, boolean isContainerStop){
 		 this.parking = parking;

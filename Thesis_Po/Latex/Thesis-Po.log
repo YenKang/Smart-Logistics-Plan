@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  18 JUL 2019 11:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.28)  21 JUL 2019 22:40
 entering extended mode
 **./Thesis-Po.tex
 (Thesis-Po.tex
@@ -416,12 +416,12 @@ Chapter 2.
 
 ] [5]
 Chapter 3.
-<./figures/F3-1_SystemOverview.PNG, id=48, 828.09375pt x 483.30562pt>
+<./figures/F3-1_SystemOverview.PNG, id=48, 1014.79124pt x 598.235pt>
 File: ./figures/F3-1_SystemOverview.PNG Graphic file (type png)
 <use ./figures/F3-1_SystemOverview.PNG>
 Package pdftex.def Info: ./figures/F3-1_SystemOverview.PNG  used on input line 
 153.
-(pdftex.def)             Requested size: 451.6875pt x 263.62865pt.
+(pdftex.def)             Requested size: 451.6875pt x 266.27307pt.
 [6
 
  <./figures/F3-1_SystemOverview.PNG>] [7] [8]
@@ -628,7 +628,7 @@ X 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/yen/AppData/Local/Prog
 rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/yen/AppData/
 Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/yen
 /AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Thesis-Po.pdf (42 pages, 3911842 bytes).
+Output written on Thesis-Po.pdf (42 pages, 3914046 bytes).
 PDF statistics:
  199 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
