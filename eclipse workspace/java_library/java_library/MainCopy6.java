@@ -199,7 +199,17 @@ public class MainCopy6 {
 				//System.out.println("timeSeconds:"+ timeSeconds);
 
 				if(timeSeconds==10.0){
-					System.out.println("----------************************************************************---------------");
+					System.out.println("----------**********************---------------");
+					System.out.println("timeSeconds:"+ timeSeconds);
+					double zoomValue = (double) conn.do_job_get(Gui.getZoom("View #0"));
+					//conn.do_job_set(Gui.setZoom("View #0", 5000.0));
+					System.out.println("zoomValue:"+ zoomValue);
+					conn.do_job_set(Gui.setSchema("View #0", "real world"));
+					//hasView(self, viewID='View #0')
+					//hasView(string): -> bool
+					//conn.do_job_get(Gui.trackVehicle("View #0", "2"));
+					
+				
 					System.out.println("timeSeconds:"+ timeSeconds);
 					double currentMin = (540+ timeSeconds/60.0);
 
@@ -316,19 +326,8 @@ public class MainCopy6 {
 				  	}
 				}
 				
-				if(timeSeconds==50.0) {
-					System.out.println("timeSeconds:"+ timeSeconds);
-					double zoomValue = (double) conn.do_job_get(Gui.getZoom("View #0"));
-					System.out.println("zoomValue:"+ zoomValue);
-					//hasView(self, viewID='View #0')
-					//hasView(string): -> bool
-					
-					
-					
-					
-					
-				}
-
+			
+				/*
 				if(timeSeconds==70.0) {
 					System.out.println("timeSeconds:"+ timeSeconds);
 					double zoomValue = (double) conn.do_job_get(Gui.getZoom("View #0"));
@@ -342,9 +341,12 @@ public class MainCopy6 {
 					conn.do_job_set(Gui.trackVehicle("View #0", "2"));
 					conn.do_job_set(Gui.setZoom("View #0", 6000.0));
 				}
+				*/
+				
 				// 
-				if(timeSeconds==78.5) {
-					System.out.println("this request insertion failed, please pick other time!");
+				if(timeSeconds==90.0) {
+					System.out.println("timeSeconds:"+ timeSeconds);
+					//System.out.println("this request insertion failed, please pick other time!");
 					ArrayList isJunction_in_all_vehs = new ArrayList();
 					for(int veh=1;veh<cars_Box.size()+1;veh++) {
 						String vehID = Integer.toString(veh); 			
@@ -359,7 +361,7 @@ public class MainCopy6 {
 					
 					else {
 						System.out.print("no junction");
-						System.out.println("----------************************************************---------------");
+						System.out.println("----------******************---------------");
 						System.out.println("timeSeconds:"+ timeSeconds);
 						double currentMin = (540+ timeSeconds/60.0);			
 						int insert_BoxSize=1; // small box insertion
@@ -477,8 +479,8 @@ public class MainCopy6 {
 							else {
 								boolean isFull_this_veh = veh_array.contains(insertTime);
 								isFull_in_all_Veh_arrays.add(isFull_this_veh);
-								System.out.println("isFull_this_veh:"+ isFull_this_veh);
-								System.out.println("isFull_in_all_Veh_arrays:"+ isFull_in_all_Veh_arrays);
+								//System.out.println("isFull_this_veh:"+ isFull_this_veh);
+								//System.out.println("isFull_in_all_Veh_arrays:"+ isFull_in_all_Veh_arrays);
 								if((veh_array.contains(insertTime))!=true) {
 
 									veh_array.add(insertTime);
@@ -3399,17 +3401,11 @@ public class MainCopy6 {
 					}
 				}
 			
-
 				// notification stage
 				// CarsMap_with_Schedule:{1=[570, 660], 2=[660]}
 				// CarsMap_time_to_requestInfo:{1={660=[273445903#7, 2966.38, 6993.0, 60.0], 570=[496257308#5, 3937.13, 5039.67, 50.0]}, 
 				// 2={660=[297579234, 8973.76, 3772.53, 200.0]}, 3={}}
 			
-				
-			
-
-				
-				
 				// when the vehicle arrive to the destination (sender address & receiver address)
 				
 				
