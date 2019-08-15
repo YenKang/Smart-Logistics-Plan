@@ -37,25 +37,6 @@ else if  ( (clientInfo.getRequestNo() == 1) && ( junction==0 )) {
 								JDBC_AVD deviceID_getterR = new JDBC_AVD();
 								String receiver_DID = deviceID_getterR.QueryDeviceKey(receiver_name);
 
-								// 建立原始display_time_schedule
-								ArrayList original_schedule = new ArrayList();
-								for(int k=19;k<31;k++){
-									original_schedule.add(k*30);
-								}
-
-								// [570, 600, 630, ..., 720, 750]
-
-								original_schedule.add((int)currentMin);
-								Collections.sort(original_schedule);
-
-								int remove_frequence=0;
-								while(remove_frequence<(int)original_schedule.indexOf((int)currentMin)+1) {
-									original_schedule.remove(0);
-									remove_frequence++;
-								}
-								// if current time is 10:15
-								// [630, 660, 690, ...., 750]
-
 								ArrayList request_array = new ArrayList();
 								// request_array 
 								request_array.add(receiver_edge);
@@ -81,9 +62,29 @@ else if  ( (clientInfo.getRequestNo() == 1) && ( junction==0 )) {
 								//System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);
 								System.out.println("CarsMap_with_Schedule:"+ CarsMap_with_Schedule);
 								
+								//////////////////////////////////////////////////////////////////////////////
+								
+								// 建立原始display_time_schedule
+								ArrayList original_schedule = new ArrayList();
+								for(int k=19;k<31;k++){
+									original_schedule.add(k*30);
+								}
 
+								// [570, 600, 630, ..., 720, 750]
+
+								original_schedule.add((int)currentMin);
+								Collections.sort(original_schedule);
+
+								int remove_frequency=0;
+								while(remove_frequency<(int)original_schedule.indexOf((int)currentMin)+1) {
+									original_schedule.remove(0);
+									remove_frequency++;
+								}
+								// if current time is 10:15
+								// [630, 660, 690, ...., 750]
 								//System.out.println("RECEIVER request_array:"+ request_array);
 								//插入時間在此刻時間點之後
+
 								//Double double_insertTime=Double.valueOf(insertTime);
 								int insertTine_in_list =0;
 								ArrayList display_time_list = new ArrayList();

@@ -375,11 +375,166 @@ public class MainCopy6 {
 						request_array.add(150.0);
 						request_array.add(0);
 						
+						String specific_vehID = "2";
+						
 						System.out.println("insert_BoxSize:"+ insert_BoxSize);
 						System.out.println("insertTime:"+ insertTime);
 						System.out.println("request_array:"+ request_array);
+						//////////////////////////////////////////////////////////////////////////////
+						// 建立原始display_time_schedule
+						ArrayList original_schedule = new ArrayList();
+						for(int k=19;k<31;k++){
+							original_schedule.add(k*30);
+						}
+
+						// [570, 600, 630, ..., 720, 750]
+
+						original_schedule.add((int)currentMin);
+						Collections.sort(original_schedule);
+						System.out.println("original_schedule after sorting:"+ original_schedule);
+						
+						int remove_frequency=0;
+						while(remove_frequency<(int)original_schedule.indexOf((int)currentMin)+1) {
+							original_schedule.remove(0);
+							remove_frequency++;
+						}
+						System.out.println("original_schedule after filtering:"+ original_schedule);
+						
+						// if current time is 10:15
+						// [630, 660, 690, ...., 750]
 						
 						
+						
+						//插入時間在此刻時間點之後
+
+						//Double double_insertTime=Double.valueOf(insertTime);
+						int insertTine_in_list =0;
+						ArrayList display_time_list = new ArrayList();
+
+						for(int n=0;i<original_schedule.size();n++){
+							insertTine_in_list = (int) original_schedule.get(n);
+							Double double_insertTime=Double.valueOf(insertTine_in_list);
+							
+							if(double_insertTime>currentMin)
+							{
+								HashMap  CarsMapSchedule_fromReceiverRequest = new HashMap();
+								Iterator iter = CarsMap_with_Schedule.entrySet().iterator(); 
+								while (iter.hasNext()) {
+									Map.Entry entry = (Map.Entry) iter.next(); 
+									//System.out.println("entry:"+ entry);
+									String key = (String) entry.getKey(); 
+									Object value = entry.getValue();
+									
+									if(key.equals(specific_vehID)) {
+										CarsMapSchedule_fromReceiverRequest.put(key, value);
+									}	
+								}
+
+								//specific_vehID (Str)
+								ArrayList veh_array = new ArrayList();//veh_array:[570, 660]
+								veh_array = (ArrayList)CarsMap_with_Schedule.get((String) specific_vehID);
+								Map  Map_requestInfo = new HashMap();
+								Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get((String) specific_vehID);
+
+								if((veh_array.contains(insertTine_in_list))!=true) {
+
+											veh_array.add(insertTine_in_list); // [660] -> [570, 660]
+											//System.out.println("veh_array:"+ veh_array);
+											Collections.sort(veh_array);
+											//System.out.println("veh_array after sorting:"+ veh_array);
+											int indexValue = veh_array.indexOf(insertTine_in_list);
+											Map_requestInfo.put(insertTine_in_list, request_array ); // request_array should be dynamic
+											
+											//System.out.println("line 1201"+ "veh_array:"+ veh_array);
+											
+											// 插入的時間在表中頂端
+											if(indexValue==0) {
+												SumoPosition2D veh_Position = (SumoPosition2D)conn.do_job_get(Vehicle.getPosition(specific_vehID));
+												
+												double distance_curr_To_Index = (double)conn.do_job_get(Simulation.getDistance2D(
+														(double)request_array.get(1), (double)request_array.get(2), 
+														veh_Position.x, veh_Position.y, false, true));
+												
+												System.out.println("distance_curr_To_Index:"+ distance_curr_To_Index);
+												double travelTime_curr_To_Index = distance_curr_To_Index/vehicle_speed;
+												//System.out.println("Map_requestInfo:"+ Map_requestInfo);
+												
+												int key_afterIndex = (int) veh_array.get(indexValue+1);
+												double request_x_afterIndex = (double)((ArrayList) Map_requestInfo.get(key_afterIndex)).get(1);
+												double request_y_afterIndex = (double)((ArrayList) Map_requestInfo.get(key_afterIndex)).get(2);
+												double distance_afterIndexToIndex = (double)(conn.do_job_get(Simulation.getDistance2D(
+														request_x_afterIndex, request_y_afterIndex,
+														(double)request_array.get(1), (double)request_array.get(2), false, true)));
+												
+												double travelTime_afterIndexToIndex = distance_afterIndexToIndex/vehicle_speed;			
+												double diffDuration_afterIndexToIndex = ((int) veh_array.get(indexValue+1)-(int) veh_array.get(indexValue))*60*0.67;
+											
+												if((travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) &&
+														(timeSeconds+travelTime_curr_To_Index) <(insertTime-540)*60) {
+													display_time_list.add(insertTine_in_list);
+													System.out.println("display_time_list:"+display_time_list);
+													//break;
+												}
+												// 此時段無法插入排程
+												
+											}
+
+											// 插入的時間在表尾端
+											else if(indexValue==(veh_array.size()-1)) {
+												int key_IndexValue = (int) veh_array.get(indexValue);
+												double request_x_IndexValue = (double)((ArrayList) Map_requestInfo.get(key_IndexValue)).get(1);
+												double request_y_IndexValue = (double)((ArrayList) Map_requestInfo.get(key_IndexValue)).get(2);												
+												int key_beforeIndex = (int) veh_array.get(indexValue-1);
+												double request_x_beforeIndex = (double)((ArrayList) Map_requestInfo.get(key_beforeIndex)).get(1);
+												double request_y_beforeIndex = (double)((ArrayList) Map_requestInfo.get(key_beforeIndex)).get(2);												
+												double distance_IndexToBeforeIndex = (double)(conn.do_job_get(Simulation.getDistance2D(
+														request_x_IndexValue, request_y_IndexValue,
+														request_x_beforeIndex, request_y_beforeIndex, false, true)));
+												double travelTime_IndexToBeforeIndex = distance_IndexToBeforeIndex/vehicle_speed;											
+												double diffDuration_IndexToBeforeIndex = ((int) veh_array.get(indexValue)-(int) veh_array.get(indexValue-1))*60*0.67;
+												
+												if(travelTime_IndexToBeforeIndex<diffDuration_IndexToBeforeIndex) {
+													display_time_list.add(insertTine_in_list);
+													System.out.println("display_time_list:"+display_time_list);
+												}
+																						
+											}
+
+											// 插入的時間在表中端
+											else {
+												int key_IndexValue = (int) veh_array.get(indexValue);
+												double request_x_IndexValue = (double)((ArrayList) Map_requestInfo.get(key_IndexValue)).get(1);
+												double request_y_IndexValue = (double)((ArrayList) Map_requestInfo.get(key_IndexValue)).get(2);
+												int key_beforeIndex = (int) veh_array.get(indexValue-1);
+												double request_x_beforeIndex = (double)((ArrayList) Map_requestInfo.get(key_beforeIndex)).get(1);
+												double request_y_beforeIndex = (double)((ArrayList) Map_requestInfo.get(key_beforeIndex)).get(2);
+												int key_afterIndex = (int) veh_array.get(indexValue+1);		
+												double request_x_afterIndex = (double)((ArrayList) Map_requestInfo.get(key_afterIndex)).get(1);
+												double request_y_afterIndex = (double)((ArrayList) Map_requestInfo.get(key_afterIndex)).get(2);
+												
+												double distance_IndexToBeforeIndex = (double)(conn.do_job_get(Simulation.getDistance2D(
+														request_x_IndexValue, request_y_IndexValue,
+														request_x_beforeIndex, request_y_beforeIndex, false, true)));
+												double travelTime_IndexToBeforeIndex = distance_IndexToBeforeIndex/vehicle_speed;
+												double distance_afterIndexToIndex = (double)(conn.do_job_get(Simulation.getDistance2D(
+														request_x_afterIndex, request_y_afterIndex,
+														request_x_IndexValue, request_y_IndexValue, false, true)));
+												double travelTime_afterIndexToIndex = distance_afterIndexToIndex/vehicle_speed;
+												
+												double diffDuration_IndexToBeforeIndex = ((int) veh_array.get(indexValue)-(int) veh_array.get(indexValue-1))*60*0.67;
+												double diffDuration_afterIndexToIndex = ((int) veh_array.get(indexValue+1)-(int) veh_array.get(indexValue))*60*0.67;
+												
+												if(travelTime_IndexToBeforeIndex<diffDuration_IndexToBeforeIndex && 
+														travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex)
+												{											
+													display_time_list.add(insertTine_in_list);
+													System.out.println("display_time_list:"+display_time_list);
+												}
+												
+											}
+								}
+							}	
+						}
 					}
 				}
 
