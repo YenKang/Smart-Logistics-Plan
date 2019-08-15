@@ -366,7 +366,7 @@ public class MainCopy6 {
 						System.out.println("timeSeconds:"+ timeSeconds);
 						double currentMin = (540+ timeSeconds/60.0);			
 						int insert_BoxSize=1; // small box insertion
-						int insertTime=570; // 570 means 09:30
+						int insertTime= 0; // 570 means 09:30
 						int insertCar = 0;
 						ArrayList request_array = new ArrayList();
 						request_array.add("496493919#2");
@@ -412,8 +412,8 @@ public class MainCopy6 {
 						ArrayList display_time_list = new ArrayList();
 
 						for(int n=0;i<original_schedule.size();n++){
-							insertTine_in_list = (int) original_schedule.get(n);
-							Double double_insertTime=Double.valueOf(insertTine_in_list);
+							insertTime = (int) original_schedule.get(n);
+							Double double_insertTime=Double.valueOf(insertTime);
 							
 							if(double_insertTime>currentMin)
 							{
@@ -436,15 +436,16 @@ public class MainCopy6 {
 								Map  Map_requestInfo = new HashMap();
 								Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get((String) specific_vehID);
 
-								if((veh_array.contains(insertTine_in_list))!=true) {
+								if((veh_array.contains(insertTime))!=true) {
 
-											veh_array.add(insertTine_in_list); // [660] -> [570, 660]
+											veh_array.add(insertTime); // [660] -> [570, 660]
 											//System.out.println("veh_array:"+ veh_array);
 											Collections.sort(veh_array);
 											//System.out.println("veh_array after sorting:"+ veh_array);
-											int indexValue = veh_array.indexOf(insertTine_in_list);
-											Map_requestInfo.put(insertTine_in_list, request_array ); // request_array should be dynamic
+											int indexValue = veh_array.indexOf(insertTime);
+											Map_requestInfo.put(insertTime, request_array ); // request_array should be dynamic
 											
+											System.out.println("insertTime:"+ insertTime);
 											//System.out.println("line 1201"+ "veh_array:"+ veh_array);
 											
 											// 插入的時間在表中頂端
@@ -468,11 +469,13 @@ public class MainCopy6 {
 												
 												double travelTime_afterIndexToIndex = distance_afterIndexToIndex/vehicle_speed;			
 												double diffDuration_afterIndexToIndex = ((int) veh_array.get(indexValue+1)-(int) veh_array.get(indexValue))*60*0.67;
-											
+												
+												System.out.println("insertTime:"+ insertTime);
+												
 												if((travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) &&
 														(timeSeconds+travelTime_curr_To_Index) <(insertTime-540)*60) {
-													display_time_list.add(insertTine_in_list);
-													System.out.println("display_time_list:"+display_time_list);
+													display_time_list.add(insertTime);
+													System.out.println("display_time_list:"+insertTime);
 													//break;
 												}
 												// 此時段無法插入排程
@@ -494,7 +497,7 @@ public class MainCopy6 {
 												double diffDuration_IndexToBeforeIndex = ((int) veh_array.get(indexValue)-(int) veh_array.get(indexValue-1))*60*0.67;
 												
 												if(travelTime_IndexToBeforeIndex<diffDuration_IndexToBeforeIndex) {
-													display_time_list.add(insertTine_in_list);
+													display_time_list.add(insertTime);
 													System.out.println("display_time_list:"+display_time_list);
 												}
 																						
@@ -527,14 +530,17 @@ public class MainCopy6 {
 												if(travelTime_IndexToBeforeIndex<diffDuration_IndexToBeforeIndex && 
 														travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex)
 												{											
-													display_time_list.add(insertTine_in_list);
+													display_time_list.add(insertTime);
 													System.out.println("display_time_list:"+display_time_list);
 												}
 												
 											}
+
 								}
 							}	
 						}
+
+						System.out.println("display_time_list"+ display_time_list);
 					}
 				}
 
