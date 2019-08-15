@@ -408,11 +408,12 @@ public class MainCopy6 {
 						//插入時間在此刻時間點之後
 
 						//Double double_insertTime=Double.valueOf(insertTime);
-						int insertTine_in_list =0;
+						//int insertTine_in_list =0;
 						ArrayList display_time_list = new ArrayList();
 
-						for(int n=0;i<original_schedule.size();n++){
+						for(int n=0;n<original_schedule.size();n++){
 							insertTime = (int) original_schedule.get(n);
+							//System.out.println("insertTime in line416:"+ insertTime);
 							Double double_insertTime=Double.valueOf(insertTime);
 							
 							if(double_insertTime>currentMin)
@@ -445,7 +446,7 @@ public class MainCopy6 {
 											int indexValue = veh_array.indexOf(insertTime);
 											Map_requestInfo.put(insertTime, request_array ); // request_array should be dynamic
 											
-											System.out.println("insertTime:"+ insertTime);
+											//System.out.println("insertTime:"+ insertTime);
 											//System.out.println("line 1201"+ "veh_array:"+ veh_array);
 											
 											// 插入的時間在表中頂端
@@ -475,7 +476,7 @@ public class MainCopy6 {
 												if((travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex) &&
 														(timeSeconds+travelTime_curr_To_Index) <(insertTime-540)*60) {
 													display_time_list.add(insertTime);
-													System.out.println("display_time_list:"+insertTime);
+													System.out.println("display_time_list in the top:"+insertTime);
 													//break;
 												}
 												// 此時段無法插入排程
@@ -498,7 +499,7 @@ public class MainCopy6 {
 												
 												if(travelTime_IndexToBeforeIndex<diffDuration_IndexToBeforeIndex) {
 													display_time_list.add(insertTime);
-													System.out.println("display_time_list:"+display_time_list);
+													System.out.println("display_time_list in the tail:"+display_time_list);
 												}
 																						
 											}
@@ -531,11 +532,9 @@ public class MainCopy6 {
 														travelTime_afterIndexToIndex<diffDuration_afterIndexToIndex)
 												{											
 													display_time_list.add(insertTime);
-													System.out.println("display_time_list:"+display_time_list);
-												}
-												
+													System.out.println("display_time_list in the middle:"+display_time_list);
+												}	
 											}
-
 								}
 							}	
 						}
