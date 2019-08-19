@@ -100,7 +100,7 @@ As illustrated in the red frame of Figure 1.1, this thesis describes a vehicle d
 \label{Fig:System_Overview}
 \end{figure}
 
-In the previous scheme \cite{Jiang2018}, senders can select their delivery time, but receivers only can wait for the coming parcels passively. This delivery service has the problem that the arrival time of parcels does not match receivers’ available time. Hence, the thesis offers a new delivery service where receivers have the chances to select their expected arrival time of the package. The selection time starts from 9 A.M to 3 P.M with one interval every half hour. Then, this thesis illustrates the flow chart of the new delivery process including the sender’s part and the receiver’s part.
+In the previous scheme \cite{Jiang2018}, senders can select their delivery time, but receivers only can wait for the coming parcels passively. This delivery service has the problem that the arrival time of parcels does not match receivers’ available time. Hence, the thesis offers a new delivery service where receivers have the chances to select their expected arrival time of the package. The selection time starts from 9:30 A.M to 3 P.M with one interval every half hour. Then, this thesis illustrates the flow chart of the new delivery process including the sender’s part and the receiver’s part.
 
 Besides, the SUMO server develops a dispatching mechanism to deal with the order requests, and arranges the routes dynamically and immediately. In this mechanism, vehicles have to pass through two stages. 
 
@@ -307,7 +307,7 @@ Figure 5.1 shows the sender’s parcel delivery process.
 The parcel delivery process starts at 09:00 AM.
 
 \item
-The user places a delivery order, which includes the sender’s address, the receiver’s id, the receiver’s appointed address. Then,the user picks the box size categorized into small size, medium size, and large size.
+A user places a delivery order, which includes the sender’s address, the receiver’s id, the receiver’s appointed address. Then,the user picks the box size categorized into small size, medium size, and large size.
 
 
 \begin{figure}[H]
@@ -360,7 +360,7 @@ After getting the notification of completing loading task, the logistic status w
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.45]{./Thesis_figures/F5-2_receiver_delivery_process.PNG}
+\includegraphics[width=1.0\textwidth]{./Thesis_figures/F5-2_receiver_delivery_process.PNG}
 \caption{\large The receiver's parcel delivery process.}
 \vspace{0.5cm}
 \label{Fig:receiver_process}
@@ -467,7 +467,7 @@ After satisfying the two above conditions, the sender 4’s delivery task would 
 \end{figure}
 
 As illustrated in Figure 6.5, this picture is the second case of simple time filtering stage. In left side of the figure, the time schedule includes three vehicles with four tasks. When the simulation time is 09:15 AM, the sender 5 submits the delivery order request with the medium box size and the expected arrival time to Tainan Chenggong Road Post Office is 10:00 AM.
-According to the box conditions of all vehicles, the system selects vehicle 1 to filter the sender 5’s delivery request. At the same time, the map in the right side of the figure show that this request has to meet the two conditions. Firstly, when the vehicle 1 arrives to the Taiwan Tainan District Court, the vehicle 1 will stop, and would forward to Tainan Chenggong Road Post Office at 09:40. The travel time of the green route should be less than twenty minutes. Secondly, after staying at Tainan Chenggong Road Post Office for ten minutes, the vehicle 1 will leave at 10:00 AM, and have to go to Anping Fort before 11:00 AM. 
+According to the box conditions of all vehicles, the system selects vehicle 1 to filter the sender 5’s delivery request. At the same time, the map in the right side of the figure show that this request has to meet the two conditions. Firstly, when the vehicle 1 arrives to the Taiwan Tainan District Court, the vehicle 1 will stop, and would forward to Tainan Chenggong Road Post Office at 09:40. The travel time of the green route should be less than twenty minutes. Secondly, after staying at Tainan Chenggong Road Post Office for ten minutes, the vehicle 1 will leave at 10:10 AM, and have to go to Anping Fort before 11:00 AM. 
 As the vehicle 1 can fulfill the two conditions, the delivery request of the sender 5 can be inserted into the time schedule.
 
 
@@ -499,7 +499,7 @@ This section shows the user scenarios when the vehicle arrives to the destinatio
 \label{Fig:senderScenario_DeliveryPorcess}
 \end{figure}
 
-In Figure 6.7, the vehicle 2 would demonstrate how to react in the task of 09:30 AM in the sender scenario of delivery process. As the simulation time is 09:25, the vehicle 2 would be at the black point of position, and the SUMO server would use FCM to send coming notification to the sender 4. Then, when the simulation time is 09:30 AM, the vehicle 2 would be at Hayashi department store, start to park for ten minutes, and the sender4 would get the arriving notification.
+In Figure 6.7, the vehicle 2 would demonstrate how to react in the task of 09:30 AM in the sender scenario of delivery process. As the simulation time is 09:25, the vehicle 2 would be at the black point of position, and the SUMO server would use Firebase Cloud Messaging to send coming notification to the sender 4. Then, when the simulation time is 09:30 AM, the vehicle 2 would be at Hayashi department store, start to park for ten minutes, and the sender4 would get the arriving notification.
 As 09:35 AM, the vehicle 2 will finish the loading process of the parcel. Finally, at the simulation of 09:40, the vehicle 2 would end parking in the Hayashi department store, and would forward to the next station.
 
 \subsection{Receiver Scenario}
@@ -604,6 +604,8 @@ Speed limit on each lane & [10, 100] km/hr\\
 $V_{max}$& 5.0 m/s (18 km/hr) \\
 \hline 
 Average speed of truck & 3.8 m/s (13.68 km/hr)\\
+\hline 
+The number of containers in each vehicle & 9\\
 \hline 
 Simulation period & 09:00-15:00 (6 hours)\\
 
