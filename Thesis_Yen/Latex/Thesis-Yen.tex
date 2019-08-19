@@ -61,7 +61,7 @@ University \\ }
 
 \Thesisspace {\large 
 Freight transportation plays an important role in daily life. As the e-commence and traffic technology developed, customers have high expectations for the more rapid and more flexible parcel delivery service. However, due to rising labor costs, the delivery mode of autonomous cars is one of alternatives. By reviewing the self-driving technology, the maturity of technology and profitable business model are the concerns. Moreover, so far there is no complete self-driving delivery system in Asia.
-As a result, the paper integrates traffic simulation software SUMO and mobile application to simulate the package delivery service. Moreover, this study proposes a vehicle dispatching and monitoring system, which can cope with delivery orders, arrange routes, monitor vehicle’s movements, and demonstrate loading and unloading details of trucks. At the same time, this paper develops a dynamic dispatching mechanism consisting of box filtering stage and simple time scheduling stage. The mechanism can judge whether the delivery order could be established. Finally, the paper conducts the parcel delivery simulation in the downtown area of Tainan, which showed clear visualization of logistic condition in the simulation results.
+As a result, the paper integrates traffic simulation software SUMO and mobile application to simulate the package delivery service. Moreover, this study proposes a vehicle dispatching and monitoring system, which can cope with delivery orders, arrange routes, monitor vehicle’s movements, and demonstrate loading and unloading details of trucks. At the same time, this paper develops a dynamic dispatching mechanism consisting of box filtering stage and time scheduling stage. The mechanism can judge whether the delivery order could be established. Finally, the paper conducts the parcel delivery simulation in the downtown area of Tainan, which showed clear visualization of logistic condition in the simulation results.
 \textbf{Using the self-driving delivery emulation system has three advantages}. One is that the user can experience more immediate and more flexible delivery service. Second is that administrator can monitor the vehicle’s route and the vehicle’s real-time behavior. Third is that the study offers a platform where other developers can implement new algorithm and add new features.}
 
 \emph{\textbf{Keywords}}--- self-driving delivery, traffic simulation, dynamic dispatching mechanism, package delivery service.
@@ -104,7 +104,7 @@ In the previous scheme \cite{Jiang2018}, senders can select their delivery time,
 
 Besides, the SUMO server develops a dispatching mechanism to deal with the order requests, and arranges the routes dynamically and immediately. In this mechanism, vehicles have to pass through two stages. 
 
-First stage is box filtering stage, where the vehicle with more than one available container is qualified to enter into the second stage named as a simple time scheduling stage. Next, the second stage would judge whether the order can be inserted into the original time schedule or not. Moreover, the thesis demonstrates that the dispatching mechanism is applied to the scenario of the sender and the receiver.
+First stage is box filtering stage, where the vehicle with more than one available container is qualified to enter into the second stage named as  time scheduling stage. Next, the second stage would judge whether the order can be inserted into the original time schedule or not. Moreover, the thesis demonstrates that the dispatching mechanism is applied to the scenario of the sender and the receiver.
 
 Finally, the thesis utilizes a SUMO simulator, cleans up the map of the downtown area of Tainan, sets up the parameters, and performs the simulation with five scenarios of the delivery service.
 
@@ -153,13 +153,13 @@ German Aerospace Center achieved simulation scenarios where accidents occur, and
 \begin{figure}[t!]
 \centering
 \includegraphics[width=0.85\textwidth]{./Thesis_figures/F3-1_a_whole_system.PNG}
-\caption{\large A whole system.}
+\caption{\large System components.}
 \vspace{0.5cm}
 \label{Fig:A_Whole_System}
 \end{figure}
 
 The chapter aims to design a vehicle dispatching and monitoring system that can deal with the parcel delivery order request from the mobile application. In addition, the system can dispatch the vehicle to the destination, visualize the route of vehicles, and retrieve the information of the vehicle in SUMO simulator.
-As illustrated in Figure 3.1, the whole system consists of four main components, including a SUMO server, a SUMO simulator, the mobile application, and a web server with database.
+As illustrated in Figure 3.1, the system consists of four main components, including a SUMO server, a SUMO simulator, the mobile application, and a web server with database.
 
 \subsection{SUMO Server}
 A SUMO server initializes the road traffic condition including the map, traffic lights, and the moving vehicles with package delivery missions. The SUMO server communicates with a SUMO simulator via a specific port address.
@@ -384,14 +384,14 @@ After the vehicle unloads the parcel successfully, the receiver’s delivery pro
 
 \chapter{Dispatching Mechanism}\label{Chap:Dispatching Mechanism}
 The chapter aims to how the system uses dispatch mechanism to judge whether the sender’s delivery order can be established.
-As illustrated in Figure 6.1, the dispatching mechanism consists of two filtering stages. One is box filtering stage, and the second is simple time scheduling stage. After the user places the delivery order, picks the box size, and selects the arrival time of the parcel, the order request will enter into the box filtering stage.
-If all vehicles do not have any space for this picked box size, the user will select the other choice of box size. In contrast, if the vehicle’s box capacity is lower than three, this vehicle is qualified to enter into second filtering stage (simple time scheduling stage) 
-Furthermore, if there are no available vehicles that can serve this order in the simple time scheduling stage, the user should pick the other appropriate arrival time of the parcel.
+As illustrated in Figure 6.1, the dispatching mechanism consists of two filtering stages. One is box filtering stage, and the second is time scheduling stage. After the user places the delivery order, picks the box size, and selects the arrival time of the parcel, the order request will enter into the box filtering stage.
+If all vehicles do not have any space for this picked box size, the user will select the other choice of box size. In contrast, if the vehicle’s box capacity is lower than three, this vehicle is qualified to enter into second filtering stage (time scheduling stage). 
+Furthermore, if there are no available vehicles that can serve this order in the time scheduling stage, the user should pick the other appropriate arrival time of the parcel.
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.7]{./Thesis_figures/F6-1_dispatching_mechanism.PNG}
-\caption{\large Dispatch mechanism consists of box filtering stage and simple time scheduling stage.}
+\caption{\large Dispatch mechanism consists of box filtering stage and time scheduling stage.}
 \vspace{0.5cm}
 \label{Fig:Dispatch_mechanism}
 \end{figure}
@@ -436,19 +436,19 @@ As the delivery order with small box size is inserted to the system, the system 
 
 As displayed in Figure 6.3, the form is the second case of the car-box map. As the system receives the delivery order with the medium box size, the box filtering execution starts. Therefore, vehicle 2, vehicle 4, and vehicle 5 are the candidates because all their occupancy of medium box are lower than three.
 
-\section{Simple Time Scheduling Stage}
+\section{Time Scheduling Stage}
 
-After passing the previous filtering stage, there are some vehicles entering into a simple time scheduling stage. This stage aims to judge whether the new delivery request can be inserted into the delivery time schedule.
+After passing the previous filtering stage, there are some vehicles entering into time scheduling stage. This stage aims to judge whether the new delivery request can be inserted into the delivery time schedule. Currently time scheduling stage arranges the basic pick-up task, but the stage does not support advanced scheduling algorithm, which may save total driving distances or total travel time.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\textwidth]{./Thesis_figures/F6-4_caseOne_SchedulingStage.PNG}
-\caption{\large Case one of simple time filtering stage.}
+\caption{\large Case one of time scheduling stage.}
 \vspace{0.5cm}
 \label{Fig:CaseOne_TimeFiltering}
 \end{figure}
 
-In the first case of the simple time scheduling stage, 
+In the first case of the time scheduling stage, 
 the time schedule includes three vehicles with previous tasks, and the schedule starts from 09:30 AM to 11:30 AM in left side of Figure 6.4. To be more specific, vehicle 1 has the delivery task of the sender 4 with the box index number \textbf{"111"}, which indicates the vehicle 1 has to arrive to the Taiwan Tainan District Court before 09:30 AM, and this task is located at the small box in the vehicle 1.
 
 When the simulation time is 09:05 AM, the sender 4 submits the delivery order request with the small box size and the expected arrival time to Hayashi Department Store is 09:30 AM. Because the vehicle 1 has already the task of 09:30 AM, the system would turn to the next vehicle to deal with the request.
@@ -461,12 +461,12 @@ After satisfying the two above conditions, the sender 4’s delivery task would 
 \begin{figure}[t]
 \centering
 \includegraphics[width=1.0\textwidth]{./Thesis_figures/F6-5_caseTwo_SchedulingStage.PNG}
-\caption{\large Case two of simple time filtering stage.}
+\caption{\large Case two of time scheduling stage.}
 \vspace{0.5cm}
 \label{Fig:CaseTwo_TimeFiltering}
 \end{figure}
 
-As illustrated in Figure 6.5, this picture is the second case of simple time filtering stage. In left side of the figure, the time schedule includes three vehicles with four tasks. When the simulation time is 09:15 AM, the sender 5 submits the delivery order request with the medium box size and the expected arrival time to Tainan Chenggong Road Post Office is 10:00 AM.
+As illustrated in Figure 6.5, this picture is the second case of time scheduling stage. In left side of the figure, the time schedule includes three vehicles with four tasks. When the simulation time is 09:15 AM, the sender 5 submits the delivery order request with the medium box size and the expected arrival time to Tainan Chenggong Road Post Office is 10:00 AM.
 According to the box conditions of all vehicles, the system selects vehicle 1 to filter the sender 5’s delivery request. At the same time, the map in the right side of the figure show that this request has to meet the two conditions. Firstly, when the vehicle 1 arrives to the Taiwan Tainan District Court, the vehicle 1 will stop, and would forward to Tainan Chenggong Road Post Office at 09:40. The travel time of the green route should be less than twenty minutes. Secondly, after staying at Tainan Chenggong Road Post Office for ten minutes, the vehicle 1 will leave at 10:10 AM, and have to go to Anping Fort before 11:00 AM. 
 As the vehicle 1 can fulfill the two conditions, the delivery request of the sender 5 can be inserted into the time schedule.
 
@@ -476,12 +476,12 @@ As the vehicle 1 can fulfill the two conditions, the delivery request of the sen
 \begin{figure}[t]
 \centering
 \includegraphics[width=1.0\textwidth]{./Thesis_figures/F6-6_caseThree_SchedulingStage.PNG}
-\caption{\large Case three of simple time filtering stage.}
+\caption{\large Case three of time scheduling stage.}
 \vspace{0.5cm}
 \label{Fig:CaseThree_TimeFiltering}
 \end{figure}
 
-Figure 6.6 demonstrates the third case of simple time filtering stage. When the simulation time is 09:20, the system receives the sender 6’s delivery request with the expected arrival time of 09:30 AM. Because the vehicle 1 and vehicle 2 already have the task of 09:30 AM, and the vehicle 3 has to deal with this request. In right side of the figure, the vehicle 1 just has to match one condition because there is no task before this request. Thus, when the vehicle 3 starts from current position at 09:20, the travel time of blue route to T.S. Mall has to be less than ten minutes.
+Figure 6.6 demonstrates the third case of time scheduling stage. When the simulation time is 09:20, the system receives the sender 6’s delivery request with the expected arrival time of 09:30 AM. Because the vehicle 1 and vehicle 2 already have the task of 09:30 AM, and the vehicle 3 has to deal with this request. In right side of the figure, the vehicle 1 just has to match one condition because there is no task before this request. Thus, when the vehicle 3 starts from current position at 09:20, the travel time of blue route to T.S. Mall has to be less than ten minutes.
 Moreover, the vehicle will execute the tasks according to the time schedule, and follow the flow chart of delivery process mentioned in Figure 5.1 and 5.2.
 
 
@@ -736,6 +736,16 @@ There are some issues that should be discussed to complete the vehicle dispatchi
 
 \item
 \textbf{Accuracy}: When it comes to scheduling the task, the system has to calculate the travel time of the new route. Thus, the accuracy of the estimated vehicle speed is very crucial and this value should be actually measured by the real-time road conditions.
+
+\item
+\textbf{Customer}: The product should be put into specific delivery parcel market, which has the urgent delivery demand.
+
+
+\item
+\textbf{Algorithm}: The system can execute advanced algorithm according to the minimum total driving distances.
+
+\item
+\textbf{Flexibility}: The system has to configure the fixed loading period and solve the problem of  late selection of arrival time from receivers.
 
 \end{itemize}
 

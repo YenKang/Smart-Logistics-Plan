@@ -23,7 +23,7 @@
 \contentsline {section}{\numberline {5.2}\ignorespaces Receiver Part}{20}% 
 \contentsline {chapter}{\numberline {6}Dispatching Mechanism}{22}% 
 \contentsline {section}{\numberline {6.1}\ignorespaces Box Filtering Stage }{23}% 
-\contentsline {section}{\numberline {6.2}\ignorespaces Simple Time Scheduling Stage}{25}% 
+\contentsline {section}{\numberline {6.2}\ignorespaces Time Scheduling Stage}{25}% 
 \contentsline {section}{\numberline {6.3}\ignorespaces User Scenario}{29}% 
 \contentsline {subsection}{\numberline {6.3.1}\ignorespaces Sender Scenario}{29}% 
 \contentsline {subsection}{\numberline {6.3.2}\ignorespaces Receiver Scenario}{30}% 
@@ -37,5 +37,5 @@
 \contentsline {chapter}{\numberline {8}Conclusion and Future Work}{41}% 
 \contentsline {section}{\numberline {8.1}\ignorespaces Conclusion}{41}% 
 \contentsline {section}{\numberline {8.2}\ignorespaces Future Work}{42}% 
-\contentsline {chapter}{References}{43}% 
-\contentsline {chapter}{Vita}{45}% 
+\contentsline {chapter}{References}{44}% 
+\contentsline {chapter}{Vita}{46}% 
