@@ -180,55 +180,7 @@ public class MainCopy4_MultipleCars {
 				conn.do_timestep();
 				double timeSeconds = (double) conn.do_job_get(Simulation.getTime());
 				
-				/*
-				if (i == 10) {
-					// 
-					JDBC_AVD init_DB = new JDBC_AVD();
-					for (int j = 1; j < 4; j++) {
-						// 
-						SumoPosition2D vPosition = (SumoPosition2D) conn.do_job_get(Vehicle.getPosition(Integer.toString( j )));
-						SumoPosition2D v_geo_position = (SumoPosition2D)conn.do_job_get(Simulation.convertGeo(vPosition.x, vPosition.y,false ));
-						double x = v_geo_position.x;
-						double y = v_geo_position.y;
-						double speed = (double)conn.do_job_get(Vehicle.getSpeed(Integer.toString(j)));
-						init_DB.insertVehicle(Integer.toString(j), y, x, speed);
-						System.out.println(x+y);
-						if ( j == 1) {
-							init_DB.insertContainer("111", 1, 1, "0", "1");
-							init_DB.insertContainer("112", 1, 1, "0", "1");
-							init_DB.insertContainer("113", 1, 0, "0", "1");
-							init_DB.insertContainer("121", 2, 1, "0", "1");
-							init_DB.insertContainer("122", 2, 0, "0", "1");
-							init_DB.insertContainer("123", 2, 0, "0", "1");
-							init_DB.insertContainer("131", 3, 0, "0", "1");
-							init_DB.insertContainer("132", 3, 0, "0", "1");
-							init_DB.insertContainer("133", 3, 0, "0", "1");
-						}
-						else if ( j == 2) {
-							init_DB.insertContainer("211", 1, 0, "0", "2");
-							init_DB.insertContainer("212", 1, 0, "0", "2");
-							init_DB.insertContainer("213", 1, 0, "0", "2");
-							init_DB.insertContainer("221", 2, 1, "0", "2");
-							init_DB.insertContainer("222", 2, 0, "0", "2");
-							init_DB.insertContainer("223", 2, 0, "0", "2");
-							init_DB.insertContainer("231", 3, 0, "0", "2");
-							init_DB.insertContainer("232", 3, 0, "0", "2");
-							init_DB.insertContainer("233", 3, 0, "0", "2");
-						}
-						else if ( j == 3) {
-							init_DB.insertContainer("311", 3, 0, "0", "3");
-							init_DB.insertContainer("312", 3, 0, "0", "3");
-							init_DB.insertContainer("313", 3, 0, "0", "3");
-							init_DB.insertContainer("321", 3, 0, "0", "3");
-							init_DB.insertContainer("322", 3, 0, "0", "3");
-							init_DB.insertContainer("323", 3, 0, "0", "3");
-							init_DB.insertContainer("331", 3, 0, "0", "3");
-							init_DB.insertContainer("332", 3, 0, "0", "3");
-							init_DB.insertContainer("333", 3, 0, "0", "3");
-						}
-					}
-				}
-				*/
+				
 				
 				// 
 				if ( i % 100 == 0) {

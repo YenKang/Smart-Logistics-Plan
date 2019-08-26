@@ -2,7 +2,7 @@
 \contentsline {figure}{\numberline {1.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont A Vehicle dispatching and monitoring system.}}{2}% 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont A whole system.}}{8}% 
+\contentsline {figure}{\numberline {3.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont System components.}}{8}% 
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont Improved architecture of web service.}}{11}% 
 \contentsline {figure}{\numberline {4.2}{\ignorespaces \relax \fontsize {12}{14}\selectfont The connection of Traffic Control Interface.}}{12}% 
@@ -14,12 +14,12 @@
 \contentsline {figure}{\numberline {5.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont The sender\IeC {\textquoteright }s parcel delivery process.}}{19}% 
 \contentsline {figure}{\numberline {5.2}{\ignorespaces \relax \fontsize {12}{14}\selectfont The receiver's parcel delivery process.}}{21}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont Dispatch mechanism consists of box filtering stage and simple time scheduling stage.}}{23}% 
+\contentsline {figure}{\numberline {6.1}{\ignorespaces \relax \fontsize {12}{14}\selectfont Dispatch mechanism consists of box filtering stage and time scheduling stage.}}{23}% 
 \contentsline {figure}{\numberline {6.2}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case one of the car-box map.}}{24}% 
 \contentsline {figure}{\numberline {6.3}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case two of the car-box map.}}{25}% 
-\contentsline {figure}{\numberline {6.4}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case one of simple time filtering stage.}}{26}% 
-\contentsline {figure}{\numberline {6.5}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case two of simple time filtering stage.}}{27}% 
-\contentsline {figure}{\numberline {6.6}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case three of simple time filtering stage.}}{28}% 
+\contentsline {figure}{\numberline {6.4}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case one of time scheduling stage.}}{26}% 
+\contentsline {figure}{\numberline {6.5}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case two of time scheduling stage.}}{27}% 
+\contentsline {figure}{\numberline {6.6}{\ignorespaces \relax \fontsize {12}{14}\selectfont Case three of time scheduling stage.}}{28}% 
 \contentsline {figure}{\numberline {6.7}{\ignorespaces \relax \fontsize {12}{14}\selectfont The sender's scenario of parcel delivery process.}}{29}% 
 \contentsline {figure}{\numberline {6.8}{\ignorespaces \relax \fontsize {12}{14}\selectfont The receiver's first scenario of parcel delivery process.}}{30}% 
 \contentsline {figure}{\numberline {6.9}{\ignorespaces \relax \fontsize {12}{14}\selectfont The receiver's second scenario of parcel delivery process.}}{31}% 
