@@ -65,11 +65,13 @@ public class MainActivity extends AppCompatActivity {
         send = findViewById(R.id.send_button);
         myOrder = findViewById(R.id.my_package_button);
         search = findViewById(R.id.search_button);
-        testbyabout = findViewById(R.id.about_button);
-        Toast.makeText(this, Integer.toString(123), Toast.LENGTH_SHORT).show();
-        /*hashmap.put("sender_lng", 120.213878);
+        // testbyabout = findViewById(R.id.about_button);
+        // Toast.makeText(this, Integer.toString(123), Toast.LENGTH_SHORT).show();
+        /*
+        hashmap.put("sender_lng", 120.213878);
         hashmap.put("sender_lat", 22.996839);
-        jsonTest = new JSONObject(hashmap);*/
+        jsonTest = new JSONObject(hashmap);
+        */
         // 負責監聽按鈕事件的函式
         processControllers();
     }
@@ -141,16 +143,18 @@ public class MainActivity extends AppCompatActivity {
         };
         search.setOnClickListener(searchListener);
 
+        /*
         // 測式按鈕，目前為測式 socket 連線之用
         View.OnClickListener testListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Thread threadSocket = new Thread(Connection);
+                Thread threadSocket = new Thread(Connection);
                 threadSocket.start();
-                System.out.println("123");*/
+                System.out.println("123");
             }
         };
         testbyabout.setOnClickListener(testListener);
+        */
 
     }
     // 連線測試用
@@ -160,7 +164,8 @@ public class MainActivity extends AppCompatActivity {
             OutputStream output = null;
             InputStream input = null;
             try{
-                InetAddress serverIP = InetAddress.getByName("140.116.72.134");
+                //InetAddress serverIP = InetAddress.getByName("140.116.72.162");
+                 InetAddress serverIP = InetAddress.getByName("140.116.72.134");
                 int serverPort = 6678;
                 clientSocket = new Socket(serverIP, serverPort);
                 Map hashmap = new HashMap();

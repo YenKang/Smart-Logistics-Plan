@@ -17,8 +17,8 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="15dp"
-        android:paddingVertical="5dp"
+        android:paddingHorizontal="50dp"
+        android:paddingVertical="30dp"
         android:stretchColumns="*">
 
         <TableRow>
@@ -27,39 +27,48 @@
                 android:id="@+id/account_button"
                 android:layout_height="150dp"
                 android:layout_margin="2sp"
-                android:padding="6sp"
+                android:padding="20sp"
                 android:text="@string/account_button"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <Button
-                android:id="@+id/send_button"
-                android:layout_height="150dp"
-                android:layout_margin="2sp"
-                android:padding="6sp"
-                android:text="@string/package_send"
+                android:drawableLeft="@drawable/u991"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </TableRow>
 
+        <TableRow>
+        <Button
+            android:id="@+id/send_button"
+            android:layout_height="150dp"
+            android:layout_margin="2sp"
+            android:padding="20sp"
+            android:text="@string/package_send"
+            android:drawableLeft="@drawable/car144"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        </TableRow>
         <TableRow>
 
             <Button
                 android:id="@+id/my_package_button"
                 android:layout_height="150dp"
                 android:layout_margin="2sp"
-                android:padding="6sp"
+                android:padding="20sp"
                 android:text="@string/my_package"
+                android:drawableLeft="@drawable/pk543"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        </TableRow>
+
+        <TableRow>
 
             <Button
                 android:id="@+id/search_button"
                 android:layout_height="150dp"
                 android:layout_margin="2sp"
-                android:padding="6sp"
+                android:padding="20sp"
                 android:text="@string/package_search"
+                android:drawableLeft="@drawable/search1234"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
-        </TableRow>
 
-        <TableRow>
+        </TableRow>
+        <!--<TableRow>
 
             <Button
                 android:id="@+id/setting_button"
@@ -76,7 +85,7 @@
                 android:padding="6sp"
                 android:text="@string/about"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
-        </TableRow>
+        </TableRow>-->
 
     </TableLayout>
 

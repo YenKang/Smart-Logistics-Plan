@@ -28,6 +28,7 @@ public class Login extends AppCompatActivity {
         etUsername = findViewById(R.id.user_name);
         etUserpass = findViewById(R.id.user_pass);
         btnLogin = findViewById(R.id.btn_login);
+        btnRegister = findViewById(R.id.btn_register);
         btnHome = findViewById(R.id.btn_home);
 
         // 測試日期格式使用
@@ -67,13 +68,27 @@ public class Login extends AppCompatActivity {
                 }
                 // 若皆有輸入則進入 backGroundTask 進行登入處理並結束本頁面
                 else {
+                    SharedPreferences sharedPreferences = getSharedPreferences("FCM_token",0);
+                    String FCM_token = sharedPreferences.getString("token","");
                     BackGroundTask backgroundTask = new BackGroundTask(Login.this);
-                    backgroundTask.execute(method, username, userpass);
+                    backgroundTask.execute(method, username, userpass, FCM_token);
                     finish();
                 }
             }
         };
         btnLogin.setOnClickListener(loginListener);
+
+        // 註冊
+        Button.OnClickListener btnRegisterListener = new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent i = new Intent(Login.this, RegisterActivity.class);
+                startActivity(i);
+                finish();
+            }
+        };
+        btnRegister.setOnClickListener(btnRegisterListener);
 
         // 回首頁
         Button.OnClickListener btnReturnListener = new Button.OnClickListener() {

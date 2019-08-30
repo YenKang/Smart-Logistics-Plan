@@ -69,6 +69,7 @@ public class AddressActivity extends AppCompatActivity {
             // TODO Auto-generated method stub
             // 再背景中處理的耗時工作
             String countyUrl = "http://140.116.72.134/AV_user/GetCounty.php";
+            //String countyUrl = "http://140.116.72.162/AV_user/GetCounty.php";
             try{
                 /// 建立連線，以GET方式取得 web serber 之資料
                 URL url = new URL(countyUrl);
@@ -185,6 +186,7 @@ public class AddressActivity extends AppCompatActivity {
             // TODO Auto-generated method stub
             // 再背景中處理的耗時工作
             String countyUrl = "http://140.116.72.134/AV_user/GetTownShip.php";
+            // String countyUrl = "http://140.116.72.162/AV_user/GetTownShip.php";
             int county_id = Integer.parseInt(params[0]);
             try{
                 /// 建立連線，以GET方式取得 web server 之資料

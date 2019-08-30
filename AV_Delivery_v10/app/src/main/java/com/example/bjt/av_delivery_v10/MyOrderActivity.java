@@ -50,14 +50,17 @@ public class MyOrderActivity extends AppCompatActivity {
     // 宣告三個 items 將收到的資料作分類後個別存入
     private List<Item> items, items_send, items_receive;
 
+    static MyOrderActivity instance;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_order);
 
+        instance = this;
         SharedPreferences sharedPreferences = getSharedPreferences("user_info",0);
         String username = sharedPreferences.getString("username","-1");
-        Toast.makeText(this,username,Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this,username,Toast.LENGTH_SHORT).show();
 
         // 將從主頁面連線資料庫取得的訂單資料存入變數 orderArray 以便接下來放入 adapter 使用
         Intent intent = getIntent();
@@ -133,7 +136,7 @@ public class MyOrderActivity extends AppCompatActivity {
         viewList.add(view2);
 
         mTabs = findViewById(R.id.pager_tabs);
-        mTabs.addTab(mTabs.newTab().setText("我寄出的"));
+        mTabs.addTab(mTabs.newTab().setText(R.string.I_sent));
         mTabs.addTab(mTabs.newTab().setText("寄給我的"));
 
         mViewPager = findViewById(R.id.viewpager);

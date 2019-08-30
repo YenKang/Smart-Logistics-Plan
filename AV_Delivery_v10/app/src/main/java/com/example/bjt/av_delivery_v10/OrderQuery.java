@@ -43,7 +43,8 @@ class OrderQuery extends AsyncTask<String, Integer, String> {
     protected String doInBackground(String... params) {
         // 連上 web server 中確定收件人存在的查詢功能 (ReceiverQuery.php)
         // 0610 記得改回來
-        String queryReceiverUrl = "http://140.116.72.162/AV_user/OrderQuery.php";
+        // String queryReceiverUrl = "http://140.116.72.162/AV_user/OrderQuery.php";
+        String queryReceiverUrl = "http://140.116.72.134/AV_user/OrderQuery.php";
         // 將傳入的收件人帳號存入變數，以便進行後續查詢
         String user_name = params[0];
         try{

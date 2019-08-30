@@ -1,0 +1,726 @@
+下午 07:23:21  [main] 	Initializing Control Panel
+下午 07:23:21  [main] 	Windows Version:  Enterprise  64-bit
+下午 07:23:21  [main] 	XAMPP Version: 7.2.5
+下午 07:23:21  [main] 	Control Panel Version: 3.2.2  [ Compiled: Nov 12th 2015 ]
+下午 07:23:21  [main] 	You are not running with administrator rights! This will work for
+下午 07:23:21  [main] 	most application stuff but whenever you do something with services
+下午 07:23:21  [main] 	there will be a security dialogue or things will break! So think 
+下午 07:23:21  [main] 	about running this application with administrator rights!
+下午 07:23:21  [main] 	XAMPP Installation Directory: "c:\xampp\"
+下午 07:23:21  [main] 	Checking for prerequisites
+下午 07:23:21  [main] 	All prerequisites found
+下午 07:23:21  [main] 	Initializing Modules
+下午 07:23:21  [main] 	Starting Check-Timer
+下午 07:23:21  [main] 	Control Panel Ready
+下午 07:23:25  [Apache] 	Attempting to start Apache app...
+下午 07:23:26  [Apache] 	Status change detected: running
+下午 07:23:27  [Apache] 	Attempting to stop Apache (PID: 4728)
+下午 07:23:27  [Apache] 	Attempting to stop Apache (PID: 4188)
+下午 07:23:27  [Apache] 	Status change detected: stopped
+下午 07:46:23  [Apache] 	Attempting to start Apache app...
+下午 07:46:23  [mysql] 	Attempting to start MySQL app...
+下午 07:46:23  [Apache] 	Status change detected: running
+下午 07:46:23  [mysql] 	Status change detected: running
+下午 12:12:26  [main] 	Deinitializing Modules
+下午 12:12:26  [main] 	Deinitializing Control Panel
+
+下午 12:34:40  [main] 	Initializing Control Panel
+下午 12:34:40  [main] 	Windows Version:  Enterprise  64-bit
+下午 12:34:40  [main] 	XAMPP Version: 7.2.5
+下午 12:34:40  [main] 	Control Panel Version: 3.2.2  [ Compiled: Nov 12th 2015 ]
+下午 12:34:40  [main] 	You are not running with administrator rights! This will work for
+下午 12:34:40  [main] 	most application stuff but whenever you do something with services
+下午 12:34:40  [main] 	there will be a security dialogue or things will break! So think 
+下午 12:34:40  [main] 	about running this application with administrator rights!
+下午 12:34:40  [main] 	XAMPP Installation Directory: "c:\xampp\"
+下午 12:34:40  [main] 	Checking for prerequisites
+下午 12:34:41  [main] 	All prerequisites found
+下午 12:34:41  [main] 	Initializing Modules
+下午 12:34:41  [filezilla] 	Problem detected!
+下午 12:34:41  [filezilla] 	Port 14147 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+下午 12:34:41  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+下午 12:34:41  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+下午 12:34:41  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+下午 12:34:41  [main] 	Starting Check-Timer
+下午 12:34:41  [main] 	Control Panel Ready
+下午 12:34:42  [Apache] 	Attempting to start Apache app...
+下午 12:34:42  [Apache] 	Status change detected: running
+下午 12:34:42  [mysql] 	Attempting to start MySQL app...
+下午 12:34:43  [mysql] 	Status change detected: running
+下午 05:42:27  [Apache] 	Attempting to stop Apache (PID: 1564)
+下午 05:42:27  [Apache] 	Attempting to stop Apache (PID: 5652)
+下午 05:42:28  [mysql] 	Attempting to stop MySQL app...
+下午 05:42:28  [Apache] 	Status change detected: stopped
+下午 05:42:28  [mysql] 	Status change detected: stopped
+下午 05:42:29  [Apache] 	Attempting to start Apache app...
+下午 05:42:29  [Apache] 	Status change detected: running
+下午 05:42:29  [mysql] 	Attempting to start MySQL app...
+下午 05:42:29  [mysql] 	Status change detected: running
+下午 11:18:42  [Apache] 	Attempting to stop Apache (PID: 6272)
+下午 11:18:42  [Apache] 	Attempting to stop Apache (PID: 6844)
+下午 11:18:42  [Apache] 	Status change detected: stopped
+下午 11:18:42  [mysql] 	Attempting to stop MySQL app...
+下午 11:18:42  [mysql] 	Status change detected: stopped
+下午 11:18:43  [Apache] 	Attempting to start Apache app...
+下午 11:18:43  [Apache] 	Status change detected: running
+下午 11:18:43  [mysql] 	Attempting to start MySQL app...
+下午 11:18:44  [mysql] 	Status change detected: running
+下午 11:32:45  [mysql] 	Attempting to stop MySQL app...
+下午 11:32:45  [mysql] 	Status change detected: stopped
+下午 11:32:46  [Apache] 	Attempting to stop Apache (PID: 7836)
+下午 11:32:46  [Apache] 	Attempting to stop Apache (PID: 4324)
+下午 11:32:46  [Apache] 	Status change detected: stopped
+下午 11:32:47  [Apache] 	Attempting to start Apache app...
+下午 11:32:48  [Apache] 	Status change detected: running
+下午 11:32:48  [mysql] 	Attempting to start MySQL app...
+下午 11:32:49  [mysql] 	Status change detected: running
+下午 11:32:52  [mysql] 	Attempting to stop MySQL app...
+下午 11:32:52  [mysql] 	Status change detected: stopped
+下午 11:32:52  [Apache] 	Attempting to stop Apache (PID: 9788)
+下午 11:32:52  [Apache] 	Attempting to stop Apache (PID: 4204)
+下午 11:32:53  [Apache] 	Status change detected: stopped
+下午 11:33:12  [Apache] 	Attempting to start Apache app...
+下午 11:33:12  [mysql] 	Attempting to start MySQL app...
+下午 11:33:12  [Apache] 	Status change detected: running
+下午 11:33:12  [mysql] 	Status change detected: running
+下午 11:34:01  [Apache] 	Attempting to stop Apache (PID: 6276)
+下午 11:34:01  [Apache] 	Attempting to stop Apache (PID: 5628)
+下午 11:34:01  [Apache] 	Status change detected: stopped
+下午 11:34:01  [mysql] 	Attempting to stop MySQL app...
+下午 11:34:01  [mysql] 	Status change detected: stopped
+下午 11:34:01  [Apache] 	Attempting to start Apache app...
+下午 11:34:02  [Apache] 	Status change detected: running
+下午 11:34:02  [mysql] 	Attempting to start MySQL app...
+下午 11:34:02  [mysql] 	Status change detected: running
+下午 11:40:32  [Apache] 	Attempting to stop Apache (PID: 8488)
+下午 11:40:32  [Apache] 	Attempting to stop Apache (PID: 9032)
+下午 11:40:32  [Apache] 	Status change detected: stopped
+下午 11:40:32  [mysql] 	Attempting to stop MySQL app...
+下午 11:40:33  [mysql] 	Status change detected: stopped
+下午 11:42:29  [Apache] 	Attempting to start Apache app...
+下午 11:42:29  [Apache] 	Status change detected: running
+下午 11:42:29  [Apache] 	Status change detected: stopped
+下午 11:42:29  [Apache] 	Error: Apache shutdown unexpectedly.
+下午 11:42:29  [Apache] 	This may be due to a blocked port, missing dependencies, 
+下午 11:42:29  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+下午 11:42:29  [Apache] 	Press the Logs button to view error logs and check
+下午 11:42:29  [Apache] 	the Windows Event Viewer for more clues
+下午 11:42:29  [Apache] 	If you need more help, copy and post this
+下午 11:42:29  [Apache] 	entire log window on the forums
+下午 11:42:30  [Apache] 	Attempting to start Apache app...
+下午 11:42:32  [mysql] 	Attempting to start MySQL app...
+下午 11:42:33  [mysql] 	Status change detected: running
+下午 11:42:34  [Apache] 	Attempting to start Apache app...
+下午 11:42:34  [Apache] 	Status change detected: running
+下午 11:42:35  [Apache] 	Status change detected: stopped
+下午 11:42:35  [Apache] 	Error: Apache shutdown unexpectedly.
+下午 11:42:35  [Apache] 	This may be due to a blocked port, missing dependencies, 
+下午 11:42:35  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+下午 11:42:35  [Apache] 	Press the Logs button to view error logs and check
+下午 11:42:35  [Apache] 	the Windows Event Viewer for more clues
+下午 11:42:35  [Apache] 	If you need more help, copy and post this
+下午 11:42:35  [Apache] 	entire log window on the forums
+下午 11:42:37  [Apache] 	Attempting to start Apache app...
+下午 11:42:41  [Apache] 	Attempting to start Apache app...
+下午 11:42:41  [Apache] 	Status change detected: running
+下午 11:42:45  [Apache] 	Attempting to stop Apache (PID: 2328)
+下午 11:42:45  [Apache] 	Attempting to stop Apache (PID: 5620)
+下午 11:42:45  [Apache] 	Status change detected: stopped
+下午 11:42:49  [Apache] 	Attempting to start Apache app...
+下午 11:42:49  [Apache] 	Status change detected: running
+下午 11:42:51  [Apache] 	Attempting to stop Apache (PID: 1368)
+下午 11:42:51  [Apache] 	Attempting to stop Apache (PID: 5052)
+下午 11:42:52  [Apache] 	Status change detected: stopped
+下午 11:42:52  [Apache] 	Attempting to start Apache app...
+下午 11:42:53  [Apache] 	Status change detected: running
+下午 11:42:53  [Apache] 	Status change detected: stopped
+下午 11:42:53  [Apache] 	Error: Apache shutdown unexpectedly.
+下午 11:42:53  [Apache] 	This may be due to a blocked port, missing dependencies, 
+下午 11:42:53  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+下午 11:42:53  [Apache] 	Press the Logs button to view error logs and check
+下午 11:42:53  [Apache] 	the Windows Event Viewer for more clues
+下午 11:42:53  [Apache] 	If you need more help, copy and post this
+下午 11:42:53  [Apache] 	entire log window on the forums
+下午 11:43:14  [Apache] 	Attempting to start Apache app...
+下午 11:43:14  [Apache] 	Status change detected: running
+下午 08:04:34  [main] 	Deinitializing Modules
+下午 08:04:34  [main] 	Deinitializing Control Panel
+
+上午 11:58:34  [main] 	Initializing Control Panel
+上午 11:58:34  [main] 	Windows Version:  Enterprise  64-bit
+上午 11:58:34  [main] 	XAMPP Version: 7.2.5
+上午 11:58:34  [main] 	Control Panel Version: 3.2.2  [ Compiled: Nov 12th 2015 ]
+上午 11:58:34  [main] 	You are not running with administrator rights! This will work for
+上午 11:58:34  [main] 	most application stuff but whenever you do something with services
+上午 11:58:34  [main] 	there will be a security dialogue or things will break! So think 
+上午 11:58:34  [main] 	about running this application with administrator rights!
+上午 11:58:34  [main] 	XAMPP Installation Directory: "c:\xampp\"
+上午 11:58:34  [main] 	Checking for prerequisites
+上午 11:58:35  [main] 	All prerequisites found
+上午 11:58:35  [main] 	Initializing Modules
+上午 11:58:35  [filezilla] 	Problem detected!
+上午 11:58:35  [filezilla] 	Port 21 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+上午 11:58:35  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+上午 11:58:35  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+上午 11:58:35  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+上午 11:58:35  [filezilla] 	Problem detected!
+上午 11:58:35  [filezilla] 	Port 14147 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+上午 11:58:35  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+上午 11:58:35  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+上午 11:58:35  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+上午 11:58:35  [main] 	Starting Check-Timer
+上午 11:58:35  [main] 	Control Panel Ready
+上午 11:58:36  [Apache] 	Attempting to start Apache app...
+上午 11:58:36  [Apache] 	Status change detected: running
+上午 11:58:36  [mysql] 	Attempting to start MySQL app...
+上午 11:58:37  [mysql] 	Status change detected: running
+上午 02:04:01  [main] 	Deinitializing Modules
+上午 02:04:01  [main] 	Deinitializing Control Panel
+
+下午 04:38:55  [main] 	Initializing Control Panel
+下午 04:38:55  [main] 	Windows Version:  Enterprise  64-bit
+下午 04:38:55  [main] 	XAMPP Version: 7.2.5
+下午 04:38:55  [main] 	Control Panel Version: 3.2.2  [ Compiled: Nov 12th 2015 ]
+下午 04:38:55  [main] 	You are not running with administrator rights! This will work for
+下午 04:38:55  [main] 	most application stuff but whenever you do something with services
+下午 04:38:55  [main] 	there will be a security dialogue or things will break! So think 
+下午 04:38:55  [main] 	about running this application with administrator rights!
+下午 04:38:55  [main] 	XAMPP Installation Directory: "c:\xampp\"
+下午 04:38:55  [main] 	Checking for prerequisites
+下午 04:38:56  [main] 	All prerequisites found
+下午 04:38:56  [main] 	Initializing Modules
+下午 04:38:56  [filezilla] 	Problem detected!
+下午 04:38:56  [filezilla] 	Port 21 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+下午 04:38:56  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+下午 04:38:56  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+下午 04:38:56  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+下午 04:38:56  [filezilla] 	Problem detected!
+下午 04:38:56  [filezilla] 	Port 14147 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+下午 04:38:56  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+下午 04:38:56  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+下午 04:38:56  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+下午 04:38:56  [main] 	Starting Check-Timer
+下午 04:38:56  [main] 	Control Panel Ready
+下午 04:38:58  [Apache] 	Attempting to start Apache app...
+下午 04:38:58  [Apache] 	Status change detected: running
+下午 04:38:58  [mysql] 	Attempting to start MySQL app...
+下午 04:38:58  [mysql] 	Status change detected: running
+下午 05:07:14  [mysql] 	Attempting to stop MySQL app...
+下午 05:07:14  [mysql] 	Status change detected: stopped
+下午 05:07:15  [Apache] 	Attempting to stop Apache (PID: 2296)
+下午 05:07:15  [Apache] 	Attempting to stop Apache (PID: 10704)
+下午 05:07:15  [Apache] 	Status change detected: stopped
+下午 05:07:18  [Apache] 	Attempting to start Apache app...
+下午 05:07:19  [Apache] 	Status change detected: running
+下午 05:07:23  [mysql] 	Attempting to start MySQL app...
+下午 05:07:23  [mysql] 	Status change detected: running
+下午 02:59:29  [main] 	Deinitializing Modules
+下午 02:59:29  [main] 	Deinitializing Control Panel
+
+下午 01:52:33  [main] 	Initializing Control Panel
+下午 01:52:33  [main] 	Windows Version:  Enterprise  64-bit
+下午 01:52:33  [main] 	XAMPP Version: 7.2.5
+下午 01:52:33  [main] 	Control Panel Version: 3.2.2  [ Compiled: Nov 12th 2015 ]
+下午 01:52:33  [main] 	You are not running with administrator rights! This will work for
+下午 01:52:33  [main] 	most application stuff but whenever you do something with services
+下午 01:52:33  [main] 	there will be a security dialogue or things will break! So think 
+下午 01:52:33  [main] 	about running this application with administrator rights!
+下午 01:52:33  [main] 	XAMPP Installation Directory: "c:\xampp\"
+下午 01:52:33  [main] 	Checking for prerequisites
+下午 01:52:33  [main] 	All prerequisites found
+下午 01:52:33  [main] 	Initializing Modules
+下午 01:52:33  [filezilla] 	Problem detected!
+下午 01:52:33  [filezilla] 	Port 21 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+下午 01:52:33  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+下午 01:52:33  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+下午 01:52:33  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+下午 01:52:33  [filezilla] 	Problem detected!
+下午 01:52:33  [filezilla] 	Port 14147 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+下午 01:52:33  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+下午 01:52:33  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+下午 01:52:33  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+下午 01:52:33  [main] 	Starting Check-Timer
+下午 01:52:33  [main] 	Control Panel Ready
+下午 01:52:51  [Apache] 	Attempting to start Apache app...
+下午 01:52:52  [Apache] 	Status change detected: running
+下午 01:52:52  [mysql] 	Attempting to start MySQL app...
+下午 01:52:52  [mysql] 	Status change detected: running
+上午 11:33:58  [mysql] 	Attempting to stop MySQL app...
+上午 11:33:58  [mysql] 	Status change detected: stopped
+上午 11:33:58  [Apache] 	Attempting to stop Apache (PID: 15160)
+上午 11:33:58  [Apache] 	Attempting to stop Apache (PID: 14984)
+上午 11:33:59  [Apache] 	Status change detected: stopped
+上午 11:33:59  [Apache] 	Attempting to start Apache app...
+上午 11:33:59  [Apache] 	Status change detected: running
+上午 11:34:00  [mysql] 	Attempting to start MySQL app...
+上午 11:34:00  [mysql] 	Status change detected: running
+上午 01:00:01  [main] 	Deinitializing Modules
+上午 01:00:01  [main] 	Deinitializing Control Panel
+
+上午 10:57:13  [main] 	Initializing Control Panel
+上午 10:57:13  [main] 	Windows Version:  Enterprise  64-bit
+上午 10:57:13  [main] 	XAMPP Version: 7.2.5
+上午 10:57:13  [main] 	Control Panel Version: 3.2.2  [ Compiled: Nov 12th 2015 ]
+上午 10:57:13  [main] 	You are not running with administrator rights! This will work for
+上午 10:57:13  [main] 	most application stuff but whenever you do something with services
+上午 10:57:13  [main] 	there will be a security dialogue or things will break! So think 
+上午 10:57:13  [main] 	about running this application with administrator rights!
+上午 10:57:13  [main] 	XAMPP Installation Directory: "c:\xampp\"
+上午 10:57:13  [main] 	Checking for prerequisites
+上午 10:57:15  [main] 	All prerequisites found
+上午 10:57:15  [main] 	Initializing Modules
+上午 10:57:15  [filezilla] 	Problem detected!
+上午 10:57:15  [filezilla] 	Port 21 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+上午 10:57:15  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+上午 10:57:15  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+上午 10:57:15  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+上午 10:57:15  [filezilla] 	Problem detected!
+上午 10:57:15  [filezilla] 	Port 14147 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+上午 10:57:15  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+上午 10:57:15  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+上午 10:57:15  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+上午 10:57:15  [main] 	Starting Check-Timer
+上午 10:57:15  [main] 	Control Panel Ready
+上午 10:57:18  [Apache] 	Attempting to start Apache app...
+上午 10:57:18  [mysql] 	Attempting to start MySQL app...
+上午 10:57:18  [Apache] 	Status change detected: running
+上午 10:57:18  [mysql] 	Status change detected: running
+下午 04:52:40  [main] 	Deinitializing Modules
+下午 04:52:40  [main] 	Deinitializing Control Panel
+
+下午 06:37:59  [main] 	Initializing Control Panel
+下午 06:37:59  [main] 	Windows Version:  Enterprise  64-bit
+下午 06:37:59  [main] 	XAMPP Version: 7.2.5
+下午 06:37:59  [main] 	Control Panel Version: 3.2.2  [ Compiled: Nov 12th 2015 ]
+下午 06:37:59  [main] 	You are not running with administrator rights! This will work for
+下午 06:37:59  [main] 	most application stuff but whenever you do something with services
+下午 06:37:59  [main] 	there will be a security dialogue or things will break! So think 
+下午 06:37:59  [main] 	about running this application with administrator rights!
+下午 06:37:59  [main] 	XAMPP Installation Directory: "c:\xampp\"
+下午 06:37:59  [main] 	Checking for prerequisites
+下午 06:38:00  [main] 	All prerequisites found
+下午 06:38:00  [main] 	Initializing Modules
+下午 06:38:00  [filezilla] 	Problem detected!
+下午 06:38:00  [filezilla] 	Port 21 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+下午 06:38:00  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+下午 06:38:00  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+下午 06:38:00  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+下午 06:38:00  [filezilla] 	Problem detected!
+下午 06:38:00  [filezilla] 	Port 14147 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+下午 06:38:00  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+下午 06:38:00  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+下午 06:38:00  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+下午 06:38:00  [main] 	Starting Check-Timer
+下午 06:38:00  [main] 	Control Panel Ready
+下午 06:38:01  [Apache] 	Attempting to start Apache app...
+下午 06:38:01  [Apache] 	Status change detected: running
+下午 06:38:02  [mysql] 	Attempting to start MySQL app...
+下午 06:38:02  [mysql] 	Status change detected: running
+下午 06:40:23  [Apache] 	Attempting to stop Apache (PID: 7304)
+下午 06:40:24  [Apache] 	Attempting to stop Apache (PID: 15452)
+下午 06:40:24  [Apache] 	Status change detected: stopped
+下午 06:40:31  [Apache] 	Attempting to start Apache app...
+下午 06:40:31  [Apache] 	Status change detected: running
+下午 05:33:09  [main] 	Deinitializing Modules
+下午 05:33:09  [main] 	Deinitializing Control Panel
+
+上午 03:36:41  [main] 	Initializing Control Panel
+上午 03:36:41  [main] 	Windows Version:  Enterprise  64-bit
+上午 03:36:41  [main] 	XAMPP Version: 7.2.5
+上午 03:36:41  [main] 	Control Panel Version: 3.2.2  [ Compiled: Nov 12th 2015 ]
+上午 03:36:41  [main] 	You are not running with administrator rights! This will work for
+上午 03:36:41  [main] 	most application stuff but whenever you do something with services
+上午 03:36:41  [main] 	there will be a security dialogue or things will break! So think 
+上午 03:36:41  [main] 	about running this application with administrator rights!
+上午 03:36:41  [main] 	XAMPP Installation Directory: "c:\xampp\"
+上午 03:36:41  [main] 	Checking for prerequisites
+上午 03:36:42  [main] 	All prerequisites found
+上午 03:36:42  [main] 	Initializing Modules
+上午 03:36:42  [filezilla] 	Problem detected!
+上午 03:36:42  [filezilla] 	Port 21 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+上午 03:36:42  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+上午 03:36:42  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+上午 03:36:42  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+上午 03:36:42  [filezilla] 	Problem detected!
+上午 03:36:42  [filezilla] 	Port 14147 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+上午 03:36:42  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+上午 03:36:42  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+上午 03:36:42  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+上午 03:36:42  [main] 	Starting Check-Timer
+上午 03:36:42  [main] 	Control Panel Ready
+上午 03:36:44  [mysql] 	Attempting to start MySQL app...
+上午 03:36:44  [Apache] 	Attempting to start Apache app...
+上午 03:36:44  [Apache] 	Status change detected: running
+上午 03:36:44  [mysql] 	Status change detected: running
+下午 12:38:48  [Apache] 	Attempting to stop Apache (PID: 15264)
+下午 12:38:48  [Apache] 	Attempting to stop Apache (PID: 14408)
+下午 12:38:48  [Apache] 	Status change detected: stopped
+下午 12:38:49  [mysql] 	Attempting to stop MySQL app...
+下午 12:38:49  [mysql] 	Status change detected: stopped
+下午 12:38:50  [Apache] 	Attempting to start Apache app...
+下午 12:38:50  [Apache] 	Status change detected: running
+下午 12:38:50  [mysql] 	Attempting to start MySQL app...
+下午 12:38:50  [mysql] 	Status change detected: running
+下午 05:01:00  [main] 	Deinitializing Modules
+下午 05:01:00  [main] 	Deinitializing Control Panel
+
+下午 02:21:02  [main] 	Initializing Control Panel
+下午 02:21:02  [main] 	Windows Version:  Enterprise  64-bit
+下午 02:21:02  [main] 	XAMPP Version: 7.2.5
+下午 02:21:02  [main] 	Control Panel Version: 3.2.2  [ Compiled: Nov 12th 2015 ]
+下午 02:21:02  [main] 	You are not running with administrator rights! This will work for
+下午 02:21:02  [main] 	most application stuff but whenever you do something with services
+下午 02:21:02  [main] 	there will be a security dialogue or things will break! So think 
+下午 02:21:02  [main] 	about running this application with administrator rights!
+下午 02:21:02  [main] 	XAMPP Installation Directory: "c:\xampp\"
+下午 02:21:02  [main] 	Checking for prerequisites
+下午 02:21:03  [main] 	All prerequisites found
+下午 02:21:03  [main] 	Initializing Modules
+下午 02:21:03  [filezilla] 	Problem detected!
+下午 02:21:03  [filezilla] 	Port 21 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+下午 02:21:03  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+下午 02:21:03  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+下午 02:21:03  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+下午 02:21:03  [filezilla] 	Problem detected!
+下午 02:21:03  [filezilla] 	Port 14147 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+下午 02:21:03  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+下午 02:21:03  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+下午 02:21:03  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+下午 02:21:03  [main] 	Starting Check-Timer
+下午 02:21:03  [main] 	Control Panel Ready
+下午 02:21:04  [Apache] 	Attempting to start Apache app...
+下午 02:21:05  [Apache] 	Status change detected: running
+下午 02:21:28  [Apache] 	Attempting to stop Apache (PID: 6996)
+下午 02:21:28  [Apache] 	Attempting to stop Apache (PID: 14524)
+下午 02:21:28  [Apache] 	Status change detected: stopped
+下午 03:45:30  [mysql] 	Attempting to start MySQL app...
+下午 03:45:30  [mysql] 	Status change detected: running
+下午 03:47:26  [Apache] 	Attempting to start Apache app...
+下午 03:47:27  [Apache] 	Status change detected: running
+下午 04:01:01  [mysql] 	Attempting to stop MySQL app...
+下午 04:01:01  [mysql] 	Status change detected: stopped
+下午 04:01:02  [Apache] 	Attempting to stop Apache (PID: 17244)
+下午 04:01:02  [Apache] 	Attempting to stop Apache (PID: 6116)
+下午 04:01:02  [Apache] 	Status change detected: stopped
+下午 04:01:03  [mysql] 	Attempting to start MySQL app...
+下午 04:01:03  [mysql] 	Status change detected: running
+下午 04:01:09  [Apache] 	Attempting to start Apache app...
+下午 04:01:09  [Apache] 	Status change detected: running
+下午 04:01:13  [Apache] 	Attempting to stop Apache (PID: 11728)
+下午 04:01:13  [Apache] 	Attempting to stop Apache (PID: 8972)
+下午 04:01:14  [Apache] 	Status change detected: stopped
+下午 04:02:07  [Apache] 	Attempting to start Apache app...
+下午 04:02:07  [Apache] 	Status change detected: running
+下午 04:04:14  [Apache] 	Attempting to stop Apache (PID: 1388)
+下午 04:04:14  [Apache] 	Attempting to stop Apache (PID: 3960)
+下午 04:04:14  [Apache] 	Status change detected: stopped
+下午 04:05:40  [Apache] 	Attempting to start Apache app...
+下午 04:05:40  [Apache] 	Status change detected: running
+上午 11:00:37  [Apache] 	Attempting to stop Apache (PID: 2440)
+上午 11:00:37  [Apache] 	Attempting to stop Apache (PID: 14216)
+上午 11:00:38  [Apache] 	Status change detected: stopped
+上午 11:00:38  [mysql] 	Attempting to stop MySQL app...
+上午 11:00:38  [mysql] 	Status change detected: stopped
+下午 02:17:51  [Apache] 	Attempting to start Apache app...
+下午 02:17:52  [mysql] 	Attempting to start MySQL app...
+下午 02:17:52  [Apache] 	Status change detected: running
+下午 02:17:52  [mysql] 	Status change detected: running
+下午 03:35:17  [Apache] 	Attempting to stop Apache (PID: 9636)
+下午 03:35:17  [Apache] 	Attempting to stop Apache (PID: 11180)
+下午 03:35:18  [mysql] 	Attempting to stop MySQL app...
+下午 03:35:18  [Apache] 	Status change detected: stopped
+下午 03:35:18  [mysql] 	Status change detected: stopped
+下午 03:35:24  [mysql] 	Attempting to start MySQL app...
+下午 03:35:24  [mysql] 	Status change detected: running
+下午 03:35:28  [Apache] 	Attempting to start Apache app...
+下午 03:35:28  [Apache] 	Status change detected: running
+下午 02:33:00  [Apache] 	Status change detected: stopped
+下午 02:33:00  [Apache] 	Error: Apache shutdown unexpectedly.
+下午 02:33:00  [Apache] 	This may be due to a blocked port, missing dependencies, 
+下午 02:33:00  [Apache] 	improper privileges, a crash, or a shutdown by another method.
+下午 02:33:00  [Apache] 	Press the Logs button to view error logs and check
+下午 02:33:00  [Apache] 	the Windows Event Viewer for more clues
+下午 02:33:00  [Apache] 	If you need more help, copy and post this
+下午 02:33:00  [Apache] 	entire log window on the forums
+下午 02:33:00  [mysql] 	Status change detected: stopped
+下午 02:33:00  [mysql] 	Error: MySQL shutdown unexpectedly.
+下午 02:33:00  [mysql] 	This may be due to a blocked port, missing dependencies, 
+下午 02:33:00  [mysql] 	improper privileges, a crash, or a shutdown by another method.
+下午 02:33:00  [mysql] 	Press the Logs button to view error logs and check
+下午 02:33:00  [mysql] 	the Windows Event Viewer for more clues
+下午 02:33:00  [mysql] 	If you need more help, copy and post this
+下午 02:33:00  [mysql] 	entire log window on the forums
+下午 02:33:00  [main] 	Deinitializing Modules
+下午 02:33:00  [main] 	Deinitializing Control Panel
+
+下午 04:00:54  [main] 	Initializing Control Panel
+下午 04:00:54  [main] 	Windows Version:  Enterprise  64-bit
+下午 04:00:54  [main] 	XAMPP Version: 7.2.5
+下午 04:00:54  [main] 	Control Panel Version: 3.2.2  [ Compiled: Nov 12th 2015 ]
+下午 04:00:54  [main] 	You are not running with administrator rights! This will work for
+下午 04:00:54  [main] 	most application stuff but whenever you do something with services
+下午 04:00:54  [main] 	there will be a security dialogue or things will break! So think 
+下午 04:00:54  [main] 	about running this application with administrator rights!
+下午 04:00:54  [main] 	XAMPP Installation Directory: "c:\xampp\"
+下午 04:00:54  [main] 	Checking for prerequisites
+下午 04:00:55  [main] 	All prerequisites found
+下午 04:00:55  [main] 	Initializing Modules
+下午 04:00:55  [filezilla] 	Problem detected!
+下午 04:00:55  [filezilla] 	Port 21 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+下午 04:00:55  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+下午 04:00:55  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+下午 04:00:55  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+下午 04:00:55  [filezilla] 	Problem detected!
+下午 04:00:55  [filezilla] 	Port 14147 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+下午 04:00:55  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+下午 04:00:55  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+下午 04:00:55  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+下午 04:00:55  [main] 	Starting Check-Timer
+下午 04:00:55  [main] 	Control Panel Ready
+下午 04:01:15  [Apache] 	Attempting to start Apache app...
+下午 04:01:16  [Apache] 	Status change detected: running
+下午 04:01:16  [mysql] 	Attempting to start MySQL app...
+下午 04:01:16  [mysql] 	Status change detected: running
+上午 11:22:02  [Apache] 	Attempting to stop Apache (PID: 17512)
+上午 11:22:02  [Apache] 	Attempting to stop Apache (PID: 16112)
+上午 11:22:02  [mysql] 	Attempting to stop MySQL app...
+上午 11:22:02  [Apache] 	Status change detected: stopped
+上午 11:22:02  [mysql] 	Status change detected: stopped
+上午 11:22:03  [Apache] 	Attempting to start Apache app...
+上午 11:22:03  [Apache] 	Status change detected: running
+上午 11:22:03  [mysql] 	Attempting to start MySQL app...
+上午 11:22:03  [mysql] 	Status change detected: running
+下午 02:23:55  [Apache] 	Attempting to stop Apache (PID: 9184)
+下午 02:23:55  [Apache] 	Attempting to stop Apache (PID: 23492)
+下午 02:23:56  [mysql] 	Attempting to stop MySQL app...
+下午 02:23:56  [Apache] 	Status change detected: stopped
+下午 02:23:56  [mysql] 	Status change detected: stopped
+下午 02:23:56  [mysql] 	Attempting to start MySQL app...
+下午 02:23:57  [Apache] 	Attempting to start Apache app...
+下午 02:23:57  [Apache] 	Status change detected: running
+下午 02:23:57  [mysql] 	Status change detected: running
+上午 02:36:26  [Apache] 	Attempting to stop Apache (PID: 22656)
+上午 02:36:26  [Apache] 	Attempting to stop Apache (PID: 12324)
+上午 02:36:26  [mysql] 	Attempting to stop MySQL app...
+上午 02:36:26  [Apache] 	Status change detected: stopped
+上午 02:36:26  [mysql] 	Status change detected: stopped
+上午 02:36:27  [Apache] 	Attempting to start Apache app...
+上午 02:36:27  [Apache] 	Status change detected: running
+上午 02:36:27  [mysql] 	Attempting to start MySQL app...
+上午 02:36:27  [mysql] 	Status change detected: running
+上午 02:42:08  [Apache] 	Attempting to stop Apache (PID: 20208)
+上午 02:42:08  [Apache] 	Attempting to stop Apache (PID: 2640)
+上午 02:42:09  [Apache] 	Status change detected: stopped
+上午 02:42:11  [Apache] 	Attempting to start Apache app...
+上午 02:42:12  [Apache] 	Status change detected: running
+下午 09:33:19  [main] 	Deinitializing Modules
+下午 09:33:19  [main] 	Deinitializing Control Panel
+
+上午 10:36:56  [main] 	Initializing Control Panel
+上午 10:36:56  [main] 	Windows Version:  Enterprise  64-bit
+上午 10:36:56  [main] 	XAMPP Version: 7.2.5
+上午 10:36:56  [main] 	Control Panel Version: 3.2.2  [ Compiled: Nov 12th 2015 ]
+上午 10:36:56  [main] 	You are not running with administrator rights! This will work for
+上午 10:36:56  [main] 	most application stuff but whenever you do something with services
+上午 10:36:56  [main] 	there will be a security dialogue or things will break! So think 
+上午 10:36:56  [main] 	about running this application with administrator rights!
+上午 10:36:56  [main] 	XAMPP Installation Directory: "c:\xampp\"
+上午 10:36:56  [main] 	Checking for prerequisites
+上午 10:36:56  [main] 	All prerequisites found
+上午 10:36:56  [main] 	Initializing Modules
+上午 10:36:56  [filezilla] 	Problem detected!
+上午 10:36:56  [filezilla] 	Port 21 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+上午 10:36:56  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+上午 10:36:56  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+上午 10:36:56  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+上午 10:36:56  [filezilla] 	Problem detected!
+上午 10:36:56  [filezilla] 	Port 14147 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+上午 10:36:56  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+上午 10:36:56  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+上午 10:36:56  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+上午 10:36:56  [main] 	Starting Check-Timer
+上午 10:36:56  [main] 	Control Panel Ready
+上午 10:36:57  [Apache] 	Attempting to start Apache app...
+上午 10:36:58  [Apache] 	Status change detected: running
+上午 10:36:58  [mysql] 	Attempting to start MySQL app...
+上午 10:36:58  [mysql] 	Status change detected: running
+下午 02:37:54  [mysql] 	Status change detected: stopped
+下午 02:37:54  [mysql] 	Error: MySQL shutdown unexpectedly.
+下午 02:37:54  [mysql] 	This may be due to a blocked port, missing dependencies, 
+下午 02:37:54  [mysql] 	improper privileges, a crash, or a shutdown by another method.
+下午 02:37:54  [mysql] 	Press the Logs button to view error logs and check
+下午 02:37:54  [mysql] 	the Windows Event Viewer for more clues
+下午 02:37:54  [mysql] 	If you need more help, copy and post this
+下午 02:37:54  [mysql] 	entire log window on the forums
+下午 02:37:54  [main] 	Deinitializing Modules
+下午 02:37:54  [main] 	Deinitializing Control Panel
+
+下午 08:41:07  [main] 	Initializing Control Panel
+下午 08:41:07  [main] 	Windows Version:  Enterprise  64-bit
+下午 08:41:07  [main] 	XAMPP Version: 7.2.5
+下午 08:41:07  [main] 	Control Panel Version: 3.2.2  [ Compiled: Nov 12th 2015 ]
+下午 08:41:07  [main] 	You are not running with administrator rights! This will work for
+下午 08:41:07  [main] 	most application stuff but whenever you do something with services
+下午 08:41:07  [main] 	there will be a security dialogue or things will break! So think 
+下午 08:41:07  [main] 	about running this application with administrator rights!
+下午 08:41:07  [main] 	XAMPP Installation Directory: "c:\xampp\"
+下午 08:41:07  [main] 	Checking for prerequisites
+下午 08:41:08  [main] 	All prerequisites found
+下午 08:41:08  [main] 	Initializing Modules
+下午 08:41:08  [filezilla] 	Problem detected!
+下午 08:41:08  [filezilla] 	Port 21 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+下午 08:41:08  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+下午 08:41:08  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+下午 08:41:08  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+下午 08:41:08  [filezilla] 	Problem detected!
+下午 08:41:08  [filezilla] 	Port 14147 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+下午 08:41:08  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+下午 08:41:08  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+下午 08:41:08  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+下午 08:41:08  [main] 	Starting Check-Timer
+下午 08:41:08  [main] 	Control Panel Ready
+下午 08:41:09  [Apache] 	Attempting to start Apache app...
+下午 08:41:10  [Apache] 	Status change detected: running
+下午 08:41:10  [mysql] 	Attempting to start MySQL app...
+下午 08:41:10  [mysql] 	Status change detected: running
+下午 09:01:00  [main] 	Deinitializing Modules
+下午 09:01:00  [main] 	Deinitializing Control Panel
+
+下午 02:10:15  [main] 	Initializing Control Panel
+下午 02:10:15  [main] 	Windows Version:  Enterprise  64-bit
+下午 02:10:15  [main] 	XAMPP Version: 7.2.5
+下午 02:10:15  [main] 	Control Panel Version: 3.2.2  [ Compiled: Nov 12th 2015 ]
+下午 02:10:15  [main] 	You are not running with administrator rights! This will work for
+下午 02:10:15  [main] 	most application stuff but whenever you do something with services
+下午 02:10:15  [main] 	there will be a security dialogue or things will break! So think 
+下午 02:10:15  [main] 	about running this application with administrator rights!
+下午 02:10:15  [main] 	XAMPP Installation Directory: "c:\xampp\"
+下午 02:10:15  [main] 	Checking for prerequisites
+下午 02:10:16  [main] 	All prerequisites found
+下午 02:10:16  [main] 	Initializing Modules
+下午 02:10:16  [filezilla] 	Problem detected!
+下午 02:10:16  [filezilla] 	Port 21 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+下午 02:10:16  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+下午 02:10:16  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+下午 02:10:16  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+下午 02:10:16  [filezilla] 	Problem detected!
+下午 02:10:16  [filezilla] 	Port 14147 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+下午 02:10:16  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+下午 02:10:16  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+下午 02:10:16  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+下午 02:10:16  [main] 	Starting Check-Timer
+下午 02:10:16  [main] 	Control Panel Ready
+下午 02:10:17  [Apache] 	Attempting to start Apache app...
+下午 02:10:17  [mysql] 	Attempting to start MySQL app...
+下午 02:10:18  [Apache] 	Status change detected: running
+下午 02:10:18  [mysql] 	Status change detected: running
+上午 12:27:00  [main] 	Deinitializing Modules
+上午 12:27:00  [main] 	Deinitializing Control Panel
+
+下午 10:25:19  [main] 	Initializing Control Panel
+下午 10:25:19  [main] 	Windows Version:  Enterprise  64-bit
+下午 10:25:19  [main] 	XAMPP Version: 7.2.5
+下午 10:25:19  [main] 	Control Panel Version: 3.2.2  [ Compiled: Nov 12th 2015 ]
+下午 10:25:19  [main] 	You are not running with administrator rights! This will work for
+下午 10:25:19  [main] 	most application stuff but whenever you do something with services
+下午 10:25:19  [main] 	there will be a security dialogue or things will break! So think 
+下午 10:25:19  [main] 	about running this application with administrator rights!
+下午 10:25:19  [main] 	XAMPP Installation Directory: "c:\xampp\"
+下午 10:25:19  [main] 	Checking for prerequisites
+下午 10:25:19  [main] 	All prerequisites found
+下午 10:25:19  [main] 	Initializing Modules
+下午 10:25:19  [filezilla] 	Problem detected!
+下午 10:25:19  [filezilla] 	Port 21 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+下午 10:25:19  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+下午 10:25:19  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+下午 10:25:19  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+下午 10:25:19  [filezilla] 	Problem detected!
+下午 10:25:19  [filezilla] 	Port 14147 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+下午 10:25:19  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+下午 10:25:19  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+下午 10:25:19  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+下午 10:25:19  [main] 	Starting Check-Timer
+下午 10:25:19  [main] 	Control Panel Ready
+下午 10:25:21  [mysql] 	Attempting to start MySQL app...
+下午 10:25:21  [Apache] 	Attempting to start Apache app...
+下午 10:25:21  [Apache] 	Status change detected: running
+下午 10:25:21  [mysql] 	Status change detected: running
+下午 05:31:00  [main] 	Deinitializing Modules
+下午 05:31:00  [main] 	Deinitializing Control Panel
+
+下午 01:42:40  [main] 	Initializing Control Panel
+下午 01:42:40  [main] 	Windows Version:  Enterprise  64-bit
+下午 01:42:40  [main] 	XAMPP Version: 7.2.5
+下午 01:42:40  [main] 	Control Panel Version: 3.2.2  [ Compiled: Nov 12th 2015 ]
+下午 01:42:40  [main] 	You are not running with administrator rights! This will work for
+下午 01:42:40  [main] 	most application stuff but whenever you do something with services
+下午 01:42:40  [main] 	there will be a security dialogue or things will break! So think 
+下午 01:42:40  [main] 	about running this application with administrator rights!
+下午 01:42:40  [main] 	XAMPP Installation Directory: "c:\xampp\"
+下午 01:42:40  [main] 	Checking for prerequisites
+下午 01:42:41  [main] 	All prerequisites found
+下午 01:42:41  [main] 	Initializing Modules
+下午 01:42:41  [filezilla] 	Problem detected!
+下午 01:42:41  [filezilla] 	Port 21 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+下午 01:42:41  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+下午 01:42:41  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+下午 01:42:41  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+下午 01:42:41  [filezilla] 	Problem detected!
+下午 01:42:41  [filezilla] 	Port 14147 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+下午 01:42:41  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+下午 01:42:41  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+下午 01:42:41  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+下午 01:42:41  [main] 	Starting Check-Timer
+下午 01:42:41  [main] 	Control Panel Ready
+下午 01:42:45  [Apache] 	Attempting to start Apache app...
+下午 01:42:45  [mysql] 	Attempting to start MySQL app...
+下午 01:42:45  [Apache] 	Status change detected: running
+下午 01:42:45  [mysql] 	Status change detected: running
+下午 09:43:20  [Apache] 	Attempting to stop Apache (PID: 12052)
+下午 09:43:20  [Apache] 	Attempting to stop Apache (PID: 8592)
+下午 09:43:21  [Apache] 	Status change detected: stopped
+下午 09:43:21  [mysql] 	Attempting to stop MySQL app...
+下午 09:43:21  [mysql] 	Status change detected: stopped
+下午 09:43:21  [Apache] 	Problem detected!
+下午 09:43:21  [Apache] 	Port 80 in use by "Unable to get info" with PID 12052!
+下午 09:43:21  [Apache] 	Apache WILL NOT start without the configured ports free!
+下午 09:43:21  [Apache] 	You need to uninstall/disable/reconfigure the blocking application
+下午 09:43:21  [Apache] 	or reconfigure Apache and the Control Panel to listen on a different port
+下午 09:43:21  [Apache] 	Attempting to start Apache app...
+下午 09:43:22  [Apache] 	Status change detected: running
+下午 09:43:22  [mysql] 	Attempting to start MySQL app...
+下午 09:43:22  [mysql] 	Status change detected: running
+上午 10:02:43  [main] 	Deinitializing Modules
+上午 10:02:43  [main] 	Deinitializing Control Panel
+
+下午 11:14:54  [main] 	Initializing Control Panel
+下午 11:14:54  [main] 	Windows Version:  Enterprise  64-bit
+下午 11:14:54  [main] 	XAMPP Version: 7.2.5
+下午 11:14:54  [main] 	Control Panel Version: 3.2.2  [ Compiled: Nov 12th 2015 ]
+下午 11:14:54  [main] 	You are not running with administrator rights! This will work for
+下午 11:14:54  [main] 	most application stuff but whenever you do something with services
+下午 11:14:54  [main] 	there will be a security dialogue or things will break! So think 
+下午 11:14:54  [main] 	about running this application with administrator rights!
+下午 11:14:54  [main] 	XAMPP Installation Directory: "c:\xampp\"
+下午 11:14:54  [main] 	Checking for prerequisites
+下午 11:14:55  [main] 	All prerequisites found
+下午 11:14:55  [main] 	Initializing Modules
+下午 11:14:55  [filezilla] 	Problem detected!
+下午 11:14:55  [filezilla] 	Port 21 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+下午 11:14:55  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+下午 11:14:55  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+下午 11:14:55  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+下午 11:14:55  [filezilla] 	Problem detected!
+下午 11:14:55  [filezilla] 	Port 14147 in use by ""C:\Program Files (x86)\FileZilla Server\FileZilla Server.exe""!
+下午 11:14:55  [filezilla] 	FileZilla WILL NOT start without the configured ports free!
+下午 11:14:55  [filezilla] 	You need to uninstall/disable/reconfigure the blocking application
+下午 11:14:55  [filezilla] 	or reconfigure FileZilla and the Control Panel to listen on a different port
+下午 11:14:55  [main] 	Starting Check-Timer
+下午 11:14:55  [main] 	Control Panel Ready
+下午 11:14:56  [Apache] 	Attempting to start Apache app...
+下午 11:14:56  [Apache] 	Status change detected: running
+下午 11:14:56  [mysql] 	Attempting to start MySQL app...
+下午 11:14:57  [mysql] 	Status change detected: running
+上午 04:08:00  [main] 	Deinitializing Modules
+上午 04:08:00  [main] 	Deinitializing Control Panel
+

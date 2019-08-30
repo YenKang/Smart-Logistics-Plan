@@ -1,6 +1,7 @@
 package com.example.bjt.av_delivery_v10;
 
 import android.app.AlertDialog;
+import android.app.AppComponentFactory;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,6 +24,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 // 要使用 AsyncTask，必定要建立一個繼承自 AsyncTask 的子類別，並傳入 3 項資料：
 // Params -- 要執行 doInBackground() 時傳入的參數，數量可以不止一個
@@ -50,26 +53,38 @@ public class BackGroundTask extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... params) {
 
-        String reg_url = "http://140.116.72.134/AV_user/register.php";
+        String ip_add = ctx.getString(R.string.ip_address);
+        String reg_url = "http://"+ ip_add +"/AV_user/Register.php";
         // 記得改回來 0610
-        String login_url = "http://140.116.72.162/AV_user/Login.php";
+        // String login_url = "http://140.116.72.162/AV_user/Login.php";
+        String login_url = "http://140.116.72.134/AV_user/Login.php";
         String method = params[0];
         if (method.equals("register")){
-            String name = params[1];
-            String user_name = params[2];
-            String user_pass = params[3];
+            String username = params[1];
+            String userpass = params[2];
+            String gender = params[3];
+            String phone = params[4];
+            String address = params[5];
             try {
                 URL url = new URL(reg_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
                 httpURLConnection.setDoInput(true);
+
+                SimpleDateFormat sdft = new SimpleDateFormat("yyMMddHHmmss");
+                Date nowdate = new Date();
+                String time_now = sdft.format(nowdate);
 
                 /// 寫入資料
                 OutputStream OS = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(OS,"UTF-8"));
-                String data = URLEncoder.encode("user","UTF-8") + "=" +URLEncoder.encode(name,"UTF-8") + "&" +
-                        URLEncoder.encode("user_name","UTF-8") + "=" +URLEncoder.encode(user_name,"UTF-8") + "&" +
-                        URLEncoder.encode("user_pass","UTF-8") + "=" +URLEncoder.encode(user_pass,"UTF-8");
+                String data = URLEncoder.encode("username","UTF-8") + "=" +URLEncoder.encode(username,"UTF-8") + "&" +
+                        URLEncoder.encode("userpass","UTF-8") + "=" +URLEncoder.encode(userpass,"UTF-8") + "&" +
+                        URLEncoder.encode("gender","UTF-8") + "=" +URLEncoder.encode(gender,"UTF-8") + "&" +
+                        URLEncoder.encode("phone","UTF-8") + "=" +URLEncoder.encode(phone,"UTF-8") + "&" +
+                        URLEncoder.encode("time_now","UTF-8") + "=" +URLEncoder.encode(time_now,"UTF-8") + "&" +
+                        URLEncoder.encode("address","UTF-8") + "=" +URLEncoder.encode(address,"UTF-8");
                 bufferedWriter.write(data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
@@ -103,6 +118,7 @@ public class BackGroundTask extends AsyncTask<String, Void, String> {
         else if (method.equals("login")){
             String login_name = params[1];
             String login_pass = params[2];
+            String FCM_token = params[3];
             try {
                 URL url = new URL(login_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
@@ -113,7 +129,8 @@ public class BackGroundTask extends AsyncTask<String, Void, String> {
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
                 String data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(login_name,"UTF-8")
-                        +"&"+URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(login_pass,"UTF-8");
+                        +"&"+URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(login_pass,"UTF-8")
+                        +"&"+URLEncoder.encode("FCM_token","UTF-8")+"="+URLEncoder.encode(FCM_token,"UTF-8");
                 bufferedWriter.write(data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
@@ -160,8 +177,11 @@ public class BackGroundTask extends AsyncTask<String, Void, String> {
             it.setClass(ctx, Login.class);
             ctx.startActivity(it);
         }
+        else if (result.equals("YAQQ")){
+            Toast.makeText(ctx, "帳號註冊成功！", Toast.LENGTH_LONG).show();
+        }
         else {
-            //Toast.makeText(ctx, "登入成功！", Toast.LENGTH_LONG).show();
+            // Toast.makeText(ctx, result, Toast.LENGTH_LONG).show();
             try {
                 JSONObject jsonObject = new JSONObject(result);
                 int user_id = jsonObject.getInt("user_id");

@@ -38,6 +38,7 @@ public class OrderQueryByNo extends AsyncTask<String, Integer, String> {
     @Override
     protected String doInBackground(String... params) {
         // 連上 web server 中確定收件人存在的查詢功能 (ReceiverQuery.php)
+        // String queryReceiverUrl = "http://140.116.72.162/AV_user/OrderQueryByNo.php";
         String queryReceiverUrl = "http://140.116.72.134/AV_user/OrderQueryByNo.php";
         // 將傳入的收件人帳號存入變數，以便進行後續查詢
         String order_No = params[0];

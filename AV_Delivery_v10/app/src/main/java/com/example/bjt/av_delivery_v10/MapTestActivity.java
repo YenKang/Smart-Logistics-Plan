@@ -4,11 +4,14 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Handler;
 import android.os.Message;
+
+
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,8 +41,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.lang.reflect.Array;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.security.AccessController;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -48,6 +54,12 @@ import java.util.Map;
 import static java.security.AccessController.getContext;
 
 public class MapTestActivity extends FragmentActivity implements OnMapReadyCallback {
+
+    private List<String> timeFilterList;
+    private ArrayAdapter<String> adapterForTimeFilter;
+    private Context context;
+    private int[] timeSelect = new int[12];
+
 
     private Socket clientSocket;
     private String temp;
@@ -76,6 +88,10 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_test);
+
+        Spinner spinnerTime = findViewById(R.id.spTimeInterval);
+        context=this;
+
         //Activity sendActivity = SendActivity.class;
         submit_button = findViewById(R.id.btn_submit);
         cancel_button = findViewById(R.id.btn_cancel);
@@ -83,7 +99,7 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
         Intent intent = getIntent();
         isReceiver = intent.getIntExtra("isReceiver", -1);
 
-        if (isReceiver ==0){
+        if (isReceiver == 0){
             // 從send頁面取得的經緯度資訊存起來準備
             Bundle bundle = getIntent().getExtras();
             originAddress = bundle.getString("origin_address");
@@ -118,9 +134,19 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
 
             camaraLng2 = lng1;
             cameraLat2 = lat1;
+
+            for (int i=0; i<12; i++){
+                timeSelect[i] =i+1;
+            }
+
+            ArrayAdapter<CharSequence> timeListSender = ArrayAdapter.createFromResource(this, R.array.timeInterval, android.R.layout.simple_spinner_dropdown_item);
+            spinnerTime.setAdapter(timeListSender);
         }
         else if (isReceiver == 1 ){
             order_item = (Item)intent.getExtras().getSerializable("order_item");
+            String timeArrived = intent.getExtras().getString("timeFilter");
+
+            Toast.makeText(this,timeArrived,Toast.LENGTH_LONG).show();
             double[] lnglat = order_item.getLnglat();
             receiver_id = order_item.getReceiverName();
             sender_id = order_item.getSenderName();
@@ -128,6 +154,7 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
             cargo_content = order_item.getCargoContent();
             weight = 0.0;
             size = 0;
+            // 陣列依序為 sender_lng, sender_lat, receiver_lng, receiver_lat
             lng1 = lnglat[0];
             lat1 = lnglat[1];
             lng2 = lnglat[2];
@@ -154,21 +181,84 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
 
             camaraLng2 = lng2;
             cameraLat2 = lat2;
+
+            // 我們先創造一個陣列，並再陣列放入幾個資料
+            timeFilterList = new ArrayList<String>();
+            int select = 0;
+            for (int ss=0; ss<12; ss++){
+                if (timeArrived.charAt(ss)=='1'){
+                   timeSelect[select] = ss+1;
+                   select++;
+                   switch(ss){
+                       case 0:
+                           timeFilterList.add("09:30");
+                           break;
+                       case 1:
+                           timeFilterList.add("10:00");
+                           break;
+                       case 2:
+                           timeFilterList.add("10:30");
+                           break;
+                       case 3:
+                           timeFilterList.add("11:00");
+                           break;
+                       case 4:
+                           timeFilterList.add("11:30");
+                           break;
+                       case 5:
+                           timeFilterList.add("12:00");
+                           break;
+                       case 6:
+                           timeFilterList.add("12:30");
+                           break;
+                       case 7:
+                           timeFilterList.add("13:00");
+                           break;
+                       case 8:
+                           timeFilterList.add("13:30");
+                           break;
+                       case 9:
+                           timeFilterList.add("14:00");
+                           break;
+                       case 10:
+                           timeFilterList.add("14:30");
+                           break;
+                       case 11:
+                           timeFilterList.add("15:00");
+                           break;
+                   }
+                }
+            }
+            //我們先創造一個陣列，並再陣列放入幾個資料
+            // timeFilterList.add("111");
+
+            //我們再創造一個配接線 (Context，選單布局呈現方式，List<>)
+            adapterForTimeFilter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, timeFilterList);
+            spinnerTime.setAdapter(adapterForTimeFilter);
         }
 
         cameraLng = (lng1+lng2)/2;
         cameraLat = (lat1+lat2)/2;
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        Spinner spinnerTime = findViewById(R.id.spTimeInterval);
-        final ArrayAdapter<CharSequence> timeList = ArrayAdapter.createFromResource(this, R.array.timeInterval, android.R.layout.simple_spinner_dropdown_item);
-        spinnerTime.setAdapter(timeList);
+
+        // 下拉式選單
+        // ArrayAdapter<CharSequence> adapterForTimeFilter = ArrayAdapter.createFromResource(this, R.array.timeInterval, android.R.layout.simple_spinner_dropdown_item);
+        // spinnerTime.setAdapter(adapterForTimeFilter);
+
+        // 使用者點選下拉式選單中的選項
         spinnerTime.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             // 判斷使用者目前選擇的到達時間
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                timeArrived = position;
-                hashmap.put("time_arrived", timeArrived + 1);
+                timeArrived = timeSelect[position];
+                hashmap.put("time_arrived", timeArrived);
+                // 測試選擇時間
                 Toast.makeText(MapTestActivity.this, hashmap.get("time_arrived").toString(), Toast.LENGTH_SHORT).show();
             }
             // 因預設會選擇L，因此不可能觸發此函式，但此介面必須覆寫
@@ -176,6 +266,10 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+        //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -201,7 +295,13 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
                         if(msg.what == 1) {
                             dialog.dismiss();
                             Toast.makeText(MapTestActivity.this,"貨車已派遣成功，請從「我的訂單」查看車輛狀態。", Toast.LENGTH_LONG).show();
-                            SendActivity.instance.finish();
+                            if (isReceiver == 0){
+                                SendActivity.instance.finish();
+                            }
+                            else if (isReceiver == 1){
+                                ItemActivity.instance.finish();
+                                MyOrderActivity.instance.finish();
+                            }
                             finish();
                         }
                         else if (msg.what == 0){
@@ -214,7 +314,7 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
                         }
                         else if (msg.what == -2){
                             dialog.dismiss();
-                            Toast.makeText(MapTestActivity.this,"系統忙碌中。", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MapTestActivity.this,"系統忙碌中，請重新輸入一次。", Toast.LENGTH_SHORT).show();
                         }
                     }
                 };
@@ -280,7 +380,8 @@ public class MapTestActivity extends FragmentActivity implements OnMapReadyCallb
             InputStream input = null;
             try{
                 // 0610 記得改回來
-                InetAddress serverIP = InetAddress.getByName("140.116.72.162");
+                // InetAddress serverIP = InetAddress.getByName("140.116.72.162");
+                InetAddress serverIP = InetAddress.getByName("140.116.72.134");
                 int serverPort = 6678;
                 clientSocket = new Socket(serverIP, serverPort);
                 // 取得網路輸出流 //////////////////////////////////////////

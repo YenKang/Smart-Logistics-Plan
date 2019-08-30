@@ -32,7 +32,7 @@ import java.net.URLEncoder;
 
 public class SendActivity extends AppCompatActivity {
 
-    private Button mapTest, bt_next;
+    private Button mapTest, bt_next, bt_test2, bt_test3;
     // 宣告讓使用者選擇地址的按鈕
     private TextView origin, dest;
     // 宣告貨物大小
@@ -46,12 +46,14 @@ public class SendActivity extends AppCompatActivity {
 
     static SendActivity instance;
 
+    private Spinner spinnerSize;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send);
 
-        instance =this;
+        instance = this;
         // 使用 sharedpreferences 判斷使用者是否已在此裝置登入過，若 user_id 不存在則預設 -1
         SharedPreferences sharedPreferences = getSharedPreferences("user_info",0);
         int login = sharedPreferences.getInt("user_id",-1);
@@ -67,7 +69,11 @@ public class SendActivity extends AppCompatActivity {
             origin = findViewById(R.id.bt_origin);
             dest = findViewById(R.id.bt_dest);
             bt_next = findViewById(R.id.btn_next);
-            mapTest = findViewById(R.id.btn_mapTest);
+            mapTest = findViewById(R.id.btn_test1);
+
+            //bt_test2 = findViewById(R.id.btn_test2);
+            //bt_test3 = findViewById(R.id.btn_test3);
+
             cargo_name = findViewById(R.id.etCargoName);
             price = findViewById(R.id.etPrice);
             weight = findViewById(R.id.etWeight);
@@ -77,16 +83,16 @@ public class SendActivity extends AppCompatActivity {
             // 負責監聽按鈕事件的函式
             processControllers();
             // 使用下拉式選單定義貨物 size
-            Spinner spinnerSize = findViewById(R.id.spSize);
+            spinnerSize = findViewById(R.id.spSize);
             final ArrayAdapter<CharSequence> sizeList = ArrayAdapter.createFromResource(this, R.array.size, android.R.layout.simple_spinner_dropdown_item);
             spinnerSize.setAdapter(sizeList);
             spinnerSize.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                // 判斷使用者目前選擇的貨櫃大小，預設為L，0為L、1為M、2為S
+                // 判斷使用者目前選擇的貨櫃大小，預設為S，0為S、1為M、2為L
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     sizeSelected = position + 1;
                     // 測試是否顯示正確選擇
-                     Toast.makeText(SendActivity.this, Integer.toString(sizeSelected), Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(SendActivity.this, Integer.toString(sizeSelected), Toast.LENGTH_SHORT).show();
                 }
                 // 因預設會選擇L，因此不可能觸發此函式，但此介面必須覆寫
                 @Override
@@ -97,8 +103,8 @@ public class SendActivity extends AppCompatActivity {
     }
     // 負責監聽本頁面所有按鈕事件的函式
     private void processControllers() {
-        // 測試用按鍵，跳入 MapTest 頁面，進行後續地圖及連線測試
-        View.OnClickListener accountListener = new View.OnClickListener() {
+        // 測試用按鍵，目前為自動輸入預設測試值
+        View.OnClickListener test1Listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(), MapTestActivity.class);
@@ -129,19 +135,20 @@ public class SendActivity extends AppCompatActivity {
                 startActivity(i);
                 */
 
-                originAddressSelected = "台南市中西區";
-                destAddressSelected = "台南市東區";
+                originAddressSelected = "台南市南區";
+                destAddressSelected = "台南市南區";
                 origin.setText(originAddressSelected);
                 dest.setText(destAddressSelected);
-                receiver_id.setText("Bryan1023");
-                cargo_name.setText("測試用貨物");
-                price.setText("777");
-                weight.setText("30.0");
-                et_origin.setText("忠義路二段63號");
-                et_dest.setText("大學路17號");
+                receiver_id.setText("Alice1123");
+                cargo_name.setText("巧克力");
+                price.setText("1100");
+                weight.setText("0.2");
+                et_origin.setText("新忠路2-1號");
+                et_dest.setText("大成路一段79號");
             }
         };
-        mapTest.setOnClickListener(accountListener);
+        mapTest.setOnClickListener(test1Listener);
+
         // 使用者選擇收貨地址的事件
         View.OnClickListener originListener = new View.OnClickListener() {
             @Override
@@ -161,6 +168,7 @@ public class SendActivity extends AppCompatActivity {
         };
         dest.setOnClickListener(destListener);
         // 以上兩個事件會根據不同的 requestCode 將回傳的結果傳入不同的變數 //////
+
         // 使用者選擇下一步，此為正式版本的功能，真實流程的一部份
         View.OnClickListener nextListener = new View.OnClickListener() {
             @Override
@@ -211,7 +219,8 @@ public class SendActivity extends AppCompatActivity {
         protected String doInBackground(String... params) {
             // 連上 web server 中確定收件人存在的查詢功能 (ReceiverQuery.php)
             // 0610 記得要改
-            String queryReceiverUrl = "http://140.116.72.162/AV_user/ReceiverQuery.php";
+            // String queryReceiverUrl = "http://140.116.72.162/AV_user/ReceiverQuery.php";
+            String queryReceiverUrl = "http://140.116.72.134/AV_user/ReceiverQuery.php";
             // 將傳入的收件人帳號存入變數，以便進行後續查詢
             String receiver_id = params[0];
             try{

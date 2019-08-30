@@ -67,8 +67,9 @@
 
             <TextView
                 android:id="@+id/status_activity_text"
-                android:padding="8sp"
+                android:layout_width="match_parent"
                 android:layout_margin="2sp"
+                android:padding="8sp"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </TableRow>
         <!--

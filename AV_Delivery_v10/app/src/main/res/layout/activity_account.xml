@@ -44,13 +44,6 @@
         android:padding="10dp">
 
         <Button
-            android:id="@+id/btn_fix"
-            android:layout_width="120dp"
-            android:layout_height="45dp"
-            android:paddingVertical="10dp"
-            android:text="修改會員資料" />
-
-        <Button
             android:id="@+id/btn_logout"
             android:layout_width="120dp"
             android:layout_height="45dp"

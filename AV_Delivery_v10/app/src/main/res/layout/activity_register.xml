@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llRegister"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="20dp"
+    tools:context=".AccountActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="20dp"
+        android:text="會員資料" />
+
+    <EditText
+        android:id="@+id/user_name"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:paddingVertical="20dp"
+        android:hint="帳號"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/user_pass"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:paddingVertical="20dp"
+        android:hint="密碼"
+        android:inputType="textPassword"/>
+    <EditText
+        android:id="@+id/user_phone"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:paddingVertical="20dp"
+        android:hint="手機號碼"
+        android:inputType="number"/>
+    <EditText
+        android:id="@+id/user_address"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:paddingVertical="20dp"
+        android:hint="地址"
+        android:inputType="textPassword"/>
+    <RadioGroup
+        android:id="@+id/RadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/RadioButton1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="男" />
+
+        <RadioButton
+            android:id="@+id/RadioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="女" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_submit_register"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:paddingVertical="10dp"
+        android:layout_marginTop="10dp"
+        android:text="確定" />
+
+    <Button
+        android:id="@+id/btn_home_register"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:paddingVertical="10dp"
+        android:layout_marginTop="10dp"
+        android:text="回首頁" />
+
+</LinearLayout>
