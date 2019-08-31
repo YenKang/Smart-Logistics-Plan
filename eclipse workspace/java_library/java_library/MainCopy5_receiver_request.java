@@ -1595,11 +1595,8 @@ public class MainCopy5_receiver_request {
 								//插入時間在此刻時間點之後
 
 								//Double double_insertTime=Double.valueOf(insertTime);
-								//int insertTine_in_list =0;
+								int insertTine_in_list =0;
 								ArrayList display_time_list = new ArrayList();
-
-								Map  Map_requestInfo = new HashMap();
-								Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get((String) specific_vehID);
 
 								for(int n=0;n<original_schedule.size();n++){
 									insertTime = (int) original_schedule.get(n);
@@ -1624,8 +1621,8 @@ public class MainCopy5_receiver_request {
 										ArrayList veh_array = new ArrayList();//veh_array:[570, 660]
 										System.out.println("veh_array line1622:"+ veh_array);
 										veh_array = (ArrayList)CarsMap_with_Schedule.get((String) specific_vehID);
-										//Map  Map_requestInfo = new HashMap();
-										//Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get((String) specific_vehID);
+										Map  Map_requestInfo = new HashMap();
+										Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get((String) specific_vehID);
 										System.out.println("veh_array line1626:"+ veh_array);
 										System.out.println("Map_requestInfo in line1627:"+ Map_requestInfo);
 
@@ -1733,10 +1730,22 @@ public class MainCopy5_receiver_request {
 													System.out.println("Map_requestInfo in line1729"+ Map_requestInfo.get(insertTime));
 												
 										}
+										
+										if(Map_requestInfo.containsKey(insertTime)==false) {
+											Map_requestInfo.remove(insertTime);
+										}
+										
+
+										System.out.println("Map_requestInfo after removing:"+ Map_requestInfo);	
+										int index= veh_array.indexOf(insertTime);
+										veh_array.remove(index);
+										
+										//veh_array.remove(veh_array.size()-1);
+										System.out.println("veh_array after removing:"+ veh_array);	
 									}	
 								}
 
-								Map_requestInfo.remove(insertTime);	
+								//Map_requestInfo.remove(insertTime);	
 
 
 								// System.out.println(display_time_list.get(0));
