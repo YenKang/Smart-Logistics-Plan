@@ -139,6 +139,19 @@ class Server extends Thread {
                 	clientRequest.setTruckNo(jsonResponse.getString("truck_id"));
                 	clientRequest.setOrderNo(jsonResponse.getString("order_No"));
                 }
+                // 收件人的時間過濾
+                else if (clientRequest.getRequestNo() == 2) {
+                	clientRequest.setLatLng(
+                			jsonResponse.getDouble("sender_lng"), 
+                			jsonResponse.getDouble("sender_lat"), 
+                			jsonResponse.getDouble("receiver_lng"), 
+                			jsonResponse.getDouble("receiver_lat"));
+
+                	clientRequest.setContainerNo(jsonResponse.getString("container_id"));
+                	
+                	clientRequest.setTruckNo(jsonResponse.getString("truck_id"));
+                }
+                
                 clientInfos.add(clientRequest);
                 AssignResult assignResult = new AssignResult();
                 assignResults.add(assignResult);
@@ -146,15 +159,21 @@ class Server extends Thread {
                 /// 輸出
                 output = new DataOutputStream(this.clientSocket.getOutputStream());
                 
-                System.out.println(assignResult.getResult());
+                //System.out.println(assignResult.getResult());
                 //Thread.sleep(3000);
                 synchronized(assignResult) {
                 	 assignResult.wait();
                 }        
                 int assign_condition = assignResult.getResult();
-                System.out.println(assign_condition);
+                //System.out.println(assign_condition);
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(output));
-            	bufferedWriter.write(Integer.toString(assign_condition));
+            	if (clientRequest.getRequestNo() == 2) {
+            		bufferedWriter.write(Integer.toString(assign_condition)+"\r\n");
+            		bufferedWriter.write(assignResult.getTF());
+            	}
+            	else {
+            		bufferedWriter.write(Integer.toString(assign_condition));
+            	}
                 //bufferedWriter.write(assign_condition);
             	bufferedWriter.flush();
             	bufferedWriter.close();
