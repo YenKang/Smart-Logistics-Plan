@@ -1598,6 +1598,9 @@ public class MainCopy5_receiver_request {
 								//int insertTine_in_list =0;
 								ArrayList display_time_list = new ArrayList();
 
+								Map  Map_requestInfo = new HashMap();
+								Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get((String) specific_vehID);
+
 								for(int n=0;n<original_schedule.size();n++){
 									insertTime = (int) original_schedule.get(n);
 									//System.out.println("insertTime in line416:"+ insertTime);
@@ -1609,7 +1612,6 @@ public class MainCopy5_receiver_request {
 										Iterator iter = CarsMap_with_Schedule.entrySet().iterator(); 
 										while (iter.hasNext()) {
 											Map.Entry entry = (Map.Entry) iter.next(); 
-											//System.out.println("entry:"+ entry);
 											String key = (String) entry.getKey(); 
 											Object value = entry.getValue();
 											
@@ -1620,16 +1622,19 @@ public class MainCopy5_receiver_request {
 
 										//specific_vehID (Str)
 										ArrayList veh_array = new ArrayList();//veh_array:[570, 660]
+										System.out.println("veh_array line1622:"+ veh_array);
 										veh_array = (ArrayList)CarsMap_with_Schedule.get((String) specific_vehID);
-										Map  Map_requestInfo = new HashMap();
-										Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get((String) specific_vehID);
+										//Map  Map_requestInfo = new HashMap();
+										//Map_requestInfo =(Map) CarsMap_time_to_requestInfo.get((String) specific_vehID);
+										System.out.println("veh_array line1626:"+ veh_array);
+										System.out.println("Map_requestInfo in line1627:"+ Map_requestInfo);
 
 										if((veh_array.contains(insertTime))!=true) {
 
 													veh_array.add(insertTime); // [660] -> [570, 660]
-													//System.out.println("veh_array:"+ veh_array);
+													System.out.println("veh_array:"+ veh_array);
 													Collections.sort(veh_array);
-													//System.out.println("veh_array after sorting:"+ veh_array);
+													System.out.println("veh_array after sorting:"+ veh_array);
 													int indexValue = veh_array.indexOf(insertTime);
 													Map_requestInfo.put(insertTime, request_array ); // request_array should be dynamic
 													
@@ -1646,7 +1651,7 @@ public class MainCopy5_receiver_request {
 														
 														System.out.println("distance_curr_To_Index:"+ distance_curr_To_Index);
 														double travelTime_curr_To_Index = distance_curr_To_Index/vehicle_speed;
-														//System.out.println("Map_requestInfo:"+ Map_requestInfo);
+														System.out.println("Map_requestInfo:"+ Map_requestInfo);
 														
 														int key_afterIndex = (int) veh_array.get(indexValue+1);
 														double request_x_afterIndex = (double)((ArrayList) Map_requestInfo.get(key_afterIndex)).get(1);
@@ -1688,6 +1693,7 @@ public class MainCopy5_receiver_request {
 															display_time_list.add(insertTime);
 															System.out.println("display_time_list in the tail:"+display_time_list);
 														}
+													
 																								
 													}
 
@@ -1720,11 +1726,19 @@ public class MainCopy5_receiver_request {
 														{											
 															display_time_list.add(insertTime);
 															System.out.println("display_time_list in the middle:"+display_time_list);
-														}	
+														}
+														
 													}
+
+													System.out.println("Map_requestInfo in line1729"+ Map_requestInfo.get(insertTime));
+												
 										}
 									}	
 								}
+
+								Map_requestInfo.remove(insertTime);	
+
+
 								// System.out.println(display_time_list.get(0));
 								// 沒有可到達的時間段
 								if (display_time_list.size()==0) {
@@ -1788,9 +1802,10 @@ public class MainCopy5_receiver_request {
 										assignResult.notify();
 									}
 								}
+
 								System.out.println("display_time_list"+ display_time_list);		
-								
-							
+								display_time_list.clear();
+
 							}
 						}
 						clientInfos.clear();
