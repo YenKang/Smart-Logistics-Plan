@@ -1,0 +1,7 @@
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+
+ <containerStop id="containerStop1" 
+ 	lane= "496257308#5_0"
+ 	startPos = "30"
+ 	endPos = "50"/>
+</additional>
