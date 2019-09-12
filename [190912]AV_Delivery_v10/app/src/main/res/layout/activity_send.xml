@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#888888"
+    android:stretchColumns="*">
+
+    <TableRow
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="#ffffff"
+ >
+        <TextView
+            android:text="貨品內容"
+            android:textStyle="bold"
+            android:padding="10sp"
+            android:layout_margin="2sp"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/etCargoName"
+            android:hint="請輸入貨品內容"
+            android:padding="10sp"
+            android:layout_margin="2sp"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:inputType="text"/>
+    </TableRow>
+
+    <TableRow
+        android:background="#ffffff"
+        android:layout_margin="2dip">
+        <TextView
+            android:text="貨品價值"
+            android:layout_gravity="center_horizontal"
+            android:padding="10sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/etPrice"
+            android:layout_margin="2sp"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:hint="NT"
+            android:inputType="number"
+            android:maxLength="7"
+            android:padding="10sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>
+    <TableRow
+        android:background="#ffffff"
+        android:layout_margin="2dip">
+        <TextView
+            android:text="貨品重量"
+            android:layout_gravity="center_horizontal"
+            android:padding="10sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/etWeight"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="2sp"
+            android:hint="kg"
+            android:inputType="numberDecimal"
+            android:maxLength="4"
+            android:padding="10sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>
+
+    <TableRow
+        android:background="#ffffff"
+        android:layout_margin="2dip">
+        <TextView
+            android:text="貨櫃大小"
+            android:layout_gravity="center"
+            android:padding="10sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/spSize"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>
+
+    <TableRow
+        android:background="#ffffff"
+        android:layout_margin="2dip">
+        <TextView
+            android:text="收件人帳號"
+            android:layout_gravity="center_horizontal"
+            android:padding="10sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/etReceiverID"
+            android:hint="請輸入收件人帳號"
+            android:layout_gravity="center_horizontal"
+            android:padding="10sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:inputType="text"/>
+    </TableRow>
+    <TableRow
+        android:background="#ffffff"
+        android:layout_margin="2dip">
+        <TextView
+            android:text="貨車取貨地址"
+            android:layout_gravity="center_horizontal"
+            android:padding="10sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/bt_origin"
+            android:hint="請點此選擇地區資料"
+            android:layout_gravity="center_horizontal"
+            android:padding="10sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>
+    <TableLayout
+        android:background="#ffffff"
+        android:layout_margin="2dip">
+        <EditText
+            android:id="@+id/etOrigin"
+            android:hint="請輸入詳細地址(路名、段數、號數)"
+            android:padding="10sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:inputType="text"/>
+    </TableLayout>
+    <TableRow
+        android:background="#ffffff"
+        android:layout_margin="2dip">
+        <TextView
+            android:text="貨車目的地址"
+            android:layout_gravity="center_horizontal"
+            android:padding="10sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/bt_dest"
+            android:hint="請點此選擇地區資料"
+            android:layout_gravity="center_horizontal"
+            android:padding="10sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>
+    <TableLayout
+        android:background="#ffffff"
+        android:layout_margin="2dip">
+        <EditText
+            android:id="@+id/etDest"
+            android:hint="請輸入詳細地址(路名、段數、號數)"
+            android:padding="10sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:inputType="text"/>
+    </TableLayout>
+
+    <TableLayout
+        android:background="#ffffff"
+        android:layout_margin="2dip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*">
+        <TableRow>
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="下一步" />
+        <Button
+            android:id="@+id/btn_test1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="自動輸入前次訂單資料" />
+        </TableRow>
+
+
+    </TableLayout>
+    <!--<TableLayout
+        android:background="#ffffff"
+        android:layout_margin="2dip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*">
+
+        <TableRow>
+            <Button
+                android:id="@+id/btn_test2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="測試值1" />
+            <Button
+                android:id="@+id/btn_test3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="測試值2" />
+        </TableRow>
+    </TableLayout>-->
+</TableLayout>
+
+    </ScrollView>
