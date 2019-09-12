@@ -1,0 +1,39 @@
+<resources>
+    <string name="ip_address">140.116.72.162</string>
+
+    <string name="app_name">AV_Delivery_v1.0</string>
+    <string name="main_title">自駕車宅配服務</string>
+    <string name="account_button">會員中心</string>
+    <string name="package_send">我要寄貨</string>
+    <string name="my_package">我的貨物</string>
+    <string name="package_search">依貨號查件</string>
+    <string name="setting">偏好設定</string>
+    <string name="about">聯絡我們</string>
+    <string name="title_activity_map_test">Map</string>
+
+    <string name="cargo_content">商品內容</string>
+    <string name="price">價格</string>
+
+    <string name="I_sent"><font></font> 我寄出的</string>
+
+    <string-array name="size">
+        <item>S</item>
+        <item>M</item>
+        <item>L</item>
+    </string-array>
+
+    <string-array name="timeInterval">
+        <item>09:30</item>
+        <item>10:00</item>
+        <item>10:30</item>
+        <item>11:00</item>
+        <item>11:30</item>
+        <item>12:00</item>
+        <item>12:30</item>
+        <item>13:00</item>
+        <item>13:30</item>
+        <item>14:00</item>
+        <item>14:30</item>
+        <item>15:00</item>
+    </string-array>
+</resources>
