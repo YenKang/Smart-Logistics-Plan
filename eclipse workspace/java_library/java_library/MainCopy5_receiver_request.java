@@ -1530,6 +1530,8 @@ public class MainCopy5_receiver_request {
 								}	
 							}
 							// 收件者的時間過濾
+
+							/*
 							else if  ( (clientInfo.getRequestNo() == 2) && ( junction==0 )) {
 								// 從 clientInfo 取得使用者相關資料
 								
@@ -1814,8 +1816,8 @@ public class MainCopy5_receiver_request {
 
 								System.out.println("display_time_list"+ display_time_list);		
 								display_time_list.clear();
-
 							}
+							*/
 						}
 						clientInfos.clear();
 						assignResults.clear();
@@ -1823,62 +1825,7 @@ public class MainCopy5_receiver_request {
 				}
 				//////////////////////////////////////////////////////////////////////////////////////////////////
 				//////////////////////////////////////////////////////////////////////////////////////////////////
-				//////////////////////////////////////////////////////////////////////////////////////////////////
-				//////////////////////////////////////////////////////////////////////////////////////////////////
-				//////////////////////////////////////////////////////////////////////////////////////////////////
-				// 到達目的地的前 10 分鐘 (提前作通知)
-				/*
-				if(timeSeconds % 600==0) {
-					for(int veh=1;veh<CarsMap_with_Schedule.size()+1;veh++) {
-						String vehID = Integer.toString(veh); 
-						ArrayList veh_array = new ArrayList();
-						veh_array = (ArrayList)CarsMap_with_Schedule.get(vehID);
-						Map eachVeh_requestInfo = new HashMap();
-						eachVeh_requestInfo = (Map) CarsMap_time_to_requestInfo.get(vehID);				
-						//System.out.println("CarsMap_time_to_requestInfo:"+ CarsMap_time_to_requestInfo);					
-						//System.out.println("eachVeh_requestInfo:"+ eachVeh_requestInfo);						
-						for(int veh_array_Index=0; veh_array_Index<veh_array.size();veh_array_Index++) {
-							int arrival_time =(int) veh_array.get(veh_array_Index);
-							ArrayList requestInfo = new ArrayList();
-							
-							requestInfo = (ArrayList) eachVeh_requestInfo.get(arrival_time);					
-							System.out.println("requestInfo in line745:"+ requestInfo);							
-							int upperBound_time = (arrival_time-540)*60;
-							int lowerBound_time = (arrival_time-540-10)*60; //1200s							
-
-							if(timeSeconds==lowerBound_time) { // specific time
-								// sender 及 receiver 都要通知
-								// 因為還沒初始設置完畢，先只用第二台測試
-								// 提前通知的部分包括 sender 以及 receiver，因此要做判斷
-								int isReceiver = (int) requestInfo.get(4);
-								FcmNotify notifyEarly = new FcmNotify();
-								// 通知 sender
-								if (isReceiver == 0) {
-									if (veh ==2) {
-										System.out.println("The system is in the notification stage!");	
-										System.out.println("send notification to the specific sender");	
-										String sender_DID = (String) requestInfo.get(6);
-										System.out.println(sender_DID);
-										// FcmNotify notifySenderEarly = new FcmNotify();
-										notifyEarly.pushFCMNotification(sender_DID, "貨車即將到達", "貨車將於約10分後到達。");
-									}
-								}
-								// 通知 receiver
-								else if (isReceiver == 1) {
-									if (veh ==2) {
-										System.out.println("The system is in the notification stage!");	
-										System.out.println("send notification to the specific sender");	
-										String receiver_DID = (String) requestInfo.get(7);
-										System.out.println(receiver_DID);
-										// FcmNotify notifySenderEarly = new FcmNotify();
-										notifyEarly.pushFCMNotification(receiver_DID, "貨車即將到達", "貨車將於約10分後到達。");
-									}
-								}
-							}													
-						}
-					}
-				}
-				*/
+			
 				// 通知完後繼續移動
 				// 當車子已經到達 sender 位置，則通知 sender 及 receiver 選擇時間
 				// when the vehicle arrive to the destination (sender address & receiver address)
@@ -1981,6 +1928,7 @@ public class MainCopy5_receiver_request {
 						}
 					}
 				}
+				
 				if(timeSeconds%300 == 0) {
 					for(int veh=1;veh<CarsMap_with_Schedule.size()+1;veh++) {
 						String vehID = Integer.toString(veh); 
